@@ -5,75 +5,7 @@
     </div>
 </header>
 
-<!--Content-->
-<div class="eventsContainerContent">
-    <!--Aside bar-->
-    <div class="content-asidebar">
-        <div class="content">
-            <p>a</p>  
-        </div>
-    </div>
-    <div class="principalContainer">
-        <p>Mucho textoasdffffffffffffffffffffffffffffffffffffffffffffffffffffffffff</p>
-        <ng-template #longContent let-modal>
-          <div class="modal-header">
-            <h4 class="modal-title">Creacion Evento</h4>
-            <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-          </div>
-          <div class="modal-body">
-              <div class="form-group">
-               
-                <label for="">Nombre del Evento:</label>
-                <input type="text" class="form-control" id=""
-                    placeholder="Ej: El mejor evento">
-              
-                <label for="">Tipo de Evento:</label>
-                <mat-radio-group
-                  aria-labelledby="example-radio-group-label"
-                  class="example-radio-group"
-                  >
-                  <mat-radio-button class="example-radio-button" *ngFor="let season of seasons" [value]="season">
-                    {{season}}
-                  </mat-radio-button>
-                </mat-radio-group>
-            
-                <label for="exampleInputEmail1">Descripcion Evento</label>
-                <form action="">
-                  <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>Descripcion:</mat-label>
-                    <textarea matInput placeholder="Explica de que tratara..."></textarea>
-                  </mat-form-field>
-                </form>
-            
-                <label for="exampleInputEmail1">Fecha Realizacion</label>
-                <div>
-                  <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next"></ngb-datepicker>
-                </div>
-                
-                <label for="">Lugar:</label>
-                <input type="text" class="form-control" id=""
-                    placeholder="Ej: La milagrosa- cra28d #48d 412">                  
-            
-                <label for="exampleInputEmail1">Numero Participantes</label>
-                <input type="number" class="form-control" id="exampleInputEmail1"
-                    value="0">
-              </div>
-              <section class="checkbox-Necesary">
-                <mat-checkbox class="example-margin" [(ngModel)]="checked">Para la creacion de el evento debera estar  de acuerdo con la ley 1480 de 2011 articulo 30 con respecto al evento a crear.</mat-checkbox>
-              </section>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-" (click)="modal.close('Close click')">Volver</button>
-            <button type="button" class="btn btn-success" >Crear</button>
-          </div>
-          
-        </ng-template>
-
-        <button class="btn btn-outline-primary mb-2 me-2" (click)="openScrollableContent(longContent)">Crear Evento</button>
-        
-    </div>
-</div>
-<!--End Content-->
+<button type="button" class="btn btn-primary">Primary</button>
 
 <!--Footer-->
 <footer>
