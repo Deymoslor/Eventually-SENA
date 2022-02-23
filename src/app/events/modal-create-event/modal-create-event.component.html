@@ -1,17 +1,63 @@
 
-<div class="modal fade" id="contenido-modal" tabindex="-1" >
-    <div class="modal-dialog">
+<div class="modal fade" id="content-modal" tabindex="-1" >
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+            <h5 class="modal-title" id="staticBackdropLabel">Creacion de eventos</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-            a
+                <div class="form-group">
+                    <label for="">Nombre del Evento:</label>
+                    <input type="text" class="form-control" id=""
+                    placeholder="Ej: El mejor evento">
+                    
+                    <label for="">Tipo de Evento:</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            Presencial
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            Virtual
+                        </label>
+                    </div>
+
+                    <label for="">Descripcion Evento:</label>
+                    <div class="mb-2">
+                        <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Explica de que tratará"
+                         rows="2"></textarea>
+                    </div>
+
+                    <label for="exampleInputEmail1">Fecha Realizacion:</label>
+                    <div>
+                        <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next"></ngb-datepicker>
+                    </div>
+                    
+                    <label for="">Lugar:</label>
+                    <input type="text" class="form-control" id=""
+                    placeholder="Ej: La milagrosa- cra28d #48d 412">  
+
+                    <label for="exampleInputEmail1">Numero Participantes:</label>
+                    <input type="number" class="form-control" id="exampleInputEmail1"
+                    value="1">
+
+                    <div class="check-container-politycs">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Para la creación de el evento deberá estar de acuerdo con la ley 1480 de 2011 articulo 30 con respecto al evento a crear.
+                            </label>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Understood</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary">Crear evento</button>
             </div>
         </div>
     </div>

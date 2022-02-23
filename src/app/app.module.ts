@@ -7,6 +7,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { EventsComponent } from './events/events.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalCreateEventComponent } from './events/modal-create-event/modal-create-event.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { ModalCreateEventComponent } from './events/modal-create-event/modal-cre
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    NgbModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
