@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+declare var $: any;
 @Component({
   selector: 'app-events',
   templateUrl: './events.component.html',
@@ -13,7 +13,5 @@ export class EventsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-
 
 }

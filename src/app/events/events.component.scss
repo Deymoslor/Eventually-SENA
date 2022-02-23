@@ -41,51 +41,6 @@ header {
   display: block;
   margin-top: 5%;
 }
-/*Form*/
-
-/*Radio Group y button*/
-.example-radio-group {
-  display: flex;
-  flex-direction: column;
-  margin: 15px 0;
-  align-items: flex-start;
-}
-
-.example-radio-button {
-  margin: 5px;
-}
-/*textarea*/
-.example-form {
-  min-width: 150px;
-  max-width: 500px;
-  width: 100%;
-}
-
-.example-full-width {
-  width: 100%;
-}
-
-/*Form Styles*/
-.form-group {
-  display: block;
-}
-
-/*checkbox styles*/
-
-.checkbox-Necesary {
-  background-color: #909090;
-  display: flex;
-  align-content: center;
-  align-items: center;
-  padding: 5px;
-  height: 60px;
-  float: right;
-}
-
-mat-checkbox {
-}
-
-/*/form*
 
 /*footer*/
 footer {
