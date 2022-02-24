@@ -30,6 +30,7 @@ header {
 .principalContainer {
   display: flex;
   justify-content: center;
+  flex-direction: column;
   margin-top: 5%;
   width: 150vh;
   background-color: #0389c9;

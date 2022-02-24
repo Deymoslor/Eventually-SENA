@@ -5,7 +5,6 @@ import { DashboardComponent } from './events/dashboard/dashboard.component';
 
 const routes: Routes = [
   {path: 'events', component:EventsComponent},
-  {path: 'dashboard', component:DashboardComponent}
 ];
 
 @NgModule({
