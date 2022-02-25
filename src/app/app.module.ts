@@ -12,6 +12,7 @@ import { EventsModule } from './events/events.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
     NgbModule,
     FormsModule,
     EventsModule,
-    DashboardModule
+    DashboardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

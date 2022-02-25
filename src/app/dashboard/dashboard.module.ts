@@ -5,6 +5,8 @@ import { CrudEventsComponent } from '../events/dashboard/crud-events/crud-events
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { DashboardRoutingModule } from './dashboard-routing.module';
+import {MatTableModule} from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [DashboardComponent,
@@ -13,7 +15,9 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
     CommonModule,
     NgbModule,
     FormsModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    MatTableModule,
+    MatPaginatorModule
   ]
 })
 export class DashboardModule { }
