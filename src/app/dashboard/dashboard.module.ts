@@ -7,10 +7,12 @@ import { FormsModule } from '@angular/forms';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { ModalEventsComponent } from './crud-events/modal-events/modal-events.component';
 
 @NgModule({
   declarations: [DashboardComponent,
-    CrudEventsComponent,],
+    CrudEventsComponent,
+    ModalEventsComponent,],
   imports: [
     CommonModule,
     NgbModule,
