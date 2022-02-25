@@ -1,11 +1,12 @@
 :host {
   display: flex;
   flex-direction: column;
+  align-self: center;
   justify-content: space-between;
 }
 
 .thumbnail {
-  width: 75vw;
+  width: 70vw;
   border-radius: 20px;
 }
 
@@ -42,4 +43,7 @@ table {
   width: 32px;
   text-align: center;
   font-weight: bold;
+}
+.btn {
+  margin: 20px;
 }
