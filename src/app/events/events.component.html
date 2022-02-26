@@ -5,6 +5,7 @@
     </div>
 </header>
 <!--Content Container-->
+<app-modal-result></app-modal-result>
 <app-modal-create-event></app-modal-create-event><!--Modal-->
 <div class="eventsContainerContent">
     <!--Aside bar-->
@@ -15,14 +16,19 @@
     </div>
     <!--CONTENT-->
     <div class="principalContainer">
-        <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaMucho textoasdffffffffffffffffffffffffffffffffffffffffffffffffffffffffff</p>
+        
             <!-- Button trigger modal -->
                 <button class="btn btn-primary col-2 d-md-flex justify-content-md-center" data-bs-toggle="modal" data-bs-target="#content-modal">
                     Crear Evento
-                </button>
-                       
-                        
-                            
+                </button>             
+            <span>Acceder a evento</span>           
+            <button class="btn btn-primary col-2 d-md-flex justify-content-md-center" routerLink="event-in" >
+                ENTRAR A EVENTO
+            </button>
+
+            <router-outlet></router-outlet>
+            
+           
     </div>
           
 </div>
