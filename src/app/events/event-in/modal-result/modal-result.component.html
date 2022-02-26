@@ -19,17 +19,14 @@
                      rows="2"></textarea>
                 </div>
                 
-                <label for="exampleInputEmail1">Numero Participantes:</label>
-                <input type="number" class="form-control" id="exampleInputEmail1"
-                value="1">
 
                 <label for="customRange3" class="form-label">Calificacion del servicio: Menor a Mayor</label>
-                <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3">
+                <input type="range" class="form-range" min="1" max="10" step="1" value="5" id="customRange3">
                 <label for=""></label>
             </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary">Understood</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" [routerLink]="['/events']" routerLinkActive="router-link-active" >Enviar</button>
         </div>
       </div>
     </div>

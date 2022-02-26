@@ -1,0 +1,34 @@
+<!-- Modal -->
+<div class="modal fade" id="editModal"  data-bs-keyboard="false" tabindex="-1"  aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Editar evento</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">                
+                <label for="">Descripcion Evento:</label>
+                    <div class="mb-2">
+                        <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Explica de que tratará"
+                         rows="2">Sera realizada un evento de danza en el parque el cual tendra diferentes tipos de tematicas desde las mas conocidas y rurales, hasta las mas urbanas y concretas, sin nada mas que tus ganas y animo podras estar presente en este excelente grupo de danza.</textarea>
+                    </div>
+
+                    <label for="exampleInputEmail1">Fecha Realizacion:</label>
+                    <div>
+                        <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next"></ngb-datepicker>
+                        
+                    </div>
+                    
+                    <label for="">Lugar:</label>
+                    <input type="text" class="form-control" id=""
+                    placeholder="Ej: La milagrosa- cra28d #48d 412" value="Parque de la milagrosa - Cl. 43, Medellín, Antioquia">  
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" [routerLink]="['/events']" routerLinkActive="router-link-active" >Enviar</button>
+        </div>
+      </div>
+    </div>
+  </div>

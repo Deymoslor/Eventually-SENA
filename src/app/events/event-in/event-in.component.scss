@@ -48,11 +48,17 @@
 .info {
   background-color: rgb(228, 221, 247);
   display: flex;
+  position: relative;
   flex-direction: column;
   align-items: center;
   margin: 0px 5px;
   padding: 3px;
   border-radius: 4px;
+}
+
+.edit {
+  position: absolute;
+  margin-left: 65%;
 }
 
 .main-content-container {
