@@ -8,6 +8,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { EventsModule } from './events/events.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { GroupsModule } from './groups/groups.module';
 
 
 
@@ -20,6 +21,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
     AppRoutingModule,
     NgbModule,
     FormsModule,
+    GroupsModule,
     EventsModule,
     DashboardModule,
   ],

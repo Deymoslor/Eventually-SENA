@@ -1,0 +1,87 @@
+$background: #0389c9;
+$letterH: white;
+header {
+    background-color: $background;
+    max-width: 100vw;
+    width: 100%;
+    height: 4.5rem;
+    z-index: 3;
+    margin-top: 0;
+    .row {
+        width: 100%;
+        a {
+            color: $letterH;
+            font-size: 14px;
+        }
+    }
+}
+
+body .container {
+  max-width: 100vw;
+  width: 100%;
+  height: 4.5rem;
+  z-index: 3;
+  margin-top: 0;
+  a {
+      color: $letterH;
+      font-size: 14px;
+  }
+}
+
+.navLat {
+  margin: 1rem;
+  background-color: $background;
+  width: auto;
+  border-radius: 1rem;
+}
+
+/*Content*/
+.eventsContainerContent {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin: 20px 20px;
+  height: auto;
+  position: relative;
+  z-index: 1;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.principalContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 5%;
+  width: 150vh;
+  background-color: #f6ebfd;
+}
+
+/*aside bar*/
+.content-asidebar .content {
+  background-color: #0389c9;
+  height: 35vw;
+  width: 200px;
+  margin-right: 20px;
+}
+
+.content-asidebar {
+  display: block;
+  margin-top: 5%;
+}
+
+/*footer*/
+footer {
+  display: block;
+  margin-top: 5%;
+}
+
+footer .content {
+  background-color: #0389c9;
+  height: 60px;
+  max-width: 100vw;
+  width: 100%;
+}

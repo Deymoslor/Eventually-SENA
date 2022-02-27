@@ -1,0 +1,22 @@
+<a routerLink="/group" class="back">&lt; Volver al inicio</a>
+<div class="container">
+  <ng-container *ngIf="groups$ | async as group">
+    <div class="img-container">
+      <img
+        src="/assets/group/{{ group.imgGroup }}"
+        alt="{{ group.GroupName }}"
+      />
+    </div>
+    <div class="info">
+      <p class="product-name">{{ group.GroupName }}</p>
+      <p class="product-short-description">{{ group.description }}</p>
+      <div class="cart-row">
+        <span class="price"
+          >{{ group.totalUsers }}</span
+        >
+        <button class="btn btn.primary" title="Añadir al Carrito"> Solicitar Unirse
+        </button>
+      </div>
+    </div>
+  </ng-container>
+</div>

@@ -1,0 +1,11 @@
+<a routerLink="./">Ordenar por id</a>
+<div class="catalog-grid">
+
+</div>
+
+<div class="card-group">
+  <app-your-groups-show
+  *ngFor="let group of groups"
+  [group]="group">
+  </app-your-groups-show>
+</div>
