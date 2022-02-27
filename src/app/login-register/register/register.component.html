@@ -1,0 +1,38 @@
+<body>
+    <form ngNativeValidate [formGroup]="formUsers">
+        <div class="form">
+            <h1>Registro</h1>
+            <!-- <div class="grupo">
+                <input type="text" name="" id="name" required><span class="barra"></span>
+                <label for="">Nombre</label>
+            </div> -->
+            <div class="grupo">
+                <input type="email" name="" id="email" required formControlName="email"><span class="barra"></span>
+                <label for="">Email</label>
+            </div>
+            <div class="grupo">
+                <input type="password" name="" id="password" required formControlName="password"><span class="barra"></span>
+                <label for="">Password</label>
+            </div>
+
+            <button (click)="sendData()">Registrarse</button>
+            <button (click)="cancel()">Cancelar</button>
+
+            <!-- <pre>{{ formUsers.value | json }}</pre> -->
+        </div>
+    </form>
+</body>
+
+<!--
+<h1>Registra cuenta</h1>
+<form [formGroup]="formUsers">
+    <label>Email
+        <input type="email" name="email" formControlName="email">
+    </label>
+    <label>Password
+        <input type="password" name="password" formControlName="password">
+    </label>
+</form>
+<button (click)="sendData()">Registrarse</button>
+
+<pre>{{ formUsers.value | json }}</pre> -->

@@ -10,6 +10,9 @@ import { EventsModule } from './events/events.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import { HeaderComponent } from './shared/header/header.component';
+import { LoginRegisterModule } from './login-register/login-register.module';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 
@@ -26,6 +29,8 @@ import { HeaderComponent } from './shared/header/header.component';
     FormsModule,
     EventsModule,
     DashboardModule,
+    LoginRegisterModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
