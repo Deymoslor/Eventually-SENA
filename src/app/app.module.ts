@@ -8,6 +8,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { EventsModule } from './events/events.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+
+import { LandingpageComponent } from './landingpage/landingpage.component';
+import { HeaderComponent } from './shared/header/header.component';
 import { SettingsComponent } from './settings/settings.component';
 
 
@@ -16,7 +19,8 @@ import { SettingsComponent } from './settings/settings.component';
   declarations: [
     AppComponent,
     SettingsComponent,
-    
+    LandingpageComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
