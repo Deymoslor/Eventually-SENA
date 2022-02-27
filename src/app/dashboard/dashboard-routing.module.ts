@@ -4,6 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
 import { CrudEventsComponent } from './crud-events/crud-events.component';
 import { CrudServicesComponent } from './crud-services/crud-services.component';
+import { CrudLikesComponent } from './crud-likes/crud-likes.component';
+
 
 
 const routes: Routes = [
@@ -11,7 +13,8 @@ const routes: Routes = [
     path: 'dashboard', component:DashboardComponent,
     children: [
       {path: 'events', component: CrudEventsComponent},
-      {path: 'services', component: CrudServicesComponent}
+      {path: 'services', component: CrudServicesComponent},
+      {path: 'likes', component: CrudLikesComponent}
     ]
   },
 ]
