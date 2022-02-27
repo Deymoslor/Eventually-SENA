@@ -1,1 +1,0 @@
-declare var bootstrsap:any;
