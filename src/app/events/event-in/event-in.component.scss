@@ -25,6 +25,28 @@
   border-radius: 5px;
 }
 
+.title-state-container {
+  display: inline-block;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.title {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
+}
+
+.state-event {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  float: right;
+  padding-bottom: 10px;
+}
+
 .thumbnail {
   width: 70vw;
   height: 25vw;
@@ -48,11 +70,17 @@
 .info {
   background-color: rgb(228, 221, 247);
   display: flex;
+  position: relative;
   flex-direction: column;
   align-items: center;
   margin: 0px 5px;
   padding: 3px;
   border-radius: 4px;
+}
+
+.edit {
+  position: absolute;
+  margin-left: 65%;
 }
 
 .main-content-container {
@@ -81,4 +109,31 @@
 
 .desc {
   font-size: large;
+}
+
+.check {
+  width: 50px;
+  height: 30px;
+  margin: 10px 4px;
+}
+
+.label {
+  margin: 10px 4px;
+}
+
+.form-check {
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.h1-provider {
+  padding-bottom: 30px;
+}
+
+.table-provider {
+  display: block;
+  align-self: center;
+  width: 100%;
 }

@@ -1,8 +1,18 @@
 <div class="content">
     <div class="class-thumbnail">
         <img src="../../../../assets/main/events/danza.png" alt="Evento Danza" class="thumbnail">
-        <h2 class="title-event fs-1">Danza</h2>
-        <h4 class="fs-5">[Nombre Grupo]</h4>
+    </div>
+    <div class="title-state-container">
+        <div class="title">
+            <h2 class="title-event fs-1">Danza</h2>
+            <h4 class="fs-5">[Nombre Grupo]</h4>
+        </div>
+        <div class="state-event">
+            <div class="form-check form-switch">
+                <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" checked data-bs-toggle="modal" data-bs-target="#staticBackdrop-disable">
+                <label class="form-check-label fw-bolder fs-4 label" for="flexSwitchCheckChecked">Deshabilitar evento</label>
+            </div> 
+        </div>
     </div>
     
     <div class="info-container">
@@ -23,6 +33,12 @@
                 Terminar
             </button>
             <p class="fw-bolder">Terminar y Resultados</p>
+        </div>
+        <div class="info edit">
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal">
+                Editar
+            </button>
+            <p class="fw-bolder">Editar Evento</p>
         </div>
     </div>
     <div class="main-content-container">
@@ -45,4 +61,11 @@
         <p class="fw-normal text-break desc">Sera realizada un evento de danza en el parque el cual tendra diferentes tipos de tematicas desde las mas conocidas y rurales, hasta las mas urbanas y concretas, sin nada mas que tus ganas y animo podras estar presente en este excelente grupo de danza.</p>
     </div>
 
+    <h1 class="fs-1 h1-provider text-decoration-underline">Añadir un proveedor</h1>
+    
 </div>
+<!--Table Provider services-->
+<div class="table-provider">
+    <app-event-provider></app-event-provider>
+</div>
+
