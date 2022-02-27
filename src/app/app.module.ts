@@ -8,12 +8,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { EventsModule } from './events/events.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { SettingsComponent } from './settings/settings.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    SettingsComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -22,6 +25,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
     FormsModule,
     EventsModule,
     DashboardModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

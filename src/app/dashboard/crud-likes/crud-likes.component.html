@@ -1,6 +1,13 @@
-<img src="../../../../assets/dashboard/crud-events/bannerGyE.png" alt="Grupos y eventos banner" class="thumbnail">
+<app-modal-likes></app-modal-likes>
+<div class="cover">
+    <img src="../../../assets/dashboard/cover/gustos.jpg" alt="gustos" class="thumbnail">
+    <div class="coverContent">
+        <h2 class="fs-1">Gustos</h2>
+    </div>
+
+</div>
+
 <div class="content">
-    <h2 class="fs-1">Eventos</h2>
 
     <!--TABLE-->
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -10,32 +17,25 @@
 
         <!-- Position Column -->
         <ng-container matColumnDef="position">
-            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <th mat-header-cell *matHeaderCellDef> Id </th>
             <td mat-cell *matCellDef="let element"> {{element.position}} </td>
         </ng-container>
 
         <!-- Name Column -->
-        <ng-container matColumnDef="nameGroup">
-            <th mat-header-cell *matHeaderCellDef> Nombre Grupo</th>
-            <td mat-cell *matCellDef="let element"> {{element.nameGroup}} </td>
+        <ng-container matColumnDef="nameLikes">
+            <th mat-header-cell *matHeaderCellDef> Nombre Gusto</th>
+            <td mat-cell *matCellDef="let element"> {{element.nameLikes}} </td>
         </ng-container>
 
-        <!-- Weight Column -->
-        <ng-container matColumnDef="description">
-            <th mat-header-cell *matHeaderCellDef> Descripción Grupo </th>
-            <td mat-cell *matCellDef="let element"> {{element.description}} </td>
-        </ng-container>
+
 
         <!-- Symbol Column -->
-        <ng-container matColumnDef="typeGroup">
+        <ng-container matColumnDef="typeLikes">
             <th mat-header-cell *matHeaderCellDef> Tipo Grupo </th>
-            <td mat-cell *matCellDef="let element"> {{element.typeGroup}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.typeLikes}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="cantPeople">
-            <th mat-header-cell *matHeaderCellDef> Cantidad Personas </th>
-            <td mat-cell *matCellDef="let element"> {{element.cantPeople}} </td>
-        </ng-container>
+
 
         <ng-container matColumnDef="state">
             <th mat-header-cell *matHeaderCellDef> Estado </th>
@@ -58,7 +58,7 @@
     <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
     </mat-paginator>
     <!--TABLE//-->
-    <button class="btn btn-primary col-2 d-md-flex justify-content-md-center" data-bs-toggle="modal" data-bs-target="#content-modal">
+    <button class="btn btn-primary col-2 d-md-flex justify-content-md-center" data-bs-toggle="modal" data-bs-target="#likes-modal">
         Crear Evento
     </button>
 
