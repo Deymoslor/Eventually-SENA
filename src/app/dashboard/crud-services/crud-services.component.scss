@@ -1,0 +1,12 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-content: space-between;
+}
+
+.thumbnail {
+  width: 75vw;
+  height: 500px;
+  border-radius: 20px;
+}
