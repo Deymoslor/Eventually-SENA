@@ -8,11 +8,17 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { ModalEventsComponent } from './crud-events/modal-events/modal-events.component';
+import { CrudLikesComponent } from './crud-likes/crud-likes.component';
+import { ModalLikesComponent } from './crud-likes/modal-likes/modal-likes.component';
 
 @NgModule({
   declarations: [DashboardComponent,
     CrudEventsComponent,
-    ModalEventsComponent,],
+    ModalEventsComponent,
+    CrudLikesComponent,
+    ModalLikesComponent,
+    ModalLikesComponent
+  ],
   imports: [
     CommonModule,
     NgbModule,

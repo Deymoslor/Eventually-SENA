@@ -3,13 +3,16 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
 import { CrudEventsComponent } from './crud-events/crud-events.component';
+import { CrudLikesComponent } from './crud-likes/crud-likes.component';
+
 
 
 const routes: Routes = [
   {
     path: 'dashboard', component:DashboardComponent,
     children: [
-      {path: 'events', component: CrudEventsComponent}
+      {path: 'events', component: CrudEventsComponent},
+      {path: 'likes', component: CrudLikesComponent}
     ]
   }
 ]
