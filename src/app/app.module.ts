@@ -15,7 +15,6 @@ import { MainHomeModule } from './main-home/main-home.module';
 import { SettingsComponent } from './settings/settings.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +30,7 @@ import { SettingsComponent } from './settings/settings.component';
     EventsModule,
     DashboardModule,
     MainHomeModule
-    
+
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [],
