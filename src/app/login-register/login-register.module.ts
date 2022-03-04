@@ -4,18 +4,22 @@ import { LoginRegisterRouterModule } from './login-register-router.module';
 import { LoginRegisterComponent } from './login-register.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { LoginnComponent } from './loginn/loginn.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
     LoginRegisterComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    LoginnComponent
   ],
   imports: [
     CommonModule,
     LoginRegisterRouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class LoginRegisterModule { }

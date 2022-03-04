@@ -26,11 +26,11 @@ export class RegisterComponent implements OnInit {
     private router:Router
     ) {
 
-    //Retomamos la información del formulario.
-    this.formUsers = this.formulario.group({
-      email:[''],
-      password:['']
-    })
+      //Retomamos la información del formulario.
+      this.formUsers = this.formulario.group({
+        email:[''],
+        password:['']
+      })
 
     }
 

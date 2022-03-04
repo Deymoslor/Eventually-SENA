@@ -1,1 +1,15 @@
 <p>login works!</p>
+
+<h1>Iniciar sesión</h1>
+<form [formGroup]="formUsers">
+    <label>Email
+        <input type="email" name="email" formControlName="email" >
+        <!-- <input type="email" name="email" [(ngModel)]="email" > -->
+    </label>
+    <!-- <label>Password
+        <input type="password" name="password" >
+    </label> -->
+</form>
+<!-- <button (click)="login()">Iniciar sesión</button> -->
+
+<pre>{{ formUsers.value | json }}</pre>
