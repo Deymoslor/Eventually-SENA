@@ -10,7 +10,8 @@ const routes: Routes = [
   {
     path: 'main', component:MainHomeComponent,
     children: [
-      {path: 'provider', component:ProvidersComponent}
+      {path: 'provider', component:ProvidersComponent},
+      
     ]
   },
 ]
