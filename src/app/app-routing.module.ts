@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import { SettingsLikeComponent } from './settings/settings-like/settings-like.component';
 import { SettingsComponent } from './settings/settings.component';
+import { UpdateUserAccountComponent } from './settings/update-user-account/update-user-account.component';
 
 
 const routes: Routes = [
@@ -10,9 +11,9 @@ const routes: Routes = [
     path: 'settings', component:SettingsComponent,
     children: [
       {path: 'settings-like', component: SettingsLikeComponent},
-      
+      {path: 'settings-account', component: UpdateUserAccountComponent}
     ]
-    
+
   },
   {path: '', component:LandingpageComponent}
 ];

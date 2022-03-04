@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { ServiceService } from '../service/service.service';
 
 @Component({
@@ -9,24 +9,37 @@ import { ServiceService } from '../service/service.service';
 })
 export class LoginnComponent implements OnInit {
 
-  loginForm = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl('')
-  });
+  // loginForm = new FormGroup({
+  //   email: new FormControl(''),
+  //   password: new FormControl('')
+  // });
 
-  constructor(public servicio:ServiceService) { }
+  formularioDeUsuarios:FormGroup;
+
+  constructor(
+    public servicio:ServiceService,
+    public formulario:FormBuilder
+    ) {
+
+    //Retomamos la información de el formulario.
+    this.formularioDeUsuarios = this.formulario.group({
+      email:[''],
+      password:['']
+    })
+
+   }
 
   ngOnInit(): void {
   }
 
   loginIn():any{
     console.log("Me presionaste ");
-    console.log(this.loginForm.value);
+    console.log(this.formularioDeUsuarios.value);
 
-    this.servicio.Login(this.loginForm.value).subscribe(respuesta=>{
+    this.servicio.Login(this.formularioDeUsuarios.value).subscribe(respuesta=>{
 
       console.log('Se está ejecutando');
-      console.log(this.loginForm.value);
+      console.log(this.formularioDeUsuarios.value);
 
 
     });
