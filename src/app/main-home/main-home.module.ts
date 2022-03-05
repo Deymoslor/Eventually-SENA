@@ -7,9 +7,13 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MainHomeComponent } from './main-home.component';
 import { MainHomeRoutingModule } from './main-home-routing.module';
 import { ProvidersComponent } from './providers/providers.component';
+import { ModalCheckEventComponent } from './providers/modal-check-event/modal-check-event.component';
+import { ModalCreateServiceComponent } from './providers/modal-create-service/modal-create-service.component';
+import { TableInvitationsEventsComponent } from './providers/table/table-invitations-events/table-invitations-events.component';
+import { ModalEditServiceComponent } from './providers/modal-edit-service/modal-edit-service.component';
 
 @NgModule({
-  declarations: [MainHomeComponent, ProvidersComponent,],
+  declarations: [MainHomeComponent, ProvidersComponent, ModalCheckEventComponent, ModalCreateServiceComponent, TableInvitationsEventsComponent, ModalEditServiceComponent,],
   imports: [
     CommonModule,
     NgbModule,
