@@ -4,13 +4,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { MainHomeComponent } from './main-home.component';
 import { ProvidersComponent } from './providers/providers.component';
 
-
-
 const routes: Routes = [
   {
     path: 'main', component:MainHomeComponent,
     children: [
-      {path: 'provider', component:ProvidersComponent}
+      {path: 'provider', component:ProvidersComponent},
+      
     ]
   },
 ]

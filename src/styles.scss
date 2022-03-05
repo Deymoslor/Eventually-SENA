@@ -1,6 +1,7 @@
 $theme-colors: (
   "primary": #0074d9,
-  "danger": #d248df,
+  "warning": #ffc107,
+  "secondary": #6c757d,
 );
 
 $lightDark: #cfbfbf;
@@ -21,4 +22,4 @@ body {
 }
 
 /* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
