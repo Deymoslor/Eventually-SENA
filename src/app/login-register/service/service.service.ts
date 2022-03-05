@@ -30,15 +30,15 @@ export class ServiceService {
 
   }
 
-  // login(user:Credentials): Observable<any> {
-  //   console.log(user);
+  login(user:Credentials): Observable<any> {
+    console.log(user);
 
-  //   // return this.clienteHttp.get(this.API+"?login="+"%27"+user+"%27");
-  //   return this.clienteHttp.get("http://localhost/empleados/?login="+"%27"+user+"%27");
-  //   // return this.clienteHttp.get(`http://localhost/empleados/?login=%27${user}%27`);
-  //   // return this.clienteHttp.get("http://localhost/empleados/?consultar="+66);
-  //   // return this.clienteHttp.get("http://localhost/empleados/?login=%27jordan@gmail.com%27")
-  //   // return this.http.get(this.API+"?consultar="+user);
-  // }
+    // return this.clienteHttp.get(this.API+"?login="+"%27"+user+"%27");
+    return this.clienteHttp.get("http://localhost/empleados/?login="+"%27"+user+"%27");
+    // return this.clienteHttp.get(`http://localhost/empleados/?login=%27${user}%27`);
+    // return this.clienteHttp.get("http://localhost/empleados/?consultar="+66);
+    // return this.clienteHttp.get("http://localhost/empleados/?login=%27jordan@gmail.com%27")
+    // return this.http.get(this.API+"?consultar="+user);
+  }
 
 }

@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { MainHomeModule } from './main-home/main-home.module';
 import { SettingsComponent } from './settings/settings.component';
+import { ForgotPasswordComponent } from './login-register/forgot-password/forgot-password.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { SettingsComponent } from './settings/settings.component';
     AppComponent,
     SettingsComponent,
     LandingpageComponent,
-    HeaderComponent
+    HeaderComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,

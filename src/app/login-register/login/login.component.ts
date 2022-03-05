@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceService } from '../service/service.service';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private accountService:ServiceService,
-    private formulario:FormBuilder
+    private formulario:FormBuilder,
+    private router:Router
     ) {
 
         // //Retomamos la información del formulario.
@@ -35,20 +37,26 @@ export class LoginComponent implements OnInit {
   }
 
   //Método para loggear al usuario.
-  // login(){
-  //   const user = this.formUsers.value;
-  //   // const user = 66;
-  //   // const user = {email: this.formUsers.value};
+  login(){
+    const user = this.formUsers.value;
+    // const user = 66;
+    // const user = {email: this.formUsers.value};
 
-  //   console.log(user);
+    console.log(user);
 
-  //   this.accountService.login(user).subscribe(data=>{
-  //     // this.userService.setToken(data.token);
-  //     // this.router.navigateByUrl('/home');
-  //     console.log(data);
-  //     // console.log(data.token);
-  //   });
+    this.accountService.login(user).subscribe(data=>{
+      // this.userService.setToken(data.token);
+      // this.router.navigateByUrl('/home');
+      console.log(data);
+      // console.log(data.token);
+    });
 
-  // }
+  }
+
+  register():any{
+
+    this.router.navigate(['/loginRegister/register']);
+
+  }
 
 }

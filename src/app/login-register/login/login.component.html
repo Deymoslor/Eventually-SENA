@@ -1,15 +1,31 @@
-<p>login works!</p>
+<body>
+    <form ngNativeValidate [formGroup]="formUsers">
+        <div class="form">
+            <h1>Iniciar sesión</h1>
+            <!-- <div class="grupo">
+                <input type="text" name="" id="name" required><span class="barra"></span>
+                <label for="">Nombre</label>
+            </div> -->
+            <div class="grupo">
+                <input type="email" name="" id="email"formControlName="email"><span class="barra"></span>
+                <label for="">Email</label>
+            </div>
+            <div class="grupo">
+                <input type="password" name="" id="password" formControlName="password"><span class="barra"></span>
+                <label for="">Password</label>
+            </div>
 
-<h1>Iniciar sesión</h1>
-<form [formGroup]="formUsers">
-    <label>Email
-        <input type="email" name="email" formControlName="email" >
-        <!-- <input type="email" name="email" [(ngModel)]="email" > -->
-    </label>
-    <!-- <label>Password
-        <input type="password" name="password" >
-    </label> -->
-</form>
-<!-- <button (click)="login()">Iniciar sesión</button> -->
+            <button (click)="login()">Iniciar</button>
+            <button (click)="register()">Crear cuenta</button>
 
-<pre>{{ formUsers.value | json }}</pre>
+            <div class="a">
+                <a [routerLink]="['forgot-password']">¡Olvidé mi contraseña!</a>
+            </div>
+
+            <!-- <pre>{{ formUsers.value | json }}</pre> -->
+        </div>
+    </form>
+</body>
+
+
+<!-- <pre>{{ formUsers.value | json }}</pre> -->
