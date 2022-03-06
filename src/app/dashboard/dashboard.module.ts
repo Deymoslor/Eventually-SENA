@@ -13,6 +13,11 @@ import { TableServicesComponent } from './crud-services/table-services/table-ser
 import { TableTypeServicesComponent } from './crud-services/table-type-services/table-type-services.component';
 import { CrudLikesComponent } from './crud-likes/crud-likes.component';
 import { ModalLikesComponent } from './crud-likes/modal-likes/modal-likes.component';
+import { CrudUsersComponent } from './crud-users/crud-users.component';
+import { ModalUsersComponent } from './crud-users/modal-users/modal-users.component';
+import { CrudSuppliersComponent } from './crud-suppliers/crud-suppliers.component';
+import { ModalSuppliersComponent } from './crud-suppliers/modal-suppliers/modal-suppliers.component';
+
 
 @NgModule({
   declarations: [DashboardComponent,
@@ -23,7 +28,10 @@ import { ModalLikesComponent } from './crud-likes/modal-likes/modal-likes.compon
     TableTypeServicesComponent,
     CrudLikesComponent,
     ModalLikesComponent,
-    ModalLikesComponent
+    CrudUsersComponent,
+    ModalUsersComponent,
+    CrudSuppliersComponent,
+    ModalSuppliersComponent
   ],
   imports: [
     CommonModule,

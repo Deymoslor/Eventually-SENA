@@ -14,9 +14,9 @@ import { HeaderComponent } from './shared/header/header.component';
 import { LoginRegisterModule } from './login-register/login-register.module';
 import { HttpClientModule } from '@angular/common/http';
 
-import { MainHomeModule } from './main-home/main-home.module';
 import { SettingsComponent } from './settings/settings.component';
-import { ForgotPasswordComponent } from './login-register/forgot-password/forgot-password.component';
+import { SuppliersComponent } from './suppliers/suppliers.component';
+import { SuppliersModule } from './suppliers/suppliers.module';
 
 
 @NgModule({
@@ -25,7 +25,7 @@ import { ForgotPasswordComponent } from './login-register/forgot-password/forgot
     SettingsComponent,
     LandingpageComponent,
     HeaderComponent,
-    ForgotPasswordComponent
+    SuppliersComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +34,7 @@ import { ForgotPasswordComponent } from './login-register/forgot-password/forgot
     EventsModule,
     DashboardModule,
     LoginRegisterModule,
+    SuppliersModule,
     HttpClientModule,
     MainHomeModule
 

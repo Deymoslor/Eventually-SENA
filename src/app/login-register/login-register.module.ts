@@ -6,14 +6,15 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { LoginnComponent } from './loginn/loginn.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-
+import { SupplierRequestComponent } from './supplier-request/supplier-request.component';
 
 @NgModule({
   declarations: [
     LoginRegisterComponent,
     RegisterComponent,
     LoginComponent,
-    LoginnComponent
+    LoginnComponent,
+    SupplierRequestComponent
   ],
   imports: [
     CommonModule,

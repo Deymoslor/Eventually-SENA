@@ -35,6 +35,7 @@ form {
   padding: 40px 0;
   box-shadow: 0 0 6px 0 rgba(255, 255, 255, 0.8);
   border-radius: 10px;
+  width: 35%;
 }
 
 .form {
@@ -123,16 +124,38 @@ button {
   cursor: pointer;
 }
 
-.a{
-  margin-left: 145px;
-  margin-bottom: -20px;
+.a-divider{
+  padding-top: 20px;
+  margin-left: 340px;
+}
+
+.forgot{
+  // margin-left: 340px;
+  // margin-bottom: -20px;
   cursor:pointer;
 }
 
-.a:hover{
-  margin-left: 145px;
-  margin-bottom: -20px;
+.forgot:hover{
   color: #ccc;
+}
+
+.forgot:visited{
+  color: #ccc;
+  text-decoration: none;
+}
+
+.supplier{
+  margin-left: 11px;
+  cursor:pointer;
+}
+
+.supplier:hover{
+  color: #ccc;
+}
+
+.supplier:visited{
+  color: #ccc;
+  text-decoration: none;
 }
 
 @media screen and (max-width: 500px) {
