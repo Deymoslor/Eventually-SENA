@@ -4,18 +4,20 @@ import { SettingsComponent } from './settings.component';
 import { SettingsLikeComponent } from './settings-like/settings-like.component';
 import { MenuModule } from '../menu/menu.module';
 import { SettingsRoutingModule } from './settings-routing.module';
+import { UpdateUserAccountComponent } from './update-user-account/update-user-account.component';
 
 
 
 @NgModule({
   declarations: [
     SettingsComponent,
-    SettingsLikeComponent
+    SettingsLikeComponent,
+    UpdateUserAccountComponent
   ],
   imports: [
     CommonModule,
     MenuModule,
-    SettingsRoutingModule
+    SettingsRoutingModule,
   ]
 })
 export class SettingsModule { }

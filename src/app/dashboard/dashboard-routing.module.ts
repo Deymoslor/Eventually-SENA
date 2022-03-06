@@ -5,8 +5,8 @@ import { DashboardComponent } from './dashboard.component';
 import { CrudEventsComponent } from './crud-events/crud-events.component';
 import { CrudServicesComponent } from './crud-services/crud-services.component';
 import { CrudLikesComponent } from './crud-likes/crud-likes.component';
-
-
+import { CrudUsersComponent } from './crud-users/crud-users.component';
+import { CrudSuppliersComponent } from './crud-suppliers/crud-suppliers.component';
 
 const routes: Routes = [
   {
@@ -14,7 +14,9 @@ const routes: Routes = [
     children: [
       {path: 'events', component: CrudEventsComponent},
       {path: 'services', component: CrudServicesComponent},
-      {path: 'likes', component: CrudLikesComponent}
+      {path: 'likes', component: CrudLikesComponent},
+      {path: 'users', component: CrudUsersComponent},
+      {path: 'suppliers', component: CrudSuppliersComponent}
     ]
   },
 ]

@@ -15,7 +15,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeadersModule } from './headers/headers.module';
 import { MenuModule } from './menu/menu.module';
 import { SettingsModule } from './settings/settings.module';
-
+import { SuppliersComponent } from './suppliers/suppliers.component';
+import { SuppliersModule } from './suppliers/suppliers.module';
+import { HttpClientModule } from '@angular/common/http';
+import { LoginRegisterModule } from './login-register/login-register.module';
 
 
 @NgModule({
@@ -23,6 +26,7 @@ import { SettingsModule } from './settings/settings.module';
     AppComponent,
     LandingpageComponent,
     HeaderComponent,
+    SuppliersComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,8 +38,11 @@ import { SettingsModule } from './settings/settings.module';
     NgbModule,
     HeadersModule,
     MenuModule,
-    SettingsModule
-    
+    SettingsModule,
+    LoginRegisterModule,
+    SuppliersModule,
+    HttpClientModule
+
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [],

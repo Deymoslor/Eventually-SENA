@@ -1,0 +1,53 @@
+
+<div class="col-12 col-lg-9 p-2 changeLikes ">
+    <article class="cards1 card h-200 shadow-sm">
+        <div class="card-body">
+            <div>
+                <h1 class="m-0 h1">Mi Servicio</h1><br>
+            </div>
+            <div class="card ">
+                <div class="card-body">
+                    <form>
+                        <!-- Nombre -->
+                        <div class="mb-3">
+                          <label class="form-label">Nombre</label>
+                          <input required type="text"
+                            class="form-control" formControlName="name" aria-describedby="helpId" placeholder="Escribe el nombre de tu servicio">
+                        </div>
+
+                        <!-- Descripción -->
+                        <div class="mb-3">
+                            <label class="form-label">Descripción servicio</label>
+                            <div class="md-form amber-textarea active-amber-textarea">
+                                <textarea class="md-textarea form-control" required rows="3" placeholder="Por favor brinde un resumen detallado del servicio que está dispuesto a ofrecer para que los usuarios se interesen por este"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Tipo de servicio -->
+                        <div class="selectNewLikes input-group mb-3">
+                            <label class="input-group-text" for="inputGroupSelect01">Tipo de servicio</label>
+                            <select class="form-select" id="inputGroupSelect01">
+                                <option selected>Turismo</option>
+                                <option value="1">Recreativo</option>
+                                <option value="2">Limpieza</option>
+                                <option value="3">Transporte</option>
+                             </select>
+                        </div>
+
+                        <!-- Precio Estimado -->
+                        <div class="mb-3">
+                            <label class="form-label">Precio estimado del servicio</label>
+                            <input required type="text"
+                              class="form-control" formControlName="Document" aria-describedby="helpId" placeholder="Escribe el precio en pesos colombianos">
+                        </div>
+
+                        <div class="btn-group" role="group">
+                            <button type="submit" class="btn btn-primary">Actualizar información</button>
+                            <!-- <button type="button" routerLink="/listar-empleado/" class="btn btn-primary">Cancelar</button> -->
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </article>
+</div>
