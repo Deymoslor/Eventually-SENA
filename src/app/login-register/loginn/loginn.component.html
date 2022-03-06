@@ -1,0 +1,14 @@
+<p>loginn works!</p>
+
+<h1>Iniciar sesión</h1>
+<form [formGroup]="formularioDeUsuarios">
+    <label>Email
+        <input type="email" name="email" formControlName="email" >
+    </label>
+    <label>Password
+        <input type="password" name="password" formControlName="password" >
+    </label>
+</form>
+<button (click)="loginIn()">Iniciar sesión</button>
+
+<!-- <pre>{{ formUsers.value | json }}</pre> -->

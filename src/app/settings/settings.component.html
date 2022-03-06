@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <header class="container">
     <div class="row">
         <div class="col-12 d-flex">
@@ -36,10 +37,14 @@
     </div>
 
 </header>
+=======
+<app-top-header></app-top-header>
+>>>>>>> master
 
 <body>
     <main class="container d-flex">
         <div class="row">
+<<<<<<< HEAD
             <div class="col-2 navLat d-flex flex-column">
                 <nav class="nav flex-column nav-left">
                     <a class="nav-left nav-linkt active" aria-current="page" href="#">Active</a>
@@ -112,10 +117,24 @@
                         </div>
 
                     </article>
+=======
+            <div class="col-12 d-flex">
+                <div class="col-3 leftMenu">
+                    <app-left-menu></app-left-menu>
+>>>>>>> master
                 </div>
-                <router-outlet></router-outlet>
 
+
+                <div class="col-3 menuSettingsUser">
+                    <app-user-menu></app-user-menu>
+                </div>
+
+                <div class="col-3 settingsContent">
+                    <router-outlet></router-outlet>
+
+                </div>
             </div>
+
 
         </div>
     </main>

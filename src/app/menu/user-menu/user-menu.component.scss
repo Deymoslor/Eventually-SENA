@@ -1,0 +1,21 @@
+@import '../../app.component.scss';
+.cards {
+    border-radius: 1rem;
+    width: 18rem;
+    height: auto;
+    margin-top: 1rem;
+    .nameUser {
+        padding-top: 0.5rem;
+    }
+    .mailUser {
+        color: $thirdLetter;
+    }
+    .iconUserMenu {
+        width: 2rem;
+    }
+    .useOption {
+        background-color: $second;
+        width: 100%;
+        border-radius: 0.5rem;
+    }
+}

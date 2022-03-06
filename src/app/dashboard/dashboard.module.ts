@@ -13,10 +13,19 @@ import { TableServicesComponent } from './crud-services/table-services/table-ser
 import { TableTypeServicesComponent } from './crud-services/table-type-services/table-type-services.component';
 import { CrudLikesComponent } from './crud-likes/crud-likes.component';
 import { ModalLikesComponent } from './crud-likes/modal-likes/modal-likes.component';
+<<<<<<< HEAD
 import { CrudGroupsComponent } from './crud-groups/crud-groups.component';
 import { ModalGroupsComponent } from './crud-groups/modal-groups/modal-groups.component';
 import { CrudReportsComponent } from './crud-reports/crud-reports.component';
 import { ModalReportsComponent } from './crud-reports/modal-reports/modal-reports.component';
+=======
+import { MenuModule } from '../menu/menu.module';
+import { CrudUsersComponent } from './crud-users/crud-users.component';
+import { ModalUsersComponent } from './crud-users/modal-users/modal-users.component';
+import { CrudSuppliersComponent } from './crud-suppliers/crud-suppliers.component';
+import { ModalSuppliersComponent } from './crud-suppliers/modal-suppliers/modal-suppliers.component';
+
+>>>>>>> master
 
 @NgModule({
   declarations: [DashboardComponent,
@@ -27,11 +36,18 @@ import { ModalReportsComponent } from './crud-reports/modal-reports/modal-report
     TableTypeServicesComponent,
     CrudLikesComponent,
     ModalLikesComponent,
+<<<<<<< HEAD
     ModalLikesComponent,
     CrudGroupsComponent,
     ModalGroupsComponent,
     CrudReportsComponent,
     ModalReportsComponent
+=======
+    CrudUsersComponent,
+    ModalUsersComponent,
+    CrudSuppliersComponent,
+    ModalSuppliersComponent
+>>>>>>> master
   ],
   imports: [
     CommonModule,
@@ -39,7 +55,8 @@ import { ModalReportsComponent } from './crud-reports/modal-reports/modal-report
     FormsModule,
     DashboardRoutingModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MenuModule
   ]
 })
 export class DashboardModule { }

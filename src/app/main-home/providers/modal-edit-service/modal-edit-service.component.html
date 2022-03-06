@@ -1,0 +1,96 @@
+<div class="modal fade" id="content-modal-edit-service" tabindex="-1" >
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Editar Servicio</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="">Nombre del Servicio:</label>
+                    <input type="text" class="form-control" id=""
+                    value="Servicio Pasta deliciosa">
+                    
+                    <label for="">Tipo Servicio:</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            Alimentos
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            Musica
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            Baile
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            Logistica
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            Espacios/Lugares
+                        </label>
+                    </div>
+
+                    <label for="">Descripcion Servicio:</label>
+                    <div class="mb-2">
+                        <textarea class="form-control" id="exampleFormControlTextarea1"
+                         rows="2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe architecto nisi quibusdam cum autem sit praesentium a impedit cumque aspernatur voluptate distinctio quis quaerat consequuntur in iusto, iste minus? Esse.</textarea>
+                    </div>
+
+                    <label for="exampleInputEmail1">Foto Servicio:</label>
+                    <p class="fs-5">SUBIR ARCHIVO</p>
+                    
+                    <label for="">Rango Precio (MINIMO)</label>
+                    <input type="number" class="form-control" id="exampleInputEmail1"
+                    value="1000000">
+
+                    <label for="">Rango Precio (MAXIMO)</label>
+                    <input type="number" class="form-control" id="exampleInputEmail1"
+                    value="2000000">
+
+                    <label for="exampleInputEmail1">Empresas en las que trabajo anteriormente:</label>
+                    <input type="text" class="form-control" id=""
+                    value="Nestle, Ducales, mix WELL">
+
+                    <label for="exampleInputEmail1">Fecha desde que realiza el servicio:</label>
+                    <div>
+                        <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next"></ngb-datepicker>
+                    </div>
+
+                    <label for="exampleInputEmail1">Numero de contacto:</label>
+                    <input type="text" class="form-control" id=""
+                    value="3052441753">
+
+                    <label for="exampleInputEmail1">Correo de contacto:</label>
+                    <input type="text" class="form-control" id=""
+                    value="dylanmr9d@gmail.com">
+
+                    <div class="check-container-politycs">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Solo puedes tener un servicio en tu cuenta de proveedor, por ende, asegúrate de tener información clara y llamativa, esta información podrá ser modificada posteriormente                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary">Editar</button>
+            </div>
+        </div>
+    </div>
+</div>
+

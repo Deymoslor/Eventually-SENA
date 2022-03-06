@@ -1,6 +1,7 @@
 $theme-colors: (
   "primary": #0074d9,
-  "danger": #d248df,
+  "warning": #ffc107,
+  "secondary": #6c757d,
 );
 
 $lightDark: #cfbfbf;
@@ -19,6 +20,9 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
 
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
