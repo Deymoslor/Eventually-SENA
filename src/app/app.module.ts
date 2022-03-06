@@ -11,14 +11,16 @@ import { MainHomeModule } from './main-home/main-home.module';
 
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import { HeaderComponent } from './shared/header/header.component';
-import { SettingsComponent } from './settings/settings.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HeadersModule } from './headers/headers.module';
+import { MenuModule } from './menu/menu.module';
+import { SettingsModule } from './settings/settings.module';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SettingsComponent,
     LandingpageComponent,
     HeaderComponent,
   ],
@@ -28,7 +30,11 @@ import { SettingsComponent } from './settings/settings.component';
     FormsModule,
     EventsModule,
     DashboardModule,
-    MainHomeModule
+    MainHomeModule,
+    NgbModule,
+    HeadersModule,
+    MenuModule,
+    SettingsModule
     
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],

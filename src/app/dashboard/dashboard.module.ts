@@ -13,6 +13,7 @@ import { TableServicesComponent } from './crud-services/table-services/table-ser
 import { TableTypeServicesComponent } from './crud-services/table-type-services/table-type-services.component';
 import { CrudLikesComponent } from './crud-likes/crud-likes.component';
 import { ModalLikesComponent } from './crud-likes/modal-likes/modal-likes.component';
+import { MenuModule } from '../menu/menu.module';
 
 @NgModule({
   declarations: [DashboardComponent,
@@ -31,7 +32,8 @@ import { ModalLikesComponent } from './crud-likes/modal-likes/modal-likes.compon
     FormsModule,
     DashboardRoutingModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MenuModule
   ]
 })
 export class DashboardModule { }

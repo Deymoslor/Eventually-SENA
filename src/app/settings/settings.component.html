@@ -1,111 +1,24 @@
-<header class="container">
-    <div class="row">
-        <div class="col-12 d-flex">
-            <div class="col-3 p-2">
-                <img class="" src="../../assets/dashboard/icon/logo.png" alt="">
-            </div>
-            <div class="col-3 p-3">
-                <input type="text" class="form-control" placeholder="Buscar">
-            </div>
-            <div class="col-6 d-flex flex-row-reverse p-3">
-                <ul class="nav nav-pills">
-
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="">heñllo</a>
-                    </li>
-                    <li class="nav-item dropdown">
-
-                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">Dropdown</a>
-                        <ul class="dropdown-menu">
-                            <!-- 
-                                <li><a class="dropdown-item" href="#">Separated link</a></li> -->
-
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            <!-- <li>
-                                    <hr class="dropdown-divider">
-                                </li> -->
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-
-        </div>
-
-    </div>
-
-</header>
+<app-top-header></app-top-header>
 
 <body>
     <main class="container d-flex">
         <div class="row">
-            <div class="col-2 navLat d-flex flex-column">
-                <nav class="nav flex-column nav-left">
-                    <a class="nav-left nav-linkt active" aria-current="page" href="#">Active</a>
-                    <a class="nav-left nav-link" routerLink="likes">gustos</a>
-                    <a class="nav-left nav-link" href="#">Link</a>
-                    <a class="nav-left nav-link disabled">Disabled</a>
-                </nav>
-            </div>
-            <div class="col-5 menuSettings d-flex">
-
-                <div class="col-12 col-lg-3 p-2">
-                    <article class=" cards card h-100shadow-sm ">
-                        <div class="card-body">
-                            <!-- PARA QUE LOS ELEMENTOS SE POSICIONEN UNO AL LADO DEL OTRO-->
-                            <div class="d-flex mb-3 align-items-center justify-content-center">
-
-                                <div class="ps-lg-3 align-items-center">
-                                    <img style="height: 8rem;" src="../../../assets/user/20.jpg" alt="" class="rounded-circle float">
-                                    <p class="m-0 h6 nameUser">Hector Maya</p>
-                                    <h6 class="mailUser">HMaya87@gmail.com</h6>
-                                </div>
-                            </div>
-                            <div>
-                                <ul class="nav flex-column nav-pills">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" routerLink="../settings"><svg xmlns="http://www.w3.org/2000/svg " width="16 " height="16 " fill="currentColor " class="nav-item bi bi-house-door " viewBox="0 0 16 16 ">
-                                            <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5
-                                    0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z "/>
-                                          </svg> Inicio</a>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a class="nav-link text-black" href="#"><svg xmlns="http://www.w3.org/2000/svg " width="16 " height="16 " fill="currentColor " class="bi bi-info-circle " viewBox="0 0 16 16 ">
-                                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z "/>
-                                            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93
-                                    6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z "/>
-                                          </svg> Información Personal</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link text-black" routerLink="settings-like"><svg xmlns="http://www.w3.org/2000/svg " width="16 " height="16 " fill="currentColor " class="bi bi-people " viewBox="0 0 16 16 ">
-                                            <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274
-                                    0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042
-                                    1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z "/>
-                                          </svg> Gustos</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link text-black"><svg xmlns="http://www.w3.org/2000/svg " width="16 " height="16 " fill="currentColor " class="bi bi-bell-fill " viewBox="0 0 16 16 ">
-                                            <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z "/>
-                                          </svg> Notificaciones</a>
-                                    </li>
-                                    <li class="nav-item ">
-                                        <a class="nav-link text-black"><svg xmlns="http://www.w3.org/2000/svg " width="16 " height="16 " fill="currentColor " class="bi bi-arrow-right-square-fill " viewBox="0 0 16 16 ">
-                                            <path d="M0 14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v12zm4.5-6.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5a.5.5 0 0
-                                    1 0-1z "/>
-                                          </svg> Salir</a>
-                                    </li>
-                                </ul>
-
-                            </div>
-                        </div>
-
-                    </article>
+            <div class="col-12 d-flex">
+                <div class="col-3">
+                    <app-left-menu></app-left-menu>
                 </div>
-                <router-outlet></router-outlet>
 
+
+                <div class="col-3 menuSettings">
+                    <app-user-menu></app-user-menu>
+                </div>
+
+                <div class="col-3 settingsContent">
+                    <router-outlet>ppp</router-outlet>
+
+                </div>
             </div>
+
 
         </div>
     </main>

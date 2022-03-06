@@ -1,55 +1,13 @@
 <app-modal-events></app-modal-events>
-<header class="container">
-    <div class="row">
-        <div class="col-12 d-flex">
-            <div class="col-3 p-2">
-                <img class="" src="../../assets/dashboard/icon/logo.png" alt="">
-            </div>
-            <div class="col-3 p-3">
-                <input type="text" class="form-control" placeholder="Buscar">
-            </div>
-            <div class="col-6 d-flex flex-row-reverse p-3">
-                <ul class="nav nav-pills">
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item dropdown">
-
-                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">Dropdown</a>
-                        <ul class="dropdown-menu">
-                            <!-- 
-                                <li><a class="dropdown-item" href="#">Separated link</a></li> -->
-
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            <!-- <li>
-                                    <hr class="dropdown-divider">
-                                </li> -->
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-
-        </div>
-
-    </div>
-
-</header>
+<app-top-header></app-top-header>
 
 <body>
     <main class="container d-flex">
         <div class="row">
-            <div class="col-1 navLat d-flex flex-column">
-                <nav class="nav flex-column">
-                    <a class="nav-link active" aria-current="page" href="#">Active</a>
-                    <a class="nav-link" routerLink="likes">gustos</a>
-                    <a class="nav-link" href="#">Link</a>
-                    <a class="nav-link disabled">Disabled</a>
-                </nav>
+            <div class="col-3 d-flex ">
+                <app-left-menu></app-left-menu>
             </div>
-            <div class="col-4 consultLikes d-flex">
+            <div class="col-4 containerDash d-flex">
                 <router-outlet></router-outlet>
             </div>
 
