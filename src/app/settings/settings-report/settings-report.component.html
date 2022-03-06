@@ -1,0 +1,11 @@
+<nav class="navbar navbar-light bg-light">
+  <form class="container-fluid justify-content-start">
+    <button class="btn btn-outline-primary me-2" type="button" (click)="share()">Hacer un Reporte</button>
+  </form>
+</nav>
+
+<div class="card-group">
+  <app-settings-report-show *ngFor="let event of events"
+  [event]="event">
+  </app-settings-report-show>
+</div>

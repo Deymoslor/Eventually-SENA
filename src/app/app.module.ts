@@ -12,13 +12,11 @@ import { GroupsModule } from './groups/groups.module';
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { MainHomeModule } from './main-home/main-home.module';
-import { SettingsComponent } from './settings/settings.component';
-
+import { SettingsModule } from './settings/settings.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SettingsComponent,
     LandingpageComponent,
     HeaderComponent,
   ],
@@ -29,7 +27,8 @@ import { SettingsComponent } from './settings/settings.component';
     GroupsModule,
     EventsModule,
     DashboardModule,
-    MainHomeModule
+    MainHomeModule,
+    SettingsModule,
 
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],

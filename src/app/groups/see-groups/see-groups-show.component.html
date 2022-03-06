@@ -1,12 +1,12 @@
 <div class="col-sm-10">
-  <div class="card">
-    <img class="card-img-top" src="/assets/group/{{ group.imgGroup }}" alt="{{ group.GroupName }}">
+  <div class="card" (click)="navigateToGroupDetails()">
+    <img class="card-img-top" src="/assets/group/{{ group.imgGroup }}" alt="{{ group.GroupName }}" (click)="navigateToGroupDetails()">
     <div class="card-body">
-      <h5 class="card-title">{{ group.GroupName }}</h5>
-      <p class="card-text">{{ group.description }}</p>
+      <h5 class="card-title" (click)="navigateToGroupDetails()">{{ group.GroupName }}</h5>
+      <p class="card-text">{{ group.totalUsers }}</p>
       <div class="btn-group">
-        <button class="btn btn-primary" (click)="navigateToGroupDetails()">Detalles</button>
-        <button class="btn btn-primary">Unirse</button>
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#groups-detail" (click)="navigateToGroupDetails()">Detalles</button>
+        <button class="btn btn-primary" (click)="share()">Unirse</button>
       </div>
     </div>
   </div>

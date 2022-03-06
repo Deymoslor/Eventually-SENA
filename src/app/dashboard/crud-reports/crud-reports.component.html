@@ -1,0 +1,55 @@
+<app-modal-reports></app-modal-reports>
+<div class="cover">
+  <img src="../../../assets/dashboard/crud-groups/group-dashboard.png" alt="reportes" class="thumbnail">
+  <div class="coverContent">
+      <h2 class="fs-1">Reportes</h2>
+  </div>
+
+</div>
+
+<div class="content">
+
+  <!--TABLE-->
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef> Id </th>
+          <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="reportDate">
+          <th mat-header-cell *matHeaderCellDef> fecha</th>
+          <td mat-cell *matCellDef="let element"> {{element.reportDate}} </td>
+      </ng-container>
+
+
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="typeReport">
+          <th mat-header-cell *matHeaderCellDef> descripción del reporte </th>
+          <td mat-cell *matCellDef="let element"> {{element.typeReport}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef> Acciones </th>
+          <td mat-cell *matCellDef="let element"> <button class="btn btn-primary" data-bs-toggle="modal" (click)="shareDownload()">Descargar PDF</button> </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+  </mat-paginator>
+  <!--TABLE//-->
+  <button class="btn btn-primary col-2 d-md-flex justify-content-md-center" data-bs-toggle="modal" data-bs-target="#reports-modal">
+      Crear Reporte
+  </button>
+
+
+</div>

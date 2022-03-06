@@ -10,20 +10,16 @@ import { SeeGroupsService } from './see-groups.service';
   styleUrls: ['./see-groups.component.scss']
 })
 export class SeeGroupsComponent implements OnInit {
-  groups$ = this.SeeGroupsService.groups$;
+  get groups(): Group[] {
+    const groups = this.SeeGroupsService.groups;
+
+    if (this.route.snapshot.queryParamMap.get('orderBy') === 'id') {
+      this.groups.sort((a, b) => a.id - b.id);
+    }
+    return groups;
+  }
   orderBy$: Observable<string | null> = this.route.queryParamMap.pipe(
     map((queryParamMap) => queryParamMap.get('orderBy'))
-  );
-
-  orderedGroups$: Observable<Group[]> = combineLatest([
-    this.groups$,
-    this.orderBy$,
-  ]).pipe(
-    map(([groups, orderBy]) =>
-      orderBy === 'id'
-        ? [...groups].sort((a, b) => a.id - b.id)
-        : groups
-    )
   );
 
   constructor(private SeeGroupsService: SeeGroupsService, private route: ActivatedRoute) { }

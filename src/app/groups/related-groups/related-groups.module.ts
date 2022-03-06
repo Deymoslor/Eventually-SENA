@@ -3,16 +3,20 @@ import { CommonModule } from '@angular/common';
 import { RelatedGroupsComponent } from './related-groups.component';
 import { RelatedGroupsRoutingModule } from './related-groups-routing.module';
 import { RelatedGroupsShowComponent } from './related-groups-show.component';
+import { RelatedGroupsDetailsComponent } from './related-groups-details/related-groups-details.component';
+import { RouterModule } from '@angular/router';
 
 
 
 @NgModule({
   declarations: [
     RelatedGroupsComponent,
-    RelatedGroupsShowComponent
+    RelatedGroupsShowComponent,
+    RelatedGroupsDetailsComponent
   ],
   imports: [
     CommonModule,
+    RouterModule,
     RelatedGroupsRoutingModule
   ]
 })

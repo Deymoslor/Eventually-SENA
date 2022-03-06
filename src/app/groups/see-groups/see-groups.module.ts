@@ -4,6 +4,7 @@ import { SeeGroupsComponent } from './see-groups.component';
 import { SeeGroupsShowComponent } from './see-groups-show.component';
 import { SeeGroupsRoutingModule } from './see-groups-routing.module';
 import { SeeGroupDetailComponent } from './see-group-detail/see-group-detail.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -14,7 +15,8 @@ import { SeeGroupDetailComponent } from './see-group-detail/see-group-detail.com
     SeeGroupDetailComponent],
   imports: [
     CommonModule,
-    SeeGroupsRoutingModule
+    SeeGroupsRoutingModule,
+    RouterModule
   ]
 })
 export class SeeGroupsModule { }

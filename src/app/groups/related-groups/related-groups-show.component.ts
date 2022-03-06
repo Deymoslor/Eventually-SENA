@@ -15,10 +15,14 @@ export class RelatedGroupsShowComponent implements OnInit {
     private route: ActivatedRoute
   ) { }
 
-  navigateToGroupDetails(): void {
+  navigateToRelatedGroupDetails(): void {
     this.router.navigate(['groups', this.group.id], {
       relativeTo: this.route,
     })
+  }
+
+  share() {
+    window.alert(this.group.id);
   }
 
   ngOnInit(): void {

@@ -11,13 +11,14 @@ import { GroupsRoutingModule } from './groups-routing.module';
 import { RelatedGroupsModule } from './related-groups/related-groups.module';
 import { YourGroupsModule } from './your-groups/your-groups.module';
 import { CreateGroupsModule } from './create-groups/create-groups.module';
+import { SeeGroupDetailComponent } from './see-groups/see-group-detail/see-group-detail.component';
 
 
 
 @NgModule({
   declarations: [
     GroupsComponent,
-    NavGroupComponent
+    NavGroupComponent,
   ],
   imports: [
     CommonModule,
@@ -26,7 +27,7 @@ import { CreateGroupsModule } from './create-groups/create-groups.module';
     RelatedGroupsModule,
     YourGroupsModule,
     GroupsRoutingModule,
-    CreateGroupsModule
+    CreateGroupsModule,
   ]
 })
 export class GroupsModule { }

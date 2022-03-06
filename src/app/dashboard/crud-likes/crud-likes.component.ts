@@ -19,7 +19,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {position: 6, nameLikes: 'Danza', typeLikes: 'd', state: '', actions:null},
   {position: 7, nameLikes: 'Furbol', typeLikes: 'H', state: '', actions:null},
   {position: 8, nameLikes: 'Danza', typeLikes: 'H', state: '', actions:null},
-  
+
 ];
 
 @Component({
@@ -30,11 +30,11 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class CrudLikesComponent implements OnInit {
 
   displayedColumns: string[] = ['position', 'nameLikes', 'typeLikes', 'state', 'actions'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA); 
+  dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
-  
+
   constructor() { }
 
   ngOnInit(): void {

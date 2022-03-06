@@ -9,10 +9,6 @@ const routes: Routes = [
     path: 'see-groups',
     component: SeeGroupsComponent,
   },
-  {
-    path: 'see-groups/show/detail',
-    component: SeeGroupDetailComponent,
-  },
 ]
 
 @NgModule({
@@ -20,6 +16,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes)
-  ]
+  ],
+  exports: [RouterModule]
 })
 export class SeeGroupsRoutingModule { }

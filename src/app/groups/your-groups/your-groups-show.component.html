@@ -3,8 +3,8 @@
     <img class="card-img-top" src="/assets/group/{{ group.imgGroup }}" alt="{{ group.GroupName }}">
     <div class="card-body">
       <h5 class="card-title">{{ group.GroupName }}</h5>
-      <p class="card-text">{{ group.description }}</p>
-      <button (click)="navigateToGroupDetails()" class="btn btn-primary">ver</button>
+      <p class="card-text">{{ group.totalUsers }}</p>
+      <button class="btn btn-primary" (click)="navigateToYourGroupDetails()">ver</button>
     </div>
   </div>
 </div>

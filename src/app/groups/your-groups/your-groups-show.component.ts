@@ -17,7 +17,7 @@ export class YourGroupsShowComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  navigateToGroupDetails(): void {
+  navigateToYourGroupDetails(): void {
     this.router.navigate(['groups', this.group.id], {
       relativeTo: this.route
     })
