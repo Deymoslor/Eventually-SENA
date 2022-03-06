@@ -11,14 +11,13 @@ import { MainHomeModule } from './main-home/main-home.module';
 
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import { HeaderComponent } from './shared/header/header.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HeadersModule } from './headers/headers.module';
-import { MenuModule } from './menu/menu.module';
-import { SettingsModule } from './settings/settings.module';
+import { LoginRegisterModule } from './login-register/login-register.module';
+import { HttpClientModule } from '@angular/common/http';
 import { SuppliersComponent } from './suppliers/suppliers.component';
 import { SuppliersModule } from './suppliers/suppliers.module';
-import { HttpClientModule } from '@angular/common/http';
-import { LoginRegisterModule } from './login-register/login-register.module';
+import { SettingsModule } from './settings/settings.module';
+import { MenuModule } from './menu/menu.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -34,14 +33,13 @@ import { LoginRegisterModule } from './login-register/login-register.module';
     FormsModule,
     EventsModule,
     DashboardModule,
-    MainHomeModule,
-    NgbModule,
-    HeadersModule,
-    MenuModule,
-    SettingsModule,
     LoginRegisterModule,
     SuppliersModule,
-    HttpClientModule
+    HttpClientModule,
+    MainHomeModule,
+    NgbModule,
+    MenuModule,
+    SettingsModule
 
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],

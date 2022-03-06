@@ -4,7 +4,6 @@ import { LandingpageComponent } from './landingpage/landingpage.component';
 
 
 const routes: Routes = [
-  
   {path: '', component:LandingpageComponent}
 ];
 
