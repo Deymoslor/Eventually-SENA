@@ -9,6 +9,7 @@ import { CrudGroupsComponent } from './crud-groups/crud-groups.component';
 import { CrudReportsComponent } from './crud-reports/crud-reports.component';
 import { CrudUsersComponent } from './crud-users/crud-users.component';
 import { CrudSuppliersComponent } from './crud-suppliers/crud-suppliers.component';
+import { RequestsComponent } from './requests/requests.component';
 
 
 
@@ -22,7 +23,8 @@ const routes: Routes = [
       {path: 'groups', component: CrudGroupsComponent},
       {path: 'reports', component: CrudReportsComponent},
       {path: 'users', component: CrudUsersComponent},
-      {path: 'suppliers', component: CrudSuppliersComponent}
+      {path: 'suppliers', component: CrudSuppliersComponent},
+      {path: 'requests', component: RequestsComponent}
     ]
   },
 ]
