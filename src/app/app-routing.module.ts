@@ -4,17 +4,7 @@ import { LandingpageComponent } from './landingpage/landingpage.component';
 
 
 const routes: Routes = [
-<<<<<<< HEAD
-  {
-    path: 'settings', component:SettingsComponent,
-    children: [
-      {path: 'settings-like', component: SettingsLikeComponent},
-
-    ]
-
-  },
-=======
->>>>>>> master
+  
   {path: '', component:LandingpageComponent}
 ];
 
