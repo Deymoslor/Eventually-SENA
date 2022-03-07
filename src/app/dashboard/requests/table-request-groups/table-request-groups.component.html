@@ -1,0 +1,68 @@
+<div class="content">
+    <h2 class="fs-1 fw-bolder">Peticiones Grupos</h2>    
+    
+    <!--TABLE-->
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+            <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+        
+            <!-- Position Column -->
+            <ng-container matColumnDef="position">
+                <th class="ng-container" mat-header-cell *matHeaderCellDef> No. </th>
+                <td class="ng-container" mat-cell *matCellDef="let element"> {{element.position}} </td>
+                </ng-container>
+            
+                <!-- Name Column -->
+                <ng-container matColumnDef="nameGroup">
+                <th class="ng-container"  mat-header-cell *matHeaderCellDef> Nombre Grupo</th>
+                <td class="ng-container" mat-cell *matCellDef="let element"> {{element.nameGroup}} </td>
+                </ng-container>
+            
+                <!-- Weight Column -->
+                <ng-container matColumnDef="description">
+                <th class="ng-container" mat-header-cell *matHeaderCellDef> Descripción Grupo </th>
+                <td class="ng-container" mat-cell *matCellDef="let element"> {{element.description}} </td>
+                </ng-container>
+            
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="typeGroup">
+                <th class="ng-container" mat-header-cell *matHeaderCellDef> Tipo Grupo </th>
+                <td class="ng-container" mat-cell *matCellDef="let element"> {{element.typeGroup}} </td>
+                </ng-container>
+    
+                <ng-container class="ng-container" matColumnDef="nameOrganizer">
+                    <th class="ng-container" mat-header-cell *matHeaderCellDef> Nombre Organizador </th>
+                    <td class="ng-container" mat-cell *matCellDef="let element"> {{element.nameOrganizer}} </td>
+    
+                </ng-container>
+    
+                <ng-container class="ng-container" matColumnDef="actions">
+                    <th class="ng-container" mat-header-cell *matHeaderCellDef> Respuesta </th>
+                    <td class="ng-container" mat-cell *matCellDef="let element"> 
+                        <form action="">
+                            <fieldset>
+                                <div class="switch-toggle switch-candy">
+                                    <input id="G{{element.position}}R" name="view" type="radio" class="mostrar-valor" value="True">
+                                    <label for="G{{element.position}}R" onclick="">A</label>
+                                    
+                                    <input id="G{{element.position}}D" name="view" type="radio" class="mostrar-valor" value="False">
+                                    <label for="G{{element.position}}D" onclick="">D</label>
+                                    
+                                    <input id="G{{element.position}}A" name="view" type="radio" class="mostrar-valor" value="True">
+                                    <label for="G{{element.position}}A" onclick="">?</label>
+                                    <a></a>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </td>
+                </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumnsService"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumnsService;"></tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons >
+        </mat-paginator>
+    <!--TABLE//-->
+</div>

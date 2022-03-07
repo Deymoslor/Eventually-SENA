@@ -22,6 +22,9 @@ import { ModalReportsComponent } from './crud-reports/modal-reports/modal-report
 import { CrudReportsComponent } from './crud-reports/crud-reports.component';
 import { ModalGroupsComponent } from './crud-groups/modal-groups/modal-groups.component';
 import { CrudGroupsComponent } from './crud-groups/crud-groups.component';
+import { RequestsComponent } from './requests/requests.component';
+import { TableRequestGroupsComponent } from './requests/table-request-groups/table-request-groups.component';
+import { TableRequestEventComponent } from './requests/table-request-event/table-request-event.component';
 
 
 @NgModule({
@@ -41,7 +44,10 @@ import { CrudGroupsComponent } from './crud-groups/crud-groups.component';
     CrudUsersComponent,
     ModalUsersComponent,
     CrudSuppliersComponent,
-    ModalSuppliersComponent
+    ModalSuppliersComponent,
+    RequestsComponent,
+    TableRequestGroupsComponent,
+    TableRequestEventComponent
   ],
   imports: [
     CommonModule,
