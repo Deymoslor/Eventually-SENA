@@ -1,68 +1,84 @@
 @import '../../app.component.scss';
 header {
-    background-color: $principal;
+    background: linear-gradient(to right, $principal, $principal2);
     max-width: 100vw;
     width: 100%;
     height: 4.5rem;
     z-index: 3;
     margin-top: 0;
-    a {
-        color: $letterW;
-        font-size: 14px;
+    .logoEventually {
+        width: 6rem;
+        margin-top: -0.7rem;
+        margin-left: -1.5rem;
     }
-}
-
-.varSearch {
-    background-color: $second;
-    border: none;
-}
-
-.varSearch::placeholder {
-    color: $secondLetter;
-    ;
-}
-
-.search {
-    width: 20rem;
-    height: 5rem;
-}
-
-.searchIcon {
-    width: 2.5rem;
-}
-
-.imgUser {
-    float: right;
-    margin-top: -0.6rem;
-    width: 4.5rem;
-}
-
-.menuUser {
-    a {
-        color: $thirdLetter;
-        h2 {
-            font-size: 15px;
-        }
-        h3 {
-            font-size: 12px;
-        }
+    .divider {
+        color: rgba(128, 128, 128, 0.637);
+        width: 100%;
+        size: 1.5rem;
     }
-    h1 {
-        font-weight: bold;
-        margin-left: 1rem;
-        font-size: 18px;
-        color: $thirdLetter;
+    .varSearch {
+        background-color: $second;
+        border: none;
     }
-}
-
-.user {
-    margin-right: -15rem;
-    .nameUser {
-        color: $letterW;
-        font-size: 14px;
-    }
-    .conect {
+    .varSearch::placeholder {
         color: $secondLetter;
-        ;
+    }
+    .search {
+        width: 20rem;
+        height: 5rem;
+    }
+    .searchIcon {
+        width: 2.5rem;
+    }
+    .user {
+        margin-right: -5rem;
+        .nameUser {
+            color: $letterW;
+            font-size: 14px;
+        }
+        .imgUser {
+            float: right;
+            margin-top: -0.6rem;
+            width: 4.5rem;
+        }
+        .conect {
+            color: $secondLetter;
+        }
+        .menuUser {
+            h1 {
+                font-weight: 450;
+                margin-left: 1rem;
+                font-size: 22px;
+                color: $thirdLetter;
+            }
+            svg {
+                stroke: $fourthLetter;
+                stroke-width: 1.5;
+                fill: none;
+                width: 30px;
+            }
+            .spaceDropdownMenu {
+                height: 2rem;
+                width: auto;
+                h3 {
+                    margin-top: -16px;
+                }
+            }
+            a {
+                h2 {
+                    font-weight: 450;
+                    font-size: 18px;
+                    color: $thirdLetter;
+                }
+                h3 {
+                    font-size: 15px;
+                    color: $fourthLetter;
+                }
+            }
+        }
     }
 }
+
+// .dropdown-menu {
+//     width: auto!important;
+// }

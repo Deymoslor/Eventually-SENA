@@ -14,7 +14,7 @@
         width: 2rem;
     }
     .useOption {
-        background-color: $second;
+        background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
         width: 100%;
         border-radius: 0.5rem;
     }

@@ -1,8 +1,8 @@
 <header class="container">
     <div class="row">
         <div class="col-12 d-flex">
-            <div class="col-2 p-2">
-                <img class="" src="../../assets/dashboard/icon/logo.png" alt="">
+            <div class="col-1 p-2">
+                <img class="logoEventually" src="../../../assets/icon/logo.png" alt="">
             </div>
             <div class="search col-3 p-3 input-group">
 
@@ -10,7 +10,7 @@
 
                 <input type="text" class="varSearch form-control" placeholder="Buscar">
             </div>
-            <div class="col-6 d-flex flex-row-reverse p-3">
+            <div class="col-8 d-flex flex-row-reverse p-3">
                 <ul class="nav nav-pills">
 
                     <div class="row">
@@ -49,21 +49,68 @@
                                         <li>
                                             <h1>Cuenta</h1>
                                         </li>
-                                        <li>
-                                            <hr class="dropdown-divider">
-                                        </li>
+
+                                        <hr class="divider">
+
                                         <!-- 
                                 <li><a class="dropdown-item" href="#">Separated link</a></li> -->
 
                                         <li class="d-flex">
                                             <a class="dropdown-item" routerLink="../settings">
-                                                <svg width="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                                                <h2>Cuenta</h2>
-                                                <h3>Configuración de perfil.</h3>
+                                                <div class="row">
+                                                    <div class="col-12 d-flex align-items-center justify-content-center">
+                                                        <div class="col-2">
+                                                            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                                        </div>
+                                                        <div class="col-10 p-1 menuDrop">
+                                                            <div class="col-5 spaceDropdownMenu">
+                                                                <h2>Cuenta</h2>
+                                                            </div>
+                                                            <div class="col-5 spaceDropdownMenu">
+                                                                <h3>Configuración de perfil.</h3>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </a>
                                         </li>
-                                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                        <li class="d-flex mt-3">
+                                            <a class="dropdown-item" routerLink="../settings">
+                                                <div class="row">
+                                                    <div class="col-12 d-flex align-items-center justify-content-center">
+                                                        <div class="col-2">
+                                                            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="feather feather-key"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path></svg>
+                                                        </div>
+                                                        <div class="col-10 p-1 menuDrop">
+                                                            <div class="col-5 spaceDropdownMenu">
+                                                                <h2>Dashboard</h2>
+                                                            </div>
+                                                            <div class="col-5 spaceDropdownMenu">
+                                                                <h3>Apartado para admins.</h3>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="d-flex mt-3">
+                                            <a class="dropdown-item" routerLink="../settings">
+                                                <div class="row">
+                                                    <div class="col-12 d-flex align-items-center justify-content-center">
+                                                        <div class="col-2">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                                                        </div>
+
+                                                        <div class="col-10 menuDrop">
+                                                            <div class="col-5 mt-3">
+                                                                <h2>Salir</h2>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
                                         <!-- <li>
                                     <hr class="dropdown-divider">
                                 </li> -->
