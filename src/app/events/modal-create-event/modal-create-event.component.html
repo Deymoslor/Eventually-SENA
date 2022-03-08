@@ -34,7 +34,7 @@
 
                     <label for="exampleInputEmail1">Fecha Realizacion:</label>
                     <div>
-                        
+                        <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next"></ngb-datepicker>
                     </div>
                     
                     <label for="">Lugar:</label>
@@ -43,7 +43,7 @@
 
                     <label for="exampleInputEmail1">Numero Participantes:</label>
                     <input type="number" class="form-control" id="exampleInputEmail1"
-                    value="1">
+                    value="2" min="2" max="200">
 
                     <div class="check-container-politycs">
                         <div class="form-check">
