@@ -5,11 +5,13 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './user-menu.component.html',
   styleUrls: ['./user-menu.component.scss']
 })
-export class UserMenuComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
+export class UserMenuComponent{
+  buttonUser ="Info"
+  btnNoti(){
+    this.buttonUser ='noti'
+  }
+  btnInfo(){
+    this.buttonUser ='Info'
   }
 
 }

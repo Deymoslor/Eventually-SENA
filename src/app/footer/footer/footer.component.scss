@@ -1,0 +1,34 @@
+@import '../../app.component.scss';
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+footer {
+    background: linear-gradient(to right, $principal, $principal2);
+    h1 {
+        font-family: 'Permanent Marker', cursive;
+        font-size: 30px;
+        color: $letterW;
+        margin-bottom: 0;
+    }
+    .list {
+        list-style: none;
+        a {
+            text-decoration: none;
+            color: $letterW;
+            font-family: 'Exo 2', sans-serif;
+        }
+    }
+    .hrFooder {
+        color: $letterW;
+        width: 50%;
+        size: 5rem;
+        margin: 0 25% 0 25%;
+    }
+    .footer-copyright {
+        background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
+        color: $letterW;
+        a {
+            color: $letterW;
+            text-decoration: none;
+        }
+    }
+}
