@@ -1,5 +1,7 @@
+@import '../../app.component.scss';
 .cards1 {
     border-radius: 1rem;
+    margin-top: 1rem;
 }
 
 .selectNewLikes {
@@ -14,6 +16,10 @@
     }
 }
 
-.btnChangeLikes {
-    margin-top: 5rem;
+.btnChangeLikes .btn-primary {
+    background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
+}
+
+.btnChangeLikes .btn-primary:hover {
+    background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
 }

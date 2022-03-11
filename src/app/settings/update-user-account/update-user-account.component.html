@@ -1,4 +1,4 @@
-<article class="cards1 card h-200 shadow-sm">
+<article class="cards1 card  shadow-sm">
     <div class="card-body">
         <div>
             <h1 class="m-0 h1">Actualizar información</h1><br>
@@ -37,9 +37,19 @@
                             class="form-control" formControlName="correo" aria-describedby="helpId" placeholder="Escribe tu correo">
                         </div> -->
 
-                    <div class="btn-group" role="group">
-                        <button type="submit" class="btn btn-primary">Actualizar</button>
-                        <!-- <button type="button" routerLink="/listar-empleado/" class="btn btn-primary">Cancelar</button> -->
+                    <div class="selectNewLikes input-group mb-3">
+                        <label class="input-group-text" for="inputGroupSelect01">Gustos actuales</label>
+                        <select class="form-select" id="inputGroupSelect01">
+                                <option selected>Musica,Baile</option>
+                                <option value="1">Musica</option>
+                                <option value="2">Baile</option>
+                                <option value="3">Deporte</option>
+                             </select>
+
+                    </div>
+
+                    <div class="btnChangeLikes d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary btn-lg">Actualizar</button>
                     </div>
 
                 </form>

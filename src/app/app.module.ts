@@ -18,6 +18,7 @@ import { MainHomeModule } from './main-home/main-home.module';
 import { MenuModule } from './menu/menu.module';
 import { SettingsModule } from './settings/settings.module';
 import { SuppliersModule } from './suppliers/suppliers.module';
+import { FooterModule } from './footer/footer.module';
 
 
 
@@ -44,7 +45,8 @@ import { SuppliersModule } from './suppliers/suppliers.module';
     MainHomeModule,
     NgbModule,
     MenuModule,
-    SettingsModule
+    SettingsModule,
+    FooterModule
 
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
