@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class CreateGroupsComponent implements OnInit {
 
   share() {
-    window.alert('The product has been shared!');
+    window.alert('El grupo ha sido creado!');
   }
 
   // swal("Oops!", "Something went wrong on the page!", "error");

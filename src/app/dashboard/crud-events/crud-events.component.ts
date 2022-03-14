@@ -25,8 +25,8 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {position: 6, nameGroup: 'prueba', description: 'prueba', typeGroup: 'C', cantPeople: 1, state: '', actions:null},
   {position: 6, nameGroup: 'prueba', description: 'prueba', typeGroup: 'C', cantPeople: 1, state: '', actions:null},
   {position: 6, nameGroup: 'prueba', description: 'prueba', typeGroup: 'C', cantPeople: 1, state: '', actions:null},
-  
-  
+
+
 ];
 @Component({
   selector: 'app-crud-events',
@@ -36,17 +36,17 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class CrudEventsComponent implements OnInit {
 
   displayedColumns: string[] = ['position', 'nameGroup', 'description', 'typeGroup', 'cantPeople', 'state', 'actions'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA); 
+  dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
-  
+
   constructor() { }
 
   ngOnInit(): void {
     this.dataSource.paginator = this.paginator;
   }
 
-  
+
 
 }

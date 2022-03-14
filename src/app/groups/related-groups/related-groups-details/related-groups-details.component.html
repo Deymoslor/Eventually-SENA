@@ -40,42 +40,19 @@
               </div>
 
               <div class="p-4">
-                <h4 class="fst-italic">Opciones</h4>
-                <ol class="list-unstyled">
-                  <li><a [routerLink]="['/groups/related-groups']" routerLinkActive="router-link-active">Regresar</a></li>
-                  <li><a [routerLink]="['/groups/related-groups']" routerLinkActive="router-link-active">Abandonar grupo</a></li>
-                </ol>
+                <ul class="nav nav-taps">
+                  <li class="nav-item dropdown">
+                    <a class="h4 nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Opciones</a>
+                    <ul class="dropdown-menu">
+                      <li><a class="h5 dropdown-item" role="button" href="#">Regresar</a></li>
+                      <li><a class="h5 dropdown-item" role="button" href="#">Abandonar</a></li>
+                    </ul>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Nonbre de usuario</th>
-                <th>Roles</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Alice</td>
-                <td>Organizadora</td>
-              </tr>
-              <tr>
-                <td>Bob</td>
-                <td>Participante</td>
-              </tr>
-              <tr>
-                <td>Charlie</td>
-                <td>Participante</td>
-              </tr>
-            </tbody>
-            <tfoot>
-              <tr>
-                <td>Totals</td>
-                <td>50</td>
-              </tr>
-            </tfoot>
-          </table>
+          <app-table-users-related></app-table-users-related>
         </div>
       </div>
   </div>

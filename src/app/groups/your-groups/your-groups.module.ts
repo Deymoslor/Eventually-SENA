@@ -4,7 +4,9 @@ import { YourGroupsComponent } from './your-groups.component';
 import { YourGroupsShowComponent } from './your-groups-show.component';
 import { YourGroupsRoutingModule } from './your-groups-routing.module';
 import { YourGroupsDetailsComponent } from './your-groups-details/your-groups-details.component';
-import { ModalEditGroupsComponent } from './your-groups-details/modal-edit-groups/modal-edit-groups.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { TableUsersGroupsComponent } from './your-groups-details/table-users-groups/table-users-groups.component';
 
 
 
@@ -13,11 +15,13 @@ import { ModalEditGroupsComponent } from './your-groups-details/modal-edit-group
     YourGroupsComponent,
     YourGroupsShowComponent,
     YourGroupsDetailsComponent,
-    ModalEditGroupsComponent
+    TableUsersGroupsComponent,
   ],
   imports: [
     CommonModule,
-    YourGroupsRoutingModule
+    YourGroupsRoutingModule,
+    MatTableModule,
+    MatPaginatorModule
   ]
 })
 export class YourGroupsModule { }

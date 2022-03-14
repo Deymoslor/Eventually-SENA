@@ -15,6 +15,7 @@
 .img-container {
   overflow: hidden;
   display: grid;
+  border-radius: 20px;
   place-content: center;
   max-height: 300px;
 }
@@ -32,7 +33,7 @@ button {
   align-items: center;
   justify-content: center;
   padding: 12px 16px;
-  background-color: #5e00ea;
+  background-color: #a705cf;
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -47,7 +48,7 @@ button img {
 
 button:hover,
 button:focus {
-  background-color: #7d29fa;
+  background-color: #a705cf;
   outline: none;
 }
 
