@@ -1,13 +1,10 @@
 <body>
-    <form ngNativeValidate [formGroup]="formUsers">
+    <!-- Conectamos el formulario de la clase .ts llamado loginForm con nuestro formulario HTML y además definimos una función submit, (ngSubmit="onLogin(loginForm.value)") -->
+    <form ngNativeValidate [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm.value)">
         <div class="form">
             <h1>Iniciar sesión</h1>
-            <!-- <div class="grupo">
-                <input type="text" name="" id="name" required><span class="barra"></span>
-                <label for="">Nombre</label>
-            </div> -->
             <div class="grupo">
-                <input type="email" name="" id="email" required formControlName="email"><span class="barra"></span>
+                <input type="email" id="email" required formControlName="email"><span class="barra"></span>
                 <label for="">Email</label>
             </div>
             <div class="grupo">
@@ -15,7 +12,8 @@
                 <label for="">Password</label>
             </div>
 
-            <button (click)="login()">Iniciar</button>
+            <!-- <button (click)="login()">Iniciar</button> -->
+            <button>Iniciar</button>
             <button (click)="register()">Crear cuenta</button>
 
             <div class="a-divider">
@@ -26,9 +24,17 @@
                     <a [routerLink]="['supplier']">¿Quiéres ser proveedor?</a>
                 </div>
             </div>
-            <!-- <pre>{{ formUsers.value | json }}</pre> -->
+            <!-- <pre>{{ loginForm.value | json }}</pre> -->
         </div>
     </form>
+
+    <!-- Creamos div que se muestre unicamente cuando exista un error.
+    Para mostrarlo cuando hay un error definimos un ngIf que nos permite saber si la variable errorStatus cambia, en el momento en el que haga login de manera incorrecta, se va convertir en true y va a mostrar el contenido del div. -->
+    <div class="alert alert-danger" *ngIf="errorStatus">
+        <!-- Mostramos la variable donde vienen los textos o el error -->
+        <p>{{errorMsg}}</p>
+    </div>
+
 </body>
 
 
