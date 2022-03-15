@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { SeeGroupsComponent } from './see-groups.component';
-import { SeeGroupDetailComponent } from "./see-group-detail/see-group-detail.component";
+import { YourGroupsComponent } from './your-groups.component';
 
 const routes: Routes = [
   {
-    path: 'see-groups',
-    component: SeeGroupsComponent,
-  },
+    path:'',
+    component:YourGroupsComponent
+  }
 ]
 
 @NgModule({
@@ -19,4 +18,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class SeeGroupsRoutingModule { }
+export class YourGroupsRoutingModule { }

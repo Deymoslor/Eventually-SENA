@@ -1,9 +1,5 @@
 <!--HEADER-->
-<header>
-    <div>
-        <p>Esperando a ser un lindo Header.</p>
-    </div>
-</header>
+<app-top-header></app-top-header>
 
 <!--MODAL PROVIDERS-->
 <app-modal-check-event></app-modal-check-event>
@@ -13,28 +9,23 @@
 <!--MODAL PROVIDERS//-->
 
 <!--Content Container-->
-<div class="eventsContainerContent">
-    <!--Aside bar-->
-    <div class="content-asidebar">
-        <div class="content">
-            <button class="btn btn-primary" routerLink="provider">Proveedores</button>
+
+<body>
+    <div class="container d-flex">
+        <div class="row">
+            <div class="co-12 d-flex ">
+                <div class="col-3 leftMenu">
+                    <app-left-menu></app-left-menu>
+                </div>
+
+                <div class="col-9 principalContainer">
+                    <router-outlet></router-outlet>
+
+                </div>
+            </div>
         </div>
     </div>
-    <!--CONTENT-->
-    <div class="principalContainer">
-
-            <router-outlet></router-outlet>
-            
-           
-    </div>
-          
-</div>
+</body>
 
 <!--Footer-->
-<footer>
-    <div class="content">
-        <p>A</p>
-    </div>
-    
-</footer>
-
+<app-footer></app-footer>

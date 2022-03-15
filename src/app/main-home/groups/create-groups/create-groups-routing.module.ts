@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { SettingsReportComponent } from './settings-report.component';
+import { CreateGroupsComponent } from './create-groups.component';
 
 const routes: Routes = [
   {
-    path: 'settings-report', component:SettingsReportComponent,
+    path: '',
+    component:CreateGroupsComponent
   }
 ]
 
@@ -14,6 +15,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes)
-  ]
+  ],
+  // exports: [RouterModule]
 })
-export class SettingsReportRoutingModule { }
+export class CreateGroupsRoutingModule { }

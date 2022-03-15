@@ -4,8 +4,11 @@ import { LandingpageComponent } from './landingpage/landingpage.component';
 
 
 const routes: Routes = [
-  
-  {path: '', component:LandingpageComponent}
+  { path: '', component: LandingpageComponent },
+  {
+    path: 'main',
+    loadChildren: () => import('./main-home/main-home-routing.module').then(m => m.MainHomeRoutingModule),
+  }
 ];
 
 @NgModule({

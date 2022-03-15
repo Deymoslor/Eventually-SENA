@@ -1,14 +1,10 @@
-@import '../app.component.scss';
+@import '../../app.component.scss';
 body .container {
     max-width: 100vw;
     width: 100%;
     height: 4.5rem;
     z-index: 3;
     margin-top: 0;
-    .nav-left {
-        color: $letterW;
-        font-size: 14px;
-    }
 }
 
 .menuSettingsUser {
@@ -17,10 +13,6 @@ body .container {
 
 .settingsContent {
     margin-left: 1rem;
-    width: 135vh;
+    width: 100%;
     height: auto;
-}
-
-.leftMenu {
-    width: 7rem;
 }

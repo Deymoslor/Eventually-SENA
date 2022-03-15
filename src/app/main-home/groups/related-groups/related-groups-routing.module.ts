@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { CreateGroupsComponent } from './create-groups.component';
+import { RelatedGroupsComponent } from './related-groups.component';
 
 const routes: Routes = [
   {
-    path: 'create',
-    component:CreateGroupsComponent
-  }
+    path: '',
+    component: RelatedGroupsComponent
+  },
+
 ]
 
 @NgModule({
@@ -16,6 +17,6 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes)
   ],
-  // exports: [RouterModule]
+  exports: [RouterModule]
 })
-export class CreateGroupsRoutingModule { }
+export class RelatedGroupsRoutingModule { }

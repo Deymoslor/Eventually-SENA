@@ -7,9 +7,14 @@ import { EventInComponent } from './event-in/event-in.component';
 
 const routes: Routes = [
   {
-    path: 'events', component:EventsComponent,
+    path: '',
+    component:EventsComponent,
     children: [
-      {path: 'event-in', component: EventInComponent}
+      {path: 'event-in', component: EventInComponent},
+      {
+        path: '**',
+        redirectTo: 'event-in',
+      }
     ]
   }
 ]
