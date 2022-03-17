@@ -10,7 +10,7 @@ import { SupplierRequestComponent } from './supplier-request/supplier-request.co
 
 const routes: Routes = [
   {
-    path: 'loginRegister', component:LoginRegisterComponent,
+    path: '', component:LoginRegisterComponent,
     children: [
       {path: 'register', component: RegisterComponent},
       {path: '', component: LoginComponent},

@@ -8,7 +8,11 @@ const routes: Routes = [
   {
     path: 'main',
     loadChildren: () => import('./main-home/main-home-routing.module').then(m => m.MainHomeRoutingModule),
-  }
+  },
+  {
+    path: 'loginRegister',
+    loadChildren: () => import('./login-register/login-register-router.module').then(m => m.LoginRegisterRouterModule),
+  },
 ];
 
 @NgModule({
