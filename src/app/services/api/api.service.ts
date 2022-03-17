@@ -33,6 +33,11 @@ export class ApiService {
     return this.http.get<EventI>(dir);
   }
 
+  getSigleEventGroup(id:number):Observable<EventI>{
+    let dir = this.url + "eventos?idGroup=" + id;
+    return this.http.get<EventI>(dir);
+  }
+
   putEvent(form:EventI):Observable<ResponseI>{
     let dir = this.url + "eventos";
     return this.http.put<ResponseI>(dir, form);

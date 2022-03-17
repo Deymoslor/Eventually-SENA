@@ -15,8 +15,9 @@ export class EventsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  editarPaciente(id:number){
-    this.router.navigate(['editar',id]);
+  //Acceder al evento. El parametro es el id del grupo.
+  inEvent(idGroup:number){
+    this.router.navigate(['events/event-in',idGroup]);
   }
 
 }
