@@ -6,7 +6,7 @@ import { ListaPersonasI } from '../ListaPersonasI.interface';
 @Injectable({
   providedIn: 'root'
 })
-export class UserServiceService {
+export class userService {
   //Definimos ruta raíz de el API.
 
   API:string='http://localhost/API_rest_Eventually/';
