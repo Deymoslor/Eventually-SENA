@@ -1,28 +1,41 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
+import { userService } from './service/userService.service';
+import { Router } from '@angular/router';
+import { ListaPersonasI } from './ListaPersonasI.interface';
 
 //Interfaz para definir los datos de la table.
-export interface PeriodicElement {
-  position: number;
-  firstName: string;
-  lastName: string;
-  document: number;
-  bornDate: string;
-  email: string;
-  state: string;
-  actions: null;
-}
+// export interface PeriodicElement {
+//   position: number;
+//   firstName: string;
+//   lastName: string;
+//   document: number;
+//   bornDate: string;
+//   email: string;
+//   state: string;
+//   actions: null;
+// }
 
-//Toda la información que tendrá la tabla
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, firstName: 'Jordan', lastName: 'Flórez', document: 1001236570, bornDate: '14/04/2003', email: 'jordan@gmail.com', state: '', actions:null},
-  {position: 2, firstName: 'Dylan', lastName: 'Murillo', document: 1554894878, bornDate: '09/04/2003', email: 'Dylan@gmail.com', state: '', actions:null},
-  {position: 3, firstName: 'Oscar', lastName: 'Rolón', document: 5668756427, bornDate: '05/08/2003', email: 'Oscar@gmail.com', state: '', actions:null},
-  {position: 4, firstName: 'Santiago', lastName: 'Usuga', document: 6657899548, bornDate: '09/03/2003', email: 'Santiago@gmail.com', state: '', actions:null},
-  {position: 5, firstName: 'Juan', lastName: 'Zapata', document: 4657984125, bornDate: '25/11/2003', email: 'Juan@gmail.com', state: '', actions:null},
-  {position: 6, firstName: 'Miguel', lastName: 'Soto', document: 7945249861, bornDate: '15/10/2003', email: 'Miguel@gmail.com', state: '', actions:null},
-];
+// let ELEMENT_DATAORIGINAL: PeriodicElement[] = [
+//   {position: 1, firstName: 'Jordan', lastName: 'Flórez', document: 1001236570, bornDate: '14/04/2003', email: 'jordan@gmail.com', state: '', actions:null}
+//   // {position: 2, firstName: 'Dylan', lastName: 'Murillo', document: 1554894878, bornDate: '09/04/2003', email: 'Dylan@gmail.com', state: '', actions:null},
+//   // {position: 3, firstName: 'Oscar', lastName: 'Rolón', document: 5668756427, bornDate: '05/08/2003', email: 'Oscar@gmail.com', state: '', actions:null},
+//   // {position: 4, firstName: 'Santiago', lastName: 'Usuga', document: 6657899548, bornDate: '09/03/2003', email: 'Santiago@gmail.com', state: '', actions:null},
+//   // {position: 5, firstName: 'Juan', lastName: 'Zapata', document: 4657984125, bornDate: '25/11/2003', email: 'Juan@gmail.com', state: '', actions:null},
+//   // {position: 6, firstName: 'Miguel', lastName: 'Soto', document: 7945249861, bornDate: '15/10/2003', email: 'Miguel@gmail.com', state: '', actions:null},
+// ];
+
+// let ELEMENT_DATA: ListaPersonasI[] = [
+//   // {position: 1, firstName: 'Jordan', lastName: 'Flórez', document: 1001236570, bornDate: '14/04/2003', email: 'jordan@gmail.com', state: '', actions:null}
+//   // {position: 2, firstName: 'Dylan', lastName: 'Murillo', document: 1554894878, bornDate: '09/04/2003', email: 'Dylan@gmail.com', state: '', actions:null},
+//   // {position: 3, firstName: 'Oscar', lastName: 'Rolón', document: 5668756427, bornDate: '05/08/2003', email: 'Oscar@gmail.com', state: '', actions:null},
+//   // {position: 4, firstName: 'Santiago', lastName: 'Usuga', document: 6657899548, bornDate: '09/03/2003', email: 'Santiago@gmail.com', state: '', actions:null},
+//   // {position: 5, firstName: 'Juan', lastName: 'Zapata', document: 4657984125, bornDate: '25/11/2003', email: 'Juan@gmail.com', state: '', actions:null},
+//   // {position: 6, firstName: 'Miguel', lastName: 'Soto', document: 7945249861, bornDate: '15/10/2003', email: 'Miguel@gmail.com', state: '', actions:null},
+// ];
+
+
 
 @Component({
   selector: 'app-crud-users',
@@ -31,16 +44,57 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class CrudUsersComponent implements OnInit {
 
-  displayedColumns: string[] = ['position', 'firstName', 'lastName', 'document', 'bornDate', 'email', 'state', 'actions'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  //Variables para probar el llenado de la table.
+  // position!:string;
+  // firstName!:string;
+  // lastName!:string;
+  // document!:number;
+  // bornDate!:string;
+  // email!:string;
+  // state!:string;
+  // actions!:null;
 
-  @ViewChild(MatPaginator, { static: true })
-  paginator!: MatPaginator;
+  //Creamos una variable que almacenará con ayuda de la interfaz los datos de los pacientes.
+  personas!:ListaPersonasI[];
 
-  constructor() { }
+  // displayedColumns: string[] = ['idPersona', 'nombre', 'apellidos', 'documento', 'fechaNacimiento', 'Email', 'Estado', 'actions'];
+  // dataSource = new MatTableDataSource(ELEMENT_DATA);
+
+  // @ViewChild(MatPaginator, { static: true })
+  // paginator!: MatPaginator;
+
+  constructor(
+    //Inyectamos nuestro servicio.
+    private userService:userService,
+    //Inyectamos el router.
+    private router:Router
+    ) { }
 
   ngOnInit(): void {
-    this.dataSource.paginator = this.paginator;
+    // this.dataSource.paginator = this.paginator;
+
+    //Obtenemos todos los pacientes.
+    this.userService.getAllPersons(1).subscribe(data=>{
+      //recibimos por consola los datso que nos esté trayendo.
+      console.log(data);
+
+      //Llamamos a la variable que creamos arriba para asignarle los datos que hay en la variable data.
+      this.personas = data;
+
+      // ELEMENT_DATA = data;
+      // console.log(ELEMENT_DATA);
+
+    })
+  }
+
+  editarPersona(id:string){
+    //Imprimimos por consola para saber si está tomando el ID como debe de ser.
+    // console.log(id);
+
+    //Cuando vayamos a crear el editar, debemos de tener en cuenta que si lo queremos pasar a otra ruta debemos de pasar un array, que es la ruta (lugar a donde se dirige) y una variable, en este caso el id
+    // this.router.navigate(['editar', id]);
+    //Dentro del router, debe estar así para idicarle que va a recibir un parámetro cada vez que ingrese a la ruta.
+    //{ path:'editar/:id', component:editarComponent}
   }
 
 }
