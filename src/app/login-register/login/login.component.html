@@ -29,6 +29,14 @@
             <!-- <pre>{{ formUsers.value | json }}</pre> -->
         </div>
     </form>
+
+    <!-- Creamos div que se muestre unicamente cuando exista un error.
+    Para mostrarlo cuando hay un error definimos un ngIf que nos permite saber si la variable errorStatus cambia, en el momento en el que haga login de manera incorrecta, se va convertir en true y va a mostrar el contenido del div. -->
+    <div class="alert alert-danger" *ngIf="errorStatus">
+        <!-- Mostramos la variable donde vienen los textos o el error -->
+        <p>{{errorMsg}}</p>
+    </div>
+
 </body>
 
 
