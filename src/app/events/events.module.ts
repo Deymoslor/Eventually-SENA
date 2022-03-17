@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { EventsComponent } from './events.component';
 import { ModalCreateEventComponent } from './modal-create-event/modal-create-event.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EventInComponent } from './event-in/event-in.component';
 import { EventsRoutingModule } from './events-routing.module';
 import { ModalResultComponent } from './event-in/modal-result/modal-result.component';
@@ -13,6 +13,10 @@ import { EventProviderComponent } from './event-in/event-provider/event-provider
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { ModalProviderInfoComponent } from './event-in/modal-provider-info/modal-provider-info.component';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatLabel } from '@angular/material/form-field';
 
 
 @NgModule({
@@ -30,8 +34,11 @@ import { ModalProviderInfoComponent } from './event-in/modal-provider-info/modal
     FormsModule,
     EventsRoutingModule,
     MatTableModule,
-    MatPaginatorModule
-    
+    MatPaginatorModule,
+    ReactiveFormsModule, 
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatFormFieldModule
   ]
 })
 export class EventsModule { }

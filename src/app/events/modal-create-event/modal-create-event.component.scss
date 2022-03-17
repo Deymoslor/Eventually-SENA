@@ -5,3 +5,7 @@
   margin: 10px;
   background-color: #cfbfbf;
 }
+
+::ng-depp .cdk-overlay-container {
+  z-index: 1200 !important;
+}

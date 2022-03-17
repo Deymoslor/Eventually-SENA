@@ -19,6 +19,7 @@ import { MenuModule } from './menu/menu.module';
 import { SettingsModule } from './settings/settings.module';
 import { SuppliersModule } from './suppliers/suppliers.module';
 import { FooterModule } from './footer/footer.module';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 
@@ -46,7 +47,8 @@ import { FooterModule } from './footer/footer.module';
     NgbModule,
     MenuModule,
     SettingsModule,
-    FooterModule
+    FooterModule,
+    BrowserAnimationsModule
 
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
