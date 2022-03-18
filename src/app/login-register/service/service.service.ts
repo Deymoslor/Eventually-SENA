@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { loginI } from '../login/models/login.interface';
 import { ResponseI } from '../login/models/response.intarface';
 import { User } from '../loginn/user';
+import { registerI } from '../register/register.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,11 @@ export class ServiceService {
     //Creamos una variable con la dirección de donde vamos a postear el formulario.
     let direccion = this.API + "auth";
     //Retornamos mediante el http y un método post la dirección y el formulario que retornará un ResponseI.
+    return this.http.post<ResponseI>(direccion,form);
+  }
+
+  postUser(form:registerI):Observable<ResponseI>{
+    let direccion = this.API + "persons";
     return this.http.post<ResponseI>(direccion,form);
   }
 

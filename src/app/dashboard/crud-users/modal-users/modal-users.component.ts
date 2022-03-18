@@ -113,4 +113,42 @@ export class ModalUsersComponent implements OnInit {
 
   }
 
+  switchStateEvent(num: number){
+    if(num != 1){
+      console.log("hola soy el num " + num);
+      this.editarForm.setValue({
+        'idPersona' : this.datosPersona.idPersona,
+        //Aquí pondríamos token cuando lo hagamos con token.
+        // 'token' : this.datosPersona.token,
+        'nombre' : this.datosPersona.nombre,
+        'apellidos' : this.datosPersona.apellidos,
+        'documento' : this.datosPersona.documento,
+        'fechaNacimiento' : this.datosPersona.fechaNacimiento,
+        'Email' : this.datosPersona.Email,
+        'password' : this.datosPersona.password,
+        'Celular' : this.datosPersona.Celular,
+        'ciudad' : this.datosPersona.ciudad,
+        'Estado' : 1,
+        'roles_idRoles' : this.datosPersona.roles_idRoles,
+      })
+    }else if (num == 1) {
+      console.log("hola soy el num " + num);
+      this.editarForm.setValue({
+        'idPersona' : this.datosPersona.idPersona,
+        //Aquí pondríamos token cuando lo hagamos con token.
+        // 'token' : this.datosPersona.token,
+        'nombre' : this.datosPersona.nombre,
+        'apellidos' : this.datosPersona.apellidos,
+        'documento' : this.datosPersona.documento,
+        'fechaNacimiento' : this.datosPersona.fechaNacimiento,
+        'Email' : this.datosPersona.Email,
+        'password' : this.datosPersona.password,
+        'Celular' : this.datosPersona.Celular,
+        'ciudad' : this.datosPersona.ciudad,
+        'Estado' : 0,
+        'roles_idRoles' : this.datosPersona.roles_idRoles,
+      })
+    }
+  }
+
 }

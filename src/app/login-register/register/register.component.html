@@ -1,5 +1,5 @@
 <body>
-    <form ngNativeValidate [formGroup]="formUsers">
+    <form ngNativeValidate [formGroup]="nuevoForm" (ngSubmit)="postForm(nuevoForm.value)">
         <div class="form">
             <h1>Registro</h1>
             <!-- <div class="grupo">
@@ -7,15 +7,40 @@
                 <label for="">Nombre</label>
             </div> -->
             <div class="grupo">
-                <input type="email" name="" id="email" required formControlName="email"><span class="barra"></span>
+                <input type="text" name="" id="email" required formControlName="nombre"><span class="barra"></span>
+                <label for="">Nombre</label>
+            </div>
+            <div class="grupo">
+                <input type="text" name="" id="email" required formControlName="apellidos"><span class="barra"></span>
+                <label for="">Apellidos</label>
+            </div>
+            <div class="grupo">
+                <input type="text" name="" id="password" required formControlName="documento"><span class="barra"></span>
+                <label for="">Documento</label>
+            </div>
+            <div class="grupo">
+                <input type="text" name="" id="password" required formControlName="fechaNacimiento"><span class="barra"></span>
+                <label for="">Fecha de Nacimiento</label>
+            </div>
+            <div class="grupo">
+                <input type="email" name="" id="password" required formControlName="Email"><span class="barra"></span>
                 <label for="">Email</label>
             </div>
             <div class="grupo">
                 <input type="password" name="" id="password" required formControlName="password"><span class="barra"></span>
-                <label for="">Password</label>
+                <label for="">Contraseña</label>
+            </div>
+            <div class="grupo">
+                <input type="text" name="" id="password" required formControlName="ciudad"><span class="barra"></span>
+                <label for="">Ciudad</label>
+            </div>
+            <div class="grupo">
+                <input type="text" name="" id="password" required formControlName="Celular"><span class="barra"></span>
+                <label for="">Número de teléfono celular</label>
             </div>
 
-            <button (click)="sendData()">Registrarse</button>
+            <!-- <button (click)="sendData()">Registrarse</button> -->
+            <button>Registrarse</button>
             <button (click)="cancel()">Cancelar</button>
 
             <!-- <pre>{{ formUsers.value | json }}</pre> -->

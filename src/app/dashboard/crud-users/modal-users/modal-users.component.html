@@ -41,10 +41,23 @@
                         <label>ciudad</label>
                         <input type="text" class="form-control" placeholder="Ciudad de la persona" formControlName="ciudad">
                     </div>
-                    <div class="form-group">
+
+                    <!-- <div class="form-group">
                         <label>Estado</label>
                         <input type="text" class="form-control" placeholder="Estado de la persona" formControlName="Estado">
-                    </div>
+                    </div> -->
+
+                    <!-- <label for="">Estado Evento:</label>
+                        <input type="text"  class="form-control" id=""
+                        placeholder="Ej: El mejor evento" formControlName="estadoEvento"[readonly]="true">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" *ngIf="editarForm.get('estadoEvento')?.value != 1" (click)="switchStateEvent(editarForm.get('estadoEvento')?.value)" >
+                            <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" *ngIf="editarForm.get('estadoEvento')?.value == 1" (click)="switchStateEvent(editarForm.get('estadoEvento')?.value)" checked >
+                            <label class="form-check-label fw-bolder fs-4 label" for="flexSwitchCheckChecked" *ngIf="editarForm.get('estadoEvento')?.value != 1">Habilitar evento</label>
+                            <label class="form-check-label fw-bolder fs-4 label" for="flexSwitchCheckChecked" *ngIf="editarForm.get('estadoEvento')?.value == 1">Deshabilitar evento</label>
+                        </div> -->
+
+
                     <div class="form-group">
                         <label>roles_idRoles</label>
                         <input type="text" class="form-control" placeholder="Rol del apersona" formControlName="roles_idRoles">
