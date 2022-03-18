@@ -1,86 +1,91 @@
 <!-- <div *ngIf="eventGroupForm.get('estadoEvento')?.value == 1> -->
-<div *ngIf="eventGroupForm.get('estadoEvento')?.value == 1">
-    <div class="content" >
-        <div class="class-thumbnail">
-            <img src="../../../../assets/main/events/danza.png" alt="Evento Danza" class="thumbnail">
-        </div>
-        <div class="title-state-container">
-            <div class="title">
-                <h2 class="title-event fs-1">{{eventGroupForm.get('nombreEvento')?.value}}</h2>
-                <h4 class="fs-5">[Nombre Grupo]</h4>
-            </div>
-            <div class="state-event">
-                <div class="form-check form-switch">
-                    <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" checked data-bs-toggle="modal" data-bs-target="#staticBackdrop-disable">
-                    <label class="form-check-label fw-bolder fs-4 label" for="flexSwitchCheckChecked">Deshabilitar evento</label>
-                </div> 
-            </div>
-        </div>
-        
-        <div class="info-container">
-            <div class="info">
-                <h4 class="fs-5 fw-bold">{{eventGroupForm.get('ParticipantesTotales')?.value}}</h4>         
-                <p class="fw-bolder">participantes</p>
-            </div>
-            <div class="info">
-                <h4 class="fs-5 fw-bold">Dylan Murillo Rios</h4>         
-                <p class="fw-bolder">Organizador</p>
-            </div>
-            <div class="info">
-                <h4 class="fs-5 fw-bold">25-02-2022</h4>         
-                <p class="fw-bolder">fecha de creación</p>
-            </div>
-            <div class="info">
-                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                    Terminar
-                </button>
-                <p class="fw-bolder">Terminar y Resultados</p>
-            </div>
-            <div class="info edit">
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal">
-                    Editar
-                </button>
-                <p class="fw-bolder">Editar Evento</p>
-            </div>
-        </div>
-        <div class="main-content-container">
-            <div class="main-info">
-                <div class="a">
-                    <h4 class="fs-5">Fecha de realizacion del evento:</h4>
-                    <p class="fw-normal text-decoration-underline">{{eventGroupForm.get('fechaEvento')?.value}}</p>
-                </div>
-                <div class="a">
-                    <h4 class="fs-5">Tipo de evento:</h4>
-                    <p class="fw-normal text-decoration-underline">{{eventGroupForm.get('tipoEvento')?.value}}</p>
-                </div>
-                <div class="a">
-                    <h4 class="fs-5">Lugar de realizacion:</h4>
-                    <p class="fw-normal text-decoration-underline" >Parque de la milagrosa - Cl. 43, Medellín, Antioquia</p>
-                </div>
-            </div>
-    
-            <h4 class="fs-4 fw-bolder">Descripcion</h4>
-            <p class="fw-normal text-break desc">{{eventGroupForm.get('descripcionEvento')?.value}}</p>
-        </div>
-    
-        <h1 class="fs-1 h1-provider text-decoration-underline">Añadir un proveedor</h1>
-        
-    </div>
-    <!--Table Provider services-->
-    <div class="table-provider">
-        <app-event-provider></app-event-provider>
-    </div>
-    
-</div>
+<app-modal-edit [childMessage]="id"></app-modal-edit>
+<div>
+        <div *ngIf="eventGroupForm.get('estadoEvento')?.value == 1">
+                <div class="content" >
+                    <div class="class-thumbnail">
+                        <img src="../../../../assets/main/events/danza.png" alt="Evento Danza" class="thumbnail">
+                    </div>
+                    <div class="title-state-container">
+                        <div class="title">
+                            <h2 class="title-event fs-1">{{eventGroupForm.get('nombreEvento')?.value}}</h2>
+                            <h4 class="fs-5">[Nombre Grupo]</h4>
+                        </div>
+                        <div class="state-event">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" checked data-bs-toggle="modal" data-bs-target="#staticBackdrop-disable">
+                                <label class="form-check-label fw-bolder fs-4 label" for="flexSwitchCheckChecked">Deshabilitar evento</label>
+                            </div> 
+                        </div>
+                    </div>
+                    
+                    <div class="info-container">
+                        <div class="info">
+                            <h4 class="fs-5 fw-bold">{{eventGroupForm.get('ParticipantesTotales')?.value}}</h4>         
+                            <p class="fw-bolder">participantes</p>
+                        </div>
+                        <div class="info">
+                            <h4 class="fs-5 fw-bold">Dylan Murillo Rios</h4>         
+                            <p class="fw-bolder">Organizador</p>
+                        </div>
+                        <div class="info">
+                            <h4 class="fs-5 fw-bold">25-02-2022</h4>         
+                            <p class="fw-bolder">fecha de creación</p>
+                        </div>
+                        <div class="info">
+                            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                Terminar
+                            </button>
+                            <p class="fw-bolder">Terminar y Resultados</p>
+                        </div>
+                        <div class="info edit">
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edit-modal" (click)="editEvent(eventGroupForm.get('idEvento')?.value)">
+                                Editar
+                            </button>
+                            <p class="fw-bolder">Editar Evento</p>
+                        </div>
 
-<div *ngIf="eventGroupForm.get('estadoEvento')?.value == 0">
-    <h2>EVENTO DESHABILITADO, SEA PACIENTE, MIENTRAS ESTE ES HABILITADO.</h2>
-</div>
-
-<!-- <ng-template #pa3>
-    <h2>EVENTO TERMINADO, SI DESEA PODRA CREAR UN NUEVO EVENTO.</h2>
-</ng-template> -->
-
-<div *ngIf="eventGroupForm.get('estadoEvento')?.value == 3">
-    <h2>EVENTO TERMINADO, SI DESEA PODRA CREAR UN NUEVO EVENTO.</h2>
+                        
+                    </div>
+                    <div class="main-content-container">
+                        <div class="main-info">
+                            <div class="a">
+                                <h4 class="fs-5">Fecha de realizacion del evento:</h4>
+                                <p class="fw-normal text-decoration-underline">{{eventGroupForm.get('fechaEvento')?.value}}</p>
+                            </div>
+                            <div class="a">
+                                <h4 class="fs-5">Tipo de evento:</h4>
+                                <p class="fw-normal text-decoration-underline">{{eventGroupForm.get('tipoEvento')?.value}}</p>
+                            </div>
+                            <div class="a">
+                                <h4 class="fs-5">Lugar de realizacion:</h4>
+                                <p class="fw-normal text-decoration-underline" >Parque de la milagrosa - Cl. 43, Medellín, Antioquia</p>
+                            </div>
+                        </div>
+                
+                        <h4 class="fs-4 fw-bolder">Descripcion</h4>
+                        <p class="fw-normal text-break desc">{{eventGroupForm.get('descripcionEvento')?.value}}</p>
+                    </div>
+                
+                    <h1 class="fs-1 h1-provider text-decoration-underline">Añadir un proveedor</h1>
+                    
+                </div>
+                <!--Table Provider services-->
+                <div class="table-provider">
+                    <app-event-provider></app-event-provider>
+                </div>
+                
+            </div>
+            
+            <div *ngIf="eventGroupForm.get('estadoEvento')?.value == 0">
+                <h2>EVENTO DESHABILITADO, SEA PACIENTE, MIENTRAS ESTE ES HABILITADO.</h2>
+            </div>
+            
+            <!-- <ng-template #pa3>
+                <h2>EVENTO TERMINADO, SI DESEA PODRA CREAR UN NUEVO EVENTO.</h2>
+            </ng-template> -->
+            
+            <div *ngIf="eventGroupForm.get('estadoEvento')?.value == 3">
+                <h2>EVENTO TERMINADO, SI DESEA PODRA CREAR UN NUEVO EVENTO.</h2>
+            </div>
 </div>

@@ -34,6 +34,7 @@ export class ModalEditEventsComponent implements OnInit {
     if(this.childMessage > 0){
       this.api.getSingleEvent(this.childMessage).subscribe((data: any) =>{
        this.dataEvent =data[0];
+       console.log(data[0]);
         this.editForm.setValue({
           'idEvento': this.dataEvent.idEvento,
           'nombreEvento': this.dataEvent.nombreEvento,
@@ -53,7 +54,7 @@ export class ModalEditEventsComponent implements OnInit {
 
   postEditForm(form: EventI){
     console.log(form);
-    this.api.putEvent(form).subscribe(data=>{
+    this.api.putEvent(form).subscribe((data:any)=>{
       console.log(data);
     });
     

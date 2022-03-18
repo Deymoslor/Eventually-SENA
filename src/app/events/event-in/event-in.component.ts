@@ -11,6 +11,8 @@ import { FormGroup, FormControl, Validators} from '@angular/forms';
 })
 export class EventInComponent implements OnInit {
 
+  id!: number;
+
   dataEvent!: EventI;
   eventGroupForm = new FormGroup({
     idEvento: new FormControl(''),
@@ -59,6 +61,10 @@ export class EventInComponent implements OnInit {
        })
       }
      });
+  }
+
+  editEvent(id: number){
+    this.id = id;
   }
 
 }

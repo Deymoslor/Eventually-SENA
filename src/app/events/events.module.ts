@@ -19,15 +19,16 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatLabel } from '@angular/material/form-field';
 
 
+
 @NgModule({
   declarations: [EventsComponent,
     ModalCreateEventComponent,
     EventInComponent,
     ModalResultComponent,
-    ModalEditComponent,
     ModalDisableEventComponent,
     EventProviderComponent,
-    ModalProviderInfoComponent,],
+    ModalProviderInfoComponent,
+    ModalEditComponent,],
   imports: [
     CommonModule,
     NgbModule,
