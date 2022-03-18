@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard.component';
 import { CrudEventsComponent } from './crud-events/crud-events.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -47,7 +47,7 @@ import { TableRequestEventComponent } from './requests/table-request-event/table
     ModalSuppliersComponent,
     RequestsComponent,
     TableRequestGroupsComponent,
-    TableRequestEventComponent
+    TableRequestEventComponent,
   ],
   imports: [
     CommonModule,
@@ -56,7 +56,8 @@ import { TableRequestEventComponent } from './requests/table-request-event/table
     DashboardRoutingModule,
     MatTableModule,
     MatPaginatorModule,
-    MenuModule
+    MenuModule,
+    ReactiveFormsModule
   ]
 })
 export class DashboardModule { }

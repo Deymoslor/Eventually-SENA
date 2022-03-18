@@ -43,6 +43,8 @@ import { ListaPersonasI } from './ListaPersonasI.interface';
 })
 export class CrudUsersComponent implements OnInit {
 
+  parentMessage!: number;
+
   //Variables para probar el llenado de la table.
   // position!:string;
   // firstName!:string;
@@ -76,10 +78,13 @@ constructor(
   ngOnInit(): void {
   // this.dataSource.paginator = this.paginator;
 
+  //valor por defecto del id para evitar el error de campos vacíos al iniciar el padre (crud-users.component) sin el hijo (modal-users.component).
+  // this.parentMessage = "1";
+
   //Obtenemos todos los pacientes.
   this.userService.getAllPersons(1).subscribe(data=>{
   //recibimos por consola los datso que nos esté trayendo.
-  console.log(data);
+  // console.log(data);
 
   //Llamamos a la variable que creamos arriba para asignarle los datos que hay en la variable data.
   this.personas = data;
@@ -90,10 +95,14 @@ constructor(
 
   }
 
-  editarPersona(id:string){
+  editarPersona(id:number){
 
   //Imprimimos por consola para saber si está tomando el ID como debe de ser.
   // console.log(id);
+  //Enviamos al hijo el id de la persona que vamos a editar.
+  // console.log("parentMessage");
+
+  this.parentMessage = id;
   //Cuando vayamos a crear el editar, debemos de tener en cuenta que si lo queremos pasar a otra ruta debemos de pasar un array, que es la ruta (lugar a donde se dirige) y una variable, en este caso el id
   // this.router.navigate(['editar', id]);
   //Dentro del router, debe estar así para idicarle que va a recibir un parámetro cada vez que ingrese a la ruta.

@@ -1,6 +1,6 @@
 export interface ListaPersonasI{
 
-    idPersona:string;
+    idPersona:number;
 
     nombre:string;
 
