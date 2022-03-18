@@ -1,5 +1,12 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-content: space-between;
+}
+
 .thumbnail {
-  width: 86vw;
+  width: 70vw;
   border-radius: 20px;
 }
 
@@ -13,7 +20,7 @@
 }
 
 table {
-  width: 34%;
+  width: 80%;
 }
 
 .mat-column-demo-position {
@@ -37,7 +44,6 @@ table {
   text-align: center;
   font-weight: bold;
 }
-
 .btn {
   margin: 20px;
 }
