@@ -4,8 +4,6 @@ import {MatTableDataSource} from '@angular/material/table';
 import {ApiService} from "../../services/api/api.service";
 import { ListEventsI } from '../../models/listEvents.interface';
 
-
-
 @Component({
   selector: 'app-crud-events',
   templateUrl: './crud-events.component.html',
