@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ServiceService } from '../service/service.service';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -11,6 +11,12 @@ import { ResponseI } from './models/response.intarface';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+
+  //Input para los datos que queremos enviar.
+  @Input() dataInput:any;
+
+  //Mensaje del padre
+  // parentMessageL!: string;
 
   //Creamos el modelo de nuestro formulario login.
   // formUsers!:FormGroup;
@@ -50,6 +56,9 @@ export class LoginComponent implements OnInit {
     //Llamamos método para revisar el local storage.
     this.checkLocalStorage();
 
+    // this.parentMessageL = "Test";
+    // console.log(this.parentMessageL);
+
   }
 
   //Creamos un método que nos ayudará a evaluar si el token existe para determinar si la sesión está abierta o no.
@@ -77,6 +86,12 @@ export class LoginComponent implements OnInit {
 
       //Ahora creamos un if que nos permita acceder al status y comprobar si es correcto.
       if(dataResponse.status == "ok"){
+
+        //En caso de que la respuesta esté como ok, lo que hacemos es almacenar el id en el almacenamiento local para sacarlo en los diferentes métodos que lo necesitemos (En este caso para el user-settings.component).
+        localStorage.setItem("id",dataResponse.result.idPersona);
+
+
+
         //Almacenamos el token en el almacenamiento intero con localStorage.setItem que recibe por parámetro el nombre y el valor.
         localStorage.setItem("token",dataResponse.result.token);
         this.router.navigate(['/groups']);
@@ -89,6 +104,7 @@ export class LoginComponent implements OnInit {
     //Probamos si el formulario está tomando la información.
     // console.log(form);
   }
+
 
   //Método para loggear al usuario.
   // login(){

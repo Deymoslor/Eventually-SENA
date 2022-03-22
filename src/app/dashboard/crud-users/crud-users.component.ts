@@ -43,6 +43,7 @@ import { ListaPersonasI } from './ListaPersonasI.interface';
 })
 export class CrudUsersComponent implements OnInit {
 
+  //Mensaje del padre
   parentMessage!: number;
 
   //Variables para probar el llenado de la table.

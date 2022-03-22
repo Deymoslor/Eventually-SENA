@@ -15,6 +15,7 @@ export class ModalUsersComponent implements OnInit {
   model: NgbDateStruct | undefined;
   date: { year: number; month: number;} | undefined;
 
+  //Input para recibir el id que viene por parte del padre, el crud-users.component general.
   @Input() childMessage!: number;
 
   constructor(
@@ -31,7 +32,7 @@ export class ModalUsersComponent implements OnInit {
   editarForm = new FormGroup({
     idPersona: new FormControl(''),
     //Cuando agregemos el token, aquí debería ir.
-    // token: new FormControl(''),
+    token: new FormControl(''),
     nombre: new FormControl(''),
     apellidos: new FormControl(''),
     documento: new FormControl(''),
@@ -55,9 +56,11 @@ export class ModalUsersComponent implements OnInit {
 
     //En nuestro caso tomamos la variable del padre definida con ayuda del input.
     let personaId = this.childMessage;
-    // console.log(personaId);
-    // let token = this.getToken();
-    // console.log(token);
+    console.log(personaId);
+
+    //Creamos otra variable para el token.
+    let token = this.getToken();
+    console.log(token);
 
     //llamamos al servicio para obtener la información de todos los campos de la persona.
     this.userService.getSinglePerson(personaId).subscribe((data:any) =>{
@@ -69,13 +72,31 @@ export class ModalUsersComponent implements OnInit {
       this.datosPersona = data[0];
 
       //Comprobamos que datos nos está trayendo ahora este nuevo data filtrado por posición 0.
-      console.log(this.datosPersona);
+      // console.log(this.datosPersona);
+
+      //Asignamos valor para evitar el error en consola de que los valores de this.datosPersona estan null.
+      this.editarForm.setValue({
+        'idPersona' : "this.datosPersona.idPersona",
+        'token' : "this.datosPersona.token",
+        'nombre' : "this.datosPersona.nombre",
+        'apellidos' : "this.datosPersona.apellidos",
+        'documento' : "this.datosPersona.documento",
+        'fechaNacimiento' : "this.datosPersona.fechaNacimiento",
+        'Email' : "this.datosPersona.Email",
+        'password' : "this.datosPersona.password",
+        'Celular' : "this.datosPersona.Celular",
+        'ciudad' : "this.datosPersona.ciudad",
+        'Estado' : "this.datosPersona.Estado",
+        'roles_idRoles' : "this.datosPersona.roles_idRoles",
+      })
+
 
       //llamamos nuestro formulario para empezar a asignarle la información de los campos.
       this.editarForm.setValue({
-        'idPersona' : this.datosPersona.idPersona,
-        //Aquí pondríamos token cuando lo hagamos con token.
-        // 'token' : this.datosPersona.token,
+        //El id que tomamos del padre.
+        'idPersona' : personaId,
+        //El token que tomamos del almacenamiento interno.
+        'token' : token,
         'nombre' : this.datosPersona.nombre,
         'apellidos' : this.datosPersona.apellidos,
         'documento' : this.datosPersona.documento,
@@ -97,7 +118,8 @@ export class ModalUsersComponent implements OnInit {
 
   //Creamos método a futuro para pedir el token.
   getToken(){
-    // return localStorage.getItem('token');
+    //Pedimos que del almacenamiento local nos pase la variable token.
+    return localStorage.getItem('token');
   }
 
   //Método que se ejecuta cuando se hace submit de formulario para enviar los datos editados.
@@ -109,6 +131,8 @@ export class ModalUsersComponent implements OnInit {
     //llamamos el método de actualizar desde el servicio.
     this.userService.putPerson(form).subscribe((data:any) =>{
       console.log(data);
+      //Recargamos página.
+      window.location.reload();
     });
 
   }
