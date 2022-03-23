@@ -46,8 +46,8 @@ export class RegisterComponent implements OnInit {
     //Log para revisar los datos del formulario.
     // console.log(form);
     this.service.postUser(form).subscribe(data =>{
-      console.log(data);
-
+      // console.log(data);
+      this.router.navigate(['/loginRegister']);
     });
   }
 

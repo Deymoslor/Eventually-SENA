@@ -27,7 +27,7 @@ export class ServiceService {
   }
 
   postUser(form:registerI):Observable<ResponseI>{
-    let direccion = this.API + "persons";
+    let direccion = this.API + "personsRegister";
     return this.http.post<ResponseI>(direccion,form);
   }
 

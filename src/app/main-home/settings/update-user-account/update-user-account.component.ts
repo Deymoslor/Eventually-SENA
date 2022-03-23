@@ -1,6 +1,5 @@
 import { Component, OnInit  } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { PersonaI } from 'src/app/dashboard/crud-users/modal-users/persona.interface';
 import { updatePersonaI } from '../updatePersonaI';
 import { UpdateServiceService } from '../settingsService/update-service.service';
 
@@ -22,9 +21,8 @@ export class UpdateUserAccountComponent implements OnInit {
 
   //Creamos el FormGroup que nos sirve para poder tener el formulario con los campos correctos y en caso de necesitar validators.
   editarForm = new FormGroup({
-    // idPersona: new FormControl(''),
-    //Cuando agregemos el token, aquí debería ir.
-    // token: new FormControl(''),
+    idPersona: new FormControl(''),
+    token: new FormControl(''),
     nombre: new FormControl(''),
     apellidos: new FormControl(''),
     documento: new FormControl(''),
@@ -36,6 +34,7 @@ export class UpdateUserAccountComponent implements OnInit {
     let idPersona = localStorage.getItem('id');
     // console.log(idPersona);
 
+    let token = localStorage.getItem('token');
 
     //llamamos al servicio para obtener la información de todos los campos de la persona.
     this.updateServiceService.getSinglePerson(idPersona).subscribe((data:any) =>{
@@ -52,9 +51,8 @@ export class UpdateUserAccountComponent implements OnInit {
 
       //llamamos nuestro formulario para empezar a asignarle la información de los campos.
       this.editarForm.setValue({
-        // 'idPersona' : this.datosPersona.idPersona,
-        //Aquí pondríamos token cuando lo hagamos con token.
-        // 'token' : this.datosPersona.token,
+        'idPersona' : idPersona,
+        'token' : token,
         'nombre' : this.datosPersona.nombre,
         'apellidos' : this.datosPersona.apellidos,
         'documento' : this.datosPersona.documento,
@@ -66,6 +64,27 @@ export class UpdateUserAccountComponent implements OnInit {
 
     });
 
+  }
+
+  //Método que se ejecuta cuando se hace submit de formulario para enviar los datos editados.
+  postForm(form:updatePersonaI){
+
+    //Creamos log para verificar que la información está cambiando cuando presinamos el botón.
+    // console.log(form);
+
+    //llamamos el método de actualizar desde el servicio.
+    this.updateServiceService.putPerson(form).subscribe((data:any) =>{
+      console.log(data);
+      //Recargamos página.
+      window.location.reload();
+    });
+
+  }
+
+  //Creamos método para pedir el token.
+  getToken(){
+    //Pedimos que del almacenamiento local nos pase la variable token.
+    return localStorage.getItem('token');
   }
 
 }
