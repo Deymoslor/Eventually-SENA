@@ -4,42 +4,46 @@
         <p>Esperando a ser un lindo Header.</p>
     </div>
 </header>
-<!--Content Container-->
 <app-modal-provider-info></app-modal-provider-info>
-<app-modal-disable-event></app-modal-disable-event>
-<app-modal-edit></app-modal-edit>
 <app-modal-result></app-modal-result>
-<app-modal-create-event></app-modal-create-event><!--Modal-->
-<div class="eventsContainerContent">
-    <!--Aside bar-->
-    <div class="content-asidebar">
-        <div class="content">
-            <p>a</p>
+<app-modal-create-event></app-modal-create-event>
+<!--Modal-->
+<body>
+    <!--Content Container-->
+    <div class="eventsContainerContent">
+        <!--Aside bar-->
+        <div class="content-asidebar">
+            <div class="content">
+                <p>a</p>
+            </div>
         </div>
-    </div>
-    <!--CONTENT-->
-    <div class="principalContainer">
-
-            <!-- Button trigger modal -->
-                <button class="btn btn-primary col-2 d-md-flex justify-content-md-center" data-bs-toggle="modal" data-bs-target="#content-modal">
-                    Crear Evento
+        <!--CONTENT-->
+        <div class="principalContainer">
+    
+                <!-- Button trigger modal -->
+                    <button class="btn btn-primary col-2 d-md-flex justify-content-md-center" data-bs-toggle="modal" data-bs-target="#content-modal">
+                        Crear Evento
+                    </button>
+                <span>Acceder a evento</span>
+                <button class="btn btn-primary col-2 d-md-flex justify-content-md-center" routerLink="events/event-in" (click)="inEvent(1)">
+                    ENTRAR A EVENTO
                 </button>
-            <span>Acceder a evento</span>
-            <button class="btn btn-primary col-2 d-md-flex justify-content-md-center" routerLink="event-in" (click)="inEvent(1)">
-                ENTRAR A EVENTO
-            </button>
-
-            <router-outlet></router-outlet>
-
-
+                
+    
+                <router-outlet>
+                    
+                </router-outlet>
+    
+    
+        </div>
+    
     </div>
-
-</div>
-
-<!--Footer-->
-<footer>
-    <div class="content">
-        <p>A</p>
-    </div>
-
-</footer>
+    
+    <!--Footer-->
+    <footer>
+        <div class="content">
+            <p>A</p>
+        </div>
+    
+    </footer>
+</body>

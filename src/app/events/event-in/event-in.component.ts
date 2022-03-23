@@ -3,6 +3,8 @@ import { EventI } from 'src/app/models/event.interface';
 import { ApiService } from 'src/app/services/api/api.service';
 
 import { FormGroup, FormControl, Validators} from '@angular/forms';
+import { Router } from '@angular/router';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-event-in',
@@ -23,9 +25,10 @@ export class EventInComponent implements OnInit {
     estadoEvento: new FormControl('')
   })
 
-  constructor(private api:ApiService) { }
+  constructor(private api:ApiService, private router:Router, private modalService: NgbModal) { }
 
   idGroup:number = 1
+  closeResult = '';
   
 
   ngOnInit(): void {
@@ -34,7 +37,6 @@ export class EventInComponent implements OnInit {
       this.dataEvent =data[0];
       if(this.dataEvent == null){
         
-        console.log("hola")
         this.eventGroupForm.setValue({
           'idEvento': '1',
           'nombreEvento': '',
@@ -59,6 +61,28 @@ export class EventInComponent implements OnInit {
        })
       }
      });
+  }
+
+  editEvent(idE:number ){
+    this.router.navigate(['edit', idE]);
+  }
+
+  modalOpen(content:any){
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
 
 }

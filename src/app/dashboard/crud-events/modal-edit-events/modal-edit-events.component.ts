@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 
 import { EventI } from '../../../models/event.interface'; 
 import { ApiService } from 'src/app/services/api/api.service';
@@ -27,12 +27,16 @@ export class ModalEditEventsComponent implements OnInit {
     Grupos_idGrupos: new FormControl(''),
     estadoEvento: new FormControl('')
   })
+  idEvent!:number;
+
 
   ngOnChanges(): void{
     
     console.log(this.childMessage);
     if(this.childMessage > 0){
-      this.api.getSingleEvent(this.childMessage).subscribe((data: any) =>{
+      console.log("entre a el if")
+      this.idEvent = this.childMessage;
+      this.api.getSingleEvent(this.idEvent).subscribe((data: any) =>{
        this.dataEvent =data[0];
         this.editForm.setValue({
           'idEvento': this.dataEvent.idEvento,
@@ -44,11 +48,13 @@ export class ModalEditEventsComponent implements OnInit {
           'Grupos_idGrupos': this.dataEvent.Grupos_idGrupos,
           'estadoEvento': this.dataEvent.estadoEvento
         })
+        console.log(this.editForm.get('idEvento')?.value);
       });
     };
   }
 
   ngOnInit(): void {
+    console.log(this.childMessage);
   }
 
   postEditForm(form: EventI){
@@ -77,7 +83,7 @@ export class ModalEditEventsComponent implements OnInit {
     }else if (num == 1) {
       console.log("hola soy el num " + num);
       this.editForm.setValue({
-          'idEvento': this.dataEvent.idEvento,
+        'idEvento': this.dataEvent.idEvento,
           'nombreEvento': this.dataEvent.nombreEvento,
           'descripcionEvento': this.dataEvent.descripcionEvento,
           'fechaEvento': this.dataEvent.fechaEvento,

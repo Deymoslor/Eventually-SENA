@@ -13,7 +13,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ApiService {
 
-  url:string = "http://localhost/apirest-eventuallyD/";
+  url:string = "http://localhost/API_rest_Eventually/";
 
   constructor(private http:HttpClient) { }
 
@@ -28,7 +28,7 @@ export class ApiService {
     return this.http.get<ListEventsI[]>(dir);
   }
 
-  getSingleEvent(id:number):Observable<EventI>{
+  getSingleEvent(id: string | number | null):Observable<EventI>{
     let dir = this.url + "eventos?id=" + id;
     return this.http.get<EventI>(dir);
   }

@@ -1,5 +1,6 @@
-<!-- <div *ngIf="eventGroupForm.get('estadoEvento')?.value == 1> -->
+ <!-- <div *ngIf="eventGroupForm.get('estadoEvento')?.value == 1> -->
 <div *ngIf="eventGroupForm.get('estadoEvento')?.value == 1">
+    
     <div class="content" >
         <div class="class-thumbnail">
             <img src="../../../../assets/main/events/danza.png" alt="Evento Danza" class="thumbnail">
@@ -31,13 +32,14 @@
                 <p class="fw-bolder">fecha de creación</p>
             </div>
             <div class="info">
-                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <button class="btn btn-danger" (click)="modalOpen(content)">
                     Terminar
                 </button>
                 <p class="fw-bolder">Terminar y Resultados</p>
             </div>
             <div class="info edit">
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal">
+                <!-- data-bs-toggle="modal" data-bs-target="#edit-modal-eventin" -->
+                <button class="btn btn-primary"  (click)="editEvent(eventGroupForm.get('idEvento')?.value)" >
                     Editar
                 </button>
                 <p class="fw-bolder">Editar Evento</p>
@@ -74,6 +76,7 @@
 </div>
 
 <div *ngIf="eventGroupForm.get('estadoEvento')?.value == 0">
+    
     <h2>EVENTO DESHABILITADO, SEA PACIENTE, MIENTRAS ESTE ES HABILITADO.</h2>
 </div>
 
@@ -84,3 +87,10 @@
 <div *ngIf="eventGroupForm.get('estadoEvento')?.value == 3">
     <h2>EVENTO TERMINADO, SI DESEA PODRA CREAR UN NUEVO EVENTO.</h2>
 </div>
+
+<ng-template #content let-modal>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    <app-modal-disable-event [idEvent]="eventGroupForm.get('idEvento')?.value" [form]="eventGroupForm.value"></app-modal-disable-event>
+</ng-template>
+
+  

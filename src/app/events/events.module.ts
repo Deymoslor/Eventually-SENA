@@ -7,7 +7,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EventInComponent } from './event-in/event-in.component';
 import { EventsRoutingModule } from './events-routing.module';
 import { ModalResultComponent } from './event-in/modal-result/modal-result.component';
-import { ModalEditComponent } from './event-in/modal-edit/modal-edit.component';
 import { ModalDisableEventComponent } from './event-in/modal-disable-event/modal-disable-event.component';
 import { EventProviderComponent } from './event-in/event-provider/event-provider.component';
 import { MatTableModule } from '@angular/material/table';
@@ -17,6 +16,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatLabel } from '@angular/material/form-field';
+import { EditEventComponent } from './event-in/edit-event/edit-event.component';
 
 
 @NgModule({
@@ -24,10 +24,10 @@ import { MatLabel } from '@angular/material/form-field';
     ModalCreateEventComponent,
     EventInComponent,
     ModalResultComponent,
-    ModalEditComponent,
     ModalDisableEventComponent,
     EventProviderComponent,
-    ModalProviderInfoComponent,],
+    ModalProviderInfoComponent,
+    EditEventComponent,],
   imports: [
     CommonModule,
     NgbModule,
