@@ -13,9 +13,9 @@ export class GroupsServiceService {
   constructor(private http:HttpClient) { }
 
   postGroup(form:Group):Observable<Response>{
-    let dir = this.API+"eventos";
+    let direccion = this.API+"CRUDGroups";
 
-    return this.http.post<Response>(dir, form);
+    return this.http.post<Response>(direccion, form);
   }
 
   getAllGroups(page:number):Observable<ListGroups[]>{

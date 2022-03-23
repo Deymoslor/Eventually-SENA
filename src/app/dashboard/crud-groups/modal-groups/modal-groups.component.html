@@ -56,6 +56,23 @@
             <div class="modal-body">
               <div class="form-group">
 
+                <label for="">Estado:</label>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
+                [ngClass]="(createGroupForm.get('EstadoGrupo_idEstadoGrupo1')?.touched || createGroupForm.get('EstadoGrupo_idEstadoGrupo1')?.dirty) &&
+                createGroupForm.get('EstadoGrupo_idEstadoGrupo1')?.errors ? 'is-invalid' : ''" formControlName="EstadoGrupo_idEstadoGrupo1" name="EstadoGrupo_idEstadoGrupo1" value="1">
+                <label class="form-check-label" for="flexRadioDefault">Activado</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
+                [ngClass]="(createGroupForm.get('EstadoGrupo_idEstadoGrupo1')?.touched || createGroupForm.get('EstadoGrupo_idEstadoGrupo1')?.dirty) &&
+                createGroupForm.get('EstadoGrupo_idEstadoGrupo1')?.errors ? 'is-invalid' : ''" formControlName="EstadoGrupo_idEstadoGrupo1" name="EstadoGrupo_idEstadoGrupo1" value="2">
+                <label class="form-check-label" for="flexRadioDefault">Desactivado</label>
+                </div>
+                <div class="invalid-feddback">
+                  {{ createGroupForm.get("descripcionGrupo")?.hasError("required") ? "Estado requerido" : "" }}
+                </div>
+
                 <label for="">Nombre:</label>
                 <input type="text" class="form-control" id=""
                 placeholder="Ej: Coño e tu madre"
@@ -69,13 +86,13 @@
                 <div class="form-check">
                   <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
                 [ngClass]="(createGroupForm.get('privacidadGrupo')?.touched || createGroupForm.get('privacidadGrupo')?.dirty) &&
-                createGroupForm.get('nombreGrupo')?.errors ? 'is-invalid' : ''" formControlName="privacidadGrupo" name="privacidadGrupo" value="publico">
+                createGroupForm.get('nombreGrupo')?.errors ? 'is-invalid' : ''" formControlName="privacidadGrupo" name="privacidadGrupo" value="2">
                 <label class="form-check-label" for="flexRadioDefault">Publico</label>
                 </div>
                 <div class="form-check">
                   <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
                 [ngClass]="(createGroupForm.get('privacidadGrupo')?.touched || createGroupForm.get('privacidadGrupo')?.dirty) &&
-                createGroupForm.get('nombreGrupo')?.errors ? 'is-invalid' : ''" formControlName="privacidadGrupo" name="privacidadGrupo" value="privado">
+                createGroupForm.get('nombreGrupo')?.errors ? 'is-invalid' : ''" formControlName="privacidadGrupo" name="privacidadGrupo" value="1">
                 <label class="form-check-label" for="flexRadioDefault">Privado</label>
                 </div>
                 <div class="invalid-feddback">

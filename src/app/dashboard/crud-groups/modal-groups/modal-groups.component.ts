@@ -32,6 +32,7 @@ export class ModalGroupsComponent implements OnInit {
       privacidadGrupo: ['', Validators.required],
       InvitadosTotales: ['2', Validators.required],
       check: ['', Validators.required],
+      EstadoGrupo_idEstadoGrupo1: ['2', Validators.required]
     })
   }
 
