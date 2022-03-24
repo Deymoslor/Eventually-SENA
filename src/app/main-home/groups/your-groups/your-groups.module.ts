@@ -10,6 +10,9 @@ import { ModalReportEventsGroupsOrganizerComponent } from './your-groups-details
 import { ModalEditGroupsComponent } from './your-groups-details/modal-edit-groups/modal-edit-groups.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { ModalCreateEventComponent } from './your-groups-details/modal-create-event/modal-create-event.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { FormGroup, ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -18,12 +21,14 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     YourGroupsShowComponent,
     YourGroupsDetailsComponent,
     TableUsersGroupsComponent,
+
   ],
   imports: [
     CommonModule,
     YourGroupsRoutingModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    
   ]
 })
 export class YourGroupsModule { }

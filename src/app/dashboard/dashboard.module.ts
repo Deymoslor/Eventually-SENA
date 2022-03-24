@@ -27,6 +27,7 @@ import { TableRequestGroupsComponent } from './requests/table-request-groups/tab
 import { TableRequestEventComponent } from './requests/table-request-event/table-request-event.component';
 import { ModalEditGroupsComponent } from './crud-groups/modal-edit-groups/modal-edit-groups.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { ModalEditEventsComponent } from './crud-events/modal-edit-events/modal-edit-events.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     RequestsComponent,
     TableRequestGroupsComponent,
     TableRequestEventComponent,
-    ModalEditGroupsComponent
+    ModalEditGroupsComponent,
+    ModalEditEventsComponent
   ],
   imports: [
     CommonModule,

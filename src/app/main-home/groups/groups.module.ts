@@ -15,6 +15,9 @@ import { ModalEditGroupsComponent } from './your-groups/your-groups-details/moda
 import { ModalEventsCompletedComponent } from './your-groups/your-groups-details/modal-events-completed/modal-events-completed.component';
 import { ModalReportEventsGroupsOrganizerComponent } from './your-groups/your-groups-details/modal-report-events-groups-organizer/modal-report-events-groups-organizer.component';
 import { MenuModule } from 'src/app/menu/menu.module';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ModalCreateEventComponent } from './your-groups/your-groups-details/modal-create-event/modal-create-event.component';
 
 
 @NgModule({
@@ -23,7 +26,8 @@ import { MenuModule } from 'src/app/menu/menu.module';
     NavGroupComponent,
     ModalEditGroupsComponent,
     ModalEventsCompletedComponent,
-    ModalReportEventsGroupsOrganizerComponent
+    ModalReportEventsGroupsOrganizerComponent,
+    ModalCreateEventComponent
   ],
   imports: [
     CommonModule,
@@ -34,6 +38,9 @@ import { MenuModule } from 'src/app/menu/menu.module';
     GroupsRoutingModule,
     CreateGroupsModule,
     MenuModule,
+    MatDatepickerModule,
+    FormsModule,
+    ReactiveFormsModule
     
     
   ]

@@ -1,3 +1,4 @@
+
 <a [routerLink]="['/groups/your-groups']" routerLinkActive="router-link-active"  class="back">&lt; Volver al inicio</a>
 <div class="container">
   <br>
@@ -44,7 +45,8 @@
                   <a class="h4 nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Opciones</a>
                   <ul class="dropdown-menu">
                     <li><a class="h5 dropdown-item" role="button" href="#">Regresar</a></li>
-                    <li><a class="h5 dropdown-item" role="button" href="#">Crear evento</a></li>
+                    <!-- <li><a class="h5 dropdown-item" role="button" href="#">Crear evento</a></li> -->
+                    <a class="h5 dropdown-item" data-bs-toggle="modal" data-bs-target="#content-modal" role="button">Crear Evento</a>
                     <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#edit-groups-modal">Editar grupo</a></li>
                     <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#modal-events-completed">Ver eventos realizados</a></li>
                     <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#modal-report-events-groups-organizer">Reportes</a></li>
