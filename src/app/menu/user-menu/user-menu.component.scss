@@ -13,12 +13,25 @@
     .iconUserMenu {
         width: 2rem;
     }
-    .useOption {
-        background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
-        width: 100%;
-        border-radius: 0.5rem;
+}
+
+.useOption {
+    background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
+    width: 100%;
+    border-radius: 0.5rem;
+}
+
+.useOption a {
+    color: white !important;
+    svg {
+        stroke: white !important;
+        fill: white;
     }
-    .useOption:hover {
-        background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
+    .i {
+        fill: none !important;
     }
+}
+
+.useOption:hover {
+    background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
 }

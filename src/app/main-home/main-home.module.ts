@@ -11,9 +11,22 @@ import { ModalCheckEventComponent } from './providers/modal-check-event/modal-ch
 import { ModalCreateServiceComponent } from './providers/modal-create-service/modal-create-service.component';
 import { TableInvitationsEventsComponent } from './providers/table/table-invitations-events/table-invitations-events.component';
 import { ModalEditServiceComponent } from './providers/modal-edit-service/modal-edit-service.component';
+import { FooterModule } from '../footer/footer.module';
+import { MenuModule } from '../menu/menu.module';
+import { GroupsModule } from './groups/groups.module';
+import { SettingsModule } from './settings/settings.module';
+import { EventsModule } from './events/events.module';
 
 @NgModule({
-  declarations: [MainHomeComponent, ProvidersComponent, ModalCheckEventComponent, ModalCreateServiceComponent, TableInvitationsEventsComponent, ModalEditServiceComponent,],
+  declarations: [
+    MainHomeComponent,
+     ProvidersComponent, 
+     ModalCheckEventComponent, 
+     ModalCreateServiceComponent, 
+     TableInvitationsEventsComponent, 
+     ModalEditServiceComponent,
+     
+    ],
   imports: [
     CommonModule,
     NgbModule,
@@ -21,6 +34,11 @@ import { ModalEditServiceComponent } from './providers/modal-edit-service/modal-
     MainHomeRoutingModule,
     MatTableModule,
     MatPaginatorModule,
+    MenuModule,
+    FooterModule,
+    GroupsModule,
+    SettingsModule,
+    EventsModule
   ]
 })
 export class MainHomeModule { }

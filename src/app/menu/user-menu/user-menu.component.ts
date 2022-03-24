@@ -6,12 +6,4 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-menu.component.scss']
 })
 export class UserMenuComponent{
-  buttonUser ="Info"
-  btnNoti(){
-    this.buttonUser ='noti'
-  }
-  btnInfo(){
-    this.buttonUser ='Info'
-  }
-
 }
