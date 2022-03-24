@@ -64,7 +64,7 @@ export class EventInComponent implements OnInit {
   }
 
   editEvent(idE:number ){
-    this.router.navigate(['edit', idE]);
+    this.router.navigate(['events/edit', idE]);
   }
 
   modalOpen(content:any){

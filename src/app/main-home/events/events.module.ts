@@ -16,7 +16,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatLabel } from '@angular/material/form-field';
-// import { EditEventComponent } from './event-in/edit-event/edit-event.component';
+import { EditEventComponent } from './event-in/edit-event/edit-event.component';
 
 
 @NgModule({
@@ -27,7 +27,8 @@ import { MatLabel } from '@angular/material/form-field';
     ModalDisableEventComponent,
     EventProviderComponent,
     ModalProviderInfoComponent,
-    // EditEventComponent,
+    EditEventComponent,
+    EditEventComponent
   ],
   imports: [
     CommonModule,
