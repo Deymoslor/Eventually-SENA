@@ -25,7 +25,7 @@ import { CrudGroupsComponent } from './crud-groups/crud-groups.component';
 import { RequestsComponent } from './requests/requests.component';
 import { TableRequestGroupsComponent } from './requests/table-request-groups/table-request-groups.component';
 import { TableRequestEventComponent } from './requests/table-request-event/table-request-event.component';
-import { ModalEditEventsComponent } from './crud-events/modal-edit-events/modal-edit-events.component';
+import { ModalEditGroupsComponent } from './crud-groups/modal-edit-groups/modal-edit-groups.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 
 
@@ -50,7 +50,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     RequestsComponent,
     TableRequestGroupsComponent,
     TableRequestEventComponent,
-    ModalEditEventsComponent
+    ModalEditGroupsComponent
   ],
   imports: [
     CommonModule,
@@ -62,7 +62,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MenuModule,
     ReactiveFormsModule,
     MatDatepickerModule,
-    
+
   ]
 })
 export class DashboardModule { }

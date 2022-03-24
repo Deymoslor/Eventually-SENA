@@ -11,12 +11,19 @@ import { RelatedGroupsModule } from './related-groups/related-groups.module';
 import { YourGroupsModule } from './your-groups/your-groups.module';
 import { CreateGroupsModule } from './create-groups/create-groups.module';
 import { NavGroupComponent } from './nav-group/nav-group.component';
+import { ModalEditGroupsComponent } from './your-groups/your-groups-details/modal-edit-groups/modal-edit-groups.component';
+import { ModalEventsCompletedComponent } from './your-groups/your-groups-details/modal-events-completed/modal-events-completed.component';
+import { ModalReportEventsGroupsOrganizerComponent } from './your-groups/your-groups-details/modal-report-events-groups-organizer/modal-report-events-groups-organizer.component';
+import { MenuModule } from 'src/app/menu/menu.module';
 
 
 @NgModule({
   declarations: [
     GroupsComponent,
-    NavGroupComponent
+    NavGroupComponent,
+    ModalEditGroupsComponent,
+    ModalEventsCompletedComponent,
+    ModalReportEventsGroupsOrganizerComponent
   ],
   imports: [
     CommonModule,
@@ -26,6 +33,7 @@ import { NavGroupComponent } from './nav-group/nav-group.component';
     YourGroupsModule,
     GroupsRoutingModule,
     CreateGroupsModule,
+    MenuModule,
     
     
   ]

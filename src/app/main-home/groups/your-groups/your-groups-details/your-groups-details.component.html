@@ -1,4 +1,3 @@
-<app-modal-edit-groups></app-modal-edit-groups>
 <a [routerLink]="['/groups/your-groups']" routerLinkActive="router-link-active"  class="back">&lt; Volver al inicio</a>
 <div class="container">
   <br>
@@ -40,53 +39,23 @@
             </div>
 
             <div class="p-4">
-              <h4 class="fst-italic">Opciones</h4>
-                <div class="d-flex align-items-start">
-                  <div class="nav flex-column me-3" aria-orientation="vertical">
-                    <button class="nav-link" type="button">Regresar</button>
-                    <br>
-                    <button class="nav-link" type="button">Crear evento</button>
-                    <br>
-                    <button class="nav-link" data-bs-toggle="modal" data-bs-target="#edit-groups-modal" type="button">Editar grupo</button>
-                    <br>
-                    <button class="nav-link" type="button">Eliminar grupo</button>
-                  </div>
-                </div>
+              <ul class="nav nav-taps">
+                <li class="nav-item dropdown">
+                  <a class="h4 nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Opciones</a>
+                  <ul class="dropdown-menu">
+                    <li><a class="h5 dropdown-item" role="button" href="#">Regresar</a></li>
+                    <li><a class="h5 dropdown-item" role="button" href="#">Crear evento</a></li>
+                    <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#edit-groups-modal">Editar grupo</a></li>
+                    <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#modal-events-completed">Ver eventos realizados</a></li>
+                    <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#modal-report-events-groups-organizer">Reportes</a></li>
+                    <li><a class="h5 dropdown-item" role="button" href="#">Eliminar grupo</a></li>
+                  </ul>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Nonbre de usuario</th>
-              <th>Roles</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Alice</td>
-              <td>Organizadora</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>Bob</td>
-              <td>Participante</td>
-              <td><button class="btn btn-primary">Eliminar</button></td>
-            </tr>
-            <tr>
-              <td>Charlie</td>
-              <td>Participante</td>
-              <td><button class="btn btn-primary">Eliminar</button></td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td>Totals</td>
-              <td>50</td>
-            </tr>
-          </tfoot>
-        </table>
+        <app-table-users-groups></app-table-users-groups>
       </div>
     </div>
 </div>
