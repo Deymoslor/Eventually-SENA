@@ -27,6 +27,7 @@ import { TableRequestGroupsComponent } from './requests/table-request-groups/tab
 import { TableRequestEventComponent } from './requests/table-request-event/table-request-event.component';
 import { ModalEditLikesComponent } from './crud-likes/modal-edit-likes/modal-edit-likes.component';
 import { ModalEditEventsComponent } from './crud-events/modal-edit-events/modal-edit-events.component';
+import { ModalEditGroupsComponent } from './crud-groups/modal-edit-groups/modal-edit-groups.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 
 
@@ -52,6 +53,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     TableRequestGroupsComponent,
     TableRequestEventComponent,
     ModalEditLikesComponent,
+    ModalEditGroupsComponent,
     ModalEditEventsComponent
 
   ],
@@ -63,7 +65,6 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatTableModule,
     MatPaginatorModule,
     MenuModule,
-    ReactiveFormsModule,
     ReactiveFormsModule,
     MatDatepickerModule
   ]
