@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ModalEditComponent } from './modal-edit.component';
+import { ModalEditLikesComponent } from './modal-edit-likes.component';
 
-describe('ModalEditComponent', () => {
-  let component: ModalEditComponent;
-  let fixture: ComponentFixture<ModalEditComponent>;
+describe('ModalEditLikesComponent', () => {
+  let component: ModalEditLikesComponent;
+  let fixture: ComponentFixture<ModalEditLikesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ModalEditComponent ]
+      declarations: [ ModalEditLikesComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ModalEditComponent);
+    fixture = TestBed.createComponent(ModalEditLikesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

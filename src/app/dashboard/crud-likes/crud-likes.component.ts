@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
+import { LikesI } from 'src/app/models/likes';
+import { ApiService } from 'src/app/services/api.service';
 
 export interface PeriodicElement {
   position: number;
@@ -35,10 +37,21 @@ export class CrudLikesComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
 
-  constructor() { }
+  id!:number;
+  likes?:LikesI[];
+
+  constructor(
+    private api:ApiService
+  ) { }
 
   ngOnInit(): void {
-    this.dataSource.paginator = this.paginator;
+    
+    this.api.getAllLikes(1).subscribe(data => {this.likes=data})
+
+
+  }
+  editLikes(id:number){
+    this.id=id;
   }
 
 }

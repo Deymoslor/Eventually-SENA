@@ -1,0 +1,27 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-content: space-between;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  flex-grow: 1;
+  margin-top: 40px;
+  margin: 5px 5px;
+  padding-top: 200px;
+}
+
+.container-buttons {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+}
+
+.container-buttons button {
+  margin: 15px;
+}

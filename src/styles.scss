@@ -1,4 +1,9 @@
-$theme-colors: ( "primary": #0074d9, "warning": #ffc107, "secondary": #6c757d, );
+$theme-colors: (
+  "primary": #0074d9,
+  "warning": #ffc107,
+  "secondary": #6c757d,
+  "danger": #dc3545,
+);
 
 /* You can add global styles to this file, and also import other style files */
 
@@ -9,15 +14,14 @@ $theme-colors: ( "primary": #0074d9, "warning": #ffc107, "secondary": #6c757d, )
 @import "~bootstrap/scss/bootstrap";
 html,
 body {
-    height: 100%;
+  height: 100%;
 }
 
 body {
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-
 /* Importing Bootstrap SCSS file. */
 
 @import "~bootstrap/scss/bootstrap";
@@ -32,6 +36,5 @@ body {
 
 /* Importing Bootstrap SCSS file. */
 
-@import '~bootstrap/scss/bootstrap';
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
