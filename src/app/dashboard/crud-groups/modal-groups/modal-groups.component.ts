@@ -16,6 +16,7 @@ export class ModalGroupsComponent implements OnInit {
 
   createGroupForm = new FormGroup({
     idGroups: new FormControl(''),
+    nombreGrupo: new FormControl(''),
     descripcionGrupo: new FormControl(''),
     privacidadGrupo: new FormControl(''),
     InvitadosTotales: new FormControl(''),
@@ -32,7 +33,7 @@ export class ModalGroupsComponent implements OnInit {
       privacidadGrupo: ['', Validators.required],
       InvitadosTotales: ['2', Validators.required],
       check: ['', Validators.required],
-      EstadoGrupo_idEstadoGrupo1: ['2', Validators.required]
+      EstadosGrupo_idEstadosGrupo1: ['2', Validators.required]
     })
   }
 

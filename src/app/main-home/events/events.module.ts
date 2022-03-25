@@ -28,7 +28,6 @@ import { EditEventComponent } from './event-in/edit-event/edit-event.component';
     EventProviderComponent,
     ModalProviderInfoComponent,
     EditEventComponent,
-    EditEventComponent
   ],
   imports: [
     CommonModule,

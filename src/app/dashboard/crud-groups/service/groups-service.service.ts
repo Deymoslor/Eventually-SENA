@@ -8,7 +8,7 @@ import { Group } from "../modal-edit-groups/group.interface";
   providedIn: 'root'
 })
 export class GroupsServiceService {
-  API:string='http://localhost/angularProyectos/ApiRestEventuallyGroups/';
+  API:string='http://localhost/API_rest_Eventually/';
 
   constructor(private http:HttpClient) { }
 
