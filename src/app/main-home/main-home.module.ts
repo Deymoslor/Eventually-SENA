@@ -20,12 +20,12 @@ import { EventsModule } from './events/events.module';
 @NgModule({
   declarations: [
     MainHomeComponent,
-     ProvidersComponent, 
-     ModalCheckEventComponent, 
-     ModalCreateServiceComponent, 
-     TableInvitationsEventsComponent, 
+     ProvidersComponent,
+     ModalCheckEventComponent,
+     ModalCreateServiceComponent,
+     TableInvitationsEventsComponent,
      ModalEditServiceComponent,
-     
+
     ],
   imports: [
     CommonModule,

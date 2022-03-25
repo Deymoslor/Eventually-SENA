@@ -26,6 +26,8 @@ import { RequestsComponent } from './requests/requests.component';
 import { TableRequestGroupsComponent } from './requests/table-request-groups/table-request-groups.component';
 import { TableRequestEventComponent } from './requests/table-request-event/table-request-event.component';
 import { ModalEditLikesComponent } from './crud-likes/modal-edit-likes/modal-edit-likes.component';
+import { ModalEditEventsComponent } from './crud-events/modal-edit-events/modal-edit-events.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 
 @NgModule({
@@ -49,7 +51,9 @@ import { ModalEditLikesComponent } from './crud-likes/modal-edit-likes/modal-edi
     RequestsComponent,
     TableRequestGroupsComponent,
     TableRequestEventComponent,
-    ModalEditLikesComponent
+    ModalEditLikesComponent,
+    ModalEditEventsComponent
+
   ],
   imports: [
     CommonModule,
@@ -59,7 +63,9 @@ import { ModalEditLikesComponent } from './crud-likes/modal-edit-likes/modal-edi
     MatTableModule,
     MatPaginatorModule,
     MenuModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ReactiveFormsModule,
+    MatDatepickerModule
   ]
 })
 export class DashboardModule { }

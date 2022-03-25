@@ -1,7 +1,76 @@
 <div class="modal fade" id="content-modal-users" tabindex="-1" >
     <div class="modal-dialog modal-lg modal-dialog-scrollable">
         <div class="modal-content">
+            <!-- Mensaje de padre: {{childMessage}} -->
             <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Actualización</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Jordan Form Start-->
+                <form [formGroup]="editarForm" (ngSubmit)="postForm(editarForm.value)">
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input type="text" class="form-control" placeholder="Nombre de la persona" formControlName="nombre">
+                    </div>
+                    <div class="form-group">
+                        <label>apellidos</label>
+                        <input type="text" class="form-control" placeholder="Apellidos de la persona" formControlName="apellidos">
+                    </div>
+                    <div class="form-group">
+                        <label>documento</label>
+                        <input type="text" class="form-control" placeholder="Focumento de la persona" formControlName="documento">
+                    </div>
+                    <div class="form-group">
+                        <label>fecha de Nacimiento</label>
+                        <input type="text" class="form-control" placeholder="Fecha de nacimiento de la persona" formControlName="fechaNacimiento">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="text" class="form-control" placeholder="Email de la persona" formControlName="Email">
+                    </div>
+                    <div class="form-group">
+                        <label>password</label>
+                        <input type="text" class="form-control" placeholder="Contraseña de la persona" formControlName="password">
+                    </div>
+                    <div class="form-group">
+                        <label>Celular</label>
+                        <input type="text" class="form-control" placeholder="Número celular de la persona" formControlName="Celular">
+                    </div>
+                    <div class="form-group">
+                        <label>ciudad</label>
+                        <input type="text" class="form-control" placeholder="Ciudad de la persona" formControlName="ciudad">
+                    </div>
+
+                    <!-- <div class="form-group">
+                        <label>Estado</label>
+                        <input type="text" class="form-control" placeholder="Estado de la persona" formControlName="Estado">
+                    </div> -->
+
+                    <!-- <label for="">Estado Evento:</label>
+                        <input type="text"  class="form-control" id=""
+                        placeholder="Ej: El mejor evento" formControlName="estadoEvento"[readonly]="true">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" *ngIf="editarForm.get('estadoEvento')?.value != 1" (click)="switchStateEvent(editarForm.get('estadoEvento')?.value)" >
+                            <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" *ngIf="editarForm.get('estadoEvento')?.value == 1" (click)="switchStateEvent(editarForm.get('estadoEvento')?.value)" checked >
+                            <label class="form-check-label fw-bolder fs-4 label" for="flexSwitchCheckChecked" *ngIf="editarForm.get('estadoEvento')?.value != 1">Habilitar evento</label>
+                            <label class="form-check-label fw-bolder fs-4 label" for="flexSwitchCheckChecked" *ngIf="editarForm.get('estadoEvento')?.value == 1">Deshabilitar evento</label>
+                        </div> -->
+
+
+                    <div class="form-group">
+                        <label>roles_idRoles</label>
+                        <input type="text" class="form-control" placeholder="Rol del apersona" formControlName="roles_idRoles">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" (click)="postForm(editarForm.value)">Actualizar</button>
+            </div>
+            <!-- Jordan Form End -->
+
+            <!-- <div class="modal-header">
             <h5 class="modal-title" id="staticBackdropLabel">Creacion de usuarios</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -57,7 +126,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 <button type="button" class="btn btn-primary">Crear evento</button>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
