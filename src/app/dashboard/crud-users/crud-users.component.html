@@ -146,6 +146,11 @@ The actual rendered columns are set as a property on the row definition" -->
 
                 <td>{{persona.Email}}</td>
 
+                <!-- Dylan
+                *ngIf="editarForm.get('estadoEvento')?.value != 1" (click)="switchStateEvent(editarForm.get('estadoEvento')?.value)"
+                -->
+
+
                 <div *ngIf="persona.Estado==='Activo'">
 
                     <td></td>
@@ -154,7 +159,23 @@ The actual rendered columns are set as a property on the row definition" -->
 
                     <div class="form-check form-switch">
 
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked (click)="cambioEstado(persona.Estado,persona.idPersona)">
+
+                        <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+
+                    </div>
+
+                </div>
+
+                <div *ngIf="persona.Estado==='Inactivo'">
+
+                    <td></td>
+                    <br>
+                    <br>
+
+                    <div class="form-check form-switch">
+
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" (click)="cambioEstado(persona.Estado,persona.idPersona)">
 
                         <label class="form-check-label" for="flexSwitchCheckChecked"></label>
 

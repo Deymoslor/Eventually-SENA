@@ -56,11 +56,11 @@ export class ModalUsersComponent implements OnInit {
 
     //En nuestro caso tomamos la variable del padre definida con ayuda del input.
     let personaId = this.childMessage;
-    console.log(personaId);
+    // console.log(personaId);
 
     //Creamos otra variable para el token.
     let token = this.getToken();
-    console.log(token);
+    // console.log(token);
 
     //llamamos al servicio para obtener la información de todos los campos de la persona.
     this.userService.getSinglePerson(personaId).subscribe((data:any) =>{
@@ -135,44 +135,6 @@ export class ModalUsersComponent implements OnInit {
       window.location.reload();
     });
 
-  }
-
-  switchStateEvent(num: number){
-    if(num != 1){
-      console.log("hola soy el num " + num);
-      this.editarForm.setValue({
-        'idPersona' : this.datosPersona.idPersona,
-        //Aquí pondríamos token cuando lo hagamos con token.
-        // 'token' : this.datosPersona.token,
-        'nombre' : this.datosPersona.nombre,
-        'apellidos' : this.datosPersona.apellidos,
-        'documento' : this.datosPersona.documento,
-        'fechaNacimiento' : this.datosPersona.fechaNacimiento,
-        'Email' : this.datosPersona.Email,
-        'password' : this.datosPersona.password,
-        'Celular' : this.datosPersona.Celular,
-        'ciudad' : this.datosPersona.ciudad,
-        'Estado' : 1,
-        'roles_idRoles' : this.datosPersona.roles_idRoles,
-      })
-    }else if (num == 1) {
-      console.log("hola soy el num " + num);
-      this.editarForm.setValue({
-        'idPersona' : this.datosPersona.idPersona,
-        //Aquí pondríamos token cuando lo hagamos con token.
-        // 'token' : this.datosPersona.token,
-        'nombre' : this.datosPersona.nombre,
-        'apellidos' : this.datosPersona.apellidos,
-        'documento' : this.datosPersona.documento,
-        'fechaNacimiento' : this.datosPersona.fechaNacimiento,
-        'Email' : this.datosPersona.Email,
-        'password' : this.datosPersona.password,
-        'Celular' : this.datosPersona.Celular,
-        'ciudad' : this.datosPersona.ciudad,
-        'Estado' : 0,
-        'roles_idRoles' : this.datosPersona.roles_idRoles,
-      })
-    }
   }
 
 }

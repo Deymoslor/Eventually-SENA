@@ -38,8 +38,9 @@ export class userService {
   }
 
   //Creamos el método para actualizar.
-  putPerson(form:PersonaI):Observable<ResponseI>{
+  putPerson(form:any):Observable<ResponseI>{
     let direccion = this.API+"persons";
+
     return this.http.put<ResponseI>(direccion,form);
   }
 
