@@ -5,6 +5,7 @@ import { UpdateUserAccountComponent } from './update-user-account/update-user-ac
 import { SettingsRoutingModule } from './settings-routing.module';
 import { FooterModule } from 'src/app/footer/footer.module';
 import { MenuModule } from 'src/app/menu/menu.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -18,7 +19,9 @@ import { MenuModule } from 'src/app/menu/menu.module';
     CommonModule,
     SettingsRoutingModule,
     MenuModule,
-    FooterModule
-  ],
+    FooterModule,
+    FormsModule,
+    ReactiveFormsModule
+  ]
 })
 export class SettingsModule { }

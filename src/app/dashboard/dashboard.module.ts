@@ -51,6 +51,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     TableRequestGroupsComponent,
     TableRequestEventComponent,
     ModalEditEventsComponent
+
   ],
   imports: [
     CommonModule,
@@ -61,8 +62,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatPaginatorModule,
     MenuModule,
     ReactiveFormsModule,
-    MatDatepickerModule,
-    
+    MatDatepickerModule
   ]
 })
 export class DashboardModule { }

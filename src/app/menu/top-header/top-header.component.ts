@@ -12,4 +12,8 @@ export class TopHeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  logOut(){
+    localStorage.clear();
+  }
+
 }

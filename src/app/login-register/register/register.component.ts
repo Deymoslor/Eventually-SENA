@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 //Form groups import.
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 //Accout Service import.
 import { ServiceService } from '../service/service.service';
 import { Router } from '@angular/router';
+import { registerI } from './register.interface';
 
 @Component({
   selector: 'app-register',
@@ -12,27 +13,21 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
-  formUsers:FormGroup;
-  // formUsers!: FormGroup;
-
-  // formUsers = new FormGroup({
-  //   email: new FormControl(''),
-  //   password: new FormControl(''),
-  // });
+  nuevoForm = new FormGroup({
+    nombre: new FormControl(''),
+    apellidos: new FormControl(''),
+    documento: new FormControl(''),
+    fechaNacimiento: new FormControl(''),
+    Email: new FormControl(''),
+    password: new FormControl(''),
+    Celular: new FormControl(''),
+    ciudad: new FormControl(''),
+  });
 
   constructor(
-    public formulario:FormBuilder,
-    private accoutsService:ServiceService,
+    private service:ServiceService,
     private router:Router
-    ) {
-
-      //Retomamos la información del formulario.
-      this.formUsers = this.formulario.group({
-        email:[''],
-        password:['']
-      })
-
-    }
+    ) {}
 
   ngOnInit(): void {
   }
@@ -40,18 +35,20 @@ export class RegisterComponent implements OnInit {
   //Creamos método para enviar datos del furmulario a la API.
   sendData():any{
     console.log("Me presionaste");
-    console.log(this.formUsers.value);
 
-    //llamamos el método de insertar empleado haciendo uso de crudService
-    this.accoutsService.addUser(this.formUsers.value).subscribe(respuesta=>{
-
-      this.router.navigate(['/loginRegister']);
-
-    });
   }
 
   cancel():any{
     this.router.navigate(['/loginRegister']);
+  }
+
+  postForm(form:registerI){
+    //Log para revisar los datos del formulario.
+    // console.log(form);
+    this.service.postUser(form).subscribe(data =>{
+      // console.log(data);
+      this.router.navigate(['/loginRegister']);
+    });
   }
 
 }

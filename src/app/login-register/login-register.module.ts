@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { LoginnComponent } from './loginn/loginn.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SupplierRequestComponent } from './supplier-request/supplier-request.component';
+import { SettingsModule } from '../main-home/settings/settings.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { SupplierRequestComponent } from './supplier-request/supplier-request.co
     CommonModule,
     LoginRegisterRouterModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    SettingsModule
   ]
 })
 export class LoginRegisterModule { }
