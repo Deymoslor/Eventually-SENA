@@ -40,7 +40,8 @@ import { ModalCreateEventComponent } from './your-groups/your-groups-details/mod
     MenuModule,
     MatDatepickerModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    
     
     
   ]
