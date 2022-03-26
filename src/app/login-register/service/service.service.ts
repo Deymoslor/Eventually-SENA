@@ -12,7 +12,7 @@ import { registerI } from '../register/register.interface';
 export class ServiceService {
 
   //Definimos ruta raíz de el API.
-  API:string='http://localhost/API_rest_Eventually/';
+  API:string='http://localhost/Api-Eventually-SENA/';
 
   //Definimos dentro del constructor el cliente http.
   constructor(private http:HttpClient) { }
