@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Group } from '../see-groups/groups';
+import { Groups } from '../see-groups/groups';
 import { YourGroupsService } from './your-groups.service';
 
 @Component({
@@ -9,11 +9,11 @@ import { YourGroupsService } from './your-groups.service';
   styleUrls: ['./your-groups.component.scss']
 })
 export class YourGroupsComponent implements OnInit {
-  get groups(): Group[] {
+  get groups(): Groups[] {
     const groups = this.YourGroupsService.groups;
 
     if (this.route.snapshot.queryParamMap.get('orderBy') === 'id') {
-      groups.sort((a, b) => a.id - b.id);
+      groups.sort((a, b) => a.idGrupos - b.idGrupos);
     }
 
     return groups;

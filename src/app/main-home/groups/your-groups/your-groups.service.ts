@@ -1,23 +1,22 @@
 import { Injectable } from '@angular/core';
-import { Group } from '../see-groups/groups';
+import { Groups } from '../see-groups/groups';
 
 @Injectable({
   providedIn: 'root'
 })
 export class YourGroupsService {
-  readonly groups: Group[] = [
+  readonly groups: Groups[] = [
     {
-      id: 1,
-      imgGroup: '3.jfif',
-      GroupName: 'Maquillaje',
-      description: 'Auriculares',
-      totalUsers: 50,
+      idGrupos: 1,
+      nombreGrupo: 'Maquillaje',
+      descripcionGrupo: 'Auriculares',
+      invitadosTotales: 50,
     },
   ];
 
   constructor() { }
 
-  getGroup(requestId : Number): Group | null {
-    return this.groups.find((group) => group.id === requestId) || null;
+  getGroup(requestId : Number): Groups | null {
+    return this.groups.find((group) => group.idGrupos === requestId) || null;
   }
 }

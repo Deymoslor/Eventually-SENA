@@ -13,7 +13,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ApiService {
 
-  url:string = "http://localhost/API_rest_Eventually/";
+  url:string = "http://localhost/angularProyectos/Api-Eventually-SENA/";
 
   constructor(private http:HttpClient) { }
 

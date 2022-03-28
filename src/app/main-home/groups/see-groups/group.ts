@@ -1,4 +1,4 @@
-export interface Groups {
+export interface Group {
   idGrupos: number;
   nombreGrupo: string;
   descripcionGrupo: string;

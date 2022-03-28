@@ -1,30 +1,39 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Group } from '../see-groups/groups';
+import { Observable } from 'rxjs';
+import { Group } from '../see-groups/group';
+import { Groups } from '../see-groups/groups';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RelatedGroupsService {
-  readonly groups: Group[] = [
-    {
-      id: 1,
-      imgGroup: '5.jfif',
-      GroupName: 'Maquillaje',
-      description: 'Auriculares',
-      totalUsers: 50,
-    },
-    {
-      id: 2,
-      imgGroup: '3.jfif',
-      GroupName: 'Solo Redes',
-      description: 'Auriculares',
-      totalUsers: 50,
-    },
-  ];
+  API:string='http://localhost/angularProyectos/Api-Eventually-SENA/';
+  // readonly groups: Groups[] = [
+  //   {
+  //     idGrupos: 1,
+  //     nombreGrupo: 'Maquillaje',
+  //     descripcionGrupo: 'Auriculares',
+  //     invitadosTotales: 50,
+  //   },
+  //   {
+  //     idGrupos: 2,
+  //     nombreGrupo: 'Solo Redes',
+  //     descripcionGrupo: 'Auriculares',
+  //     invitadosTotales: 50,
+  //   },
+  // ];
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
-  getGroup(requestId : Number): Group | null {
-    return this.groups.find((group) => group.id === requestId) || null;
+  getRelatedGroups(page:number):Observable<Groups[]>{
+    let direccion = this.API + "relatedGroups?page=" + page;
+
+    return this.http.get<Groups[]>(direccion);
+  }
+
+  getDetailsRelatedGroup(id:number):Observable<Group>{
+    let direccion = this.API + "relatedGroups?id=" + id;
+    return this.http.get<Group>(direccion);
   }
 }

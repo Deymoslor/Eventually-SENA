@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Group } from './groups';
+import { Groups } from './groups';
 import { SeeGroupsService } from "./see-groups.service";
 
 @Component({
@@ -9,7 +9,7 @@ import { SeeGroupsService } from "./see-groups.service";
   styleUrls: ['./see-groups-show.component.scss'],
 })
 export class SeeGroupsShowComponent {
-  @Input() group!: Group;
+  @Input() group!: Groups;
   constructor(
     private SeeGroupsService: SeeGroupsService,
     private router: Router,
@@ -18,7 +18,7 @@ export class SeeGroupsShowComponent {
 
 
   navigateToGroupDetails(): void {
-    this.router.navigate(['show', this.group.id], {
+    this.router.navigate(['show', this.group.idGrupos], {
       relativeTo: this.route,
     });
   }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Group } from '../see-groups/groups';
+import { Groups } from '../see-groups/groups';
 import { RelatedGroupsService } from './related-groups.service';
 
 @Component({
@@ -9,18 +9,24 @@ import { RelatedGroupsService } from './related-groups.service';
   styleUrls: ['./related-groups.component.scss']
 })
 export class RelatedGroupsComponent implements OnInit {
- get groups(): Group[] {
-  const groups = this.RelatedGroupsService.groups;
+  groups!: Groups[];
+//   get groups(): Groups[] {
+//   const groups = this.RelatedGroupsService.getRelatedGroups;
 
-  if (this.route.snapshot.queryParamMap.get('orderBy') === 'id') {
-    groups.sort((a, b) => a.id - b.id);
-  }
-  return groups;
- }
+//   if (this.route.snapshot.queryParamMap.get('orderBy') === 'id') {
+//     groups.sort((a, b) => a.idGrupos - b.idGrupos);
+//   }
+//   return groups;
+//  }
 
   constructor(private RelatedGroupsService: RelatedGroupsService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.RelatedGroupsService.getRelatedGroups(1).subscribe(data => {
+      console.log(data);
+
+      this.groups = data;
+    })
   }
 
 }

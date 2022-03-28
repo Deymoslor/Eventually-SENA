@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EventI } from 'src/app/models/event.interface';
-import { Group } from '../../see-groups/groups';
+import { Group } from '../../see-groups/group';
 import { YourGroupsService } from "../your-groups.service";
 import { ApiService } from '../../../../services/api/api.service';
 
@@ -83,7 +83,7 @@ export class YourGroupsDetailsComponent implements OnInit {
   postForm(form:EventI){
     console.log(form);
 
-    
+
     this.api.postEvent(form).subscribe( data => {
       console.log(data);
     })
