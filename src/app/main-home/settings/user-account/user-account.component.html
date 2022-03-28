@@ -10,28 +10,44 @@
                     <!-- Nombre -->
                     <div class="mb-3">
                         <b><label class="form-label">Nombres</label></b>
-                        <input required type="text" class="form-control" formControlName="nombre" aria-describedby="helpId" placeholder="Escribe tu nombre">
+                        <br>
+                        <!-- <input required type="text" class="form-control" formControlName="nombre" aria-describedby="helpId" placeholder="Escribe tu nombre"> -->
+                        {{this.datosPersona.nombre}}
+
+                        <div class="separator"></div>
 
                     </div>
 
                     <!-- Apellidos -->
                     <div class="mb-3">
                         <b><label class="form-label">Apellidos</label></b>
-                        <input required type="text" class="form-control" formControlName="apellidos" aria-describedby="helpId" placeholder="Escribe tus apellidos">
+                        <!-- <input required type="text" class="form-control" formControlName="apellidos" aria-describedby="helpId" placeholder="Escribe tus apellidos"> -->
+                        <br>
+                        {{this.datosPersona.apellidos}}
+
+                        <div class="separator"></div>
 
                     </div>
 
                     <!-- Documento -->
                     <div class="mb-3">
                         <b><label class="form-label">Documento</label></b>
-                        <input required type="text" class="form-control" formControlName="documento" aria-describedby="helpId" placeholder="Escribe tu documento">
+                        <!-- <input required type="text" class="form-control" formControlName="documento" aria-describedby="helpId" placeholder="Escribe tu documento"> -->
+                        <br>
+                        {{this.datosPersona.documento}}
+
+                        <div class="separator"></div>
 
                     </div>
 
                     <!-- fechaNacimiento -->
                     <div class="mb-3">
                         <b><label class="form-label">Fecha de Nacimiento</label></b>
-                        <input required type="date" class="form-control" formControlName="fechaNacimiento" aria-describedby="helpId" placeholder="Escribe tu fecha de nacimiento">
+                        <!-- <input required type="date" class="form-control" formControlName="fechaNacimiento" aria-describedby="helpId" placeholder="Escribe tu fecha de nacimiento"> -->
+                        <br>
+                        {{this.datosPersona.fechaNacimiento}}
+
+                        <div class="separator"></div>
 
                     </div>
 
@@ -52,26 +68,9 @@
                         </select>
                     </div>
 
-                    <form [formGroup]="passwordForm">
-                        <!-- Password Antiguo -->
-                        <div class="mb-3">
-                            <b><label class="form-label">Contraseña actual (o código de recuperación)</label></b>
-                            <input required type="password" class="form-control" formControlName="oldPassword" aria-describedby="helpId" placeholder="Escribe tu contraseña antigua o código de recuperación">
-
-                            <!-- <p>O recupera tu contraseña: <a click(PasswordRecovery())>Recuperar contraseña</a></p> -->
-
-                        </div>
-
-                        <!-- Password Nuevo -->
-                        <div class="mb-3">
-                            <b><label class="form-label">Contraseña nueva</label></b>
-                            <input required type="password" class="form-control" formControlName="newPassword" aria-describedby="helpId" placeholder="Escribe tu contraseña nueva">
-                        </div>
-                    </form>
-
-                    <div class="btnChangeLikes d-flex justify-content-center">
+                    <!-- <div class="btnChangeLikes d-flex justify-content-center">
                         <button type="submit" class="btn btn-primary btn-lg" (click)="postForm(editarForm.value)">Actualizar</button>
-                    </div>
+                    </div> -->
 
                 </form>
             </div>

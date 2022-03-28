@@ -1,28 +1,23 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { updatePersonaI } from '../updatePersonaI';
 import { UpdateServiceService } from '../settingsService/update-service.service';
-import { Router } from '@angular/router';
-import { ForgotPasswordComponent } from '../../../login-register/forgot-password/forgot-password.component';
+import { updatePersonaI } from '../updatePersonaI';
 
 @Component({
-  selector: 'app-update-user-account',
-  templateUrl: './update-user-account.component.html',
-  styleUrls: ['./update-user-account.component.scss']
+  selector: 'app-user-account',
+  templateUrl: './user-account.component.html',
+  styleUrls: ['./user-account.component.scss']
 })
-export class UpdateUserAccountComponent implements OnInit {
+export class UserAccountComponent implements OnInit {
 
   constructor(
 
-    private updateServiceService: UpdateServiceService,
-    private router: Router
+    private updateServiceService: UpdateServiceService
 
   ) { }
 
   //Creamos una variable que será de tipo updatePersonaI para poder almacenar los datos traidos con la consulta. Para esto, además necesitamos un formGroup.
   datosPersona!:updatePersonaI;
-
-  passwordPersona!:updatePersonaI;
 
   //Creamos el FormGroup que nos sirve para poder tener el formulario con los campos correctos y en caso de necesitar validators.
   editarForm = new FormGroup({
@@ -33,12 +28,6 @@ export class UpdateUserAccountComponent implements OnInit {
     documento: new FormControl(''),
     fechaNacimiento: new FormControl('')
   });
-
-
-  passwordForm = new FormGroup({
-    oldPassword: new FormControl(''),
-    newPassword: new FormControl('')
-  })
 
   ngOnInit(): void {
 
@@ -96,10 +85,6 @@ export class UpdateUserAccountComponent implements OnInit {
   getToken(){
     //Pedimos que del almacenamiento local nos pase la variable token.
     return localStorage.getItem('token');
-  }
-
-  PasswordRecovery(){
-    this.router.navigate(['/loginRegister/forgot-password']);
   }
 
 }

@@ -10,7 +10,7 @@ import { ResponseI } from 'src/app/login-register/login/models/response.intarfac
 export class UpdateServiceService {
 
   //Definimos ruta raíz de el API.
-  API:string='http://localhost/API_rest_Eventually/';
+  API:string='http://localhost/API-Eventually-Sena/';
 
   constructor(
     //Inyectamos el HttpClient.
