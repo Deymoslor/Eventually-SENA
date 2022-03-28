@@ -1,5 +1,71 @@
 
 <img src="../../../../assets/dashboard/crud-services/3.png" alt="Grupos y eventos banner" class="thumbnail">
 
-<app-table-services></app-table-services>
-<app-table-type-services></app-table-type-services>
+<h2 class="fs-1 fw-bolder">Servicios</h2> 
+
+<!--TABLE-->
+<div class="respo">
+    <div class="table-responsive">
+      <table class="table table-dark table-responsive">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nombre Evento</th>
+            <th scope="col">Descripcion Evento</th>
+            <th scope="col">Estado Evento</th>
+            <th scope="col">Fecha Evento</th>
+            <th scope="col">Tipo Evento</th>
+            <th scope="col">Participantes Totales</th>
+            <th scope="col">Id Grupo</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- <tr *ngFor="let event of events"> -->
+            
+            <!-- <th scope="row">{{ event.idEvento }}</th>
+            <td>{{ event.nombreEvento }}</td>
+            <td>{{ event.descripcionEvento }}</td>
+            <td>{{ event.estadoEvento }}</td>
+            <td>{{ event.fechaEvento }}</td>
+            <td>{{ event.tipoEvento }}</td>
+            <td>{{ event.ParticipantesTotales }}</td>
+            <td>{{ event.Grupos_idGrupos }}</td> -->
+            
+            <!-- <td><button class="btn btn-primary" (click)="editEvent(event.idEvento)" data-bs-toggle="modal" data-bs-target="#edit-modal">Editar</button></td> -->
+          <!-- </tr> -->
+        </tbody>
+      </table>
+    </div>
+    <!--TABLE//-->
+
+    <h2 class="fs-1 fw-bolder">Tipos de Servicios</h2> 
+
+<!--TABLE-->
+<div class="respo">
+    <div class="table-responsive">
+      <table class="table table-dark table-responsive">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Tipo Servicio</th>
+            <th scope="col">Accion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let TypeService of TypeServices">
+            
+            <th scope="row">{{ TypeService.idTipoServicio }}</th>
+            <td>{{ TypeService.tipoServicio }}</td>
+            
+            <td><button class="btn btn-primary" (click)="editEvent(TypeService.idTipoServicio)" data-bs-toggle="modal" data-bs-target="#edit-modal">Editar</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--TABLE//-->
+
+    <!-- Create new type services -->
+    <button class="btn btn-primary" (click)="createEvent()">
+        Crear Tipo Servicio
+    </button>
