@@ -36,6 +36,8 @@ export class UpdateUserAccountComponent implements OnInit {
 
 
   passwordForm = new FormGroup({
+    idPersona: new FormControl(''),
+    token: new FormControl(''),
     oldPassword: new FormControl(''),
     newPassword: new FormControl('')
   })
@@ -60,7 +62,7 @@ export class UpdateUserAccountComponent implements OnInit {
       //Comprobamos que datos nos está trayendo ahora este nuevo data filtrado por posición 0.
       // console.log(this.datosPersona);
 
-      //llamamos nuestro formulario para empezar a asignarle la información de los campos.
+      //llamamos nuestro formulario de actualizar información para empezar a asignarle la información de los campos.
       this.editarForm.setValue({
         'idPersona' : idPersona,
         'token' : token,
@@ -90,6 +92,34 @@ export class UpdateUserAccountComponent implements OnInit {
       window.location.reload();
     });
 
+  }
+
+  changePassword(form:any){
+
+    //Retomamos el id
+    let idPersona = localStorage.getItem('id');
+
+    //Retomamos el token
+    let token = localStorage.getItem('token');
+
+    //llamamos nuestro formulario de actualizar password para empezar a asignarle la información de los campos.
+    this.passwordForm.setValue({
+      'idPersona' : idPersona,
+      'token' : token,
+      'oldPassword' : form.oldPassword,
+      'newPassword' : form.newPassword
+    })
+
+    console.log(this.passwordForm);
+
+
+    this.updateServiceService.putPassword(this.passwordForm).subscribe((data:any) =>{
+      console.log(data);
+
+      //regargamos página.
+      window.location.reload();
+
+    })
   }
 
   //Creamos método para pedir el token.

@@ -1,7 +1,7 @@
 <article class="cards1 card shadow-sm">
     <div class="card-body">
         <div>
-            <h1 class="m-0 h1">Información Personal</h1><br>
+            <h1 class="m-0 h1">Actualizar Información</h1><br>
             <!-- {{childMessage}} -->
         </div>
         <div class="card ">
@@ -52,28 +52,39 @@
                         </select>
                     </div>
 
-                    <form [formGroup]="passwordForm">
-                        <!-- Password Antiguo -->
-                        <div class="mb-3">
-                            <b><label class="form-label">Contraseña actual (o código de recuperación)</label></b>
-                            <input required type="password" class="form-control" formControlName="oldPassword" aria-describedby="helpId" placeholder="Escribe tu contraseña antigua o código de recuperación">
+                    <div class="btnChangeLikes d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary btn-lg" (click)="postForm(editarForm.value)">Actualizar Información</button>
+                    </div>
 
-                            <!-- <p>O recupera tu contraseña: <a click(PasswordRecovery())>Recuperar contraseña</a></p> -->
+                    <br>
 
-                        </div>
+                </form>
 
-                        <!-- Password Nuevo -->
-                        <div class="mb-3">
-                            <b><label class="form-label">Contraseña nueva</label></b>
-                            <input required type="password" class="form-control" formControlName="newPassword" aria-describedby="helpId" placeholder="Escribe tu contraseña nueva">
-                        </div>
-                    </form>
+                <div class="separator"></div>
+
+                <form [formGroup]="passwordForm">
+                    <br>
+                    <!-- Password Antiguo -->
+                    <div class="mb-3">
+                        <b><label class="form-label">Contraseña actual (o código de recuperación)</label></b>
+                        <input required type="password" class="form-control" formControlName="oldPassword" aria-describedby="helpId" placeholder="Escribe tu contraseña antigua o código de recuperación">
+
+                        <!-- <p>O recupera tu contraseña: <a click(PasswordRecovery())>Recuperar contraseña</a></p> -->
+
+                    </div>
+
+                    <!-- Password Nuevo -->
+                    <div class="mb-3">
+                        <b><label class="form-label">Contraseña nueva</label></b>
+                        <input required type="password" class="form-control" formControlName="newPassword" aria-describedby="helpId" placeholder="Escribe tu contraseña nueva">
+                    </div>
 
                     <div class="btnChangeLikes d-flex justify-content-center">
-                        <button type="submit" class="btn btn-primary btn-lg" (click)="postForm(editarForm.value)">Actualizar</button>
+                        <button type="submit" class="btn btn-primary btn-lg" (click)="postForm(passwordForm.value)">Actualizar contraseña</button>
                     </div>
 
                 </form>
+
             </div>
         </div>
     </div>

@@ -10,7 +10,7 @@ import { ResponseI } from 'src/app/login-register/login/models/response.intarfac
 export class UpdateServiceService {
 
   //Definimos ruta raíz de el API.
-  API:string='http://localhost/API-Eventually-Sena/';
+  API:string='http://localhost/API-Eventually-SENA/';
 
   constructor(
     //Inyectamos el HttpClient.
@@ -31,6 +31,11 @@ export class UpdateServiceService {
   putPerson(form:updatePersonaI):Observable<ResponseI>{
     let direccion = this.API+"personsUser";
     return this.http.put<ResponseI>(direccion,form);
+  }
+
+  putPassword(form:any):Observable<ResponseI>{
+    let direccion = this.API + "personsUser";
+    return this.http.post<ResponseI>(direccion,form);
   }
 
 }
