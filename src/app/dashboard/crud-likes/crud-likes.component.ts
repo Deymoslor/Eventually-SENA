@@ -54,4 +54,55 @@ export class CrudLikesComponent implements OnInit {
     this.id=id;
   }
 
+  // cambioEstado(estado:number,id:number){
+
+  //   if (estado == 1) {
+
+  //     //Llamamos al servicio para solicitar una sola persona y poder editar el estado sin cambiar el resto de datos de la cuenta.
+  //     this.userService.getSinglePerson(id).subscribe((data:any) =>{
+
+  //     //asignamos el valor que venga desde la API a una variable para poder recorrerla.
+  //     this.datosPersona = data[0];
+
+  //     this.datosPersona.Estado="Inactivo";
+
+  //     let token = localStorage.getItem('token');
+
+  //     this.datosPersona.token = token;
+
+  //     this.userService.putPerson(this.datosPersona).subscribe((data:any) =>{
+
+  //       console.log("Entrando aquí");
+        
+  //       window.location.reload();
+
+  //     });
+
+
+  //   });
+
+  //   }else{
+
+  //       //Llamamos al servicio para solicitar una sola persona y poder editar el estado sin cambiar el resto de datos de la cuenta.
+  //       this.userService.getSinglePerson(id).subscribe((data:any) =>{
+
+  //       //asignamos el valor que venga desde la API a una variable para poder recorrerla.
+  //       this.datosPersona = data[0];
+
+  //       this.datosPersona.Estado="Activo";
+
+  //       let token = localStorage.getItem('token');
+
+  //       this.datosPersona.token = token;
+
+  //       this.userService.putPerson(this.datosPersona).subscribe((data:any) =>{
+
+  //         window.location.reload();
+
+  //       });
+
+  //     });
+
+  //   }
+
 }
