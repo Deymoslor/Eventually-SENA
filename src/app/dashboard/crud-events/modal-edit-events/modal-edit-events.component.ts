@@ -31,10 +31,7 @@ export class ModalEditEventsComponent implements OnInit {
 
 
   ngOnChanges(): void{
-    
-    console.log(this.childMessage);
     if(this.childMessage > 0){
-      console.log("entre a el if")
       this.idEvent = this.childMessage;
       this.api.getSingleEvent(this.idEvent).subscribe((data: any) =>{
        this.dataEvent =data[0];

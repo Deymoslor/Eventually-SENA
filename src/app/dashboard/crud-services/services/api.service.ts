@@ -25,4 +25,14 @@ export class ApiService {
     return this.http.post<ResponseI>(dir, form);
   }
 
+  getSingleTypeService(id: string | number | null):Observable<TypeServicesI>{
+    let dir = this.url + "typeServices?id=" + id;
+    return this.http.get<TypeServicesI>(dir);
+  }
+
+  putTypeService(form:TypeServicesI):Observable<ResponseI>{
+    let dir = this.url + "typeServices";
+    return this.http.put<ResponseI>(dir, form);
+  }
+
 } 

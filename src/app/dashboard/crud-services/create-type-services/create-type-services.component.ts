@@ -13,6 +13,7 @@ export class CreateTypeServicesComponent implements OnInit {
 
   createTypeServices = new FormGroup({
     tipoServicio: new FormControl(''),
+    estadoTipoServicio: new FormControl('')
   });
 
   constructor(private api:ApiService, private router:Router) { }
@@ -21,7 +22,7 @@ export class CreateTypeServicesComponent implements OnInit {
   }
 
   postForm(form:TypeServicesI){
-    console.log(form);
+    form.estadoTipoServicio = 1;
     this.api.postEvent(form).subscribe( data => {
       console.log(data);
     })
