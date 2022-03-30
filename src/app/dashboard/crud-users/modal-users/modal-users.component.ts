@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgbDateStruct, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
 import { Router, ActivatedRoute } from '@angular/router';
-import { PersonaI } from './persona.interface';
+import { PersonaI } from './personaI.interface';
 import { userService } from '../service/userService.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 

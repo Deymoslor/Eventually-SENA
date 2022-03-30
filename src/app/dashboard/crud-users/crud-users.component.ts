@@ -4,7 +4,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import { userService } from './service/userService.service';
 import { Router } from '@angular/router';
 import { ListaPersonasI } from './ListaPersonasI.interface';
-import { PersonaI } from './modal-users/persona.interface';
+import { PersonaI } from './modal-users/personaI.interface';
 import { FormGroup, FormControl} from '@angular/forms';
 
 //Interfaz para definir los datos de la table.

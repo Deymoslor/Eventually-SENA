@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ListaPersonasI } from '../ListaPersonasI.interface';
-import { PersonaI } from '../modal-users/personaI.interface';
-import { ResponseI } from 'src/app/login-register/login/models/response.intarface';
+import { ResponseI } from 'src/app/models/response.interface';
+import { ListaProveedoresI } from '../ListaProveedoresI.interface';
+import { ProveedorI } from '../modal-suppliers/ProveedorI.interface';
 
 @Injectable({
   providedIn: 'root'
 })
-export class userService {
+export class SupplierService {
+
   //Definimos ruta raíz de el API.
   API:string='http://localhost/API-Eventually-Sena/';
 
@@ -21,25 +22,25 @@ export class userService {
   ) { }
 
   //Creamos método para obtener pacientes.
-  getAllPersons(page:number):Observable<ListaPersonasI[]>{
+  getAllSuppliers(page:number):Observable<ListaProveedoresI[]>{
 
   //Creamos una variable con la dirección de envío de información.
-  let direccion = this.API + "persons?page=" + page;
+  let direccion = this.API + "suppliers?page=" + page;
 
   //Creamos el retorno de un método get que recibirá datos del tipo de la interfaz.
-  return this.http.get<ListaPersonasI[]>(direccion);
+  return this.http.get<ListaProveedoresI[]>(direccion);
 
   }
 
   //Creamos método para obtener la persona. Este método devuelve un observable de tipo PersonaI
-  getSinglePerson(id:number):Observable<PersonaI>{
-    let direccion = this.API+"persons?id=" + id;
-    return this.http.get<PersonaI>(direccion);
+  getSingleSupplier(id:number):Observable<ProveedorI>{
+    let direccion = this.API+"suppliers?id=" + id;
+    return this.http.get<ProveedorI>(direccion);
   }
 
   //Creamos el método para actualizar.
   putPerson(form:any):Observable<ResponseI>{
-    let direccion = this.API+"persons";
+    let direccion = this.API+"suppliers";
 
     return this.http.put<ResponseI>(direccion,form);
   }
