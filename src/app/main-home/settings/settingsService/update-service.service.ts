@@ -34,6 +34,7 @@ export class UpdateServiceService {
     return this.http.put<ResponseI>(direccion,form);
   }
 
+  //Creamos el método para actualizar el password comprobando el antiguo.
   putPassword(form:updatePasswordPersonaI):Observable<ResponseI>{
     let direccion = this.API + "personsUser";
     return this.http.post<ResponseI>(direccion,form);
