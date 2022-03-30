@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { loginI } from '../login/models/login.interface';
 import { ResponseI } from '../login/models/response.intarface';
 import { registerI } from '../register/register.interface';
+import { supplierRequestI } from '../supplier-request/supplierRequestI.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,11 @@ export class accountService {
 
   postRecovery(form:any):Observable<ResponseI>{
     let direccion = this.API + "mailRecovery";
+    return this.http.post<ResponseI>(direccion,form);
+  }
+
+  postMail(form:supplierRequestI):Observable<ResponseI>{
+    let direccion = this.API + "mail";
     return this.http.post<ResponseI>(direccion,form);
   }
 
