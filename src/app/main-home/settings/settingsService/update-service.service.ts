@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { updatePersonaI } from '../updatePersonaI';
 import { Observable } from 'rxjs';
 import { ResponseI } from 'src/app/login-register/login/models/response.intarface';
+import { updatePasswordPersonaI } from '../updatePasswrodPersonaI';
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +34,7 @@ export class UpdateServiceService {
     return this.http.put<ResponseI>(direccion,form);
   }
 
-  putPassword(form:any):Observable<ResponseI>{
+  putPassword(form:updatePasswordPersonaI):Observable<ResponseI>{
     let direccion = this.API + "personsUser";
     return this.http.post<ResponseI>(direccion,form);
   }
