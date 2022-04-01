@@ -10,6 +10,7 @@ import { CrudReportsComponent } from './crud-reports/crud-reports.component';
 import { CrudUsersComponent } from './crud-users/crud-users.component';
 import { CrudSuppliersComponent } from './crud-suppliers/crud-suppliers.component';
 import { RequestsComponent } from './requests/requests.component';
+import { CreateTypeServicesComponent } from './crud-services/create-type-services/create-type-services.component';
 
 
 
@@ -24,7 +25,8 @@ const routes: Routes = [
       {path: 'reports', component: CrudReportsComponent},
       {path: 'users', component: CrudUsersComponent},
       {path: 'suppliers', component: CrudSuppliersComponent},
-      {path: 'requests', component: RequestsComponent}
+      {path: 'requests', component: RequestsComponent},
+      {path: 'createTypeServices', component: CreateTypeServicesComponent},
     ]
   },
 ]
