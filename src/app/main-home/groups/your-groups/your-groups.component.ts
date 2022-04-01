@@ -9,21 +9,20 @@ import { YourGroupsService } from './your-groups.service';
   styleUrls: ['./your-groups.component.scss']
 })
 export class YourGroupsComponent implements OnInit {
-  get groups(): Groups[] {
-    const groups = this.YourGroupsService.groups;
 
-    if (this.route.snapshot.queryParamMap.get('orderBy') === 'id') {
-      groups.sort((a, b) => a.idGrupos - b.idGrupos);
-    }
+  groups!: Groups[];
 
-    return groups;
-  }
   constructor(
     private YourGroupsService: YourGroupsService,
     private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+    this.YourGroupsService.getYourGroups(1).subscribe(data => {
+      console.log(data);
+
+      this.groups = data;
+    })
   }
 
 }

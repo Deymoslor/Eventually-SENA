@@ -52,8 +52,12 @@ export class YourGroupsDetailsComponent implements OnInit {
       // email: new FormControl('', [Validators.email]),
     });
 
-    const groupId = this.route.snapshot.paramMap.get('id');
-    this.group = this.YourGroupsService.getGroup(Number(groupId));
+    let idGrupos = this.route.snapshot.paramMap.get('id');
+    console.log(idGrupos);
+    this.YourGroupsService.getDetailsYourGroup(Number(idGrupos)).subscribe((data: any) => {
+      console.log(data);
+      this.group = data[0];
+    })
 
     if (this.group === null) {
       this.router.navigate(['group']);
