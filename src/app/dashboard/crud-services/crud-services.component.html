@@ -10,30 +10,36 @@
         <thead>
           <tr>
             <th scope="col">Id</th>
-            <th scope="col">Nombre Evento</th>
-            <th scope="col">Descripcion Evento</th>
-            <th scope="col">Estado Evento</th>
-            <th scope="col">Fecha Evento</th>
-            <th scope="col">Tipo Evento</th>
-            <th scope="col">Participantes Totales</th>
-            <th scope="col">Id Grupo</th>
-            <th scope="col">Acciones</th>
+            <th scope="col">Nombre Servicio</th>
+            <th scope="col">Descripcion Servicio</th>
+            <th scope="col">Precio estimado</th>
+            <th scope="col">Imagen</th>
+            <th scope="col">Historial empresas</th>
+            <th scope="col">Numero contacto</th>
+            <th scope="col">Correo Contacto</th>
+            <th scope="col">Estado Servicio</th>
+            <th scope="col">Id Proveedor</th>
+            <th scope="col">Id Tipo Servicio</th>
+            <th scope="col">Accion</th>
           </tr>
         </thead>
         <tbody>
-          <!-- <tr *ngFor="let event of events"> -->
+          <tr *ngFor="let service of Services">
             
-            <!-- <th scope="row">{{ event.idEvento }}</th>
-            <td>{{ event.nombreEvento }}</td>
-            <td>{{ event.descripcionEvento }}</td>
-            <td>{{ event.estadoTipoServicio }}</td>
-            <td>{{ event.fechaEvento }}</td>
-            <td>{{ event.tipoEvento }}</td>
-            <td>{{ event.ParticipantesTotales }}</td>
-            <td>{{ event.Grupos_idGrupos }}</td> -->
-            
-            <!-- <td><button class="btn btn-primary" (click)="editEvent(event.idEvento)" data-bs-toggle="modal" data-bs-target="#edit-modal">Editar</button></td> -->
-          <!-- </tr> -->
+            <th scope="row">{{ service.idServicios }}</th>
+            <td>{{ service.nombreServicio }}</td>
+            <td>{{ service.descripcionServicio }}</td>
+            <td>{{ service.precioEstimado }}</td>
+            <td>{{ service.imagen }}</td>
+            <td>{{ service.historialEmpresas }}</td>
+            <td>{{ service.numeroContacto }}</td>
+            <td>{{ service.correoContacto }}</td>
+            <td>{{ service.estadoServicio }}</td>
+            <td>{{ service.Proveedor_idProveedor }}</td>
+            <td>{{ service.TipoServicio_idtipoServicio }}</td>
+            <!-- (click)="editEvent(event.idEvento)" -->
+            <td><button class="btn btn-primary"  (click)="modalServiceOpen(contentService, service.idServicios)">Editar</button></td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -59,7 +65,7 @@
             <th scope="row">{{ TypeService.idTipoServicio }}</th>
             <td>{{ TypeService.tipoServicio }}</td>
             <td>{{ TypeService.estadoTipoServicio}}</td>
-            <td><button class="btn btn-primary" (click)="modalOpen(content, TypeService.idTipoServicio)" >Editar</button></td>
+            <td><button class="btn btn-primary" (click)="modalTypeServiceOpen(contentType, TypeService.idTipoServicio)" >Editar</button></td>
           </tr>
         </tbody>
       </table>
@@ -71,14 +77,14 @@
         Crear Tipo Servicio
     </button>
 
-    <ng-template #content let-modal>
+    <ng-template #contentType let-modal>
       <!-- Modal -->
           <div class="modal-content modal-dialog modal-lg modal-dialog-scrollable">
             <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">Deshabilitar el evento</h5>
+              <h5 class="modal-title" id="staticBackdropLabel">Editar Tipo Servicio</h5>
               <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
             </div>
-            <form [formGroup]="typeServicesForm" (ngSubmit)="postEditForm(typeServicesForm.value)">       
+            <form [formGroup]="typeServicesForm" (ngSubmit)="postEditFormType(typeServicesForm.value)">       
             <div class="modal-body">
 
               <label for="">Id Tipo Servicio:</label>
@@ -106,3 +112,75 @@
           </form>
           </div>
   </ng-template>
+
+  <ng-template #contentService let-modal>
+    <!-- Modal -->
+        <div class="modal-content modal-dialog modal-lg modal-dialog-scrollable">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Editar Servicio</h5>
+            <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+          </div>
+          <form [formGroup]="ServicesForm" (ngSubmit)="postEditFormServices(ServicesForm.value)">       
+          <div class="modal-body">
+
+            <label for="">Id Servicio:</label>
+            <input type="text" class="form-control" id=""
+            placeholder="" formControlName="idServicios">
+            
+              <label for="">Nombre del servicio:</label>
+              <input type="text" class="form-control" id=""
+              placeholder="" formControlName="nombreServicio">
+
+              <label for="">Descripcion Servicio:</label>
+              <div class="mb-2">
+                  <textarea class="form-control" id="exampleFormControlTextarea1"
+                  rows="2" formControlName="descripcionServicio"></textarea>
+              </div>
+
+              <label for="exampleInputEmail1">Precio estimado:</label>
+              <input type="number" class="form-control" id="exampleInputEmail1"
+                min="1" max="200000000"  formControlName="precioEstimado">
+
+              <label for="">imagen:</label>
+              <input type="text" class="form-control" id=""
+              placeholder="" formControlName="imagen">
+
+              <label for="">Historial de empresas:</label>
+              <div class="mb-2">
+                  <textarea class="form-control" id="exampleFormControlTextarea1"
+                  rows="2" formControlName="historialEmpresas"></textarea>
+              </div>
+
+              <label for="exampleInputEmail1">Numero de contacto:</label>
+              <input type="number" class="form-control" id="exampleInputEmail1"
+                min="1" max="200000000"  formControlName="numeroContacto">
+
+              <label for="">Correo de contacto:</label>
+              <input type="email" class="form-control" id=""
+              placeholder="" formControlName="correoContacto">
+
+              <label for="exampleInputEmail1">Id Proveedor:</label>
+              <input type="number" class="form-control" id="exampleInputEmail1"
+                min="1" max="1000"  formControlName="Proveedor_idProveedor">
+
+              <label for="exampleInputEmail1">Id Tipo Servicio:</label>
+              <input type="number" class="form-control" id="exampleInputEmail1"
+                min="1" max="1000"  formControlName="TipoServicio_idtipoServicio">
+
+              <label for="">Estado Servicio:</label>
+              <input type="text"  class="form-control" id=""
+              placeholder="Ej: El mejor evento" formControlName="estadoServicio"[readonly]="true">
+              <div class="form-check form-switch">
+                  <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" *ngIf="ServicesForm.get('estadoServicio')?.value != 1" (click)="switchStateService(ServicesForm.get('estadoServicio')?.value)" >
+                  <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" *ngIf="ServicesForm.get('estadoServicio')?.value == 1" (click)="switchStateService(ServicesForm.get('estadoServicio')?.value)" checked >
+                  <label class="form-check-label fw-bolder fs-4 label" for="flexSwitchCheckChecked" *ngIf="ServicesForm.get('estadoServicio')?.value != 1">Habilitar TIPO</label>
+                  <label class="form-check-label fw-bolder fs-4 label" for="flexSwitchCheckChecked" *ngIf="ServicesForm.get('estadoServicio')?.value == 1">Deshabilitar TIPO</label>
+              </div> 
+
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" >Editar</button>
+          </div>
+        </form>
+        </div>
+</ng-template>
