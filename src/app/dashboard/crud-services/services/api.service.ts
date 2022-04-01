@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ResponseI } from '../models/response.interface';
 import { TypeServicesI } from '../models/typeServices.interface';
+import { ServiceI } from '../models/services.interface';
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +17,7 @@ export class ApiService {
     private http:HttpClient
   ) { }
 
+  //TYPE SERVICES
   getAllTypeServices(page:number):Observable<TypeServicesI[]>{
     let dir = this.url + "typeServices?page=" + page;
     return this.http.get<TypeServicesI[]>(dir);
@@ -32,6 +35,23 @@ export class ApiService {
 
   putTypeService(form:TypeServicesI):Observable<ResponseI>{
     let dir = this.url + "typeServices";
+    return this.http.put<ResponseI>(dir, form);
+  }
+
+  //SERVICES
+
+  getAllServices(page:number):Observable<ServiceI[]>{
+    let dir = this.url + "services?page=" + page;
+    return this.http.get<ServiceI[]>(dir);
+  }
+
+  getSingleService(id: string | number | null):Observable<ServiceI>{
+    let dir = this.url + "services?id=" + id;
+    return this.http.get<ServiceI>(dir);
+  }
+
+  putService(form:ServiceI):Observable<ResponseI>{
+    let dir = this.url + "services";
     return this.http.put<ResponseI>(dir, form);
   }
 
