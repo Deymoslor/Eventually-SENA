@@ -17,7 +17,8 @@ import { MenuModule } from '../menu/menu.module';
 import { CrudUsersComponent } from './crud-users/crud-users.component';
 import { ModalUsersComponent } from './crud-users/modal-users/modal-users.component';
 import { CrudSuppliersComponent } from './crud-suppliers/crud-suppliers.component';
-import { ModalSuppliersComponent } from './crud-suppliers/modal-suppliers/modal-suppliers.component';
+import { ModalSuppliersCreateComponent } from './crud-suppliers/modal-suppliers-create/modal-suppliers-create.component';
+import { ModalSuppliersEditComponent } from './crud-suppliers/modal-suppliers-edit/modal-suppliers-edit.component';
 import { ModalReportsComponent } from './crud-reports/modal-reports/modal-reports.component';
 import { CrudReportsComponent } from './crud-reports/crud-reports.component';
 import { ModalGroupsComponent } from './crud-groups/modal-groups/modal-groups.component';
@@ -29,6 +30,7 @@ import { ModalEditLikesComponent } from './crud-likes/modal-edit-likes/modal-edi
 import { ModalEditEventsComponent } from './crud-events/modal-edit-events/modal-edit-events.component';
 import { ModalEditGroupsComponent } from './crud-groups/modal-edit-groups/modal-edit-groups.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+
 
 
 @NgModule({
@@ -48,7 +50,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     CrudUsersComponent,
     ModalUsersComponent,
     CrudSuppliersComponent,
-    ModalSuppliersComponent,
+    ModalSuppliersCreateComponent,
+    ModalSuppliersEditComponent,
     RequestsComponent,
     TableRequestGroupsComponent,
     TableRequestEventComponent,

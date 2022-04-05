@@ -1,47 +1,46 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { NgbDateStruct, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
-import { Router, ActivatedRoute } from '@angular/router';
-import { PersonaI } from './personaI.interface';
-import { userService } from '../service/userService.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
+import { ProveedorI } from '../modal-suppliers-create/ProveedorI.interface';
+import { SupplierService } from '../service/supplier.service';
 
 @Component({
-  selector: 'app-modal-users',
-  templateUrl: './modal-users.component.html',
-  styleUrls: ['./modal-users.component.scss']
+  selector: 'app-modal-suppliers-edit',
+  templateUrl: './modal-suppliers-edit.component.html',
+  styleUrls: ['./modal-suppliers-edit.component.scss']
 })
-export class ModalUsersComponent implements OnInit {
+export class ModalSuppliersEditComponent implements OnInit {
 
-  model: NgbDateStruct | undefined;
-  date: { year: number; month: number;} | undefined;
+  // model: NgbDateStruct | undefined;
+  // date: { year: number; month: number;} | undefined;
 
   //Input para recibir el id que viene por parte del padre, el crud-users.component general.
   @Input() childMessage!: number;
 
   constructor(
+
     private calendar:NgbCalendar,
     private activerouter: ActivatedRoute,
     private router: Router,
-    private userService:userService
+    private supplierService: SupplierService
+
   ) { }
 
   //Creamos una variable que será de tipo PersonaI para poder almacenar los datos traidos con la consulta. Para esto, además necesitamos un formGroup.
-  datosPersona!:PersonaI;
+  datosProveedor!:ProveedorI;
 
   //Creamos el FormGroup que nos sirve para poder tener el formulario con los campos correctos y en caso de necesitar validators.
   editarForm = new FormGroup({
-    idPersona: new FormControl(''),
+    idProveedor: new FormControl(''),
     token: new FormControl(''),
-    nombre: new FormControl(''),
-    apellidos: new FormControl(''),
-    documento: new FormControl(''),
+    nombreProveedor: new FormControl(''),
+    apellidoProveedor: new FormControl(''),
+    correoProveedor: new FormControl(''),
+    codigoAcceso: new FormControl(''),
     fechaNacimiento: new FormControl(''),
-    Email: new FormControl(''),
-    password: new FormControl(''),
     Celular: new FormControl(''),
-    ciudad: new FormControl(''),
     Estado: new FormControl(''),
-    roles_idRoles: new FormControl('')
   });
 
   ngOnInit(): void {
@@ -54,62 +53,58 @@ export class ModalUsersComponent implements OnInit {
     // let personaId = this.activerouter.snapshot.paramMap.get('id');
 
     //En nuestro caso tomamos la variable del padre definida con ayuda del input.
-    let personaId = this.childMessage;
-    // console.log(personaId);
+    let idProveedor = this.childMessage;
+    // console.log(idProveedor);
 
     //Creamos otra variable para el token.
     let token = this.getToken();
     // console.log(token);
 
     //llamamos al servicio para obtener la información de todos los campos de la persona.
-    this.userService.getSinglePerson(personaId).subscribe((data:any) =>{
+    this.supplierService.getSingleSupplier(idProveedor).subscribe((data:any) =>{
       //Comprobamos que datos trae data.
       // console.log(data);
       //Ahora queremos asignar a el FormGroup anteriormente definido los valores que estamos trayendo desde el servicio.
 
       //para poder acceder al array que está trayendo primero debemos acceder al elemento 0 pues es un array dentro de otro array por ende siempre debemos acceder primero a la posición 0.
-      this.datosPersona = data[0];
+      this.datosProveedor = data[0];
 
       //Comprobamos que datos nos está trayendo ahora este nuevo data filtrado por posición 0.
-      // console.log(this.datosPersona);
+      console.log(this.datosProveedor);
 
       //Asignamos valor para evitar el error en consola de que los valores de this.datosPersona estan null.
-      this.editarForm.setValue({
-        'idPersona' : "this.datosPersona.idPersona",
-        'token' : "this.datosPersona.token",
-        'nombre' : "this.datosPersona.nombre",
-        'apellidos' : "this.datosPersona.apellidos",
-        'documento' : "this.datosPersona.documento",
-        'fechaNacimiento' : "this.datosPersona.fechaNacimiento",
-        'Email' : "this.datosPersona.Email",
-        'password' : "this.datosPersona.password",
-        'Celular' : "this.datosPersona.Celular",
-        'ciudad' : "this.datosPersona.ciudad",
-        'Estado' : "this.datosPersona.Estado",
-        'roles_idRoles' : "this.datosPersona.roles_idRoles",
-      })
+      // this.editarForm.setValue({
+      //   'idProveedor' : "this.datosPersona.idPersona",
+      //   'token' : "this.datosPersona.token",
+      //   'nombreProveedor' : "this.datosPersona.nombre",
+      //   'apellidoProveedor' : "this.datosPersona.apellidos",
+      //   'correoProveedor' : "this.datosPersona.documento",
+      //   'codigoAceeso' : "this.datosPersona.fechaNacimiento",
+      //   'fechaNacimiento' : "this.datosPersona.Email",
+      //   'Celular' : "this.datosPersona.password",
+      //   'Estado' : "this.datosPersona.Celular",
+      // })
 
 
       //llamamos nuestro formulario para empezar a asignarle la información de los campos.
       this.editarForm.setValue({
         //El id que tomamos del padre.
-        'idPersona' : personaId,
+        'idProveedor' : idProveedor,
         //El token que tomamos del almacenamiento interno.
         'token' : token,
-        'nombre' : this.datosPersona.nombre,
-        'apellidos' : this.datosPersona.apellidos,
-        'documento' : this.datosPersona.documento,
-        'fechaNacimiento' : this.datosPersona.fechaNacimiento,
-        'Email' : this.datosPersona.Email,
-        'password' : this.datosPersona.password,
-        'Celular' : this.datosPersona.Celular,
-        'ciudad' : this.datosPersona.ciudad,
-        'Estado' : this.datosPersona.Estado,
-        'roles_idRoles' : this.datosPersona.roles_idRoles,
+        'nombreProveedor' : this.datosProveedor.nombreProveedor,
+        'apellidoProveedor' : this.datosProveedor.apellidoProveedor,
+        'correoProveedor' : this.datosProveedor.correoProveedor,
+        'codigoAcceso' : this.datosProveedor.codigoAcceso,
+        'fechaNacimiento' : this.datosProveedor.fechaNacimiento,
+        'Celular' : this.datosProveedor.Celular,
+        'Estado' : this.datosProveedor.Estado,
       })
 
       //Imprimimos el formulario por consola.
-      // console.log(this.editarForm.value);
+      console.log(this.editarForm.value);
+      console.log('prueba');
+
 
     });
 
@@ -122,14 +117,14 @@ export class ModalUsersComponent implements OnInit {
   }
 
   //Método que se ejecuta cuando se hace submit de formulario para enviar los datos editados.
-  postForm(form:PersonaI){
+  postForm(form:ProveedorI){
 
     //Creamos log para verificar que la información está cambiando cuando presinamos el botón.
     // console.log(form);
 
     //llamamos el método de actualizar desde el servicio.
-    this.userService.putPerson(form).subscribe((data:any) =>{
-      console.log(data);
+    this.supplierService.putSupplier(form).subscribe((data:any) =>{
+      // console.log(data);
       //Recargamos página.
       window.location.reload();
     });

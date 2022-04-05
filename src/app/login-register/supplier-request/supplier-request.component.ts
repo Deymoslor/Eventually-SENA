@@ -14,6 +14,7 @@ export class SupplierRequestComponent implements OnInit {
 
   peticionProveedor = new FormGroup({
     Email: new FormControl(''),
+    nombre: new FormControl(''),
     msg: new FormControl('')
   });
 
@@ -29,11 +30,10 @@ export class SupplierRequestComponent implements OnInit {
 
   //Servicio para llamar al service y enviar el email.
   enviarMailSolicitud(form:supplierRequestI){
-
     this.accountService.postMail(form).subscribe(data =>{
-      console.log(data);
+      // console.log(data);
 
-      // this.router.navigate(['/loginRegister']);
+      this.router.navigate(['/loginRegister']);
     })
 
   }

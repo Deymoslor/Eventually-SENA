@@ -1,3 +1,6 @@
+<!-- <app-modal-suppliers [childMessage]=parentMessage></app-modal-suppliers> -->
+<app-modal-suppliers-create></app-modal-suppliers-create>
+<app-modal-suppliers-edit [childMessage]="parentMessage"></app-modal-suppliers-edit>
 <img src="https://www.elcolombiano.com/binrepository/1200x800/0c86/1200d627/none/11101/OOIJ/proveedores-empresarios_38710307_20211009175751.jpg" alt="Proveedores banner" class="thumbnail">
 <div class="content">
     <h2 class="fs-1 fw-bolder">Proveedores</h2>
@@ -74,6 +77,7 @@
                 <th scope="col">fechaNacimiento</th>
                 <th scope="col">correoProveedor</th>
                 <th scope="col">Estado</th>
+                <th scope="col">Acciones</th>
 
             </tr>
 
@@ -128,7 +132,7 @@
 
                 <td>
                     <button (click)="editarProveedor(proveedor.idProveedor)" data-bs-toggle="modal"
-                    data-bs-target="#content-modal-suppliers" type="button" class="btn btn-primary btn-sm" >Editar</button>
+                    data-bs-target="#content-modal-suppliersEdit" type="button" class="btn btn-primary btn-sm" >Editar</button>
                 </td>
 
             </tr>
@@ -142,7 +146,7 @@
     <!-- Jordan Table Finish -->
 
     <button class="btn btn-primary col-2 d-md-flex justify-content-md-center" data-bs-toggle="modal"
-        data-bs-target="#content-modal-suppliers">
+        data-bs-target="#content-modal-suppliersCreate">
 
         Crear Proveedor
 

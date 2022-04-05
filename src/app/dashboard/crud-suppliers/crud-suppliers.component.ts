@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
-import { ProveedorI } from './modal-suppliers/ProveedorI.interface';
+import { ProveedorI } from './modal-suppliers-create/ProveedorI.interface';
 import { ListaProveedoresI } from './ListaProveedoresI.interface';
 import { SupplierService } from './service/supplier.service';
 import { Router } from '@angular/router';
@@ -125,7 +125,7 @@ export class CrudSuppliersComponent implements OnInit {
 
       this.datosProveedor.token = token;
 
-      this.SupplierService.putPerson(this.datosProveedor).subscribe((data:any) =>{
+      this.SupplierService.putSupplier(this.datosProveedor).subscribe((data:any) =>{
 
         window.location.reload();
 
@@ -148,7 +148,7 @@ export class CrudSuppliersComponent implements OnInit {
 
         this.datosProveedor.token = token;
 
-        this.SupplierService.putPerson(this.datosProveedor).subscribe((data:any) =>{
+        this.SupplierService.putSupplier(this.datosProveedor).subscribe((data:any) =>{
 
           window.location.reload();
 

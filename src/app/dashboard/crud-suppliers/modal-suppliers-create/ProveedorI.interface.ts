@@ -4,7 +4,7 @@ export interface ProveedorI{
     nombreProveedor:string;
     apellidoProveedor:string;
     correoProveedor:string;
-    codigoAceeso:string;
+    codigoAcceso:string;
     fechaNacimiento:string;
     Celular:string;
     Estado:string;

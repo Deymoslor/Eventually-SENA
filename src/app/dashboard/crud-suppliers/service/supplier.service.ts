@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ResponseI } from 'src/app/models/response.interface';
 import { ListaProveedoresI } from '../ListaProveedoresI.interface';
-import { ProveedorI } from '../modal-suppliers/ProveedorI.interface';
+import { ProveedorI } from '../modal-suppliers-create/ProveedorI.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -39,10 +39,16 @@ export class SupplierService {
   }
 
   //Creamos el método para actualizar.
-  putPerson(form:any):Observable<ResponseI>{
+  putSupplier(form:any):Observable<ResponseI>{
     let direccion = this.API+"suppliers";
 
     return this.http.put<ResponseI>(direccion,form);
+  }
+
+  postSupplier(form:any):Observable<ResponseI>{
+    let direccion = this.API+"suppliers";
+
+    return this.http.post<ResponseI>(direccion,form);
   }
 
 }
