@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ServiceService } from '../service/service.service';
+import { accountService } from '../service/accountService.service';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { loginI } from './models/login.interface';
@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     //Inyectamos el servicio.
-    private accountService:ServiceService,
+    private accountService:accountService,
 
     private formulario:FormBuilder,
 

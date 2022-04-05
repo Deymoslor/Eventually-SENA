@@ -4,8 +4,15 @@ import { YourGroupsComponent } from './your-groups.component';
 import { YourGroupsShowComponent } from './your-groups-show.component';
 import { YourGroupsRoutingModule } from './your-groups-routing.module';
 import { YourGroupsDetailsComponent } from './your-groups-details/your-groups-details.component';
+import { TableUsersGroupsComponent } from './your-groups-details/table-users-groups/table-users-groups.component';
+import { ModalEventsCompletedComponent } from './your-groups-details/modal-events-completed/modal-events-completed.component';
+import { ModalReportEventsGroupsOrganizerComponent } from './your-groups-details/modal-report-events-groups-organizer/modal-report-events-groups-organizer.component';
 import { ModalEditGroupsComponent } from './your-groups-details/modal-edit-groups/modal-edit-groups.component';
-
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { ModalCreateEventComponent } from './your-groups-details/modal-create-event/modal-create-event.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { FormGroup, ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,11 +20,15 @@ import { ModalEditGroupsComponent } from './your-groups-details/modal-edit-group
     YourGroupsComponent,
     YourGroupsShowComponent,
     YourGroupsDetailsComponent,
-    ModalEditGroupsComponent
+    TableUsersGroupsComponent,
+
   ],
   imports: [
     CommonModule,
-    YourGroupsRoutingModule
+    YourGroupsRoutingModule,
+    MatTableModule,
+    MatPaginatorModule,
+    
   ]
 })
 export class YourGroupsModule { }

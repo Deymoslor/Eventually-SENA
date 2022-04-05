@@ -1,5 +1,6 @@
 export interface PersonaI{
     idPersona: number;
+    token: any;
     nombre: string;
     apellidos: string;
     documento: string;

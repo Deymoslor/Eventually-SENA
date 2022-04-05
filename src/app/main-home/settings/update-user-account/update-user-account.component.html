@@ -1,7 +1,7 @@
 <article class="cards1 card shadow-sm">
     <div class="card-body">
         <div>
-            <h1 class="m-0 h1">Actualizar información</h1><br>
+            <h1 class="m-0 h1">Actualizar Información</h1><br>
             <!-- {{childMessage}} -->
         </div>
         <div class="card ">
@@ -9,26 +9,30 @@
                 <form [formGroup]="editarForm">
                     <!-- Nombre -->
                     <div class="mb-3">
-                        <label class="form-label">Nombres</label>
+                        <b><label class="form-label">Nombres</label></b>
                         <input required type="text" class="form-control" formControlName="nombre" aria-describedby="helpId" placeholder="Escribe tu nombre">
+
                     </div>
 
                     <!-- Apellidos -->
                     <div class="mb-3">
-                        <label class="form-label">Apellidos</label>
+                        <b><label class="form-label">Apellidos</label></b>
                         <input required type="text" class="form-control" formControlName="apellidos" aria-describedby="helpId" placeholder="Escribe tus apellidos">
+
                     </div>
 
                     <!-- Documento -->
                     <div class="mb-3">
-                        <label class="form-label">Documento</label>
+                        <b><label class="form-label">Documento</label></b>
                         <input required type="text" class="form-control" formControlName="documento" aria-describedby="helpId" placeholder="Escribe tu documento">
+
                     </div>
 
                     <!-- fechaNacimiento -->
                     <div class="mb-3">
-                        <label class="form-label">Fecha de Nacimiento</label>
+                        <b><label class="form-label">Fecha de Nacimiento</label></b>
                         <input required type="date" class="form-control" formControlName="fechaNacimiento" aria-describedby="helpId" placeholder="Escribe tu fecha de nacimiento">
+
                     </div>
 
                     <!-- Email -->
@@ -39,21 +43,50 @@
                         </div> -->
 
                     <div class="selectNewLikes input-group mb-3">
-                        <label class="input-group-text" for="inputGroupSelect01">Gustos actuales</label>
+                    <b><label class="input-group-text" for="inputGroupSelect01">Gustos actuales</label></b>
                         <select class="form-select" id="inputGroupSelect01">
-                                <option selected>Musica,Baile</option>
-                                <option value="1">Musica</option>
-                                <option value="2">Baile</option>
-                                <option value="3">Deporte</option>
-                             </select>
-
+                            <option selected>Musica,Baile</option>
+                            <option value="1">Musica</option>
+                            <option value="2">Baile</option>
+                            <option value="3">Deporte</option>
+                        </select>
                     </div>
 
                     <div class="btnChangeLikes d-flex justify-content-center">
-                        <button type="submit" class="btn btn-primary btn-lg" (click)="postForm(editarForm.value)">Actualizar</button>
+                        <button type="submit" class="btn btn-primary btn-lg" (click)="postForm(editarForm.value)">Actualizar Información</button>
+                    </div>
+
+                    <br>
+
+                </form>
+
+                <div class="separator"></div>
+
+                <form [formGroup]="passwordForm">
+                    <br>
+                    <!-- Password Antiguo -->
+                    <div class="mb-3">
+                        <b><label class="form-label">Contraseña actual (o código de recuperación)</label></b>
+                        <input required type="password" class="form-control" formControlName="oldPassword" aria-describedby="helpId" placeholder="Escribe tu contraseña antigua o código de recuperación">
+
+                        <div class="recuperar">
+                            <p>O recupera tu contraseña ⊂(◉‿◉)つ  <a href="" routerLink="loginRegister/forgot-password" (click)="PasswordRecovery()">Recuperar contraseña</a></p>
+                        </div>
+
+                    </div>
+
+                    <!-- Password Nuevo -->
+                    <div class="mb-3">
+                        <b><label class="form-label">Contraseña nueva</label></b>
+                        <input required type="password" class="form-control" formControlName="newPassword" aria-describedby="helpId" placeholder="Escribe tu contraseña nueva">
+                    </div>
+
+                    <div class="btnChangeLikes d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary btn-lg" (click)="completarForm(passwordForm.value)" (click)="changePassword(passwordForm.value)">Actualizar contraseña</button>
                     </div>
 
                 </form>
+
             </div>
         </div>
     </div>

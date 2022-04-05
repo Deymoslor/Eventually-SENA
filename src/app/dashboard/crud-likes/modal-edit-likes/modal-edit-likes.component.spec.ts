@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LoginnComponent } from './loginn.component';
+import { ModalEditLikesComponent } from './modal-edit-likes.component';
 
-describe('LoginnComponent', () => {
-  let component: LoginnComponent;
-  let fixture: ComponentFixture<LoginnComponent>;
+describe('ModalEditLikesComponent', () => {
+  let component: ModalEditLikesComponent;
+  let fixture: ComponentFixture<ModalEditLikesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LoginnComponent ]
+      declarations: [ ModalEditLikesComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoginnComponent);
+    fixture = TestBed.createComponent(ModalEditLikesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

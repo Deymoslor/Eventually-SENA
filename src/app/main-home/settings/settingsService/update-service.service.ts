@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { updatePersonaI } from '../updatePersonaI';
 import { Observable } from 'rxjs';
 import { ResponseI } from 'src/app/login-register/login/models/response.intarface';
+import { updatePasswordPersonaI } from '../updatePasswrodPersonaI';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { ResponseI } from 'src/app/login-register/login/models/response.intarfac
 export class UpdateServiceService {
 
   //Definimos ruta raíz de el API.
-  API:string='http://localhost/API_rest_Eventually/';
+  API:string='http://localhost/API-Eventually-SENA/';
 
   constructor(
     //Inyectamos el HttpClient.
@@ -31,6 +32,12 @@ export class UpdateServiceService {
   putPerson(form:updatePersonaI):Observable<ResponseI>{
     let direccion = this.API+"personsUser";
     return this.http.put<ResponseI>(direccion,form);
+  }
+
+  //Creamos el método para actualizar el password comprobando el antiguo.
+  putPassword(form:updatePasswordPersonaI):Observable<ResponseI>{
+    let direccion = this.API + "personsUser";
+    return this.http.post<ResponseI>(direccion,form);
   }
 
 }
