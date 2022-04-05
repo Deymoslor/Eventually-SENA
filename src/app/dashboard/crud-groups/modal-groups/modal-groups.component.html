@@ -70,7 +70,7 @@
                 <label class="form-check-label" for="flexRadioDefault">Desactivado</label>
                 </div>
                 <div class="invalid-feddback">
-                  {{ createGroupForm.get("descripcionGrupo")?.hasError("required") ? "Estado requerido" : "" }}
+                  {{ createGroupForm.get("EstadoGrupo_idEstadoGrupo1")?.hasError("required") ? "Estado requerido" : "" }}
                 </div>
 
                 <label for="">Nombre:</label>
@@ -86,17 +86,17 @@
                 <div class="form-check">
                   <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
                 [ngClass]="(createGroupForm.get('privacidadGrupo')?.touched || createGroupForm.get('privacidadGrupo')?.dirty) &&
-                createGroupForm.get('nombreGrupo')?.errors ? 'is-invalid' : ''" formControlName="privacidadGrupo" name="privacidadGrupo" value="2">
+                createGroupForm.get('privacidadGrupo')?.errors ? 'is-invalid' : ''" formControlName="privacidadGrupo" name="privacidadGrupo" value="2">
                 <label class="form-check-label" for="flexRadioDefault">Publico</label>
                 </div>
                 <div class="form-check">
                   <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
                 [ngClass]="(createGroupForm.get('privacidadGrupo')?.touched || createGroupForm.get('privacidadGrupo')?.dirty) &&
-                createGroupForm.get('nombreGrupo')?.errors ? 'is-invalid' : ''" formControlName="privacidadGrupo" name="privacidadGrupo" value="1">
+                createGroupForm.get('privacidadGrupo')?.errors ? 'is-invalid' : ''" formControlName="privacidadGrupo" name="privacidadGrupo" value="1">
                 <label class="form-check-label" for="flexRadioDefault">Privado</label>
                 </div>
                 <div class="invalid-feddback">
-                  {{ createGroupForm.get("descripcionGrupo")?.hasError("required") ? "Nombre requerido" : "" }}
+                  {{ createGroupForm.get("privacidadGrupo")?.hasError("required") ? "Privacidad requerida" : "" }}
                 </div>
 
                 <label for="">Descripcion Grupo:</label>
@@ -168,7 +168,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-              <button type="submit" class="btn btn-primary" [disabled]="createGroupForm.invalid" data-bs-dismiss="modal">Crear evento</button>
+              <button type="submit" class="btn btn-primary" [disabled]="createGroupForm.invalid" data-bs-dismiss="modal">Crear Grupo</button>
             </div>
           </form>
       </div>

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateGroupsComponent } from './create-groups.component';
 import { CreateGroupsRoutingModule } from './create-groups-routing.module';
 
@@ -11,7 +12,9 @@ import { CreateGroupsRoutingModule } from './create-groups-routing.module';
   ],
   imports: [
     CommonModule,
-    CreateGroupsRoutingModule
+    CreateGroupsRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class CreateGroupsModule { }

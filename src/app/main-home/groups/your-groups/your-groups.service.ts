@@ -30,4 +30,10 @@ export class YourGroupsService {
     let direccion = this.API + "YourGroups?id=" + id;
     return this.http.get<Group>(direccion);
   }
+
+  postYourGroup(form:Group):Observable<Response>{
+    let direccion = this.API+"YourGroups";
+
+    return this.http.post<Response>(direccion, form);
+  }
 }
