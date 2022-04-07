@@ -11,6 +11,9 @@ import { CrudUsersComponent } from './crud-users/crud-users.component';
 import { CrudSuppliersComponent } from './crud-suppliers/crud-suppliers.component';
 import { RequestsComponent } from './requests/requests.component';
 import { CreateTypeServicesComponent } from './crud-services/create-type-services/create-type-services.component';
+import { EventReportComponent } from './crud-reports/typeReport/event-report/event-report.component';
+import { GroupReportComponent } from './crud-reports/typeReport/group-report/group-report.component';
+import { UserReportComponent } from './crud-reports/typeReport/user-report/user-report.component';
 
 
 
@@ -22,7 +25,11 @@ const routes: Routes = [
       {path: 'services', component: CrudServicesComponent},
       {path: 'likes', component: CrudLikesComponent},
       {path: 'groups', component: CrudGroupsComponent},
-      {path: 'reports', component: CrudReportsComponent},
+      {path: 'reports', component: CrudReportsComponent, children: [
+        {path: 'event-report', component: EventReportComponent},
+        {path: 'group-report', component: GroupReportComponent},
+        {path: 'user-report', component: UserReportComponent},
+      ]},
       {path: 'users', component: CrudUsersComponent},
       {path: 'suppliers', component: CrudSuppliersComponent},
       {path: 'requests', component: RequestsComponent},
