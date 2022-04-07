@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { GroupsServiceService } from './service/groups-service.service';
 import { Router } from '@angular/router';
 import { ListGroups } from './listGroups.interface';
+import { Group } from './modal-edit-groups/group.interface';
 
 // export interface PeriodicElement {
 //   position: number;
@@ -37,6 +38,8 @@ export class CrudGroupsComponent implements OnInit {
 
   groups!:ListGroups[];
 
+  datosGrupo!:Group;
+
   // displayedColumns: string[] = ['position', 'NameGroups', 'DescriptionGroups', 'Privacy', 'TotalUsers','StateGroup', 'actions'];
   // dataSource = new MatTableDataSource(ELEMENT_DATA);
 
@@ -57,6 +60,54 @@ export class CrudGroupsComponent implements OnInit {
   editarGroup(id:number){
     this.id = id;
     // console.log(id)
+  }
+
+  switchStateGroup(num: number, id:number){
+    if (num != 1) {
+      console.log("hola soy el num " + num);
+      this.GroupsServiceService.getSingleGroup(id).subscribe((data:any) => {
+        this.datosGrupo = data[0];
+        this.datosGrupo.EstadosGrupo_idEstadosGrupo1 = 2;
+        this.GroupsServiceService.putGroup(this.datosGrupo).subscribe((data:any) =>{
+          console.log("Entrando aquí");
+        window.location.reload();
+        });
+      });
+    } else if (num == 1) {
+      console.log("hola soy el num " + num);
+      this.GroupsServiceService.getSingleGroup(id).subscribe((data:any) => {
+        this.datosGrupo = data[0];
+        this.datosGrupo.EstadosGrupo_idEstadosGrupo1 = 1;
+        this.GroupsServiceService.putGroup(this.datosGrupo).subscribe((data:any) =>{
+          console.log("Entrando aquí");
+        window.location.reload();
+        });
+      });
+    }
+  }
+
+  switchPublicGroup(num: number, id:number){
+    if (num != 1) {
+      console.log("hola soy el num " + num);
+      this.GroupsServiceService.getSingleGroup(id).subscribe((data:any) => {
+        this.datosGrupo = data[0];
+        this.datosGrupo.privacidadGrupo = 2;
+        this.GroupsServiceService.putGroup(this.datosGrupo).subscribe((data:any) =>{
+          console.log("Entrando aquí");
+        window.location.reload();
+        });
+      });
+    } else if (num == 1) {
+      console.log("hola soy el num " + num);
+      this.GroupsServiceService.getSingleGroup(id).subscribe((data:any) => {
+        this.datosGrupo = data[0];
+        this.datosGrupo.privacidadGrupo = 1;
+        this.GroupsServiceService.putGroup(this.datosGrupo).subscribe((data:any) =>{
+          console.log("Entrando aquí");
+        window.location.reload();
+        });
+      });
+    }
   }
 
 }
