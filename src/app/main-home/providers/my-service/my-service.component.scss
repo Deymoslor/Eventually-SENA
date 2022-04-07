@@ -1,0 +1,77 @@
+.thumbnail {
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    width: 100%;
+    height: 400px;
+    background-image: url("../../../../assets/main/providers/breadcrumb.jpg");
+  }
+  
+  .title {
+    margin-top: 20%;
+    align-self: center;
+  }
+  
+  //Options providers
+  .options-providers {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 8px;
+    background-color: #f6ebfd;
+    margin-top: 10px;
+    border-radius: 10px;
+  }
+  
+  .left-options button {
+    margin: 5px;
+  }
+  .right-options button {
+    margin: 5px;
+  }
+  
+  //Service by the provider, at the moment
+  .service-provided-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    background-color: #f6ebfd;
+    margin-top: 15px;
+    border-radius: 10px;
+  }
+  .info-content {
+    display: flex;
+    flex-direction: column;
+    background-color: #e9c1e3;
+    padding: 8px;
+    margin: 10px;
+    border-radius: 15px;
+    align-self: center;
+  }
+  
+  .info-content img {
+    height: 200px;
+    width: 250px;
+    border-radius: 5px;
+  }
+  
+  //Invitations
+  
+  //Invitations - Table
+  .table-invitations {
+    display: block;
+    align-self: center;
+    width: 100%;
+  }
+
+  .disabledService{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    background-color: #f6ebfd;
+    margin-top: 15px;
+    border-radius: 10px;
+  }
+  

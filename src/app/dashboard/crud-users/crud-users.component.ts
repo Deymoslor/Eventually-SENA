@@ -151,6 +151,8 @@ constructor(
 
       this.userService.putPerson(this.datosPersona).subscribe((data:any) =>{
 
+        console.log("Entrando aquí");
+        
         window.location.reload();
 
       });
