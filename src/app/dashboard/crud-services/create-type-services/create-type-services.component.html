@@ -1,0 +1,15 @@
+<div class="main-content">
+    <div class="content">
+        <form [formGroup]="createTypeServices" (ngSubmit)="postForm(createTypeServices.value)">       
+                        <label for="">Nombre del Evento:</label>
+                        <input type="text" class="form-control" id=""
+                        placeholder="" formControlName="tipoServicio">
+                        
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="goback()">Volver</button>
+                <button type="submit" class="btn btn-primary">Crear Tipo Servicio</button>
+            </div>
+    
+        </form>
+    </div>
+</div>
