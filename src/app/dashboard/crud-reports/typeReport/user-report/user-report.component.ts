@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 // import {jsPDF} from 'node_modules/jspdf';
 import html2canvas from 'html2canvas';
-import { PersonaI } from 'src/app/dashboard/crud-users/modal-users/persona.interface';
+import { PersonaI } from 'src/app/dashboard/crud-users/modal-users/personaI.interface';
 import { ListaPersonasI } from 'src/app/dashboard/crud-users/ListaPersonasI.interface';
 import { ApiTypeReportService } from '../api-type-report.service';
 import { Router } from '@angular/router';
