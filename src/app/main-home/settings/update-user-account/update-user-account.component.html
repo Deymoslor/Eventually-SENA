@@ -69,7 +69,9 @@
                         <b><label class="form-label">Contraseña actual (o código de recuperación)</label></b>
                         <input required type="password" class="form-control" formControlName="oldPassword" aria-describedby="helpId" placeholder="Escribe tu contraseña antigua o código de recuperación">
 
-                        <!-- <p>O recupera tu contraseña: <a click(PasswordRecovery())>Recuperar contraseña</a></p> -->
+                        <div class="recuperar">
+                            <p>O recupera tu contraseña ⊂(◉‿◉)つ  <a href="" routerLink="loginRegister/forgot-password" (click)="PasswordRecovery()">Recuperar contraseña</a></p>
+                        </div>
 
                     </div>
 
@@ -80,7 +82,7 @@
                     </div>
 
                     <div class="btnChangeLikes d-flex justify-content-center">
-                        <button type="submit" class="btn btn-primary btn-lg" (click)="postForm(passwordForm.value)">Actualizar contraseña</button>
+                        <button type="submit" class="btn btn-primary btn-lg" (click)="completarForm(passwordForm.value)" (click)="changePassword(passwordForm.value)">Actualizar contraseña</button>
                     </div>
 
                 </form>

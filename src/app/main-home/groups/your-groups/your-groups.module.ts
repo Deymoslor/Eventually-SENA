@@ -28,7 +28,9 @@ import { FormGroup, ReactiveFormsModule, FormsModule } from '@angular/forms';
     YourGroupsRoutingModule,
     MatTableModule,
     MatPaginatorModule,
-    
+    MatDatepickerModule,
+    FormsModule,
+    ReactiveFormsModule, 
   ]
 })
 export class YourGroupsModule { }

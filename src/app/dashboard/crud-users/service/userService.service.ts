@@ -10,7 +10,11 @@ import { ResponseI } from 'src/app/login-register/login/models/response.intarfac
 })
 export class userService {
   //Definimos ruta raíz de el API.
+<<<<<<< HEAD
   API:string='http://localhost/API-Eventually-Sena/';
+=======
+  API:string='http://localhost/Api-Eventually-SENA/';
+>>>>>>> master
 
   //Definimos dentro del constructor el cliente http.
   constructor(

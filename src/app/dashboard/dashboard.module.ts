@@ -30,6 +30,7 @@ import { ModalEditLikesComponent } from './crud-likes/modal-edit-likes/modal-edi
 import { ModalEditEventsComponent } from './crud-events/modal-edit-events/modal-edit-events.component';
 import { ModalEditGroupsComponent } from './crud-groups/modal-edit-groups/modal-edit-groups.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { CreateTypeServicesComponent } from './crud-services/create-type-services/create-type-services.component';
 
 
 
@@ -57,7 +58,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     TableRequestEventComponent,
     ModalEditLikesComponent,
     ModalEditGroupsComponent,
-    ModalEditEventsComponent
+    ModalEditEventsComponent,
+    CreateTypeServicesComponent
 
   ],
   imports: [

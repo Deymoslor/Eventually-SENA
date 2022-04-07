@@ -4,6 +4,7 @@ import { updatePersonaI } from '../updatePersonaI';
 import { UpdateServiceService } from '../settingsService/update-service.service';
 import { Router } from '@angular/router';
 import { ForgotPasswordComponent } from '../../../login-register/forgot-password/forgot-password.component';
+import { updatePasswordPersonaI } from '../updatePasswrodPersonaI';
 
 @Component({
   selector: 'app-update-user-account',
@@ -22,8 +23,6 @@ export class UpdateUserAccountComponent implements OnInit {
   //Creamos una variable que será de tipo updatePersonaI para poder almacenar los datos traidos con la consulta. Para esto, además necesitamos un formGroup.
   datosPersona!:updatePersonaI;
 
-  passwordPersona!:updatePersonaI;
-
   //Creamos el FormGroup que nos sirve para poder tener el formulario con los campos correctos y en caso de necesitar validators.
   editarForm = new FormGroup({
     idPersona: new FormControl(''),
@@ -34,7 +33,7 @@ export class UpdateUserAccountComponent implements OnInit {
     fechaNacimiento: new FormControl('')
   });
 
-
+  //Creamos formulario para poder actualizar contraseña.
   passwordForm = new FormGroup({
     idPersona: new FormControl(''),
     token: new FormControl(''),
@@ -72,9 +71,6 @@ export class UpdateUserAccountComponent implements OnInit {
         'fechaNacimiento' : this.datosPersona.fechaNacimiento,
       })
 
-      //Imprimimos el formulario por consola.
-      // console.log(this.editarForm.value);
-
     });
 
   }
@@ -82,19 +78,16 @@ export class UpdateUserAccountComponent implements OnInit {
   //Método que se ejecuta cuando se hace submit de formulario para enviar los datos editados.
   postForm(form:updatePersonaI){
 
-    //Creamos log para verificar que la información está cambiando cuando presinamos el botón.
-    // console.log(form);
-
     //llamamos el método de actualizar desde el servicio.
     this.updateServiceService.putPerson(form).subscribe((data:any) =>{
-      console.log(data);
       //Recargamos página.
       window.location.reload();
     });
 
   }
 
-  changePassword(form:any){
+  //Método que se ejecuta cuando se hace click en actualizar contraseña y nos permite llenar campo de token y id.
+  completarForm(form:updatePasswordPersonaI){
 
     //Retomamos el id
     let idPersona = localStorage.getItem('id');
@@ -102,7 +95,7 @@ export class UpdateUserAccountComponent implements OnInit {
     //Retomamos el token
     let token = localStorage.getItem('token');
 
-    //llamamos nuestro formulario de actualizar password para empezar a asignarle la información de los campos.
+    //llamamos nuestro formulario para empezar a asignarle la información de los campos.
     this.passwordForm.setValue({
       'idPersona' : idPersona,
       'token' : token,
@@ -112,14 +105,19 @@ export class UpdateUserAccountComponent implements OnInit {
 
     console.log(this.passwordForm);
 
+  }
 
-    this.updateServiceService.putPassword(this.passwordForm).subscribe((data:any) =>{
+  //Método que se ejecuta para actualizar la contraseña comprobando antigua y nueva.
+  changePassword(form:updatePasswordPersonaI){
+
+    //Llamamos al método del servicio que nos permite actualizar la contraseña.
+    this.updateServiceService.putPassword(form).subscribe((data:any) =>{
       console.log(data);
 
       //regargamos página.
       window.location.reload();
 
-    })
+    });
   }
 
   //Creamos método para pedir el token.
@@ -128,8 +126,9 @@ export class UpdateUserAccountComponent implements OnInit {
     return localStorage.getItem('token');
   }
 
+  //método para recuperación de password en caso de no saberlo.
   PasswordRecovery(){
-    this.router.navigate(['/loginRegister/forgot-password']);
+    this.router.navigate(['loginRegister/forgot-password']);
   }
 
 }
