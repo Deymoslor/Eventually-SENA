@@ -6,6 +6,7 @@ import { ResponseI } from 'src/app/models/response.interface';
 import { ListEventsI } from '../../models/listEvents.interface';
 
 import { HttpClient } from '@angular/common/http';
+import { LikesI } from 'src/app/models/likes';
 
 
 @Injectable({
@@ -19,6 +20,12 @@ export class ApiService {
 
   postEvent(form:EventI):Observable<ResponseI>{
     let dir = this.url+"eventos";
+
+    return this.http.post<ResponseI>(dir, form);
+  }
+
+  postLike(form:LikesI):Observable<ResponseI>{
+    let dir = this.url+"likes";
 
     return this.http.post<ResponseI>(dir, form);
   }

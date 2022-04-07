@@ -15,9 +15,9 @@
                         <input type="text" class="form-control inputG" id="" formControlName="nombreGusto" placeholder="Nombre del gusto">
                         <div class="input-group mb-3 selectTypeLike">
                             <label class="input-group-text" for="inputGroupSelect01">Tipo</label>
-                            <select formControlName="idTipoGusto" class="form-select" id="inputGroupSelect01">
+                            <select formControlName="idtipoGusto" class="form-select" id="inputGroupSelect01">
                               <option selected >Choose...</option>
-                              <option value={{typelike.idTipoGusto}} *ngFor="let typelike of typeslikes">{{typelike.tipoGusto}}</option>
+                              <option value={{typelike.idtipoGusto}} *ngFor="let typelike of typeslikes">{{typelike.tipoGusto}}</option>
                             </select>
                         </div>
 
@@ -46,7 +46,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="btn btn-primary" onclick="window.location.reload();">Actualizar gusto</button>
+                    <button type="submit" class="btn btn-primary">Actualizar gusto</button>
                 </div>
             </div>
         </div>
