@@ -13,7 +13,7 @@ export class accountService {
 
   //Definimos ruta raíz de el API.
 
-  API:string='http://localhost/API-Eventually-Sena/';
+  API:string='http://localhost/API-Eventually-SENA/';
 
 
   //Definimos dentro del constructor el cliente http.
