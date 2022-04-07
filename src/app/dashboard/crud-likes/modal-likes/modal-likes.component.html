@@ -1,32 +1,43 @@
-<div class="modal fade" id="likes-modal" tabindex="-1">
-    <div class="modal-dialog modal-lg modal-dialog-scrollable">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Creacion de Gustos</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label for="">Nombre del gusto:</label>
-                    <input type="text" class="form-control" id="" placeholder="Ej: El mejor gusto">
-                    <!-- <div class="input-group mb-3 selectTypeLike">
-                        <label class="input-group-text" for="inputGroupSelect01">Tipo</label>
-                        <select formControlName="idTipoGusto" class="form-select" id="inputGroupSelect01">
-                          <option selected >Choose...</option>
-                          <option value={{typelike.idTipoGusto}} *ngFor="let typelike of typeslikes">{{typelike.tipoGusto}}</option>
-                        </select>
-                    </div> -->
+<form [formGroup]="createLikeForm" (ngSubmit)="postForm(createLikeForm.value)">
 
-
-
-
-
+    <div class="modal fade" id="likes-modal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Creacion de Gustos</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary">Crear gusto</button>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="">Nombre del gusto:</label>
+                        <input type="text" class="form-control" id="" placeholder="Ej: El mejor gusto" [ngClass]="
+                    (createLikeForm.get('nombreGusto')?.touched || createLikeForm.get('nombreGusto')?.dirty) &&
+                    createLikeForm.get('nombreGusto')?.errors ? 'is-invalid' : ''" formControlName="nombreGusto">
+                        <div class="invalid-feedback">
+                            {{ createLikeForm.get("nombreGusto")?.hasError("required") ? "Nombre requerido" : "" }}
+                        </div>
+                        <br>
+                        <!-- <div class="input-group mb-3 selectTypeLike">
+                            <label class="input-group-text" for="inputGroupSelect01">Tipo</label>
+                            <select [ngClass]="
+                            (createLikeForm.get('idTipoGusto')?.touched || createLikeForm.get('idTipoGusto')?.dirty) &&
+                            createLikeForm.get('idTipoGusto')?.errors ? 'is-invalid' : ''" formControlName="idTipoGusto" class="form-select" id="inputGroupSelect01">
+                          <option selected >Choose...</option>
+                          <option value={{typelike.idTipoGusto}} *ngFor="let typelike of typeslikes" >{{typelike.tipoGusto}}</option>
+                        </select>
+                        </div> -->
+
+
+
+
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Crear gusto</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</form>

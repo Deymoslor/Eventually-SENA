@@ -1,14 +1,21 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { LikesI } from '../models/likes';
+import { LikesI, LikesIns } from '../models/likes';
 import { TypesLikesI } from '../models/typesLikes';
 import { likesStatusI } from '../dashboard/crud-likes/likesStatusI.interface';
+import { EventI } from '../models/event.interface';
+import { ResponseI } from '../models/response.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
+  postLike(form:LikesIns):Observable<ResponseI>{
+    let dir = this.url+"likes";
+
+    return this.http.post<ResponseI>(dir, form);
+  }
 
 url:string="http://localhost/Api-Eventually-SENA/"
 
