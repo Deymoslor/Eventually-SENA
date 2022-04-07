@@ -1,24 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
-
-export interface PeriodicElementService {
-  position: number;
-  nameEvent: string;  
-  description: string;
-  typeEvent: string;
-  date: string;
-  actions: null;
-}
-
-const ELEMENT_DATASERVICE: PeriodicElementService[] = [
-  {position: 1, nameEvent: 'Futbol de calidad', description: 'ENSEÑANZA DE FUTBOL A NIVEL INCREIBLES', typeEvent: 'Deportes', date: '06/06/2023', actions:null},
-  {position: 2, nameEvent: 'Furbol2', description: 'Grupo de futbol especializado en el balon pero mas que el otro XD', typeEvent: 'He', date: '', actions:null},
-  {position: 3, nameEvent: 'RunescapeThings', description: 'Grupo creado para los amantes del Runescape, osea literalmente nadie.', typeEvent: 'Li', date: '', actions:null},
-  {position: 4, nameEvent: 'Eventually', description: 'El primer grupo de todos, el grupo mas capo literalmente.', typeEvent: 'Be', date: '', actions:null},
-  {position: 5, nameEvent: 'prueba', description: 'prueba', typeEvent: 'B', date: '', actions:null},
-  {position: 6, nameEvent: 'prueba', description: 'prueba', typeEvent: 'C', date: '', actions:null},
-];
+import { ListaRequestEventsI } from './ListaRequestEventsI.interface';
+import { RequestEventsI } from './requestsEventsI.interface';
+import { RequestEventsService } from './request-events.service';
+import { Router } from '@angular/router';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-table-request-event',
@@ -27,16 +14,63 @@ const ELEMENT_DATASERVICE: PeriodicElementService[] = [
 })
 export class TableRequestEventComponent implements OnInit {
 
-  displayedColumnsService: string[] = ['position', 'nameEvent', 'description', 'typeEvent', 'date', 'actions'];
-  dataSource = new MatTableDataSource(ELEMENT_DATASERVICE); 
+  //Propiedad que nos sirve para actualizar el estado.
+  datosPeticion!:RequestEventsI;
 
-  @ViewChild(MatPaginator, { static: true })
-  paginator!: MatPaginator;
+  requests!:ListaRequestEventsI[];
 
-  constructor() { }
+  constructor(
+    //Inyectamos nuestro servicio.
+    private RequestEventsService:RequestEventsService,
+
+    //Inyectamos el router.
+    private router:Router
+  ) { }
 
   ngOnInit(): void {
-    this.dataSource.paginator = this.paginator;
+
+    //Obtenemos todos los pacientes.
+    this.RequestEventsService.getAllRequests(1).subscribe(data=>{
+      //recibimos por consola los datso que nos esté trayendo.
+      // console.log(data);
+
+      //Llamamos a la variable que creamos arriba para asignarle los datos que hay en la variable data.
+      this.requests = data;
+
+    });
+
+  }
+
+  aceptarPeticion(id:number){
+    //Llamamos al servicio para solicitar una sola persona y poder editar el estado sin cambiar el resto de datos de la cuenta.
+    this.RequestEventsService.getSingleRequest(id).subscribe((data:any) =>{
+      //asignamos el valor que venga desde la API a una variable para poder recorrerla.
+      this.datosPeticion = data[0];
+      this.datosPeticion.estadoPeticion="2";
+      let token = localStorage.getItem('token');
+      this.datosPeticion.token = token;
+      console.log(this.datosPeticion);
+
+      this.RequestEventsService.putRequest(this.datosPeticion).subscribe((data:any) =>{
+        // console.log("Entrando aquí");
+        window.location.reload();
+      });
+    });
+  }
+
+  rechazarPeticion(id:number){
+    //Llamamos al servicio para solicitar una sola persona y poder editar el estado sin cambiar el resto de datos de la cuenta.
+    this.RequestEventsService.getSingleRequest(id).subscribe((data:any) =>{
+      //asignamos el valor que venga desde la API a una variable para poder recorrerla.
+      this.datosPeticion = data[0];
+      this.datosPeticion.estadoPeticion="3";
+      let token = localStorage.getItem('token');
+      this.datosPeticion.token = token;
+      this.RequestEventsService.putRequest(this.datosPeticion).subscribe((data:any) =>{
+        // console.log("Entrando aquí");
+        window.location.reload();
+      });
+    });
   }
 
 }

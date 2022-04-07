@@ -1,26 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
-
-
-
-export interface PeriodicElementService {
-  position: number;
-  nameGroup: string;  
-  description: string;
-  typeGroup: string;
-  nameOrganizer: string;
-  actions: null;
-};
-
-const ELEMENT_DATASERVICE: PeriodicElementService[] = [
-  {position: 1, nameGroup: 'Futbol de calidad', description: 'ENSEÑANZA DE FUTBOL A NIVEL INCREIBLES', typeGroup: 'Deportes', nameOrganizer: 'Dylan Malumaniatico', actions:null},
-  {position: 2, nameGroup: 'Furbol2', description: 'Grupo de futbol especializado en el balon pero mas que el otro XD', typeGroup: 'He', nameOrganizer: '', actions:null},
-  {position: 3, nameGroup: 'RunescapeThings', description: 'Grupo creado para los amantes del Runescape, osea literalmente nadie.', typeGroup: 'Li', nameOrganizer: '', actions:null},
-  {position: 4, nameGroup: 'Eventually', description: 'El primer grupo de todos, el grupo mas capo literalmente.', typeGroup: 'Be', nameOrganizer: '', actions:null},
-  {position: 5, nameGroup: 'prueba', description: 'prueba', typeGroup: 'B', nameOrganizer: '', actions:null},
-  {position: 6, nameGroup: 'prueba', description: 'prueba', typeGroup: 'C', nameOrganizer: '', actions:null},
-];
+import { RequestGroupsI } from './requestsGroupsI.interface';
+import { ListaRequestGroupsI } from './ListaRequestGroupsI.interface';
+import { Router } from '@angular/router';
+import { RequestGroupsService } from './request-groups.service';
 
 @Component({
   selector: 'app-table-request-groups',
@@ -29,16 +14,63 @@ const ELEMENT_DATASERVICE: PeriodicElementService[] = [
 })
 export class TableRequestGroupsComponent implements OnInit {
 
-  displayedColumnsService: string[] = ['position', 'nameGroup', 'description', 'typeGroup', 'nameOrganizer', 'actions'];
-  dataSource = new MatTableDataSource(ELEMENT_DATASERVICE); 
+  //Propiedad que nos sirve para actualizar el estado.
+  datosPeticion!:RequestGroupsI;
 
-  @ViewChild(MatPaginator, { static: true })
-  paginator!: MatPaginator;
+  requests!:ListaRequestGroupsI[];
 
-  constructor() { }
+  constructor(
+    //Inyectamos nuestro servicio.
+    private RequestGroupsService:RequestGroupsService,
+
+    //Inyectamos el router.
+    private router:Router
+  ) { }
 
   ngOnInit(): void {
-    this.dataSource.paginator = this.paginator;
+
+    //Obtenemos todos los pacientes.
+    this.RequestGroupsService.getAllRequests(1).subscribe(data=>{
+      //recibimos por consola los datso que nos esté trayendo.
+      // console.log(data);
+
+      //Llamamos a la variable que creamos arriba para asignarle los datos que hay en la variable data.
+      this.requests = data;
+
+    });
+
+  }
+
+  aceptarPeticion(id:number){
+    //Llamamos al servicio para solicitar una sola persona y poder editar el estado sin cambiar el resto de datos de la cuenta.
+    this.RequestGroupsService.getSingleRequest(id).subscribe((data:any) =>{
+      //asignamos el valor que venga desde la API a una variable para poder recorrerla.
+      this.datosPeticion = data[0];
+      this.datosPeticion.estadoPeticion="2";
+      let token = localStorage.getItem('token');
+      this.datosPeticion.token = token;
+      console.log(this.datosPeticion);
+
+      this.RequestGroupsService.putRequest(this.datosPeticion).subscribe((data:any) =>{
+        // console.log("Entrando aquí");
+        window.location.reload();
+      });
+    });
+  }
+
+  rechazarPeticion(id:number){
+    //Llamamos al servicio para solicitar una sola persona y poder editar el estado sin cambiar el resto de datos de la cuenta.
+    this.RequestGroupsService.getSingleRequest(id).subscribe((data:any) =>{
+      //asignamos el valor que venga desde la API a una variable para poder recorrerla.
+      this.datosPeticion = data[0];
+      this.datosPeticion.estadoPeticion="3";
+      let token = localStorage.getItem('token');
+      this.datosPeticion.token = token;
+      this.RequestGroupsService.putRequest(this.datosPeticion).subscribe((data:any) =>{
+        // console.log("Entrando aquí");
+        window.location.reload();
+      });
+    });
   }
 
 }

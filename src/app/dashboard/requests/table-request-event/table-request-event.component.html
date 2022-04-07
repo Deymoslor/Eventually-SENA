@@ -1,69 +1,61 @@
 <div class="content">
-    <h2 class="fs-1 fw-bolder">Peticiones Eventos</h2>    
-    
-    <!--TABLE-->
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <h2 class="fs-1 fw-bolder">Peticiones Eventos</h2>
 
-            <!--- Note that these columns can be defined in any order.
-                The actual rendered columns are set as a property on the row definition" -->
-        
-            <!-- Position Column -->
-            
-            <ng-container matColumnDef="position">
-                <th class="ng-container" mat-header-cell *matHeaderCellDef> No. </th>
-                <td class="ng-container" mat-cell *matCellDef="let element"> {{element.position}} </td>
-                </ng-container>
-            
-                <!-- Name Column -->
-                <ng-container matColumnDef="nameEvent">
-                <th class="ng-container"  mat-header-cell *matHeaderCellDef> Nombre Evento</th>
-                <td class="ng-container" mat-cell *matCellDef="let element"> {{element.nameEvent}} </td>
-                </ng-container>
-            
-                <!-- Weight Column -->
-                <ng-container matColumnDef="description">
-                <th class="ng-container" mat-header-cell *matHeaderCellDef> Descripción Evento </th>
-                <td class="ng-container" mat-cell *matCellDef="let element"> {{element.description}} </td>
-                </ng-container>
-            
-                <!-- Symbol Column -->
-                <ng-container matColumnDef="typeEvent">
-                <th class="ng-container" mat-header-cell *matHeaderCellDef> Tipo Evento </th>
-                <td class="ng-container" mat-cell *matCellDef="let element"> {{element.typeEvent}} </td>
-                </ng-container>
-    
-                <ng-container class="ng-container" matColumnDef="date">
-                    <th class="ng-container" mat-header-cell *matHeaderCellDef> Fecha realizacion </th>
-                    <td class="ng-container" mat-cell *matCellDef="let element"> {{element.date}} </td>
-    
-                </ng-container>
-    
-                <ng-container class="ng-container" matColumnDef="actions">
-                    <th class="ng-container" mat-header-cell *matHeaderCellDef> Respuesta </th>
-                    <td class="ng-container" mat-cell *matCellDef="let element"> 
-                        <form action="">
-                            <fieldset>
-                                <div class="switch-toggle switch-candy">
-                                    <input id="G{{element.position}}R" name="view" type="radio" class="mostrar-valor" value="True">
-                                    <label for="G{{element.position}}R" onclick="">A</label>
-                                    
-                                    <input id="G{{element.position}}D" name="view" type="radio" class="mostrar-valor" value="False">
-                                    <label for="G{{element.position}}D" onclick="">D</label>
-                                    
-                                    <input id="G{{element.position}}A" name="view" type="radio" class="mostrar-valor" value="True">
-                                    <label for="G{{element.position}}A" onclick="">?</label>
-                                    <a></a>
-                                </div>
-                            </fieldset>
-                        </form>
-                    </td>
-                </ng-container>
-        
-            <tr mat-header-row *matHeaderRowDef="displayedColumnsService"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumnsService;"></tr>
-        </table>
-        <mat-paginator [pageSizeOptions]="[5, 10, 20]"
-                 showFirstLastButtons >
-        </mat-paginator>
-    <!--TABLE//-->
+    <!-- Jordan Table Start -->
+
+    <table class="table table-hover table-dark table-responsive">
+
+        <thead>
+
+            <tr>
+
+                <th scope="col">Id de la petición</th>
+                <th scope="col">estadoPeticion</th>
+                <th scope="col">Evento_idEvento</th>
+                <th scope="col">Acciones</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr *ngFor="let request of requests">
+
+                <th scope="row">{{request.idpeticionesEvento}}</th>
+
+                <td>{{request.estadoPeticion}}</td>
+
+                <td>{{request.Evento_idEvento }}</td>
+
+                <!-- Grupo está sin respuesta -->
+                <div *ngIf="request.estadoPeticion==='1'">
+                    <div class="d-grid gap-2 d-md-block">
+                        <button (click)="aceptarPeticion(request.idpeticionesEvento)" type="button" class="btn btn-outline-warning btn-sm">Aceptar</button>
+                        <button (click)="rechazarPeticion(request.idpeticionesEvento)" type="button" class="btn btn-outline-danger btn-sm">Rechazar</button>
+                    </div>
+                </div>
+
+                <!-- Grupo está habilitado -->
+                <div *ngIf="request.estadoPeticion==='2'">
+                    <div class="form-check form-switch">
+                        <button (click)="rechazarPeticion(request.idpeticionesEvento)" type="button" class="btn btn-outline-danger btn-sm">Inhabilitar</button>
+                    </div>
+                </div>
+
+                <!-- Grupo está deshabilitado -->
+                <div *ngIf="request.estadoPeticion==='3'">
+                    <div class="form-check form-switch">
+                        <button (click)="aceptarPeticion(request.idpeticionesEvento)" type="button" class="btn btn-outline-warning btn-sm">Habilitar</button>
+                    </div>
+                </div>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <!-- Jordan Table Finish -->
+
 </div>
