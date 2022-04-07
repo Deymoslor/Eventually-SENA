@@ -8,7 +8,7 @@ import { Groups } from '../see-groups/groups';
   providedIn: 'root'
 })
 export class RelatedGroupsService {
-  API:string='http://localhost/API-Eventually-Sena/';
+  API:string='http://localhost/API-Eventually-SENA/';
   // readonly groups: Groups[] = [
   //   {
   //     idGrupos: 1,
