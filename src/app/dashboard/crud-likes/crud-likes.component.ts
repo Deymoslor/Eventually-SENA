@@ -2,6 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { LikesI } from 'src/app/models/likes';
+import { likesStatusI } from 'src/app/dashboard/crud-likes/likesStatusI.interface';
+
+
 import { ApiService } from 'src/app/services/api.service';
 
 export interface PeriodicElement {
@@ -11,6 +14,9 @@ export interface PeriodicElement {
   state: string;
   actions: null;
 }
+
+
+
 
 const ELEMENT_DATA: PeriodicElement[] = [
   {position: 1, nameLikes: 'Deportes', typeLikes: 'H', state: '', actions:null},
@@ -30,6 +36,8 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./crud-likes.component.scss']
 })
 export class CrudLikesComponent implements OnInit {
+
+  likesStatus!:likesStatusI;
 
   displayedColumns: string[] = ['position', 'nameLikes', 'typeLikes', 'state', 'actions'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
@@ -52,6 +60,59 @@ export class CrudLikesComponent implements OnInit {
   }
   editLikes(id:number){
     this.id=id;
+  }
+  cambioEstado(estado:number,id:number){
+
+    if (estado == 1) {
+
+      
+      //Llamamos al servicio para solicitar una sola persona y poder editar el estado sin cambiar el resto de datos de la cuenta.
+      this.api.getStatusLikes(id).subscribe((data:any) =>{
+
+      //asignamos el valor que venga desde la API a una variable para poder recorrerla.
+      this.likesStatus = data[0];
+
+      this.likesStatus.estadoGusto=2;
+
+      // let token = localStorage.getItem('token');
+
+      // this.likesStatus.token = token;
+
+      this.api.putLikeStatus(this.likesStatus).subscribe((data:any) =>{
+
+        console.log("Entrando aquí");
+        
+        window.location.reload();
+
+      });
+
+
+    });
+
+    }else{
+
+        //Llamamos al servicio para solicitar una sola persona y poder editar el estado sin cambiar el resto de datos de la cuenta.
+        this.api.getStatusLikes(id).subscribe((data:any) =>{
+
+        //asignamos el valor que venga desde la API a una variable para poder recorrerla.
+        this.likesStatus = data[0];
+
+        this.likesStatus.estadoGusto=1;
+
+        // let token = localStorage.getItem('token');
+
+        // this.datosPersona.token = token;
+
+        this.api.putLikeStatus(this.likesStatus).subscribe((data:any) =>{
+
+          window.location.reload();
+
+        });
+
+      });
+
+    }
+
   }
 
   // cambioEstado(estado:number,id:number){

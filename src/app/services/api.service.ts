@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LikesI } from '../models/likes';
 import { TypesLikesI } from '../models/typesLikes';
+import { likesStatusI } from '../dashboard/crud-likes/likesStatusI.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +34,16 @@ url:string="http://localhost/Api-Eventually-SENA/"
 
   putLikes(form:LikesI):Observable<Response>{
     let dir = this.url + "likes";
+    return this.http.put<Response>(dir,form);
+  }
+
+  getStatusLikes(id:number):Observable<likesStatusI>{
+    let dir = this.url + "likesStatus?id=" + id;
+    return this.http.get<likesStatusI>(dir);
+  }
+
+  putLikeStatus(form:likesStatusI):Observable<Response>{
+    let dir = this.url + "likeStatus";
     return this.http.put<Response>(dir,form);
   }
 }

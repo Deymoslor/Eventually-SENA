@@ -1,5 +1,6 @@
 <!-- <app-update-user-account [childMessage]=parentMessageL></app-update-user-account> -->
 <!-- <app-modal-users [childMessage]=parentMessage></app-modal-users> -->
+
 <body>
     <!-- Conectamos el formulario de la clase .ts llamado loginForm con nuestro formulario HTML y además definimos una función submit, (ngSubmit="onLogin(loginForm.value)") -->
     <form ngNativeValidate [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm.value)">
