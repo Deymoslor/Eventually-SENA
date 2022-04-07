@@ -16,10 +16,10 @@ export class ModalLikesComponent implements OnInit {
   date: { year: number; month: number;} | undefined;
   
   createLikeForm = new FormGroup({
-    
+
     nombreGusto: new FormControl(''),
-    // idTipoGusto: new FormControl(''),
-    // estadoGusto: new FormControl(''),
+    idtipoGusto: new FormControl(''),
+    estadoGusto: new FormControl('2'),
     
   });
 
@@ -29,13 +29,10 @@ export class ModalLikesComponent implements OnInit {
   typeslikes?:TypesLikesI[];
   likes?:LikesIns[];
   ngOnInit(): void {
-    this.api.getAllTypesLikes(1).subscribe(data => {this.typeslikes=data})
     
-    this.createLikeForm = this.ng.group({
-      nombreGusto: ['', [Validators.required, Validators.minLength(2)]],
-      // idTipoGusto: [''],
-      // estadoGusto: ['2'],
-    });
+  }
+  ngOnChanges(): void{
+    this.api.getAllTypesLikes(1).subscribe(data => {this.typeslikes=data})
   }
   postForm(form:LikesIns){
     console.log(form);

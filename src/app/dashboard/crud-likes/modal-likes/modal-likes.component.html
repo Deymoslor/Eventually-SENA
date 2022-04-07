@@ -10,22 +10,15 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="">Nombre del gusto:</label>
-                        <input type="text" class="form-control" id="" placeholder="Ej: El mejor gusto" [ngClass]="
-                    (createLikeForm.get('nombreGusto')?.touched || createLikeForm.get('nombreGusto')?.dirty) &&
-                    createLikeForm.get('nombreGusto')?.errors ? 'is-invalid' : ''" formControlName="nombreGusto">
-                        <div class="invalid-feedback">
-                            {{ createLikeForm.get("nombreGusto")?.hasError("required") ? "Nombre requerido" : "" }}
-                        </div>
+                        <input type="text" class="form-control" id="" placeholder="Ej: El mejor gusto" formControlName="nombreGusto">
                         <br>
-                        <!-- <div class="input-group mb-3 selectTypeLike">
+                        <div class="input-group mb-3 selectTypeLike">
                             <label class="input-group-text" for="inputGroupSelect01">Tipo</label>
-                            <select [ngClass]="
-                            (createLikeForm.get('idTipoGusto')?.touched || createLikeForm.get('idTipoGusto')?.dirty) &&
-                            createLikeForm.get('idTipoGusto')?.errors ? 'is-invalid' : ''" formControlName="idTipoGusto" class="form-select" id="inputGroupSelect01">
+                            <select class="form-select" id="inputGroupSelect01" formControlName="idtipoGusto">
                           <option selected >Choose...</option>
-                          <option value={{typelike.idTipoGusto}} *ngFor="let typelike of typeslikes" >{{typelike.tipoGusto}}</option>
+                          <option value={{typelike.idtipoGusto}} *ngFor="let typelike of typeslikes" >{{typelike.tipoGusto}}</option>
                         </select>
-                        </div> -->
+                        </div>
 
 
 
