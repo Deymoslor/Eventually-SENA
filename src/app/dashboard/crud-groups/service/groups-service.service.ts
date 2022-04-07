@@ -8,7 +8,7 @@ import { Group } from "../modal-edit-groups/group.interface";
   providedIn: 'root'
 })
 export class GroupsServiceService {
-  API:string='http://localhost/angularProyectos/Api-Eventually-SENA/';
+  API:string='http://localhost/API-Eventually-Sena/';
 
   constructor(private http:HttpClient) { }
 

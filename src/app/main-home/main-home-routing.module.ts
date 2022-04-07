@@ -41,6 +41,7 @@ const routes: Routes = [
     children: [
       {
         path: 'provider', component: ProvidersComponent,
+        loadChildren: () => import('./providers/providers-routing.module').then(m => m.ProvidersRoutingModule),
       },
       {
         path: 'groups',

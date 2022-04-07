@@ -1,71 +1,7 @@
-<!--THUMBNAIL of provider-->
-<section class="thumbnail img-fluid">
-    <div class="title">
-        <h2 class="fs-1 fw-bold">Servicio</h2>
-    </div>
-</section>
-<!--Options of provider-->
-<section class="options-providers">
-    <div class="left-options">
-        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#content-modal-create-service">
-            Ingresar Servicio
-        </button>
-        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#content-modal-edit-service">
-            Editar Servicio
-        </button>
-    </div>
-    <div class="right-options">
-        <div class="form-check form-switch">
-            <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" checked data-bs-toggle="modal" data-bs-target="#staticBackdrop-disable">
-            <label class="form-check-label fs-5" for="flexSwitchCheckChecked">Deshabilitar Servicio</label>
-        </div> 
-    </div>
-</section>
-<!--Service provided-->
-<section class="service-provided-section">
 
-    <div class="info-content">
-        <label class="fs-5 fw-bold">Nombre Servicio</label>
-        <p class="fs-6">Servicio Pasta deliciosa</p>
-    </div>
-    <div class="info-content">
-        <label class="fs-5 fw-bold">Tipo Servicio</label>
-        <p class="fs-6">Alimentos</p>
-    </div>
-    <div class="info-content">
-        <label class="fs-5 fw-bold">Descripcion Servicio</label>
-        <p class="fs-6">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe architecto nisi quibusdam cum autem sit praesentium a impedit cumque aspernatur voluptate distinctio quis quaerat consequuntur in iusto, iste minus? Esse.</p>
-    </div>
-    <div class="info-content">
-        <label class="fs-5 fw-bold">Foto servicio</label>
-        <img src="../../../assets/main/providers/pasta.jpg" alt="">
-    </div>
-    <div class="info-content">
-        <label class="fs-5 fw-bold">Rango Precio</label>
-        <p class="fs-6">1,000,000 - 2,000,000</p>
-    </div>
-    <div class="info-content">
-        <label class="fs-5 fw-bold">Empresas en las que trabajo anteriormente</label>
-        <p class="fs-6">Nestle, Ducales, mix WELL</p>
-    </div>
-    <div class="info-content">
-        <label class="fs-5 fw-bold">Fecha desde que se realiza el servicio</label>
-        <p class="fs-6">09/04/2003</p>
-    </div>
-    <div class="info-content">
-        <label class="fs-5 fw-bold">Numero de contacto</label>
-        <p class="fs-6">3052441753</p>
-    </div>
-    <div class="info-content">
-        <label class="fs-5 fw-bold">Correo de contacto</label>
-        <p class="fs-6">dylanmr9d@gmail.com</p>
-    </div>
+<section class="providers-content">
+    <router-outlet></router-outlet>
 </section>
-<!--Invitation to events-->
-<section class="invitations-section">
-    <h2>Invitaciones a eventos</h2>
-    <div class="table-invitations">
-        <app-table-invitations-events></app-table-invitations-events>
-    </div>
-    
-</section>
+
+
+
