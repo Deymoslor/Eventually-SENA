@@ -11,11 +11,7 @@ import { updatePasswordPersonaI } from '../updatePasswrodPersonaI';
 export class UpdateServiceService {
 
   //Definimos ruta raíz de el API.
-<<<<<<< HEAD
-  API:string='http://localhost/API-Eventually-SENA/';
-=======
   API:string='http://localhost/Api-Eventually-SENA/';
->>>>>>> master
 
   constructor(
     //Inyectamos el HttpClient.
