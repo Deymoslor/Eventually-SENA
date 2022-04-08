@@ -62,10 +62,10 @@
         <tbody>
           <tr *ngFor="let TypeService of TypeServices">
             
-            <th scope="row">{{ TypeService.idTipoServicio }}</th>
+            <th scope="row">{{ TypeService.idtipoServicio }}</th>
             <td>{{ TypeService.tipoServicio }}</td>
             <td>{{ TypeService.estadoTipoServicio}}</td>
-            <td><button class="btn btn-primary" (click)="modalTypeServiceOpen(contentType, TypeService.idTipoServicio)" >Editar</button></td>
+            <td><button class="btn btn-primary" (click)="modalTypeServiceOpen(contentType, TypeService.idtipoServicio)" >Editar</button></td>
           </tr>
         </tbody>
       </table>
@@ -89,7 +89,7 @@
 
               <label for="">Id Tipo Servicio:</label>
               <input type="text" class="form-control" id=""
-              placeholder="" formControlName="idTipoServicio">
+              placeholder="" formControlName="idtipoServicio">
               
                 <label for="">Nombre del Evento:</label>
                 <input type="text" class="form-control" id=""
