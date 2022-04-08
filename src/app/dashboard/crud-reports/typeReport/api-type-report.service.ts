@@ -11,7 +11,7 @@ import { ListaPersonasI } from '../../crud-users/ListaPersonasI.interface';
 })
 export class ApiTypeReportService {
 
-  API:string='http://localhost/angularProyectos/Api-Eventually-SENA/';
+  API:string='http://localhost/Api-Eventually-SENA/';
 
   constructor(private http:HttpClient) { }
 
