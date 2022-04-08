@@ -20,14 +20,14 @@ export class EventInComponent implements OnInit {
     descripcionEvento: new FormControl(''),
     fechaEvento: new FormControl(''),
     tipoEvento: new FormControl(''),
-    ParticipantesTotales: new FormControl(''),
+    participantesTotales: new FormControl(''),
     Grupos_idGrupos: new FormControl(''),
     estadoEvento: new FormControl('')
   })
 
   constructor(private api:ApiService, private router:Router, private modalService: NgbModal) { }
 
-  idGroup:number = 1
+  idGroup:number = 5
   closeResult = '';
   
 
@@ -43,7 +43,7 @@ export class EventInComponent implements OnInit {
           'descripcionEvento': '',
           'fechaEvento': '',
           'tipoEvento': '',
-          'ParticipantesTotales': '',
+          'participantesTotales': '',
           'Grupos_idGrupos': '',
           'estadoEvento': '3',
         })
@@ -55,7 +55,7 @@ export class EventInComponent implements OnInit {
          'descripcionEvento': this.dataEvent.descripcionEvento,
          'fechaEvento': this.dataEvent.fechaEvento,
          'tipoEvento': this.dataEvent.tipoEvento,
-         'ParticipantesTotales': this.dataEvent.ParticipantesTotales,
+         'participantesTotales': this.dataEvent.participantesTotales,
          'Grupos_idGrupos': this.dataEvent.Grupos_idGrupos,
          'estadoEvento': this.dataEvent.estadoEvento
        })

@@ -23,7 +23,7 @@ export class ModalEditEventsComponent implements OnInit {
     descripcionEvento: new FormControl(''),
     fechaEvento: new FormControl(''),
     tipoEvento: new FormControl(''),
-    ParticipantesTotales: new FormControl(''),
+    participantesTotales: new FormControl(''),
     Grupos_idGrupos: new FormControl(''),
     estadoEvento: new FormControl('')
   })
@@ -41,7 +41,7 @@ export class ModalEditEventsComponent implements OnInit {
           'descripcionEvento': this.dataEvent.descripcionEvento,
           'fechaEvento': this.dataEvent.fechaEvento,
           'tipoEvento': this.dataEvent.tipoEvento,
-          'ParticipantesTotales': this.dataEvent.ParticipantesTotales,
+          'participantesTotales': this.dataEvent.participantesTotales,
           'Grupos_idGrupos': this.dataEvent.Grupos_idGrupos,
           'estadoEvento': this.dataEvent.estadoEvento
         })
@@ -73,7 +73,7 @@ export class ModalEditEventsComponent implements OnInit {
           'descripcionEvento': this.dataEvent.descripcionEvento,
           'fechaEvento': this.dataEvent.fechaEvento,
           'tipoEvento': this.dataEvent.tipoEvento,
-          'ParticipantesTotales': this.dataEvent.ParticipantesTotales,
+          'participantesTotales': this.dataEvent.participantesTotales,
           'Grupos_idGrupos': this.dataEvent.Grupos_idGrupos,
           'estadoEvento': 1
       })
@@ -85,7 +85,7 @@ export class ModalEditEventsComponent implements OnInit {
           'descripcionEvento': this.dataEvent.descripcionEvento,
           'fechaEvento': this.dataEvent.fechaEvento,
           'tipoEvento': this.dataEvent.tipoEvento,
-          'ParticipantesTotales': this.dataEvent.ParticipantesTotales,
+          'participantesTotales': this.dataEvent.participantesTotales,
           'Grupos_idGrupos': this.dataEvent.Grupos_idGrupos,
           'estadoEvento': 0
       })
