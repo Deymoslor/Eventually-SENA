@@ -4,16 +4,16 @@
     <br>
       <div class="img-container">
         <img
-          src="/assets/group/{{ group?.imgGroup }}"
+
           class="img-fluid"
-          alt="{{ group?.GroupName }}"
+          alt="{{ group?.nombreGrupo }}"
         />
       </div>
       <div class="info">
-        <p class="product-name h2">{{ group?.GroupName }}</p>
-        <p class="product-short-description h5">{{ group?.description }}</p>
+        <p class="product-name h2">{{ group?.nombreGrupo }}</p>
+        <p class="product-short-description h5">{{ group?.descripcionGrupo }}</p>
         <div class="cart-row">
-          <span class="price">{{ group?.totalUsers }} PARTICIPANTES</span>
+          <span class="price">{{ group?.invitadosTotales }} PARTICIPANTES</span>
           <button class="btn btn-primary" title="Solicitar Unirse"> Solicitar Unirse
           </button>
         </div>

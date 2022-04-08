@@ -31,6 +31,9 @@ import { ModalEditEventsComponent } from './crud-events/modal-edit-events/modal-
 import { ModalEditGroupsComponent } from './crud-groups/modal-edit-groups/modal-edit-groups.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { CreateTypeServicesComponent } from './crud-services/create-type-services/create-type-services.component';
+import { EventReportComponent } from './crud-reports/typeReport/event-report/event-report.component';
+import { GroupReportComponent } from './crud-reports/typeReport/group-report/group-report.component';
+import { UserReportComponent } from './crud-reports/typeReport/user-report/user-report.component';
 
 
 
@@ -59,7 +62,10 @@ import { CreateTypeServicesComponent } from './crud-services/create-type-service
     ModalEditLikesComponent,
     ModalEditGroupsComponent,
     ModalEditEventsComponent,
-    CreateTypeServicesComponent
+    CreateTypeServicesComponent,
+    EventReportComponent,
+    GroupReportComponent,
+    UserReportComponent
 
   ],
   imports: [

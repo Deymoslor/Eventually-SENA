@@ -1,23 +1,39 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Group } from '../see-groups/groups';
+import { Observable } from 'rxjs';
+import { Group } from '../see-groups/group';
+import { Groups } from '../see-groups/groups';
 
 @Injectable({
   providedIn: 'root'
 })
 export class YourGroupsService {
-  readonly groups: Group[] = [
+  API:string='http://localhost/API-Eventually-SENA/';
+  readonly groups: Groups[] = [
     {
-      id: 1,
-      imgGroup: '3.jfif',
-      GroupName: 'Maquillaje',
-      description: 'Auriculares',
-      totalUsers: 50,
+      idGrupos: 1,
+      nombreGrupo: 'Maquillaje',
+      descripcionGrupo: 'Auriculares',
+      invitadosTotales: 50,
     },
   ];
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
-  getGroup(requestId : Number): Group | null {
-    return this.groups.find((group) => group.id === requestId) || null;
+  getYourGroups(page:number):Observable<Groups[]>{
+    let direccion = this.API + "YourGroups?page=" + page;
+
+    return this.http.get<Groups[]>(direccion);
+  }
+
+  getDetailsYourGroup(id:number):Observable<Group>{
+    let direccion = this.API + "YourGroups?id=" + id;
+    return this.http.get<Group>(direccion);
+  }
+
+  postYourGroup(form:Group):Observable<Response>{
+    let direccion = this.API+"YourGroups";
+
+    return this.http.post<Response>(direccion, form);
   }
 }

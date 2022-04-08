@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Group } from '../see-groups/groups';
+import { Group } from '../see-groups/group';
 
 @Component({
   selector: 'app-your-groups-show',
@@ -18,7 +18,7 @@ export class YourGroupsShowComponent implements OnInit {
   }
 
   navigateToYourGroupDetails(): void {
-    this.router.navigate(['groups', this.group.id], {
+    this.router.navigate(['groups', this.group.idGrupos], {
       relativeTo: this.route
     })
   }

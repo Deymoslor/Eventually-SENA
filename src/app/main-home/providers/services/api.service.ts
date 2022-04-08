@@ -13,7 +13,7 @@ import { ServiceEventI } from '../models/serviceEvent.interface';
 })
 export class ApiService {
   
-  url:string="http://localhost/API_rest_Eventually/"
+  url:string="http://localhost/Api-Eventually-SENA/"
 
   constructor(
     private http:HttpClient

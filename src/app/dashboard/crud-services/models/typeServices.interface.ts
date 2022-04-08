@@ -1,5 +1,5 @@
 export interface TypeServicesI{
-    idTipoServicio: number;
+    idtipoServicio : number;
     tipoServicio: string;
     estadoTipoServicio: number;
 }

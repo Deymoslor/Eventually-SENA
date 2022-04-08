@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Group } from '../groups';
+import { Group } from '../group';
 import { SeeGroupsService } from '../see-groups.service';
 
 @Component({
@@ -9,7 +9,8 @@ import { SeeGroupsService } from '../see-groups.service';
   styleUrls: ['./see-group-detail.component.scss']
 })
 export class SeeGroupDetailComponent implements OnInit {
-  group!: Group | null;
+
+  @Input() childMessage!: number;
 
   constructor(
     private SeeGroupsService: SeeGroupsService,
@@ -17,13 +18,34 @@ export class SeeGroupDetailComponent implements OnInit {
     private router: Router
     ) { }
 
-  ngOnInit(): void {
-    const groupId = this.route.snapshot.paramMap.get('id');
-    this.group = this.SeeGroupsService.getGroup(Number(groupId));
+    group!: Group;
 
-    if (this.group === null) {
-      this.router.navigate(['group']);
-    }
+  ngOnInit(): void {
+    // const idGrupos = this.route.snapshot.paramMap.get('id');
+    // this.group = this.SeeGroupsService.getDetailsGroup(Number(idGrupos)).subscribe(data =>{
+    //   console.log(data);
+    // })
+
+    // if (this.group === null) {
+    //   this.router.navigate(['group']);
+    // }
+
+    let idGrupos = this.route.snapshot.paramMap.get('id');
+    console.log(idGrupos);
+    this.SeeGroupsService.getDetailsGroup(Number(idGrupos)).subscribe((data: any) =>{
+      console.log(data);
+      this.group = data[0];
+    })
+  }
+
+  ngOnChanges(): void {
+    // console.log(this.childMessage);
+    // if (this.childMessage > 0) {
+    //   this.SeeGroupsService.getDetailsGroup(this.childMessage);
+    // } else {
+
+    // }
+
   }
 
 }

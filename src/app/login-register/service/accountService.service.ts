@@ -12,7 +12,13 @@ import { supplierRequestI } from '../supplier-request/supplierRequestI.interface
 export class accountService {
 
   //Definimos ruta raíz de el API.
+<<<<<<< HEAD
   API:string='http://localhost/Api-Eventually-SENA/';
+=======
+
+  API:string='http://localhost/API-Eventually-SENA/';
+
+>>>>>>> b1ab6c2727b23adad15e3b51e2221d040c02eb15
 
   //Definimos dentro del constructor el cliente http.
   constructor(private http:HttpClient) { }

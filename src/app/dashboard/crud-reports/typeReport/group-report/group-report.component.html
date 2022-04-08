@@ -1,0 +1,31 @@
+<div class="page-header">
+  <button type="button" class="btn btn-lg btn-primary" (click)="createPDFGrupos()">Descargar PDF</button>
+</div>
+<div id="pdfGroups">
+
+  <div class="container theme-showcase" role="main">
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <h1>Reporte de Grupos</h1>
+      <p>TEste es el reporte de grupos que se realiza en este mes.</p>
+    </div>
+
+    <table class="table table-warning">
+      <thead>
+        <tr>
+          <th scope="col">No</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Descripción</th>
+          <th scope="col">Participantes</th>
+        </tr>
+      </thead>
+      <tbody class="table-secondary">
+        <tr *ngFor="let group of groups">
+          <th scope="row">{{group.idGrupos}}</th>
+          <td>{{group.nombreGrupo}}</td>
+          <td>{{group.descripcionGrupo}}</td>
+          <td>{{group.InvitadosTotales}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

@@ -1,7 +1,6 @@
-export interface Group {
-  id: number;
-  imgGroup: string;
-  GroupName: string;
-  description: string;
-  totalUsers: number;
+export interface Groups {
+  idGrupos: number;
+  nombreGrupo: string;
+  descripcionGrupo: string;
+  invitadosTotales: number;
 }

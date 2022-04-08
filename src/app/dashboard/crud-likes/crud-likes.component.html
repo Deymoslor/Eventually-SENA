@@ -31,9 +31,36 @@
                         <td>{{ like.nombreGusto }}</td>
                         <td>{{ like.tipoGusto }}</td>
                         <td>
-                            <div class="form-check form-switch">
-                                <input class="form-check-input" value={{like.estadoGusto}} type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
-                                <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+                            <div *ngIf="like.estadoGusto==1">
+
+                                <td></td>
+                                <br>
+                                <br>
+
+                                <div class="form-check form-switch">
+
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked (click)="cambioEstado(like.estadoGusto,like.idGusto)">
+
+                                    <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+
+                                </div>
+
+                            </div>
+
+                            <div *ngIf="like.estadoGusto==2">
+
+                                <td></td>
+                                <br>
+                                <br>
+
+                                <div class="form-check form-switch">
+
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" (click)="cambioEstado(like.estadoGusto,like.idGusto)">
+
+                                    <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+
+                                </div>
+
                             </div>
                         </td>
 

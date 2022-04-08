@@ -22,7 +22,7 @@ export class EditEventComponent implements OnInit {
     descripcionEvento: new FormControl(''),
     fechaEvento: new FormControl(''),
     tipoEvento: new FormControl(''),
-    ParticipantesTotales: new FormControl(''),
+    participantesTotales: new FormControl(''),
     estadoEvento: new FormControl('')
   })
 
@@ -37,7 +37,7 @@ export class EditEventComponent implements OnInit {
         'descripcionEvento': this.dataEvent.descripcionEvento,
         'fechaEvento': this.dataEvent.fechaEvento,
         'tipoEvento': this.dataEvent.tipoEvento,
-        'ParticipantesTotales': this.dataEvent.ParticipantesTotales,
+        'participantesTotales': this.dataEvent.participantesTotales,
         'estadoEvento': this.dataEvent.estadoEvento
       })
     })
@@ -51,7 +51,7 @@ export class EditEventComponent implements OnInit {
           'descripcionEvento': this.dataEvent.descripcionEvento,
           'fechaEvento': this.dataEvent.fechaEvento,
           'tipoEvento': this.dataEvent.tipoEvento,
-          'ParticipantesTotales': this.dataEvent.ParticipantesTotales,
+          'participantesTotales': this.dataEvent.participantesTotales,
           'estadoEvento': 1
       })
     }else if (num == 1) {
@@ -61,7 +61,7 @@ export class EditEventComponent implements OnInit {
           'descripcionEvento': this.dataEvent.descripcionEvento,
           'fechaEvento': this.dataEvent.fechaEvento,
           'tipoEvento': this.dataEvent.tipoEvento,
-          'ParticipantesTotales': this.dataEvent.ParticipantesTotales,
+          'participantesTotales': this.dataEvent.participantesTotales,
           'estadoEvento': 0
       })
     } 
