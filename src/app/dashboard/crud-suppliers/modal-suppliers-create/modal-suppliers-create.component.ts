@@ -40,8 +40,8 @@ export class ModalSuppliersCreateComponent implements OnInit {
     correoProveedor: new FormControl(''),
     codigoAceeso: new FormControl(''),
     fechaNacimiento: new FormControl(''),
-    Celular: new FormControl(''),
-    Estado: new FormControl(''),
+    celular: new FormControl(''),
+    estado: new FormControl(''),
   });
 
   ngOnInit(): void {
@@ -119,6 +119,9 @@ export class ModalSuppliersCreateComponent implements OnInit {
 
     //Creamos log para verificar que la información está cambiando cuando presinamos el botón.
     // console.log(form);
+
+    //Aasignamos token para poder crear el proveedor.
+    form.token = localStorage.getItem('token');
 
     //llamamos el método de actualizar desde el servicio.
     this.supplierService.postSupplier(form).subscribe((data:any) =>{

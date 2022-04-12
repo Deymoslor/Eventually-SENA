@@ -41,6 +41,9 @@ export class userService {
   putPerson(form:any):Observable<ResponseI>{
     let direccion = this.API+"persons";
 
+    console.log(form);
+
+
     return this.http.put<ResponseI>(direccion,form);
   }
 

@@ -51,8 +51,8 @@ export class CrudSuppliersComponent implements OnInit {
     correoProveedor: new FormControl(''),
     codigoAcceso: new FormControl(''),
     fechaNacimiento: new FormControl(''),
-    Celular: new FormControl(''),
-    Estado: new FormControl(''),
+    celular: new FormControl(''),
+    estado: new FormControl(''),
   });
 
 
@@ -119,7 +119,7 @@ export class CrudSuppliersComponent implements OnInit {
       //asignamos el valor que venga desde la API a una variable para poder recorrerla.
       this.datosProveedor = data[0];
 
-      this.datosProveedor.Estado="Inactivo";
+      this.datosProveedor.estado="Inactivo";
 
       let token = localStorage.getItem('token');
 
@@ -142,7 +142,7 @@ export class CrudSuppliersComponent implements OnInit {
         //asignamos el valor que venga desde la API a una variable para poder recorrerla.
         this.datosProveedor = data[0];
 
-        this.datosProveedor.Estado="Activo";
+        this.datosProveedor.estado="Activo";
 
         let token = localStorage.getItem('token');
 
