@@ -5,7 +5,7 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EventI } from 'src/app/models/event.interface';
 import { Group } from '../../see-groups/group';
 import { YourGroupsService } from "../your-groups.service";
-import { ApiService } from '../../../../services/api/api.service';
+import { ApiService } from 'src/app/services/api/api.service';
 
 @Component({
   selector: 'app-your-groups-details',
@@ -29,12 +29,15 @@ export class YourGroupsDetailsComponent implements OnInit {
   group!: Group | null;
   constructor(
     private YourGroupsService: YourGroupsService,
+    private EventService: ApiService,
     private route: ActivatedRoute,
     private router: Router,
     private modalService: NgbModal,
     private fb: FormBuilder,
     private api: ApiService
   ) { }
+
+  event!: EventI | null;
 
   closeResult = '';
 
@@ -62,6 +65,11 @@ export class YourGroupsDetailsComponent implements OnInit {
     if (this.group === null) {
       this.router.navigate(['group']);
     }
+
+    this.EventService.getSigleEventGroup(Number(idGrupos)).subscribe((data: any) => {
+      console.log(data);
+      this.group = data[0];
+    })
   }
 
   modalOpen(content:any){

@@ -3,11 +3,14 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { SettingsComponent } from './settings.component';
 import { UpdateUserAccountComponent } from './update-user-account/update-user-account.component';
+import { UserAccountComponent } from './user-account/user-account.component';
+
 const routes: Routes = [
   {
     path: '',
     component:SettingsComponent,
     children: [
+      {path: 'user-account', component: UserAccountComponent},
       {path: 'settings-account', component: UpdateUserAccountComponent},
       {
         path: '**',

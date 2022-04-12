@@ -1,5 +1,5 @@
 <body>
-    <form>
+    <form [formGroup]="peticionProveedor">
         <div class="form">
             <h1>¡Ser proveedor!</h1>
             <!-- <div class="grupo">
@@ -7,17 +7,23 @@
                 <label for="">Nombre</label>
             </div> -->
             <div class="grupo">
-                <input type="email" name="" id="email" required formControlName="email"><span class="barra"></span>
+                <input type="email" name="" id="email" required formControlName="Email"><span class="barra"></span>
                 <label for="">Email</label>
             </div>
+
             <div class="grupo">
-                <div class="md-form amber-textarea active-amber-textarea">
-                    <textarea class="md-textarea form-control" required rows="3" placeholder="Por favor digite aquí toda la información relevante a su persona / empresa (numero de identificación, labor, tiempo de experiencia. . .) y la razón por la que desea entrar a ser proveedor en Eventually."></textarea>
+                <input type="text" name="" id="nombre" required formControlName="nombre"><span class="barra"></span>
+                <label for="">Nombre</label>
+            </div>
+
+            <div class="grupo">
+                <div class="md-form">
+                    <textarea class="md-textarea form-control" formControlName="msg" required rows="4" placeholder="Por favor digite aquí toda la información relevante a su persona / empresa (numero de identificación, labor, tiempo de experiencia. . .) y la razón por la que desea entrar a ser proveedor en Eventually."></textarea>
                     <label>Información</label>
                     <span class="barra"></span>
                 </div>
             </div>
-            <button>Enviar información</button>
+            <button (click)="enviarMailSolicitud(peticionProveedor.value)" >Enviar información</button>
             <button (click)="cancel()">Cancelar</button>
 
             <!-- <pre>{{ formUsers.value | json }}</pre> -->

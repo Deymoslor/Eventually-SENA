@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 //Form groups import.
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 //Accout Service import.
-import { ServiceService } from '../service/service.service';
+import { accountService } from '../service/accountService.service';
 import { Router } from '@angular/router';
 import { registerI } from './register.interface';
 
@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
   });
 
   constructor(
-    private service:ServiceService,
+    private service:accountService,
     private router:Router
     ) {}
 

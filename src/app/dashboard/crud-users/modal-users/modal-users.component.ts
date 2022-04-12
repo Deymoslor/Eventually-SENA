@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgbDateStruct, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
 import { Router, ActivatedRoute } from '@angular/router';
-import { PersonaI } from './persona.interface';
+import { PersonaI } from './personaI.interface';
 import { userService } from '../service/userService.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
@@ -31,7 +31,6 @@ export class ModalUsersComponent implements OnInit {
   //Creamos el FormGroup que nos sirve para poder tener el formulario con los campos correctos y en caso de necesitar validators.
   editarForm = new FormGroup({
     idPersona: new FormControl(''),
-    //Cuando agregemos el token, aquí debería ir.
     token: new FormControl(''),
     nombre: new FormControl(''),
     apellidos: new FormControl(''),

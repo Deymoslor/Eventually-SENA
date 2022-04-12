@@ -1,0 +1,34 @@
+<!--TABLE-->
+    <div class="table-responsive">
+        <table class="table table-dark table-responsive">
+            <thead>
+            <tr>
+                <th scope="col">No</th>
+                <th scope="col">resultado</th>
+                <th scope="col">id Evento</th>
+                <th scope="col">id Servicio</th>
+                <!-- <th scope="col">Fecha Realizacion</th> -->
+                <th scope="col">estado respuesta</th>
+                <th scope="col">Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+                
+            <tr *ngFor="let key of dataServiceEventProv">
+                
+                <td>{{key.idDetalleEvento}}</td>
+                <td>{{key.resultadoServicio_idresultadoServicio}}</td>
+                <td>{{key.Evento_idEvento}}</td>
+                <td>{{key.Servicio_idServicios}}</td>
+                <td>{{key.estadoInvitacion}}</td>
+                <td >
+                    <button class="btn btn-primary" (click)="changeStateServiceProvA(key)">Aceptar</button>
+                    <button class="btn btn-primary" (click)="changeStateServiceProvD(key)">Rechazar</button>
+                    
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    
+<!--TABLE//-->

@@ -5,6 +5,6 @@ export interface EventI{
     estadoEvento: number;
     fechaEvento: Array<string>;
     tipoEvento: string;
-    ParticipantesTotales: number;
+    participantesTotales: number;
     Grupos_idGrupos: number;
 }

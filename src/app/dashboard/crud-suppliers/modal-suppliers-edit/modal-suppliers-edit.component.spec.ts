@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ModalSuppliersComponent } from './modal-suppliers.component';
+import { ModalSuppliersEditComponent } from './modal-suppliers-edit.component';
 
-describe('ModalSuppliersComponent', () => {
-  let component: ModalSuppliersComponent;
-  let fixture: ComponentFixture<ModalSuppliersComponent>;
+describe('ModalSuppliersEditComponent', () => {
+  let component: ModalSuppliersEditComponent;
+  let fixture: ComponentFixture<ModalSuppliersEditComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ModalSuppliersComponent ]
+      declarations: [ ModalSuppliersEditComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ModalSuppliersComponent);
+    fixture = TestBed.createComponent(ModalSuppliersEditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

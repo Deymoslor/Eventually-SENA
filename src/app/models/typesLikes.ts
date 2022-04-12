@@ -1,4 +1,4 @@
 export interface TypesLikesI {
-    idTipoGusto:number;
+    idtipoGusto:number;
     tipoGusto:string;
 }

@@ -14,7 +14,7 @@ import { ServiceI } from './models/services.interface';
 export class CrudServicesComponent implements OnInit {
 
   typeServicesForm = new FormGroup({
-    idTipoServicio: new FormControl(''),
+    idtipoServicio : new FormControl(''),
     tipoServicio: new FormControl(''),
     estadoTipoServicio: new FormControl('')
   })
@@ -71,8 +71,9 @@ export class CrudServicesComponent implements OnInit {
     this.idTipo = numb;
     this.api.getSingleTypeService(this.idTipo).subscribe((data:any) =>{
       this.dataType = data[0];
+      console.log(this.dataType);
       this.typeServicesForm.setValue({
-        'idTipoServicio': this.dataType.idTipoServicio,
+        'idtipoServicio': this.dataType.idtipoServicio ,
         'tipoServicio': this.dataType.tipoServicio,
         'estadoTipoServicio': this.dataType.estadoTipoServicio
       })
@@ -126,14 +127,14 @@ export class CrudServicesComponent implements OnInit {
     if(num != 1){
       console.log("hola soy el num " + num);
       this.typeServicesForm.setValue({
-          'idTipoServicio': this.dataType.idTipoServicio,
+          'idtipoServicio': this.dataType.idtipoServicio,
           'tipoServicio': this.dataType.tipoServicio,
           'estadoTipoServicio': 1
       })
     }else if (num == 1) {
       console.log("hola soy el num " + num);
       this.typeServicesForm.setValue({
-          'idTipoServicio': this.dataType.idTipoServicio,
+          'idtipoServicio': this.dataType.idtipoServicio,
           'tipoServicio': this.dataType.tipoServicio,
           'estadoTipoServicio': 0
       })
@@ -179,6 +180,7 @@ export class CrudServicesComponent implements OnInit {
     this.api.putTypeService(form).subscribe(data=>{
       console.log(data);
     });
+    this.refresh();
   }
 
   postEditFormServices(form: ServiceI){

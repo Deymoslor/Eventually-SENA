@@ -17,7 +17,8 @@ import { MenuModule } from '../menu/menu.module';
 import { CrudUsersComponent } from './crud-users/crud-users.component';
 import { ModalUsersComponent } from './crud-users/modal-users/modal-users.component';
 import { CrudSuppliersComponent } from './crud-suppliers/crud-suppliers.component';
-import { ModalSuppliersComponent } from './crud-suppliers/modal-suppliers/modal-suppliers.component';
+import { ModalSuppliersCreateComponent } from './crud-suppliers/modal-suppliers-create/modal-suppliers-create.component';
+import { ModalSuppliersEditComponent } from './crud-suppliers/modal-suppliers-edit/modal-suppliers-edit.component';
 import { ModalReportsComponent } from './crud-reports/modal-reports/modal-reports.component';
 import { CrudReportsComponent } from './crud-reports/crud-reports.component';
 import { ModalGroupsComponent } from './crud-groups/modal-groups/modal-groups.component';
@@ -33,6 +34,7 @@ import { CreateTypeServicesComponent } from './crud-services/create-type-service
 import { EventReportComponent } from './crud-reports/typeReport/event-report/event-report.component';
 import { GroupReportComponent } from './crud-reports/typeReport/group-report/group-report.component';
 import { UserReportComponent } from './crud-reports/typeReport/user-report/user-report.component';
+
 
 
 @NgModule({
@@ -52,7 +54,8 @@ import { UserReportComponent } from './crud-reports/typeReport/user-report/user-
     CrudUsersComponent,
     ModalUsersComponent,
     CrudSuppliersComponent,
-    ModalSuppliersComponent,
+    ModalSuppliersCreateComponent,
+    ModalSuppliersEditComponent,
     RequestsComponent,
     TableRequestGroupsComponent,
     TableRequestEventComponent,

@@ -22,7 +22,7 @@ export class ModalCreateEventComponent implements OnInit {
     estadoEvento: new FormControl(''),
     fechaEvento: new FormControl(''),
     tipoEvento: new FormControl(''),
-    ParticipantesTotales: new FormControl(''),
+    participantesTotales: new FormControl(''),
     check: new FormControl(''),
     Grupos_idGrupos: new FormControl(''),
   });
@@ -36,7 +36,7 @@ export class ModalCreateEventComponent implements OnInit {
       tipoEvento: ['', Validators.required],
       descripcionEvento: ['', [Validators.required, Validators.minLength(5)]],
       fechaEvento: ['', Validators.required],
-      ParticipantesTotales: ['2', Validators.required],
+      participantesTotales: ['2', Validators.required],
       check: ['', Validators.required],
       // cellPhone: this.getPhoneFromGroup(),
       // homePhone: this.getPhoneFromGroup(),
@@ -46,8 +46,6 @@ export class ModalCreateEventComponent implements OnInit {
 
   postForm(form:EventI){
     console.log(form);
-
-    
     this.api.postEvent(form).subscribe( data => {
       console.log(data);
     })

@@ -8,7 +8,7 @@ import { Group } from './group';
   providedIn: 'root'
 })
 export class SeeGroupsService {
-  API:string='http://localhost/angularProyectos/Api-Eventually-SENA/';
+  API:string='http://localhost/API-Eventually-SENA/';
   // readonly groups: Group[] = ([
   //   {
   //     id: 1,

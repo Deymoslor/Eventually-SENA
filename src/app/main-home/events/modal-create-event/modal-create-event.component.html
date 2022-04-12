@@ -108,12 +108,12 @@
                             <label for="exampleInputEmail1">Numero Participantes:</label>
                             <input type="number" class="form-control" id="exampleInputEmail1"
                              min="2" max="200" [ngClass]="
-                             (createEventForm.get('ParticipantesTotales')?.touched || createEventForm.get('ParticipantesTotales')?.dirty) &&
-                                 createEventForm.get('ParticipantesTotales')?.hasError('required') ? 'is-invalid' : ''" formControlName="ParticipantesTotales">
+                             (createEventForm.get('participantesTotales')?.touched || createEventForm.get('participantesTotales')?.dirty) &&
+                                 createEventForm.get('participantesTotales')?.hasError('required') ? 'is-invalid' : ''" formControlName="participantesTotales">
 
                             <div class="invalid-feedback">
                                 {{
-                                    createEventForm.get("ParticipantesTotales")?.hasError("required")
+                                    createEventForm.get("participantesTotales")?.hasError("required")
                                     ? " Numero de participantes requeridos"
                                     : ""
                                 }}

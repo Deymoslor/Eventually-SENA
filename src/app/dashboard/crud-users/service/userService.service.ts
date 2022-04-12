@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ListaPersonasI } from '../ListaPersonasI.interface';
-import { PersonaI } from '../modal-users/persona.interface';
+import { PersonaI } from '../modal-users/personaI.interface';
 import { ResponseI } from 'src/app/login-register/login/models/response.intarface';
 
 @Injectable({

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LoginnComponent } from './loginn.component';
+import { ModalEditServiceComponent } from './modal-edit-service.component';
 
-describe('LoginnComponent', () => {
-  let component: LoginnComponent;
-  let fixture: ComponentFixture<LoginnComponent>;
+describe('ModalEditServiceComponent', () => {
+  let component: ModalEditServiceComponent;
+  let fixture: ComponentFixture<ModalEditServiceComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LoginnComponent ]
+      declarations: [ ModalEditServiceComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoginnComponent);
+    fixture = TestBed.createComponent(ModalEditServiceComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
