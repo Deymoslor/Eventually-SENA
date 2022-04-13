@@ -12,6 +12,6 @@ export interface ListaPersonasI{
 
     Email:string;
 
-    Estado:string;
+    estado:string;
 
 }

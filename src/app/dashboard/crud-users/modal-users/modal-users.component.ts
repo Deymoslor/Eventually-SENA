@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { NgbDateStruct, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PersonaI } from './personaI.interface';
+import { PersonaModalI } from './personaModalI.interface';
 import { userService } from '../service/userService.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
@@ -37,11 +38,11 @@ export class ModalUsersComponent implements OnInit {
     documento: new FormControl(''),
     fechaNacimiento: new FormControl(''),
     Email: new FormControl(''),
-    password: new FormControl(''),
-    Celular: new FormControl(''),
+    // password: new FormControl(''),
+    celular: new FormControl(''),
     ciudad: new FormControl(''),
-    Estado: new FormControl(''),
-    roles_idRoles: new FormControl('')
+    estado: new FormControl(''),
+    // roles_idRoles: new FormControl('')
   });
 
   ngOnInit(): void {
@@ -73,23 +74,6 @@ export class ModalUsersComponent implements OnInit {
       //Comprobamos que datos nos está trayendo ahora este nuevo data filtrado por posición 0.
       // console.log(this.datosPersona);
 
-      //Asignamos valor para evitar el error en consola de que los valores de this.datosPersona estan null.
-      this.editarForm.setValue({
-        'idPersona' : "this.datosPersona.idPersona",
-        'token' : "this.datosPersona.token",
-        'nombre' : "this.datosPersona.nombre",
-        'apellidos' : "this.datosPersona.apellidos",
-        'documento' : "this.datosPersona.documento",
-        'fechaNacimiento' : "this.datosPersona.fechaNacimiento",
-        'Email' : "this.datosPersona.Email",
-        'password' : "this.datosPersona.password",
-        'Celular' : "this.datosPersona.Celular",
-        'ciudad' : "this.datosPersona.ciudad",
-        'Estado' : "this.datosPersona.Estado",
-        'roles_idRoles' : "this.datosPersona.roles_idRoles",
-      })
-
-
       //llamamos nuestro formulario para empezar a asignarle la información de los campos.
       this.editarForm.setValue({
         //El id que tomamos del padre.
@@ -101,11 +85,11 @@ export class ModalUsersComponent implements OnInit {
         'documento' : this.datosPersona.documento,
         'fechaNacimiento' : this.datosPersona.fechaNacimiento,
         'Email' : this.datosPersona.Email,
-        'password' : this.datosPersona.password,
-        'Celular' : this.datosPersona.Celular,
+        // 'password' : this.datosPersona.password,
+        'celular' : this.datosPersona.celular,
         'ciudad' : this.datosPersona.ciudad,
-        'Estado' : this.datosPersona.Estado,
-        'roles_idRoles' : this.datosPersona.roles_idRoles,
+        'estado' : this.datosPersona.estado,
+        // 'roles_idRoles' : this.datosPersona.Roles_idRoles,
       })
 
       //Imprimimos el formulario por consola.
@@ -125,7 +109,7 @@ export class ModalUsersComponent implements OnInit {
   postForm(form:PersonaI){
 
     //Creamos log para verificar que la información está cambiando cuando presinamos el botón.
-    // console.log(form);
+    console.log(form);
 
     //llamamos el método de actualizar desde el servicio.
     this.userService.putPerson(form).subscribe((data:any) =>{

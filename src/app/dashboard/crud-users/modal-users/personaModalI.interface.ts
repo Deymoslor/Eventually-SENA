@@ -1,4 +1,4 @@
-export interface PersonaI{
+export interface PersonaModalI{
     idPersona: number;
     token: any;
     nombre: string;
@@ -6,9 +6,6 @@ export interface PersonaI{
     documento: string;
     fechaNacimiento: string;
     Email: string;
-    password: string;
     ciudad: string;
     celular: string;
-    estado: string;
-    Roles_idRoles: string;
 }
