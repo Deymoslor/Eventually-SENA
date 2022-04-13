@@ -10,7 +10,7 @@ import { ApiService } from '../../../services/api.service';
 })
 export class TableInvitationsEventsComponent implements OnInit {
 
-
+  accepted: boolean = false;
   dataServiceEventProv!: ServiceEventI[];
 
   constructor(private api: ApiService) { }
@@ -18,6 +18,11 @@ export class TableInvitationsEventsComponent implements OnInit {
   ngOnInit(): void {
     this.api.getAllServiceEventProv(1).subscribe(data =>{
       console.log(data);
+      data.forEach(key => {
+        if (key.estadoInvitacion == 1) {
+          this.accepted = true;
+        }
+      });
       this.dataServiceEventProv = data;
     })
   }
@@ -28,7 +33,7 @@ export class TableInvitationsEventsComponent implements OnInit {
     this.api.putServiceEventProv(form).subscribe(data=>{
       console.log(data);
     });
-   
+    this.refresh();
 }
 
   changeStateServiceProvD(form:ServiceEventI){
