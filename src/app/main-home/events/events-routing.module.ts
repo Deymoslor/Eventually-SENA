@@ -22,7 +22,7 @@ const routes: Routes = [
 
   {
     path: '',
-    component:EventsComponent,
+    component: EventInComponent,
       
   },
   {path: 'event-in/:id', component: EventInComponent},
