@@ -14,12 +14,14 @@ import { CreateTypeServicesComponent } from './crud-services/create-type-service
 import { EventReportComponent } from './crud-reports/typeReport/event-report/event-report.component';
 import { GroupReportComponent } from './crud-reports/typeReport/group-report/group-report.component';
 import { UserReportComponent } from './crud-reports/typeReport/user-report/user-report.component';
+import { AuthGuard } from '../core/guards/auth.guard';
 
 
 
 const routes: Routes = [
   {
     path: 'dashboard', component:DashboardComponent,
+    canActivate: [AuthGuard],
     children: [
       {path: 'events', component: CrudEventsComponent},
       {path: 'services', component: CrudServicesComponent},
