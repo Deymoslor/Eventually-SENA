@@ -4,4 +4,7 @@ export interface ServiceEventI {
     Evento_idEvento : number;
     Servicio_idServicios : number;
     estadoInvitacion: number;
+    nombreEvento: string;
+    fechaEvento: string;
+    calificacion: string;
 }

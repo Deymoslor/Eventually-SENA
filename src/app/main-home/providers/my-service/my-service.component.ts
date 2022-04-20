@@ -33,7 +33,7 @@ export class MyServiceComponent implements OnInit {
   constructor(private api: ApiService, private router: Router) { }
 
   ngOnInit(): void {
-    this.idProvider =1;
+    this.idProvider =3;
     this.api.getSingleServiceProvider(this.idProvider).subscribe((data:any) =>{
       if (data >= 0){
         this.router.navigateByUrl('provider/createService')
@@ -60,7 +60,7 @@ export class MyServiceComponent implements OnInit {
       if(form.estadoServicio == 0){
         form.estadoServicio = 1;
       }else{
-        form.estadoServicio = 0;
+        form.estadoServicio = 2;
       }
       this.api.putService(form).subscribe(data=>{
         console.log(data);

@@ -65,7 +65,7 @@
 <section class="invitations-section" *ngIf="ServicesForm.get('estadoServicio')?.value == 1; else dissabledService">
     <h2 class="fw-bolder">Invitaciones a eventos</h2>
     <div class="table-invitations">
-        <app-table-invitations-events></app-table-invitations-events>
+        <app-table-invitations-events [childMessage]="idProvider"></app-table-invitations-events>
     </div>
     
 </section>
