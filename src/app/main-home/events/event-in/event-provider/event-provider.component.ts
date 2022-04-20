@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -15,6 +15,8 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./event-provider.component.scss']
 })
 export class EventProviderComponent implements OnInit {
+
+@Input() idEvento!: number;
 
   createInv = new FormGroup({
     Evento_idEvento: new FormControl(''),
@@ -85,7 +87,7 @@ export class EventProviderComponent implements OnInit {
 
   postInvitation(form: InvitationProvSerI){
     let eventId = Number(this.route.snapshot.paramMap.get('id'));
-    form.Evento_idEvento = eventId;
+    form.Evento_idEvento = this.idEvento;
     form.Servicio_idServicios = form.idServicios;
     console.log(form);
     this.api.postInvitationService(form).subscribe(data =>{
