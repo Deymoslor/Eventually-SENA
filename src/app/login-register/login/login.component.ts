@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
 
     //Llamamos método para revisar el local storage.
-    this.checkLocalStorage();
+    // this.checkLocalStorage();
 
     // this.parentMessageL = "Test";
     // console.log(this.parentMessageL);
@@ -62,16 +62,16 @@ export class LoginComponent implements OnInit {
   }
 
   //Creamos un método que nos ayudará a evaluar si el token existe para determinar si la sesión está abierta o no.
-  checkLocalStorage(){
-    //Evaluamos si en el almacenamiento local está el item token.
-    if(localStorage.getItem('token')){
-      //Si existe nos redirige al apartado de grupos.
-      return this.router.navigate(['/groups']);
-    }else{
-      //De lo contrario nos devuelve un 1.
-      return 1;
-    }
-  }
+  // checkLocalStorage(){
+  //   //Evaluamos si en el almacenamiento local está el item token.
+  //   if(localStorage.getItem('token')){
+  //     //Si existe nos redirige al apartado de grupos.
+  //     return this.router.navigate(['/groups']);
+  //   }else{
+  //     //De lo contrario nos devuelve un 1.
+  //     return 1;
+  //   }
+  // }
 
   //Método que se ejecuta al hacer submit al formulario.
   onLogin(form:loginI){
@@ -90,10 +90,12 @@ export class LoginComponent implements OnInit {
         //En caso de que la respuesta esté como ok, lo que hacemos es almacenar el id en el almacenamiento local para sacarlo en los diferentes métodos que lo necesitemos (En este caso para el user-settings.component).
         localStorage.setItem("id",dataResponse.result.idPersona);
 
-
-
         //Almacenamos el token en el almacenamiento intero con localStorage.setItem que recibe por parámetro el nombre y el valor.
         localStorage.setItem("token",dataResponse.result.token);
+
+        //Almacenamos el rol en el almacenamiento intero con localStorage.setItem que recibe por parámetro el nombre y el valor.
+        localStorage.setItem("nombreRol",dataResponse.result.rol.nombreRol);
+
         this.router.navigate(['/groups']);
       }else{
         this.errorStatus = true;
