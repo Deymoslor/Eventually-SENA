@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TypeServicesI } from 'src/app/dashboard/crud-services/models/typeServices.interface';
+import { DetailServiceEventI } from '../models/detail-service-event.interface';
+import { InvitationProvSerI } from '../models/invitation-prov-ser.interface';
 import { ResponseI } from '../models/response.interface';
 import { ServiceI } from '../models/service.interface';
 import { ServiceEventI } from '../models/serviceEvent.interface';
@@ -60,6 +62,16 @@ export class ApiService {
   putServiceEventProv(form:ServiceEventI):Observable<ResponseI>{
     let dir = this.url + "serviceProvEv";
     return this.http.put<ResponseI>(dir, form);
+  }
+
+  getAllProvServicesInv(page: number):Observable<InvitationProvSerI[]>{
+    let dir = this.url + "providerService?pageInv=" + page;
+    return this.http.get<InvitationProvSerI[]>(dir);
+  }
+
+  postInvitationService(form: DetailServiceEventI):Observable<ResponseI>{
+    let dir = this.url+"providerService?postInv";
+    return this.http.post<ResponseI>(dir, form);
   }
 
 

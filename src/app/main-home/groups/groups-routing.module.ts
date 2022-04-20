@@ -40,6 +40,7 @@ const routes: Routes = [
       {
         path: 'your-groups/groups/:id',
         component: YourGroupsDetailsComponent,
+        loadChildren: () => import('../events/events-routing.module').then(m => m.EventsRoutingModule)
       },
     ],
   },

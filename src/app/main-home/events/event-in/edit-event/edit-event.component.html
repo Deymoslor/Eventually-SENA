@@ -46,7 +46,7 @@
         
                             <label for="exampleInputEmail1">Numero Participantes:</label>
                                 <input type="number" class="form-control" id="exampleInputEmail1"
-                                 min="2" max="200" formControlName="ParticipantesTotales">
+                                 min="2" max="200" formControlName="participantesTotales">
       
                             <!-- <label for="">ID del Grupo:</label>
                             <input type="text" class="form-control" id=""
@@ -73,8 +73,9 @@
                             </div>
                         </div>
                     </div>
+                    <!-- goback(editFormIn.get('Grupos_idGrupos')?.value) -->
                         <div class="container-buttons">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="goback(editFormIn.get('idEvento')?.value)">Cerrar</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="goback(dataEvent.Grupos_idGrupos)">Cerrar</button>
                             <!-- (click)="refresh()" -->
                             <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
                         </div>
