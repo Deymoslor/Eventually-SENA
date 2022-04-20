@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ServiceEventI } from '../../../models/serviceEvent.interface';
 import { ApiService } from '../../../services/api.service';
 
@@ -10,13 +10,15 @@ import { ApiService } from '../../../services/api.service';
 })
 export class TableInvitationsEventsComponent implements OnInit {
 
+  @Input() childMessage!: number;
+
   accepted: boolean = false;
   dataServiceEventProv!: ServiceEventI[];
 
   constructor(private api: ApiService) { }
 
   ngOnInit(): void {
-    this.api.getAllServiceEventProv(1).subscribe(data =>{
+    this.api.getAllServiceEventProv(this.childMessage).subscribe(data =>{
       console.log(data);
       data.forEach(key => {
         if (key.estadoInvitacion == 1) {

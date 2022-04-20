@@ -1,45 +1,122 @@
 <!--TABLE-->
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 ">
+    
+<div class="table-responsive">
+    <div *ngIf="stateAccept != 1; else onlyAccepted">
+        <table class="table table-dark table-responsive">
+            <thead>
+            <tr>
+                <th scope="col">No</th>
+                <th scope="col">Nombre Proveedor</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Correo</th>
+                <th scope="col">Numero</th>
+                <th scope="col">Tipo Servicio</th>
+                <th scope="col">Detalle Servicio</th>
+                <th scope="col">Accion</th>
+                <th scope="col">Estado</th>
+            </tr>
+            </thead>
+            <tbody>
+                
+            <tr *ngFor="let key of dataProviderService">
+                <td></td>
+                <td>{{key.nombreProveedor}}</td>
+                <td>{{key.apellidoProveedor}}</td>
+                <td>{{key.correoProveedor}}</td>
+                <td>{{key.celular}}</td>
+                <td>{{key.TipoServicio_idtipoServicio}}</td>
+                <td>
+                    <div class="content-button">
+                        <button class="btn btn-primary" (click)="modalOpen(content)">Detalle</button> 
+                        <ng-template #content let-modal>
+                            <!-- <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button> -->
+                                    
+                                            <div class="modal-header">
+                                            <h5 class="modal-title" id="staticBackdropLabel">Detalle Servicio</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="form-group">
+                                                    <div class="check-form">
+                                                        <label class="fs-3">Nombre del Servicio:</label>
+                                                        <p class="fw-bolder fs-5">{{key.nombreServicio}}</p>
+                                                    </div>
+                                                    
+                                                    <div class="check-form">
+                                                        <label class="fs-3">Descripcion:</label>
+                                                        
+                                                        <p class="fw-bolder fs-5">{{key.descripcionServicio}}</p> 
+                                                    </div> 
+                                                    <div class="check-form">
+                                                        <label class="fs-3">Precio estimado:</label>
+                                                        
+                                                        <p class="fw-bolder fs-5">{{key.precioEstimado}}</p>
+                                                    </div> 
+                                                    <div class="check-form">
+                                                        <label class="fs-3">Imagen:</label>
+                                                        
+                                                        <p class="fw-bolder fs-5">{{key.imagen}}</p>
+                                                    </div> 
+                                                    <div class="check-form">
+                                                        <label class="fs-3">Historial empresas:</label>
+                                                        
+                                                        <p class="fw-bolder fs-5">{{key.historialEmpresas}}</p>
+                                                    </div> 
+                
+                                                </div>
+                                            </div>
+                                            <!-- <div class="modal-footer">
+                                                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Crear evento</button>
+                                            </div> -->
+                                       
+                
+                
+                
+                            <!-- <app-modal-disable-event [idEvent]="eventGroupForm.get('idEvento')?.value" [form]="eventGroupForm.value"></app-modal-disable-event> -->
+                        </ng-template>
+                    </div>
+                </td>
+                <td>
+                    <div class="content-button">
+                            <button class="btn btn-primary" type="submit" (click)="postInvitation(key)">Invitar</button> 
+                    </div>
+                </td>
+                <td *ngIf="key.estadoInvitacion == 0">
+                    Sin responder/Invitado
+                </td>
+                <td *ngIf="key.estadoInvitacion == 1">
+                    Aceptado
+                </td>
+                <td *ngIf="key.estadoInvitacion == 2">
+                    Rechazado
+                </td>
+                <td *ngIf="key.estadoInvitacion == 3">
+                    Invitado
+                </td>
+                <td *ngIf="key.estadoInvitacion == null">
+                    Sin invitar
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 
-        <!--- Note that these columns can be defined in any order.
-            The actual rendered columns are set as a property on the row definition" -->
+    <ng-template #onlyAccepted >
+        <div >
+            Se tiene un Servicio aceptado con el proveedor: {{nombreProveedor}}, con nombre de servicio: {{nombreServicio}}
+        </div>
+        <button class="btn btn-danger" (click)="modalOpen(content)">
+            Terminar
+        </button>
+        <p class="fw-bolder">Terminar y Resultados</p>
+        
+    </ng-template>
     
-        <!-- Position Column -->
-        <ng-container matColumnDef="position">
-        <th mat-header-cell *matHeaderCellDef> No. </th>
-        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-        </ng-container>
-    
-        <!-- Name Column -->
-        <ng-container matColumnDef="nameProvider">
-        <th mat-header-cell *matHeaderCellDef> Nombre Proveedor</th>
-        <td mat-cell *matCellDef="let element"> {{element.nameProvider}} </td>
-        </ng-container>
-    
-        <!-- Weight Column -->
-        <ng-container matColumnDef="description">
-        <th mat-header-cell *matHeaderCellDef> Descripción Servicio </th>
-        <td mat-cell *matCellDef="let element"> <p class="text-break desc">{{element.description}}</p> </td>
-        </ng-container>
-    
-        <!-- Symbol Column -->
-        <ng-container matColumnDef="typeService">
-        <th mat-header-cell *matHeaderCellDef> Tipo Servicio </th>
-        <td mat-cell *matCellDef="let element"> {{element.typeService}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="points">
-            <th mat-header-cell *matHeaderCellDef> Puntuacion acutal </th>
-            <td mat-cell *matCellDef="let element"> {{element.points}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="actions">
-            <th mat-header-cell *matHeaderCellDef> Acciones </th>
-            <td mat-cell *matCellDef="let element"> <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-provider-info" >Saber mas</button> </td>
-        </ng-container>
-    
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+</div>
     
 <!--TABLE//-->
+<!-- 
+<ng-template #content let-modal>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    <app-modal-disable-event [idEvent]="eventGroupForm.get('idEvento')?.value" [form]="eventGroupForm.value"></app-modal-disable-event>
+</ng-template> -->

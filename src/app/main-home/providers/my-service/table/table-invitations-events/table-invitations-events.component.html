@@ -23,8 +23,10 @@
                 <td *ngIf="key.estadoInvitacion == 2">RECHAZADO</td>
                 <td *ngIf="key.estadoInvitacion == 3">TERMINADO</td>
                 <td *ngIf="key.estadoInvitacion == 0">
-                    <button class="btn btn-primary" (click)="changeStateServiceProvA(key)">Aceptar</button>
-                    <button class="btn btn-primary" (click)="changeStateServiceProvD(key)">Rechazar</button>
+                    <div class="content-button">
+                        <button class="btn btn-primary" (click)="changeStateServiceProvA(key)">Aceptar</button>
+                        <button class="btn btn-primary" (click)="changeStateServiceProvD(key)">Rechazar</button>    
+                    </div>
                 </td>
                 <td *ngIf="key.estadoInvitacion == 1">
                     Evento aceptado
