@@ -39,8 +39,8 @@ export class ModalSuppliersEditComponent implements OnInit {
     correoProveedor: new FormControl(''),
     codigoAcceso: new FormControl(''),
     fechaNacimiento: new FormControl(''),
-    Celular: new FormControl(''),
-    Estado: new FormControl(''),
+    celular: new FormControl(''),
+    estado: new FormControl(''),
   });
 
   ngOnInit(): void {
@@ -97,8 +97,8 @@ export class ModalSuppliersEditComponent implements OnInit {
         'correoProveedor' : this.datosProveedor.correoProveedor,
         'codigoAcceso' : this.datosProveedor.codigoAcceso,
         'fechaNacimiento' : this.datosProveedor.fechaNacimiento,
-        'Celular' : this.datosProveedor.Celular,
-        'Estado' : this.datosProveedor.Estado,
+        'celular' : this.datosProveedor.celular,
+        'estado' : this.datosProveedor.estado,
       })
 
       //Imprimimos el formulario por consola.

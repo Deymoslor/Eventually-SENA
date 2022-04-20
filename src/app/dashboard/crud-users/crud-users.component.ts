@@ -61,11 +61,11 @@ export class CrudUsersComponent implements OnInit {
     documento: new FormControl(''),
     fechaNacimiento: new FormControl(''),
     Email: new FormControl(''),
-    password: new FormControl(''),
-    Celular: new FormControl(''),
-    ciudad: new FormControl(''),
-    Estado: new FormControl(''),
-    roles_idRoles: new FormControl(''),
+    // password: new FormControl(''),
+    // celular: new FormControl(''),
+    // ciudad: new FormControl(''),
+    estado: new FormControl(''),
+    // roles_idRoles: new FormControl(''),
   });
 
   //Variables para probar el llenado de la table.
@@ -143,7 +143,10 @@ constructor(
       //asignamos el valor que venga desde la API a una variable para poder recorrerla.
       this.datosPersona = data[0];
 
-      this.datosPersona.Estado="Inactivo";
+      // console.log(this.datosPersona);
+
+
+      this.datosPersona.estado="Inactivo";
 
       let token = localStorage.getItem('token');
 
@@ -151,7 +154,7 @@ constructor(
 
       this.userService.putPerson(this.datosPersona).subscribe((data:any) =>{
 
-        console.log("Entrando aquí");
+        // console.log("Entrando aquí");
 
         window.location.reload();
 
@@ -168,7 +171,7 @@ constructor(
         //asignamos el valor que venga desde la API a una variable para poder recorrerla.
         this.datosPersona = data[0];
 
-        this.datosPersona.Estado="Activo";
+        this.datosPersona.estado="Activo";
 
         let token = localStorage.getItem('token');
 

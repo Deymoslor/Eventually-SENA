@@ -55,10 +55,10 @@ const routes: Routes = [
         path: 'events',
         loadChildren: () => import('./events/events-routing.module').then(m => m.EventsRoutingModule),
       },
-      {
-        path: '**',
-        redirectTo: 'groups',
-      }
+      // {
+      //   path: '**',
+      //   redirectTo: 'groups',
+      // }
     ],
   }
 ]

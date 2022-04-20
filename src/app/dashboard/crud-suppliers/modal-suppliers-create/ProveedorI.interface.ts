@@ -6,6 +6,6 @@ export interface ProveedorI{
     correoProveedor:string;
     codigoAcceso:string;
     fechaNacimiento:string;
-    Celular:string;
-    Estado:string;
+    celular:string;
+    estado:string;
 }
