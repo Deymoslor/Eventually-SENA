@@ -32,10 +32,10 @@
                 <p class="fw-bolder">fecha de creación</p>
             </div>
             <div class="info">
-                <button class="btn btn-danger" (click)="modalOpen(content)">
+                <!-- <button class="btn btn-danger" (click)="modalOpen(content)">
                     Terminar
                 </button>
-                <p class="fw-bolder">Terminar y Resultados</p>
+                <p class="fw-bolder">Terminar y Resultados</p> -->
             </div>
             <div class="info edit">
                 <!-- data-bs-toggle="modal" data-bs-target="#edit-modal-eventin" -->
@@ -70,6 +70,7 @@
     </div>
     <!--Table Provider services-->
     <div class="table-provider">
+        <app-event-provider [form]="eventGroupForm.value"></app-event-provider>
         <app-event-provider [idEvento]="eventGroupForm.get('idEvento')?.value"></app-event-provider>
     </div>
 
@@ -88,6 +89,13 @@
     <h2>EVENTO TERMINADO O INEXISTENTE, SI DESEA PODRA CREAR UN EVENTO NUEVO.</h2>
     <button class="btn-primary" data-bs-toggle="modal2" data-bs-target="#content-modal2" role="button" (click)="modalOpen2(content2)">Crear Evento</button>
 </div>
+<!-- 
+<ng-template #content let-modal>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    <app-modal-disable-event [idEvent]="eventGroupForm.get('idEvento')?.value" [form]="eventGroupForm.value"></app-modal-disable-event>
+</ng-template> -->
+
+  
 
 <ng-template #content2 let-modal2>
     <!-- <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button> -->

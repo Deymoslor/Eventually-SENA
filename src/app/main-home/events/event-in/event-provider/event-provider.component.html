@@ -105,9 +105,9 @@
         <div>
             Se tiene un Servicio aceptado con el proveedor: {{nombreProveedor}}, con nombre de servicio: {{nombreServicio}}
         </div>
-        <!-- <button class="btn btn-danger" (click)="modalOpen(content)">
+        <button class="btn btn-danger" (click)="modalOpen2(content2)">
             Terminar
-        </button> -->
+        </button>
         <p class="fw-bolder">Terminar y Resultados</p>
 
     </ng-template>
@@ -115,8 +115,8 @@
 </div>
 
 <!--TABLE//-->
-<!-- 
-<ng-template #content let-modal>
-    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-    <app-modal-disable-event [idEvent]="eventGroupForm.get('idEvento')?.value" [form]="eventGroupForm.value"></app-modal-disable-event>
-</ng-template> -->
+
+<ng-template #content2 let-modal2>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal2.dismiss('Cross click')"></button>
+    <app-modal-disable-event [form]="form"></app-modal-disable-event>
+</ng-template>
