@@ -137,8 +137,8 @@ export class EventInComponent implements OnInit {
     this.api.postEvent(form).subscribe( data => {
       console.log(data);
     })
-    // this.createEventForm.reset();
-    // this.refresh();
+    this.createEventForm.reset();
+    this.refresh();
   }
 
   refresh(){

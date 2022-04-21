@@ -1,10 +1,10 @@
-<div class="col-sm-10">
-  <div class="grid card" *ngIf="group.privacidadGrupo==2" (click)="navigateToGroupDetails()">
+<div class="col-sm-12 aloo">
+  <div class="grid card aloo" *ngIf="group.privacidadGrupo==2" (click)="navigateToGroupDetails()">
     <!-- <div *ngIf="imagen===null">
       <img class="rounded card-img-top" src="../../../../assets/group/prueba.jfif" alt="{{ group.nombreGrupo }}" (click)="navigateToGroupDetails()">
     </div> -->
-    <div>
-      <img class="rounded card-img-top" src="{{ group.imagen }}" alt="{{ group.nombreGrupo }}" (click)="navigateToGroupDetails()">
+    <div class="group">
+      <img class="rounded card-img-top" src="../../../../assets/group/prueba.jfif" alt="{{ group.nombreGrupo }}" (click)="navigateToGroupDetails()">
     </div>
     <div class="card-body">
       <h5 class="card-title" (click)="navigateToGroupDetails()">{{ group.nombreGrupo }}</h5>
@@ -14,5 +14,4 @@
       </div>
     </div>
   </div>
-  <br>
 </div>
