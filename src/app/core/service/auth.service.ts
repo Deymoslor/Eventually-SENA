@@ -30,14 +30,14 @@ export class AuthService {
       this.id = localStorage.getItem('id');
 
       this.currentUser = new BehaviorSubject(
-        JSON.parse(this.id)
+        this.id
       );
 
       //Retomamos id en constructor.
       this.rol = localStorage.getItem('nombreRol');
 
       this.currentRol = new BehaviorSubject(
-        JSON.parse(this.rol)
+        this.rol
       );
 
     }
