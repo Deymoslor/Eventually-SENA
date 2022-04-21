@@ -70,7 +70,7 @@
     </div>
     <!--Table Provider services-->
     <div class="table-provider">
-        <app-event-provider [form]="eventGroupForm.value"></app-event-provider>
+        <!-- <app-event-provider [form]="eventGroupForm.value"></app-event-provider> -->
         <app-event-provider [idEvento]="eventGroupForm.get('idEvento')?.value"></app-event-provider>
     </div>
 
@@ -95,7 +95,7 @@
     <app-modal-disable-event [idEvent]="eventGroupForm.get('idEvento')?.value" [form]="eventGroupForm.value"></app-modal-disable-event>
 </ng-template> -->
 
-  
+
 
 <ng-template #content2 let-modal2>
     <!-- <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button> -->

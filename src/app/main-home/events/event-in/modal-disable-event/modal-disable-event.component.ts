@@ -10,6 +10,7 @@ import { ApiService } from '../../../../services/api/api.service';
 })
 export class ModalDisableEventComponent implements OnInit {
 
+  @Input() idEvent!: number;
   @Input() form!: EventI;
   // @Input() stateEvent!: number;
 

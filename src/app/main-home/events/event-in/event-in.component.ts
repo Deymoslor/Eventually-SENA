@@ -29,7 +29,7 @@ export class EventInComponent implements OnInit {
 
   constructor(private api:ApiService, private router:Router, private modalService: NgbModal, private route: ActivatedRoute, private fb: FormBuilder,) { }
   closeResult = '';
-  
+
   createEventForm = new FormGroup({
     idEvento: new FormControl(''),
     nombreEvento: new FormControl(''),
@@ -58,10 +58,10 @@ export class EventInComponent implements OnInit {
 
     let idGrupos = this.route.snapshot.paramMap.get('id');
     this.api.getSigleEventGroup(Number(idGrupos)).subscribe((data: any) =>{
-      
+
       this.dataEvent =data[0];
       if(this.dataEvent == null){
-        
+
         this.eventGroupForm.setValue({
           'idEvento': '1',
           'nombreEvento': '',
@@ -73,7 +73,7 @@ export class EventInComponent implements OnInit {
           'estadoEvento': '3',
         })
       }else{
-        
+
        this.eventGroupForm.setValue({
          'idEvento': this.dataEvent.idEvento,
          'nombreEvento': this.dataEvent.nombreEvento,
