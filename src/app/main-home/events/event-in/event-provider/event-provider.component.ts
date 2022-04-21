@@ -18,6 +18,7 @@ import { EventI } from 'src/app/models/event.interface';
 export class EventProviderComponent implements OnInit {
 
   @Input() form!: EventI;
+@Input() idEvento!: number;
 
   createInv = new FormGroup({
     Evento_idEvento: new FormControl(''),
@@ -89,7 +90,7 @@ export class EventProviderComponent implements OnInit {
 
   postInvitation(form: InvitationProvSerI){
     let eventId = Number(this.route.snapshot.paramMap.get('id'));
-    form.Evento_idEvento = eventId;
+    form.Evento_idEvento = this.idEvento;
     form.Servicio_idServicios = form.idServicios;
     console.log(form);
     this.api.postInvitationService(form).subscribe(data =>{

@@ -27,7 +27,7 @@ import { ModalCreateEventComponent } from './your-groups/your-groups-details/mod
     ModalEditGroupsComponent,
     ModalEventsCompletedComponent,
     ModalReportEventsGroupsOrganizerComponent,
-    ModalCreateEventComponent
+    ModalCreateEventComponent,
   ],
   imports: [
     CommonModule,
