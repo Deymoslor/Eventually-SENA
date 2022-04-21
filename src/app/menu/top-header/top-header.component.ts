@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-top-header',
@@ -7,13 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopHeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
 
   logOut(){
     localStorage.clear();
+    this.router.navigate(['/loginRegister']);
+    // this.router.navigateByUrl("http://localhost:4200/loginRegister");
   }
 
 }

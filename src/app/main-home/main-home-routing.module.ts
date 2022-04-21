@@ -45,7 +45,7 @@ const routes: Routes = [
         path: 'provider', component: ProvidersComponent,
         loadChildren: () => import('./providers/providers-routing.module').then(m => m.ProvidersRoutingModule),
         canActivate: [AuthGuard],
-        data: {roles: [ROLES_ENUM.INVITADO]}
+        // data: {roles: [ROLES_ENUM.INVITADO]}
       },
       {
         path: 'groups',
@@ -61,6 +61,7 @@ const routes: Routes = [
         path: 'events',
         loadChildren: () => import('./events/events-routing.module').then(m => m.EventsRoutingModule),
         canActivate: [AuthGuard],
+        data: {roles: [ROLES_ENUM.INVITADO]}
       },
       // {
       //   path: '**',
