@@ -10,26 +10,26 @@ import { ApiService } from '../../../../services/api/api.service';
 })
 export class ModalDisableEventComponent implements OnInit {
 
-  @Input() idEvent!: number;
   @Input() form!: EventI;
   // @Input() stateEvent!: number;
 
-  constructor(private api:ApiService) { }
+  constructor(private api:ApiService,) { }
 
   ngOnInit(): void {
+    console.log(this.form);
   }
 
   ngOnChanges(): void{
-    console.log(this.idEvent);
+    console.log(this.form);
   }
 
   finishEvent(num:number){
-    console.log(this.idEvent);
     this.form.estadoEvento = num;
     this.api.putEvent(this.form).subscribe(data=>{
       console.log(data);
     });
-    this.refresh();
+    // this.api.
+    // this.refresh();
   }
 
   refresh(): void { window.location.reload(); }

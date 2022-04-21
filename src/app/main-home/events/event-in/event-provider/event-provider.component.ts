@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -7,6 +7,7 @@ import { InvitationProvSerI } from 'src/app/main-home/providers/models/invitatio
 import { ApiService } from 'src/app/main-home/providers/services/api.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
+import { EventI } from 'src/app/models/event.interface';
 
 
 @Component({
@@ -15,6 +16,8 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./event-provider.component.scss']
 })
 export class EventProviderComponent implements OnInit {
+
+  @Input() form!: EventI;
 
   createInv = new FormGroup({
     Evento_idEvento: new FormControl(''),
@@ -34,6 +37,7 @@ export class EventProviderComponent implements OnInit {
   closeResult = '';
 
   ngOnInit(): void {
+    console.log(this.form)
     this.api.getAllProvServicesInv(1).subscribe(data =>{
       console.log(data);
       this.dataProviderService = data;
@@ -65,11 +69,11 @@ export class EventProviderComponent implements OnInit {
     }
   }
 
-  modalOpen2(content:any){
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+  modalOpen2(content2:any){
+    this.modalService.open(content2, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      this.closeResult = `Dismissed ${this.getDismissReason2(reason)}`;
     });
   }
 
