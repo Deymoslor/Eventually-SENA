@@ -27,7 +27,9 @@ export class SeeGroupsComponent implements OnInit {
   constructor(private SeeGroupsService: SeeGroupsService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.SeeGroupsService.getPromotedGroups(1).subscribe(data=>{
+    let idPersona = localStorage.getItem('id');
+    console.log(idPersona);
+    this.SeeGroupsService.getPromotedGroups(1,Number(idPersona)).subscribe(data=>{
       console.log(data);
 
       this.groups = data;

@@ -1,6 +1,6 @@
  <!-- <div *ngIf="eventGroupForm.get('estadoEvento')?.value == 1> -->
 <div *ngIf="eventGroupForm.get('estadoEvento')?.value == 1">
-    
+
     <div class="content" >
         <div class="class-thumbnail">
             <img src="../../../../assets/main/events/danza.png" alt="Evento Danza" class="thumbnail">
@@ -14,21 +14,21 @@
                 <div class="form-check form-switch">
                     <!-- <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" checked data-bs-toggle="modal" data-bs-target="#staticBackdrop-disable">
                     <label class="form-check-label fw-bolder fs-4 label" for="flexSwitchCheckChecked">Deshabilitar evento</label> -->
-                </div> 
+                </div>
             </div>
         </div>
-        
+
         <div class="info-container">
             <div class="info">
-                <h4 class="fs-5 fw-bold">{{eventGroupForm.get('participantesTotales')?.value}}</h4>         
+                <h4 class="fs-5 fw-bold">{{eventGroupForm.get('participantesTotales')?.value}}</h4>
                 <p class="fw-bolder">participantes</p>
             </div>
             <div class="info">
-                <h4 class="fs-5 fw-bold">Dylan Murillo Rios</h4>         
+                <h4 class="fs-5 fw-bold">Dylan Murillo Rios</h4>
                 <p class="fw-bolder">Organizador</p>
             </div>
             <div class="info">
-                <h4 class="fs-5 fw-bold">25-02-2022</h4>         
+                <h4 class="fs-5 fw-bold">25-02-2022</h4>
                 <p class="fw-bolder">fecha de creación</p>
             </div>
             <div class="info">
@@ -60,23 +60,23 @@
                     <p class="fw-normal text-decoration-underline" >Parque de la milagrosa - Cl. 43, Medellín, Antioquia</p>
                 </div>
             </div>
-    
+
             <h4 class="fs-4 fw-bolder">Descripcion</h4>
             <p class="fw-normal text-break desc">{{eventGroupForm.get('descripcionEvento')?.value}}</p>
         </div>
-    
+
         <h1 class="fs-1 h1-provider text-decoration-underline">Añadir un proveedor</h1>
-        
+
     </div>
     <!--Table Provider services-->
     <div class="table-provider">
         <app-event-provider></app-event-provider>
     </div>
-    
+
 </div>
 
 <div *ngIf="eventGroupForm.get('estadoEvento')?.value == 0">
-    
+
     <h2>EVENTO DESHABILITADO, SEA PACIENTE, MIENTRAS ESTE ES HABILITADO.</h2>
 </div>
 
@@ -230,7 +230,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary" [disabled]="createEventForm.invalid" data-bs-dismiss="modal">Crear evento</button>
+                        <button type="submit" class="btn btn-primary" [disabled]="createEventForm.invalid">Crear evento</button>
                     </div>
                 </div>
 
@@ -249,4 +249,3 @@
     <app-modal-disable-event [idEvent]="eventGroupForm.get('idEvento')?.value" [form]="eventGroupForm.value"></app-modal-disable-event>
 </ng-template>
 
-  

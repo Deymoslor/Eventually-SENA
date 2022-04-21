@@ -1,13 +1,18 @@
 <div class="col-sm-10">
-  <div class="card" (click)="navigateToGroupDetails()">
-    <img class="card-img-top" alt="{{ group.nombreGrupo }}" (click)="navigateToGroupDetails()">
+  <div class="grid card" *ngIf="group.privacidadGrupo==2" (click)="navigateToGroupDetails()">
+    <!-- <div *ngIf="imagen===null">
+      <img class="rounded card-img-top" src="../../../../assets/group/prueba.jfif" alt="{{ group.nombreGrupo }}" (click)="navigateToGroupDetails()">
+    </div> -->
+    <div>
+      <img class="rounded card-img-top" src="{{ group.imagen }}" alt="{{ group.nombreGrupo }}" (click)="navigateToGroupDetails()">
+    </div>
     <div class="card-body">
       <h5 class="card-title" (click)="navigateToGroupDetails()">{{ group.nombreGrupo }}</h5>
-      <p class="card-text">{{ group.invitadosTotales }}</p>
       <div class="btn-group">
         <button class="btn btn-primary" (click)="navigateToGroupDetails()">Detalles</button>
         <button class="btn btn-primary" (click)="share()">Unirse</button>
       </div>
     </div>
   </div>
+  <br>
 </div>
