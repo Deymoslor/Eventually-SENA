@@ -33,18 +33,8 @@ export class AuthService {
         JSON.parse(this.id)
       );
 
-      // this.currentUser = new BehaviorSubject(
-      //   JSON.parse(localStorage.getItem(this.nameUserLS))
-      // );
-
-      // let x = null;
-
-      // JSON.parse(x);
-
       //Retomamos id en constructor.
-      this.rol = localStorage.getItem('rol');
-
-      console.log(this.rol)
+      this.rol = localStorage.getItem('nombreRol');
 
       this.currentRol = new BehaviorSubject(
         JSON.parse(this.rol)
@@ -64,11 +54,12 @@ export class AuthService {
     //Creamos un método que permita saber si tiene acceso a un módulo.
     hasAccessToModule(roles: ROLES_ENUM[]){
       // return this.getUser && roles.includes(this.getUser.Roles_idRoles);
-      return this.getUser && roles.includes(this.currentRol.value);
+      return this.getUser && roles.includes(this.getRol);
     }
 
   ngOnInit(): void {
-    console.log(this.getUser.Roles_idRoles);
+    console.log(this.currentRol.value);
+
   }
 
 }

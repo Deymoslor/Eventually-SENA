@@ -26,13 +26,16 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot,
   ): boolean {
     //Validamos que exista un usuario.
-    const currentUser = this.authService.getUser;
+    // const currentUser = this.authService.getUser;
+    const currentUser = localStorage.getItem('id');
+    // console.log(currentUser);
     //Verificamos si existe.
     if (currentUser) {
-      if (next.data['roles'] && !this.authService.hasAccessToModule(next.data['roles'])) {
-        this.router.navigate(['http://localhost:4200/events']);
-        return false;
-      }
+
+      // if (next.data.roles && !this.authService.hasAccessToModule(next.data.roles)) {
+        // this.router.navigate(['http://localhost:4200/events']);
+        // return false;
+      // }
       //En caso de existir devolvemos true.
       return true;
     }

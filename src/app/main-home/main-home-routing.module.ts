@@ -5,6 +5,7 @@ import { MainHomeComponent } from './main-home.component';
 import { ProvidersComponent } from './providers/providers.component';
 import { AuthGuard } from '../core/guards/auth.guard';
 import { ROLES_ENUM } from '../constants/roles.enum';
+import { RESOURCE_BY_ROLES } from '../core/routes/internal.routes';
 
 /* const routes: Routes = [
   {
@@ -56,12 +57,13 @@ const routes: Routes = [
         path: 'settings',
         loadChildren: () => import('./settings/settings-routing.module').then(m => m.SettingsRoutingModule),
         canActivate: [AuthGuard],
+        data: {roles: RESOURCE_BY_ROLES.PANEL_INVITADO}
       },
       {
         path: 'events',
         loadChildren: () => import('./events/events-routing.module').then(m => m.EventsRoutingModule),
         canActivate: [AuthGuard],
-        data: {roles: [ROLES_ENUM.INVITADO]}
+        // data: {roles: [ROLES_ENUM.INVITADO]}
       },
       // {
       //   path: '**',
