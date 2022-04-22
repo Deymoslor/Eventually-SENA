@@ -94,9 +94,10 @@ export class LoginComponent implements OnInit {
         localStorage.setItem("token",dataResponse.result.token);
 
         //Almacenamos el rol en el almacenamiento intero con localStorage.setItem que recibe por parámetro el nombre y el valor.
-        localStorage.setItem("nombreRol",dataResponse.result.rol.nombreRol);
+        localStorage.setItem("nombreRol",dataResponse.result.rol);
 
         this.router.navigate(['/groups']);
+        this.router.navigateByUrl("/groups");
       }else{
         this.errorStatus = true;
         this.errorMsg = dataResponse.result.error_msg;

@@ -16,10 +16,12 @@ export class AuthService {
   API:string='http://localhost/Api-Eventually-SENA/';
 
   //Cosa.
-  public currentUser!: BehaviorSubject<PersonaI>;
-  public currentRol!: BehaviorSubject<IRol>
+  public currentUser: BehaviorSubject<PersonaI>;
+  public currentRol: BehaviorSubject<ROLES_ENUM>
   public id!: any;
   public rol!: any;
+
+  public nameUserLS = 'id'
 
   constructor(
     private http:HttpClient
@@ -27,20 +29,16 @@ export class AuthService {
       //Retomamos id en constructor.
       this.id = localStorage.getItem('id');
 
-      console.log(this.id)
-
       this.currentUser = new BehaviorSubject(
-        JSON.parse(this.id)
+        this.id
       );
 
       //Retomamos id en constructor.
-      this.rol = localStorage.getItem('rol');
+      this.rol = localStorage.getItem('nombreRol');
 
-      console.log(this.rol)
-
-      // this.currentRol = new BehaviorSubject(
-      //   JSON.parse(this.rol)
-      // );
+      this.currentRol = new BehaviorSubject(
+        this.rol
+      );
 
     }
 
@@ -49,18 +47,19 @@ export class AuthService {
       return this.currentUser.value;
     }
 
-    // get getRol():IRol{
-    //   return this.API
-    // }
+    get getRol():ROLES_ENUM{
+      return this.currentRol.value;
+    }
 
     //Creamos un método que permita saber si tiene acceso a un módulo.
     hasAccessToModule(roles: ROLES_ENUM[]){
       // return this.getUser && roles.includes(this.getUser.Roles_idRoles);
-      return this.getUser && roles.includes(this.rol);
+      return this.getUser && roles.includes(this.getRol);
     }
 
   ngOnInit(): void {
-    console.log(this.getUser.Roles_idRoles);
+    console.log(this.currentRol.value);
+
   }
 
 }
