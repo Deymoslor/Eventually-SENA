@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { globalAccountConstants } from 'src/app/constants/globalAccountConstants';
 import { ROLES_ENUM } from 'src/app/constants/roles.enum';
 import { PersonaI } from 'src/app/dashboard/crud-users/modal-users/personaI.interface';
 import { IRol } from '../ui/IRol.interface';
@@ -24,10 +25,12 @@ export class AuthService {
   public nameUserLS = 'id'
 
   constructor(
-    private http:HttpClient
+    private http:HttpClient,
+    // private globalAccountConstants:globalAccountConstants
   ) {
       //Retomamos id en constructor.
       this.id = localStorage.getItem('id');
+
 
       this.currentUser = new BehaviorSubject(
         this.id

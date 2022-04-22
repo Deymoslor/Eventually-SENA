@@ -7,6 +7,8 @@ import { ListaPersonasI } from './ListaPersonasI.interface';
 import { PersonaI } from './modal-users/personaI.interface';
 import { FormGroup, FormControl} from '@angular/forms';
 import { AuthService } from 'src/app/core/service/auth.service';
+import { globalAccountConstants } from 'src/app/constants/globalAccountConstants';
+import { Md5 } from 'ts-md5/dist/md5';
 
 //Interfaz para definir los datos de la table.
 // export interface PeriodicElement {
@@ -97,7 +99,9 @@ constructor(
   private authService: AuthService,
 
   //Inyectamos el router.
-  private router:Router
+  private router:Router,
+
+  private globalAccountConstants:globalAccountConstants
 
   ) { }
 
@@ -106,6 +110,11 @@ constructor(
     // ----
 
     console.log(this.authService.getRol);
+
+    // let idPersona = this.globalAccountConstants.id.value;
+
+    // console.log(idPersona);
+
 
     // ----
 

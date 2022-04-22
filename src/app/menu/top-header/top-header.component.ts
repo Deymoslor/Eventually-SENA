@@ -17,7 +17,7 @@ export class TopHeaderComponent implements OnInit {
 
   logOut(){
     localStorage.clear();
-    this.router.navigate(['/loginRegister']);
+    this.router.navigate(["/loginRegister"]);
     // this.router.navigateByUrl("http://localhost:4200/loginRegister");
   }
 

@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { loginI } from './models/login.interface';
 import { ResponseI } from './models/response.intarface';
+import { globalAccountConstants } from 'src/app/constants/globalAccountConstants';
 
 @Component({
   selector: 'app-login',
@@ -39,10 +40,14 @@ export class LoginComponent implements OnInit {
     //Inyectamos el servicio.
     private accountService:accountService,
 
+    //Inyectamos el formBuilder
     private formulario:FormBuilder,
 
     //Inyectamos el reuter.
-    private router:Router
+    private router:Router,
+
+    //Inyectamos variables de cuenta globales.
+    private globalAccountConstants:globalAccountConstants
     ) {
         // //Retomamos la información del formulario.
         // this.formUsers = this.formulario.group({
@@ -89,12 +94,15 @@ export class LoginComponent implements OnInit {
 
         //En caso de que la respuesta esté como ok, lo que hacemos es almacenar el id en el almacenamiento local para sacarlo en los diferentes métodos que lo necesitemos (En este caso para el user-settings.component).
         localStorage.setItem("id",dataResponse.result.idPersona);
+        // this.globalAccountConstants.id = dataResponse.result.idPersona;
+
 
         //Almacenamos el token en el almacenamiento intero con localStorage.setItem que recibe por parámetro el nombre y el valor.
         localStorage.setItem("token",dataResponse.result.token);
 
         //Almacenamos el rol en el almacenamiento intero con localStorage.setItem que recibe por parámetro el nombre y el valor.
         localStorage.setItem("nombreRol",dataResponse.result.rol);
+
 
         this.router.navigate(['/groups']);
         this.router.navigateByUrl("/groups");
