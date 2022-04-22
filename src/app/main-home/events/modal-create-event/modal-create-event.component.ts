@@ -19,9 +19,7 @@ export class ModalCreateEventComponent implements OnInit {
     idEvento: new FormControl(''),
     nombreEvento: new FormControl(''),
     descripcionEvento: new FormControl(''),
-    estadoEvento: new FormControl(''),
-    fechaEvento: new FormControl(''),
-    tipoEvento: new FormControl(''),
+   
     participantesTotales: new FormControl(''),
     check: new FormControl(''),
     Grupos_idGrupos: new FormControl(''),

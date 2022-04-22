@@ -89,7 +89,7 @@ export class EventProviderComponent implements OnInit {
   }
 
   postInvitation(form: InvitationProvSerI){
-    let eventId = Number(this.route.snapshot.paramMap.get('id'));
+    // let eventId = Number(this.route.snapshot.paramMap.get('id'));
     form.Evento_idEvento = this.idEvento;
     form.Servicio_idServicios = form.idServicios;
     console.log(form);
