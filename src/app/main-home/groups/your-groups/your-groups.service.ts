@@ -9,14 +9,6 @@ import { Groups } from '../see-groups/groups';
 })
 export class YourGroupsService {
   API:string='http://localhost/Api-Eventually-SENA/';
-  readonly groups: Groups[] = [
-    {
-      idGrupos: 1,
-      nombreGrupo: 'Maquillaje',
-      descripcionGrupo: 'Auriculares',
-      invitadosTotales: 50,
-    },
-  ];
 
   constructor(private http:HttpClient) { }
 

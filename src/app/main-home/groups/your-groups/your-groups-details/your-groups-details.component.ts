@@ -14,17 +14,7 @@ import { ApiService } from 'src/app/services/api/api.service';
 })
 export class YourGroupsDetailsComponent implements OnInit {
 
-  createEventForm = new FormGroup({
-    idEvento: new FormControl(''),
-    nombreEvento: new FormControl(''),
-    descripcionEvento: new FormControl(''),
-    estadoEvento: new FormControl(''),
-    fechaEvento: new FormControl(''),
-    tipoEvento: new FormControl(''),
-    ParticipantesTotales: new FormControl(''),
-    check: new FormControl(''),
-    Grupos_idGrupos: new FormControl(''),
-  });
+  
 
   group!: Group | null;
   constructor(
@@ -43,17 +33,7 @@ export class YourGroupsDetailsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.createEventForm = this.fb.group({
-      nombreEvento: ['', [Validators.required, Validators.minLength(2)]],
-      tipoEvento: ['', Validators.required],
-      descripcionEvento: ['', [Validators.required, Validators.minLength(5)]],
-      fechaEvento: ['', Validators.required],
-      ParticipantesTotales: ['2', Validators.required],
-      check: ['', Validators.required],
-      // cellPhone: this.getPhoneFromGroup(),
-      // homePhone: this.getPhoneFromGroup(),
-      // email: new FormControl('', [Validators.email]),
-    });
+    
 
     let idGrupos = this.route.snapshot.paramMap.get('id');
     console.log(idGrupos);
@@ -66,39 +46,11 @@ export class YourGroupsDetailsComponent implements OnInit {
       this.router.navigate(['group']);
     }
 
-    this.EventService.getSigleEventGroup(Number(idGrupos)).subscribe((data: any) => {
-      console.log(data);
-      this.group = data[0];
-    })
-  }
-
-  modalOpen(content:any){
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
-  }
-
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
+    // this.EventService.getSigleEventGroup(Number(idGrupos)).subscribe((data: any) => {
+    //   console.log(data);
+    //   this.event = data[0];
+    // })
   }
 
 
-  //Modal Create Event
-  postForm(form:EventI){
-    console.log(form);
-
-
-    this.api.postEvent(form).subscribe( data => {
-      console.log(data);
-    })
-    this.createEventForm.reset();
-  }
 }

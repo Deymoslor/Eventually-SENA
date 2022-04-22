@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 
 export class ModalCreateEventComponent implements OnInit {
 
-  
+
 
   createEventForm = new FormGroup({
     idEvento: new FormControl(''),
@@ -47,11 +47,14 @@ export class ModalCreateEventComponent implements OnInit {
   postForm(form:EventI){
     console.log(form);
 
-    
+
     this.api.postEvent(form).subscribe( data => {
       console.log(data);
+      console.log(data);
+      console.log(data);
+      console.log(data);
     })
-    this.createEventForm.reset();
+    // this.createEventForm.reset();
   }
   guardar(){
     console.log("si");

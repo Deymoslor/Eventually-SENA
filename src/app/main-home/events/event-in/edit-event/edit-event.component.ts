@@ -68,7 +68,7 @@ export class EditEventComponent implements OnInit {
   }
 
   goback(idE:number ){
-    this.router.navigate(['events/event-in', idE]);
+    this.router.navigate(['groups/your-groups/groups/', idE]);
   }
 
   postEditForm(form: EventI){
