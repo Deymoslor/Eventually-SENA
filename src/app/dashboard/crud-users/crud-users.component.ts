@@ -119,7 +119,7 @@ constructor(
 
     let message = localStorage.getItem('id');
     const md5 = new Md5();
-    message = md5.
+    // message = md5.
 
 
     // ----
