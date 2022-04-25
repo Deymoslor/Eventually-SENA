@@ -38,7 +38,7 @@ export class AuthGuard implements CanActivate {
       //En caso de existir devolvemos true.
       return true;
     }
-    //En caso de no exisitr lo enviamos al login.
+    //En caso de no existir lo enviamos al login.
     this.router.navigate(["loginRegister/login"]);
     return false;
   }
