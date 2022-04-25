@@ -81,10 +81,26 @@
                             <button class="btn btn-primary" type="submit" (click)="postInvitation(key)">Invitar</button>
                         </div>
                     </td>
-                    <td *ngIf="key.estadoInvitacion == 0">
-                        Sin responder/Invitado
+                    <td *ngIf=" key.estadoInvitacion == null; else stateA">
+                        Sin invitar
                     </td>
-                    <td *ngIf="key.estadoInvitacion == 1">
+
+                    <ng-template #stateA>
+                        siii
+                    </ng-template>
+                    <!-- <div *ngFor="let state of dataServiceState">
+                        <td *ngIf="state.estadoInvitacion == 1">
+                            Aceptado
+                        </td>
+                        <td *ngIf="state.estadoInvitacion == 2">
+                            Rechazado
+                        </td>
+                        <td *ngIf="state.estadoInvitacion == 3">
+                            Invitado
+                        </td>
+                    </div> -->
+                    
+                    <!-- <td *ngIf="key.estadoInvitacion == 1">
                         Aceptado
                     </td>
                     <td *ngIf="key.estadoInvitacion == 2">
@@ -95,7 +111,7 @@
                     </td>
                     <td *ngIf="key.estadoInvitacion == null">
                         Sin invitar
-                    </td>
+                    </td> -->
                 </tr>
             </tbody>
         </table>
