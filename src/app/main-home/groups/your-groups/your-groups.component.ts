@@ -9,7 +9,7 @@ import { YourGroupsService } from './your-groups.service';
   styleUrls: ['./your-groups.component.scss']
 })
 export class YourGroupsComponent implements OnInit {
-
+  id!: number;
   groups!: Groups[];
 
   constructor(
@@ -18,7 +18,9 @@ export class YourGroupsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.YourGroupsService.getYourGroups(1).subscribe(data => {
+    let idPersona = localStorage.getItem('id');
+    console.log(idPersona);
+    this.YourGroupsService.getYourGroups(Number(idPersona)).subscribe(data => {
       console.log(data);
 
       this.groups = data;

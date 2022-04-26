@@ -58,8 +58,8 @@ export class SeeGroupsService {
 
   constructor(private http:HttpClient) { }
 
-  getPromotedGroups(page:number, idPersona:Number):Observable<Groups[]>{
-    let direccion = this.API + "Groups?page=" + page;
+  getPromotedGroups(page:number):Observable<Groups[]>{
+    let direccion = this.API + "Groups?user=" + page;
 
     return this.http.get<Groups[]>(direccion);
   }

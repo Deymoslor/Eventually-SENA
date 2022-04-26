@@ -26,8 +26,8 @@ export class RelatedGroupsService {
 
   constructor(private http:HttpClient) { }
 
-  getRelatedGroups(page:number):Observable<Groups[]>{
-    let direccion = this.API + "relatedGroups?page=" + page;
+  getRelatedGroups(user:number):Observable<Groups[]>{
+    let direccion = this.API + "relatedGroups?user=" + user;
 
     return this.http.get<Groups[]>(direccion);
   }

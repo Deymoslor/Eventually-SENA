@@ -42,6 +42,7 @@ export class ModalEditGroupsComponent implements OnInit {
           'InvitadosTotales': this.datesGroup.InvitadosTotales,
           'EstadosGrupo_idEstadosGrupo1': this.datesGroup.EstadosGrupo_idEstadosGrupo1
         });
+        console.log(this.editForm.get('idGrupos')?.value);
       });
     };
   }
