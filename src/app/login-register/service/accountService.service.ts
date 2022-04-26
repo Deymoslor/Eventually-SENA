@@ -5,14 +5,17 @@ import { loginI } from '../login/models/login.interface';
 import { ResponseI } from '../login/models/response.intarface';
 import { registerI } from '../register/register.interface';
 import { supplierRequestI } from '../supplier-request/supplierRequestI.interface';
+import { GlobalConstants } from 'src/app/global-constants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class accountService {
 
+  port = GlobalConstants.port;
+
   //Definimos ruta raíz de el API.
-  API:string='http://localhost/Api-Eventually-SENA/';
+  API:string='http://localhost:'+this.port+'/Api-Eventually-SENA/';
 
   //Definimos dentro del constructor el cliente http.
   constructor(private http:HttpClient) { }

@@ -1,3 +1,5 @@
+import { ROLES_ENUM } from "src/app/constants/roles.enum";
+
 export interface PersonaI{
     idPersona: number;
     token: any;
@@ -10,5 +12,5 @@ export interface PersonaI{
     ciudad: string;
     celular: string;
     estado: string;
-    Roles_idRoles: string;
+    Roles_idRoles: ROLES_ENUM;
 }

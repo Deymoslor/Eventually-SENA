@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/core/service/auth.service';
+import { IleftNavMenu } from 'src/app/core/ui/ILeftNavMenu.interface';
+import { ROLES_ENUM } from '../../constants/roles.enum';
 
 @Component({
   selector: 'app-left-menu',
@@ -7,7 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LeftMenuComponent implements OnInit {
 
-  constructor() { }
+  @Input() data!: IleftNavMenu;
+
+  constructor(
+
+    private authService: AuthService
+
+  ) { }
+
+  hasPermission(r: ROLES_ENUM[] | undefined): boolean {
+    if (r) {
+      return this.authService.hasAccessToModule(r);
+    }
+    return true;
+  }
 
   ngOnInit(): void {
   }
