@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/core/service/auth.service';
 
 @Component({
   selector: 'app-groups',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GroupsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+
+    private authService: AuthService,
+
+  ) { }
 
   ngOnInit(): void {
+
+    let rolEncriptado = localStorage.getItem('nombreRol');
+
+    console.log(this.authService.desencriptar(rolEncriptado));
+
   }
 
 }

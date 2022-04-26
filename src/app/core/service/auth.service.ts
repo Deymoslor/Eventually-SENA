@@ -5,6 +5,7 @@ import { globalAccountConstants } from 'src/app/constants/globalAccountConstants
 import { ROLES_ENUM } from 'src/app/constants/roles.enum';
 import { PersonaI } from 'src/app/dashboard/crud-users/modal-users/personaI.interface';
 import { IRol } from '../ui/IRol.interface';
+import * as CryptoJS from 'crypto-js';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,11 @@ export class AuthService {
   public id!: any;
   public rol!: any;
 
-  public nameUserLS = 'id'
+  //Encriptación:
+  public rolDesencriptado: any;
+  public encPass = "$Eventually2021";
+
+  public rolEncriptado: any;
 
   constructor(
     private http:HttpClient,
@@ -42,7 +47,20 @@ export class AuthService {
       this.currentRol = new BehaviorSubject(
         this.rol
       );
+    }
 
+    desencriptar(texto:any){
+
+      this.rolDesencriptado = CryptoJS.AES.decrypt(texto.trim(), this.encPass.trim()).toString(CryptoJS.enc.Utf8);
+
+      return this.rolDesencriptado;
+    }
+
+    encriptar(texto:any){
+
+      this.rolEncriptado = CryptoJS.AES.encrypt(texto.trim(), this.encPass.trim()).toString();
+
+      return this.rolEncriptado;
     }
 
     //Creamos un método que nos permita evaluar si una sesión está activa o no.
@@ -57,11 +75,10 @@ export class AuthService {
     //Creamos un método que permita saber si tiene acceso a un módulo.
     hasAccessToModule(roles: ROLES_ENUM[]){
       // return this.getUser && roles.includes(this.getUser.Roles_idRoles);
-      return this.getUser && roles.includes(this.getRol);
+      return this.getUser && roles.includes(this.desencriptar(this.getRol));
     }
 
   ngOnInit(): void {
-    console.log(this.currentRol.value);
 
   }
 

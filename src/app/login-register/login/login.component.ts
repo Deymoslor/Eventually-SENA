@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { loginI } from './models/login.interface';
 import { ResponseI } from './models/response.intarface';
 import { globalAccountConstants } from 'src/app/constants/globalAccountConstants';
+import { AuthService } from 'src/app/core/service/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -45,6 +46,8 @@ export class LoginComponent implements OnInit {
 
     //Inyectamos el reuter.
     private router:Router,
+
+    private authService: AuthService,
 
     //Inyectamos variables de cuenta globales.
     private globalAccountConstants:globalAccountConstants
@@ -101,7 +104,8 @@ export class LoginComponent implements OnInit {
         localStorage.setItem("token",dataResponse.result.token);
 
         //Almacenamos el rol en el almacenamiento intero con localStorage.setItem que recibe por parámetro el nombre y el valor.
-        localStorage.setItem("nombreRol",dataResponse.result.rol);
+        this.authService.encriptar
+        localStorage.setItem("nombreRol",this.authService.encriptar(dataResponse.result.rol));
 
         this.router.navigate(["/groups"]);
         window.location.reload();
