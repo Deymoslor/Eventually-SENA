@@ -49,4 +49,9 @@ export class ApiService {
     return this.http.put<ResponseI>(dir, form);
   }
 
+  putFinishEvent(idEvent:EventI):Observable<ResponseI>{
+    let dir = this.url + "eventos";
+    return this.http.put<ResponseI>(dir, idEvent);
+  }
+
 }

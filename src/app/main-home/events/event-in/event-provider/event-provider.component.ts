@@ -18,7 +18,7 @@ import { ServiceEventI } from 'src/app/main-home/providers/models/serviceEvent.i
 })
 export class EventProviderComponent implements OnInit {
 
-  @Input() form!: EventI;
+@Input() form!: EventI;
 @Input() idEvento!: number;
 
   createInv = new FormGroup({
@@ -43,7 +43,6 @@ export class EventProviderComponent implements OnInit {
 
   ngOnInit(): void {
     let state: number | null;
-    console.log(this.form)
     this.api.getAllProvServicesInv(1).subscribe(datas =>{
       console.log(datas);
       this.dataProviderService = datas;
@@ -58,9 +57,13 @@ export class EventProviderComponent implements OnInit {
               key.estadoInvitacion = element;
             }else{
               key.estadoInvitacion = element.estadoInvitacion;
+              console.log(key.estadoInvitacion);
             }
             
           });
+          if(key.estadoInvitacion == 1){
+            this.stateAccept = 1;
+          }
         })
         
       });
@@ -105,13 +108,13 @@ export class EventProviderComponent implements OnInit {
     }
   }
 
-  postInvitation(form: InvitationProvSerI){
+  postInvitation(forms: InvitationProvSerI){
     // let eventId = Number(this.route.snapshot.paramMap.get('id'));
-    form.Evento_idEvento = this.idEvento;
-    form.Servicio_idServicios = form.idServicios;
-    console.log(form);
-    this.api.postInvitationService(form).subscribe(data =>{
-      console.log(data);
+    forms.Evento_idEvento = this.idEvento;
+    forms.Servicio_idServicios = forms.idServicios;
+    console.log(forms);
+    this.api.postInvitationService(forms).subscribe(data =>{
+      console.log(forms);
     })
 
   }
