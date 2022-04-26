@@ -34,7 +34,7 @@ export class AuthService {
       );
 
       //Retomamos id en constructor.
-      this.rol = localStorage.getItem('rol');
+      this.rol = localStorage.getItem('nombreRol');
 
       console.log(this.rol)
 
