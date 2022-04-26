@@ -96,15 +96,15 @@ export class LoginComponent implements OnInit {
       if(dataResponse.status == "ok"){
 
         //En caso de que la respuesta esté como ok, lo que hacemos es almacenar el id en el almacenamiento local para sacarlo en los diferentes métodos que lo necesitemos (En este caso para el user-settings.component).
-        localStorage.setItem("id",dataResponse.result.idPersona);
+        // localStorage.setItem("id",dataResponse.result.idPersona);
         // this.globalAccountConstants.id = dataResponse.result.idPersona;
-
+        localStorage.setItem("id",this.authService.encriptar(dataResponse.result.idPersona));
 
         //Almacenamos el token en el almacenamiento intero con localStorage.setItem que recibe por parámetro el nombre y el valor.
         localStorage.setItem("token",dataResponse.result.token);
 
         //Almacenamos el rol en el almacenamiento intero con localStorage.setItem que recibe por parámetro el nombre y el valor.
-        this.authService.encriptar
+        // this.authService.encriptar
         localStorage.setItem("nombreRol",this.authService.encriptar(dataResponse.result.rol));
 
         this.router.navigate(["/groups"]);
