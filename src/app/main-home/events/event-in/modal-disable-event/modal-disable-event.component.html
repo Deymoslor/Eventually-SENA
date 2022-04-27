@@ -1,6 +1,7 @@
 <!-- Modal -->
 
 <!-- <div class="modal-dialog modal-lg modal-dialog-scrollable"> -->
+ <div *ngIf="finishState == 2">
   <div class="modal-content modal-dialog modal-lg modal-dialog-scrollable">
     <div class="modal-header">
       <h5 class="modal-title" id="staticBackdropLabel">Deshabilitar el evento</h5>
@@ -22,5 +23,34 @@
       <button type="button" class="btn btn-primary"  (click)="finishEvent()" >Terminar</button>
     </div>
   </div>
-<!-- 
-</div> -->
+ </div>
+  <!-- Opcion 2 -->
+
+  <div *ngIf="finishState == 1">
+    <div class="modal-content modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Deshabilitar el evento</h5>
+        
+      </div>
+      <div class="modal-body">
+          <div class="form-group">                
+              <label for="">Terminar Evento:</label>
+              <label for="">Razon de la Deshabilitación:</label>
+                <div class="mb-2">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Explica la razón o razones por las cuales se deshabilita el evento."
+                     rows="2"></textarea>
+                </div>
+              <div class="mb-2">
+                 <p class="fs-5">
+                    Recuerde que una vez terminado el evento, </p><p class="fs-5 fw-bold">no podra recuperar el evento</p>
+              </div>
+  
+          </div>
+      </div>
+  
+  
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary"  (click)="finishEvent()" >Terminar</button>
+      </div>
+    </div>
+   </div>

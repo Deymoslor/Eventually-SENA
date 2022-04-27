@@ -12,6 +12,8 @@ export class ModalDisableEventComponent implements OnInit {
 
   @Input() idEvento!: number;
   @Input() form!: EventI;
+  @Input() finishState!: number;
+  @Input() idServiceAceppted!: number;
   // @Input() stateEvent!: number;
 
   constructor(private api:ApiService,) { }
@@ -19,14 +21,23 @@ export class ModalDisableEventComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.form);
     console.log(this.idEvento);
+    console.log(this.idServiceAceppted)
   }
 
   finishEvent(){
     this.form.estadoEvento = 3;
-    this.api.putEvent(this.form).subscribe(data=>{
-      console.log(data);
-    });
-    this.refresh();
+    if(this.finishState == 2){
+      this.api.putEvent(this.form).subscribe(data=>{
+        console.log(data);
+      });
+      this.refresh();
+    }else if(this.finishState == 1){
+      this.api.putEvent(this.form).subscribe(data=>{
+        console.log(data);
+      });
+      
+      this.refresh();
+    }
   }
 
   refresh(): void { window.location.reload(); }

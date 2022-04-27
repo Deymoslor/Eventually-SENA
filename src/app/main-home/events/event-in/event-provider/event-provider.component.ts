@@ -27,6 +27,7 @@ export class EventProviderComponent implements OnInit {
   });
 
   stateAccept:number = 0;
+  idServiceAceppted:number = 0;
 
   nombreProveedor!: string;
   nombreServicio!: string;
@@ -57,6 +58,7 @@ export class EventProviderComponent implements OnInit {
               key.estadoInvitacion = element;
             }else{
               key.estadoInvitacion = element.estadoInvitacion;
+              this.idServiceAceppted = key.Servicio_idServicios;
               console.log(key.estadoInvitacion);
             }
             
