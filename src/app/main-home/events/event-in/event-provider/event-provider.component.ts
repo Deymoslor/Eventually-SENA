@@ -27,7 +27,7 @@ export class EventProviderComponent implements OnInit {
   });
 
   stateAccept:number = 0;
-  idServiceAceppted:number = 0;
+  idServiceAceppted:number = 1;
 
   nombreProveedor!: string;
   nombreServicio!: string;
@@ -35,8 +35,6 @@ export class EventProviderComponent implements OnInit {
   dataProviderService!: InvitationProvSerI[];
   dataServiceState!: ServiceEventI[];
 
-  dataAccept!: InvitationProvSerI;
-  dataInvitationDetail?: DetailServiceEventI;
   
   number!:number;
   constructor(private api:ApiService, private modalService: NgbModal, private route:ActivatedRoute) { }
@@ -118,7 +116,10 @@ export class EventProviderComponent implements OnInit {
     this.api.postInvitationService(forms).subscribe(data =>{
       console.log(forms);
     })
-
+    this.refresh();
   }
 
+  refresh(){
+    window.location.reload();
+  }
 }

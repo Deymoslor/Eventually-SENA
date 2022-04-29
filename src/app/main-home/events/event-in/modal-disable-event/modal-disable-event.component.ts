@@ -22,6 +22,7 @@ export class ModalDisableEventComponent implements OnInit {
     console.log(this.form);
     console.log(this.idEvento);
     console.log(this.idServiceAceppted)
+    console.log(this.finishState);
   }
 
   finishEvent(){
@@ -33,7 +34,7 @@ export class ModalDisableEventComponent implements OnInit {
       this.refresh();
     }else if(this.finishState == 1){
       this.api.putEvent(this.form).subscribe(data=>{
-        console.log(data);
+        
       });
       
       this.refresh();

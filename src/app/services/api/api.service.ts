@@ -7,6 +7,7 @@ import { ListEventsI } from '../../models/listEvents.interface';
 
 import { HttpClient } from '@angular/common/http';
 import { LikesI } from 'src/app/models/likes';
+import { ResultServiceI } from '../../models/result-service.interface';
 
 
 @Injectable({
@@ -52,6 +53,12 @@ export class ApiService {
   putFinishEvent(idEvent:EventI):Observable<ResponseI>{
     let dir = this.url + "eventos";
     return this.http.put<ResponseI>(dir, idEvent);
+  }
+
+  //Result of the service
+  putResultEvent(form: ResultServiceI, idE: number):Observable<ResponseI>{
+    let dir = this.url + "eventos?idEvent=" + idE;
+    return this.http.put<ResponseI>(dir, form);
   }
 
 }

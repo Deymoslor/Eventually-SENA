@@ -100,10 +100,12 @@
             </tbody>
         </table>
     </div>
-    <button class="btn btn-danger" (click)="modalOpen2(content3)">
-        Terminar
-    </button>
-    <p class="fw-bolder">Terminar</p>
+    <div *ngIf="stateAccept != 1">
+        <button class="btn btn-danger" (click)="modalOpen2(content3)">
+            Terminar
+        </button>
+        <p class="fw-bolder">Terminar</p>
+    </div>
 
     <ng-template #onlyAccepted>
         <div>
@@ -127,6 +129,6 @@
 
 <ng-template #content3 let-modal3>
     <button type="button" class="btn-close" aria-label="Close" (click)="modal3.dismiss('Cross click')"></button>
-    <app-modal-disable-event [form]="form" [idEvento]="idEvento" [finishState]="2" ></app-modal-disable-event>
+    <app-modal-disable-event [form]="form" [idEvento]="idEvento" [finishState]="2"></app-modal-disable-event>
 </ng-template>
 

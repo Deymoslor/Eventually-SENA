@@ -35,7 +35,7 @@ export class TableInvitationsEventsComponent implements OnInit {
     this.api.putServiceEventProv(form).subscribe(data=>{
       console.log(data);
     });
-    this.refresh();
+    // this.refresh();
 }
 
   changeStateServiceProvD(form:ServiceEventI){
@@ -44,7 +44,7 @@ export class TableInvitationsEventsComponent implements OnInit {
     this.api.putServiceEventProv(form).subscribe(data=>{
       console.log(data);
     });
-    this.refresh();
+    // this.refresh();
   }
 
 refresh(){
