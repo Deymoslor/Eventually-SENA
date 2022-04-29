@@ -26,9 +26,8 @@ export class UpdateServiceService {
 
   //Creamos método para obtener la persona. Este método devuelve un observable de tipo PersonaI
   getSinglePerson(id:any):Observable<updatePersonaI>{
-    let idD = this.authService.desencriptar(id);
-    let direccion = this.API+"persons?id=" + idD;
-    console.log(direccion);
+    let direccion = this.API+"persons?id=" + id;
+    // console.log(direccion);
 
     return this.http.get<updatePersonaI>(direccion);
   }

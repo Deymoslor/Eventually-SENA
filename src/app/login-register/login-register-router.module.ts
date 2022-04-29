@@ -12,13 +12,12 @@ import { NoAuthGuard } from '../core/guards/no-auth.guard';
 const routes: Routes = [
   {
     path: '', component:LoginRegisterComponent,
-    canActivate: [NoAuthGuard],
     children: [
-      {path: 'register', component: RegisterComponent},
-      {path: '', component: LoginComponent},
-      {path: 'login', component: LoginComponent},
-      {path: 'forgot-password', component: ForgotPasswordComponent},
-      {path: 'supplier', component: SupplierRequestComponent}
+      {path: 'register', component: RegisterComponent,canActivate: [NoAuthGuard],},
+      {path: '', component: LoginComponent,canActivate: [NoAuthGuard],},
+      {path: 'login', component: LoginComponent,canActivate: [NoAuthGuard],},
+      {path: 'forgot-password', component: ForgotPasswordComponent,canActivate: [AuthGuard]},
+      {path: 'supplier', component: SupplierRequestComponent,canActivate: [NoAuthGuard],}
 
     ]
 

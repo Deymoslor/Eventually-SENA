@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { AuthService } from 'src/app/core/service/auth.service';
 import { UpdateServiceService } from '../settingsService/update-service.service';
 import { updatePersonaI } from '../updatePersonaI';
 
@@ -12,7 +13,8 @@ export class UserAccountComponent implements OnInit {
 
   constructor(
 
-    private updateServiceService: UpdateServiceService
+    private updateServiceService: UpdateServiceService,
+    private authService: AuthService
 
   ) { }
 
@@ -31,7 +33,7 @@ export class UserAccountComponent implements OnInit {
 
   ngOnInit(): void {
 
-    let idPersona = localStorage.getItem('id');
+    let idPersona = this.authService.desencriptar(localStorage.getItem('id'));
     // console.log(idPersona);
 
     let token = localStorage.getItem('token');
