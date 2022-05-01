@@ -56,9 +56,9 @@ export class ApiService {
   }
 
   //Result of the service
-  putResultEvent(form: ResultServiceI, idE: number):Observable<ResponseI>{
-    let dir = this.url + "eventos?idEvent=" + idE;
-    return this.http.put<ResponseI>(dir, form);
+  postResultEvent(form: ResultServiceI):Observable<ResponseI>{
+    let dir = this.url + "eventos?result";
+    return this.http.post<ResponseI>(dir, form);
   }
 
 }

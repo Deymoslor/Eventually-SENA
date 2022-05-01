@@ -12,8 +12,8 @@ export class YourGroupsService {
 
   constructor(private http:HttpClient) { }
 
-  getYourGroups(page:number):Observable<Groups[]>{
-    let direccion = this.API + "YourGroups?page=" + page;
+  getYourGroups(user:number):Observable<Groups[]>{
+    let direccion = this.API + "YourGroups?user=" + user;
 
     return this.http.get<Groups[]>(direccion);
   }

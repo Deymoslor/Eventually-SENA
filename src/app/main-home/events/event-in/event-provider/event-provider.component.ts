@@ -63,6 +63,8 @@ export class EventProviderComponent implements OnInit {
           });
           if(key.estadoInvitacion == 1){
             this.stateAccept = 1;
+            this.nombreProveedor = key.nombreProveedor;
+            this.nombreServicio = key.nombreServicio;
           }
         })
         

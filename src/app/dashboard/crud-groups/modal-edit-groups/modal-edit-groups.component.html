@@ -15,22 +15,22 @@
               <label for="">Nombre:</label>
               <input type="text" class="form-control" id="" placeholder="Ej: El mejor evento de la historia" formControlName="nombreGrupo">
             </div>
-            <label for="">Privacidad:</label>
+            <!-- <label for="">Privacidad:</label>
             <input type="number" class="form-control" id="" placeholder="Ej: El mejor evento de la historia" formControlName="privacidadGrupo" [readonly]="true">
             <div class="form-check form-switch">
                 <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" *ngIf="editForm.get('privacidadGrupo')?.value !=1" (click)="switchStateGroup(editForm.get('privacidadGrupo')?.value)" checked>
                 <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" *ngIf="editForm.get('privacidadGrupo')?.value ==1" (click)="switchStateGroup(editForm.get('privacidadGrupo')?.value)">
                 <label class="form-check-label fw-bolder fs-4 label" for="flexSwitchCheckChecked" *ngIf="editForm.get('privacidadGrupo')?.value !=1">Publica</label>
                 <label class="form-check-label fw-bolder fs-4 label" for="flexSwitchCheckChecked" *ngIf="editForm.get('privacidadGrupo')?.value ==1">Privada</label>
-            </div>
-            <label for="">Estado::</label>
+            </div> -->
+            <!-- <label for="">Estado::</label>
             <input type="number" class="form-control" id="" placeholder="Ej: El mejor evento de la historia" formControlName="EstadosGrupo_idEstadosGrupo1" [readonly]="true">
             <div class="form-check form-switch">
                 <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" *ngIf="editForm.get('EstadosGrupo_idEstadosGrupo1')?.value !=1" (click)="switchStateGroup(editForm.get('EstadosGrupo_idEstadosGrupo1')?.value)">
                 <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" *ngIf="editForm.get('EstadosGrupo_idEstadosGrupo1')?.value ==1" (click)="switchStateGroup(editForm.get('EstadosGrupo_idEstadosGrupo1')?.value)" checked>
                 <label class="form-check-label fw-bolder fs-4 label" for="flexSwitchCheckChecked" *ngIf="editForm.get('EstadosGrupo_idEstadosGrupo1')?.value !=1">Desactivado</label>
                 <label class="form-check-label fw-bolder fs-4 label" for="flexSwitchCheckChecked" *ngIf="editForm.get('EstadosGrupo_idEstadosGrupo1')?.value ==1">Activado</label>
-            </div>
+            </div> -->
 
             <label for="">Descripción:</label>
             <div class="mb-2">
@@ -39,7 +39,7 @@
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
               <button type="submit" class="btn btn-primary" (click)="refresh()">Editar gusto</button>
-          </div>
+            </div>
           </form>
       </div>
   </div>
