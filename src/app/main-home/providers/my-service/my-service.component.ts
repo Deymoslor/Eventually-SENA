@@ -33,7 +33,7 @@ export class MyServiceComponent implements OnInit {
   constructor(private api: ApiService, private router: Router) { }
 
   ngOnInit(): void {
-    this.idProvider =3;
+    this.idProvider =1;
     this.api.getSingleServiceProvider(this.idProvider).subscribe((data:any) =>{
       if (data >= 0){
         this.router.navigateByUrl('provider/createService')
