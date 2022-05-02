@@ -17,7 +17,7 @@ export class ModalEditLikesComponent implements OnInit {
     private api:ApiService
   ) { }
 
-  likes?:LikesI;
+  public likes!:LikesI;
 
   editForm  = new FormGroup({
     nombreGusto:new FormControl(''),
@@ -39,8 +39,8 @@ export class ModalEditLikesComponent implements OnInit {
         this.likes = data[0];
         // console.log(this.likes);
         this.editForm.setValue({
-          'idGusto' : this.likes?.idGusto,
-          'nombreGusto'
+          'idGusto' : this.likes.idGusto,
+          'nombreGusto' : this.likes.nombreGusto
         });
         // this.editForm.setValue({
         //   'idGusto' : this.likes.,
