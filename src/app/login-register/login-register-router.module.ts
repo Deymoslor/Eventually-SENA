@@ -16,7 +16,7 @@ const routes: Routes = [
       {path: 'register', component: RegisterComponent,canActivate: [NoAuthGuard],},
       {path: '', component: LoginComponent,canActivate: [NoAuthGuard],},
       {path: 'login', component: LoginComponent,canActivate: [NoAuthGuard],},
-      {path: 'forgot-password', component: ForgotPasswordComponent,canActivate: [AuthGuard]},
+      {path: 'forgot-password', component: ForgotPasswordComponent},
       {path: 'supplier', component: SupplierRequestComponent,canActivate: [NoAuthGuard],}
 
     ]

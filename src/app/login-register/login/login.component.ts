@@ -143,4 +143,16 @@ export class LoginComponent implements OnInit {
 
   }
 
+  solicitudProveedor(){
+
+    this.router.navigate(['/loginRegister/supplier']);
+
+  }
+
+  recuperarPassword(){
+
+    this.router.navigate(['/loginRegister/forgot-password']);
+
+  }
+
 }
