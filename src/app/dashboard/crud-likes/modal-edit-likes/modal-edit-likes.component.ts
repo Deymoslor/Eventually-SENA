@@ -10,9 +10,9 @@ import { TypesLikesI } from 'src/app/models/typesLikes';
   styleUrls: ['./modal-edit-likes.component.scss']
 })
 export class ModalEditLikesComponent implements OnInit {
-  
+
  @Input() childMessage!:number
-    
+
   constructor(
     private api:ApiService
   ) { }
@@ -21,7 +21,6 @@ export class ModalEditLikesComponent implements OnInit {
     editForm  = new FormGroup({
       nombreGusto:new FormControl(''),
       idGusto:new FormControl(''),
-      idtipoGusto:new FormControl(''),
     })
     typeslikes?:TypesLikesI[];
   ngOnInit(): void {
@@ -37,7 +36,6 @@ export class ModalEditLikesComponent implements OnInit {
         this.editForm.setValue({
           'idGusto':this.likes?.idGusto,
           'nombreGusto':this.likes?.nombreGusto,
-          'idtipoGusto':this.likes?.idtipoGusto,
         })
       })
     }

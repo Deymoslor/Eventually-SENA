@@ -5,6 +5,7 @@
 <div class="card-group">
   <app-your-groups-show
   *ngFor="let group of groups"
-  [group]="group">
+  [group]="group"
+  (miMessage)="getMessage($event)">
   </app-your-groups-show>
 </div>

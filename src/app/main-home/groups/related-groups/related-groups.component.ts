@@ -9,6 +9,7 @@ import { RelatedGroupsService } from './related-groups.service';
   styleUrls: ['./related-groups.component.scss']
 })
 export class RelatedGroupsComponent implements OnInit {
+  id!: number;
   groups!: Groups[];
 //   get groups(): Groups[] {
 //   const groups = this.RelatedGroupsService.getRelatedGroups;
@@ -22,7 +23,9 @@ export class RelatedGroupsComponent implements OnInit {
   constructor(private RelatedGroupsService: RelatedGroupsService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.RelatedGroupsService.getRelatedGroups(1).subscribe(data => {
+    let idPersona = localStorage.getItem('id');
+    console.log(idPersona);
+    this.RelatedGroupsService.getRelatedGroups(Number(idPersona)).subscribe(data => {
       console.log(data);
 
       this.groups = data;

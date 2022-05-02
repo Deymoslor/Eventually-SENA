@@ -29,7 +29,7 @@ export class SeeGroupsComponent implements OnInit {
   ngOnInit(): void {
     let idPersona = localStorage.getItem('id');
     console.log(idPersona);
-    this.SeeGroupsService.getPromotedGroups(1,Number(idPersona)).subscribe(data=>{
+    this.SeeGroupsService.getPromotedGroups(Number(idPersona)).subscribe(data=>{
       console.log(data);
 
       this.groups = data;

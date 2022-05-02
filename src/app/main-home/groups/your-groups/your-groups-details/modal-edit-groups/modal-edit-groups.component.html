@@ -5,10 +5,11 @@
               <h5 class="modal-title" id="staticBackdropLabel">Ediar grupo</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">
+          <form [formGroup]="editForm" (ngSubmit)="postEditForm(editForm.value)">
+            <div class="modal-body">
               <div class="form-group">
                   <label for="">Nombre:</label>
-                  <input type="text" class="form-control" id="" placeholder="Ej: Coño e tu madre">
+                  <input type="text" class="form-control" id="" placeholder="Ej: Coño e tu madre" formControlName="nombreGrupo">
 
                   <label for="">Privacidad:</label>
                   <div class="form-check">
@@ -26,17 +27,23 @@
 
                   <label for="">Descripción:</label>
                   <div class="mb-2">
-                      <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Explica de que tratará" rows="2"></textarea>
+                      <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Explica de que tratará" rows="2" formControlName="descripcionGrupo"></textarea>
                   </div>
 
-
+                  <div>
+                    <label for="exampleInputEmail1">Gusto:</label>
+                    <select class="form-select" aria-label="Default select example" formControlName="gustos_idGusto">
+                      <option *ngFor="let likeI of likesI" value="{{ likeI.idGusto }}">{{ likeI.nombreGusto }}</option>
+                    </select>
+                  </div>
 
               </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary" (click)="refresh()">Editar gusto</button>
+              </div>
           </div>
-          <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-primary">Editar grupo</button>
-          </div>
+          </form>
       </div>
   </div>
 </div>

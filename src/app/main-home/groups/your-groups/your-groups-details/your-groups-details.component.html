@@ -20,7 +20,7 @@
               </div>
             </div>
           </div> -->
-          
+
         </div>
         <div class="col-md-4">
           <div class="position-sticky" style="top: 2rem;">
@@ -36,8 +36,8 @@
                   <ul class="dropdown-menu">
                     <li><a class="h5 dropdown-item" role="button" href="#">Regresar</a></li>
                     <!-- <li><a class="h5 dropdown-item" role="button" href="#">Crear evento</a></li> -->
-      
-                    <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#edit-groups-modal">Editar grupo</a></li>
+
+                    <li><a class="h5 dropdown-item" role="button" (click)="editarGroup(group?.idGrupos)" data-bs-toggle="modal" data-bs-target="#edit-groups-modal" >Editar grupo</a></li>
                     <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#modal-events-completed">Ver eventos realizados</a></li>
                     <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#modal-report-events-groups-organizer">Reportes</a></li>
                     <li><a class="h5 dropdown-item" role="button" href="#">Deshabilitar Grupo</a></li>
@@ -52,8 +52,8 @@
 </div>
         <p class="h3">Evento a realizar</p>
         <router-outlet>
-                    
+
         </router-outlet>
 
-          
+
 

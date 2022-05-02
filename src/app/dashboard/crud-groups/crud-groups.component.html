@@ -81,6 +81,7 @@
         <th scope="col">Descripcíon</th>
         <th scope="col">Privacidad</th>
         <th scope="col">Invitados</th>
+        <th scope="col">Gusto</th>
         <th scope="col">Estado</th>
         <th scope="col">Acciones</th>
       </tr>
@@ -98,25 +99,23 @@
             <p>Desactivado</p>
           </div>
         </td> -->
-        <div *ngIf="group.privacidadGrupo==1">
-          <td></td>
+        <td>
           <br>
-          <br>
-          <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked (click)="switchStateGroup(group.privacidadGrupo, group.idGrupos)">
-            <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+          <div *ngIf="group.privacidadGrupo==1">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" (click)="switchPublicGroup(group.privacidadGrupo, group.idGrupos)" (click)="refresh()">
+              <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+            </div>
           </div>
-        </div>
-        <div *ngIf="group.privacidadGrupo==2">
-          <td></td>
-          <br>
-          <br>
-          <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">
-            <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+          <div *ngIf="group.privacidadGrupo==2">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked (click)="switchPublicGroup(group.privacidadGrupo, group.idGrupos)" (click)="refresh()">
+              <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+            </div>
           </div>
-        </div>
+        </td>
         <td>{{ group.InvitadosTotales }}</td>
+        <td>{{ group.nombreGusto }}</td>
         <!-- <td>
           <div class="form-check form-switch" *ngIf="group.EstadosGrupo_idEstadosGrupo1==1">
             <p>Activo</p>
@@ -125,24 +124,21 @@
             <p>Desactivado</p>
           </div>
         </td> -->
-        <div *ngIf="group.EstadosGrupo_idEstadosGrupo1==1">
-          <td></td>
+        <td>
           <br>
-          <br>
-          <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked (click)="switchStateGroup(group.EstadosGrupo_idEstadosGrupo1, group.idGrupos)">
-            <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+          <div *ngIf="group.EstadosGrupo_idEstadosGrupo1==1">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked (click)="switchStateGroup(group.EstadosGrupo_idEstadosGrupo1, group.idGrupos)" (click)="refresh()">
+              <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+            </div>
           </div>
-        </div>
-        <div *ngIf="group.EstadosGrupo_idEstadosGrupo1==2">
-          <td></td>
-          <br>
-          <br>
-          <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">
-            <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+          <div *ngIf="group.EstadosGrupo_idEstadosGrupo1==2">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" (click)="switchStateGroup(group.EstadosGrupo_idEstadosGrupo1, group.idGrupos)" (click)="refresh()">
+              <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+            </div>
           </div>
-        </div>
+        </td>
         <td><button class="btn btn-primary justify-content-md-center" (click)="editarGroup(group.idGrupos)" data-bs-toggle="modal" data-bs-target="#groups-edit-modal">Editar</button></td>
       </tr>
     </tbody>

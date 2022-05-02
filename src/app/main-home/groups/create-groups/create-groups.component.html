@@ -72,6 +72,14 @@ formControlName="descripcionGrupo"></textarea>
       {{ createYourGroupForm.get("privacidadGrupo")?.hasError("required") ? "Privacidad Requerida" : "" }}
     </div>
   </div>
+  <div>
+    <label for="exampleInputEmail1">Gusto:</label>
+    <select class="form-select" aria-label="Default select example" [ngClass]="
+    (createYourGroupForm.get('gustos_idGusto')?.touched || createYourGroupForm.get('gustos_idGusto')?.dirty) &&
+    createYourGroupForm.get('gustos_idGusto')?.hasError('required') ? 'is-invalid' : ''" formControlName="gustos_idGusto">
+      <option *ngFor="let likeI of likesI" value="{{ likeI.idGusto }}">{{ likeI.nombreGusto }}</option>
+    </select>
+  </div>
   <div class="col-12">
     <div class="form-check">
       <input class="form-check-input" type="checkbox" value="" id="invalidCheck" [ngClass]="
