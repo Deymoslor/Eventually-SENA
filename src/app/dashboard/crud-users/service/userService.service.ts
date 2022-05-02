@@ -4,19 +4,24 @@ import { Observable } from 'rxjs';
 import { ListaPersonasI } from '../ListaPersonasI.interface';
 import { PersonaI } from '../modal-users/personaI.interface';
 import { ResponseI } from 'src/app/login-register/login/models/response.intarface';
+import { GlobalConstants } from 'src/app/global-constants';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class userService {
+
+  public port = GlobalConstants.port;
+
   //Definimos ruta raíz de el API.
-  API:string='http://localhost/Api-Eventually-SENA/';
+  API:string='http://localhost:'+this.port+'/Api-Eventually-SENA/';
 
   //Definimos dentro del constructor el cliente http.
   constructor(
 
     //Inyectamos el HttpClient.
-    private http:HttpClient
+    private http:HttpClient,
 
   ) { }
 
