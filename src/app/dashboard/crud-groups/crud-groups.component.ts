@@ -110,4 +110,6 @@ export class CrudGroupsComponent implements OnInit {
     }
   }
 
+  refresh(): void { window.location.reload(); }
+
 }

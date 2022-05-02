@@ -28,4 +28,9 @@ export class YourGroupsService {
 
     return this.http.post<Response>(direccion, form);
   }
+
+  putGroup(form:Group):Observable<Response>{
+    let direccion = this.API + "YourGroups";
+    return this.http.put<Response>(direccion, form);
+  }
 }

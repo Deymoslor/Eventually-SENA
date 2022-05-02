@@ -5,4 +5,5 @@ export interface Group{
   privacidadGrupo:number;
   InvitadosTotales:number;
   EstadosGrupo_idEstadosGrupo1:number;
+  gustos_idGusto:number;
 }

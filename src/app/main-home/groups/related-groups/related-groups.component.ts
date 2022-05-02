@@ -24,6 +24,7 @@ export class RelatedGroupsComponent implements OnInit {
 
   ngOnInit(): void {
     let idPersona = localStorage.getItem('id');
+    console.log(idPersona);
     this.RelatedGroupsService.getRelatedGroups(Number(idPersona)).subscribe(data => {
       console.log(data);
 
