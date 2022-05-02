@@ -5,13 +5,21 @@ import { ListaPersonasI } from '../ListaPersonasI.interface';
 import { PersonaI } from '../modal-users/personaI.interface';
 import { ResponseI } from 'src/app/login-register/login/models/response.intarface';
 import { GlobalConstants } from 'src/app/global-constants';
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 
 @Injectable({
   providedIn: 'root'
 })
 export class userService {
 
+<<<<<<< HEAD
   port = GlobalConstants.port;
+=======
+  public port = GlobalConstants.port;
+>>>>>>> master
 
   //Definimos ruta raíz de el API.
   API:string='http://localhost:'+this.port+'/Api-Eventually-SENA/';
@@ -20,7 +28,7 @@ export class userService {
   constructor(
 
     //Inyectamos el HttpClient.
-    private http:HttpClient
+    private http:HttpClient,
 
   ) { }
 
