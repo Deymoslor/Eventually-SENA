@@ -24,7 +24,10 @@
                     <td>{{key.apellidoProveedor}}</td>
                     <td>{{key.correoProveedor}}</td>
                     <td>{{key.celular}}</td>
-                    <td>{{key.TipoServicio_idtipoServicio}}</td>
+                    <!-- <td>{{key.TipoServicio_idtipoServicio}}</td> -->
+                    <td *ngFor="let item of dataTypeService" [hidden]="item.idtipoServicio != key.TipoServicio_idtipoServicio">
+                            {{item.tipoServicio}}
+                    </td>
                     <td>
                         <div class="content-button">
                             <button class="btn btn-primary" (click)="modalOpen(content)">Detalle</button>

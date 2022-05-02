@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
 import { EventI } from 'src/app/models/event.interface';
 import { ServiceEventI } from 'src/app/main-home/providers/models/serviceEvent.interface';
+import { TypeServicesI } from 'src/app/dashboard/crud-services/models/typeServices.interface';
 
 
 @Component({
@@ -34,6 +35,7 @@ export class EventProviderComponent implements OnInit {
 
   dataProviderService!: InvitationProvSerI[];
   dataServiceState!: ServiceEventI[];
+  dataTypeService!: TypeServicesI[]
 
   
   number!:number;
@@ -67,10 +69,18 @@ export class EventProviderComponent implements OnInit {
             this.nombreServicio = key.nombreServicio;
           }
         })
-        
+        this.api.getAllTypeServices(1).subscribe(data =>{
+          this.dataTypeService = data;
+          data.forEach(key2 => {
+            if(key2.idtipoServicio == key.TipoServicio_idtipoServicio){
+              key.tipoServicio = key2.tipoServicio;
+            }
+          });
+        })
       });
+      
     })
-
+    
 
   }
 
