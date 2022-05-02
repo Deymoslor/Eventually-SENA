@@ -18,27 +18,35 @@ export class ModalEditLikesComponent implements OnInit {
   ) { }
 
   likes?:LikesI;
-    editForm  = new FormGroup({
-      nombreGusto:new FormControl(''),
-      idGusto:new FormControl(''),
-      idtipoGusto:new FormControl(''),
-    })
-    typeslikes?:TypesLikesI[];
+
+  editForm  = new FormGroup({
+    nombreGusto:new FormControl(''),
+    idGusto:new FormControl(''),
+    // idtipoGusto:new FormControl(''),
+  })
+  
+  // typeslikes?:TypesLikesI[];
+
   ngOnInit(): void {
-    this.api.getAllTypesLikes(1).subscribe(data => {
-      console.log(data)
-      this.typeslikes=data})
+    // this.api.getAllTypesLikes(1).subscribe(data => {
+    //   console.log(data)
+    //   this.typeslikes=data})
   }
+
   ngOnChanges(): void {
     if(this.childMessage > 0){
       this.api.getSingleLikes(this.childMessage).subscribe((data:any)=>{
         this.likes = data[0];
-        console.log(this.likes);
+        // console.log(this.likes);
         this.editForm.setValue({
-          'idGusto':this.likes?.idGusto,
-          'nombreGusto':this.likes?.nombreGusto,
-          'idtipoGusto':this.likes?.idtipoGusto,
-        })
+          'idGusto' : this.likes?.idGusto,
+          'nombreGusto'
+        });
+        // this.editForm.setValue({
+        //   'idGusto' : this.likes.,
+        //   'nombreGusto' : this.likes?.nombreGusto,
+        //   // 'idtipoGusto':this.likes?.idtipoGusto,
+        // })
       })
     }
   }

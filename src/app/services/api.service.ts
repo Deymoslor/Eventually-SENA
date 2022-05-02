@@ -6,18 +6,22 @@ import { TypesLikesI } from '../models/typesLikes';
 import { likesStatusI } from '../dashboard/crud-likes/likesStatusI.interface';
 import { EventI } from '../models/event.interface';
 import { ResponseI } from '../models/response.interface';
+import { GlobalConstants } from '../global-constants'; 
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
+
+  port = GlobalConstants.port;
+
   postLike(form:LikesIns):Observable<ResponseI>{
     let dir = this.url+"likes";
 
     return this.http.post<ResponseI>(dir, form);
   }
 
-url:string="http://localhost/Api-Eventually-SENA/"
+url:string="http://localhost:8181/Api-Eventually-SENA/"
 
   constructor(
     private http:HttpClient
