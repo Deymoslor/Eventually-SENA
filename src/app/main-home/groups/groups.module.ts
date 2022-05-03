@@ -24,7 +24,7 @@ import { ModalCreateEventComponent } from './your-groups/your-groups-details/mod
   declarations: [
     GroupsComponent,
     NavGroupComponent,
-    ModalEditGroupsComponent,
+    // ModalEditGroupsComponent,
     ModalEventsCompletedComponent,
     ModalReportEventsGroupsOrganizerComponent,
     ModalCreateEventComponent,
@@ -41,9 +41,9 @@ import { ModalCreateEventComponent } from './your-groups/your-groups-details/mod
     MatDatepickerModule,
     FormsModule,
     ReactiveFormsModule,
-    
-    
-    
+
+
+
   ]
 })
 export class GroupsModule { }

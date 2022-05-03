@@ -21,6 +21,7 @@ import { FormGroup, ReactiveFormsModule, FormsModule } from '@angular/forms';
     YourGroupsShowComponent,
     YourGroupsDetailsComponent,
     TableUsersGroupsComponent,
+    ModalEditGroupsComponent
 
   ],
   imports: [
@@ -30,7 +31,7 @@ import { FormGroup, ReactiveFormsModule, FormsModule } from '@angular/forms';
     MatPaginatorModule,
     MatDatepickerModule,
     FormsModule,
-    ReactiveFormsModule, 
+    ReactiveFormsModule,
   ]
 })
 export class YourGroupsModule { }
