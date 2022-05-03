@@ -14,7 +14,7 @@ import { LikesI } from 'src/app/models/likes';
 })
 export class ApiService {
 
-  url:string = "http://localhost/Api-Eventually-SENA/";
+  url:string = "http://localhost:8181/Api-Eventually-SENA/";
 
   constructor(private http:HttpClient) { }
 

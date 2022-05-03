@@ -17,7 +17,7 @@ export class ApiService {
     return this.http.post<ResponseI>(dir, form);
   }
 
-url:string="http://localhost/Api-Eventually-SENA/"
+url:string="http://localhost:8181/Api-Eventually-SENA/"
 
   constructor(
     private http:HttpClient
