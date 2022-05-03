@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/core/service/auth.service';
 import { Groups } from '../see-groups/groups';
 import { YourGroupsService } from './your-groups.service';
 
@@ -15,7 +16,8 @@ export class YourGroupsComponent implements OnInit {
 
   constructor(
     private YourGroupsService: YourGroupsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authService: AuthService
   ) { }
 
   getMessage(id: any){
@@ -24,7 +26,8 @@ export class YourGroupsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let idPersona = localStorage.getItem('id');
+    let idPersona = this.authService.desencriptar(localStorage.getItem('id'));
+    console.log(idPersona);
     this.YourGroupsService.getYourGroups(Number(idPersona)).subscribe(data => {
       console.log(data);
 

@@ -1,49 +1,47 @@
-<div class="modal fade" id="edit-groups-modal" tabindex="-1">
-  <div class="modal-dialog modal-lg modal-dialog-scrollable">
-      <div class="modal-content">
-          <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">Ediar grupo</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <form [formGroup]="editForm" (ngSubmit)="postEditForm(editForm.value)">
+<div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Ediar grupo</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form [formGroup]="editForm" (ngSubmit)="postEditForm(editForm.value)">
             <div class="modal-body">
-              <div class="form-group">
-                  <label for="">Nombre:</label>
-                  <input type="text" class="form-control" id="" placeholder="Ej: Coño e tu madre" formControlName="nombreGrupo">
+                <div class="form-group">
+                    <label for="">Nombre:</label>
+                    <input type="text" class="form-control" id="" placeholder="Ej: Coño e tu madre" formControlName="nombreGrupo">
 
-                  <label for="">Privacidad:</label>
-                  <div class="form-check">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-                      <label class="form-check-label" for="flexRadioDefault1">
+                    <label for="">Privacidad:</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                        <label class="form-check-label" for="flexRadioDefault1">
                           Publica
                       </label>
-                  </div>
-                  <div class="form-check">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                      <label class="form-check-label" for="flexRadioDefault2">
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                        <label class="form-check-label" for="flexRadioDefault2">
                           Privada
                       </label>
-                  </div>
+                    </div>
 
-                  <label for="">Descripción:</label>
-                  <div class="mb-2">
-                      <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Explica de que tratará" rows="2" formControlName="descripcionGrupo"></textarea>
-                  </div>
+                    <label for="">Descripción:</label>
+                    <div class="mb-2">
+                        <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Explica de que tratará" rows="2" formControlName="descripcionGrupo"></textarea>
+                    </div>
 
-                  <div>
-                    <label for="exampleInputEmail1">Gusto:</label>
-                    <select class="form-select" aria-label="Default select example" formControlName="gustos_idGusto">
+                    <div>
+                        <label for="exampleInputEmail1">Gusto:</label>
+                        <select class="form-select" aria-label="Default select example" formControlName="gustos_idGusto">
                       <option *ngFor="let likeI of likesI" value="{{ likeI.idGusto }}">{{ likeI.nombreGusto }}</option>
                     </select>
-                  </div>
+                    </div>
 
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="submit" class="btn btn-primary" (click)="refresh()">Editar gusto</button>
-              </div>
-          </div>
-          </form>
-      </div>
-  </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary" (click)="refresh()">Editar gusto</button>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
