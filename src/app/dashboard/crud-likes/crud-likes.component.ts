@@ -2,8 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { LikesI } from 'src/app/models/likes';
-import { likesStatusI } from 'src/app/dashboard/crud-likes/likesStatusI.interface';
-
 
 import { ApiService } from 'src/app/services/api.service';
 
@@ -34,7 +32,7 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class CrudLikesComponent implements OnInit {
 
-  likesStatus!:likesStatusI;
+  likesData!:LikesI;
 
   // displayedColumns: string[] = ['position', 'nameLikes', 'typeLikes', 'state', 'actions'];
   // dataSource = new MatTableDataSource(ELEMENT_DATA);
@@ -50,11 +48,11 @@ export class CrudLikesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    
+
     this.api.getAllLikes(1).subscribe(data =>{
       this.likes=data;
     })
-    
+
   }
 
   editLikes(id:number){
@@ -64,23 +62,23 @@ export class CrudLikesComponent implements OnInit {
   cambioEstado(estado:number,id:number){
 
     if (estado == 1) {
-      
+
       //Llamamos al servicio para solicitar una sola persona y poder editar el estado sin cambiar el resto de datos de la cuenta.
-      this.api.getStatusLikes(id).subscribe((data:any) =>{
+      this.api.getSingleLikes(id).subscribe((data:any) =>{
 
       //asignamos el valor que venga desde la API a una variable para poder recorrerla.
-      this.likesStatus = data[0];
+      this.likesData = data[0];
 
-      this.likesStatus.estadoGusto=2;
+      this.likesData.estadoGusto=2;
 
       // let token = localStorage.getItem('token');
 
       // this.likesStatus.token = token;
 
-      this.api.putLikeStatus(this.likesStatus).subscribe((data:any) =>{
+      this.api.putLikes(this.likesData).subscribe((data:any) =>{
 
         console.log("Entrando aquí");
-        
+
         window.location.reload();
 
       });
@@ -91,18 +89,20 @@ export class CrudLikesComponent implements OnInit {
     }else{
 
         //Llamamos al servicio para solicitar una sola persona y poder editar el estado sin cambiar el resto de datos de la cuenta.
-        this.api.getStatusLikes(id).subscribe((data:any) =>{
+        this.api.getSingleLikes(id).subscribe((data:any) =>{
 
         //asignamos el valor que venga desde la API a una variable para poder recorrerla.
-        this.likesStatus = data[0];
+        this.likesData = data[0];
 
-        this.likesStatus.estadoGusto=1;
+        this.likesData.estadoGusto=1;
 
         // let token = localStorage.getItem('token');
 
         // this.datosPersona.token = token;
 
-        this.api.putLikeStatus(this.likesStatus).subscribe((data:any) =>{
+        // console.log(this.likesStatus[0]);
+
+        this.api.putLikes(this.likesData).subscribe((data:any) =>{
 
           window.location.reload();
 
@@ -133,7 +133,7 @@ export class CrudLikesComponent implements OnInit {
   //     this.userService.putPerson(this.datosPersona).subscribe((data:any) =>{
 
   //       console.log("Entrando aquí");
-        
+
   //       window.location.reload();
 
   //     });

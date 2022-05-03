@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbCalendar, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
-import { LikesI, LikesIns } from 'src/app/models/likes';
-import { TypesLikesI } from 'src/app/models/typesLikes';
+import { LikesI } from 'src/app/models/likes';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -12,43 +11,37 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class ModalLikesComponent implements OnInit {
 
-  model: NgbDateStruct | undefined;
-  date: { year: number; month: number;} | undefined;
-  
+  // model: NgbDateStruct | undefined;
+  // date: { year: number; month: number;} | undefined;
+
   createLikeForm = new FormGroup({
 
     nombreGusto: new FormControl(''),
     idtipoGusto: new FormControl(''),
     estadoGusto: new FormControl('2'),
-    
+
   });
 
-  constructor(private ng:FormBuilder,private calendar: NgbCalendar,private api:ApiService) { 
-    
+  constructor(private ng:FormBuilder,private calendar: NgbCalendar,private api:ApiService) {
+
   }
-  typeslikes?:TypesLikesI[];
-  likes?:LikesIns[];
+
+  likes!:LikesI[];
+
   ngOnInit(): void {
-    
+
   }
+
   ngOnChanges(): void{
-    this.api.getAllTypesLikes(1).subscribe(data => {this.typeslikes=data})
+    // this.api.getAllTypesLikes(1).subscribe(data => {this.typeslikes=data})
   }
-  postForm(form:LikesIns){
-    console.log(form);
 
-    
+  postForm(form:LikesI){
     this.api.postLike(form).subscribe( data => {
-      console.log(data);
+      window.location.reload();
+      // console.log(data);
     })
-    this.createLikeForm.reset();
-  }
-  guardar(){
-    console.log("si");
-  }
-
-  clearForm(){
-    this.createLikeForm.reset();
+    // this.createLikeForm.reset();
   }
 
 }

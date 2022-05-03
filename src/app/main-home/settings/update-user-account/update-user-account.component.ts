@@ -1,4 +1,4 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { updatePersonaI } from '../updatePersonaI';
 import { UpdateServiceService } from '../settingsService/update-service.service';
@@ -6,11 +6,13 @@ import { Router } from '@angular/router';
 import { ForgotPasswordComponent } from '../../../login-register/forgot-password/forgot-password.component';
 import { updatePasswordPersonaI } from '../updatePasswrodPersonaI';
 import { AuthService } from 'src/app/core/service/auth.service';
+import { LikesI, LikesPerson } from 'src/app/models/likes';
+import { ApiService } from '../../../services/api.service';
 
 @Component({
   selector: 'app-update-user-account',
   templateUrl: './update-user-account.component.html',
-  styleUrls: ['./update-user-account.component.scss']
+  styleUrls: ['./update-user-account.component.scss'],
 })
 export class UpdateUserAccountComponent implements OnInit {
 
@@ -18,7 +20,8 @@ export class UpdateUserAccountComponent implements OnInit {
 
     private updateServiceService: UpdateServiceService,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private ApiService: ApiService
 
   ) { }
 
@@ -43,7 +46,30 @@ export class UpdateUserAccountComponent implements OnInit {
     newPassword: new FormControl('')
   })
 
+  misGustos!:LikesPerson[];
+  listaMisGustos!:any;
+  gustos!:LikesI[];
+
   ngOnInit(): void {
+
+    //----------------------------Cosas del gusto.
+
+    this.ApiService.getAllLikes(1).subscribe(data =>{
+      this.gustos=data;
+      // console.log(this.gustos);
+    });
+
+    this.ApiService.getPersonLikes(this.authService.desencriptar(localStorage.getItem('id'))).subscribe(data =>{
+      this.misGustos=data;
+      // for (let i = 0; i < this.misGustos.length; i++) {
+      //   // const element = array[index];
+      //   this.listaMisGustos = i;
+      // }
+      // console.log(this.misGustos);
+    });
+
+
+    //----------------------------Cosas de la persona.
 
     let idPersona = this.authService.desencriptar(localStorage.getItem('id'));
     // console.log(idPersona);
@@ -75,6 +101,10 @@ export class UpdateUserAccountComponent implements OnInit {
 
     });
 
+  }
+
+  texto(){
+    console.log("Test");
   }
 
   //Método que se ejecuta cuando se hace submit de formulario para enviar los datos editados.

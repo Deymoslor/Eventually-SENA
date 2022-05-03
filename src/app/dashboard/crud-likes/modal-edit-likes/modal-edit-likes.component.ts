@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { LikesI } from 'src/app/models/likes';
 import { ApiService } from 'src/app/services/api.service';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
-import { TypesLikesI } from 'src/app/models/typesLikes';
 
 @Component({
   selector: 'app-modal-edit-likes',
@@ -10,9 +9,9 @@ import { TypesLikesI } from 'src/app/models/typesLikes';
   styleUrls: ['./modal-edit-likes.component.scss']
 })
 export class ModalEditLikesComponent implements OnInit {
-  
+
  @Input() childMessage!:number
-    
+
   constructor(
     private api:ApiService
   ) { }
@@ -24,7 +23,7 @@ export class ModalEditLikesComponent implements OnInit {
     idGusto:new FormControl(''),
     // idtipoGusto:new FormControl(''),
   })
-  
+
   // typeslikes?:TypesLikesI[];
 
   ngOnInit(): void {
@@ -47,14 +46,15 @@ export class ModalEditLikesComponent implements OnInit {
         //   'nombreGusto' : this.likes?.nombreGusto,
         //   // 'idtipoGusto':this.likes?.idtipoGusto,
         // })
-      })
+      });
     }
   }
 
   postEditLike(form:LikesI){
-    console.log(form);
+    // console.log(form);
     this.api.putLikes(form).subscribe(data=>{
-      console.log(data);
+      // console.log(data);
+      window.location.reload();
     })
   }
 }
