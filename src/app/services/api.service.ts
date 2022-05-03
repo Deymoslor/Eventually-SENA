@@ -19,7 +19,7 @@ export class ApiService {
     return this.http.post<ResponseI>(dir, form);
   }
 
-  url:string="http://localhost"+this.port+"/Api-Eventually-SENA/"
+  url:string="http://localhost:"+this.port+"/Api-Eventually-SENA/"
 
   constructor(
     private http:HttpClient
@@ -43,11 +43,6 @@ export class ApiService {
   putLikes(form:any):Observable<Response>{
     let dir = this.url + "likes";
     return this.http.put<Response>(dir,form);
-  }
-
-  getPersonLikes(id:number):Observable<LikesPerson[]>{
-    let dir=this.url + "likes?id=" + id;
-    return this.http.get<LikesPerson[]>(dir);
   }
 
   // getStatusLikes(id:number):Observable<likesStatusI>{

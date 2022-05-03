@@ -21,6 +21,7 @@ export class ModalEditLikesComponent implements OnInit {
   editForm  = new FormGroup({
     nombreGusto:new FormControl(''),
     idGusto:new FormControl(''),
+    estadoGusto:new FormControl('')
     // idtipoGusto:new FormControl(''),
   })
 
@@ -33,14 +34,18 @@ export class ModalEditLikesComponent implements OnInit {
   }
 
   ngOnChanges(): void {
+    // console.log(this.childMessage);
+    
     if(this.childMessage > 0){
       this.api.getSingleLikes(this.childMessage).subscribe((data:any)=>{
         this.likes = data[0];
         // console.log(this.likes);
         this.editForm.setValue({
           'idGusto' : this.likes.idGusto,
-          'nombreGusto' : this.likes.nombreGusto
+          'nombreGusto' : this.likes.nombreGusto,
+          'estadoGusto' : this.likes.estadoGusto
         });
+        
         // this.editForm.setValue({
         //   'idGusto' : this.likes.,
         //   'nombreGusto' : this.likes?.nombreGusto,

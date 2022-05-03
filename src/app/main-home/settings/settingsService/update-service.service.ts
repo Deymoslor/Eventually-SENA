@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { updatePersonaI } from '../updatePersonaI';
 import { Observable } from 'rxjs';
 import { ResponseI } from 'src/app/login-register/login/models/response.intarface';
 import { updatePasswordPersonaI } from '../updatePasswrodPersonaI';
 import { GlobalConstants } from 'src/app/global-constants';
 import { AuthService } from 'src/app/core/service/auth.service';
+import { LikesI, LikesPerson } from 'src/app/models/likes';
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +43,32 @@ export class UpdateServiceService {
   putPassword(form:updatePasswordPersonaI):Observable<ResponseI>{
     let direccion = this.API + "personsUser";
     return this.http.post<ResponseI>(direccion,form);
+  }
+
+  getAllLikes (idPerson:number):Observable<LikesI[]>{
+    let dir=this.API + "likesProfile?idPersona=" + idPerson;
+    return this.http.get<LikesI[]>(dir);
+  }
+
+  getPersonLikes(id:number):Observable<LikesPerson[]>{
+    let dir=this.API + "likesProfile?id=" + id;
+    return this.http.get<LikesPerson[]>(dir);
+  }
+
+  getLikeName(likeName:string):Observable<any[]>{
+    let dir=this.API + "likesProfile?likeName=" + likeName;
+    return this.http.get<any[]>(dir);
+  }
+
+  deleteLikePerson(idGusto:number,idPersona:number):Observable<any[]>{
+    let dir=this.API + "likesProfile";
+    let Options = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json'
+      }),
+      body:idGusto,idPersona
+    }
+    return this.http.delete<any[]>(dir,Options);
   }
 
 }

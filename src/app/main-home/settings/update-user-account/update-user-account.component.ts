@@ -28,6 +28,12 @@ export class UpdateUserAccountComponent implements OnInit {
   //Creamos una variable que será de tipo updatePersonaI para poder almacenar los datos traidos con la consulta. Para esto, además necesitamos un formGroup.
   datosPersona!:updatePersonaI;
 
+  //Creamos una variable que será de tipo any para almacenar lo traido, el id del gusto y poder hacer el eliminado.
+  datosGusto!:any;
+
+  //Creamos una variable que nos servirá para poder quitar con id específico el gusto de una persona.
+  datosGustoPersona!:any;
+
   //Creamos el FormGroup que nos sirve para poder tener el formulario con los campos correctos y en caso de necesitar validators.
   editarForm = new FormGroup({
     idPersona: new FormControl(''),
@@ -54,12 +60,12 @@ export class UpdateUserAccountComponent implements OnInit {
 
     //----------------------------Cosas del gusto.
 
-    this.ApiService.getAllLikes(1).subscribe(data =>{
+    this.updateServiceService.getAllLikes(this.authService.desencriptar(localStorage.getItem('id'))).subscribe(data =>{
       this.gustos=data;
       // console.log(this.gustos);
     });
 
-    this.ApiService.getPersonLikes(this.authService.desencriptar(localStorage.getItem('id'))).subscribe(data =>{
+    this.updateServiceService.getPersonLikes(this.authService.desencriptar(localStorage.getItem('id'))).subscribe(data =>{
       this.misGustos=data;
       // for (let i = 0; i < this.misGustos.length; i++) {
       //   // const element = array[index];
@@ -99,6 +105,20 @@ export class UpdateUserAccountComponent implements OnInit {
         'fechaNacimiento' : this.datosPersona.fechaNacimiento,
       })
 
+    });
+  }
+
+  agregarGusto(){
+
+  }
+
+  quitarGusto(nombreGusto:any){
+
+    this.updateServiceService.getLikeName(nombreGusto).subscribe((data:any) =>{
+      this.datosGusto = data;
+      this.updateServiceService.deleteLikePerson(this.datosGusto[0],this.authService.desencriptar(localStorage.getItem('id'))).subscribe((data:any) =>{
+        
+      })
     });
 
   }

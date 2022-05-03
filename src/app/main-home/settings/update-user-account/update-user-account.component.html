@@ -58,7 +58,7 @@
                                 <ul *ngFor="let gustos of misGustos" id="account-topics-subscribed-list" class="account-topics-list clearfix">
                                     <li class="account-topics-item" data-topicid="1589" >
                                         <div class="account-topics-name">{{gustos.nombreGusto}}</div>
-                                        <a (click)="texto()" class="account-topics-remove"></a>
+                                        <a (click)="quitarGusto(gustos.nombreGusto)" class="account-topics-remove"></a>
                                     </li>
                                     <!-- EJEMPLO:
                                     <li class="account-topics-item" data-topicid="7203">
@@ -76,7 +76,7 @@
                                 <li class="account-topics-item j-subscribe-to-topic" data-topicid="106688">
                                     <!-- <span class="sprite spritebg add_icon"></span> -->
                                     <!-- <span class="spritebg"></span> -->
-                                    <div class="account-topics-name"><span (click)="texto()" class="spritebg"></span>{{gusto.nombreGusto}}</div>
+                                    <div class="account-topics-name"><span (click)="agregarGusto()" class="spritebg"></span>{{gusto.nombreGusto}}</div>
                                 </li>
 
                                 <!-- EJEMPLO -->
