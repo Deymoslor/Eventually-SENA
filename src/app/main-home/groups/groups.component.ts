@@ -20,8 +20,6 @@ export class GroupsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    let rolEncriptado = localStorage.getItem('nombreRol');
-    console.log(this.authService.desencriptar(rolEncriptado));
     this.id = this.child;
     console.log(this.id);
     console.log(this.child);
