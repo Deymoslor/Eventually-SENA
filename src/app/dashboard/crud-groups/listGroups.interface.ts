@@ -5,4 +5,5 @@ export interface ListGroups{
   privacidadGrupo:number;
   InvitadosTotales:number;
   EstadosGrupo_idEstadosGrupo1:number;
+  nombreGusto:string
 }

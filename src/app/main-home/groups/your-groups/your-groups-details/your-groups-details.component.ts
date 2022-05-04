@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -14,7 +14,7 @@ import { ApiService } from 'src/app/services/api/api.service';
 })
 export class YourGroupsDetailsComponent implements OnInit {
 
-  
+  @Output() message: number | undefined;
 
   group!: Group | null;
   constructor(
@@ -33,7 +33,7 @@ export class YourGroupsDetailsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    
+
 
     let idGrupos = this.route.snapshot.paramMap.get('id');
     console.log(idGrupos);
@@ -50,6 +50,11 @@ export class YourGroupsDetailsComponent implements OnInit {
     //   console.log(data);
     //   this.event = data[0];
     // })
+  }
+
+  editarGroup(id:number | undefined){
+    this.message = id;
+    console.log(id)
   }
 
 

@@ -15,6 +15,7 @@ import { EventReportComponent } from './crud-reports/typeReport/event-report/eve
 import { GroupReportComponent } from './crud-reports/typeReport/group-report/group-report.component';
 import { UserReportComponent } from './crud-reports/typeReport/user-report/user-report.component';
 import { AuthGuard } from '../core/guards/auth.guard';
+import { RESOURCE_BY_ROLES } from '../core/routes/internal.routes';
 
 
 
@@ -22,6 +23,7 @@ const routes: Routes = [
   {
     path: 'dashboard', component:DashboardComponent,
     canActivate: [AuthGuard],
+    data: {roles: RESOURCE_BY_ROLES.PANEL_ADMIN},
     children: [
       {path: 'events', component: CrudEventsComponent},
       {path: 'services', component: CrudServicesComponent},

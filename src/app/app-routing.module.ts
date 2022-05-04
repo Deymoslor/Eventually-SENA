@@ -16,7 +16,7 @@ const routes: Routes = [
     path: 'loginRegister',
     loadChildren: () => import('./login-register/login-register-router.module').then(m => m.LoginRegisterRouterModule),
     //Llamamos a la guarda para revisar si está autenticado o no y darle paso o no.
-    canActivate: [NoAuthGuard],
+    // canActivate: [NoAuthGuard],
   },
 ];
 

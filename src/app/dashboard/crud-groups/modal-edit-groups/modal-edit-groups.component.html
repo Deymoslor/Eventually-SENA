@@ -36,6 +36,14 @@
             <div class="mb-2">
                 <textarea type="text" class="form-control" id="exampleFormControlTextarea1" placeholder="Explica de que tratará" rows="2" formControlName="descripcionGrupo"></textarea>
             </div>
+
+            <div>
+              <label for="exampleInputEmail1">Gusto:</label>
+              <select class="form-select" aria-label="Default select example" formControlName="gustos_idGusto">
+                <option *ngFor="let likeI of likesI" value="{{ likeI.idGusto }}">{{ likeI.nombreGusto }}</option>
+              </select>
+            </div>
+
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
               <button type="submit" class="btn btn-primary" (click)="refresh()">Editar gusto</button>

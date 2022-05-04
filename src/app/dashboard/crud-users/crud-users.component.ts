@@ -6,6 +6,9 @@ import { Router } from '@angular/router';
 import { ListaPersonasI } from './ListaPersonasI.interface';
 import { PersonaI } from './modal-users/personaI.interface';
 import { FormGroup, FormControl} from '@angular/forms';
+import { AuthService } from 'src/app/core/service/auth.service';
+import { globalAccountConstants } from 'src/app/constants/globalAccountConstants';
+
 
 //Interfaz para definir los datos de la table.
 // export interface PeriodicElement {
@@ -93,12 +96,33 @@ constructor(
   //Inyectamos nuestro servicio.
   private userService:userService,
 
+  private authService: AuthService,
+
   //Inyectamos el router.
-  private router:Router
+  private router:Router,
+
+  private globalAccountConstants:globalAccountConstants
 
   ) { }
 
   ngOnInit(): void {
+
+    // ----
+
+    // console.log(this.authService.getRol);
+
+    // let idPersona = this.globalAccountConstants.id.value;
+
+    // console.log(idPersona);
+
+    // console.log();
+
+    // console.log(this.authService.desencriptar(localStorage.getItem('nombreRol')));
+
+
+
+    // ----
+
     // this.dataSource.paginator = this.paginator;
 
     //valor por defecto del id para evitar el error de campos vacíos al iniciar el padre (crud-users.component) sin el hijo (modal-users.component).

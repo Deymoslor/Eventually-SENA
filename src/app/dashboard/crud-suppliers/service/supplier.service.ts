@@ -4,14 +4,17 @@ import { Observable } from 'rxjs';
 import { ResponseI } from 'src/app/models/response.interface';
 import { ListaProveedoresI } from '../ListaProveedoresI.interface';
 import { ProveedorI } from '../modal-suppliers-create/ProveedorI.interface';
+import { GlobalConstants } from 'src/app/global-constants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SupplierService {
 
+  port = GlobalConstants.port;
+
   //Definimos ruta raíz de el API.
-  API:string='http://localhost/API-Eventually-Sena/';
+  API:string='http://localhost:/'+this.port+'Api-Eventually-SENA/';
 
   //Definimos dentro del constructor el cliente http.
   constructor(

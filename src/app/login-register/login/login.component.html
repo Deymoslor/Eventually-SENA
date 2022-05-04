@@ -22,10 +22,11 @@
 
             <div class="a-divider">
                 <div class="forgot">
-                    <a [routerLink]="['forgot-password']">¿Olvidaste tu contraseña?</a>
+                    <!-- <a [routerLink]="['forgot-password']">¿Olvidaste tu contraseña?</a> -->
+                    <a (click)="recuperarPassword()">¿Olvidaste tu contraseña?</a>
                 </div>
                 <div class="supplier">
-                    <a [routerLink]="['supplier']">¿Quiéres ser proveedor?</a>
+                    <a (click)="solicitudProveedor()">¿Quiéres ser proveedor?</a>
                 </div>
             </div>
             <!-- <pre>{{ loginForm.value | json }}</pre> -->
