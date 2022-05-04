@@ -10,7 +10,7 @@ import { GroupPerson } from './GroupPerson';
   providedIn: 'root'
 })
 export class SeeGroupsService {
-  API:string='http://localhost/API-Eventually-SENA/';
+  API:string='http://localhost:8181/API-Eventually-SENA/';
 
   constructor(private http:HttpClient) { }
 

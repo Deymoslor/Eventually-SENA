@@ -4,6 +4,7 @@ import { LikesI } from 'src/app/models/likes';
 import { ApiService } from 'src/app/services/api.service';
 import { Group } from '../see-groups/group';
 import { YourGroupsService } from '../your-groups/your-groups.service';
+import { AuthService } from 'src/app/core/service/auth.service';
 
 @Component({
   selector: 'app-create-groups',
@@ -24,12 +25,13 @@ export class CreateGroupsComponent implements OnInit {
     descripcionGrupo: new FormControl(''),
     privacidadGrupo: new FormControl(''),
     check: new FormControl(''),
-    gustos_idGusto: new FormControl('')
+    gustos_idGusto: new FormControl(''),
+    idPersona: new FormControl(''),
   });
 
   // swal("Oops!", "Something went wrong on the page!", "error");
 
-  constructor(private create:YourGroupsService, private fb:FormBuilder, private likes: ApiService) { }
+  constructor(private create:YourGroupsService, private fb:FormBuilder, private likes: ApiService, private auth: AuthService) { }
 
   ngOnInit(): void {
     this.likes.getAllLikes(1).subscribe(data=>{
@@ -44,6 +46,7 @@ export class CreateGroupsComponent implements OnInit {
       privacidadGrupo: ['', Validators.required],
       check: ['', Validators.required],
       gustos_idGusto: ['', Validators.required],
+      idPersona: [this.auth.desencriptar(localStorage.getItem('id'))]
     })
   }
 

@@ -5,5 +5,6 @@ export interface Group {
   privacidadGrupo: number;
   invitadosTotales: number;
   gustos_idGusto: number;
+  idPersona: number;
   imagen: any;
 }
