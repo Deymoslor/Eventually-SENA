@@ -5,12 +5,16 @@ import { Groups } from './groups';
 import { Group } from './group';
 import { updatePersonaI } from '../../settings/updatePersonaI';
 import { GroupPerson } from './GroupPerson';
+import { GlobalConstants } from 'src/app/global-constants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SeeGroupsService {
-  API:string='http://localhost:8181/API-Eventually-SENA/';
+
+  port = GlobalConstants.port;
+  
+  API:string='http://localhost'+this.port+'/API-Eventually-SENA/';
 
   constructor(private http:HttpClient) { }
 

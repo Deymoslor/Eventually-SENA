@@ -3,12 +3,16 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Group } from '../see-groups/group';
 import { Groups } from '../see-groups/groups';
+import { GlobalConstants } from 'src/app/global-constants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class YourGroupsService {
-  API:string='http://localhost:8181/Api-Eventually-SENA/';
+
+  port = GlobalConstants.port;
+  
+  API:string='http://localhost'+this.port+'/Api-Eventually-SENA/';
 
   constructor(private http:HttpClient) { }
 

@@ -15,7 +15,7 @@ export class UpdateServiceService {
   public port = GlobalConstants.port;
 
   //Definimos ruta raíz de el API.
-  API:string='http://localhost:'+this.port+'/Api-Eventually-SENA/';
+  API:string='http://localhost'+this.port+'/Api-Eventually-SENA/';
 
   constructor(
     //Inyectamos el HttpClient.

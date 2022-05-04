@@ -18,7 +18,7 @@ export class ApiService {
 
   port = GlobalConstants.port
   
-  url:string="http://localhost:"+ this.port +"/Api-Eventually-SENA/"
+  url:string="http://localhost"+ this.port +"/Api-Eventually-SENA/"
 
   constructor(
     private http:HttpClient

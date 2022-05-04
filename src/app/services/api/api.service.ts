@@ -8,6 +8,7 @@ import { ListEventsI } from '../../models/listEvents.interface';
 import { HttpClient } from '@angular/common/http';
 import { LikesI } from 'src/app/models/likes';
 import { ResultServiceI } from '../../models/result-service.interface';
+import { GlobalConstants } from 'src/app/global-constants';
 
 
 @Injectable({
@@ -15,7 +16,9 @@ import { ResultServiceI } from '../../models/result-service.interface';
 })
 export class ApiService {
 
-  url:string = "http://localhost:8181/Api-Eventually-SENA/";
+  port = GlobalConstants.port;
+
+  url:string = "http://localhost"+this.port+"/Api-Eventually-SENA/";
 
   constructor(private http:HttpClient) { }
 
