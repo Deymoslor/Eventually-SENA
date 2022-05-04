@@ -1,3 +1,4 @@
+@import '../../app.component.scss';
 :root {
     --colorTextos: #49454567;
 }
@@ -135,6 +136,18 @@ button {
     font-size: 16px;
     cursor: pointer;
     border-radius: 15px;
+}
+
+.botoncitosexy:hover {
+    background: #383adb3a;
+}
+
+.btnRegistro {
+    background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
+}
+
+.btnRegistro:hover {
+    background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
 }
 
 @media screen and (max-width: 500px) {
