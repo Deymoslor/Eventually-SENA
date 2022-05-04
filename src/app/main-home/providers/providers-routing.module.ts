@@ -4,43 +4,27 @@ import { Routes, RouterModule } from '@angular/router';
 import { ProvidersComponent } from './providers.component';
 import { MyServiceComponent } from './my-service/my-service.component';
 import { CreateServiceComponent } from './create-service/create-service.component';
+import { AuthGuard } from 'src/app/core/guards/auth.guard';
+import { RESOURCE_BY_ROLES } from 'src/app/core/routes/internal.routes';
 
 
 const routes: Routes = [
   {
     path: '', // /provider
     component: ProvidersComponent ,
+    canActivate: [AuthGuard],
+    data: {roles: RESOURCE_BY_ROLES.PANEL_PROVEEDOR},
     children: [
       {
         path: 'myService',
-        component: MyServiceComponent
+        component: MyServiceComponent,
+        
       },
       {
 
         path: 'createService',
         component: CreateServiceComponent,
       },
-    //   {
-    //     path: 'see-groups',
-    //     loadChildren: () => import('./see-groups/see-groups-routing.module').then(m => m.SeeGroupsRoutingModule),
-    //   },
-    //   {
-    //     path: 'your-groups',
-    //     loadChildren: () => import('./your-groups/your-groups-routing.module').then(m => m.YourGroupsRoutingModule),
-    //   },
-
-    //   {
-    //     path: 'related-groups/:id',
-    //     component: RelatedGroupsDetailsComponent
-    //   },
-    //   {
-    //     path: 'see-groups/show/:id',
-    //     component: SeeGroupDetailComponent,
-    //   },
-    //   {
-    //     path: 'your-groups/groups/:id',
-    //     component: YourGroupsDetailsComponent,
-    //   },
     ],
   },
 ]
