@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/core/service/auth.service';
 import { Groups } from '../see-groups/groups';
 import { RelatedGroupsService } from './related-groups.service';
 
@@ -20,10 +21,10 @@ export class RelatedGroupsComponent implements OnInit {
 //   return groups;
 //  }
 
-  constructor(private RelatedGroupsService: RelatedGroupsService, private route: ActivatedRoute) { }
+  constructor(private RelatedGroupsService: RelatedGroupsService, private route: ActivatedRoute, private authService: AuthService) { }
 
   ngOnInit(): void {
-    let idPersona = localStorage.getItem('id');
+    let idPersona = this.authService.desencriptar(localStorage.getItem('id'));
     console.log(idPersona);
     this.RelatedGroupsService.getRelatedGroups(Number(idPersona)).subscribe(data => {
       console.log(data);

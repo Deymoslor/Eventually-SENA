@@ -1,17 +1,18 @@
 <ng-template #content let-modal>
-  <app-modal-edit-groups [childMessage]=id></app-modal-edit-groups>
+    <app-modal-edit-groups [childMessage]=id></app-modal-edit-groups>
+
 </ng-template>
-<a [routerLink]="['/groups/your-groups']" routerLinkActive="router-link-active"  class="back">&lt; Volver al inicio</a>
+<a [routerLink]="['/groups/your-groups']" routerLinkActive="router-link-active" class="back">&lt; Volver al inicio</a>
 <div class="container">
-  <br>
+    <br>
     <div class="info">
-      <p class="product-name">{{ group?.nombreGrupo }}</p>
-      <br>
-      <div class="row g-5">
-        <div class="col-md-8">
-          <!-- <p class="h3">Eventos a realizar</p>
+        <p class="product-name">{{ group?.nombreGrupo }}</p>
+        <br>
+        <div class="row g-5">
+            <div class="col-md-8">
+                <!-- <p class="h3">Eventos a realizar</p>
           <br> -->
-          <!-- <div class="col-md-6">
+                <!-- <div class="col-md-6">
             <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
               <div class="col p-4 d-flex flex-column position-static">
                 <p class=" h4 d-inline-block mb-2 text-primary">{{ event?.nombreEvento }}</p>
@@ -23,26 +24,26 @@
             </div>
           </div> -->
 
-        </div>
-        <div class="col-md-4">
-          <div class="position-sticky" style="top: 2rem;">
-            <div class="p-4 mb-3 bg-light rounded">
-              <p class="h3 fst-italic">Sobre</p>
-              <p class="mb-0">{{ group?.descripcionGrupo }}</p>
             </div>
-            <div class="p-4">
-              <ul class="nav nav-taps">
-                <li class="nav-item dropdown">
-                  <a class="h4 nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Opciones</a>
-                  <ul class="dropdown-menu">
-                    <li><a class="h5 dropdown-item" role="button" href="#">Regresar</a></li>
-                    <!-- <li><a class="h5 dropdown-item" role="button" href="#">Crear evento</a></li> -->
-                    <!-- <li><a class="h5 dropdown-item" role="button" (click)="editarGroup(group?.idGrupos)" (click)="modalOpen(content)">Editar grupo Modal</a></li>
+            <div class="col-md-4">
+                <div class="position-sticky" style="top: 2rem;">
+                    <div class="p-4 mb-3 bg-light rounded">
+                        <p class="h3 fst-italic">Sobre</p>
+                        <p class="mb-0">{{ group?.descripcionGrupo }}</p>
+                    </div>
+                    <div class="p-4">
+                        <ul class="nav nav-taps">
+                            <li class="nav-item dropdown">
+                                <a class="h4 nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Opciones</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="h5 dropdown-item" role="button" href="#">Regresar</a></li>
+                                    <!-- <li><a class="h5 dropdown-item" role="button" href="#">Crear evento</a></li> -->
+                                    <!-- <li><a class="h5 dropdown-item" role="button" (click)="editarGroup(group?.idGrupos)" (click)="modalOpen(content)">Editar grupo Modal</a></li>
                     <ng-template #content let-modal>
                       <app-modal-edit-groups [childMessage]=id></app-modal-edit-groups>
                     </ng-template> -->
-                    <li><a class="h5 dropdown-item" role="button" (click)="editarGroup(group?.idGrupos)" (click)="modalOpen(content)">Editar grupo Acá</a></li>
-                    <!-- <ng-template #content let-modal>
+                                    <li><a class="h5 dropdown-item" role="button" (click)="editarGroup(group?.idGrupos)" data-bs-toggle="modal" data-bs-target="#content-modal" role="button" (click)="modalOpen(content)">Editar grupo Acá</a></li>
+                                    <!-- <ng-template #content let-modal>
                       <div class="modal-header">
                         <h5 class="modal-title" id="staticBackdropLabel">Ediar grupo</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -87,73 +88,20 @@
                         </div>
                       </form>
                     </ng-template> -->
-                    <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#modal-events-completed">Ver eventos realizados</a></li>
-                    <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#modal-report-events-groups-organizer">Reportes</a></li>
-                    <li><a class="h5 dropdown-item" role="button" href="#">Deshabilitar Grupo</a></li>
-                  </ul>
-                </li>
-              </ul>
+                                    <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#modal-events-completed">Ver eventos realizados</a></li>
+                                    <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#modal-report-events-groups-organizer">Reportes</a></li>
+                                    <li><a class="h5 dropdown-item" role="button" href="#">Deshabilitar Grupo</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-          </div>
+            <!-- <button data-bs-toggle="modal" data-bs-target="#content-modal" role="button" (click)="modalOpen(content)">holaa</button> -->
         </div>
-      </div>
     </div>
 </div>
-<button class="h5 dropdown-item" role="button" (click)="modalOpen(content)" (click)="editarGroup(group?.idGrupos)">Editar grupo Acá</button>
-<ng-template #content let-modal>
-  <form [formGroup]="editForm" (ngSubmit)="postEditForm(editForm.value)">
-    <mat-datepicker class="modal" #picker style="z-index: 1000;"></mat-datepicker>
-    <div class="modal-dialog modal-lg modal-dialog-scrollable">
-      <div class="modal-content">
-          <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">Ediar grupo</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-            <div class="modal-body">
-              <div class="form-group">
-                  <label for="">Nombre:</label>
-                  <input type="text" class="form-control" id="" placeholder="Ej: Coño e tu madre" formControlName="nombreGrupo">
+<p class="h3">Evento a realizar</p>
+<router-outlet>
 
-                  <label for="">Privacidad:</label>
-                  <div class="form-check">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-                      <label class="form-check-label" for="flexRadioDefault1">
-                          Publica
-                      </label>
-                  </div>
-                  <div class="form-check">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                      <label class="form-check-label" for="flexRadioDefault2">
-                          Privada
-                      </label>
-                  </div>
-
-                  <label for="">Descripción:</label>
-                  <div class="mb-2">
-                      <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Explica de que tratará" rows="2" formControlName="descripcionGrupo"></textarea>
-                  </div>
-
-                  <div>
-                    <label for="exampleInputEmail1">Gusto:</label>
-                    <select class="form-select" aria-label="Default select example" formControlName="gustos_idGusto">
-                      <option *ngFor="let likeI of likesI" value="{{ likeI.idGusto }}">{{ likeI.nombreGusto }}</option>
-                    </select>
-                  </div>
-
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="submit" class="btn btn-primary" (click)="refresh()">Editar gusto</button>
-              </div>
-          </div>
-      </div>
-  </div>
-  </form>
-</ng-template>
-        <p class="h3">Evento a realizar</p>
-        <router-outlet>
-
-        </router-outlet>
-
-
-
+</router-outlet>

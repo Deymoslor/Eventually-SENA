@@ -1,13 +1,17 @@
 @import '../../app.component.scss';
 .leftMenu {
+    width: 5rem;
     margin: 1rem;
     background: linear-gradient(to right, $principal, $principal2);
     border-radius: 1rem;
+    height: auto;
+    position: fixed;
+    transition: all 25s;
     .optionLM {
         width: 4rem;
     }
     .home {
-        margin-top: 0.5rem;
+        margin: 0.5rem;
     }
     .divider {
         color: white;

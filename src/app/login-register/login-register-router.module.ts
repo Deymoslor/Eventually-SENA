@@ -6,16 +6,18 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { SupplierRequestComponent } from './supplier-request/supplier-request.component';
+import { AuthGuard } from '../core/guards/auth.guard';
+import { NoAuthGuard } from '../core/guards/no-auth.guard';
 
 const routes: Routes = [
   {
     path: '', component:LoginRegisterComponent,
     children: [
-      {path: 'register', component: RegisterComponent},
-      {path: '', component: LoginComponent},
-      {path: 'login', component: LoginComponent},
+      {path: 'register', component: RegisterComponent,canActivate: [NoAuthGuard],},
+      {path: '', component: LoginComponent,canActivate: [NoAuthGuard],},
+      {path: 'login', component: LoginComponent,canActivate: [NoAuthGuard],},
       {path: 'forgot-password', component: ForgotPasswordComponent},
-      {path: 'supplier', component: SupplierRequestComponent}
+      {path: 'supplier', component: SupplierRequestComponent,canActivate: [NoAuthGuard],}
 
     ]
 

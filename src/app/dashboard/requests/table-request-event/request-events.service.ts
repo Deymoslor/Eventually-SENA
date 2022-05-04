@@ -4,14 +4,17 @@ import { Observable } from 'rxjs';
 import { ListaRequestEventsI } from './ListaRequestEventsI.interface';
 import { RequestEventsI } from './requestsEventsI.interface';
 import { ResponseI } from 'src/app/models/response.interface';
+import { GlobalConstants } from 'src/app/global-constants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RequestEventsService {
 
+  port = GlobalConstants.port;
+
   //Definimos ruta raíz de el API.
-  API:string='http://localhost/Api-Eventually-SENA/';
+  API:string='http://localhost:'+this.port+'/Api-Eventually-SENA/';
 
   //Definimos dentro del constructor el cliente http.
   constructor(

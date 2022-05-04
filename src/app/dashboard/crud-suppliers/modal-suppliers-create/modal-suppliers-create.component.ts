@@ -125,7 +125,7 @@ export class ModalSuppliersCreateComponent implements OnInit {
 
     //llamamos el método de actualizar desde el servicio.
     this.supplierService.postSupplier(form).subscribe((data:any) =>{
-      // console.log(data);
+      console.log(data);
       //Recargamos página.
       window.location.reload();
     });

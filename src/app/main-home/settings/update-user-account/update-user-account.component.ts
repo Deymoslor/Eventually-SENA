@@ -5,6 +5,7 @@ import { UpdateServiceService } from '../settingsService/update-service.service'
 import { Router } from '@angular/router';
 import { ForgotPasswordComponent } from '../../../login-register/forgot-password/forgot-password.component';
 import { updatePasswordPersonaI } from '../updatePasswrodPersonaI';
+import { AuthService } from 'src/app/core/service/auth.service';
 
 @Component({
   selector: 'app-update-user-account',
@@ -16,7 +17,8 @@ export class UpdateUserAccountComponent implements OnInit {
   constructor(
 
     private updateServiceService: UpdateServiceService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
 
   ) { }
 
@@ -43,7 +45,7 @@ export class UpdateUserAccountComponent implements OnInit {
 
   ngOnInit(): void {
 
-    let idPersona = localStorage.getItem('id');
+    let idPersona = this.authService.desencriptar(localStorage.getItem('id'));
     // console.log(idPersona);
 
     let token = localStorage.getItem('token');
@@ -90,7 +92,7 @@ export class UpdateUserAccountComponent implements OnInit {
   completarForm(form:updatePasswordPersonaI){
 
     //Retomamos el id
-    let idPersona = localStorage.getItem('id');
+    let idPersona = this.authService.desencriptar(localStorage.getItem('id'));
 
     //Retomamos el token
     let token = localStorage.getItem('token');
@@ -103,7 +105,7 @@ export class UpdateUserAccountComponent implements OnInit {
       'newPassword' : form.newPassword
     })
 
-    console.log(this.passwordForm);
+    // console.log(this.passwordForm);
 
   }
 
@@ -112,7 +114,7 @@ export class UpdateUserAccountComponent implements OnInit {
 
     //Llamamos al método del servicio que nos permite actualizar la contraseña.
     this.updateServiceService.putPassword(form).subscribe((data:any) =>{
-      console.log(data);
+      // console.log(data);
 
       //regargamos página.
       window.location.reload();
