@@ -1,4 +1,5 @@
 export enum ROLES_ENUM{
     ADMIN = 'ADMIN',
-    INVITADO = 'INVITADO'
+    INVITADO = 'INVITADO',
+    PROVEEDOR = 'PROVEEDOR'
  }

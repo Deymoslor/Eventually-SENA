@@ -17,7 +17,7 @@ export class YourGroupsComponent implements OnInit {
   constructor(
     private YourGroupsService: YourGroupsService,
     private route: ActivatedRoute,
-    private authService: AuthService
+    private auth: AuthService
   ) { }
 
   getMessage(id: any){
@@ -26,9 +26,7 @@ export class YourGroupsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let idPersona = this.authService.desencriptar(localStorage.getItem('id'));
-    console.log(idPersona);
-    this.YourGroupsService.getYourGroups(Number(idPersona)).subscribe(data => {
+    this.YourGroupsService.getYourGroups(this.auth.desencriptar(localStorage.getItem('id'))).subscribe(data => {
       console.log(data);
 
       this.groups = data;

@@ -25,12 +25,10 @@ export class SeeGroupsComponent implements OnInit {
   //   map((queryParamMap) => queryParamMap.get('orderBy'))
   // );
 
-  constructor(private SeeGroupsService: SeeGroupsService, private route: ActivatedRoute, private authService:AuthService) { }
+  constructor(private SeeGroupsService: SeeGroupsService, private route: ActivatedRoute, private auth: AuthService) { }
 
   ngOnInit(): void {
-    let idPersona = this.authService.desencriptar(localStorage.getItem('id'));
-    console.log(idPersona);
-    this.SeeGroupsService.getPromotedGroups(Number(idPersona)).subscribe(data=>{
+    this.SeeGroupsService.getPromotedGroups(this.auth.desencriptar(localStorage.getItem('id'))).subscribe(data=>{
       console.log(data);
 
       this.groups = data;

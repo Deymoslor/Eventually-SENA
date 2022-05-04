@@ -21,12 +21,10 @@ export class RelatedGroupsComponent implements OnInit {
 //   return groups;
 //  }
 
-  constructor(private RelatedGroupsService: RelatedGroupsService, private route: ActivatedRoute, private authService: AuthService) { }
+  constructor(private RelatedGroupsService: RelatedGroupsService, private route: ActivatedRoute, private auth: AuthService) { }
 
   ngOnInit(): void {
-    let idPersona = this.authService.desencriptar(localStorage.getItem('id'));
-    console.log(idPersona);
-    this.RelatedGroupsService.getRelatedGroups(Number(idPersona)).subscribe(data => {
+    this.RelatedGroupsService.getRelatedGroups(this.auth.desencriptar(localStorage.getItem('id'))).subscribe(data => {
       console.log(data);
 
       this.groups = data;
