@@ -30,3 +30,35 @@
         }
     }
 }
+
+@media only screen and (max-width: 617px) {
+    .leftMenu {
+        width: 4rem;
+        margin: 0.5rem;
+        .optionLM {
+            width: 4rem;
+        }
+        .home {
+            margin: 0rem;
+        }
+        .divider {
+            color: white;
+            width: 70%;
+            size: 1.5rem;
+        }
+        .options {
+            background-color: $second;
+            border-radius: 1rem;
+            margin: 0.5rem;
+            width: 3rem;
+            height: 3rem;
+            .icon {
+                width: 1.5rem;
+                margin: -0.25rem;
+            }
+        }
+        #ocultar {
+            display: none;
+        }
+    }
+}
