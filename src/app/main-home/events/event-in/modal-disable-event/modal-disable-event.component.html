@@ -1,6 +1,8 @@
 <!-- Modal -->
 
 <!-- <div class="modal-dialog modal-lg modal-dialog-scrollable"> -->
+ <div *ngIf="finishState == 2">
+  <form [formGroup]="resultForm" (ngSubmit)="finishEvent(resultForm.value)">
   <div class="modal-content modal-dialog modal-lg modal-dialog-scrollable">
     <div class="modal-header">
       <h5 class="modal-title" id="staticBackdropLabel">Deshabilitar el evento</h5>
@@ -19,8 +21,48 @@
 
 
     <div class="modal-footer">
-      <button type="button" class="btn btn-primary"  (click)="finishEvent(3)" >Terminar</button>
+      <button type="submit" class="btn btn-primary" >Terminar</button>
     </div>
   </div>
-<!-- 
-</div> -->
+</form>
+ </div>
+  <!-- Opcion 2 -->
+
+  <div *ngIf="finishState == 1">
+    <form [formGroup]="resultForm" (ngSubmit)="finishEvent(resultForm.value)">
+    <div class="modal-content modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Terminar el evento</h5>
+        
+      </div>
+      <div class="modal-body">
+        <div class="form-group">                
+            <label for="">Calificacion del servicio: [1 - 10]</label>
+              <div class="mb-2">
+                  <input type="number" formControlName="calificacion">
+              </div>
+              <label for="">Problemas encontrados: </label>
+              <div class="mb-2">
+                <textarea class="form-control" formControlName="problemasEncontrados" id="exampleFormControlTextarea1" placeholder="Explica si se encontraron problemas."
+                rows="2"></textarea>
+              </div>
+              <label for="">Descripcion del resultado: </label>
+              <div class="mb-2">
+                <textarea class="form-control" formControlName="descripcionResultado" id="exampleFormControlTextarea1" placeholder="Escribe una descripcion corta del servicio realizado."
+                rows="2"></textarea>
+              </div>
+            <div class="mb-2">
+               <p class="fs-5">
+                  Recuerde que una vez terminado el evento, </p><p class="fs-5 fw-bold">no podra recuperar el evento</p>
+            </div>
+
+        </div>
+    </div>
+  
+  
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" >Terminar</button>
+      </div>
+    </div>
+    </form>
+   </div>

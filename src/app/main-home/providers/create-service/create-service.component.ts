@@ -40,6 +40,7 @@ export class CreateServiceComponent implements OnInit {
   ngOnInit(): void {
     this.api.getAllTypeServices(1).subscribe(data =>{
       this.dataTypeService = data;
+      console.log(data);
     })
   }
 
