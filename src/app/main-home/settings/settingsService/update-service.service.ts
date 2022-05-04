@@ -55,20 +55,33 @@ export class UpdateServiceService {
     return this.http.get<LikesPerson[]>(dir);
   }
 
-  getLikeName(likeName:string):Observable<any[]>{
+  getLikeId(likeName:string):Observable<any[]>{
     let dir=this.API + "likesProfile?likeName=" + likeName;
     return this.http.get<any[]>(dir);
   }
 
-  deleteLikePerson(idGusto:number,idPersona:number):Observable<any[]>{
+  // deleteLikePerson(idGusto:any,idPersona:any):Observable<any[]>{
+  deleteLikePerson(form:any):Observable<ResponseI[]>{
     let dir=this.API + "likesProfile";
-    let Options = {
-      headers: new HttpHeaders({
-        'Content-type': 'application/json'
-      }),
-      body:idGusto,idPersona
-    }
-    return this.http.delete<any[]>(dir,Options);
+    // let Options = {
+    //   headers: new HttpHeaders({
+    //     'Content-type': 'application/json'
+    //   }),
+    //   body:idGusto,idPersona
+    // }
+    return this.http.post<ResponseI[]>(dir,form);
+  }
+  
+  // deleteLikePerson(idGusto:any,idPersona:any):Observable<any[]>{
+  createLikePerson(form:any):Observable<ResponseI[]>{
+    let dir=this.API + "likesProfile";
+    // let Options = {
+    //   headers: new HttpHeaders({
+    //     'Content-type': 'application/json'
+    //   }),
+    //   body:idGusto,idPersona
+    // }
+    return this.http.post<ResponseI[]>(dir,form);
   }
 
 }
