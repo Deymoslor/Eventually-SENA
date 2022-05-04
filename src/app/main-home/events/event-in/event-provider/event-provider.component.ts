@@ -8,6 +8,8 @@ import { ApiService } from 'src/app/main-home/providers/services/api.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
 import { EventI } from 'src/app/models/event.interface';
+import { ServiceEventI } from 'src/app/main-home/providers/models/serviceEvent.interface';
+import { TypeServicesI } from 'src/app/dashboard/crud-services/models/typeServices.interface';
 
 
 @Component({
@@ -17,7 +19,7 @@ import { EventI } from 'src/app/models/event.interface';
 })
 export class EventProviderComponent implements OnInit {
 
-  @Input() form!: EventI;
+@Input() form!: EventI;
 @Input() idEvento!: number;
 
   createInv = new FormGroup({
@@ -26,30 +28,60 @@ export class EventProviderComponent implements OnInit {
   });
 
   stateAccept:number = 0;
+  idServiceAceppted:number = 1;
 
   nombreProveedor!: string;
   nombreServicio!: string;
+
   dataProviderService!: InvitationProvSerI[];
-  dataAccept!: InvitationProvSerI;
-  dataInvitationDetail?: DetailServiceEventI;
+  dataServiceState!: ServiceEventI[];
+  dataTypeService!: TypeServicesI[]
+
   
   number!:number;
   constructor(private api:ApiService, private modalService: NgbModal, private route:ActivatedRoute) { }
   closeResult = '';
 
   ngOnInit(): void {
-    console.log(this.form)
-    this.api.getAllProvServicesInv(1).subscribe(data =>{
-      console.log(data);
-      this.dataProviderService = data;
-      this.dataProviderService.forEach(key =>{
-        if(key.estadoInvitacion == 1){
-          this.stateAccept = 1;
-          this.nombreProveedor = key.nombreProveedor;
-          this.nombreServicio = key.nombreServicio;
-        }
-      })
+    let state: number | null;
+    this.api.getAllProvServicesInv(1).subscribe(datas =>{
+      console.log(datas);
+      this.dataProviderService = datas;
+      this.dataProviderService.forEach(key => {
+        console.log(key.idServicios + "si");
+        console.log(this.idEvento)
+        this.api.getStateInvitationService(key.idServicios.toString(), this.idEvento.toString()).subscribe(data =>{
+          console.log(data);
+          this.dataServiceState = data
+          this.dataServiceState.forEach(element => {
+            if (element == null){
+              key.estadoInvitacion = element;
+            }else{
+              key.estadoInvitacion = element.estadoInvitacion;
+              this.idServiceAceppted = key.Servicio_idServicios;
+              console.log(key.estadoInvitacion);
+            }
+            
+          });
+          if(key.estadoInvitacion == 1){
+            this.stateAccept = 1;
+            this.nombreProveedor = key.nombreProveedor;
+            this.nombreServicio = key.nombreServicio;
+          }
+        })
+        this.api.getAllTypeServices(1).subscribe(data =>{
+          this.dataTypeService = data;
+          data.forEach(key2 => {
+            if(key2.idtipoServicio == key.TipoServicio_idtipoServicio){
+              key.tipoServicio = key2.tipoServicio;
+            }
+          });
+        })
+      });
+      
     })
+    
+
   }
 
   modalOpen(content:any){
@@ -88,15 +120,18 @@ export class EventProviderComponent implements OnInit {
     }
   }
 
-  postInvitation(form: InvitationProvSerI){
-    let eventId = Number(this.route.snapshot.paramMap.get('id'));
-    form.Evento_idEvento = this.idEvento;
-    form.Servicio_idServicios = form.idServicios;
-    console.log(form);
-    this.api.postInvitationService(form).subscribe(data =>{
-      console.log(data);
+  postInvitation(forms: InvitationProvSerI){
+    // let eventId = Number(this.route.snapshot.paramMap.get('id'));
+    forms.Evento_idEvento = this.idEvento;
+    forms.Servicio_idServicios = forms.idServicios;
+    console.log(forms);
+    this.api.postInvitationService(forms).subscribe(data =>{
+      console.log(forms);
     })
-
+    this.refresh();
   }
 
+  refresh(){
+    window.location.reload();
+  }
 }

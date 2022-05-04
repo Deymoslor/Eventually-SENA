@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { combineLatest, map, Observable } from 'rxjs';
 import { Groups } from './groups';
 import { SeeGroupsService } from './see-groups.service';
+import { AuthService } from '../../../core/service/auth.service';
 
 @Component({
   selector: 'app-see-groups',
@@ -24,12 +25,10 @@ export class SeeGroupsComponent implements OnInit {
   //   map((queryParamMap) => queryParamMap.get('orderBy'))
   // );
 
-  constructor(private SeeGroupsService: SeeGroupsService, private route: ActivatedRoute) { }
+  constructor(private SeeGroupsService: SeeGroupsService, private route: ActivatedRoute, private auth: AuthService) { }
 
   ngOnInit(): void {
-    let idPersona = localStorage.getItem('id');
-    console.log(idPersona);
-    this.SeeGroupsService.getPromotedGroups(Number(idPersona)).subscribe(data=>{
+    this.SeeGroupsService.getPromotedGroups(this.auth.desencriptar(localStorage.getItem('id'))).subscribe(data=>{
       console.log(data);
 
       this.groups = data;
