@@ -5,6 +5,7 @@ import { TypeServicesI } from 'src/app/dashboard/crud-services/models/typeServic
 import { ApiService } from '../services/api.service';
 import { ServiceI } from '../models/service.interface';
 import { Router } from '@angular/router';
+import { AuthService } from '../../../core/service/auth.service';
 
 
 @Component({
@@ -35,7 +36,7 @@ export class CreateServiceComponent implements OnInit {
   model!: NgbDateStruct;
   date!: {year: number, month: number};
 
-  constructor(private calendar: NgbCalendar, private api: ApiService, private router:Router) { }
+  constructor(private calendar: NgbCalendar, private api: ApiService, private router:Router, private auth: AuthService) { }
 
   ngOnInit(): void {
     this.api.getAllTypeServices(1).subscribe(data =>{
@@ -46,6 +47,7 @@ export class CreateServiceComponent implements OnInit {
 
   postServiceProv(form: ServiceI){
     console.log(form);
+    form.Proveedor_idProveedor = this.auth.desencriptar(localStorage.getItem('id'));
     this.api.postServiceProv(form).subscribe(data=>{
       console.log(data);
     });

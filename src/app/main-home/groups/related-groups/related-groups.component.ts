@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/core/service/auth.service';
 import { Groups } from '../see-groups/groups';
 import { RelatedGroupsService } from './related-groups.service';
-import { AuthService } from '../../../core/service/auth.service';
 
 @Component({
   selector: 'app-related-groups',

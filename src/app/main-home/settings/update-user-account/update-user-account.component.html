@@ -42,15 +42,56 @@
                             class="form-control" formControlName="correo" aria-describedby="helpId" placeholder="Escribe tu correo">
                         </div> -->
 
+                    <!-- Selección de gustos -->
+
                     <div class="selectNewLikes input-group mb-3">
-                    <b><label class="input-group-text" for="inputGroupSelect01">Gustos actuales</label></b>
+                    <!-- <b><label class="input-group-text" for="inputGroupSelect01">Gustos actuales</label></b>
                         <select class="form-select" id="inputGroupSelect01">
                             <option selected>Musica,Baile</option>
                             <option value="1">Musica</option>
                             <option value="2">Baile</option>
                             <option value="3">Deporte</option>
-                        </select>
+                        </select> -->
+
+                            <div id="account-topics-subscribed" class="clearfix">
+                                <p id="account-topics-add-more">¡Estos son tus gustos!</p>
+                                <ul *ngFor="let gustos of misGustos" id="account-topics-subscribed-list" class="account-topics-list clearfix">
+                                    <li class="account-topics-item" data-topicid="1589" >
+                                        <div class="account-topics-name">{{gustos.nombreGusto}}</div>
+                                        <a (click)="quitarGusto(gustos.nombreGusto)" class="account-topics-remove"></a>
+                                    </li>
+                                    <!-- EJEMPLO:
+                                    <li class="account-topics-item" data-topicid="7203">
+                                        <div class="account-topics-name">Education &amp; Technology</div>
+                                        <a class="account-topics-remove"></a>
+                                    </li> -->
+                                </ul>
+                            </div>
+
+                            <div id="account-topics-subscribed" class="clearfix">
+                                <!-- <p id="account-topics-add-more">¡Añade intereses adicionales!para que te podamos recomendar los grupos de Meetup más adecuados para ti.</p> -->
+                                <p id="account-topics-add-more">¡Añade intereses adicionales!</p>
+                                <ul *ngFor="let gusto of gustos" id="account-topics-subscribed-list" class="account-topics-list clearfix">
+
+                                <li class="account-topics-item j-subscribe-to-topic" data-topicid="106688">
+                                    <!-- <span class="sprite spritebg add_icon"></span> -->
+                                    <!-- <span class="spritebg"></span> -->
+                                    <div class="account-topics-name"><span (click)="agregarGusto(gusto.nombreGusto)" class="spritebg"></span>{{gusto.nombreGusto}}</div>
+                                </li>
+
+                                <!-- EJEMPLO -->
+                                <!-- <li class="account-topics-item j-subscribe-to-topic" data-topicid="106688"> -->
+                                    <!-- <span class="sprite spritebg add_icon"></span> -->
+                                    <!-- <span class="spritebg"></span> -->
+                                    <!-- <div class="account-topics-name"><span (click)="texto()" class="spritebg"></span>Ministerio cristiano</div>
+                                </li> -->
+
+                                </ul>
+                            </div>
+
                     </div>
+
+                    <!-- Fin de la selección de gustos -->
 
                     <div class="btnChangeLikes d-flex justify-content-center">
                         <button type="submit" class="btn btn-primary btn-lg" (click)="postForm(editarForm.value)">Actualizar Información</button>

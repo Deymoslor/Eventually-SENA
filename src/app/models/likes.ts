@@ -1,11 +1,15 @@
 export interface LikesI {
     idGusto:number;
     nombreGusto:string;
-    estadoGusto:number;
-}
-export interface LikesIns {
-    nombreGusto:string;
+    // idtipoGusto:number;
+    // tipoGusto:string;
     estadoGusto:number;
 }
 
+export interface LikesPerson {
+    nombreGusto:[];
+}
 
+export interface IdPerson{
+    idPersona: number;
+}

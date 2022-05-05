@@ -30,3 +30,71 @@
     height: 2px;
     margin-top: 16px;
 }
+
+// Selección de gustos
+
+.account-topics-item {
+  float: left;
+  position: relative;
+  background: #f2f2f2;
+  padding: 4px 8px;
+  margin: 0 6px 6px 0;
+  width: 236px;
+  overflow: hidden;
+}
+
+.account-topics-remove {
+    position: absolute;
+    right: 6px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    background: url(../../../../assets/images/accountSettings/sprite_x.png) 0 0 no-repeat;
+      background-color: rgba(0, 0, 0, 0);
+      background-position-x: 0px;
+      background-position-y: 0px;
+      background-repeat: no-repeat;
+      background-attachment: scroll;
+      background-image: url("../../../../assets/images/accountSettings/sprite_x.png");
+      background-size: auto;
+      background-origin: padding-box;
+      background-clip: border-box;
+    display: none;
+}
+
+.account-topics-item:hover .account-topics-remove {
+    display: block;
+}
+
+a, a:active, a:hover, a:link, a:visited {
+cursor: hand;
+cursor: pointer;
+color: #1f24cc;
+text-decoration: none;
+    text-decoration-line: none;
+    text-decoration-style: solid;
+    text-decoration-color: currentcolor;
+    // text-decoration-thickness: auto;
+}
+
+.account-topics-name {
+    font-size: 13px;
+    width: 208px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.spritebg {
+    margin-right: 5px;
+    display: block;
+    width: 18px;
+    height: 18px;
+    float: left;
+    background: #ccc;
+    border-radius: 50%;
+}
+
+.account-topics-name:hover .spritebg {
+    background: #000
+}

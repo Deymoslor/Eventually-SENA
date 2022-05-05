@@ -87,7 +87,7 @@ export class LoginComponent implements OnInit {
     //Conectamos al servicio y llamamos el método loginByEmail pasandole por parámetro el formulario, luego lo subscribimos y creamos el arrow function con data.
     this.accountService.loginByEmail(form).subscribe(data=>{
       //Imprimimos por consola la respuesta que nos está trayendo el API.
-      // console.log(data);
+      console.log(data);
 
       //Creamos una variable a la que llevarle data.
       let dataResponse:ResponseI = data;
@@ -98,7 +98,7 @@ export class LoginComponent implements OnInit {
         //En caso de que la respuesta esté como ok, lo que hacemos es almacenar el id en el almacenamiento local para sacarlo en los diferentes métodos que lo necesitemos (En este caso para el user-settings.component).
         // localStorage.setItem("id",dataResponse.result.idPersona);
         // this.globalAccountConstants.id = dataResponse.result.idPersona;
-        localStorage.setItem("id",this.authService.encriptar(dataResponse.result.idPersona));
+        localStorage.setItem("id",this.authService.encriptar(dataResponse.result.id));
 
         //Almacenamos el token en el almacenamiento intero con localStorage.setItem que recibe por parámetro el nombre y el valor.
         localStorage.setItem("token",dataResponse.result.token);

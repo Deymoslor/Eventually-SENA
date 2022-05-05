@@ -1,16 +1,19 @@
-import { Component, OnInit  } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { updatePersonaI } from '../updatePersonaI';
 import { UpdateServiceService } from '../settingsService/update-service.service';
 import { Router } from '@angular/router';
 import { ForgotPasswordComponent } from '../../../login-register/forgot-password/forgot-password.component';
 import { updatePasswordPersonaI } from '../updatePasswrodPersonaI';
 import { AuthService } from 'src/app/core/service/auth.service';
+import { IdPerson, LikesI, LikesPerson } from 'src/app/models/likes';
+import { ApiService } from '../../../services/api.service';
+import { PersonaI } from 'src/app/dashboard/crud-users/modal-users/personaI.interface';
 
 @Component({
   selector: 'app-update-user-account',
   templateUrl: './update-user-account.component.html',
-  styleUrls: ['./update-user-account.component.scss']
+  styleUrls: ['./update-user-account.component.scss'],
 })
 export class UpdateUserAccountComponent implements OnInit {
 
@@ -18,12 +21,36 @@ export class UpdateUserAccountComponent implements OnInit {
 
     private updateServiceService: UpdateServiceService,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private ApiService: ApiService
 
   ) { }
 
   //Creamos una variable que será de tipo updatePersonaI para poder almacenar los datos traidos con la consulta. Para esto, además necesitamos un formGroup.
   datosPersona!:updatePersonaI;
+
+  //Creamos una variable que será de tipo any para almacenar lo traido, el id del gusto y poder hacer el eliminado.
+  datosGustoD!:any;
+
+  //Creamos una variable que será de tipo any para almacenar lo traido, el id del gusto y poder hacer la creación.
+  datosGustoC!:any;
+
+  //Creamos una variable que nos servirá para poder quitar con id específico el gusto de una persona.
+  datosGustoPersona!:any;
+
+  //Creamos variable formulario:
+  deleteLikeForm = new FormGroup({
+    //Aquí asignamos un elemento, email y password a un formControl que recibe 2 parámetros, el valor por defecto del campo y las validaciones que queramos.
+    idGusto : new FormControl('',Validators.required),
+    idPersona : new FormControl('',Validators.required)
+  });
+
+  //Creamos variable formulario:
+  createLikeForm = new FormGroup({
+    //Aquí asignamos un elemento, email y password a un formControl que recibe 2 parámetros, el valor por defecto del campo y las validaciones que queramos.
+    gustos_idGusto : new FormControl('',Validators.required),
+    Persona_idPersona : new FormControl('',Validators.required)
+  });
 
   //Creamos el FormGroup que nos sirve para poder tener el formulario con los campos correctos y en caso de necesitar validators.
   editarForm = new FormGroup({
@@ -43,7 +70,30 @@ export class UpdateUserAccountComponent implements OnInit {
     newPassword: new FormControl('')
   })
 
+  misGustos!:LikesPerson[];
+  listaMisGustos!:any;
+  gustos!:LikesI[];
+
   ngOnInit(): void {
+
+    //----------------------------Cosas del gusto.
+
+    this.updateServiceService.getAllLikes(this.authService.desencriptar(localStorage.getItem('id'))).subscribe(data =>{
+      this.gustos=data;
+      // console.log(this.gustos);
+    });
+
+    this.updateServiceService.getPersonLikes(this.authService.desencriptar(localStorage.getItem('id'))).subscribe(data =>{
+      this.misGustos=data;
+      // for (let i = 0; i < this.misGustos.length; i++) {
+      //   // const element = array[index];
+      //   this.listaMisGustos = i;
+      // }
+      // console.log(this.misGustos);
+    });
+
+
+    //----------------------------Cosas de la persona.
 
     let idPersona = this.authService.desencriptar(localStorage.getItem('id'));
     // console.log(idPersona);
@@ -74,7 +124,43 @@ export class UpdateUserAccountComponent implements OnInit {
       })
 
     });
+  }
 
+  agregarGusto(nombreGusto:any){
+    console.log('Click agregar');
+    this.updateServiceService.getLikeId(nombreGusto).subscribe((data:any) =>{
+      this.datosGustoC = data;
+      this.createLikeForm.setValue({
+        'gustos_idGusto' : this.datosGustoC[0].idGusto,
+        'Persona_idPersona' : this.authService.desencriptar(localStorage.getItem('id'))
+      });
+      // console.log(this.deleteLikeForm.value);
+      this.updateServiceService.createLikePerson(this.createLikeForm.value).subscribe(data =>{
+        // console.log(data)
+        window.location.reload();
+      });
+    });
+
+  }
+
+  quitarGusto(nombreGusto:any){
+    console.log('Click quitar');
+    this.updateServiceService.getLikeId(nombreGusto).subscribe((data:any) =>{
+      this.datosGustoD = data;
+      this.deleteLikeForm.setValue({
+        'idGusto' : this.datosGustoD[0].idGusto,
+        'idPersona' : this.authService.desencriptar(localStorage.getItem('id'))
+      });
+      // console.log(this.deleteLikeForm.value);
+      this.updateServiceService.deleteLikePerson(this.deleteLikeForm.value).subscribe(data =>{
+        // console.log(data)
+        window.location.reload();
+      });
+    });
+  }
+
+  texto(){
+    console.log("Test");
   }
 
   //Método que se ejecuta cuando se hace submit de formulario para enviar los datos editados.

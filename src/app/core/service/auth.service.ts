@@ -6,6 +6,7 @@ import { ROLES_ENUM } from 'src/app/constants/roles.enum';
 import { PersonaI } from 'src/app/dashboard/crud-users/modal-users/personaI.interface';
 import { IRol } from '../ui/IRol.interface';
 import * as CryptoJS from 'crypto-js';
+import { GlobalConstants } from 'src/app/global-constants';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +14,10 @@ import * as CryptoJS from 'crypto-js';
 export class AuthService {
 
   // public currentUser: BehaviorSubject<PersonaI>
+  public port = GlobalConstants.port;
 
   //Definimos ruta raíz de el API.
-  API:string='http://localhost/Api-Eventually-SENA/';
+  API:string='http://localhost:'+this.port+'/Api-Eventually-SENA/';
 
   //Cosa.
   public currentUser: BehaviorSubject<PersonaI>;

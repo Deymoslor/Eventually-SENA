@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { combineLatest, map, Observable } from 'rxjs';
+import { AuthService } from 'src/app/core/service/auth.service';
 import { Groups } from './groups';
 import { SeeGroupsService } from './see-groups.service';
-import { AuthService } from '../../../core/service/auth.service';
 
 @Component({
   selector: 'app-see-groups',

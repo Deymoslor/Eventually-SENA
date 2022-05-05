@@ -4,14 +4,17 @@ import { Observable } from 'rxjs';
 import { ResponseI } from '../models/response.interface';
 import { TypeServicesI } from '../models/typeServices.interface';
 import { ServiceI } from '../models/services.interface';
+import { GlobalConstants } from 'src/app/global-constants';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
+
+  port = GlobalConstants.port;
   
-  url:string="http://localhost/Api-Eventually-SENA/"
+  url:string="http://localhost"+this.port+"/Api-Eventually-SENA/"
 
   constructor(
     private http:HttpClient

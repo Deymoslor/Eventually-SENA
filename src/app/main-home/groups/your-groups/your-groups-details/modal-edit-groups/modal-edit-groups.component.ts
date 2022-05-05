@@ -13,7 +13,7 @@ import { YourGroupsService } from '../../your-groups.service';
 })
 export class ModalEditGroupsComponent implements OnInit {
 
-  @Input() childMessage!: number | undefined;
+  @Input() childMessage: number | undefined;
   likesI!: LikesI[];
 
   constructor(private activerouter:ActivatedRoute , private router:Router, private ApiGroup:YourGroupsService, private likes: ApiService) { }
@@ -24,8 +24,8 @@ export class ModalEditGroupsComponent implements OnInit {
     nombreGrupo: new FormControl(''),
     descripcionGrupo: new FormControl(''),
     privacidadGrupo: new FormControl(''),
-    InvitadosTotales: new FormControl(''),
-    EstadosGrupo_idEstadosGrupo1: new FormControl(''),
+    // InvitadosTotales: new FormControl(''),
+    // EstadosGrupo_idEstadosGrupo1: new FormControl(''),
     gustos_idGusto: new FormControl(''),
   })
 
