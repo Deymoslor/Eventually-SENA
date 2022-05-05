@@ -144,9 +144,10 @@ export class UpdateUserAccountComponent implements OnInit {
   }
 
   quitarGusto(nombreGusto:any){
-
-    this.updateServiceService.getLikeName(nombreGusto).subscribe((data:any) =>{
+    console.log('Click quitar');
+    this.updateServiceService.getLikeId(nombreGusto).subscribe((data:any) =>{
       this.datosGustoD = data;
+      this.deleteLikeForm.setValue({
         'idGusto' : this.datosGustoD[0].idGusto,
         'idPersona' : this.authService.desencriptar(localStorage.getItem('id'))
       });
@@ -156,8 +157,7 @@ export class UpdateUserAccountComponent implements OnInit {
         window.location.reload();
       });
     });
-
-
+  }
 
   texto(){
     console.log("Test");
