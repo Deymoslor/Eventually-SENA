@@ -10,6 +10,6 @@ export interface ListaProveedoresI{
 
     correoProveedor:string;
 
-    estado:string;
+    estado:number;
 
 }

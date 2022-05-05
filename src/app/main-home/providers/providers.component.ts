@@ -13,8 +13,6 @@ export class ProvidersComponent implements OnInit {
   constructor( private auth: AuthService) { }
 
   ngOnInit(): void {
-    let rolNom = localStorage.setItem('nombreRol',this.auth.encriptar("PROVEEDOR"));
-    let idProv = localStorage.setItem('id', this.auth.encriptar("1"));
   }
 
 }
