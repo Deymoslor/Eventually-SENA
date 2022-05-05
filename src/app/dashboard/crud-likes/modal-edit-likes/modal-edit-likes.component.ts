@@ -35,7 +35,7 @@ export class ModalEditLikesComponent implements OnInit {
 
   ngOnChanges(): void {
     // console.log(this.childMessage);
-    
+
     if(this.childMessage > 0){
       this.api.getSingleLikes(this.childMessage).subscribe((data:any)=>{
         this.likes = data[0];
@@ -45,7 +45,7 @@ export class ModalEditLikesComponent implements OnInit {
           'nombreGusto' : this.likes.nombreGusto,
           'estadoGusto' : this.likes.estadoGusto
         });
-        
+
         // this.editForm.setValue({
         //   'idGusto' : this.likes.,
         //   'nombreGusto' : this.likes?.nombreGusto,

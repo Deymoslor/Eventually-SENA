@@ -16,7 +16,7 @@ export class UpdateServiceService {
   public port = GlobalConstants.port;
 
   //Definimos ruta raíz de el API.
-  API:string='http://localhost:'+this.port+'/Api-Eventually-SENA/';
+  API:string='http://localhost'+this.port+'/Api-Eventually-SENA/';
 
   constructor(
     //Inyectamos el HttpClient.
@@ -61,12 +61,13 @@ export class UpdateServiceService {
   }
 
   deleteLikePerson(idGusto:number,idPersona:number):Observable<any[]>{
+    let x = [idGusto,idPersona];
     let dir=this.API + "likesProfile";
     let Options = {
       headers: new HttpHeaders({
         'Content-type': 'application/json'
       }),
-      body:idGusto,idPersona
+      body:x
     }
     return this.http.delete<any[]>(dir,Options);
   }

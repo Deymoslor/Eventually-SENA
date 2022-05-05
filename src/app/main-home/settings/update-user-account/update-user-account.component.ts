@@ -6,8 +6,9 @@ import { Router } from '@angular/router';
 import { ForgotPasswordComponent } from '../../../login-register/forgot-password/forgot-password.component';
 import { updatePasswordPersonaI } from '../updatePasswrodPersonaI';
 import { AuthService } from 'src/app/core/service/auth.service';
-import { LikesI, LikesPerson } from 'src/app/models/likes';
+import { IdPerson, LikesI, LikesPerson } from 'src/app/models/likes';
 import { ApiService } from '../../../services/api.service';
+import { PersonaI } from 'src/app/dashboard/crud-users/modal-users/personaI.interface';
 
 @Component({
   selector: 'app-update-user-account',
@@ -33,6 +34,8 @@ export class UpdateUserAccountComponent implements OnInit {
 
   //Creamos una variable que nos servirá para poder quitar con id específico el gusto de una persona.
   datosGustoPersona!:any;
+
+  idPersona!:IdPerson;
 
   //Creamos el FormGroup que nos sirve para poder tener el formulario con los campos correctos y en caso de necesitar validators.
   editarForm = new FormGroup({
@@ -116,9 +119,14 @@ export class UpdateUserAccountComponent implements OnInit {
 
     this.updateServiceService.getLikeName(nombreGusto).subscribe((data:any) =>{
       this.datosGusto = data;
-      this.updateServiceService.deleteLikePerson(this.datosGusto[0],this.authService.desencriptar(localStorage.getItem('id'))).subscribe((data:any) =>{
-        
+      this.authService.desencriptar(localStorage.getItem('id')).subscribe((data:any) =>{
+        // this.idPersona(data);
+        let x:any = ['idPersona',data];
+        // this.datosGustoPersona = data;
+        console.log(data);
+        this.updateServiceService.deleteLikePerson(this.datosGusto[0],x);
       })
+
     });
 
   }

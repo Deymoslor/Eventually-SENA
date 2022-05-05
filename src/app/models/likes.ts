@@ -9,3 +9,7 @@ export interface LikesI {
 export interface LikesPerson {
     nombreGusto:[];
 }
+
+export interface IdPerson{
+    idPersona: number;
+}
