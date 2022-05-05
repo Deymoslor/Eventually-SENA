@@ -6,6 +6,7 @@ export interface InvitationProvSerI {
     celular: string;
     idServicios: number;
     TipoServicio_idtipoServicio: number;
+    tipoServicio: string;
     nombreServicio: string;
     descripcionServicio: string;
     precioEstimado: string;

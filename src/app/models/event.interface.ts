@@ -7,4 +7,5 @@ export interface EventI{
     tipoEvento: string;
     participantesTotales: number;
     Grupos_idGrupos: number;
+    resultadoservicios_idresultadoServicio: number;
 }

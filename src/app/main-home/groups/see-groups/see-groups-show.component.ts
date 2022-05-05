@@ -6,6 +6,7 @@ import { updatePersonaI } from '../../settings/updatePersonaI';
 import { GroupPerson } from './GroupPerson';
 import { Groups } from './groups';
 import { SeeGroupsService } from "./see-groups.service";
+import { AuthService } from 'src/app/core/service/auth.service';
 
 @Component({
   selector: 'app-see-groups-show',
@@ -16,13 +17,14 @@ export class SeeGroupsShowComponent{
   @Input() group!: Groups;
   idPersona!:updatePersonaI;
   GroupPersonC!:GroupPerson;
-  idPersonas = localStorage.getItem('id');
+  idPersonas = this.auth.desencriptar(localStorage.getItem('id'));
 
   constructor(
     private SeeGroupsService: SeeGroupsService,
     private router: Router,
     private route: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private auth: AuthService
   ) { }
   // ngOnInit(): void {
   //   throw new Error('Method not implemented.');

@@ -6,21 +6,22 @@ import { PersonaI } from '../modal-users/personaI.interface';
 import { ResponseI } from 'src/app/login-register/login/models/response.intarface';
 import { GlobalConstants } from 'src/app/global-constants';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class userService {
 
-  port = GlobalConstants.port;
+  public port = GlobalConstants.port;
 
   //Definimos ruta raíz de el API.
-  API:string='http://localhost:'+this.port+'/Api-Eventually-SENA/';
+  API:string='http://localhost'+this.port+'/Api-Eventually-SENA/';
 
   //Definimos dentro del constructor el cliente http.
   constructor(
 
     //Inyectamos el HttpClient.
-    private http:HttpClient
+    private http:HttpClient,
 
   ) { }
 

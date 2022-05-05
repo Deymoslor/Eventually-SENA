@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { AuthService } from 'src/app/core/service/auth.service';
 
 
 @Component({
@@ -9,10 +10,11 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 export class ProvidersComponent implements OnInit {
 
   
-  constructor() { }
+  constructor( private auth: AuthService) { }
 
   ngOnInit(): void {
-    
+    let rolNom = localStorage.setItem('nombreRol',this.auth.encriptar("PROVEEDOR"));
+    let idProv = localStorage.setItem('id', this.auth.encriptar("1"));
   }
 
 }

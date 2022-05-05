@@ -3,6 +3,7 @@ import { ApiService } from '../services/api.service';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ServiceI } from '../models/service.interface';
+import { AuthService } from 'src/app/core/service/auth.service';
 
 @Component({
   selector: 'app-my-service',
@@ -30,11 +31,10 @@ export class MyServiceComponent implements OnInit {
     TipoServicio_idtipoServicio: new FormControl('')
   })
 
-  constructor(private api: ApiService, private router: Router) { }
+  constructor(private api: ApiService, private router: Router, private auth: AuthService) { }
 
   ngOnInit(): void {
-    this.idProvider =3;
-    this.api.getSingleServiceProvider(this.idProvider).subscribe((data:any) =>{
+    this.api.getSingleServiceProvider(this.auth.desencriptar(localStorage.getItem('id'))).subscribe((data:any) =>{
       if (data >= 0){
         this.router.navigateByUrl('provider/createService')
       }

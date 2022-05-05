@@ -3,17 +3,21 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Group } from '../see-groups/group';
 import { Groups } from '../see-groups/groups';
+import { GlobalConstants } from 'src/app/global-constants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class YourGroupsService {
-  API:string='http://localhost/Api-Eventually-SENA/';
+
+  port = GlobalConstants.port;
+  
+  API:string='http://localhost'+this.port+'/Api-Eventually-SENA/';
 
   constructor(private http:HttpClient) { }
 
-  getYourGroups(page:number):Observable<Groups[]>{
-    let direccion = this.API + "YourGroups?page=" + page;
+  getYourGroups(user:number):Observable<Groups[]>{
+    let direccion = this.API + "YourGroups?user=" + user;
 
     return this.http.get<Groups[]>(direccion);
   }
@@ -27,5 +31,10 @@ export class YourGroupsService {
     let direccion = this.API+"YourGroups";
 
     return this.http.post<Response>(direccion, form);
+  }
+
+  putGroup(form:Group):Observable<Response>{
+    let direccion = this.API + "YourGroups";
+    return this.http.put<Response>(direccion, form);
   }
 }

@@ -14,7 +14,7 @@ export class SupplierService {
   port = GlobalConstants.port;
 
   //Definimos ruta raíz de el API.
-  API:string='http://localhost:/'+this.port+'Api-Eventually-SENA/';
+  API:string='http://localhost'+this.port+'/Api-Eventually-SENA/';
 
   //Definimos dentro del constructor el cliente http.
   constructor(

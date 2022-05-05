@@ -3,12 +3,16 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Group } from '../see-groups/group';
 import { Groups } from '../see-groups/groups';
+import { GlobalConstants } from 'src/app/global-constants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RelatedGroupsService {
-  API:string='http://localhost/API-Eventually-SENA/';
+
+  port = GlobalConstants.port;
+  
+  API:string='http://localhost'+this.port+'/API-Eventually-SENA/';
   // readonly groups: Groups[] = [
   //   {
   //     idGrupos: 1,
@@ -26,8 +30,8 @@ export class RelatedGroupsService {
 
   constructor(private http:HttpClient) { }
 
-  getRelatedGroups(page:number):Observable<Groups[]>{
-    let direccion = this.API + "relatedGroups?page=" + page;
+  getRelatedGroups(user:number):Observable<Groups[]>{
+    let direccion = this.API + "relatedGroups?user=" + user;
 
     return this.http.get<Groups[]>(direccion);
   }

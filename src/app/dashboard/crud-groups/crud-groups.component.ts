@@ -67,7 +67,7 @@ export class CrudGroupsComponent implements OnInit {
       console.log("hola soy el num " + num);
       this.GroupsServiceService.getSingleGroup(id).subscribe((data:any) => {
         this.datosGrupo = data[0];
-        this.datosGrupo.EstadosGrupo_idEstadosGrupo1 = 2;
+        this.datosGrupo.EstadosGrupo_idEstadosGrupo1 = 1;
         this.GroupsServiceService.putGroup(this.datosGrupo).subscribe((data:any) =>{
           console.log("Entrando aquí");
         window.location.reload();
@@ -77,7 +77,7 @@ export class CrudGroupsComponent implements OnInit {
       console.log("hola soy el num " + num);
       this.GroupsServiceService.getSingleGroup(id).subscribe((data:any) => {
         this.datosGrupo = data[0];
-        this.datosGrupo.EstadosGrupo_idEstadosGrupo1 = 1;
+        this.datosGrupo.EstadosGrupo_idEstadosGrupo1 = 2;
         this.GroupsServiceService.putGroup(this.datosGrupo).subscribe((data:any) =>{
           console.log("Entrando aquí");
         window.location.reload();
@@ -91,7 +91,7 @@ export class CrudGroupsComponent implements OnInit {
       console.log("hola soy el num " + num);
       this.GroupsServiceService.getSingleGroup(id).subscribe((data:any) => {
         this.datosGrupo = data[0];
-        this.datosGrupo.privacidadGrupo = 2;
+        this.datosGrupo.privacidadGrupo = 1;
         this.GroupsServiceService.putGroup(this.datosGrupo).subscribe((data:any) =>{
           console.log("Entrando aquí");
         window.location.reload();
@@ -101,7 +101,7 @@ export class CrudGroupsComponent implements OnInit {
       console.log("hola soy el num " + num);
       this.GroupsServiceService.getSingleGroup(id).subscribe((data:any) => {
         this.datosGrupo = data[0];
-        this.datosGrupo.privacidadGrupo = 1;
+        this.datosGrupo.privacidadGrupo = 2;
         this.GroupsServiceService.putGroup(this.datosGrupo).subscribe((data:any) =>{
           console.log("Entrando aquí");
         window.location.reload();
@@ -109,5 +109,7 @@ export class CrudGroupsComponent implements OnInit {
       });
     }
   }
+
+  refresh(): void { window.location.reload(); }
 
 }

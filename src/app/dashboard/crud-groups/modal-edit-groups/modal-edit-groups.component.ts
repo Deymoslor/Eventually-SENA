@@ -3,6 +3,8 @@ import {Router, ActivatedRoute} from '@angular/router';
 import { Group } from "./group.interface";
 import { GroupsServiceService } from "../service/groups-service.service";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { ApiService } from 'src/app/services/api.service';
+import { LikesI } from 'src/app/models/likes';
 
 @Component({
   selector: 'app-modal-edit-groups',
@@ -12,8 +14,9 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 export class ModalEditGroupsComponent implements OnInit {
 
   @Input() childMessage!: number;
+  likesI!: LikesI[];
 
-  constructor(private activerouter:ActivatedRoute , private router:Router, private ApiGroup:GroupsServiceService) { }
+  constructor(private activerouter:ActivatedRoute , private router:Router, private ApiGroup:GroupsServiceService, private likes: ApiService) { }
 
   datesGroup!: Group;
   editForm = new FormGroup({
@@ -23,10 +26,16 @@ export class ModalEditGroupsComponent implements OnInit {
     privacidadGrupo: new FormControl(''),
     InvitadosTotales: new FormControl(''),
     EstadosGrupo_idEstadosGrupo1: new FormControl(''),
+    gustos_idGusto: new FormControl(''),
   })
 
   ngOnInit(): void {
     // this.activerouter.snapshot.paramMap.get('id')
+    this.likes.getAllLikes(1).subscribe(data=>{
+      console.log(data);
+
+      this.likesI = data;
+    })
   }
 
   ngOnChanges(): void {
@@ -40,8 +49,10 @@ export class ModalEditGroupsComponent implements OnInit {
           'descripcionGrupo': this.datesGroup.descripcionGrupo,
           'privacidadGrupo': this.datesGroup.privacidadGrupo,
           'InvitadosTotales': this.datesGroup.InvitadosTotales,
-          'EstadosGrupo_idEstadosGrupo1': this.datesGroup.EstadosGrupo_idEstadosGrupo1
+          'EstadosGrupo_idEstadosGrupo1': this.datesGroup.EstadosGrupo_idEstadosGrupo1,
+          'gustos_idGusto': this.datesGroup.gustos_idGusto
         });
+        console.log(this.editForm.get('idGrupos')?.value);
       });
     };
   }
@@ -54,28 +65,4 @@ export class ModalEditGroupsComponent implements OnInit {
     })
   }
   refresh(): void { window.location.reload(); }
-
-  switchStateGroup(num: number){
-    if (num != 1) {
-      console.log("hola soy el num " + num);
-      this.editForm.setValue({
-        'idGrupos': this.datesGroup.idGrupos,
-        'nombreGrupo': this.datesGroup.nombreGrupo,
-        'descripcionGrupo': this.datesGroup.descripcionGrupo,
-        'privacidadGrupo': this.datesGroup.privacidadGrupo,
-        'InvitadosTotales': this.datesGroup.InvitadosTotales,
-        'EstadosGrupo_idEstadosGrupo1': 1
-      })
-    } else if (num == 1) {
-      console.log("hola soy el num " + num);
-      this.editForm.setValue({
-        'idGrupos': this.datesGroup.idGrupos,
-        'nombreGrupo': this.datesGroup.nombreGrupo,
-        'descripcionGrupo': this.datesGroup.descripcionGrupo,
-        'privacidadGrupo': this.datesGroup.privacidadGrupo,
-        'InvitadosTotales': this.datesGroup.InvitadosTotales,
-        'EstadosGrupo_idEstadosGrupo1': 2
-      })
-    }
-  }
 }

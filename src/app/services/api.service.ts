@@ -11,7 +11,7 @@ import { GlobalConstants } from '../global-constants';
 })
 export class ApiService {
 
-  public port = GlobalConstants.port;
+  port = GlobalConstants.port;
 
   postLike(form:LikesI):Observable<ResponseI>{
     let dir = this.url+"likes";
