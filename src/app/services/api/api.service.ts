@@ -9,6 +9,8 @@ import { HttpClient } from '@angular/common/http';
 import { LikesI } from 'src/app/models/likes';
 import { ResultServiceI } from '../../models/result-service.interface';
 import { GlobalConstants } from 'src/app/global-constants';
+import { DetailGroupPesonI } from 'src/app/models/detail-group-peson.interface';
+import { ParticipantsEventsI } from '../../models/participants-events.interface';
 
 
 @Injectable({
@@ -22,8 +24,8 @@ export class ApiService {
 
   constructor(private http:HttpClient) { }
 
-  postEvent(form:EventI):Observable<ResponseI>{
-    let dir = this.url+"eventos";
+  postEvent(form:EventI,idPerson: number, idGrupoP: number):Observable<ResponseI>{
+    let dir = this.url+"eventos?idPersonaP=" + idPerson + "&idGrupoP=" + idGrupoP;
     return this.http.post<ResponseI>(dir, form);
   }
 
@@ -62,6 +64,18 @@ export class ApiService {
   postResultEvent(form: ResultServiceI):Observable<ResponseI>{
     let dir = this.url + "eventos?result";
     return this.http.post<ResponseI>(dir, form);
+  }
+
+  //INFO person event group.
+  getStatePersonGroup(idEvento: number, idGrupo: number):Observable<DetailGroupPesonI>{
+    let dir = this.url + "eventos?idPerson=" + idEvento + "&idGrupo=" + idGrupo
+    return this.http.get<DetailGroupPesonI>(dir);
+  }
+
+  //INFO person Event
+  getPersonExistEvent(idPerson: number, idEvent: number):Observable<ParticipantsEventsI>{
+    let dir = this.url + "eventos?idPersonE=" + idPerson + "&idEventE=" + idEvent
+    return this.http.get<ParticipantsEventsI>(dir);
   }
 
 }
