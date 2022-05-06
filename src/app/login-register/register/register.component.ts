@@ -5,6 +5,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { accountService } from '../service/accountService.service';
 import { Router } from '@angular/router';
 import { registerI } from './register.interface';
+import { parse } from 'cookie';
 
 @Component({
   selector: 'app-register',
@@ -45,10 +46,33 @@ export class RegisterComponent implements OnInit {
   postForm(form:registerI){
     //Log para revisar los datos del formulario.
     // console.log(form);
-    this.service.postUser(form).subscribe(data =>{
-      // console.log(data);
-      this.router.navigate(['/loginRegister']);
-    });
+    let dateU = form.fechaNacimiento;
+
+    let yearU = parseInt(dateU.substring(0,4));
+    let monthU = parseInt(dateU.substring(5,6));
+    console.log('Año Usuario: ' + yearU);
+    console.log('Mes usuario: ' + monthU);
+
+    let date = new Date();
+    let yearS = date.getFullYear();
+    let monthS = date.getMonth();
+    console.log('Año sistema: ' + yearS);
+    console.log('Mes sistema: ' + monthS);
+    
+    
+    let x = false;
+    if ((yearS - yearU) > 18 && (monthS == monthU)) {
+      console.log('Mayor de 18');
+    }
+    
+    
+
+    if (x) {
+      this.service.postUser(form).subscribe(data =>{
+        // console.log(data);
+        this.router.navigate(['/loginRegister']);
+      });
+    }
   }
 
 }
