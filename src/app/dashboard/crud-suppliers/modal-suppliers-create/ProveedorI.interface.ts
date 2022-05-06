@@ -7,5 +7,5 @@ export interface ProveedorI{
     codigoAcceso:string;
     fechaNacimiento:string;
     celular:string;
-    estado:string;
+    estado:number;
 }

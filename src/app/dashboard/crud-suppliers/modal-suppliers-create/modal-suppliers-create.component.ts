@@ -21,8 +21,6 @@ export class ModalSuppliersCreateComponent implements OnInit {
 
   constructor(
 
-    private calendar:NgbCalendar,
-    private activerouter: ActivatedRoute,
     private router: Router,
     private supplierService: SupplierService
 

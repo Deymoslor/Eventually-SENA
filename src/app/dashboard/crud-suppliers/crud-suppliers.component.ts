@@ -6,28 +6,6 @@ import { ProveedorI } from './modal-suppliers-create/ProveedorI.interface';
 import { ListaProveedoresI } from './ListaProveedoresI.interface';
 import { SupplierService } from './service/supplier.service';
 import { Router } from '@angular/router';
-
-
-// //Interfaz para definir los datos de la table.
-// export interface PeriodicElement {
-//   position: number;
-//   firstName: string;
-//   lastName: string;
-//   email: string;
-//   state: string;
-//   actions: null;
-// }
-
-// //Toda la información que tendrá la tabla
-// const ELEMENT_DATA: PeriodicElement[] = [
-//   {position: 1, firstName: 'Jordan', lastName: 'Flórez', email: 'jordan@gmail.com', state: '', actions:null},
-//   {position: 2, firstName: 'Dylan', lastName: 'Murillo', email: 'Dylan@gmail.com', state: '', actions:null},
-//   {position: 3, firstName: 'Oscar', lastName: 'Rolón', email: 'Oscar@gmail.com', state: '', actions:null},
-//   {position: 4, firstName: 'Santiago', lastName: 'Usuga', email: 'Santiago@gmail.com', state: '', actions:null},
-//   {position: 5, firstName: 'Juan', lastName: 'Zapata', email: 'Juan@gmail.com', state: '', actions:null},
-//   {position: 6, firstName: 'Miguel', lastName: 'Soto', email: 'Miguel@gmail.com', state: '', actions:null},
-// ];
-
 @Component({
   selector: 'app-crud-suppliers',
   templateUrl: './crud-suppliers.component.html',
@@ -84,7 +62,7 @@ export class CrudSuppliersComponent implements OnInit {
     //Obtenemos todos los pacientes.
     this.SupplierService.getAllSuppliers(1).subscribe(data=>{
       //recibimos por consola los datso que nos esté trayendo.
-      // console.log(data);
+      
 
       //Llamamos a la variable que creamos arriba para asignarle los datos que hay en la variable data.
       this.proveedores = data;
@@ -109,9 +87,9 @@ export class CrudSuppliersComponent implements OnInit {
 
   }
 
-  cambioEstado(estado:string,id:number){
-
-    if (estado === "Activo") {
+  cambioEstado(estado:number,id:number){
+    console.log(estado)
+    if (estado == 1) {
 
       //Llamamos al servicio para solicitar una sola persona y poder editar el estado sin cambiar el resto de datos de la cuenta.
       this.SupplierService.getSingleSupplier(id).subscribe((data:any) =>{
@@ -119,14 +97,14 @@ export class CrudSuppliersComponent implements OnInit {
       //asignamos el valor que venga desde la API a una variable para poder recorrerla.
       this.datosProveedor = data[0];
 
-      this.datosProveedor.estado="Inactivo";
+      this.datosProveedor.estado= 2;
 
       let token = localStorage.getItem('token');
 
       this.datosProveedor.token = token;
 
       this.SupplierService.putSupplier(this.datosProveedor).subscribe((data:any) =>{
-
+        // console.log(data);
         window.location.reload();
 
       });
@@ -142,14 +120,14 @@ export class CrudSuppliersComponent implements OnInit {
         //asignamos el valor que venga desde la API a una variable para poder recorrerla.
         this.datosProveedor = data[0];
 
-        this.datosProveedor.estado="Activo";
+        this.datosProveedor.estado= 1;
 
         let token = localStorage.getItem('token');
 
         this.datosProveedor.token = token;
-
+        console.log(this.datosProveedor)
         this.SupplierService.putSupplier(this.datosProveedor).subscribe((data:any) =>{
-
+          // console.log(data)
           window.location.reload();
 
         });
