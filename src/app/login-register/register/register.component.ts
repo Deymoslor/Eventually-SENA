@@ -49,7 +49,7 @@ export class RegisterComponent implements OnInit {
     //Log para revisar los datos del formulario.
     // console.log(form);
     let dateU = form.fechaNacimiento;
-    // console.log('fecha usuario: ' + dateU);
+    console.log('fecha usuario: ' + dateU);
     
 
     let yearU = parseInt(dateU.substring(0,4));
@@ -62,23 +62,31 @@ export class RegisterComponent implements OnInit {
     let monthS = date.getMonth();
     // console.log('Año sistema: ' + yearS);
     // console.log('Mes sistema: ' + monthS);
-    
-    let x = false;
+
     if ((yearS - yearU) >= 14 && (monthS <= monthU)) {
-      this.lawValidator = true;
-      if (this.lawValidator) {
-        this.service.postUser(form).subscribe(data =>{
-          // console.log(data);
-          this.router.navigate(['/loginRegister']);
-        });
+      console.log('entrando aquí');
+      // this.lawValidator = true;
+      // lawValidatorFunc();
+      if ((yearS - yearU) >= 14 && (monthS <= monthU)) {
+        this.lawValidator = true;
+      }else{
+        this.lawValidator = false;
       }
-    }else{
-      this.lawValidator = false;
+      console.log(this.lawValidator);
+      
+      // if (this.lawValidator) {
+        // this.service.postUser(form).subscribe(data =>{
+        //   // console.log(data);
+        //   this.router.navigate(['/loginRegister']);
+        // });
+      // }
     }
   }
 
-  // lawValidator(){
-
+  // lawValidatorFunc(yearS:number,yearU:number,monthS:number,monthU:number){
+  //   if ((yearS - yearU) >= 14 && (monthS <= monthU)) {
+  //     this.lawValidator = true;
+  //   }
   // }
 
 }
