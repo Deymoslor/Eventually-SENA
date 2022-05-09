@@ -17,6 +17,7 @@ export class EventInComponent implements OnInit {
   @Input() idGroup;
   stateGroupPerson!:number;
   idEventExist!: number;
+  existPerson!: number;
 
   dataEvent!: EventI;
   eventGroupForm = new FormGroup({
@@ -87,11 +88,13 @@ export class EventInComponent implements OnInit {
 
         this.api.getPersonExistEvent(this.auth.desencriptar(localStorage.getItem('id')), this.idEventExist).subscribe(data => {
           console.log(data);
+
           if(data){
-            console.log("Si hay persona ingresada");
+            this.existPerson = 1;
           }else{
-            console.log("No hay persona ingresada");
+            this.existPerson = 2;
           }
+          console.log(this.existPerson );
         })
 
       }
