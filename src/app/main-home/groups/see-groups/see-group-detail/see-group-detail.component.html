@@ -3,18 +3,14 @@
   <div class="container">
     <br>
       <div class="img-container">
-        <img
-
-          class="img-fluid"
-          alt="{{ group?.nombreGrupo }}"
-        />
+        <img class="rounded card-img-top" src="../../../../../assets/group/prueba.jfif" alt="{{ group?.nombreGrupo }}">
       </div>
       <div class="info">
         <p class="product-name h2">{{ group?.nombreGrupo }}</p>
         <p class="product-short-description h5">{{ group?.descripcionGrupo }}</p>
         <div class="cart-row">
           <span class="price">{{ group?.invitadosTotales }} PARTICIPANTES</span>
-          <button class="btn btn-primary" title="Solicitar Unirse"> Solicitar Unirse
+          <button class="btn btn-primary" title="Solicitar Unirse" (click)="share()">Unirse
           </button>
         </div>
       </div>
