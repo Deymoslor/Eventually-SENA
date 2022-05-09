@@ -1,73 +1,75 @@
-@import '../app.component.scss';
-body .container {
-    max-width: 100vw;
-    width: 100%;
-    height: 4.5rem;
-    margin-top: 0;
-    padding-top: 5rem;
-}
-
-.containerDash {
-    padding: 1rem;
-    padding-right: 1rem;
-    width: 100%;
-    border: 1px solid red;
-}
-
-
-/*Content*/
-
-.dashboard-container-content {
-    background: lightgoldenrodyellow;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    margin: 10px 20px;
-    height: auto;
-    position: relative;
-    z-index: 1;
-    @media screen and (max-width: 768px) {
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+    @import '../app.component.scss';
+    body .container {
+        max-width: 100vw;
+        width: 100%;
+        height: auto;
+        margin-top: 0;
+        margin-left: 0;
+        padding-top: 5rem;
     }
-}
-
-.principalContainer {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    margin-top: 5%;
-    width: 150vh;
-    background-color: #0389c9;
-}
-
-
-/*aside bar*/
-
-.content-asidebar .content {
-    background-color: #0389c9;
-    height: 35vw;
-    width: 16vw;
-    margin-right: 10px;
-}
-
-.content-asidebar {
-    display: block;
-    margin-top: 5%;
-}
-
-
-/*footer*/
-
-footer {
-    display: block;
-    margin-top: 5%;
-}
-
-footer .content {
-    background-color: #0389c9;
-    height: 60px;
-    max-width: 100vw;
-    width: 100%;
-}
+    
+    .r {
+        padding: 0;
+        margin: 0;
+    }
+    
+    .containerDash {
+        width: 90%;
+        border: 1px solid red;
+    }
+    
+    .leftMenu {
+        max-width: 50vw;
+        border: 1px solid red;
+        // width: 10%;
+        width: 7rem;
+        margin-left: 0;
+        padding-left: 0;
+    }
+    /*Content*/
+    
+    .dashboard-container-content {
+        align-items: flex-start;
+        justify-content: space-between;
+        height: auto;
+        @media screen and (max-width: 768px) {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+    
+    .principalContainer {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin-top: 5%;
+        width: 150vh;
+        background-color: #0389c9;
+    }
+    /*aside bar*/
+    
+    .content-asidebar .content {
+        background-color: #0389c9;
+        height: 35vw;
+        width: 16vw;
+        margin-right: 10px;
+    }
+    
+    .content-asidebar {
+        display: block;
+        margin-top: 5%;
+    }
+    /*footer*/
+    
+    footer {
+        display: block;
+        margin-top: 5%;
+    }
+    
+    footer .content {
+        background-color: #0389c9;
+        height: 60px;
+        max-width: 100vw;
+        width: 100%;
+    }

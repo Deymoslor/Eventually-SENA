@@ -20,6 +20,7 @@ import { CrudSuppliersComponent } from './crud-suppliers/crud-suppliers.componen
 import { ModalSuppliersCreateComponent } from './crud-suppliers/modal-suppliers-create/modal-suppliers-create.component';
 import { ModalSuppliersEditComponent } from './crud-suppliers/modal-suppliers-edit/modal-suppliers-edit.component';
 import { ModalReportsComponent } from './crud-reports/modal-reports/modal-reports.component';
+import { DataTablesModule } from "angular-datatables";
 import { CrudReportsComponent } from './crud-reports/crud-reports.component';
 import { ModalGroupsComponent } from './crud-groups/modal-groups/modal-groups.component';
 import { CrudGroupsComponent } from './crud-groups/crud-groups.component';
@@ -77,7 +78,8 @@ import { UserReportComponent } from './crud-reports/typeReport/user-report/user-
     MatPaginatorModule,
     MenuModule,
     ReactiveFormsModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    DataTablesModule
   ]
 })
 export class DashboardModule { }
