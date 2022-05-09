@@ -30,3 +30,24 @@
     height: 2px;
     margin-top: 16px;
 }
+
+//Muestra de grupos.
+
+.account-topics-item {
+    float: left;
+    position: relative;
+    background: #f2f2f2;
+    padding: 4px 8px;
+    margin: 0 6px 6px 0;
+    width: 236px;
+    overflow: hidden;
+}
+
+.account-topics-name {
+    font-size: 13px;
+    width: 208px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+  

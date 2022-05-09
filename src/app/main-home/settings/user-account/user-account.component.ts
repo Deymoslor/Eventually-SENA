@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { AuthService } from 'src/app/core/service/auth.service';
 import { UpdateServiceService } from '../settingsService/update-service.service';
 import { updatePersonaI } from '../updatePersonaI';
+import { LikesPerson } from 'src/app/models/likes';
 
 @Component({
   selector: 'app-user-account',
@@ -10,6 +11,8 @@ import { updatePersonaI } from '../updatePersonaI';
   styleUrls: ['./user-account.component.scss']
 })
 export class UserAccountComponent implements OnInit {
+
+  misGustos!:LikesPerson[];
 
   constructor(
 
@@ -32,6 +35,14 @@ export class UserAccountComponent implements OnInit {
   });
 
   ngOnInit(): void {
+
+    // Inicio de cosas del gusto
+
+    this.updateServiceService.getPersonLikes(this.authService.desencriptar(localStorage.getItem('id'))).subscribe(data =>{
+      this.misGustos=data;
+    });
+    
+    // Fin de cosas del gusto
 
     let idPersona = this.authService.desencriptar(localStorage.getItem('id'));
     // console.log(idPersona);
