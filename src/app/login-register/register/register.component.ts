@@ -14,6 +14,8 @@ import { parse } from 'cookie';
 })
 export class RegisterComponent implements OnInit {
 
+  public lawValidator: boolean = false;
+
   nuevoForm = new FormGroup({
     nombre: new FormControl(''),
     apellidos: new FormControl(''),
@@ -47,32 +49,36 @@ export class RegisterComponent implements OnInit {
     //Log para revisar los datos del formulario.
     // console.log(form);
     let dateU = form.fechaNacimiento;
+    // console.log('fecha usuario: ' + dateU);
+    
 
     let yearU = parseInt(dateU.substring(0,4));
-    let monthU = parseInt(dateU.substring(5,6));
-    console.log('Año Usuario: ' + yearU);
-    console.log('Mes usuario: ' + monthU);
+    let monthU = parseInt(dateU.substring(5,7));
+    // console.log('Año Usuario: ' + yearU);
+    // console.log('Mes Usuario: ' + monthU);
 
     let date = new Date();
     let yearS = date.getFullYear();
     let monthS = date.getMonth();
-    console.log('Año sistema: ' + yearS);
-    console.log('Mes sistema: ' + monthS);
-    
+    // console.log('Año sistema: ' + yearS);
+    // console.log('Mes sistema: ' + monthS);
     
     let x = false;
-    if ((yearS - yearU) > 18 && (monthS == monthU)) {
-      console.log('Mayor de 18');
-    }
-    
-    
-
-    if (x) {
-      this.service.postUser(form).subscribe(data =>{
-        // console.log(data);
-        this.router.navigate(['/loginRegister']);
-      });
+    if ((yearS - yearU) >= 14 && (monthS <= monthU)) {
+      this.lawValidator = true;
+      if (this.lawValidator) {
+        this.service.postUser(form).subscribe(data =>{
+          // console.log(data);
+          this.router.navigate(['/loginRegister']);
+        });
+      }
+    }else{
+      this.lawValidator = false;
     }
   }
+
+  // lawValidator(){
+
+  // }
 
 }

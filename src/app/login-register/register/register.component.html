@@ -38,6 +38,15 @@
                 <input type="text" name="" id="password" required formControlName="Celular" placeholder="Introduce tu numero de teléfono"><span class="barra"></span>
                 <label for="">Número de teléfono celular</label>
             </div>
+            <div class="grupo">
+                <input placeholder="Acepto terminos ley tratamiento de datos"><span class="barra"></span>
+                <label for="">Ley de datos</label>
+            </div>
+            
+            <div class="grupo"  *ngIf="this.lawValidator">
+                <input placeholder="Acepto terminos ley tratamiento de datos menores"><span class="barra"></span>
+                <label for="">Ley de menores</label>
+            </div>
 
             <!-- <button (click)="sendData()">Registrarse</button> -->
             <button class="btnRegistro">Registrarse</button>
