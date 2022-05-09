@@ -5,6 +5,7 @@ import { ApiService } from 'src/app/services/api/api.service';
 import { FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { AuthService } from 'src/app/core/service/auth.service';
 
 @Component({
   selector: 'app-event-in',
@@ -14,6 +15,8 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 export class EventInComponent implements OnInit {
 
   @Input() idGroup;
+  stateGroupPerson!:number;
+  idEventExist!: number;
 
   dataEvent!: EventI;
   eventGroupForm = new FormGroup({
@@ -27,7 +30,8 @@ export class EventInComponent implements OnInit {
     estadoEvento: new FormControl('')
   })
 
-  constructor(private api:ApiService, private router:Router, private modalService: NgbModal, private route: ActivatedRoute, private fb: FormBuilder,) { }
+  constructor(private api:ApiService, private router:Router, private modalService: NgbModal,
+     private route: ActivatedRoute, private fb: FormBuilder, private auth: AuthService) { }
   closeResult = '';
 
   createEventForm = new FormGroup({
@@ -35,6 +39,11 @@ export class EventInComponent implements OnInit {
   });
 
   ngOnInit(): void {
+    this.idGroup = this.route.snapshot.paramMap.get('id');
+    this.api.getStatePersonGroup(this.auth.desencriptar(localStorage.getItem("id")), this.idGroup).subscribe((data) =>{
+      console.log(data[0]);
+      this.stateGroupPerson = data[0].estadoPersona_idEstadoPersona;
+    })
 
     this.createEventForm = this.fb.group({
       nombreEvento: ['', [Validators.required, Validators.minLength(2)]],
@@ -50,10 +59,9 @@ export class EventInComponent implements OnInit {
 
     let idGrupos = this.route.snapshot.paramMap.get('id');
     this.api.getSigleEventGroup(Number(idGrupos)).subscribe((data: any) =>{
-
       this.dataEvent =data[0];
+      
       if(this.dataEvent == null){
-
         this.eventGroupForm.setValue({
           'idEvento': '1',
           'nombreEvento': '',
@@ -65,19 +73,32 @@ export class EventInComponent implements OnInit {
           'estadoEvento': '3',
         })
       }else{
+        this.idEventExist = this.dataEvent.idEvento;
+        this.eventGroupForm.setValue({
+          'idEvento': this.dataEvent.idEvento,
+          'nombreEvento': this.dataEvent.nombreEvento,
+          'descripcionEvento': this.dataEvent.descripcionEvento,
+          'fechaEvento': this.dataEvent.fechaEvento,
+          'tipoEvento': this.dataEvent.tipoEvento,
+          'participantesTotales': this.dataEvent.participantesTotales,
+          'Grupos_idGrupos': this.dataEvent.Grupos_idGrupos,
+          'estadoEvento': this.dataEvent.estadoEvento
+        })
 
-       this.eventGroupForm.setValue({
-         'idEvento': this.dataEvent.idEvento,
-         'nombreEvento': this.dataEvent.nombreEvento,
-         'descripcionEvento': this.dataEvent.descripcionEvento,
-         'fechaEvento': this.dataEvent.fechaEvento,
-         'tipoEvento': this.dataEvent.tipoEvento,
-         'participantesTotales': this.dataEvent.participantesTotales,
-         'Grupos_idGrupos': this.dataEvent.Grupos_idGrupos,
-         'estadoEvento': this.dataEvent.estadoEvento
-       })
+        this.api.getPersonExistEvent(this.auth.desencriptar(localStorage.getItem('id')), this.idEventExist).subscribe(data => {
+          console.log(data);
+          if(data){
+            console.log("Si hay persona ingresada");
+          }else{
+            console.log("No hay persona ingresada");
+          }
+        })
+
       }
      });
+
+
+
   }
 
   editEvent(idE:number ){
@@ -126,7 +147,7 @@ export class EventInComponent implements OnInit {
     console.log(form);
     let idGrupos = this.route.snapshot.paramMap.get('id');
     form.Grupos_idGrupos = Number(idGrupos);
-    this.api.postEvent(form).subscribe( data => {
+    this.api.postEvent(form, this.auth.desencriptar(localStorage.getItem('id')), form.Grupos_idGrupos).subscribe( data => {
       console.log(data);
     })
     this.createEventForm.reset();

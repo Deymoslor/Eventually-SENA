@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { share } from 'rxjs';
 import { ApiService } from 'src/app/services/api/api.service';
 import { EventI } from 'src/app/models/event.interface';
-import { Groups} from '../../see-groups/groups';
+import { Group } from '../../see-groups/group';
 import { RelatedGroupsService } from "../related-groups.service";
 
 @Component({
@@ -12,7 +12,7 @@ import { RelatedGroupsService } from "../related-groups.service";
   styleUrls: ['./related-groups-details.component.scss']
 })
 export class RelatedGroupsDetailsComponent implements OnInit {
-  group!: Groups | null;
+  group!: Group;
   event!: EventI | null;
   constructor(
     private RelatedGroupsService: RelatedGroupsService,
@@ -37,7 +37,11 @@ export class RelatedGroupsDetailsComponent implements OnInit {
 
     this.EventService.getSigleEventGroup(Number(idGrupos)).subscribe((data: any) => {
       console.log(data);
-      this.group = data[0];
+      // this.group = data[0];
     })
+
+    if (this.group === null) {
+      this.router.navigate(['group']);
+    }
   }
 }
