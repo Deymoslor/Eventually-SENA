@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 //Form groups import.
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 //Accout Service import.
 import { accountService } from '../service/accountService.service';
 import { Router } from '@angular/router';
@@ -16,23 +16,32 @@ export class RegisterComponent implements OnInit {
 
   public lawValidator: boolean = false;
 
-  nuevoForm = new FormGroup({
-    nombre: new FormControl(''),
-    apellidos: new FormControl(''),
-    documento: new FormControl(''),
-    fechaNacimiento: new FormControl(''),
-    Email: new FormControl(''),
-    password: new FormControl(''),
-    Celular: new FormControl(''),
-    ciudad: new FormControl(''),
-  });
+  nuevoForm: FormGroup;
 
   constructor(
     private service:accountService,
-    private router:Router
-    ) {}
+    private router:Router,
+    private formBuilder:FormBuilder,
+    ) {
+
+      this.nuevoForm = this.formBuilder.group({
+        nombre: ['', Validators.required],
+        apellidos: new FormControl('',Validators.required),
+        documento: new FormControl('',Validators.required),
+        fechaNacimiento: new FormControl('',Validators.required),
+        Email: new FormControl('',Validators.required),
+        password: new FormControl('',Validators.required),
+        Celular: new FormControl('',Validators.required),
+        ciudad: new FormControl('',Validators.required),
+        check: new FormControl ('', Validators.required),
+      })
+
+    }
 
   ngOnInit(): void {
+
+    ;
+
   }
 
   //Creamos método para enviar datos del furmulario a la API.

@@ -3,59 +3,66 @@
         <div class="form">
             <h1>Registro</h1>
             <!-- <div class="grupo">
-                <input type="text" name="" id="name" required><span class="barra"></span>
+                <input type="text" name="" id="name" ><span class="barra"></span>
                 <label for="">Nombre</label>
             </div> -->
             <div class="grupo">
-                <input type="text" name="" id="email" required formControlName="nombre" placeholder="Introduce tu nombre"><span class="barra"></span>
+                <input type="text" name="" id="email"  formControlName="nombre" placeholder="Introduce tu nombre"><span class="barra"></span>
                 <label for="">Nombre</label>
             </div>
+            {{nuevoForm.get("nombre").errors | json}}
+            <!-- <div *ngIf="nuevoForm.nombre.errors.required">
+                    Name is required.
+            </div> -->
             <div class="grupo">
-                <input type="text" name="" id="email" required formControlName="apellidos" placeholder="Introduce tus apellidos"><span class="barra"></span>
+                <input type="text" name="" id="email"  formControlName="apellidos" placeholder="Introduce tus apellidos"><span class="barra"></span>
                 <label for="">Apellidos</label>
             </div>
             <div class="grupo">
-                <input type="text" name="" id="password" required formControlName="documento" placeholder="Introduce tu documento"><span class="barra"></span>
+                <input type="text" name="" id="password"  formControlName="documento" placeholder="Introduce tu documento"><span class="barra"></span>
                 <label for="">Documento</label>
             </div>
             <div class="grupo">
-                <input type="date" name="" id="password" required formControlName="fechaNacimiento" placeholder="Introduce tu fecha de nacimiento"><span class="barra"></span>
+                <input type="date" name="" id="password"  formControlName="fechaNacimiento" placeholder="Introduce tu fecha de nacimiento"><span class="barra"></span>
                 <label for="">Fecha de Nacimiento</label>
             </div>
             <div class="grupo">
-                <input class="email" type="email" name="" id="password" required formControlName="Email" placeholder="Introduce tu email"><span class="barra"></span>
+                <input class="email" type="email" name="" id="password"  formControlName="Email" placeholder="Introduce tu email"><span class="barra"></span>
                 <label for="">Email</label>
             </div>
             <div class="grupo">
-                <input type="password" name="" id="password" required formControlName="password" placeholder="Introduce tu Contraseña"><span class="barra"></span>
+                <input type="password" name="" id="password"  formControlName="password" placeholder="Introduce tu Contraseña"><span class="barra"></span>
                 <label for="">Contraseña</label>
             </div>
             <div class="grupo">
-                <input type="text" name="" id="password" required formControlName="ciudad" placeholder="Introduce tu ciudad"><span class="barra"></span>
+                <input type="text" name="" id="password"  formControlName="ciudad" placeholder="Introduce tu ciudad"><span class="barra"></span>
                 <label for="">Ciudad</label>
             </div>
             <div class="grupo">
-                <input type="text" name="" id="password" required formControlName="Celular" placeholder="Introduce tu numero de teléfono"><span class="barra"></span>
+                <input type="text" name="" id="password"  formControlName="Celular" placeholder="Introduce tu numero de teléfono"><span class="barra"></span>
                 <label for="">Número de teléfono celular</label>
             </div>
             <div class="grupo">
-                <input type="text" name="" id="password" required formControlName="Celular" placeholder="Introduce tu numero de teléfono"><span class="barra"></span>
-                <label for="">Número de teléfono celular</label>
-                <!-- <div class="col-12">
+                <!-- <input type="checkbox" name="" id="password"  formControlName="Celular" placeholder="Introduce tu numero de teléfono"><span class="barra"></span>
+                <label for="">Número de teléfono celular</label> -->
+                
+                <div class="col-12">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" [ngClass]="nuevoForm.get('check')?.hasError('required') ? 'is-invalid' : ''" formControlName="check"><span class="barra"></span>
+                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" [ngClass]="
+                        nuevoForm.get('check')?.hasError('required') ? 'is-invalid' : ''" formControlName="check">
                         <label class="form-check-label" for="invalidCheck">
                             Para la creación de el evento deberá estar de acuerdo con la ley 1480 de 2011 articulo 30 con respecto al evento a crear.
                         </label>
                         <div class="invalid-feedback">
                             {{
-                                nuevoForm.get("check")?.hasError("required")
+                            nuevoForm.get("check")?.hasError("required")
                                 ? " debe de estar de acuerdo con las politicas"
                                 : ""
                             }}
                         </div>
                     </div>
-                </div> -->
+                </div>
+
             </div>
             <div class="grupo">
                 <input placeholder="Acepto terminos ley tratamiento de datos"><span class="barra"></span>
