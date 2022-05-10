@@ -18,6 +18,7 @@ import { MenuModule } from 'src/app/menu/menu.module';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalCreateEventComponent } from './your-groups/your-groups-details/modal-create-event/modal-create-event.component';
+import { FilterPipe } from './pipeGroups/filter.pipe';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { ModalCreateEventComponent } from './your-groups/your-groups-details/mod
     ModalEventsCompletedComponent,
     ModalReportEventsGroupsOrganizerComponent,
     ModalCreateEventComponent,
+    FilterPipe,
   ],
   imports: [
     CommonModule,

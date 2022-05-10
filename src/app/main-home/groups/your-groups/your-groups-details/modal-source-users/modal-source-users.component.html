@@ -1,0 +1,35 @@
+<div class="modal-dialog modal-lg modal-dialog-scrollable">
+  <div class="modal-content">
+      <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Buscar usuarios</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="bucar..." [(ngModel)]="filterPersona">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Email</th>
+                  <th>acción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let persona of personas | filter:filterPersona">
+                  <td>{{persona.Email}}</td>
+                  <td>a lo</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

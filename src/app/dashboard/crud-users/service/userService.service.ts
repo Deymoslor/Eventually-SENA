@@ -42,6 +42,12 @@ export class userService {
     return this.http.get<PersonaI>(direccion);
   }
 
+  //Creamos método para obtener la persona. Este método devuelve un observable de tipo PersonaI
+  getSourcePerson(email:string):Observable<PersonaI>{
+    let direccion = this.API+"persons?email=" + email;
+    return this.http.get<PersonaI>(direccion);
+  }
+
   //Creamos el método para actualizar.
   putPerson(form:any):Observable<ResponseI>{
     let direccion = this.API+"persons";

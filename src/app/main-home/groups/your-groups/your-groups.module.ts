@@ -13,6 +13,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { ModalCreateEventComponent } from './your-groups-details/modal-create-event/modal-create-event.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FormGroup, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ModalSourceUsersComponent } from './your-groups-details/modal-source-users/modal-source-users.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { FormGroup, ReactiveFormsModule, FormsModule } from '@angular/forms';
     YourGroupsShowComponent,
     YourGroupsDetailsComponent,
     TableUsersGroupsComponent,
-    ModalEditGroupsComponent
+    ModalEditGroupsComponent,
+    ModalSourceUsersComponent,
 
   ],
   imports: [
