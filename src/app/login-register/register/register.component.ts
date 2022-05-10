@@ -49,8 +49,8 @@ export class RegisterComponent implements OnInit {
     //Log para revisar los datos del formulario.
     // console.log(form);
     let dateU = form.fechaNacimiento;
-    console.log('fecha usuario: ' + dateU);
-    
+    // console.log('fecha usuario: ' + dateU);
+
 
     let yearU = parseInt(dateU.substring(0,4));
     let monthU = parseInt(dateU.substring(5,7));
@@ -64,16 +64,16 @@ export class RegisterComponent implements OnInit {
     // console.log('Mes sistema: ' + monthS);
 
     if ((yearS - yearU) >= 14 && (monthS <= monthU)) {
-      console.log('entrando aquí');
+      // console.log('entrando aquí');
       // this.lawValidator = true;
       // lawValidatorFunc();
-      if ((yearS - yearU) >= 14 && (monthS <= monthU)) {
+      if ((yearS - yearU) >= 14 && (yearS - yearU) <= 17) {
         this.lawValidator = true;
       }else{
         this.lawValidator = false;
       }
-      console.log(this.lawValidator);
-      
+      // console.log(this.lawValidator);
+
       // if (this.lawValidator) {
         // this.service.postUser(form).subscribe(data =>{
         //   // console.log(data);
