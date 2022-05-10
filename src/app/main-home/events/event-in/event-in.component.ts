@@ -6,6 +6,7 @@ import { FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from 'src/app/core/service/auth.service';
+import { ParticipantsEventsI } from '../../../models/participants-events.interface';
 
 @Component({
   selector: 'app-event-in',
@@ -20,6 +21,9 @@ export class EventInComponent implements OnInit {
   existPerson!: number;
 
   dataEvent!: EventI;
+  dataPersonJoin!: ParticipantsEventsI;
+
+
   eventGroupForm = new FormGroup({
     idEvento: new FormControl(''),
     nombreEvento: new FormControl(''),
@@ -29,6 +33,11 @@ export class EventInComponent implements OnInit {
     participantesTotales: new FormControl(''),
     Grupos_idGrupos: new FormControl(''),
     estadoEvento: new FormControl('')
+  })
+
+  joinEventForm = new FormGroup({
+    personaIngresada: new FormControl(''),
+    Evento_IdEvento: new FormControl('')
   })
 
   constructor(private api:ApiService, private router:Router, private modalService: NgbModal,
@@ -159,6 +168,20 @@ export class EventInComponent implements OnInit {
 
   refresh(){
     window.location.reload();
+  }
+
+  //join event person.
+  postJoinEvent(){
+    this.joinEventForm.setValue({
+      'Evento_IdEvento': this.idEventExist,
+      'personaIngresada': this.auth.desencriptar(localStorage.getItem('id'))
+    })
+    // this.dataPersonJoin.personaIngresada[0] = this.auth.desencriptar(localStorage.getItem('id'));
+    // this.dataPersonJoin.idParticipantesEvento[0] = this.idEventExist;
+    this.api.postJoinPersonEvent(this.joinEventForm.value).subscribe(data =>{
+      console.log(data);
+    });
+    this.refresh();
   }
 
 }

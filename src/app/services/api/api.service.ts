@@ -78,4 +78,10 @@ export class ApiService {
     return this.http.get<ParticipantsEventsI>(dir);
   }
 
+  //Join person into a event.
+  postJoinPersonEvent(form: ParticipantsEventsI):Observable<ResponseI>{
+    let dir = this.url + "eventos?joinP";
+    return this.http.post<ResponseI>(dir, form);
+  }
+
 }
