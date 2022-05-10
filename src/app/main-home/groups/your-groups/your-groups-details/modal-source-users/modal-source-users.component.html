@@ -18,12 +18,14 @@
               <thead>
                 <tr>
                   <th>Email</th>
+                  <th>Nombre</th>
                   <th>acción</th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let persona of personas | filter:filterPersona">
                   <td>{{persona.Email}}</td>
+                  <td>{{persona.nombre}}</td>
                   <td>a lo</td>
                 </tr>
               </tbody>
