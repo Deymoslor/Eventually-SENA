@@ -2,7 +2,7 @@
   <app-modal-edit-groups [childMessage]=id></app-modal-edit-groups>
 </ng-template>
 <ng-template #content2 let-modal2>
-  <app-modal-source-users></app-modal-source-users>
+  <app-modal-source-users [childMessage]=id></app-modal-source-users>
 </ng-template>
 <a [routerLink]="['/groups/your-groups']" routerLinkActive="router-link-active" class="back">&lt; Volver al inicio</a>
 <div class="container">
@@ -42,7 +42,9 @@
                                     <!-- <li><a class="h5 dropdown-item" role="button" href="#">Crear evento</a></li> -->
                                     <!-- <li><a class="h5 dropdown-item" role="button" (click)="editarGroup(group?.idGrupos)" (click)="modalOpen(content)">Editar grupo Modal</a></li> -->
                                     <li><a class="h5 dropdown-item" role="button" (click)="editarGroup(group?.idGrupos)" data-bs-toggle="modal" data-bs-target="#content-modal" role="button" (click)="modalOpen(content)">Editar grupo</a></li>
-                                    <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#content-modal2" role="button" (click)="modalOpen2(content2)">Invitar amigo</a></li>
+                                    <div *ngIf="group?.privacidadGrupo == 1">
+                                      <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#content-modal2" role="button" (click)="modalOpen2(content2)">Invitar amigo</a></li>
+                                    </div>
                                     <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#modal-events-completed">Ver eventos realizados</a></li>
                                     <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#modal-report-events-groups-organizer">Reportes</a></li>
                                     <li><a class="h5 dropdown-item" role="button" href="#">Deshabilitar Grupo</a></li>

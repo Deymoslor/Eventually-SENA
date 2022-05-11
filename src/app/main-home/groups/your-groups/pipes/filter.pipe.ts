@@ -5,17 +5,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FilterPipe implements PipeTransform {
 
-  transform(value: any, arg: any): any {
-    if (arg === '' || arg.length) return value;
-    const resultPersonas = [];
-    for (const persona of value) {
-      if (persona.Email.toLowerCase().indexOf(arg.toLoweCase()) > -1) {
-        console.log('si');
-        // resultPersonas.push(filterPersona);
-      }
-
+  transform(value: any[], arg: string):any {
+    if (arg === '' || arg === undefined) {
+      return value;
     }
-    // return resultPersonas;
+    return value.filter(persona => persona.Email.toLowerCase().indexOf(arg.toLowerCase()) != -1);
   }
 
 }

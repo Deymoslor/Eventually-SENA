@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { userService } from "../../../../../dashboard/crud-users/service/userService.service";
 import { AuthService } from 'src/app/core/service/auth.service';
@@ -13,6 +13,7 @@ import { finalize, map } from 'rxjs';
 })
 export class ModalSourceUsersComponent implements OnInit {
 
+  @Input() childMessage: number | undefined;
   public isLoading = false;
   public src: string | undefined;
   public personas$ = [];
