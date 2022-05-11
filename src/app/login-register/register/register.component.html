@@ -124,7 +124,9 @@
             </div>
 
             <!-- <button (click)="sendData()">Registrarse</button> -->
-            <button type="submit" class="btnRegistro" [disabled]="nuevoForm.invalid">Registrarse</button>
+            
+            <button *ngIf="nuevoForm.invalid" type="submit" class="btnRegistroDisable">Registrarsee</button>
+            <button *ngIf="nuevoForm.valid" type="submit" class="btnRegistro">Registrarse</button>
             <button class="botoncitosexy" (click)="cancel()">Cancelar</button>
 
             <!-- <pre>{{ formUsers.value | json }}</pre> -->

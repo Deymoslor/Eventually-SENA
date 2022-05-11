@@ -150,6 +150,10 @@ button {
     background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
 }
 
+.btnRegistroDisable {
+    background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
+}
+
 // .checkbox{
 //     margin-bottom: -50vh;
 // }
