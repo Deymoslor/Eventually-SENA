@@ -24,16 +24,31 @@ export class RegisterComponent implements OnInit {
     private formBuilder:FormBuilder,
     ) {
 
+      // this.nuevoForm = this.formBuilder.group({
+      //   nombre: ['', Validators.required],
+      //   apellidos: new FormControl('', [Validators.required, ]),
+      //   documento: new FormControl('', [Validators.required, Validators.minLength(7), Validators.maxLength(10)]),
+      //   fechaNacimiento: new FormControl('',Validators.required),
+      //   Email: new FormControl('',Validators.email),
+      //   password: new FormControl('',Validators.required),
+      //   Celular: new FormControl('',Validators.required),
+      //   ciudad: new FormControl('',Validators.required),
+      //   check1: new FormControl ('', Validators.requiredTrue),
+      //   check2: new FormControl ('', Validators.requiredTrue),
+      // })
+      
       this.nuevoForm = this.formBuilder.group({
         nombre: ['', Validators.required],
-        apellidos: new FormControl('',Validators.required),
-        documento: new FormControl('',Validators.required),
-        fechaNacimiento: new FormControl('',Validators.required),
-        Email: new FormControl('',Validators.required),
-        password: new FormControl('',Validators.required),
-        Celular: new FormControl('',Validators.required),
-        ciudad: new FormControl('',Validators.required),
-        check: new FormControl ('', Validators.required),
+        apellidos: ['', [Validators.required, ]],
+        // documento: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(10)]],
+        documento: ['', [Validators.required, Validators.minLength(7)]],
+        fechaNacimiento: ['',Validators.required],
+        Email: ['',Validators.email],
+        password: ['',Validators.required],
+        Celular: ['',Validators.required],
+        ciudad: ['',Validators.required],
+        check1: ['', Validators.requiredTrue],
+        check2: ['', Validators.requiredTrue],
       })
 
     }
@@ -55,41 +70,42 @@ export class RegisterComponent implements OnInit {
   }
 
   postForm(form:registerI){
-    //Log para revisar los datos del formulario.
-    // console.log(form);
-    let dateU = form.fechaNacimiento;
-    // console.log('fecha usuario: ' + dateU);
+    // //Log para revisar los datos del formulario.
+    // // console.log(form);
+    // let dateU = form.fechaNacimiento;
+    // // console.log('fecha usuario: ' + dateU);
 
 
-    let yearU = parseInt(dateU.substring(0,4));
-    let monthU = parseInt(dateU.substring(5,7));
-    // console.log('Año Usuario: ' + yearU);
-    // console.log('Mes Usuario: ' + monthU);
+    // let yearU = parseInt(dateU.substring(0,4));
+    // let monthU = parseInt(dateU.substring(5,7));
+    // // console.log('Año Usuario: ' + yearU);
+    // // console.log('Mes Usuario: ' + monthU);
 
-    let date = new Date();
-    let yearS = date.getFullYear();
-    let monthS = date.getMonth();
-    // console.log('Año sistema: ' + yearS);
-    // console.log('Mes sistema: ' + monthS);
+    // let date = new Date();
+    // let yearS = date.getFullYear();
+    // let monthS = date.getMonth();
+    // // console.log('Año sistema: ' + yearS);
+    // // console.log('Mes sistema: ' + monthS);
 
-    if ((yearS - yearU) >= 14 && (monthS <= monthU)) {
-      // console.log('entrando aquí');
-      // this.lawValidator = true;
-      // lawValidatorFunc();
-      if ((yearS - yearU) >= 14 && (yearS - yearU) <= 17) {
-        this.lawValidator = true;
-      }else{
-        this.lawValidator = false;
-      }
-      // console.log(this.lawValidator);
+    // if ((yearS - yearU) >= 14 && (monthS <= monthU)) {
+    //   // console.log('entrando aquí');
+    //   // this.lawValidator = true;
+    //   // lawValidatorFunc();
+    //   if ((yearS - yearU) >= 14 && (yearS - yearU) <= 17) {
+    //     this.lawValidator = true;
+    //   }else{
+    //     this.lawValidator = false;
+    //   }
+    //   // console.log(this.lawValidator);
 
-      // if (this.lawValidator) {
-        // this.service.postUser(form).subscribe(data =>{
-        //   // console.log(data);
-        //   this.router.navigate(['/loginRegister']);
-        // });
-      // }
-    }
+    //   // if (this.lawValidator) {
+    //     // this.service.postUser(form).subscribe(data =>{
+    //     //   // console.log(data);
+    //     //   this.router.navigate(['/loginRegister']);
+    //     // });
+    //   // }
+    // }
+    window.location.reload();
   }
 
   // lawValidatorFunc(yearS:number,yearU:number,monthS:number,monthU:number){
