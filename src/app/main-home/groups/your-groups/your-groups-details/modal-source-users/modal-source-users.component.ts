@@ -27,6 +27,7 @@ export class ModalSourceUsersComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getAllPersons(1).subscribe((data: any)=>{
       this.personas = data;
+      this.personas$ = data;
     });
   }
 

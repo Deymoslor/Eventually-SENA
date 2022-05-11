@@ -24,7 +24,9 @@
               <tbody>
                 <tr *ngFor="let persona of personas | filter:filterPersona">
                   <td>{{persona.Email}}</td>
-                  <td>a lo</td>
+                  <td>
+                    <button class="btn btn-primary">Enviar solicitud</button>
+                  </td>
                 </tr>
               </tbody>
             </table>

@@ -14,6 +14,7 @@ import { ModalCreateEventComponent } from './your-groups-details/modal-create-ev
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FormGroup, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ModalSourceUsersComponent } from './your-groups-details/modal-source-users/modal-source-users.component';
+import { FilterPipe } from './pipes/filter.pipe';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { ModalSourceUsersComponent } from './your-groups-details/modal-source-us
     TableUsersGroupsComponent,
     ModalEditGroupsComponent,
     ModalSourceUsersComponent,
+    FilterPipe,
 
   ],
   imports: [
