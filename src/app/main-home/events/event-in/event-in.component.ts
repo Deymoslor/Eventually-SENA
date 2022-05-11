@@ -19,6 +19,7 @@ export class EventInComponent implements OnInit {
   stateGroupPerson!:number;
   idEventExist!: number;
   existPerson!: number;
+  dateS!: string;
 
   dataEvent!: EventI;
   dataPersonJoin!: ParticipantsEventsI;
@@ -49,6 +50,19 @@ export class EventInComponent implements OnInit {
   });
 
   ngOnInit(): void {
+
+    let date = new Date();
+    let year = date.getFullYear();
+    let month = date.getMonth();
+    let day = date.getDate();
+
+    date = new Date(year + "-" + month + "-" + day + "-");
+    console.log("fecha" + date);
+    date.setDate( date.getDate() + 2);
+    console.log(date);
+    this.dateS = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate();
+    console.log("String fehca: " + this.dateS);
+
     this.idGroup = this.route.snapshot.paramMap.get('id');
     this.api.getStatePersonGroup(this.auth.desencriptar(localStorage.getItem("id")), this.idGroup).subscribe((data) =>{
       console.log(data[0]);
@@ -61,7 +75,7 @@ export class EventInComponent implements OnInit {
       descripcionEvento: ['', [Validators.required, Validators.minLength(5)]],
       fechaEvento: ['', Validators.required],
       participantesTotales: ['2', Validators.required],
-      check: ['', Validators.required],
+      check: ['', Validators.requiredTrue],
       // cellPhone: this.getPhoneFromGroup(),
       // homePhone: this.getPhoneFromGroup(),
       // email: new FormControl('', [Validators.email]),

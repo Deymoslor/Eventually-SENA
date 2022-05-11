@@ -229,12 +229,7 @@
                         <label for="">Fecha Realizacion:</label>
                         <input type="date" class="form-control" [ngClass]="
                                 (createEventForm.get('fechaEvento')?.touched || createEventForm.get('fechaEvento')?.dirty) &&
-                                    createEventForm.get('fechaEvento')?.hasError('required') ? 'is-invalid' : ''" formControlName="fechaEvento">
-                        <!-- <input matInput [matDatepicker]="picker" class="form-control" [ngClass]="
-                                (createEventForm.get('fechaEvento')?.touched || createEventForm.get('fechaEvento')?.dirty) &&
-                                    createEventForm.get('fechaEvento')?.hasError('required') ? 'is-invalid' : ''" formControlName="fechaEvento"  style="display: inline; width: 90%;">
-                                <mat-datepicker-toggle matSuffix [for]="picker" style="color: #000; " ></mat-datepicker-toggle>
-                                <mat-datepicker class="modal" #picker></mat-datepicker> -->
+                                    createEventForm.get('fechaEvento')?.hasError('required') ? 'is-invalid' : ''" formControlName="fechaEvento" min="{{dateS}}">
                         <div class="invalid-feedback">
                             {{ createEventForm.get("fechaEvento")?.hasError("required") ? " Fecha requerida" : "" }}
                         </div>
