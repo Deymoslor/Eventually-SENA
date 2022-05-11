@@ -11,7 +11,7 @@ export class FilterPipe implements PipeTransform {
     for (const persona of value) {
       if (persona.Email.toLowerCase().indexOf(arg.toLoweCase()) > -1) {
         console.log('si');
-        // resultPersonas.push(persona);
+        // resultPersonas.push(filterPersona);
       }
 
     }

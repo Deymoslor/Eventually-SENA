@@ -8,7 +8,7 @@
         <div class="row">
           <div class="col">
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="bucar..." [(ngModel)]="filterPersona">
+              <input type="text" class="form-control" name="filterPersona" placeholder="bucar..." [(ngModel)]="filterPersona">
             </div>
           </div>
         </div>
@@ -22,7 +22,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let persona of personas | filter:filterPersona">
+                <tr *ngFor="let persona of (personas | filter:filterPersona)">
                   <td>{{persona.Email}}</td>
                   <td>a lo</td>
                 </tr>

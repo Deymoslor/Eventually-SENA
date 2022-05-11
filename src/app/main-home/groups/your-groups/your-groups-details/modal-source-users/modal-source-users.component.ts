@@ -17,16 +17,18 @@ export class ModalSourceUsersComponent implements OnInit {
   public src: string | undefined;
   public personas$ = [];
   public personas! : ListaPersonasI[];
-  public filterPersona = '';
 
   constructor(private httpCllient: HttpClient,
               private userService:userService,
               private authService: AuthService,
               private router:Router,) { }
 
+  filterPersona = '';
+
   ngOnInit(): void {
     this.userService.getAllPersons(1).subscribe((data: any)=>{
       this.personas = data;
+      console.log(this.personas);
     });
   }
 
