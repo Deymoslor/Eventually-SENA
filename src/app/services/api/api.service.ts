@@ -84,4 +84,10 @@ export class ApiService {
     return this.http.post<ResponseI>(dir, form);
   }
 
+  //Get total persons in a event.
+  getTotalPersonsEvent(idEvento: number):Observable<ParticipantsEventsI>{
+    let dir = this.url + "eventos?idEventP=" + idEvento 
+    return this.http.get<ParticipantsEventsI>(dir);
+  }
+
 }
