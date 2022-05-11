@@ -19,6 +19,7 @@ export class EventInComponent implements OnInit {
   stateGroupPerson!:number;
   idEventExist!: number;
   existPerson!: number;
+  totalPersonsIn!: number;
 
   dataEvent!: EventI;
   dataPersonJoin!: ParticipantsEventsI;
@@ -93,6 +94,10 @@ export class EventInComponent implements OnInit {
           'participantesTotales': this.dataEvent.participantesTotales,
           'Grupos_idGrupos': this.dataEvent.Grupos_idGrupos,
           'estadoEvento': this.dataEvent.estadoEvento
+        })
+        this.api.getTotalPersonsEvent(this.idEventExist).subscribe((data) =>{
+          console.log("total: " + data[0].total);
+          this.totalPersonsIn = data[0].total;
         })
 
         this.api.getPersonExistEvent(this.auth.desencriptar(localStorage.getItem('id')), this.idEventExist).subscribe(data => {

@@ -158,8 +158,13 @@
                 
         </div>
         <div *ngIf="existPerson === 2">
-            <h2>¿Desea Participar en el evento?</h2>
-            <button class="btn-primary" (click)="postJoinEvent()">UNIRSE</button>
+            <div *ngIf="totalPersonsIn < 1">
+                <h2>¿Desea Participar en el evento?</h2>
+                <button class="btn-primary" (click)="postJoinEvent()">UNIRSE</button>
+            </div>
+            <div *ngIf="totalPersonsIn >= 1">
+                EN ESTE MOMENTO EL EVENTO CUENTA CON UN AFORO LLENO, PORFAVOR SEA PACIENTE SI SON GENERADAS NUEVAS PLAZAS.
+            </div>
         </div>
         
     </div>
