@@ -61,7 +61,10 @@ export class EventInComponent implements OnInit {
     console.log("fecha" + date);
     date.setDate( date.getDate() + 2);
     console.log(date);
-    this.dateS = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate();
+    month = date.getMonth() + 1;
+
+
+    this.dateS = date.getFullYear() + "-" + (month.toString().padStart(2,'0')) + "-" + date.getDate();
     console.log("String fehca: " + this.dateS);
 
     this.idGroup = this.route.snapshot.paramMap.get('id');

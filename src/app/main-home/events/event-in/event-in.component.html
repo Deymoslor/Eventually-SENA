@@ -234,7 +234,7 @@
                         <label for="">Fecha Realizacion:</label>
                         <input type="date" class="form-control" [ngClass]="
                                 (createEventForm.get('fechaEvento')?.touched || createEventForm.get('fechaEvento')?.dirty) &&
-                                    createEventForm.get('fechaEvento')?.hasError('required') ? 'is-invalid' : ''" formControlName="fechaEvento" min="{{dateS}}">
+                                    createEventForm.get('fechaEvento')?.hasError('required') ? 'is-invalid' : ''" formControlName="fechaEvento"value="{{dateS}}"  min="{{dateS}}">
                         <div class="invalid-feedback">
                             {{ createEventForm.get("fechaEvento")?.hasError("required") ? " Fecha requerida" : "" }}
                         </div>
