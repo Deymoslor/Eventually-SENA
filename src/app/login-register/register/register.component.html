@@ -4,10 +4,13 @@
             <h1>Registro</h1>
             <div class="grupo">
                 <input type="text" name="" id="email"  formControlName="nombre" placeholder="Introduce tu nombre" [ngClass]="(nuevoForm.get('nombre')?.touched || nuevoForm.get('nombre')?.dirty) &&
-                nuevoForm.get('nombre')?.errors ? 'is-invalid' : ''" formControlName="nombre"><span class="barra"></span>
+                nuevoForm.get('nombre')?.errors ? 'is-invalid' : '' || nuevoForm.get('documento')?.hasError('minlength')
+                ? 'is-invalid' : '' || nuevoForm.get('documento')?.hasError('pattern')
+                ? 'is-invalid' : ''" formControlName="nombre"><span class="barra"></span>
                 <label for="">Nombre</label>
                 <div class="invalid-feedback">
                     {{ nuevoForm.get("nombre")?.hasError("required") ? "Campo requerido" : "" }}
+                    {{ nuevoForm.get("nombre")?.hasError("pattern") ? "Campo solo con letras" : "" }}
                 </div>
             </div>
             <!-- {{nuevoForm.get("nombre")?.errors | json}} -->
@@ -16,31 +19,31 @@
             </div> -->
             <div class="grupo">
                 <input type="text" name="" id="Apellidos"  formControlName="apellidos" placeholder="Introduce tus apellidos" [ngClass]="(nuevoForm.get('apellidos')?.touched || nuevoForm.get('apellidos')?.dirty) &&
-                nuevoForm.get('apellidos')?.errors ? 'is-invalid' : ''"><span class="barra"></span>
+                nuevoForm.get('apellidos')?.errors ? 'is-invalid' : '' || nuevoForm.get('apellidos')?.hasError('pattern')
+                ? 'is-invalid' : ''"><span class="barra"></span>
                 <label for="">Apellidos</label>
                 <div class="invalid-feedback">
                     {{ nuevoForm.get("apellidos")?.hasError("required") ? "Campo requerido" : "" }}
+                    {{ nuevoForm.get("apellidos")?.hasError("pattern") ? "Campo solo con letras" : "" }}
                 </div>
             </div>
             <div class="grupo">
                 <input type="text" name="" id="documento"  formControlName="documento" placeholder="Introduce tu documento" [ngClass]="(nuevoForm.get('documento')?.touched || nuevoForm.get('documento')?.dirty) &&
                 nuevoForm.get('documento')?.hasError('required') ? 'is-invalid' : '' || nuevoForm.get('documento')?.hasError('minlength')
+                ? 'is-invalid' : '' || nuevoForm.get('documento')?.hasError('maxlength')
                 ? 'is-invalid' : '' || nuevoForm.get('documento')?.hasError('pattern')
                 ? 'is-invalid' : ''"><span class="barra"></span>
                 <label for="">Documento</label>
                 <div class="invalid-feedback">
                     {{ nuevoForm.get("documento")?.hasError("required") ? "Campo requerido" : "" }}
                     {{ nuevoForm.get("documento")?.hasError("minlength") ? "Campo mínimo de 7 carácteres" : "" }}
-                    <!-- {{ nuevoForm.get("documento")?.hasError("maxLength") ? "Campo máximo de 10 carácteres" : "" }} -->
+                    {{ nuevoForm.get("documento")?.hasError("maxlength") ? "Campo máximo de 10 carácteres" : "" }}
                 </div>
                 <div class="invalid-feedback">
                     {{ nuevoForm.get("documento")?.hasError("pattern") ? "Campo solo con numeros" : "" }}
                 </div>
-                <!-- <div class="invalid-feedback">
-                    {{ nuevoForm.get("documento")?.hasError("minLength") ? "Campo mínimo de 7 carácteres" : "" }}
-                </div> -->
             </div>
-            {{nuevoForm.get("documento")?.errors | json}}
+            <!-- {{nuevoForm.get("documento")?.errors | json}} -->
             <div class="grupo">
                 <input type="date" name="" id="fechaNacimiento"  formControlName="fechaNacimiento" placeholder="Introduce tu fecha de nacimiento" [ngClass]="(nuevoForm.get('fechaNacimiento')?.touched || nuevoForm.get('fechaNacimiento')?.dirty) &&
                 nuevoForm.get('fechaNacimiento')?.errors ? 'is-invalid' : ''" ><span class="barra"></span>
@@ -51,86 +54,74 @@
             </div>
             <div class="grupo">
                 <input class="email" type="email" name="" id="password"  formControlName="Email" placeholder="Introduce tu email" [ngClass]="(nuevoForm.get('Email')?.touched || nuevoForm.get('Email')?.dirty) &&
-                nuevoForm.get('Email')?.errors ? 'is-invalid' : ''"><span class="barra"></span>
+                nuevoForm.get('Email')?.errors ? 'is-invalid' : '' || nuevoForm.get('email')?.hasError('email')
+                ? 'is-invalid' : ''"><span class="barra"></span>
                 <label for="">Email</label>
                 <div class="invalid-feedback">
                     {{ nuevoForm.get("Email")?.hasError("required") ? "Campo requerido" : "" }}
+                    {{ nuevoForm.get("Email")?.hasError("email") ? "Campo de email persona@example.com" : "" }}
                 </div>
             </div>
             <div class="grupo">
                 <input type="password" name="" id="password"  formControlName="password" placeholder="Introduce tu Contraseña" [ngClass]="(nuevoForm.get('password')?.touched || nuevoForm.get('password')?.dirty) &&
-                nuevoForm.get('password')?.errors ? 'is-invalid' : ''"><span class="barra"></span>
+                nuevoForm.get('password')?.hasError('required') ? 'is-invalid' : '' || nuevoForm.get('password')?.hasError('maxlength')
+                ? 'is-invalid' : '' || nuevoForm.get('password')?.hasError('minlength')
+                ? 'is-invalid' : ''"><span class="barra"></span>
                 <label for="">Contraseña</label>
                 <div class="invalid-feedback">
                     {{ nuevoForm.get("password")?.hasError("required") ? "Campo requerido" : "" }}
+                    {{ nuevoForm.get("password")?.hasError("maxlength") ? "Máximo 12 caracteres" : "" }}
+                    {{ nuevoForm.get("password")?.hasError("minlength") ? "Mínimo 6 caracteres" : "" }}
                 </div>
             </div>
             <div class="grupo">
-                <input type="text" name="" id="password"  formControlName="ciudad" placeholder="Introduce tu ciudad" [ngClass]="(nuevoForm.get('ciudad')?.touched || nuevoForm.get('ciudad')?.dirty) &&
-                nuevoForm.get('ciudad')?.errors ? 'is-invalid' : ''" ><span class="barra"></span>
+                <input type="text" name="" id="password" formControlName="ciudad" placeholder="Introduce tu ciudad" [ngClass]="(nuevoForm.get('ciudad')?.touched || nuevoForm.get('ciudad')?.dirty) &&
+                nuevoForm.get('ciudad')?.hasError('required') ? 'is-invalid' : '' || nuevoForm.get('ciudad')?.hasError('pattern')
+                ? 'is-invalid' : ''" ><span class="barra"></span>
                 <label for="">Ciudad</label>
                 <div class="invalid-feedback">
                     {{ nuevoForm.get("ciudad")?.hasError("required") ? "Campo requerido" : "" }}
+                    {{ nuevoForm.get("ciudad")?.hasError("pattern") ? "Campo solo con letras" : "" }}
                 </div>
             </div>
             <div class="grupo">
                 <input type="text" name="" id="password"  formControlName="Celular" placeholder="Introduce tu numero de teléfono" [ngClass]="(nuevoForm.get('Celular')?.touched || nuevoForm.get('Celular')?.dirty) &&
-                nuevoForm.get('Celular')?.errors ? 'is-invalid' : ''" ><span class="barra"></span>
+                nuevoForm.get('Celular')?.errors ? 'is-invalid' : '' || nuevoForm.get('Celular')?.hasError('maxlength')
+                ? 'is-invalid' : '' || nuevoForm.get('Celular')?.hasError('minlength')
+                ? 'is-invalid' : '' || nuevoForm.get('Celular')?.hasError('pattern')
+                ? 'is-invalid' : ''" ><span class="barra"></span>
                 <label for="">Número de teléfono celular</label>
+                <div class="invalid-feedback">
+                    {{ nuevoForm.get("Celular")?.hasError("pattern") ? "Campo solo numérico" : "" }}
+                </div>
+                <div class="invalid-feedback">
+                    {{ nuevoForm.get("Celular")?.hasError("required") ? "Campo requerido" : "" }}
+                    {{ nuevoForm.get("Celular")?.hasError("maxlength") ? "Campo de 10 caracteres" : "" }}
+                    {{ nuevoForm.get("Celular")?.hasError("minlength") ? "Campo de 10 caracteres" : "" }}
+                </div>
+            </div>
+            <div class="grupo">
+                <input type="checkbox" name="" id="check1"  formControlName="check1" [ngClass]="(nuevoForm.get('check1')?.touched || nuevoForm.get('check1')?.dirty) &&
+                nuevoForm.get('check1')?.errors ? 'is-invalid' : ''" ><span class="barra"></span>
+                <label>Acepte la ley 1581 de 2012 de tratamiento de datos.</label>
                 <div class="invalid-feedback">
                     {{ nuevoForm.get("Celular")?.hasError("required") ? "Campo requerido" : "" }}
                 </div>
             </div>
-            <div class="grupo">
-                <!-- <input type="checkbox" name="" id="password"  formControlName="Celular" placeholder="Introduce tu numero de teléfono"><span class="barra"></span>
-                <label for="">Número de teléfono celular</label> -->
-
-                <div class="col-12">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck1" [ngClass]="
-                        nuevoForm.get('check1')?.hasError('required') ? 'is-invalid' : ''" formControlName="check1">
-                        <label class="form-check-label" for="invalidCheck1">
-                            Para la creación de cuenta es necesario que acepte la ley de tratamiento de datos.
-                        </label>
-                        <div class="invalid-feedback">
-                            {{
-                            nuevoForm.get("check1")?.hasError("required")
-                                ? " debe de estar de acuerdo con las politicas de tratamiento de datos"
-                                : ""
-                            }}
-                        </div>
-                    </div>
+            <div class="grupo" *ngIf="this.lawValidator">
+                <input type="checkbox" name="" id="check2" formControlName="check2" [ngClass]="(nuevoForm.get('check2')?.touched || nuevoForm.get('check2')?.dirty) &&
+                nuevoForm.get('check2')?.errors ? 'is-invalid' : ''" ><span class="barra"></span>
+                <label class="lawLabel" for="">Acepte la ley 1581 de 2012 de tratamiento de datos de menores.</label>
+                <div class="invalid-feedback">
+                    {{ nuevoForm.get("Celular")?.hasError("required") ? "Campo requerido" : "" }}
                 </div>
-
             </div>
-
-            <div class="grupo">
-                <!-- <input type="checkbox" name="" id="password"  formControlName="Celular" placeholder="Introduce tu numero de teléfono"><span class="barra"></span>
-                <label for="">Número de teléfono celular</label> -->
-
-                <div class="col-12">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" [ngClass]="
-                        nuevoForm.get('check2')?.hasError('required') ? 'is-invalid' : ''" formControlName="check2">
-                        <label class="form-check-label" for="invalidCheck2">
-                            Para la creación de cuenta es necesario que acepte la ley de tratamiento de datos de menores.
-                        </label>
-                        <div class="invalid-feedback">
-                            {{
-                            nuevoForm.get("check2")?.hasError("required")
-                                ? " debe de estar de acuerdo con las politicas de tratamiento de datos de menores"
-                                : ""
-                            }}
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+            
 
             <!-- <button (click)="sendData()">Registrarse</button> -->
 
-            <button *ngIf="nuevoForm.invalid" type="submit" [disabled]="nuevoForm.invalid" class="btnRegistroDisable">Registrarsee</button>
-            <button *ngIf="nuevoForm.valid" type="submit" class="btnRegistro">Registrarse</button>
+            <!-- <button *ngIf="nuevoForm.invalid" type="submit" [disabled]="nuevoForm.invalid" class="btnRegistroDisable">Registrarse</button> -->
+            <button  class="btnRegistro">Registrarse</button>
             <button class="botoncitosexy" (click)="cancel()">Cancelar</button>
 
             <!-- <pre>{{ formUsers.value | json }}</pre> -->
