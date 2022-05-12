@@ -21,6 +21,7 @@ export class EventProviderComponent implements OnInit {
 
 @Input() form!: EventI;
 @Input() idEvento!: number;
+@Input() terminate!: boolean;
 
   createInv = new FormGroup({
     Evento_idEvento: new FormControl(''),
@@ -44,6 +45,7 @@ export class EventProviderComponent implements OnInit {
 
   ngOnInit(): void {
     let state: number | null;
+    console.log("racineta rango: " + this.terminate);
     this.api.getAllProvServicesInv(1).subscribe(datas =>{
       console.log(datas);
       this.dataProviderService = datas;

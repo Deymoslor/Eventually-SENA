@@ -1,6 +1,9 @@
 <div *ngIf="stateGroupPerson == 1">
     <div *ngIf="eventGroupForm.get('estadoEvento')?.value == 1">
+        
 
+        <div *ngIf="actualDate < dateTerminate">
+            
         <div class="content">
             <div class="class-thumbnail">
                 <img src="../../../../assets/main/events/danza.png" alt="Evento Danza" class="thumbnail">
@@ -39,10 +42,18 @@
                 </div>
                 <div class="info edit">
                     <!-- data-bs-toggle="modal" data-bs-target="#edit-modal-eventin" -->
-                    <button class="btn btn-primary" (click)="editEvent(eventGroupForm.get('idEvento')?.value)">
-                        Editar
-                    </button>
-                    <p class="fw-bolder">Editar Evento y cambiar estado</p>
+                    <div *ngIf="actualDate < dateEvent; else nodate">
+                        <button class="btn btn-primary" (click)="editEvent(eventGroupForm.get('idEvento')?.value)">
+                            Editar
+                        </button>
+                        <p class="fw-bolder">Editar Evento y cambiar estado</p>
+                    </div>
+                    <ng-template #nodate>
+                        <button class="btn btn-primary" (click)="editEvent(eventGroupForm.get('idEvento')?.value)"[disabled]="true">
+                            Editar
+                        </button>
+                        <p class="fw-bolder">Editar Evento y cambiar estado (Edición deshabilitada)</p>
+                    </ng-template>
                 </div>
             </div>
             <div class="main-content-container">
@@ -69,11 +80,19 @@
     
         </div>
         <!--Table Provider services-->
-        <div class="table-provider">
-            <!-- <app-event-provider [form]="eventGroupForm.value"></app-event-provider> -->
-            <app-event-provider [idEvento]="eventGroupForm.get('idEvento')?.value" [form]="eventGroupForm.value"></app-event-provider>
+            <div class="table-provider">
+                <!-- <app-event-provider [form]="eventGroupForm.value"></app-event-provider> -->
+                <app-event-provider [idEvento]="eventGroupForm.get('idEvento')?.value" [terminate]="terminate"[form]="eventGroupForm.value"></app-event-provider>
+            </div>
         </div>
     
+        <div *ngIf="actualDate >= dateTerminate">
+            EVENTO COMPLETADO O ALCANZADO FECHA DE REALIZACION.
+        </div>
+        <div class="table-provider">
+                <!-- <app-event-provider [form]="eventGroupForm.value"></app-event-provider> -->
+                <app-event-provider [idEvento]="eventGroupForm.get('idEvento')?.value" [terminate]="terminate"[form]="eventGroupForm.value"></app-event-provider>
+            </div>
     </div>
     
     <div *ngIf="eventGroupForm.get('estadoEvento')?.value == 0">
@@ -98,7 +117,8 @@
 
     <div *ngIf="eventGroupForm.get('estadoEvento')?.value == 1">
         <div *ngIf="existPerson == 1">
-                <div class="content">
+                <div *ngIf="actualDate < dateTerminate">
+                    <div class="content">
                         <div class="class-thumbnail">
                             <img src="../../../../assets/main/events/danza.png" alt="Evento Danza" class="thumbnail">
                         </div>
@@ -155,7 +175,12 @@
                             <p class="fw-normal text-break desc">{{eventGroupForm.get('descripcionEvento')?.value}}</p>
                         </div>
                 </div>
-                
+
+                </div>                
+
+                <div *ngIf="actualDate >= dateTerminate">
+                    EVENTO TERMINADO, PORFAVOR ESPERE A QUE SEA CREADO UN NUEVO EVENTO.
+                </div>  
         </div>
         <div *ngIf="existPerson === 2">
             <div *ngIf="totalPersonsIn < 1">

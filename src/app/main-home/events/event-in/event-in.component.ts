@@ -21,6 +21,10 @@ export class EventInComponent implements OnInit {
   existPerson!: number;
   dateS!: string;
   totalPersonsIn!: number;
+  actualDate!: Date;
+  dateEvent!: Date;
+  dateTerminate!: Date;
+  terminate!: boolean;
 
   dataEvent!: EventI;
   dataPersonJoin!: ParticipantsEventsI;
@@ -57,6 +61,9 @@ export class EventInComponent implements OnInit {
     let month = date.getMonth();
     let day = date.getDate();
 
+    this.actualDate = date;
+    
+
     date = new Date(year + "-" + month + "-" + day + "-");
     console.log("fecha" + date);
     date.setDate( date.getDate() + 2);
@@ -69,7 +76,7 @@ export class EventInComponent implements OnInit {
 
     this.idGroup = this.route.snapshot.paramMap.get('id');
     this.api.getStatePersonGroup(this.auth.desencriptar(localStorage.getItem("id")), this.idGroup).subscribe((data) =>{
-      console.log(data[0]);
+      // console.log(data[0]);
       this.stateGroupPerson = data[0].estadoPersona_idEstadoPersona;
     })
 
@@ -102,6 +109,8 @@ export class EventInComponent implements OnInit {
         })
       }else{
         this.idEventExist = this.dataEvent.idEvento;
+        this.dateEvent = new Date(this.dataEvent.fechaEvento);
+        this.dateTerminate = new Date(this.dataEvent.fechaEvento);
         this.eventGroupForm.setValue({
           'idEvento': this.dataEvent.idEvento,
           'nombreEvento': this.dataEvent.nombreEvento,
@@ -116,6 +125,17 @@ export class EventInComponent implements OnInit {
           console.log("total: " + data[0].total);
           this.totalPersonsIn = data[0].total;
         })
+        this.dateEvent.setDate(this.dateEvent.getDate() - 2);
+        this.dateTerminate.setDate(this.dateTerminate.getDate() + 2);
+
+        console.log("FECHA ACTUALIF: " + this.actualDate);
+        console.log("FECHA REALIZACIONIF: " + this.dateEvent);
+        if(this.actualDate < this.dateTerminate){
+          this.terminate = false
+          
+        }else if(this.actualDate >= this.dateTerminate){
+          this.terminate = true;
+        }
 
         this.api.getPersonExistEvent(this.auth.desencriptar(localStorage.getItem('id')), this.idEventExist).subscribe(data => {
           console.log(data);
@@ -131,7 +151,7 @@ export class EventInComponent implements OnInit {
       }
      });
 
-
+     
 
   }
 

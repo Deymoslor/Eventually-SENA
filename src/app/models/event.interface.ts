@@ -3,7 +3,7 @@ export interface EventI{
     nombreEvento: string;
     descripcionEvento: string;
     estadoEvento: number;
-    fechaEvento: Array<string>;
+    fechaEvento: Date;
     tipoEvento: string;
     participantesTotales: number;
     Grupos_idGrupos: number;
