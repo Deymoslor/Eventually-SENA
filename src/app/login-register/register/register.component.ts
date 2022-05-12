@@ -36,12 +36,12 @@ export class RegisterComponent implements OnInit {
       //   check1: new FormControl ('', Validators.requiredTrue),
       //   check2: new FormControl ('', Validators.requiredTrue),
       // })
-      
+
       this.nuevoForm = this.formBuilder.group({
         nombre: ['', Validators.required],
         apellidos: ['', [Validators.required, ]],
         // documento: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(10)]],
-        documento: ['', [Validators.required, Validators.minLength(7)]],
+        documento: ['', [Validators.required, Validators.minLength(7), Validators.pattern(/^[0-9]\d*$/)]],
         fechaNacimiento: ['',Validators.required],
         Email: ['',Validators.email],
         password: ['',Validators.required],
