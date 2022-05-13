@@ -38,15 +38,15 @@ export class RegisterComponent implements OnInit {
       // })
 
       this.nuevoForm = this.formBuilder.group({
-        nombre: ['', [Validators.required, Validators.pattern(/^[A-Za-z]\d*$/)]],
-        apellidos: ['', [Validators.required, Validators.pattern(/^[A-Za-z]\d*$/)]],
+        nombre: ['', [Validators.required, Validators.pattern(/^[a-zA-Z ]+$/)]],
+        apellidos: ['', [Validators.required, Validators.pattern(/^[a-zA-Z ]+$/)]],
         // documento: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(10)]],
         documento: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(8), Validators.pattern(/^[0-9]\d*$/)]],
         fechaNacimiento: ['',Validators.required],
         Email: ['',[Validators.required, Validators.email]],
         password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]],
         Celular: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^[0-9]\d*$/)]],
-        ciudad: ['', [Validators.required, Validators.pattern(/^[A-Za-z]\d*$/)]],
+        ciudad: ['', [Validators.required, Validators.pattern(/^[a-zA-Z ]+$/)]],
         check1: ['', Validators.requiredTrue],
         check2: ['', Validators.requiredTrue],
       })
@@ -103,7 +103,10 @@ export class RegisterComponent implements OnInit {
         console.log(this.lawValidator);
       }
 
-      if (this.lawValidator) {
+      console.log(this.nuevoForm.get('check2'));
+      
+
+      if (this.nuevoForm.get('check2')) {
         // this.service.postUser(form).subscribe(data =>{
         //   // console.log(data);
         //   this.router.navigate(['/loginRegister']);
@@ -114,6 +117,10 @@ export class RegisterComponent implements OnInit {
       
     }
     // window.location.reload();
+  }
+
+  showLaw(){
+        
   }
 
   // lawValidatorFunc(yearS:number,yearU:number,monthS:number,monthU:number){

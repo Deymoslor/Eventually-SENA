@@ -53,7 +53,7 @@
                 </div>
             </div>
             <div class="grupo">
-                <input class="email" type="email" name="" id="password"  formControlName="Email" placeholder="Introduce tu email" [ngClass]="(nuevoForm.get('Email')?.touched || nuevoForm.get('Email')?.dirty) &&
+                <input (click)="showLaw()" class="email" type="email" name="" id="password"  formControlName="Email" placeholder="Introduce tu email" [ngClass]="(nuevoForm.get('Email')?.touched || nuevoForm.get('Email')?.dirty) &&
                 nuevoForm.get('Email')?.errors ? 'is-invalid' : '' || nuevoForm.get('email')?.hasError('email')
                 ? 'is-invalid' : ''"><span class="barra"></span>
                 <label for="">Email</label>
@@ -77,7 +77,7 @@
             <div class="grupo">
                 <input type="text" name="" id="password" formControlName="ciudad" placeholder="Introduce tu ciudad" [ngClass]="(nuevoForm.get('ciudad')?.touched || nuevoForm.get('ciudad')?.dirty) &&
                 nuevoForm.get('ciudad')?.hasError('required') ? 'is-invalid' : '' || nuevoForm.get('ciudad')?.hasError('pattern')
-                ? 'is-invalid' : ''" ><span class="barra"></span>
+                ? 'is-invalid' : ''"><span class="barra"></span>
                 <label for="">Ciudad</label>
                 <div class="invalid-feedback">
                     {{ nuevoForm.get("ciudad")?.hasError("required") ? "Campo requerido" : "" }}
@@ -101,17 +101,17 @@
                 </div>
             </div>
             <div class="grupo">
-                <input type="checkbox" name="" id="check1"  formControlName="check1" [ngClass]="(nuevoForm.get('check1')?.touched || nuevoForm.get('check1')?.dirty) &&
+                <input type="checkbox" checked name="" id="check1"  formControlName="check1" [ngClass]="(nuevoForm.get('check1')?.touched || nuevoForm.get('check1')?.dirty) &&
                 nuevoForm.get('check1')?.errors ? 'is-invalid' : ''" ><span class="barra"></span>
-                <label>Acepte la ley 1581 de 2012 de tratamiento de datos.</label>
+                <label>Aceptar la ley 1581 de 2012 de tratamiento de datos.</label>
                 <div class="invalid-feedback">
                     {{ nuevoForm.get("Celular")?.hasError("required") ? "Campo requerido" : "" }}
                 </div>
             </div>
-            <div class="grupo" *ngIf="this.lawValidator">
-                <input type="checkbox" name="" id="check2" formControlName="check2" [ngClass]="(nuevoForm.get('check2')?.touched || nuevoForm.get('check2')?.dirty) &&
+            <div class="grupo">
+                <input type="checkbox" checked="true" name="" id="check2" formControlName="check2" [ngClass]="(nuevoForm.get('check2')?.touched || nuevoForm.get('check2')?.dirty) &&
                 nuevoForm.get('check2')?.errors ? 'is-invalid' : ''" ><span class="barra"></span>
-                <label class="lawLabel" for="">Acepte la ley 1581 de 2012 de tratamiento de datos de menores.</label>
+                <label class="lawLabel" for="">Aceptar la ley 1581 de 2012 de tratamiento de datos de menores en caso de serlo.</label>
                 <div class="invalid-feedback">
                     {{ nuevoForm.get("Celular")?.hasError("required") ? "Campo requerido" : "" }}
                 </div>
@@ -120,8 +120,8 @@
 
             <!-- <button (click)="sendData()">Registrarse</button> -->
 
-            <!-- <button *ngIf="nuevoForm.invalid" type="submit" [disabled]="nuevoForm.invalid" class="btnRegistroDisable">Registrarse</button> -->
-            <button  class="btnRegistro">Registrarse</button>
+            <button *ngIf="nuevoForm.invalid" type="submit" [disabled]="nuevoForm.invalid" class="btnRegistroDisable">Registrarse</button>
+            <button *ngIf="nuevoForm.valid" class="btnRegistro">Registrarse</button>
             <button class="botoncitosexy" (click)="cancel()">Cancelar</button>
 
             <!-- <pre>{{ formUsers.value | json }}</pre> -->
