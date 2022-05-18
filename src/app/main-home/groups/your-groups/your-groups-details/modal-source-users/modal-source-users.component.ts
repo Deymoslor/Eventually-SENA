@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, Pipe, PipeTransform, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { userService } from "../../../../../dashboard/crud-users/service/userService.service";
 import { AuthService } from 'src/app/core/service/auth.service';
 import { ListaPersonasI } from 'src/app/dashboard/crud-users/ListaPersonasI.interface';
@@ -22,30 +22,30 @@ export class ModalSourceUsersComponent implements OnInit {
   constructor(private httpCllient: HttpClient,
               private userService:userService,
               private authService: AuthService,
-              private router:Router,) { }
+              private router:Router,
+              private activerouter:ActivatedRoute) { }
 
   filterPersona = '';
 
   ngOnInit(): void {
-    this.userService.getAllPersons(1).subscribe((data: any)=>{
+    let idGrupos = this.activerouter.snapshot.paramMap.get('id')
+    console.log(idGrupos);
+    this.userService.getSourcePerson(Number(idGrupos)).subscribe((data: any)=>{
       this.personas = data;
       console.log(this.personas);
-    });
+    })
   }
+  share(idPersonas): void {
+    let idGrupos = this.activerouter.snapshot.paramMap.get('id')
+    console.log(' la variable idGrupos: ', idGrupos);
+    console.log(' la variable idPersonas: ', idPersonas);
+    const newDetail = {idGrupos: Number(idGrupos), idPersonas: idPersonas}
+    this.userService.PostRequestGroupPerson(newDetail).subscribe(data =>
+      console.log(data)
 
-  // search(value: string): any {
-  //   this.isLoading = true;
-  //   this.personas$ = this.userService.getSourcePerson(value).pipe(
-  //     map( project: ({personas}) => personas.items),
-  //     finalize( callback: () => this.isLoading = false)
-  //   );
-  // }
-
-  // filterList(): void {
-  //   this.userService.getAllPersons(1).subscribe((data: any) => {
-  //     this.personas = data;
-  //     this.personas = this.personas$.filter(item => item.toLowerCase().indexOf(data.toLowerCase()) >= 0);
-  //   });
-  // }
+    );
+    window.alert('se ha enviado la solicitúd de unirse');
+    window.location.reload();
+  }
 
 }

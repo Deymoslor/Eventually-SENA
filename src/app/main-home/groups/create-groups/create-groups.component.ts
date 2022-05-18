@@ -41,8 +41,8 @@ export class CreateGroupsComponent implements OnInit {
     })
 
     this.createYourGroupForm = this.fb.group({
-      nombreGrupo: ['', [Validators.required, Validators.minLength(2)]],
-      descripcionGrupo: ['', [Validators.required, Validators.minLength(5)]],
+      nombreGrupo: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
+      descripcionGrupo: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(500)]],
       privacidadGrupo: ['', Validators.required],
       check: ['', Validators.required],
       gustos_idGusto: ['', Validators.required],
