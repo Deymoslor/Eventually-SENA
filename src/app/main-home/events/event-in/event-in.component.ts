@@ -62,17 +62,18 @@ export class EventInComponent implements OnInit {
     let day = date.getDate();
 
     this.actualDate = date;
+    console.log("fecha actual: " + this.actualDate);
     
 
-    date = new Date(year + "-" + month + "-" + day + "-");
-    console.log("fecha" + date);
-    date.setDate( date.getDate() + 2);
-    console.log(date);
-    month = date.getMonth() + 1;
+    // date = new Date(year + "-" + month + "-" + day);
+    // console.log("fecha: " + date);
+    // date.setDate( date.getDate() + 2);
+    // console.log(date);
+    // month = this.actualDate.getMonth() + 1;
 
 
-    this.dateS = date.getFullYear() + "-" + (month.toString().padStart(2,'0')) + "-" + date.getDate();
-    console.log("String fehca: " + this.dateS);
+    this.dateS = this.actualDate.getFullYear() + "-" + ((this.actualDate.getMonth() + 1).toString().padStart(2,'0')) + "-" + this.actualDate.getDate();
+    console.log("String fecha: " + this.dateS);
 
     this.idGroup = this.route.snapshot.paramMap.get('id');
     this.api.getStatePersonGroup(this.auth.desencriptar(localStorage.getItem("id")), this.idGroup).subscribe((data) =>{

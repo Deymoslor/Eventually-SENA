@@ -88,10 +88,10 @@
     
         <div *ngIf="actualDate >= dateTerminate">
             EVENTO COMPLETADO O ALCANZADO FECHA DE REALIZACION.
-        </div>
-        <!-- <div class="table-provider">
+            <div class="table-provider">
                 <app-event-provider [idEvento]="eventGroupForm.get('idEvento')?.value" [terminate]="terminate"[form]="eventGroupForm.value"></app-event-provider>
-        </div> -->
+            </div>
+        </div>
     </div>
     
     <div *ngIf="eventGroupForm.get('estadoEvento')?.value == 0">

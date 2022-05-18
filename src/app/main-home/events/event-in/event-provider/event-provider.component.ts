@@ -10,6 +10,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { EventI } from 'src/app/models/event.interface';
 import { ServiceEventI } from 'src/app/main-home/providers/models/serviceEvent.interface';
 import { TypeServicesI } from 'src/app/dashboard/crud-services/models/typeServices.interface';
+import { ApiResultsServicesService } from '../../services/api.results-services.service';
+import { ResultServiceI } from '../../../../models/result-service.interface';
 
 
 @Component({
@@ -37,10 +39,11 @@ export class EventProviderComponent implements OnInit {
   dataProviderService!: InvitationProvSerI[];
   dataServiceState!: ServiceEventI[];
   dataTypeService!: TypeServicesI[]
+  dataResultService!: ResultServiceI[];
 
   
   number!:number;
-  constructor(private api:ApiService, private modalService: NgbModal, private route:ActivatedRoute) { }
+  constructor(private api:ApiService, private modalService: NgbModal, private route:ActivatedRoute, private apiRS: ApiResultsServicesService) { }
   closeResult = '';
 
   ngOnInit(): void {
@@ -51,6 +54,19 @@ export class EventProviderComponent implements OnInit {
       this.dataProviderService = datas;
       this.dataProviderService.forEach(key => {
         console.log(key.idServicios + "si");
+        let total = 0
+        this.apiRS.getResultsServices(key.idServicios).subscribe(data =>{
+          if(data){
+              this.dataResultService = data;
+
+              this.dataResultService.forEach(element2 => {
+                console.log("MUCHO CP: " + element2.calificacion);
+                total = total + element2.calificacion;
+              });
+              console.log("TOTAL: " + total);
+          }
+        })
+        
         console.log(this.idEvento)
         this.api.getStateInvitationService(key.idServicios.toString(), this.idEvento.toString()).subscribe(data =>{
           console.log(data);
