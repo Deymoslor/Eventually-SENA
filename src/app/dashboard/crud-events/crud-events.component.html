@@ -1,49 +1,52 @@
 <app-modal-edit-events [childMessage]="id"></app-modal-edit-events>
-<img src="../../../../assets/dashboard/crud-events/bannerGyE.png" alt="Grupos y eventos banner" class="thumbnail">
 <div class="content">
-    <h2 class="fs-1 fw-bolder">Eventos</h2>
+    <h2 class="fs-1 fw-bolder title" style="font-size: 100rem;">Eventos</h2>
+    <!-- <style>
+        h2 {
+            font-size: 100px;
+        }
+    </style> -->
     <!--TABLE-->
-    <div class="respo">
-      <div class="table-responsive">
-        <table class="table table-dark table-responsive">
-          <thead>
-            <tr>
-              <th scope="col">Id</th>
-              <th scope="col">Nombre Evento</th>
-              <th scope="col">Descripcion Evento</th>
-              <th scope="col">Estado Evento</th>
-              <th scope="col">Fecha Evento</th>
-              <th scope="col">Tipo Evento</th>
-              <th scope="col">Participantes Totales</th>
-              <th scope="col">Id Grupo</th>
-              <th scope="col">Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let event of events">
-              
-              <th scope="row">{{ event.idEvento }}</th>
-              <td>{{ event.nombreEvento }}</td>
-              <td>{{ event.descripcionEvento }}</td>
-              <td>{{ event.estadoEvento }}</td>
-              <td>{{ event.fechaEvento }}</td>
-              <td>{{ event.tipoEvento }}</td>
-              <td>{{ event.ParticipantesTotales }}</td>
-              <td>{{ event.Grupos_idGrupos }}</td>
-              
-              <td><button class="btn btn-primary" (click)="editEvent(event.idEvento)" data-bs-toggle="modal" data-bs-target="#edit-modal">Editar</button></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <!--TABLE//-->
+
+
+
+    <!-- <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="bucar..." [(ngModel)]="filterPersona">
+            </div>
+        </div>
+    </div> -->
+    <div class="row tables">
+        <div class="col ">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nombre Evento</th>
+                        <th scope="col">Descripcion Evento</th>
+                        <th scope="col">Estado Evento</th>
+                        <th scope="col">Fecha Evento</th>
+                        <th scope="col">Tipo Evento</th>
+                        <th scope="col">Participantes Totales</th>
+                        <th scope="col">Id Grupo</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let event of events">
+                        <th scope="row">{{ event.idEvento }}</th>
+                        <td>{{ event.nombreEvento }}</td>
+                        <td>{{ event.descripcionEvento }}</td>
+                        <td>{{ event.estadoEvento }}</td>
+                        <td>{{ event.fechaEvento }}</td>
+                        <td>{{ event.tipoEvento }}</td>
+                        <td>{{ event.ParticipantesTotales }}</td>
+                        <td>{{ event.Grupos_idGrupos }}</td>
+                        <td><button class="btn btn-primary" (click)="editEvent(event.idEvento)" data-bs-toggle="modal" data-bs-target="#edit-modal">Editar</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-    
-    <button class="btn btn-primary col-2 d-md-flex justify-content-md-center" data-bs-toggle="modal" data-bs-target="#content-modal" >
-        Crear Evento
-    </button>
-
-
 </div>
-
-
