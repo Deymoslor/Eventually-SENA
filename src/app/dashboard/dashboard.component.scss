@@ -8,10 +8,12 @@ body .container {
 }
 
 .containerDash {
-    padding: 1rem;
-    padding-right: 1rem;
-    width: 100%;
-    border: 1px solid red;
+    width: 85%;
+}
+
+.men {
+    width: 10%;
+    margin-left: -1rem!important;
 }
 
 
@@ -22,7 +24,6 @@ body .container {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    margin: 10px 20px;
     height: auto;
     position: relative;
     z-index: 1;
@@ -71,3 +72,28 @@ footer .content {
     max-width: 100vw;
     width: 100%;
 }
+
+@media only screen and (max-width: 427px) {
+    // .containerDash {
+    //     width: 60%;
+    // }
+    .men {
+        width: 5rem;
+    }
+}
+
+// @media only screen and (max-width: 399px) {
+//     .containerDash {
+//         width: 20%;
+//     }
+//     .tables {
+//         overflow: scroll;
+//     }
+//     .tables .table {
+//         width: 2%!important;
+//         margin: 0;
+//     }
+//     .d {
+//         padding-left: -1rem;
+//     }
+// }
