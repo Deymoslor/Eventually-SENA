@@ -53,7 +53,7 @@
                 </div>
             </div>
             <div class="grupo">
-                <input (click)="showLaw()" class="email" type="email" name="" id="password"  formControlName="Email" placeholder="Introduce tu email" [ngClass]="(nuevoForm.get('Email')?.touched || nuevoForm.get('Email')?.dirty) &&
+                <input class="email" type="email" name="" id="password"  formControlName="Email" placeholder="Introduce tu email" [ngClass]="(nuevoForm.get('Email')?.touched || nuevoForm.get('Email')?.dirty) &&
                 nuevoForm.get('Email')?.errors ? 'is-invalid' : '' || nuevoForm.get('email')?.hasError('email')
                 ? 'is-invalid' : ''"><span class="barra"></span>
                 <label for="">Email</label>
@@ -108,20 +108,20 @@
                     {{ nuevoForm.get("Celular")?.hasError("required") ? "Campo requerido" : "" }}
                 </div>
             </div>
-            <div class="grupo">
+            <!-- <div class="grupo">
                 <input type="checkbox" checked="true" name="" id="check2" formControlName="check2" [ngClass]="(nuevoForm.get('check2')?.touched || nuevoForm.get('check2')?.dirty) &&
                 nuevoForm.get('check2')?.errors ? 'is-invalid' : ''" ><span class="barra"></span>
                 <label class="lawLabel" for="">Aceptar la ley 1581 de 2012 de tratamiento de datos de menores en caso de serlo.</label>
                 <div class="invalid-feedback">
                     {{ nuevoForm.get("Celular")?.hasError("required") ? "Campo requerido" : "" }}
                 </div>
-            </div>
-            
+            </div> -->
+
 
             <!-- <button (click)="sendData()">Registrarse</button> -->
 
             <button *ngIf="nuevoForm.invalid" type="submit" [disabled]="nuevoForm.invalid" class="btnRegistroDisable">Registrarse</button>
-            <button *ngIf="nuevoForm.valid" class="btnRegistro">Registrarse</button>
+            <button *ngIf="nuevoForm.valid" type="submit" class="btnRegistro">Registrarse</button>
             <button class="botoncitosexy" (click)="cancel()">Cancelar</button>
 
             <!-- <pre>{{ formUsers.value | json }}</pre> -->
