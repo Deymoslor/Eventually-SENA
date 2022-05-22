@@ -18,6 +18,7 @@ export class TableInvitationsEventsComponent implements OnInit {
   constructor(private api: ApiService) { }
 
   ngOnInit(): void {
+    console.log("id proveedor: " + this.childMessage);
     this.api.getAllServiceEventProv(this.childMessage).subscribe(data =>{
       console.log(data);
       data.forEach(key => {

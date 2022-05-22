@@ -43,6 +43,7 @@
                     <th scope="col">Correo</th>
                     <th scope="col">Numero</th>
                     <th scope="col">Tipo Servicio</th>
+                    <th scope="col">TOTAL Calificación</th>
                     <th scope="col">Detalle Servicio</th>
                     <th scope="col">Accion</th>
                     <th scope="col">Estado</th>
@@ -60,6 +61,7 @@
                     <td *ngFor="let item of dataTypeService" [hidden]="item.idtipoServicio != key.TipoServicio_idtipoServicio">
                             {{item.tipoServicio}}
                     </td>
+                    <td>{{key.calificacionT}}</td>
                     <td>
                         <div class="content-button">
                             <button class="btn btn-primary" (click)="modalOpen(content)">Detalle</button>

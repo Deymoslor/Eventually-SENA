@@ -34,6 +34,7 @@ export class MyServiceComponent implements OnInit {
   constructor(private api: ApiService, private router: Router, private auth: AuthService) { }
 
   ngOnInit(): void {
+    this.idProvider = this.auth.desencriptar(localStorage.getItem('id'));
     this.api.getSingleServiceProvider(this.auth.desencriptar(localStorage.getItem('id'))).subscribe((data:any) =>{
       if (data >= 0){
         this.router.navigateByUrl('provider/createService')

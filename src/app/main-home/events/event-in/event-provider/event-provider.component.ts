@@ -52,18 +52,28 @@ export class EventProviderComponent implements OnInit {
     this.api.getAllProvServicesInv(1).subscribe(datas =>{
       console.log(datas);
       this.dataProviderService = datas;
+      
       this.dataProviderService.forEach(key => {
-        console.log(key.idServicios + "si");
-        let total = 0
+        // console.log(key.idServicios + ": proveedor");
+        let total:number = 0;
+        let iterable:number = 0;
         this.apiRS.getResultsServices(key.idServicios).subscribe(data =>{
           if(data){
               this.dataResultService = data;
 
               this.dataResultService.forEach(element2 => {
-                console.log("MUCHO CP: " + element2.calificacion);
-                total = total + element2.calificacion;
+                if(element2.calificacion){
+                  iterable += 1
+                  console.log("Resultado: "+ element2.idresultadoServicio +": " + element2.calificacion);
+                  total += Number(element2.calificacion);
+                }
               });
               console.log("TOTAL: " + total);
+              key.calificacionT = total/iterable;
+          }
+          else if(!data){
+            total = 0;
+            key.calificacionT = total;
           }
         })
         

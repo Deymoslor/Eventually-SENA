@@ -54,7 +54,7 @@ export class ModalDisableEventComponent implements OnInit {
       })
       
       
-      // this.refresh();
+      this.refresh();
     }
     console.log(form)
   }
