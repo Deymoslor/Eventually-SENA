@@ -1,46 +1,166 @@
 :host {
-  display: flex;
-  flex-direction: column;
-  align-self: center;
-  justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: space-between;
+}
+
+// @import url('https://fonts.googleapis.com/css2?family=Macondo&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Macondo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+.title {
+    // font-family: 'Patua One', cursive;
+    // font-family: 'Macondo', cursive;
+    font-family: 'Pacifico', cursive;
+    font-size: 7vw;
+    margin-bottom: 6vw;
 }
 
 .thumbnail {
-  width: 70vw;
-  border-radius: 20px;
+    width: 70vw;
+    border-radius: 20px!important;
 }
 
 .content {
-  display: flex;
-  width: 90%;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  flex-grow: 1;
-  margin-top: 80px;
+    display: flex;
+    width: 90%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    flex-grow: 1;
+    margin-top: 4vw;
 }
 
-// .mat-column-demo-position {
-//   width: 32px;
-//   border-right: 1px solid currentColor;
-//   padding-right: 24px;
-//   text-align: center;
-// }
-
-// .mat-column-demo-name {
-//   padding-left: 16px;
-//   font-size: 20px;
-// }
-
-// .mat-column-demo-weight {
-//   font-style: italic;
-// }
-
-// .mat-column-demo-symbol {
-//   width: 32px;
-//   text-align: center;
-//   font-weight: bold;
-// }
 .btn {
-  margin: 20px;
+    margin: 20px;
+}
+
+@media only screen and (max-width: 1213px) {
+    .content {
+        margin-left: 6vw!important;
+    }
+}
+
+@media only screen and (max-width: 1129px) {
+    .content {
+        margin-left: 4vw!important;
+    }
+}
+
+@media only screen and (max-width: 1097px) {
+    .content {
+        width: 86vw!important;
+        margin-left: 4vw;
+        .tables {
+            overflow: scroll;
+            width: 86vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+}
+
+@media only screen and (max-width: 718px) {
+    .content {
+        width: 82vw!important;
+        margin-left: 6vw!important;
+        .tables {
+            overflow: scroll;
+            width: 82vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+}
+
+@media only screen and (max-width: 627px) {
+    .content {
+        width: 78vw!important;
+        margin-left: 8vw!important;
+        .tables {
+            overflow: scroll;
+            width: 78vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+}
+
+@media only screen and (max-width: 470px) {
+    .content {
+        width: 74vw!important;
+        margin-left: 10vw!important;
+        .tables {
+            overflow: scroll;
+            width: 74vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+}
+
+@media only screen and (max-width: 427px) {
+    .content {
+        margin-left: 4vw!important;
+    }
+}
+
+@media only screen and (max-width: 387px) {
+    .content {
+        width: 74vw!important;
+        margin-left: 2.5vw!important;
+        .tables {
+            overflow: scroll;
+            width: 74vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+}
+
+@media only screen and (max-width: 361px) {
+    .content {
+        width: 70vw!important;
+        margin-left: 2.5vw!important;
+        .tables {
+            overflow: scroll;
+            width: 70vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+}
+
+@media only screen and (max-width: 330px) {
+    .content {
+        width: 65vw!important;
+        margin-left: -1vw!important;
+        .tables {
+            overflow: scroll;
+            width: 65vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+}
+
+@media only screen and (max-width: 281px) {
+    .content {
+        width: 60vw!important;
+        margin-left: -1vw!important;
+        .tables {
+            overflow: scroll;
+            width: 60vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
 }

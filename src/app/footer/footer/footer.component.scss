@@ -37,3 +37,16 @@ footer {
         }
     }
 }
+
+@media only screen and (max-width: 400px) {
+    h1 {
+        font-size: 6.5vw!important;
+    }
+    .hrFooder {
+        width: 25vw!important;
+        size: 5vw;
+    }
+    .letras {
+        font-size: 2.5vw!important;
+    }
+}

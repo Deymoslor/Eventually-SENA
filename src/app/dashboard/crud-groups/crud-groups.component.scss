@@ -1,49 +1,164 @@
 :host {
-  display: flex;
-  flex-direction: column;
-  align-self: center;
-  justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: space-between;
 }
 
-.thumbnail {
-  width: 70vw;
-  border-radius: 20px;
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+.title {
+    font-family: 'Pacifico', cursive;
+    font-size: 7vw;
+    margin-bottom: 6vw;
 }
 
 .content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  flex-grow: 1;
-  margin-top: 80px;
+    margin-top: 4vw;
+    display: flex;
+    width: 90%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    flex-grow: 1;
+    margin-left: 5vw;
 }
 
-table {
-  width: 80%;
-}
-
-.mat-column-demo-position {
-  width: 32px;
-  border-right: 1px solid currentColor;
-  padding-right: 24px;
-  text-align: center;
-}
-
-.mat-column-demo-name {
-  padding-left: 16px;
-  font-size: 20px;
-}
-
-.mat-column-demo-weight {
-  font-style: italic;
-}
-
-.mat-column-demo-symbol {
-  width: 32px;
-  text-align: center;
-  font-weight: bold;
-}
 .btn {
-  margin: 20px;
+    margin: 20px;
+    width: 8vw!important;
+    font-size: 1vw;
+}
+
+@media only screen and (max-width: 964px) {
+    .content {
+        width: 86vw!important;
+        margin-left: 4.5vw;
+        .tables {
+            overflow: scroll;
+            width: 86vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+    .btn {
+        width: 11vw!important;
+        font-size: 1.5vw!important;
+    }
+}
+
+@media only screen and (max-width: 536px) {
+    .content {
+        width: 84vw!important;
+        margin-left: 6.5vw;
+        .tables {
+            overflow: scroll;
+            width: 84vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+    .btn {
+        width: 15vw!important;
+        font-size: 3vw!important;
+    }
+}
+
+@media only screen and (max-width: 496px) {
+    .content {
+        width: 82vw!important;
+        margin-left: 7vw;
+        .tables {
+            overflow: scroll;
+            width: 82vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+}
+
+@media only screen and (max-width: 483px) {
+    .content {
+        width: 78vw!important;
+        margin-left: 8.5vw;
+        .tables {
+            overflow: scroll;
+            width: 78vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+}
+
+@media only screen and (max-width: 434px) {
+    .content {
+        width: 70vw!important;
+        margin-left: 8.5vw;
+        .tables {
+            overflow: scroll;
+            width: 70vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+}
+
+@media only screen and (max-width: 408px) {
+    .content {
+        width: 65vw!important;
+        margin-left: 3vw!important;
+        .tables {
+            overflow: scroll;
+            width: 65vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+}
+
+@media only screen and (max-width: 305px) {
+    .content {
+        width: 65vw!important;
+        margin-left: -3vw!important;
+        .tables {
+            overflow: scroll;
+            width: 65vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+}
+
+@media only screen and (max-width: 280px) {
+    .content {
+        width: 65vw!important;
+        margin-left: -3vw!important;
+        .tables {
+            overflow: scroll;
+            width: 65vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+}
+
+@media only screen and (max-width: 263px) {
+    .content {
+        width: 60vw!important;
+        margin-left: -4vw!important;
+        .tables {
+            overflow: scroll;
+            width: 60vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
 }
