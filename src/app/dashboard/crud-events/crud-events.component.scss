@@ -6,13 +6,14 @@
 }
 
 // @import url('https://fonts.googleapis.com/css2?family=Macondo&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Macondo&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Macondo&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 .title {
     // font-family: 'Patua One', cursive;
     // font-family: 'Macondo', cursive;
     font-family: 'Pacifico', cursive;
     font-size: 7vw;
+    margin-bottom: 6vw;
 }
 
 .thumbnail {
@@ -27,177 +28,139 @@
     align-items: center;
     justify-content: space-between;
     flex-grow: 1;
-    margin-top: 80px;
+    margin-top: 4vw;
 }
 
 .btn {
     margin: 20px;
 }
 
-@media only screen and (max-width: 1221px) {
+@media only screen and (max-width: 1213px) {
     .content {
-        margin-left: 2rem;
+        margin-left: 6vw!important;
     }
 }
 
-@media only screen and (max-width: 1090px) {
+@media only screen and (max-width: 1129px) {
     .content {
-        margin-left: 3rem;
+        margin-left: 4vw!important;
     }
 }
 
-@media only screen and (max-width: 1100px) {
+@media only screen and (max-width: 1097px) {
     .content {
-        width: 45rem!important;
-        margin-left: 5rem!important;
-    }
-    .tables {
-        overflow: scroll;
-        width: 45rem!important;
-    }
-    .tables table {
-        width: 10%!important;
+        width: 86vw!important;
+        margin-left: 4vw;
+        .tables {
+            overflow: scroll;
+            width: 86vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
     }
 }
 
-@media only screen and (max-width: 886px) {
+@media only screen and (max-width: 718px) {
     .content {
-        margin-left: 3rem!important;
+        width: 82vw!important;
+        margin-left: 6vw!important;
+        .tables {
+            overflow: scroll;
+            width: 82vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
     }
 }
 
-@media only screen and (max-width: 850px) {
+@media only screen and (max-width: 627px) {
     .content {
-        margin-left: 2rem!important;
+        width: 78vw!important;
+        margin-left: 8vw!important;
+        .tables {
+            overflow: scroll;
+            width: 78vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
     }
 }
 
-@media only screen and (max-width: 830px) {
+@media only screen and (max-width: 470px) {
     .content {
-        margin-left: 1rem!important;
-    }
-}
-
-@media only screen and (max-width: 813px) {
-    .content {
-        width: 35rem!important;
-        margin-left: 5rem!important;
-    }
-    .tables {
-        overflow: scroll;
-        width: 40rem!important;
-    }
-    .tables table {
-        width: 10%!important;
-    }
-}
-
-@media only screen and (max-width: 746px) {
-    .content {
-        width: 35rem!important;
-        margin-left: 3rem!important;
-    }
-    .tables {
-        overflow: scroll;
-        width: 38rem!important;
-    }
-    .tables table {
-        width: 10%!important;
-    }
-}
-
-@media only screen and (max-width: 703px) {
-    .content {
-        width: 30rem!important;
-        margin-left: 5rem!important;
-    }
-    .tables {
-        overflow: scroll;
-        width: 35rem!important;
-    }
-    .tables table {
-        width: 10%!important;
-    }
-}
-
-@media only screen and (max-width: 660px) {
-    .content {
-        width: 28rem!important;
-        margin-left: 5rem!important;
-    }
-    .tables {
-        overflow: scroll;
-        width: 30rem!important;
-    }
-    .tables table {
-        width: 10%!important;
-    }
-}
-
-@media only screen and (max-width: 601px) {
-    .content {
-        width: 26rem!important;
-        margin-left: 4rem!important;
-    }
-    .tables {
-        overflow: scroll;
-        width: 25rem!important;
-    }
-    .tables table {
-        width: 10%!important;
-    }
-}
-
-@media only screen and (max-width: 530px) {
-    .content {
-        margin-left: 2rem!important;
-    }
-}
-
-@media only screen and (max-width: 488px) {
-    .content {
-        width: 20rem!important;
-        margin-left: 2rem!important;
-    }
-    .tables {
-        overflow: scroll;
-        width: 20rem!important;
-    }
-    .tables table {
-        width: 5%!important;
+        width: 74vw!important;
+        margin-left: 10vw!important;
+        .tables {
+            overflow: scroll;
+            width: 74vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
     }
 }
 
 @media only screen and (max-width: 427px) {
     .content {
-        margin-left: 0.5rem!important;
+        margin-left: 4vw!important;
     }
 }
 
-@media only screen and (max-width: 415px) {
+@media only screen and (max-width: 387px) {
     .content {
-        width: 15rem!important;
-        margin-left: 0rem!important;
-    }
-    .tables {
-        overflow: scroll;
-        width: 15rem!important;
-    }
-    .tables table {
-        width: 5%!important;
+        width: 74vw!important;
+        margin-left: 2.5vw!important;
+        .tables {
+            overflow: scroll;
+            width: 74vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
     }
 }
 
-@media only screen and (max-width: 334px) {
+@media only screen and (max-width: 361px) {
     .content {
-        width: 12rem!important;
-        margin-left: -0.5rem!important;
+        width: 70vw!important;
+        margin-left: 2.5vw!important;
+        .tables {
+            overflow: scroll;
+            width: 70vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
     }
-    .tables {
-        overflow: scroll;
-        width: 12rem!important;
+}
+
+@media only screen and (max-width: 330px) {
+    .content {
+        width: 65vw!important;
+        margin-left: -1vw!important;
+        .tables {
+            overflow: scroll;
+            width: 65vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
     }
-    .tables table {
-        width: 5%!important;
+}
+
+@media only screen and (max-width: 281px) {
+    .content {
+        width: 60vw!important;
+        margin-left: -1vw!important;
+        .tables {
+            overflow: scroll;
+            width: 60vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
     }
 }

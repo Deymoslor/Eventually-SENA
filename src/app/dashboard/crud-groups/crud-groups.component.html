@@ -1,88 +1,72 @@
 <app-modal-groups></app-modal-groups>
 <app-modal-edit-groups [childMessage]=id></app-modal-edit-groups>
-<div class="cover">
-    <div class="coverContent">
-        <h2 class="fs-1 fw-bolder">Grupos</h2>
-    </div>
 
-</div>
 <div class="content">
+    <u><h2 class="title">Grupos</h2></u>
 
     <!--TABLE//-->
 
-    <table class="table table-hover table-dark">
-        <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Descripcíon</th>
-                <th scope="col">Privacidad</th>
-                <th scope="col">Invitados</th>
-                <th scope="col">Gusto</th>
-                <th scope="col">Estado</th>
-                <th scope="col">Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let group of groups">
-                <th scope="row">{{ group.idGrupos }}</th>
-                <td>{{ group.nombreGrupo }}</td>
-                <td>{{ group.descripcionGrupo }}</td>
-                <!-- <td>
-          <div class="form-check form-switch" *ngIf="group.privacidadGrupo==1">
-            <p>Activo</p>
-          </div>
-          <div class="form-check form-switch" *ngIf="group.privacidadGrupo==2">
-            <p>Desactivado</p>
-          </div>
-        </td> -->
-                <td>
-                    <br>
-                    <div *ngIf="group.privacidadGrupo==1">
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" (click)="switchPublicGroup(group.privacidadGrupo, group.idGrupos)" (click)="refresh()">
-                            <label class="form-check-label" for="flexSwitchCheckChecked"></label>
-                        </div>
-                    </div>
-                    <div *ngIf="group.privacidadGrupo==2">
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked (click)="switchPublicGroup(group.privacidadGrupo, group.idGrupos)" (click)="refresh()">
-                            <label class="form-check-label" for="flexSwitchCheckChecked"></label>
-                        </div>
-                    </div>
-                </td>
-                <td>{{ group.InvitadosTotales }}</td>
-                <td>{{ group.nombreGusto }}</td>
-                <!-- <td>
-          <div class="form-check form-switch" *ngIf="group.EstadosGrupo_idEstadosGrupo1==1">
-            <p>Activo</p>
-          </div>
-          <div class="form-check form-switch" *ngIf="group.EstadosGrupo_idEstadosGrupo1==2">
-            <p>Desactivado</p>
-          </div>
-        </td> -->
-                <td>
-                    <br>
-                    <div *ngIf="group.EstadosGrupo_idEstadosGrupo1==1">
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked (click)="switchStateGroup(group.EstadosGrupo_idEstadosGrupo1, group.idGrupos)" (click)="refresh()">
-                            <label class="form-check-label" for="flexSwitchCheckChecked"></label>
-                        </div>
-                    </div>
-                    <div *ngIf="group.EstadosGrupo_idEstadosGrupo1==2">
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" (click)="switchStateGroup(group.EstadosGrupo_idEstadosGrupo1, group.idGrupos)" (click)="refresh()">
-                            <label class="form-check-label" for="flexSwitchCheckChecked"></label>
-                        </div>
-                    </div>
-                </td>
-                <td><button class="btn btn-primary justify-content-md-center" (click)="editarGroup(group.idGrupos)" data-bs-toggle="modal" data-bs-target="#groups-edit-modal">Editar</button></td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="row tables">
+        <div class="col ">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Descripcíon</th>
+                        <th scope="col">Privacidad</th>
+                        <th scope="col">Invitados</th>
+                        <th scope="col">Gusto</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let group of groups">
+                        <th scope="row">{{ group.idGrupos }}</th>
+                        <td>{{ group.nombreGrupo }}</td>
+                        <td>{{ group.descripcionGrupo }}</td>
+
+                        <td>
+                            <br>
+                            <div *ngIf="group.privacidadGrupo==1">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" (click)="switchPublicGroup(group.privacidadGrupo, group.idGrupos)" (click)="refresh()">
+                                    <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+                                </div>
+                            </div>
+                            <div *ngIf="group.privacidadGrupo==2">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked (click)="switchPublicGroup(group.privacidadGrupo, group.idGrupos)" (click)="refresh()">
+                                    <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+                                </div>
+                            </div>
+                        </td>
+                        <td>{{ group.InvitadosTotales }}</td>
+                        <td>{{ group.nombreGusto }}</td>
+
+                        <td>
+                            <br>
+                            <div *ngIf="group.EstadosGrupo_idEstadosGrupo1==1">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked (click)="switchStateGroup(group.EstadosGrupo_idEstadosGrupo1, group.idGrupos)" (click)="refresh()">
+                                    <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+                                </div>
+                            </div>
+                            <div *ngIf="group.EstadosGrupo_idEstadosGrupo1==2">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" (click)="switchStateGroup(group.EstadosGrupo_idEstadosGrupo1, group.idGrupos)" (click)="refresh()">
+                                    <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+                                </div>
+                            </div>
+                        </td>
+                        <td><button class="btn btn-primary justify-content-md-center" (click)="editarGroup(group.idGrupos)" data-bs-toggle="modal" data-bs-target="#groups-edit-modal">Editar</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
     <button class="btn btn-primary col-2 d-md-flex justify-content-md-center" data-bs-toggle="modal" data-bs-target="#groups-modal">
-      Crear Grupo
-  </button>
-
-
+    Crear Grupo
+</button>
 </div>

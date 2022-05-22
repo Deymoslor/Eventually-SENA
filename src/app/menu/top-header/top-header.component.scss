@@ -710,6 +710,69 @@ header {
     }
 }
 
+@media only screen and (max-width: 330px) {
+    .menus {
+        padding-left: -6rem;
+        margin-left: -7.5rem;
+    }
+    .search {
+        i {
+            .varSearch {
+                margin-left: 1.5rem;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 339px) {
+    .menuUser {
+        h1 {
+            font-weight: 450;
+            margin-left: 1vw;
+            font-size: 2.5vw;
+            color: $thirdLetter;
+        }
+        svg {
+            stroke: $fourthLetter;
+            stroke-width: 1.5;
+            fill: none;
+            width: 2vw;
+        }
+        .spaceDropdownMenu {
+            height: 2.5vw;
+            width: auto;
+            h3 {
+                margin-top: -1vw;
+            }
+        }
+        a {
+            h2 {
+                font-weight: 450;
+                font-size: 1.2vw;
+                color: $thirdLetter;
+            }
+            h3 {
+                font-size: 1vw;
+                color: $fourthLetter;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 308px) {
+    .menus {
+        padding-left: -7rem;
+        margin-left: -8.5rem;
+    }
+    .search {
+        i {
+            .varSearch {
+                margin-left: 1.5rem;
+            }
+        }
+    }
+}
+
 @media only screen and (max-width: 388) {
     .search {
         input {
