@@ -5,11 +5,16 @@
     justify-content: space-between;
 }
 
-// @import url('https://fonts.googleapis.com/css2?family=Patua+One&display=swap');
-// .title {
-//     font-family: 'Patua One', cursive;
-//     font-weight: 100rem;
-// }
+// @import url('https://fonts.googleapis.com/css2?family=Macondo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Macondo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+.title {
+    // font-family: 'Patua One', cursive;
+    // font-family: 'Macondo', cursive;
+    font-family: 'Pacifico', cursive;
+    font-size: 7vw;
+}
+
 .thumbnail {
     width: 70vw;
     border-radius: 20px!important;

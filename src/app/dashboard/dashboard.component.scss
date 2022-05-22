@@ -2,9 +2,12 @@
 body .container {
     max-width: 100vw;
     width: 100%;
-    height: 4.5rem;
     margin-top: 0;
     padding-top: 5rem;
+}
+
+body {
+    height: auto;
 }
 
 .containerDash {
