@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { GlobalConstants } from 'src/app/global-constants';
-import { HttpClient } from '@angular/common/http/http';
+import { HttpClient } from '@angular/common/http';
 import { RequestGroups } from './request-groups';
 import { Observable } from 'rxjs';
 
@@ -15,7 +15,7 @@ export class RequestGroupsService {
 
   constructor(private http:HttpClient) { }
 
-  getPromotedGroups(page:number):Observable<RequestGroups[]>{
+  getRequestGroups(page:number):Observable<RequestGroups[]>{
     let direccion = this.API + "requestGroups?user=" + page;
 
     return this.http.get<RequestGroups[]>(direccion);

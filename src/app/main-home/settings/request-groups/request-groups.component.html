@@ -1,1 +1,14 @@
-<p>request-groups works!</p>
+<div class="modal-body">
+    <div *ngFor="let group of groups">
+        <div class="card w-100">
+            <div class="card-body">
+                <h5 class="card-title">{{group.nombreGrupo}}</h5>
+                <p class="card-text">{{group.descripcionGrupo}}.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Unirse</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Rechazar</button>
+            </div>
+        </div>
+    </div>
+  </div>

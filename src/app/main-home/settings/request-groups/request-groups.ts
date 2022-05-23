@@ -6,5 +6,4 @@ export interface RequestGroups {
   invitadosTotales: number;
   gustos_idGusto: number;
   idPersona: number;
-  imagen: any;
 }
