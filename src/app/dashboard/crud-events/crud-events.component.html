@@ -39,7 +39,9 @@
                         <th scope="row">{{ event.idEvento }}</th>
                         <td>{{ event.nombreEvento }}</td>
                         <td>{{ event.descripcionEvento }}</td>
-                        <td>{{ event.estadoEvento }}</td>
+                        <td *ngIf="event.estadoEvento == 3">TERMINADO</td>
+                        <td *ngIf="event.estadoEvento == 1">ACTIVO</td>
+                        <td *ngIf="event.estadoEvento == 0">SIN ACTIVAR</td>
                         <td>{{ event.fechaEvento }}</td>
                         <td>{{ event.tipoEvento }}</td>
                         <td>{{ event.ParticipantesTotales }}</td>
