@@ -21,30 +21,32 @@
     <div class="row tables">
         <div class="col ">
             <table class="table table-striped">
-                <thead>
+                <thead class="titles">
                     <tr>
-                        <th scope="col">Id</th>
-                        <th scope="col">Nombre Evento</th>
-                        <th scope="col">Descripcion Evento</th>
-                        <th scope="col">Estado Evento</th>
-                        <th scope="col">Fecha Evento</th>
-                        <th scope="col">Tipo Evento</th>
-                        <th scope="col">Participantes Totales</th>
-                        <th scope="col">Id Grupo</th>
-                        <th scope="col">Acciones</th>
+                        <th class="textoTitulos" scope="col">Id</th>
+                        <th class="textoTitulos" scope="col">Nombre Evento</th>
+                        <th class="textoTitulos" scope="col">Descripcion Evento</th>
+                        <th class="textoTitulos" scope="col">Estado Evento</th>
+                        <th class="textoTitulos" scope="col">Fecha Evento</th>
+                        <th class="textoTitulos" scope="col">Tipo Evento</th>
+                        <th class="textoTitulos" scope="col">Participantes Totales</th>
+                        <th class="textoTitulos" scope="col">Id Grupo</th>
+                        <th class="textoTitulos" scope="col">Acciones</th>
                     </tr>
                 </thead>
+
                 <tbody>
+                    <!-- <tr class="sepa"></tr> -->
                     <tr *ngFor="let event of events">
-                        <th scope="row">{{ event.idEvento }}</th>
-                        <td>{{ event.nombreEvento }}</td>
-                        <td>{{ event.descripcionEvento }}</td>
-                        <td>{{ event.estadoEvento }}</td>
-                        <td>{{ event.fechaEvento }}</td>
-                        <td>{{ event.tipoEvento }}</td>
-                        <td>{{ event.ParticipantesTotales }}</td>
-                        <td>{{ event.Grupos_idGrupos }}</td>
-                        <td><button class="btn btn-primary" (click)="editEvent(event.idEvento)" data-bs-toggle="modal" data-bs-target="#edit-modal">Editar</button></td>
+                        <th class="textox" scope="row">{{ event.idEvento }}</th>
+                        <td class="textox">{{ event.nombreEvento }}</td>
+                        <td class="textox">{{ event.descripcionEvento }}</td>
+                        <td class="textox">{{ event.estadoEvento }}</td>
+                        <td class="textox">{{ event.fechaEvento }}</td>
+                        <td class="textox">{{ event.tipoEvento }}</td>
+                        <td class="textox">{{ event.ParticipantesTotales }}</td>
+                        <td class="textox">{{ event.Grupos_idGrupos }}</td>
+                        <td class="textox"><button class="btn  btnEditar" (click)="editEvent(event.idEvento)" data-bs-toggle="modal" data-bs-target="#edit-modal">Editar</button></td>
                     </tr>
                 </tbody>
             </table>

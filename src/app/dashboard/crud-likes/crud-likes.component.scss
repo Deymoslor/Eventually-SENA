@@ -1,15 +1,26 @@
+@import '../../app.component.scss';
 .thumbnail {
-    width: 86vw;
-    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: space-between;
 }
 
 .content {
     display: flex;
+    width: 90%;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     flex-grow: 1;
-    margin-top: 80px;
+    margin-top: 4vw;
+    margin-bottom: 4vw;
+}
+
+.title {
+    font-family: 'Pacifico', cursive;
+    font-size: 7vw;
+    margin-bottom: 6vw;
 }
 
 table {
