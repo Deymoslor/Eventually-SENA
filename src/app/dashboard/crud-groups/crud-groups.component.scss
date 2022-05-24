@@ -1,3 +1,4 @@
+@import '../../app.component.scss';
 :host {
     display: flex;
     flex-direction: column;
@@ -5,7 +6,6 @@
     justify-content: space-between;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 .title {
     font-family: 'Pacifico', cursive;
     font-size: 7vw;
@@ -21,18 +21,53 @@
     justify-content: space-between;
     flex-grow: 1;
     margin-left: 5vw;
+    margin-bottom: 4vw;
+}
+
+.content {
+    height: 55vw!important;
+    .tables {
+        overflow: scroll;
+        height: 55vw!important;
+    }
+    .tables table {
+        height: 30%!important;
+    }
 }
 
 .btn {
     margin: 20px;
-    width: 8vw!important;
-    font-size: 1vw;
 }
 
-@media only screen and (max-width: 964px) {
+.checked {
+    background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2)!important;
+}
+
+.btnEditar {
+    background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
+    color: white;
+}
+
+.btnEditar:hover {
+    background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
+}
+
+@media only screen and (max-width: 1213px) {
+    .content {
+        margin-left: 6vw!important;
+    }
+}
+
+@media only screen and (max-width: 1129px) {
+    .content {
+        margin-left: 4vw!important;
+    }
+}
+
+@media only screen and (max-width: 1097px) {
     .content {
         width: 86vw!important;
-        margin-left: 4.5vw;
+        margin-left: 4vw;
         .tables {
             overflow: scroll;
             width: 86vw!important;
@@ -41,34 +76,12 @@
             width: 10%!important;
         }
     }
-    .btn {
-        width: 11vw!important;
-        font-size: 1.5vw!important;
-    }
 }
 
-@media only screen and (max-width: 536px) {
-    .content {
-        width: 84vw!important;
-        margin-left: 6.5vw;
-        .tables {
-            overflow: scroll;
-            width: 84vw!important;
-        }
-        .tables table {
-            width: 10%!important;
-        }
-    }
-    .btn {
-        width: 15vw!important;
-        font-size: 3vw!important;
-    }
-}
-
-@media only screen and (max-width: 496px) {
+@media only screen and (max-width: 718px) {
     .content {
         width: 82vw!important;
-        margin-left: 7vw;
+        margin-left: 6vw!important;
         .tables {
             overflow: scroll;
             width: 82vw!important;
@@ -79,10 +92,10 @@
     }
 }
 
-@media only screen and (max-width: 483px) {
+@media only screen and (max-width: 627px) {
     .content {
         width: 78vw!important;
-        margin-left: 8.5vw;
+        margin-left: 8vw!important;
         .tables {
             overflow: scroll;
             width: 78vw!important;
@@ -93,10 +106,44 @@
     }
 }
 
-@media only screen and (max-width: 434px) {
+@media only screen and (max-width: 470px) {
+    .content {
+        width: 74vw!important;
+        margin-left: 10vw!important;
+        .tables {
+            overflow: scroll;
+            width: 74vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+}
+
+@media only screen and (max-width: 427px) {
+    .content {
+        margin-left: 4vw!important;
+    }
+}
+
+@media only screen and (max-width: 387px) {
+    .content {
+        width: 74vw!important;
+        margin-left: 2.5vw!important;
+        .tables {
+            overflow: scroll;
+            width: 74vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+}
+
+@media only screen and (max-width: 361px) {
     .content {
         width: 70vw!important;
-        margin-left: 8.5vw;
+        margin-left: 2.5vw!important;
         .tables {
             overflow: scroll;
             width: 70vw!important;
@@ -107,10 +154,10 @@
     }
 }
 
-@media only screen and (max-width: 408px) {
+@media only screen and (max-width: 330px) {
     .content {
         width: 65vw!important;
-        margin-left: 3vw!important;
+        margin-left: -1vw!important;
         .tables {
             overflow: scroll;
             width: 65vw!important;
@@ -121,38 +168,10 @@
     }
 }
 
-@media only screen and (max-width: 305px) {
-    .content {
-        width: 65vw!important;
-        margin-left: -3vw!important;
-        .tables {
-            overflow: scroll;
-            width: 65vw!important;
-        }
-        .tables table {
-            width: 10%!important;
-        }
-    }
-}
-
-@media only screen and (max-width: 280px) {
-    .content {
-        width: 65vw!important;
-        margin-left: -3vw!important;
-        .tables {
-            overflow: scroll;
-            width: 65vw!important;
-        }
-        .tables table {
-            width: 10%!important;
-        }
-    }
-}
-
-@media only screen and (max-width: 263px) {
+@media only screen and (max-width: 281px) {
     .content {
         width: 60vw!important;
-        margin-left: -4vw!important;
+        margin-left: -1vw!important;
         .tables {
             overflow: scroll;
             width: 60vw!important;

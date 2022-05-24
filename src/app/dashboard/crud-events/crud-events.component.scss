@@ -1,3 +1,4 @@
+@import '../../app.component.scss';
 :host {
     display: flex;
     flex-direction: column;
@@ -7,7 +8,6 @@
 
 // @import url('https://fonts.googleapis.com/css2?family=Macondo&display=swap');
 // @import url('https://fonts.googleapis.com/css2?family=Macondo&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 .title {
     // font-family: 'Patua One', cursive;
     // font-family: 'Macondo', cursive;
@@ -16,11 +16,12 @@
     margin-bottom: 6vw;
 }
 
-.thumbnail {
-    width: 70vw;
-    border-radius: 20px!important;
-}
-
+// .titles {
+//     position: fixed;
+// }
+// .sepa {
+//     height: 2vw;
+// }
 .content {
     display: flex;
     width: 90%;
@@ -29,10 +30,41 @@
     justify-content: space-between;
     flex-grow: 1;
     margin-top: 4vw;
+    margin-bottom: 4vw;
+}
+
+.textoTitulos {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+}
+
+.textox {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 350;
+}
+
+.content {
+    height: 55vw!important;
+    .tables {
+        overflow: scroll;
+        height: 55vw!important;
+    }
+    .tables table {
+        height: 30%!important;
+    }
 }
 
 .btn {
     margin: 20px;
+}
+
+.btnEditar {
+    background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
+    color: white;
+}
+
+.btnEditar:hover {
+    background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
 }
 
 @media only screen and (max-width: 1213px) {
