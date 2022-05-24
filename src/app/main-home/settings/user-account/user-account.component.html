@@ -58,15 +58,26 @@
                             class="form-control" formControlName="correo" aria-describedby="helpId" placeholder="Escribe tu correo">
                         </div> -->
 
+                    <!-- Inicio de muestra de gustos seleccionados -->
+
                     <div class="selectNewLikes input-group mb-3">
-                    <b><label class="input-group-text" for="inputGroupSelect01">Gustos actuales</label></b>
-                        <select class="form-select" id="inputGroupSelect01">
-                            <option selected>Musica,Baile</option>
-                            <option value="1">Musica</option>
-                            <option value="2">Baile</option>
-                            <option value="3">Deporte</option>
-                        </select>
+
+                        <div id="account-topics-subscribed" class="clearfix">
+                            <p id="account-topics-add-more">¡Estos son tus gustos!</p>
+                            <ul *ngFor="let gustos of misGustos" id="account-topics-subscribed-list" class="account-topics-list clearfix">
+                                <li class="account-topics-item" data-topicid="1589" >
+                                    <div class="account-topics-name">{{gustos.nombreGusto}}</div>
+                                </li>
+                                <!-- EJEMPLO:
+                                <li class="account-topics-item" data-topicid="7203">
+                                    <div class="account-topics-name">Education &amp; Technology</div>
+                                    <a class="account-topics-remove"></a>
+                                </li> -->
+                            </ul>
+                        </div>
+
                     </div>
+                    <!-- Fin de muestra de gustos seleccionados -->
 
                     <!-- <div class="btnChangeLikes d-flex justify-content-center">
                         <button type="submit" class="btn btn-primary btn-lg" (click)="postForm(editarForm.value)">Actualizar</button>

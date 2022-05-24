@@ -1,151 +1,70 @@
 <app-modal-groups></app-modal-groups>
 <app-modal-edit-groups [childMessage]=id></app-modal-edit-groups>
-<div class="cover">
-  <img src="../../../assets/dashboard/crud-groups/group-dashboard.png" alt="grupos" class="thumbnail">
-  <div class="coverContent">
-      <h2 class="fs-1 fw-bolder">Grupos</h2>
-  </div>
 
-</div>
 <div class="content">
-  <!--TABLE
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <u><h2 class="title">Grupos</h2></u>
 
-      <!--- Note that these columns can be defined in any order.
-              The actual rendered columns are set as a property on the row definition" -->
+    <!--TABLE//-->
 
-      <!-- Position Column
-      <ng-container matColumnDef="position">
-          <th mat-header-cell *matHeaderCellDef> Id </th>
-          <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-      </ng-container>
+    <div class="row tables">
+        <div class="col ">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Descripcíon</th>
+                        <th scope="col">Privacidad</th>
+                        <th scope="col">Invitados</th>
+                        <th scope="col">Gusto</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let group of groups">
+                        <th scope="row">{{ group.idGrupos }}</th>
+                        <td>{{ group.nombreGrupo }}</td>
+                        <td>{{ group.descripcionGrupo }}</td>
 
-      <!-- Name Column
-      <ng-container matColumnDef="NameGroups">
-          <th mat-header-cell *matHeaderCellDef> Nombre Grupo</th>
-          <td mat-cell *matCellDef="let element"> {{element.NameGroups}} </td>
-      </ng-container>
+                        <td>
+                            <br>
+                            <div *ngIf="group.privacidadGrupo==1">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" (click)="switchPublicGroup(group.privacidadGrupo, group.idGrupos)" (click)="refresh()">
+                                    <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+                                </div>
+                            </div>
+                            <div *ngIf="group.privacidadGrupo==2">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked (click)="switchPublicGroup(group.privacidadGrupo, group.idGrupos)" (click)="refresh()">
+                                    <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+                                </div>
+                            </div>
+                        </td>
+                        <td>{{ group.InvitadosTotales }}</td>
+                        <td>{{ group.nombreGusto }}</td>
 
-
-
-      <!-- Symbol Column
-      <ng-container matColumnDef="DescriptionGroups">
-          <th mat-header-cell *matHeaderCellDef> descripción Grupo </th>
-          <td mat-cell *matCellDef="let element"> {{element.DescriptionGroups}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="Privacy">
-        <th mat-header-cell *matHeaderCellDef> Privacidad </th>
-        <td mat-cell *matCellDef="let element">
-          <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
-            <label class="form-check-label" for="flexSwitchCheckChecked"></label>
-          </div>
-        </td>
-      </ng-container>
-
-    <ng-container matColumnDef="TotalUsers">
-      <th mat-header-cell *matHeaderCellDef> Integrantes </th>
-      <td mat-cell *matCellDef="let element"> {{element.TotalUsers}} </td>
-    </ng-container>
-
-
-
-      <ng-container matColumnDef="StateGroup">
-          <th mat-header-cell *matHeaderCellDef> Estado </th>
-          <td mat-cell *matCellDef="let element">
-              <div class="form-check form-switch">
-                  <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
-                  <label class="form-check-label" for="flexSwitchCheckChecked"></label>
-              </div>
-          </td>
-      </ng-container>
-
-      <ng-container matColumnDef="actions">
-          <th mat-header-cell *matHeaderCellDef> Acciones </th>
-          <td mat-cell *matCellDef="let element"> <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#groups-edit-modal">Editar</button> </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
-  </mat-paginator>
-  <!--TABLE//-->
-
-  <table class="table table-hover table-dark">
-    <thead>
-      <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Descripcíon</th>
-        <th scope="col">Privacidad</th>
-        <th scope="col">Invitados</th>
-        <th scope="col">Gusto</th>
-        <th scope="col">Estado</th>
-        <th scope="col">Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let group of groups">
-        <th scope="row">{{ group.idGrupos }}</th>
-        <td>{{ group.nombreGrupo }}</td>
-        <td>{{ group.descripcionGrupo }}</td>
-        <!-- <td>
-          <div class="form-check form-switch" *ngIf="group.privacidadGrupo==1">
-            <p>Activo</p>
-          </div>
-          <div class="form-check form-switch" *ngIf="group.privacidadGrupo==2">
-            <p>Desactivado</p>
-          </div>
-        </td> -->
-        <td>
-          <br>
-          <div *ngIf="group.privacidadGrupo==1">
-            <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" (click)="switchPublicGroup(group.privacidadGrupo, group.idGrupos)" (click)="refresh()">
-              <label class="form-check-label" for="flexSwitchCheckChecked"></label>
-            </div>
-          </div>
-          <div *ngIf="group.privacidadGrupo==2">
-            <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked (click)="switchPublicGroup(group.privacidadGrupo, group.idGrupos)" (click)="refresh()">
-              <label class="form-check-label" for="flexSwitchCheckChecked"></label>
-            </div>
-          </div>
-        </td>
-        <td>{{ group.InvitadosTotales }}</td>
-        <td>{{ group.nombreGusto }}</td>
-        <!-- <td>
-          <div class="form-check form-switch" *ngIf="group.EstadosGrupo_idEstadosGrupo1==1">
-            <p>Activo</p>
-          </div>
-          <div class="form-check form-switch" *ngIf="group.EstadosGrupo_idEstadosGrupo1==2">
-            <p>Desactivado</p>
-          </div>
-        </td> -->
-        <td>
-          <br>
-          <div *ngIf="group.EstadosGrupo_idEstadosGrupo1==1">
-            <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked (click)="switchStateGroup(group.EstadosGrupo_idEstadosGrupo1, group.idGrupos)" (click)="refresh()">
-              <label class="form-check-label" for="flexSwitchCheckChecked"></label>
-            </div>
-          </div>
-          <div *ngIf="group.EstadosGrupo_idEstadosGrupo1==2">
-            <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" (click)="switchStateGroup(group.EstadosGrupo_idEstadosGrupo1, group.idGrupos)" (click)="refresh()">
-              <label class="form-check-label" for="flexSwitchCheckChecked"></label>
-            </div>
-          </div>
-        </td>
-        <td><button class="btn btn-primary justify-content-md-center" (click)="editarGroup(group.idGrupos)" data-bs-toggle="modal" data-bs-target="#groups-edit-modal">Editar</button></td>
-      </tr>
-    </tbody>
-  </table>
-  <button class="btn btn-primary col-2 d-md-flex justify-content-md-center" data-bs-toggle="modal" data-bs-target="#groups-modal">
-      Crear Grupo
-  </button>
-
+                        <td>
+                            <br>
+                            <div *ngIf="group.EstadosGrupo_idEstadosGrupo1==1">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked (click)="switchStateGroup(group.EstadosGrupo_idEstadosGrupo1, group.idGrupos)" (click)="refresh()">
+                                    <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+                                </div>
+                            </div>
+                            <div *ngIf="group.EstadosGrupo_idEstadosGrupo1==2">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" (click)="switchStateGroup(group.EstadosGrupo_idEstadosGrupo1, group.idGrupos)" (click)="refresh()">
+                                    <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+                                </div>
+                            </div>
+                        </td>
+                        <td><button class="btn btnEditar justify-content-md-center" (click)="editarGroup(group.idGrupos)" data-bs-toggle="modal" data-bs-target="#groups-edit-modal">Editar</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
 </div>

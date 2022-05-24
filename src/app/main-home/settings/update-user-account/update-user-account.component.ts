@@ -85,11 +85,6 @@ export class UpdateUserAccountComponent implements OnInit {
 
     this.updateServiceService.getPersonLikes(this.authService.desencriptar(localStorage.getItem('id'))).subscribe(data =>{
       this.misGustos=data;
-      // for (let i = 0; i < this.misGustos.length; i++) {
-      //   // const element = array[index];
-      //   this.listaMisGustos = i;
-      // }
-      // console.log(this.misGustos);
     });
 
 
