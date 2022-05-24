@@ -46,6 +46,8 @@ export class EventProviderComponent implements OnInit {
   constructor(private api:ApiService, private modalService: NgbModal, private route:ActivatedRoute, private apiRS: ApiResultsServicesService) { }
   closeResult = '';
 
+  filterProveedor = '';
+
   ngOnInit(): void {
     let state: number | null;
     console.log("racineta rango: " + this.terminate);

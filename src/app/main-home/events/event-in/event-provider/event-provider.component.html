@@ -34,6 +34,10 @@
     
 <div class="table-responsive">
     <div *ngIf="stateAccept != 1; else onlyAccepted">
+        <div class="searcher">
+            <label for="">BUSCAR TIPO SERVICIOS.</label>
+            <input type="text" class="search" name="filterProveedor" placeholder="Buscar..." [(ngModel)]="filterProveedor">
+        </div>
         <table class="table table-dark table-responsive">
             <thead>
                 <tr>
@@ -51,16 +55,18 @@
             </thead>
             <tbody>
 
-                <tr *ngFor="let key of dataProviderService">
+                <tr *ngFor="let key of (dataProviderService | filterEvents:filterProveedor)">
                     <td></td>
                     <td>{{key.nombreProveedor}}</td>
                     <td>{{key.apellidoProveedor}}</td>
                     <td>{{key.correoProveedor}}</td>
                     <td>{{key.celular}}</td>
                     <!-- <td>{{key.TipoServicio_idtipoServicio}}</td> -->
-                    <td *ngFor="let item of dataTypeService" [hidden]="item.idtipoServicio != key.TipoServicio_idtipoServicio">
-                            {{item.tipoServicio}}
-                    </td>
+                    
+                            <td *ngFor="let item of dataTypeService" [hidden]="item.idtipoServicio != key.TipoServicio_idtipoServicio">
+                                    {{item.tipoServicio}}
+                            </td>
+                   
                     <td>{{key.calificacionT}}</td>
                     <td>
                         <div class="content-button">
