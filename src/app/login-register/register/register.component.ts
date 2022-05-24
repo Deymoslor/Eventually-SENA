@@ -24,23 +24,9 @@ export class RegisterComponent implements OnInit {
     private formBuilder:FormBuilder,
     ) {
 
-      // this.nuevoForm = this.formBuilder.group({
-      //   nombre: ['', Validators.required],
-      //   apellidos: new FormControl('', [Validators.required, ]),
-      //   documento: new FormControl('', [Validators.required, Validators.minLength(7), Validators.maxLength(10)]),
-      //   fechaNacimiento: new FormControl('',Validators.required),
-      //   Email: new FormControl('',Validators.email),
-      //   password: new FormControl('',Validators.required),
-      //   Celular: new FormControl('',Validators.required),
-      //   ciudad: new FormControl('',Validators.required),
-      //   check1: new FormControl ('', Validators.requiredTrue),
-      //   check2: new FormControl ('', Validators.requiredTrue),
-      // })
-
       this.nuevoForm = this.formBuilder.group({
         nombre: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1 ]+$/)]],
         apellidos: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1 ]+$/)]],
-        // documento: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(10)]],
         documento: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(10), Validators.pattern(/^[0-9]\d*$/)]],
         fechaNacimiento: ['',Validators.required],
         Email: ['',[Validators.required, Validators.email]],
@@ -48,7 +34,7 @@ export class RegisterComponent implements OnInit {
         Celular: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^[0-9]\d*$/)]],
         ciudad: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1 ]+$/)]],
         check1: ['', Validators.requiredTrue],
-        // check2: ['', Validators.requiredTrue],
+        
       })
 
     }

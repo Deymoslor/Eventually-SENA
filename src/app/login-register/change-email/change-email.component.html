@@ -1,1 +1,82 @@
-<p>change-email works!</p>
+<body>
+    <form ngNativeValidate [formGroup]="cambioCorreoForm" (ngSubmit)="postForm(cambioCorreoForm.value)">
+        <div class="form">
+            <h1>Solicitud de restablecimiento de Email</h1>
+
+            <div class="grupo">
+                <input type="text" name="" id="email"  formControlName="nombre" placeholder="Introduce tu nombre" [ngClass]="(cambioCorreoForm.get('nombre')?.touched || cambioCorreoForm.get('nombre')?.dirty) &&
+                cambioCorreoForm.get('nombre')?.errors ? 'is-invalid' : '' || cambioCorreoForm.get('documento')?.hasError('minlength')
+                ? 'is-invalid' : '' || cambioCorreoForm.get('documento')?.hasError('pattern')
+                ? 'is-invalid' : ''" formControlName="nombre"><span class="barra"></span>
+                <label for="">Nombre</label>
+                <div class="invalid-feedback">
+                    {{ cambioCorreoForm.get("nombre")?.hasError("required") ? "Campo requerido" : "" }}
+                    {{ cambioCorreoForm.get("nombre")?.hasError("pattern") ? "Campo solo con letras" : "" }}
+                </div>
+            </div>
+            <!-- {{cambioCorreoForm.get("nombre")?.errors | json}} -->
+            <!-- <div *ngIf="cambioCorreoForm.nombre.errors.required">
+                    Name is required.
+            </div> -->
+
+            <div class="grupo">
+                <input type="text" name="" id="Apellidos"  formControlName="apellidos" placeholder="Introduce tus apellidos" [ngClass]="(cambioCorreoForm.get('apellidos')?.touched || cambioCorreoForm.get('apellidos')?.dirty) &&
+                cambioCorreoForm.get('apellidos')?.errors ? 'is-invalid' : '' || cambioCorreoForm.get('apellidos')?.hasError('pattern')
+                ? 'is-invalid' : ''"><span class="barra"></span>
+                <label for="">Apellidos</label>
+                <div class="invalid-feedback">
+                    {{ cambioCorreoForm.get("apellidos")?.hasError("required") ? "Campo requerido" : "" }}
+                    {{ cambioCorreoForm.get("apellidos")?.hasError("pattern") ? "Campo solo con letras" : "" }}
+                </div>
+            </div>
+
+            <div class="grupo">
+                <input type="text" name="" id="documento"  formControlName="documento" placeholder="Introduce tu documento" [ngClass]="(cambioCorreoForm.get('documento')?.touched || cambioCorreoForm.get('documento')?.dirty) &&
+                cambioCorreoForm.get('documento')?.hasError('required') ? 'is-invalid' : '' || cambioCorreoForm.get('documento')?.hasError('minlength')
+                ? 'is-invalid' : '' || cambioCorreoForm.get('documento')?.hasError('maxlength')
+                ? 'is-invalid' : '' || cambioCorreoForm.get('documento')?.hasError('pattern')
+                ? 'is-invalid' : ''"><span class="barra"></span>
+                <label for="">Documento</label>
+                <div class="invalid-feedback">
+                    {{ cambioCorreoForm.get("documento")?.hasError("required") ? "Campo requerido" : "" }}
+                    {{ cambioCorreoForm.get("documento")?.hasError("minlength") ? "Campo mínimo de 7 carácteres" : "" }}
+                    {{ cambioCorreoForm.get("documento")?.hasError("maxlength") ? "Campo máximo de 10 carácteres" : "" }}
+                </div>
+                <div class="invalid-feedback">
+                    {{ cambioCorreoForm.get("documento")?.hasError("pattern") ? "Campo solo con numeros" : "" }}
+                </div>
+            </div>
+            <!-- {{cambioCorreoForm.get("documento")?.errors | json}} -->
+            
+            <div class="grupo">
+                <input class="email" type="email" name="" id="email1"  formControlName="Email1" placeholder="Introduce tu email antiguo" [ngClass]="(cambioCorreoForm.get('Email1')?.touched || cambioCorreoForm.get('Email1')?.dirty) &&
+                cambioCorreoForm.get('Email1')?.errors ? 'is-invalid' : '' || cambioCorreoForm.get('email1')?.hasError('email')
+                ? 'is-invalid' : ''"><span class="barra"></span>
+                <label for="">Email Antiguo</label>
+                <div class="invalid-feedback">
+                    {{ cambioCorreoForm.get("Email")?.hasError("required") ? "Campo requerido" : "" }}
+                    {{ cambioCorreoForm.get("Email")?.hasError("email") ? "Campo de email persona@example.com" : "" }}
+                </div>
+            </div>
+            
+            <div class="grupo">
+                <input class="email" type="email" name="" id="email2"  formControlName="Email2" placeholder="Introduce tu email nuevo" [ngClass]="(cambioCorreoForm.get('Email2')?.touched || cambioCorreoForm.get('Email2')?.dirty) &&
+                cambioCorreoForm.get('Email2')?.errors ? 'is-invalid' : '' || cambioCorreoForm.get('email2|')?.hasError('email')
+                ? 'is-invalid' : ''"><span class="barra"></span>
+                <label for="">Email Nuevo</label>
+                <div class="invalid-feedback">
+                    {{ cambioCorreoForm.get("Email")?.hasError("required") ? "Campo requerido" : "" }}
+                    {{ cambioCorreoForm.get("Email")?.hasError("email") ? "Campo de email persona@example.com" : "" }}
+                </div>
+            </div>
+
+            <!-- <button (click)="sendData()">Registrarse</button> -->
+
+            <button *ngIf="cambioCorreoForm.invalid" type="submit" [disabled]="cambioCorreoForm.invalid" class="btnRegistroDisable">Registrarse</button>
+            <button *ngIf="cambioCorreoForm.valid" type="submit" class="btnRegistro">Registrarse</button>
+            <button class="botoncitosexy" (click)="cancel()">Cancelar</button>
+
+            <!-- <pre>{{ formUsers.value | json }}</pre> -->
+        </div>
+    </form>
+</body>
