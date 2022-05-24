@@ -1,15 +1,19 @@
 <app-modal-events></app-modal-events>
-<app-top-header></app-top-header>
+<app-top-header class="d"></app-top-header>
 
 <body>
     <main class="container d-flex">
         <div class="row">
             <div class="co-12 d-flex ">
-                <div class="col-3 d-flex ">
+                <div class="col-3 d-flex men">
                     <app-left-menu></app-left-menu>
                 </div>
-                <div class="col-4 containerDash d-flex">
+                <div class="col-4 containerDash tables d-flex">
                     <router-outlet></router-outlet>
+
+
+
+
                 </div>
             </div>
 
@@ -18,3 +22,4 @@
 
 
 </body>
+<app-footer></app-footer>

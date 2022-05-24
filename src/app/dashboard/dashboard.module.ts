@@ -34,6 +34,7 @@ import { CreateTypeServicesComponent } from './crud-services/create-type-service
 import { EventReportComponent } from './crud-reports/typeReport/event-report/event-report.component';
 import { GroupReportComponent } from './crud-reports/typeReport/group-report/group-report.component';
 import { UserReportComponent } from './crud-reports/typeReport/user-report/user-report.component';
+import { FooterModule } from '../footer/footer.module';
 
 
 
@@ -77,7 +78,8 @@ import { UserReportComponent } from './crud-reports/typeReport/user-report/user-
     MatPaginatorModule,
     MenuModule,
     ReactiveFormsModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    FooterModule
   ]
 })
 export class DashboardModule { }

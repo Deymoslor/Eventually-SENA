@@ -1,12 +1,11 @@
 @import '../../app.component.scss';
 .leftMenu {
     width: 5rem;
-    margin: 1rem;
+    margin: 1%;
     background: linear-gradient(to right, $principal, $principal2);
     border-radius: 1rem;
     height: auto;
     position: fixed;
-    transition: all 25s;
     .optionLM {
         width: 4rem;
     }
