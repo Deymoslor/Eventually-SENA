@@ -47,26 +47,39 @@
                 </div>
             </div>
             <!-- {{cambioCorreoForm.get("documento")?.errors | json}} -->
-            
+
             <div class="grupo">
                 <input class="email" type="email" name="" id="email1"  formControlName="Email1" placeholder="Introduce tu email antiguo" [ngClass]="(cambioCorreoForm.get('Email1')?.touched || cambioCorreoForm.get('Email1')?.dirty) &&
-                cambioCorreoForm.get('Email1')?.errors ? 'is-invalid' : '' || cambioCorreoForm.get('email1')?.hasError('email')
+                cambioCorreoForm.get('Email1')?.errors ? 'is-invalid' : '' || cambioCorreoForm.get('Email1')?.hasError('email')
                 ? 'is-invalid' : ''"><span class="barra"></span>
                 <label for="">Email Antiguo</label>
                 <div class="invalid-feedback">
-                    {{ cambioCorreoForm.get("Email")?.hasError("required") ? "Campo requerido" : "" }}
-                    {{ cambioCorreoForm.get("Email")?.hasError("email") ? "Campo de email persona@example.com" : "" }}
+                    {{ cambioCorreoForm.get("Email1")?.hasError("required") ? "Campo requerido" : "" }}
+                    {{ cambioCorreoForm.get("Email1")?.hasError("email") ? "Campo de email persona@example.com" : "" }}
                 </div>
             </div>
-            
+
             <div class="grupo">
                 <input class="email" type="email" name="" id="email2"  formControlName="Email2" placeholder="Introduce tu email nuevo" [ngClass]="(cambioCorreoForm.get('Email2')?.touched || cambioCorreoForm.get('Email2')?.dirty) &&
-                cambioCorreoForm.get('Email2')?.errors ? 'is-invalid' : '' || cambioCorreoForm.get('email2|')?.hasError('email')
+                cambioCorreoForm.get('Email2')?.errors ? 'is-invalid' : '' || cambioCorreoForm.get('Email2|')?.hasError('email')
                 ? 'is-invalid' : ''"><span class="barra"></span>
                 <label for="">Email Nuevo</label>
                 <div class="invalid-feedback">
                     {{ cambioCorreoForm.get("Email")?.hasError("required") ? "Campo requerido" : "" }}
                     {{ cambioCorreoForm.get("Email")?.hasError("email") ? "Campo de email persona@example.com" : "" }}
+                </div>
+            </div>
+
+            <div class="grupo">
+                <div class="md-form">
+                    <textarea class="md-textarea form-control" name="" id="msg"  formControlName="msg" required rows="4" placeholder="Introduce la razón por la que deseas cambiar tu dirección de correo" [ngClass]="(cambioCorreoForm.get('apellidos')?.touched || cambioCorreoForm.get('apellidos')?.dirty) &&
+                    cambioCorreoForm.get('apellidos')?.errors ? 'is-invalid' : '' || cambioCorreoForm.get('apellidos')?.hasError('pattern')
+                    ? 'is-invalid' : ''"></textarea><span class="barra"></span>
+                    <label for="">Apellidos</label>
+                    <div class="invalid-feedback">
+                        {{ cambioCorreoForm.get("apellidos")?.hasError("required") ? "Campo requerido" : "" }}
+                        {{ cambioCorreoForm.get("apellidos")?.hasError("pattern") ? "Campo solo con letras" : "" }}
+                    </div>
                 </div>
             </div>
 
