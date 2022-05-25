@@ -182,11 +182,11 @@
                 </div>  
         </div>
         <div *ngIf="existPerson === 2">
-            <div *ngIf="totalPersonsIn < 1">
+            <div *ngIf="totalPersonsIn < aforo">
                 <h2>¿Desea Participar en el evento?</h2>
                 <button class="btn-primary" (click)="postJoinEvent()">UNIRSE</button>
             </div>
-            <div *ngIf="totalPersonsIn >= 1">
+            <div *ngIf="totalPersonsIn >= aforo">
                 EN ESTE MOMENTO EL EVENTO CUENTA CON UN AFORO LLENO, PORFAVOR SEA PACIENTE SI SON GENERADAS NUEVAS PLAZAS.
             </div>
         </div>
@@ -269,7 +269,7 @@
                         </style>
 
 
-                        <label for="exampleInputEmail1">Numero Participantes:</label>
+                        <label for="exampleInputEmail1">Numero Participantes maximo:</label>
                         <input type="number" class="form-control" id="exampleInputEmail1" min="2" max="200" [ngClass]="
                                  (createEventForm.get('participantesTotales')?.touched || createEventForm.get('participantesTotales')?.dirty) &&
                                      createEventForm.get('participantesTotales')?.hasError('required') ? 'is-invalid' : ''" formControlName="participantesTotales">
