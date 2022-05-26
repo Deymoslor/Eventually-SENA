@@ -22,6 +22,7 @@
 // .sepa {
 //     height: 2vw;
 // }
+// Hola mi nombre es Frailejón, Ernesto peréz
 .content {
     display: flex;
     width: 90%;
@@ -30,7 +31,7 @@
     justify-content: space-between;
     flex-grow: 1;
     margin-top: 4vw;
-    margin-bottom: 4vw;
+    height: auto!important;
 }
 
 .textoTitulos {
@@ -44,7 +45,7 @@
 }
 
 .content {
-    height: 55vw!important;
+    height: auto;
     .tables {
         overflow: scroll;
         height: 55vw!important;
@@ -90,6 +91,12 @@
         .tables table {
             width: 10%!important;
         }
+    }
+}
+
+@media only screen and (max-width: 930px) {
+    .content {
+        margin-bottom: 6vw;
     }
 }
 

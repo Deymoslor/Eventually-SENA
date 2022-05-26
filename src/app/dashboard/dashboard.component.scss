@@ -1,9 +1,13 @@
 @import '../app.component.scss';
 body .container {
     max-width: 100vw;
-    width: 100%;
+    width: 95%;
     margin-top: 0;
+    margin: 0;
+    padding: 0;
     padding-top: 5rem;
+    height: auto!important;
+    margin-bottom: 4vw;
 }
 
 body {
@@ -64,18 +68,13 @@ body {
 
 /*footer*/
 
-footer {
-    display: block;
-    margin-top: 5%;
-}
-
-footer .content {
-    background-color: #0389c9;
-    height: 60px;
-    max-width: 100vw;
-    width: 100%;
-}
-
+// .footer {
+//     margin: 0;
+//     padding: 0;
+//     bottom: 0;
+//     border: 1px solid red;
+//     width: 200%;
+// }
 @media only screen and (max-width: 427px) {
     // .containerDash {
     //     width: 60%;
