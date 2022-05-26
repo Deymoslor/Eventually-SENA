@@ -125,7 +125,7 @@ export class EventInComponent implements OnInit {
         })
         this.aforo = this.dataEvent.participantesTotales;
         this.api.getTotalPersonsEvent(this.idEventExist).subscribe((data) =>{
-          console.log("total: " + data[0].total);
+          console.log("totalP: " + data[0].total);
           this.totalPersonsIn = data[0].total;
         })
         this.dateEvent.setDate(this.dateEvent.getDate() - 2);
