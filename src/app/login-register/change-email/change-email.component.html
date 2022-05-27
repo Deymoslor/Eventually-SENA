@@ -65,12 +65,12 @@
                 ? 'is-invalid' : ''"><span class="barra"></span>
                 <label for="">Email Nuevo</label>
                 <div class="invalid-feedback">
-                    {{ cambioCorreoForm.get("Email")?.hasError("required") ? "Campo requerido" : "" }}
-                    {{ cambioCorreoForm.get("Email")?.hasError("email") ? "Campo de email persona@example.com" : "" }}
+                    {{ cambioCorreoForm.get("Email2")?.hasError("required") ? "Campo requerido" : "" }}
+                    {{ cambioCorreoForm.get("Email2")?.hasError("email") ? "Campo de email persona@example.com" : "" }}
                 </div>
             </div>
 
-            <div class="grupo">
+            <!-- <div class="grupo">
                 <div class="md-form">
                     <textarea class="md-textarea form-control" name="" id="msg"  formControlName="msg" required rows="4" placeholder="Introduce la razón por la que deseas cambiar tu dirección de correo" [ngClass]="(cambioCorreoForm.get('apellidos')?.touched || cambioCorreoForm.get('apellidos')?.dirty) &&
                     cambioCorreoForm.get('apellidos')?.errors ? 'is-invalid' : '' || cambioCorreoForm.get('apellidos')?.hasError('pattern')
@@ -81,12 +81,31 @@
                         {{ cambioCorreoForm.get("apellidos")?.hasError("pattern") ? "Campo solo con letras" : "" }}
                     </div>
                 </div>
+            </div> -->
+            <div class="grupo">
+                <textarea class="md-textarea form-control" type="text" name="" id="msg" formControlName="msg" placeholder="Introduce la justificación del cambio de Email." [ngClass]="(cambioCorreoForm.get('msg')?.touched || cambioCorreoForm.get('msg')?.dirty) &&
+                cambioCorreoForm.get('msg')?.errors ? 'is-invalid' : '' || cambioCorreoForm.get('msg|')?.hasError('required')
+                ? 'is-invalid' : ''"></textarea><span class="barra"></span>
+                <label class="textAreaLabel">Justificación</label>
+                <div class="invalid-feedback">
+                    {{ cambioCorreoForm.get("msg")?.hasError("required") ? "Campo requerido" : "" }}
+                    {{ cambioCorreoForm.get("msg")?.hasError("pattern") ? "Campo solo con letras, no caracteres especiales" : "" }}
+                </div>
             </div>
+
+            <!-- <div class="grupo">
+                <div class="md-form">
+                    <textarea class="md-textarea form-control" formControlName="msg" required rows="4" placeholder="Digite la justificación de cambio de email"></textarea>
+                    <label>Información</label>
+                    <span class="barra"></span>
+                </div>
+            </div> -->
 
             <!-- <button (click)="sendData()">Registrarse</button> -->
 
-            <button *ngIf="cambioCorreoForm.invalid" type="submit" [disabled]="cambioCorreoForm.invalid" class="btnRegistroDisable">Registrarse</button>
-            <button *ngIf="cambioCorreoForm.valid" type="submit" class="btnRegistro">Registrarse</button>
+            <!-- <button *ngIf="cambioCorreoForm.invalid" type="submit" [disabled]="cambioCorreoForm.invalid" class="btnRegistroDisable">Registrarse</button> -->
+            <!-- <button *ngIf="cambioCorreoForm.valid" type="submit" class="btnRegistro">Registrarse</button> -->
+            <button type="submit" class="btnRegistro">Registrarse</button>
             <button class="botoncitosexy" (click)="cancel()">Cancelar</button>
 
             <!-- <pre>{{ formUsers.value | json }}</pre> -->

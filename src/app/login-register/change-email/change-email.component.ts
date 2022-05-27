@@ -26,7 +26,7 @@ export class ChangeEmailComponent implements OnInit {
       documento: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(10), Validators.pattern(/^[0-9]\d*$/)]],
       Email1: ['',[Validators.required, Validators.email]],
       Email2: ['',[Validators.required, Validators.email]],
-      msg: ['',[Validators.required, Validators.email]],
+      msg: [' ',[Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1 ]+$/)]],
     })
 
   }
