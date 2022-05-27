@@ -1,29 +1,217 @@
+@import '../../app.component.scss';
 :host {
-  display: flex;
-  flex-direction: column;
-  align-self: center;
-  justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: space-between;
 }
 
-.thumbnail {
-  width: 75vw;
-  height: 500px;
-  border-radius: 20px;
+.titlePrincipal {
+    font-family: 'Pacifico', cursive;
+    margin: 0 auto;
+    font-size: 3vw;
 }
 
-.check {
-  width: 50px;
-  height: 30px;
-  margin: 10px 4px;
+.modal-body {
+    input {
+        margin-bottom: 1vw;
+    }
 }
 
-.label {
-  margin: 10px 4px;
+.title {
+    font-family: 'Pacifico', cursive;
+    font-size: 7vw;
+    margin-bottom: 6vw;
 }
 
-.form-check {
-  margin: 10px;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
+.content {
+    display: flex;
+    width: 90%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    flex-grow: 1;
+    margin-top: 4vw;
+    height: auto!important;
+    margin-left: 4vw;
+}
+
+.textoTitulos {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+}
+
+.textox {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 350;
+}
+
+.content {
+    height: auto;
+    .tables {
+        overflow: scroll;
+        height: 30vw!important;
+        margin-bottom: 4vw;
+    }
+    .tables table {
+        height: 30%!important;
+    }
+}
+
+.btn {
+    margin: 20px;
+}
+
+.btnEditar {
+    background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
+    color: white;
+}
+
+.btnEditar:hover {
+    background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
+}
+
+.btnCrear {
+    background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
+    color: white;
+}
+
+.btnCrear:hover {
+    background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
+}
+
+@media only screen and (max-width: 1213px) {
+    .content {
+        margin-left: 6vw!important;
+    }
+}
+
+@media only screen and (max-width: 1129px) {
+    .content {
+        margin-left: 4vw!important;
+    }
+}
+
+@media only screen and (max-width: 1097px) {
+    .content {
+        width: 86vw!important;
+        margin-left: 4vw;
+        .tables {
+            overflow: scroll;
+            width: 86vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+}
+
+@media only screen and (max-width: 930px) {
+    .content {
+        margin-bottom: 6vw;
+    }
+}
+
+@media only screen and (max-width: 718px) {
+    .content {
+        width: 82vw!important;
+        margin-left: 6vw!important;
+        .tables {
+            overflow: scroll;
+            width: 82vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+}
+
+@media only screen and (max-width: 627px) {
+    .content {
+        width: 78vw!important;
+        margin-left: 8vw!important;
+        .tables {
+            overflow: scroll;
+            width: 78vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+}
+
+@media only screen and (max-width: 970px) {
+    .content {
+        width: 60vw!important;
+        margin-left: 10vw!important;
+        .tables {
+            overflow: scroll;
+            width: 60vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+}
+
+@media only screen and (max-width: 427px) {
+    .content {
+        margin-left: 4vw!important;
+    }
+}
+
+@media only screen and (max-width: 387px) {
+    .content {
+        width: 74vw!important;
+        margin-left: 2.5vw!important;
+        .tables {
+            overflow: scroll;
+            width: 74vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+}
+
+@media only screen and (max-width: 361px) {
+    .content {
+        width: 70vw!important;
+        margin-left: 2.5vw!important;
+        .tables {
+            overflow: scroll;
+            width: 70vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+}
+
+@media only screen and (max-width: 330px) {
+    .content {
+        width: 65vw!important;
+        margin-left: -1vw!important;
+        .tables {
+            overflow: scroll;
+            width: 65vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+}
+
+@media only screen and (max-width: 281px) {
+    .content {
+        width: 60vw!important;
+        margin-left: -1vw!important;
+        .tables {
+            overflow: scroll;
+            width: 60vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
 }

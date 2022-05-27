@@ -9,8 +9,6 @@
 // @import url('https://fonts.googleapis.com/css2?family=Macondo&display=swap');
 // @import url('https://fonts.googleapis.com/css2?family=Macondo&display=swap');
 .title {
-    // font-family: 'Patua One', cursive;
-    // font-family: 'Macondo', cursive;
     font-family: 'Pacifico', cursive;
     font-size: 7vw;
     margin-bottom: 6vw;
@@ -128,13 +126,13 @@
     }
 }
 
-@media only screen and (max-width: 470px) {
+@media only screen and (max-width: 970px) {
     .content {
-        width: 74vw!important;
+        width: 60vw!important;
         margin-left: 10vw!important;
         .tables {
             overflow: scroll;
-            width: 74vw!important;
+            width: 60vw!important;
         }
         .tables table {
             width: 10%!important;
