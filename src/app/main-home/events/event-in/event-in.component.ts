@@ -25,6 +25,7 @@ export class EventInComponent implements OnInit {
   dateEvent!: Date;
   dateTerminate!: Date;
   terminate!: boolean;
+  totalEvent!: number;
 
   dataEvent!: EventI;
   dataPersonJoin!: ParticipantsEventsI;
@@ -55,6 +56,8 @@ export class EventInComponent implements OnInit {
   });
 
   ngOnInit(): void {
+
+    this.totalEvent = 25;
 
     let date = new Date();
     let year = date.getFullYear();
@@ -95,8 +98,8 @@ export class EventInComponent implements OnInit {
 
     let idGrupos = this.route.snapshot.paramMap.get('id');
     this.api.getSigleEventGroup(Number(idGrupos)).subscribe((data: any) =>{
+      console.log(data);
       this.dataEvent =data[0];
-      
       if(this.dataEvent == null){
         this.eventGroupForm.setValue({
           'idEvento': '1',
