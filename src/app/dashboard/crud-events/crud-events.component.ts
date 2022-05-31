@@ -21,6 +21,7 @@ export class CrudEventsComponent implements OnInit {
   ngOnInit(): void {
     this.api.getAllEvents(1).subscribe(data =>{
       this.events = data;
+      console.log(data)
     })
   }
 

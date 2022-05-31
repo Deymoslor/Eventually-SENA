@@ -8,6 +8,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SupplierRequestComponent } from './supplier-request/supplier-request.component';
 import { SettingsModule } from '../main-home/settings/settings.module';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ChangeEmailComponent } from './change-email/change-email.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     RegisterComponent,
     LoginComponent,
     SupplierRequestComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    ChangeEmailComponent
   ],
   imports: [
     CommonModule,

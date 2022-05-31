@@ -56,12 +56,16 @@
                         <label for="">Estado Evento:</label>
                         <input type="text" class="form-control" id="" placeholder="Ej: El mejor evento" formControlName="estadoEvento" [readonly]="true">
                         <div class="form-check form-switch">
-                            <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" *ngIf="editForm.get('estadoEvento')?.value != 1" (click)="switchStateEvent(editForm.get('estadoEvento')?.value)">
-                            <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" *ngIf="editForm.get('estadoEvento')?.value == 1" (click)="switchStateEvent(editForm.get('estadoEvento')?.value)" checked>
-                            <label class=" form-check-label fw-bolder fs-4 label" for="flexSwitchCheckChecked" *ngIf="editForm.get('estadoEvento')?.value != 1">Habilitar evento</label>
-                            <label class=" form-check-label fw-bolder fs-4 label" for="flexSwitchCheckChecked" *ngIf="editForm.get('estadoEvento')?.value == 1">Deshabilitar evento</label>
-                        </div>
-
+                            <div *ngIf="editForm.get('estadoEvento')?.value == 1 || editForm.get('estadoEvento')?.value == 0">
+                                <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" *ngIf="editForm.get('estadoEvento')?.value == 0" (click)="switchStateEvent(editForm.get('estadoEvento')?.value)" >
+                                <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" *ngIf="editForm.get('estadoEvento')?.value == 1" (click)="switchStateEvent(editForm.get('estadoEvento')?.value)" checked >
+                                <label class="form-check-label fw-bolder fs-4 label" for="flexSwitchCheckChecked" *ngIf="editForm.get('estadoEvento')?.value == 0">Habilitar evento</label>
+                                <label class="form-check-label fw-bolder fs-4 label" for="flexSwitchCheckChecked" *ngIf="editForm.get('estadoEvento')?.value == 1">Deshabilitar evento</label>
+                            </div>
+                            <div *ngIf="editForm.get('estadoEvento')?.value == 3">
+                                EVENTO TERMINADO
+                            </div>
+                        </div> 
 
                         <!-- <div class="check-container-politycs">
                             <div class="form-check">
