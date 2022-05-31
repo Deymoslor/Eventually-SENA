@@ -13,7 +13,7 @@ export class RequestGroupsService {
 
   port = GlobalConstants.port;
 
-  API:string='http://localhost'+this.port+'/API-Eventually-SENA/';
+  API:string='http://localhost'+this.port+'/Api-Eventually-SENA/';
 
   constructor(private http:HttpClient) { }
 
