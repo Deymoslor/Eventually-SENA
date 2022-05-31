@@ -31,6 +31,9 @@ export class EventInComponent implements OnInit {
   terminate!: boolean;
   totalEvent!: number;
 
+  httpLocalHost = 'http://localhost:8181'; //SENA
+  // httpLocalHost = 'http://localhost'; //CASA
+
   dataEvent!: EventI;
   dataPersonJoin!: ParticipantsEventsI;
 
@@ -109,7 +112,7 @@ export class EventInComponent implements OnInit {
     this.api.getSigleEventGroup(Number(idGrupos)).subscribe((data: any) =>{
       console.log(data);
       this.dataEvent =data[0];
-      console.log("imagen: " + this.dataEvent.imagen.replace('C:/xampp/htdocs', 'http://localhost'));
+      // console.log("imagen: " + this.dataEvent.imagen.replace('C:/xampp/htdocs', 'http://localhost'));
       if(this.dataEvent == null){
         this.eventGroupForm.setValue({
           'idEvento': '1',
@@ -132,7 +135,7 @@ export class EventInComponent implements OnInit {
           'descripcionEvento': this.dataEvent.descripcionEvento,
           'fechaEvento': this.dataEvent.fechaEvento,
           'tipoEvento': this.dataEvent.tipoEvento,
-          'imagen': this.dataEvent.imagen.replace('C:/xampp/htdocs', 'http://localhost'),
+          'imagen': this.dataEvent.imagen.replace('C:/xampp/htdocs', this.httpLocalHost),
           'participantesTotales': this.dataEvent.participantesTotales,
           'Grupos_idGrupos': this.dataEvent.Grupos_idGrupos,
           'estadoEvento': this.dataEvent.estadoEvento
