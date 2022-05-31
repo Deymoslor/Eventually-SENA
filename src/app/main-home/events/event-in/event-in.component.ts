@@ -7,6 +7,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from 'src/app/core/service/auth.service';
 import { ParticipantsEventsI } from '../../../models/participants-events.interface';
+import { resolve } from 'dns';
+import { rejects } from 'assert';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-event-in',
@@ -38,6 +41,7 @@ export class EventInComponent implements OnInit {
     descripcionEvento: new FormControl(''),
     fechaEvento: new FormControl(''),
     tipoEvento: new FormControl(''),
+    imagen: new FormControl(''),
     participantesTotales: new FormControl(''),
     Grupos_idGrupos: new FormControl(''),
     estadoEvento: new FormControl('')
@@ -48,8 +52,12 @@ export class EventInComponent implements OnInit {
     Evento_IdEvento: new FormControl('')
   })
 
+  public previsualizacion!: string;
+  public archivos: any = [];
+
   constructor(private api:ApiService, private router:Router, private modalService: NgbModal,
-     private route: ActivatedRoute, private fb: FormBuilder, private auth: AuthService) { }
+     private route: ActivatedRoute, private fb: FormBuilder, private auth: AuthService,
+     private sanitizer: DomSanitizer) { }
   closeResult = '';
 
   createEventForm = new FormGroup({
@@ -101,6 +109,7 @@ export class EventInComponent implements OnInit {
     this.api.getSigleEventGroup(Number(idGrupos)).subscribe((data: any) =>{
       console.log(data);
       this.dataEvent =data[0];
+      console.log("imagen: " + this.dataEvent.imagen.replace('C:/xampp/htdocs', 'http://localhost'));
       if(this.dataEvent == null){
         this.eventGroupForm.setValue({
           'idEvento': '1',
@@ -108,6 +117,7 @@ export class EventInComponent implements OnInit {
           'descripcionEvento': '',
           'fechaEvento': '',
           'tipoEvento': '',
+          'imagen': '',
           'participantesTotales': '',
           'Grupos_idGrupos': '',
           'estadoEvento': '3',
@@ -122,10 +132,12 @@ export class EventInComponent implements OnInit {
           'descripcionEvento': this.dataEvent.descripcionEvento,
           'fechaEvento': this.dataEvent.fechaEvento,
           'tipoEvento': this.dataEvent.tipoEvento,
+          'imagen': this.dataEvent.imagen.replace('C:/xampp/htdocs', 'http://localhost'),
           'participantesTotales': this.dataEvent.participantesTotales,
           'Grupos_idGrupos': this.dataEvent.Grupos_idGrupos,
           'estadoEvento': this.dataEvent.estadoEvento
         })
+        // console.log("IMAGEN: " + this.eventGroupForm.get('imagen')?.value);
         this.aforo = this.dataEvent.participantesTotales;
         this.api.getTotalPersonsEvent(this.idEventExist).subscribe((data) =>{
           console.log("totalP: " + data[0].total);
@@ -160,6 +172,40 @@ export class EventInComponent implements OnInit {
      
 
   }
+
+  
+  capturarFile(event): void {
+    const archivoCapturado = event.target.files[0];
+    this.extraerBase64(archivoCapturado).then((imagen: any) => {
+      this.previsualizacion = imagen.base;
+      console.log(imagen)
+    })
+    this.archivos.push(archivoCapturado);
+    console.log(event);
+  }
+
+  extraerBase64 = async ($event: any) => new Promise((resolve, reject) =>{
+    try {
+      const unsafeImg = window.URL.createObjectURL($event);
+      const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
+      const reader = new FileReader();
+      reader.readAsDataURL($event);
+      reader.onload = () => {
+        resolve({
+          base: reader.result
+        });
+      };
+      reader.onerror = error => {
+        resolve({
+          base: null
+        });
+      };
+    } catch (e) {
+      return null;
+    }
+    return $event;
+  });
+  
 
   editEvent(idE:number ){
     this.router.navigate(['events/edit', idE]);
@@ -207,11 +253,12 @@ export class EventInComponent implements OnInit {
     console.log(form);
     let idGrupos = this.route.snapshot.paramMap.get('id');
     form.Grupos_idGrupos = Number(idGrupos);
+    form.imagen = this.previsualizacion;
     this.api.postEvent(form, this.auth.desencriptar(localStorage.getItem('id')), form.Grupos_idGrupos).subscribe( data => {
       console.log(data);
     })
-    this.createEventForm.reset();
-    this.refresh();
+    // this.createEventForm.reset();
+    // this.refresh();
   }
 
   refresh(){

@@ -41,7 +41,7 @@ export class ModalDisableEventComponent implements OnInit {
       this.api.putEvent(this.form).subscribe(data=>{
         console.log(data);
       });
-      // this.refresh();
+      this.refresh();
     }else if(this.finishState == 1){
       let idResult = 0;
       this.api.postResultEvent(form).subscribe((data) =>{
