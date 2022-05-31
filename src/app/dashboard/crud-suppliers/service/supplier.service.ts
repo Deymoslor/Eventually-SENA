@@ -5,6 +5,7 @@ import { ResponseI } from 'src/app/models/response.interface';
 import { ListaProveedoresI } from '../ListaProveedoresI.interface';
 import { ProveedorI } from '../modal-suppliers-create/ProveedorI.interface';
 import { GlobalConstants } from 'src/app/global-constants';
+import { ProveedorIA } from 'src/app/main-home/providers/create-service/proveedorI.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -38,7 +39,7 @@ export class SupplierService {
   //Creamos método para obtener la persona. Este método devuelve un observable de tipo PersonaI
   getSingleSupplier(id:number):Observable<ProveedorI>{
     let direccion = this.API+"suppliers?id=" + id;
-    return this.http.get<ProveedorI>(direccion);
+    return this.http.get<ProveedorIA>(direccion);
   }
 
   //Creamos el método para actualizar.

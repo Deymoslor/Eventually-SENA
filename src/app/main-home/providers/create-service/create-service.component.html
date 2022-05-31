@@ -1,83 +1,91 @@
 <!--THUMBNAIL of provider-->
-<section class="thumbnail img-fluid">
-    <div class="title">
-        <h2 class="fs-1 fw-bold">Servicio</h2>
-    </div>
-</section>
-<form [formGroup]="ServicesForm" (ngSubmit)="postServiceProv(ServicesForm.value)">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title fw-bolder fs-4" id="staticBackdropLabel">Crear Servicio</h5>
-            </div>
-            <div class="modal-body">
-                
-                    <div class="form-group">
-                        <label for="">Nombre del Servicio:</label>
-                        <input type="text" class="form-control" id=""
-                        placeholder="Ej: El mejor evento" formControlName="nombreServicio">
-                        
-                        <label for="">Tipo Servicio:</label>
-                        <select class="form-select" id="input-group-text" formControlName="TipoServicio_idtipoServicio">
-                            <option selected> Escoge uno...</option>
-                            <option value="{{typeService.idtipoServicio}}" *ngFor="let typeService of dataTypeService">{{typeService.tipoServicio}}</option>
-                        </select>
+<div *ngIf="this.ley == 2" class="container">
+    <h1>Acepte esta ley pls c:</h1>
+</div>
 
-                        <!-- <div class="form-check" *ngFor="let typeService of dataTypeService">
-                            <input class="form-check-input" type="radio" value="typeService.idTipoServicio"  name="{{typeService.tipoServicio}}" id="flexRadioDefault1">
-                            <label class="form-check-label" for="flexRadioDefault1">
-                                {{typeService.tipoServicio}}
-                            </label>
-                        </div> -->
-                        <label for="">Descripcion Servicio:</label>
-                        <div class="mb-2">
-                            <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Explica de que trata."
-                                rows="2" formControlName="descripcionServicio"></textarea>
-                        </div>
 
-                        <label for="exampleInputEmail1">Foto Servicio:</label>
-                        <input class="form-control" formControlName="imagen" type="file" id="formFile">
-                        
-                        <label for="">Precio estimado</label>
-                        <input type="number" class="form-control" id="exampleInputEmail1"
-                        value="0" formControlName="precioEstimado">
 
-                        <label for="exampleInputEmail1">Empresas en las que trabajo anteriormente:</label>
-                        <input type="text" class="form-control" id=""
-                        placeholder="Ej: Ducales, Saltin Noel" formControlName="historialEmpresas">
+<div *ngIf="this.ley == 1" class="container">
+    <section class="thumbnail img-fluid">
+        <div class="title">
+            <h2 class="fs-1 fw-bold">Servicio</h2>
+        </div>
+    </section>
+    <form [formGroup]="ServicesForm" (ngSubmit)="postServiceProv(ServicesForm.value)">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title fw-bolder fs-4" id="staticBackdropLabel">Crear Servicio</h5>
+                </div>
+                <div class="modal-body">
+                    
+                        <div class="form-group">
+                            <label for="">Nombre del Servicio:</label>
+                            <input type="text" class="form-control" id=""
+                            placeholder="Ej: El mejor evento" formControlName="nombreServicio">
+                            
+                            <label for="">Tipo Servicio:</label>
+                            <select class="form-select" id="input-group-text" formControlName="TipoServicio_idtipoServicio">
+                                <option selected> Escoge uno...</option>
+                                <option value="{{typeService.idtipoServicio}}" *ngFor="let typeService of dataTypeService">{{typeService.tipoServicio}}</option>
+                            </select>
 
-                        <!-- <label for="exampleInputEmail1">Fecha desde que realiza el servicio:</label>
-                        <div>
-                            <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next"></ngb-datepicker>
-                        </div> -->
+                            <!-- <div class="form-check" *ngFor="let typeService of dataTypeService">
+                                <input class="form-check-input" type="radio" value="typeService.idTipoServicio"  name="{{typeService.tipoServicio}}" id="flexRadioDefault1">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    {{typeService.tipoServicio}}
+                                </label>
+                            </div> -->
+                            <label for="">Descripcion Servicio:</label>
+                            <div class="mb-2">
+                                <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Explica de que trata."
+                                    rows="2" formControlName="descripcionServicio"></textarea>
+                            </div>
 
-                        <label for="exampleInputEmail1">Numero de contacto:</label>
-                        <input type="text" class="form-control" id=""
-                        placeholder="Ej: +57 999 999 99 99" formControlName="numeroContacto">
+                            <label for="exampleInputEmail1">Foto Servicio:</label>
+                            <input class="form-control" formControlName="imagen" type="file" id="formFile">
+                            
+                            <label for="">Precio estimado</label>
+                            <input type="number" class="form-control" id="exampleInputEmail1"
+                            value="0" formControlName="precioEstimado">
 
-                        <label for="exampleInputEmail1">Correo de contacto:</label>
-                        <input type="text" class="form-control" id=""
-                        placeholder="Ej: correo@correo.co.com" formControlName="correoContacto">
+                            <label for="exampleInputEmail1">Empresas en las que trabajo anteriormente:</label>
+                            <input type="text" class="form-control" id=""
+                            placeholder="Ej: Ducales, Saltin Noel" formControlName="historialEmpresas">
 
-                        <div class="check-container-politycs">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                <label class="form-check-label" for="defaultCheck1">
-                                    Solo puedes tener un servicio en tu cuenta de proveedor, por ende, asegúrate de tener información clara y llamativa, esta información podrá ser modificada posteriormente                            </label>
+                            <!-- <label for="exampleInputEmail1">Fecha desde que realiza el servicio:</label>
+                            <div>
+                                <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next"></ngb-datepicker>
+                            </div> -->
+
+                            <label for="exampleInputEmail1">Numero de contacto:</label>
+                            <input type="text" class="form-control" id=""
+                            placeholder="Ej: +57 999 999 99 99" formControlName="numeroContacto">
+
+                            <label for="exampleInputEmail1">Correo de contacto:</label>
+                            <input type="text" class="form-control" id=""
+                            placeholder="Ej: correo@correo.co.com" formControlName="correoContacto">
+
+                            <div class="check-container-politycs">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                    <label class="form-check-label" for="defaultCheck1">
+                                        Solo puedes tener un servicio en tu cuenta de proveedor, por ende, asegúrate de tener información clara y llamativa, esta información podrá ser modificada posteriormente                            </label>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary">Crear</button>
+                </div>
+            
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="submit" class="btn btn-primary">Crear</button>
-            </div>
-        
+            
         </div>
-        
-    </div>
-</form>
+    </form>
+</div>
 
 
 

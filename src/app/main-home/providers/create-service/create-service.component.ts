@@ -6,6 +6,8 @@ import { ApiService } from '../services/api.service';
 import { ServiceI } from '../models/service.interface';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../core/service/auth.service';
+import { SupplierService } from 'src/app/dashboard/crud-suppliers/service/supplier.service';
+import { ProveedorIA } from './proveedorI.interface';
 
 
 @Component({
@@ -16,6 +18,9 @@ import { AuthService } from '../../../core/service/auth.service';
 
 export class CreateServiceComponent implements OnInit {
 
+  datosProveedor!:ProveedorIA;
+  ley!:number;
+  
   ServicesForm = new FormGroup({
     idServicios: new FormControl(), 
     nombreServicio : new FormControl(''),
@@ -36,13 +41,22 @@ export class CreateServiceComponent implements OnInit {
   model!: NgbDateStruct;
   date!: {year: number, month: number};
 
-  constructor(private calendar: NgbCalendar, private api: ApiService, private router:Router, private auth: AuthService) { }
+  constructor(private calendar: NgbCalendar, private api: ApiService, private router:Router, private auth: AuthService, private supplierService: SupplierService) { }
 
   ngOnInit(): void {
     this.api.getAllTypeServices(1).subscribe(data =>{
       this.dataTypeService = data;
       console.log(data);
     })
+
+    this.supplierService.getSingleSupplier(this.auth.desencriptar(localStorage.getItem('id'))).subscribe(data =>{
+
+      this.datosProveedor = data[0];
+      this.ley = this.datosProveedor.aceptado;
+      console.log(this.ley);
+
+    })
+
   }
 
   postServiceProv(form: ServiceI){
