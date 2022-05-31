@@ -42,7 +42,7 @@ export class ModalGroupsComponent implements OnInit {
       nombreGrupo: ['', [Validators.required, Validators.minLength(2)]],
       descripcionGrupo: ['', [Validators.required, Validators.minLength(5)]],
       privacidadGrupo: ['', Validators.required],
-      InvitadosTotales: ['2', Validators.required],
+      InvitadosTotales: ['0', Validators.required],
       check: ['', Validators.required],
       EstadosGrupo_idEstadosGrupo1: ['2', Validators.required],
       gustos_idGusto: ['', Validators.required],

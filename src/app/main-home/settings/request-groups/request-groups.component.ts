@@ -11,6 +11,7 @@ import { RequestGroups } from './request-groups';
 export class RequestGroupsComponent implements OnInit {
 
   groups!: RequestGroups[];
+  groupI!: RequestGroups;
 
   constructor(private RequestGroupsService: RequestGroupsService,
               private auth: AuthService) { }
@@ -22,6 +23,18 @@ export class RequestGroupsComponent implements OnInit {
 
       this.groups = data;
     })
+  }
+
+  putEditDetail(group: Number, detail: Number, idPersona: Number, estadoPersona: Number){
+    const newDetail = {idGrupos: group, idDetalleGrupoPersonas: detail, idPersona: idPersona, estadoPersona_idEstadoPersona: estadoPersona}
+
+    this.RequestGroupsService.putDetailsPersonGroup(newDetail).subscribe( data =>{
+      console.log(data);
+    })
+
+    window.alert('la respuesta de la solicitúd se ha cargado exitosamente');
+
+    window.location.reload();
   }
 
 }

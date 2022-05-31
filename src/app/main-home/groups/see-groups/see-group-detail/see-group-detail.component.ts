@@ -3,6 +3,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/core/service/auth.service';
 import { Group } from '../group';
 import { SeeGroupsService } from '../see-groups.service';
+import { userService } from "../../../../dashboard/crud-users/service/userService.service";
+import { ListaPersonasI } from 'src/app/dashboard/crud-users/ListaPersonasI.interface';
+import { LikesI } from 'src/app/models/likes';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-see-group-detail',
@@ -12,12 +16,16 @@ import { SeeGroupsService } from '../see-groups.service';
 export class SeeGroupDetailComponent implements OnInit {
 
   @Input() childMessage!: number;
+  public personas! : ListaPersonasI[];
+  likesI!: LikesI[];
 
   constructor(
     private SeeGroupsService: SeeGroupsService,
+    private userService:userService,
     private route: ActivatedRoute,
     private router: Router,
     private auth: AuthService,
+    private likes: ApiService,
     ) { }
 
     group!: Group;
@@ -33,11 +41,22 @@ export class SeeGroupDetailComponent implements OnInit {
     //   this.router.navigate(['group']);
     // }
 
+    this.likes.getAllLikes(1).subscribe(data=>{
+      console.log(data);
+
+      this.likesI = data;
+    })
+
     let idGrupos = this.route.snapshot.paramMap.get('id');
     console.log(idGrupos);
     this.SeeGroupsService.getDetailsGroup(Number(idGrupos)).subscribe((data: any) =>{
       console.log(data);
       this.group = data[0];
+    })
+
+    this.userService.getGroupPerson(Number(idGrupos)).subscribe((data: any)=>{
+      this.personas = data;
+      console.log(this.personas);
     })
   }
 
@@ -63,7 +82,7 @@ export class SeeGroupDetailComponent implements OnInit {
       console.log(data)
 
     );
-    window.alert('se ha enviado la solicitúd de unirse');
+    window.alert('te has unido al grupo');
   }
 
 }

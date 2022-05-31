@@ -6,8 +6,8 @@
                 <p class="card-text">{{group.descripcionGrupo}}.</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Unirse</button>
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Rechazar</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="putEditDetail(group.idGrupos,group.idDetalleGrupoPersona,group.idPersona, 2)">Unirse</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="putEditDetail(group.idGrupos,group.idDetalleGrupoPersona,group.idPersona, 4)">Rechazar</button>
             </div>
         </div>
     </div>

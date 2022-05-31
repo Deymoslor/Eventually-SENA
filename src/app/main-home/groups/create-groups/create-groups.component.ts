@@ -24,6 +24,7 @@ export class CreateGroupsComponent implements OnInit {
     nombreGrupo: new FormControl(''),
     descripcionGrupo: new FormControl(''),
     privacidadGrupo: new FormControl(''),
+    InvitadosTotales: new FormControl(''),
     check: new FormControl(''),
     gustos_idGusto: new FormControl(''),
     idPersona: new FormControl(''),
@@ -44,6 +45,7 @@ export class CreateGroupsComponent implements OnInit {
       nombreGrupo: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
       descripcionGrupo: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(500)]],
       privacidadGrupo: ['', Validators.required],
+      InvitadosTotales: ['0'],
       check: ['', Validators.required],
       gustos_idGusto: ['', Validators.required],
       idPersona: [this.auth.desencriptar(localStorage.getItem('id'))]

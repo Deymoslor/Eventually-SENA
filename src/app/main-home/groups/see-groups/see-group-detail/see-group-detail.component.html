@@ -6,12 +6,40 @@
         <img class="rounded card-img-top" src="../../../../../assets/group/prueba.jfif" alt="{{ group?.nombreGrupo }}">
       </div>
       <div class="info">
-        <p class="product-name h2">{{ group?.nombreGrupo }}</p>
-        <p class="product-short-description h5">{{ group?.descripcionGrupo }}</p>
+        <div class="cart-row">
+          <div>
+            <p class="product-name h2">{{ group?.nombreGrupo }}</p>
+            <p class="product-short-description h5">{{ group?.descripcionGrupo }}</p>
+          </div>
+          <ng-container *ngFor="let likeI of likesI">
+            <div *ngIf="group?.gustos_idGusto == likeI.idGusto">
+              <p class="product-name h2">Preferencia</p>
+              <p class="product-short-description h5">{{likeI.nombreGusto}}</p>
+            </div>
+          </ng-container>
+        </div>
         <div class="cart-row">
           <span class="price">{{ group?.invitadosTotales }} PARTICIPANTES</span>
           <button class="btn btn-primary" title="Solicitar Unirse" (click)="share()">Unirse
           </button>
+        </div>
+        <div class="cart-row">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Rol</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let persona of personas">
+                <td>{{persona.nombre}}</td>
+                <td>{{persona.Email}}</td>
+                <td>{{persona.estado}}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
   </div>

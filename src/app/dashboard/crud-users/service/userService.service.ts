@@ -49,6 +49,11 @@ export class userService {
     return this.http.get<ListaPersonasI[]>(direccion);
   }
 
+  getGroupPerson(rgrupo:number):Observable<ListaPersonasI[]>{
+    let direccion = this.API+"persons?personGrupo=" + rgrupo;
+    return this.http.get<ListaPersonasI[]>(direccion);
+  }
+
   //Creamos método para obtener la persona mediante el filtro. Este método devuelve un observable de tipo PersonaI
   PostRequestGroupPerson(request:GroupPerson):Observable<Response>{
     let direccion = this.API+"requestGroups";
