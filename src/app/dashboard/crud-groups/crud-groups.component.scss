@@ -1,49 +1,230 @@
+@import '../../app.component.scss';
 :host {
-  display: flex;
-  flex-direction: column;
-  align-self: center;
-  justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: space-between;
 }
 
-.thumbnail {
-  width: 70vw;
-  border-radius: 20px;
+.title {
+    font-family: 'Pacifico', cursive;
+    font-size: 7vw;
+    margin-bottom: 6vw;
 }
 
 .content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  flex-grow: 1;
-  margin-top: 80px;
+    margin-top: 4vw;
+    display: flex;
+    width: 90%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    flex-grow: 1;
+    margin-left: 5vw;
 }
 
-table {
-  width: 80%;
+.content {
+    height: 55vw!important;
+    .tables {
+        overflow: scroll;
+        height: 55vw!important;
+    }
+    .tables table {
+        height: 30%!important;
+    }
 }
 
-.mat-column-demo-position {
-  width: 32px;
-  border-right: 1px solid currentColor;
-  padding-right: 24px;
-  text-align: center;
-}
-
-.mat-column-demo-name {
-  padding-left: 16px;
-  font-size: 20px;
-}
-
-.mat-column-demo-weight {
-  font-style: italic;
-}
-
-.mat-column-demo-symbol {
-  width: 32px;
-  text-align: center;
-  font-weight: bold;
-}
 .btn {
-  margin: 20px;
+    margin: 20px;
+}
+
+.checked {
+    background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2)!important;
+}
+
+.btnEditar {
+    background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
+    color: white;
+}
+
+.btnEditar:hover {
+    background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
+}
+
+@media only screen and (max-width: 1213px) {
+    .content {
+        margin-left: 6vw!important;
+    }
+}
+
+@media only screen and (max-width: 1129px) {
+    .content {
+        margin-left: 4vw!important;
+    }
+}
+
+@media only screen and (max-width: 1097px) {
+    .content {
+        width: 86vw!important;
+        margin-left: 4vw;
+        .tables {
+            overflow: scroll;
+            width: 86vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+}
+
+@media only screen and (max-width: 718px) {
+    .content {
+        width: 82vw!important;
+        margin-left: 6vw!important;
+        .tables {
+            overflow: scroll;
+            width: 82vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+}
+
+@media only screen and (max-width: 627px) {
+    .content {
+        width: 78vw!important;
+        margin-left: 8vw!important;
+        .tables {
+            overflow: scroll;
+            width: 78vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+}
+
+@media only screen and (max-width: 470px) {
+    .content {
+        width: 74vw!important;
+        margin-left: 10vw!important;
+        .tables {
+            overflow: scroll;
+            width: 74vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+}
+
+@media only screen and (max-width: 427px) {
+    .content {
+        margin-left: 4vw!important;
+    }
+}
+
+@media only screen and (max-width: 448px) {
+    .content {
+        margin-bottom: 4vw!important;
+    }
+}
+
+@media only screen and (max-width: 420px) {
+    .content {
+        margin-bottom: 6vw!important;
+    }
+}
+
+@media only screen and (max-width: 409px) {
+    .content {
+        margin-bottom: 8vw!important;
+    }
+}
+
+@media only screen and (max-width: 373px) {
+    .content {
+        margin-bottom: 10vw!important;
+    }
+}
+
+@media only screen and (max-width: 363px) {
+    .content {
+        margin-bottom: 15vw!important;
+    }
+}
+
+@media only screen and (max-width: 328px) {
+    .content {
+        margin-bottom: 20vw!important;
+    }
+}
+
+@media only screen and (max-width: 309px) {
+    .content {
+        margin-bottom: 25vw!important;
+    }
+}
+
+@media only screen and (max-width: 289px) {
+    .content {
+        margin-bottom: 35vw!important;
+    }
+}
+
+@media only screen and (max-width: 387px) {
+    .content {
+        width: 74vw!important;
+        margin-left: 2.5vw!important;
+        .tables {
+            overflow: scroll;
+            width: 74vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+}
+
+@media only screen and (max-width: 361px) {
+    .content {
+        width: 70vw!important;
+        margin-left: 2.5vw!important;
+        .tables {
+            overflow: scroll;
+            width: 70vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+}
+
+@media only screen and (max-width: 330px) {
+    .content {
+        width: 65vw!important;
+        margin-left: -1vw!important;
+        .tables {
+            overflow: scroll;
+            width: 65vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+}
+
+@media only screen and (max-width: 281px) {
+    .content {
+        width: 60vw!important;
+        margin-left: -1vw!important;
+        .tables {
+            overflow: scroll;
+            width: 60vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
 }

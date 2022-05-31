@@ -1,43 +1,91 @@
-.thumbnail {
-    width: 86vw;
-    border-radius: 20px;
-}
-
+@import '../../app.component.scss';
 .content {
     display: flex;
+    width: 90%;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     flex-grow: 1;
-    margin-top: 80px;
+    margin-top: 4vw;
+    margin-left: 8vw!important;
 }
 
-table {
-    width: 34%;
+.title {
+    font-family: 'Pacifico', cursive;
+    font-size: 7vw;
+    margin-bottom: 6vw;
 }
 
-.mat-column-demo-position {
-    width: 32px;
-    border-right: 1px solid currentColor;
-    padding-right: 24px;
-    text-align: center;
+.textoTitulos {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
 }
 
-.mat-column-demo-name {
-    padding-left: 16px;
-    font-size: 20px;
-}
-
-.mat-column-demo-weight {
-    font-style: italic;
-}
-
-.mat-column-demo-symbol {
-    width: 32px;
-    text-align: center;
-    font-weight: bold;
+.textox {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 350;
 }
 
 .btn {
     margin: 20px;
+}
+
+.btnCrear {
+    background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
+    color: white;
+}
+
+.btnCrear:hover {
+    background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
+}
+
+.btnEditar {
+    background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
+    color: white;
+}
+
+.btnEditar:hover {
+    background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
+}
+
+@media only screen and (max-width: 412px) {
+    .content {
+        width: 74vw!important;
+        margin-left: 2.5vw!important;
+        .tables {
+            overflow: scroll;
+            width: 74vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+}
+
+@media only screen and (max-width: 336px) {
+    .content {
+        width: 70vw!important;
+        margin-left: 2.5vw!important;
+        .tables {
+            overflow: scroll;
+            width: 70vw!important;
+        }
+        .tables table {
+            width: 9%!important;
+        }
+    }
+}
+
+@media only screen and (max-width: 306px) {
+    .content {
+        width: 65vw!important;
+        margin-left: 2.5vw!important;
+        .tables {
+            overflow: scroll;
+            width: 65vw!important;
+        }
+        .tables table {
+            width: 8%!important;
+        }
+    }
 }

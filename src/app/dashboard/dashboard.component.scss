@@ -1,17 +1,25 @@
 @import '../app.component.scss';
 body .container {
     max-width: 100vw;
-    width: 100%;
-    height: 4.5rem;
+    width: 95%;
     margin-top: 0;
+    margin: 0;
+    padding: 0;
     padding-top: 5rem;
+    height: auto!important;
+    margin-bottom: 4vw;
+}
+
+body {
+    height: auto;
 }
 
 .containerDash {
-    padding: 1rem;
-    padding-right: 1rem;
-    width: 100%;
-    border: 1px solid red;
+    width: aut;
+}
+
+.men {
+    width: 10%;
 }
 
 
@@ -22,7 +30,6 @@ body .container {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    margin: 10px 20px;
     height: auto;
     position: relative;
     z-index: 1;
@@ -60,14 +67,34 @@ body .container {
 
 /*footer*/
 
-footer {
-    display: block;
-    margin-top: 5%;
+// .footer {
+//     margin: 0;
+//     padding: 0;
+//     bottom: 0;
+//     border: 1px solid red;
+//     width: 200%;
+// }
+@media only screen and (max-width: 427px) {
+    // .containerDash {
+    //     width: 60%;
+    // }
+    .men {
+        width: 5rem;
+    }
 }
 
-footer .content {
-    background-color: #0389c9;
-    height: 60px;
-    max-width: 100vw;
-    width: 100%;
-}
+// @media only screen and (max-width: 399px) {
+//     .containerDash {
+//         width: 20%;
+//     }
+//     .tables {
+//         overflow: scroll;
+//     }
+//     .tables .table {
+//         width: 2%!important;
+//         margin: 0;
+//     }
+//     .d {
+//         padding-left: -1rem;
+//     }
+// }

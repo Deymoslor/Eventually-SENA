@@ -1,6 +1,56 @@
+@import '../../../app.component.scss';
 .check-container-politycs {
-  float: right;
-  padding: 5px;
-  margin: 10px;
-  background-color: #cfbfbf;
+    float: right;
+    padding: 5px;
+    margin: 10px;
+    background-color: #cfbfbf;
+}
+
+.titlePrincipal {
+    font-family: 'Pacifico', cursive;
+    margin: 0 auto;
+    font-size: 3vw;
+    padding: 1.5rem;
+}
+
+.textox {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 350;
+}
+
+.form {
+    padding: 1rem;
+}
+
+.btnGuardar {
+    background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
+    color: white;
+}
+
+.btnGuardar:hover {
+    background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
+}
+
+@media only screen and (max-width: 1464px) {
+    .titlePrincipal {
+        font-size: 3vw;
+    }
+}
+
+@media only screen and (max-width: 1042px) {
+    .titlePrincipal {
+        font-size: 3vw;
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    .titlePrincipal {
+        font-size: 3rem;
+    }
+}
+
+@media only screen and (max-width: 504px) {
+    .titlePrincipal {
+        font-size: 1.5rem;
+    }
 }
