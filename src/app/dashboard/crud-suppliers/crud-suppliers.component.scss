@@ -1,49 +1,112 @@
+@import '../../app.component.scss';
 :host {
     display: flex;
     flex-direction: column;
     align-self: center;
     justify-content: space-between;
-  }
+}
 
-  .thumbnail {
-    width: 70vw;
-    border-radius: 20px;
-  }
+.title {
+    font-family: 'Pacifico', cursive;
+    font-size: 7vw;
+    margin-bottom: 6vw;
+}
 
-  .content {
+.content {
     display: flex;
+    width: 90%;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     flex-grow: 1;
-    margin-top: 80px;
-  }
+    margin-top: 4vw;
+    margin-left: 4vw;
+    height: auto!important;
+}
 
-  table {
-    width: 100%;
-  }
+.textoTitulos {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+}
 
-  .mat-column-demo-position {
-    width: 32px;
-    border-right: 1px solid currentColor;
-    padding-right: 24px;
-    text-align: center;
-  }
+.textox {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 350;
+}
 
-  .mat-column-demo-name {
-    padding-left: 16px;
-    font-size: 20px;
-  }
-
-  .mat-column-demo-weight {
-    font-style: italic;
-  }
-
-  .mat-column-demo-symbol {
-    width: 32px;
-    text-align: center;
-    font-weight: bold;
-  }
-  .btn {
+.btn {
     margin: 20px;
-  }
+    width: auto;
+}
+
+.btnEditar {
+    background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
+    color: white;
+}
+
+.btnEditar:hover {
+    background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
+}
+
+.btnCrear {
+    background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
+    color: white;
+}
+
+.btnCrear:hover {
+    background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
+}
+
+@media only screen and (max-width: 970px) {
+    .content {
+        width: 74vw!important;
+        margin-left: 10vw!important;
+        .tables {
+            overflow: scroll;
+            width: 74vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+}
+
+@media only screen and (max-width: 428px) {
+    .content {
+        width: 65vw!important;
+        margin-left: 4vw!important;
+        .tables {
+            overflow: scroll;
+            width: 65vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+}
+
+@media only screen and (max-width: 350px) {
+    .content {
+        margin-left: 2vw!important;
+    }
+}
+
+@media only screen and (max-width: 338px) {
+    .content {
+        width: 55vw!important;
+        margin-left: 4vw!important;
+        .tables {
+            overflow: scroll;
+            width: 55vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+}
+
+@media only screen and (max-width: 294px) {
+    .content {
+        margin-left: 1vw!important;
+    }
+}

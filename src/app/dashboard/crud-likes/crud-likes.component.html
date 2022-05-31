@@ -4,10 +4,10 @@
     <u><h2 class="title">Gustos</h2></u>
     <!--TABLE-->
     <!--TABLE-->
-    <div class="respo">
-        <div class="table-responsive">
-            <table class="table table-dark table-responsive">
-                <thead>
+    <div class="row tables">
+        <div class="col ">
+            <table class="table  table-striped">
+                <thead class="textoTitulos">
                     <tr>
                         <th scope="col">Id</th>
                         <th scope="col">Nombre Gusto</th>
@@ -17,7 +17,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let like of likes">
+                    <tr class="textox" *ngFor="let like of likes">
 
                         <th scope="row">{{ like.idGusto }}</th>
                         <td>{{ like.nombreGusto }}</td>
@@ -58,16 +58,12 @@
 
                         <!-- <td>{{ like.estadoGusto }}</td> -->
                         <!-- (click)="editEvent(event.idEvento)" -->
-                        <td><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edit-likes-Modal" (click)="editLikes(like.idGusto)">Editar</button></td>
+                        <td><button class="btn btnEditar" data-bs-toggle="modal" data-bs-target="#edit-likes-Modal" (click)="editLikes(like.idGusto)">Editar</button></td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <!--TABLE//-->
-        <!--TABLE//-->
-        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#likes-modal">
+    </div><button class="btn btnCrear" data-bs-toggle="modal" data-bs-target="#likes-modal">
         Crear Gusto
     </button>
-
-
-    </div>
+</div>
