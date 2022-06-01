@@ -149,6 +149,15 @@ button {
     background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
 }
 
+.btnRegistroDisable {
+    // background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
+    background: #ccc;
+}
+
+// .checkbox{
+//     margin-bottom: -50vh;
+// }
+
 @media screen and (max-width: 500px) {
     form {
         width: 80%;

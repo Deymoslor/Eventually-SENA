@@ -5,6 +5,6 @@ descripcionEvento:string;
 estadoEvento:number;
 fechaEvento:string;
 tipoEvento:string;
-ParticipantesTotales:number;
+participantesTotales:number;
 Grupos_idGrupos:number; 
 }

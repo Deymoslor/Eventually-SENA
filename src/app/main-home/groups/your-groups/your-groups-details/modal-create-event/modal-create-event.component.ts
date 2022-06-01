@@ -48,12 +48,12 @@ export class ModalCreateEventComponent implements OnInit {
     console.log(form);
 
 
-    this.api.postEvent(form).subscribe( data => {
-      console.log(data);
-      console.log(data);
-      console.log(data);
-      console.log(data);
-    })
+    // this.api.postEvent(form).subscribe( data => {
+    //   console.log(data);
+    //   console.log(data);
+    //   console.log(data);
+    //   console.log(data);
+    // })
     // this.createEventForm.reset();
   }
   guardar(){

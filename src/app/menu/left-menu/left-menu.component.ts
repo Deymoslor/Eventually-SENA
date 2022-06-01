@@ -3,6 +3,7 @@ import { AuthService } from 'src/app/core/service/auth.service';
 import { IleftNavMenu } from 'src/app/core/ui/ILeftNavMenu.interface';
 import { ROLES_ENUM } from '../../constants/roles.enum';
 
+
 @Component({
   selector: 'app-left-menu',
   templateUrl: './left-menu.component.html',
@@ -10,11 +11,12 @@ import { ROLES_ENUM } from '../../constants/roles.enum';
 })
 export class LeftMenuComponent implements OnInit {
 
+  public acceso:string = "ADMIN";
   @Input() data!: IleftNavMenu;
 
   constructor(
 
-    private authService: AuthService
+    private authService: AuthService,
 
   ) { }
 
@@ -23,6 +25,10 @@ export class LeftMenuComponent implements OnInit {
       return this.authService.hasAccessToModule(r);
     }
     return true;
+  }
+
+  permisos(r: string[]): boolean {
+    return this.authService.permisos(r);
   }
 
   ngOnInit(): void {

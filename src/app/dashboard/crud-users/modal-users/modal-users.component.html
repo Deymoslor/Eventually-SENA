@@ -1,28 +1,28 @@
-<div class="modal fade" id="content-modal-users" tabindex="-1" >
+<div class="modal fade" id="content-modal-users" tabindex="-1">
     <div class="modal-dialog modal-lg modal-dialog-scrollable">
         <div class="modal-content">
             <!-- Mensaje de padre: {{childMessage}} -->
             <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Actualización</h5>
+                <h5 class="titlePrincipal" id="staticBackdropLabel">Actualización</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <!-- Jordan Form Start-->
                 <form [formGroup]="editarForm" (ngSubmit)="postForm(editarForm.value)">
-                    <div class="form-group">
+                    <div class="form-group textox">
                         <label>Nombre</label>
                         <input type="text" class="form-control" placeholder="Nombre de la persona" formControlName="nombre">
                     </div>
                     <div class="form-group">
-                        <label>apellidos</label>
+                        <label>Apellidos</label>
                         <input type="text" class="form-control" placeholder="Apellidos de la persona" formControlName="apellidos">
                     </div>
                     <div class="form-group">
-                        <label>documento</label>
+                        <label>Documento</label>
                         <input type="text" class="form-control" placeholder="Focumento de la persona" formControlName="documento">
                     </div>
                     <div class="form-group">
-                        <label>fecha de Nacimiento</label>
+                        <label>Fecha de Nacimiento</label>
                         <input type="date" class="form-control" placeholder="Fecha de nacimiento de la persona" formControlName="fechaNacimiento">
                     </div>
                     <div class="form-group">
@@ -38,7 +38,7 @@
                         <input type="text" class="form-control" placeholder="Número celular de la persona" formControlName="celular">
                     </div>
                     <div class="form-group">
-                        <label>ciudad</label>
+                        <label>Ciudad</label>
                         <input type="text" class="form-control" placeholder="Ciudad de la persona" formControlName="ciudad">
                     </div>
 
@@ -50,7 +50,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" (click)="postForm(editarForm.value)">Actualizar</button>
+                <button type="button" class="btn btnGuardar" (click)="postForm(editarForm.value)">Actualizar</button>
             </div>
             <!-- Jordan Form End -->
 

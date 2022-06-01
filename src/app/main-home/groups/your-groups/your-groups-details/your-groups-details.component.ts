@@ -7,6 +7,8 @@ import { LikesI } from 'src/app/models/likes';
 import { ApiService } from 'src/app/services/api.service';
 import { Group } from '../../see-groups/group';
 import { YourGroupsService } from "../your-groups.service";
+import { RelatedGroupsService } from '../../related-groups/related-groups.service';
+import { GroupsServiceService } from 'src/app/dashboard/crud-groups/service/groups-service.service';
 // import { ApiService } from 'src/app/services/api/api.service';
 
 @Component({
@@ -23,6 +25,8 @@ export class YourGroupsDetailsComponent implements OnInit {
   group!: Group;
   constructor(
     private YourGroupsService: YourGroupsService,
+    private relatedService : RelatedGroupsService,
+    private promotedGroup: GroupsServiceService,
     private EventService: ApiService,
     private route: ActivatedRoute,
     private router: Router,
@@ -44,7 +48,15 @@ export class YourGroupsDetailsComponent implements OnInit {
 
     let idGrupos = this.route.snapshot.paramMap.get('id');
     console.log(idGrupos);
-    this.YourGroupsService.getDetailsYourGroup(Number(idGrupos)).subscribe((data: any) => {
+    // this.relatedService.getDetailsRelatedGroup(Number(idGrupos)).subscribe((data: any) => {
+    //     console.log(data);
+    //     this.group = data[0];
+    //   })
+    // this.YourGroupsService.getDetailsYourGroup(Number(idGrupos)).subscribe((data: any) => {
+    //   console.log(data);
+    //   this.group = data[0];
+    // })
+    this.promotedGroup.getSingleGroup(Number(idGrupos)).subscribe((data: any) => {
       console.log(data);
       this.group = data[0];
     })

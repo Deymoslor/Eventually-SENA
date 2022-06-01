@@ -53,7 +53,7 @@ export class CreateGroupsComponent implements OnInit {
   postForm(form:Group){
     console.log(form);
 
-    this.create.postYourGroup(form).subscribe(data => {
+    this.create.postYourGroup(form).subscribe((data: any) => {
       console.log(data);
     })
     this.createYourGroupForm.reset();

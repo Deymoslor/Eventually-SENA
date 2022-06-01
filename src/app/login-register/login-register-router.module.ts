@@ -8,6 +8,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { SupplierRequestComponent } from './supplier-request/supplier-request.component';
 import { AuthGuard } from '../core/guards/auth.guard';
 import { NoAuthGuard } from '../core/guards/no-auth.guard';
+import { ChangeEmailComponent } from './change-email/change-email.component';
 
 const routes: Routes = [
   {
@@ -17,7 +18,8 @@ const routes: Routes = [
       {path: '', component: LoginComponent,canActivate: [NoAuthGuard],},
       {path: 'login', component: LoginComponent,canActivate: [NoAuthGuard],},
       {path: 'forgot-password', component: ForgotPasswordComponent},
-      {path: 'supplier', component: SupplierRequestComponent,canActivate: [NoAuthGuard],}
+      {path: 'supplier', component: SupplierRequestComponent,canActivate: [NoAuthGuard],},
+      {path: 'change-email', component: ChangeEmailComponent}
 
     ]
 

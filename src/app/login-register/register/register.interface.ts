@@ -2,11 +2,11 @@ export interface registerI{
 
     nombre: string;
     apellidos: string;
-    documento: string;
+    documento: number;
     fechaNacimiento: string;
     Email: string;
     password: string;
     ciudad: string;
-    Celular: string;
+    Celular: number;
 
 }

@@ -17,7 +17,7 @@ export class AuthService {
   public port = GlobalConstants.port;
 
   //Definimos ruta raíz de el API.
-  API:string='http://localhost:'+this.port+'/Api-Eventually-SENA/';
+  API:string='http://localhost'+this.port+'/Api-Eventually-SENA/';
 
   //Cosa.
   public currentUser: BehaviorSubject<PersonaI>;
@@ -78,6 +78,16 @@ export class AuthService {
     hasAccessToModule(roles: ROLES_ENUM[]){
       // return this.getUser && roles.includes(this.getUser.Roles_idRoles);
       return this.getUser && roles.includes(this.desencriptar(this.getRol));
+    }
+
+    permisos(r: string[]): boolean {
+
+      if (r.includes(this.desencriptar(localStorage.getItem('nombreRol')))) {
+        return true;
+      }else{
+        return false;
+      }
+
     }
 
   ngOnInit(): void {
