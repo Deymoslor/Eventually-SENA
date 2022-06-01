@@ -1,98 +1,90 @@
 <!-- <app-modal-suppliers [childMessage]=parentMessage></app-modal-suppliers> -->
 <app-modal-suppliers-create></app-modal-suppliers-create>
 <app-modal-suppliers-edit [childMessage]="parentMessage"></app-modal-suppliers-edit>
-<img src="https://www.elcolombiano.com/binrepository/1200x800/0c86/1200d627/none/11101/OOIJ/proveedores-empresarios_38710307_20211009175751.jpg" alt="Proveedores banner" class="thumbnail">
 <div class="content">
-    <h2 class="fs-1 fw-bolder">Proveedores</h2>
-
-    <h2 class="fs-1">Proveedores</h2>
+    <u><h2 class="title">Proveedores</h2></u>
     <!-- Jordan Table Start -->
 
-    <table class="table table-hover table-dark table-responsive">
+    <div class="row tables">
+        <div class="col ">
+            <table class="table table-striped">
+                <thead class="titles">
 
-        <thead>
+                    <tr>
 
-            <tr>
+                        <th class="textoTitulos" scope="col">ID</th>
+                        <th class="textoTitulos" scope="col">nombreProveedor</th>
+                        <th class="textoTitulos" scope="col">apellidoProveedor</th>
+                        <th class="textoTitulos" scope="col">fechaNacimiento</th>
+                        <th class="textoTitulos" scope="col">correoProveedor</th>
+                        <th class="textoTitulos" scope="col">Estado</th>
+                        <th class="textoTitulos" scope="col">Acciones</th>
 
-                <th scope="col">ID</th>
-                <th scope="col">nombreProveedor</th>
-                <th scope="col">apellidoProveedor</th>
-                <th scope="col">fechaNacimiento</th>
-                <th scope="col">correoProveedor</th>
-                <th scope="col">Estado</th>
-                <th scope="col">Acciones</th>
+                    </tr>
 
-            </tr>
+                </thead>
 
-        </thead>
+                <tbody>
 
-        <tbody>
+                    <tr *ngFor="let proveedor of proveedores" (click)="editarProveedor(proveedor.idProveedor)">
 
-            <tr *ngFor="let proveedor of proveedores" (click)="editarProveedor(proveedor.idProveedor)">
+                        <th class="textox" scope="row">{{proveedor.idProveedor}}</th>
 
-                <th scope="row">{{proveedor.idProveedor}}</th>
+                        <td class="textox">{{proveedor.nombreProveedor}}</td>
 
-                <td>{{proveedor.nombreProveedor}}</td>
+                        <td class="textox">{{proveedor.apellidoProveedor}}</td>
 
-                <td>{{proveedor.apellidoProveedor}}</td>
+                        <td class="textox">{{proveedor.fechaNacimiento}}</td>
 
-                <td>{{proveedor.fechaNacimiento}}</td>
-
-                <td>{{proveedor.correoProveedor}}</td>
+                        <td class="textox">{{proveedor.correoProveedor}}</td>
 
 
-                <div *ngIf="proveedor.estado == 1">
+                        <div *ngIf="proveedor.estado == 1">
 
-                    <td></td>
-                    <br>
-                    <br>
+                            <td></td>
+                            <br>
+                            <br>
 
-                    <div class="form-check form-switch">
+                            <div class="form-check form-switch">
 
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked (click)="cambioEstado(proveedor.estado,proveedor.idProveedor)">
+                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked (click)="cambioEstado(proveedor.estado,proveedor.idProveedor)">
 
-                        <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+                                <label class="form-check-label" for="flexSwitchCheckChecked"></label>
 
-                    </div>
+                            </div>
 
-                </div>
+                        </div>
 
-                <div *ngIf="proveedor.estado == 2">
+                        <div *ngIf="proveedor.estado == 2">
 
-                    <td></td>
-                    <br>
-                    <br>
+                            <td></td>
+                            <br>
+                            <br>
 
-                    <div class="form-check form-switch">
+                            <div class="form-check form-switch">
 
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" (click)="cambioEstado(proveedor.estado,proveedor.idProveedor)">
+                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" (click)="cambioEstado(proveedor.estado,proveedor.idProveedor)">
 
-                        <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+                                <label class="form-check-label" for="flexSwitchCheckChecked"></label>
 
-                    </div>
+                            </div>
 
-                </div>
+                        </div>
 
-                <td>
-                    <button (click)="editarProveedor(proveedor.idProveedor)" data-bs-toggle="modal"
-                    data-bs-target="#content-modal-suppliersEdit" type="button" class="btn btn-primary btn-sm" >Editar</button>
-                </td>
+                        <td>
+                            <button (click)="editarProveedor(proveedor.idProveedor)" data-bs-toggle="modal" data-bs-target="#content-modal-suppliersEdit" type="button" class="btn btnEditar btn-sm">Editar</button>
+                        </td>
 
-            </tr>
+                    </tr>
 
-            <tr>
+                    <tr>
 
-        </tbody>
+                </tbody>
 
-    </table>
 
-    <!-- Jordan Table Finish -->
-
-    <button class="btn btn-primary col-2 d-md-flex justify-content-md-center" data-bs-toggle="modal"
-        data-bs-target="#content-modal-suppliersCreate">
-
-        Crear Proveedor
-
-    </button>
-
+            </table>
+        </div>
+    </div> <button class="btn btnCrear col-2 d-md-flex justify-content-md-center" data-bs-toggle="modal" data-bs-target="#content-modal-suppliersCreate">Proveedor</button>
 </div>
+
+<!-- Jordan Table Finish -->

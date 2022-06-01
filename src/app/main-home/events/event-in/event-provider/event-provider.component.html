@@ -1,7 +1,43 @@
 <!--TABLE-->
+<div *ngIf="terminate">
+        <div *ngIf="stateAccept != 1">
+                <button class="btn btn-danger" (click)="modalOpen2(content3)">
+                    Terminar
+                </button>
+                <p class="fw-bolder">Terminar</p>
+            </div>
+        
+            <ng-template #onlyAccepted>
+                <div>
+                    Se tiene un Servicio aceptado con el proveedor: {{nombreProveedor}}, con nombre de servicio: {{nombreServicio}}
+                </div>
+                <button class="btn btn-danger" (click)="modalOpen2(content2)">
+                    Terminar
+                </button>
+                <p class="fw-bolder">Terminar y Resultados</p>
+        
+            </ng-template>
+        
 
+    <ng-template #content2 let-modal2>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal2.dismiss('Cross click')"></button>
+        <app-modal-disable-event [form]="form" [idEvento]="idEvento" [finishState]="1" [idServiceAceppted] = idServiceAceppted></app-modal-disable-event>
+    </ng-template>
+    
+    <ng-template #content3 let-modal3>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal3.dismiss('Cross click')"></button>
+        <app-modal-disable-event [form]="form" [idEvento]="idEvento" [finishState]="2"></app-modal-disable-event>
+    </ng-template>
+</div>
+
+<div *ngIf="!terminate">
+    
 <div class="table-responsive">
     <div *ngIf="stateAccept != 1; else onlyAccepted">
+        <div class="searcher">
+            <label for="">BUSCAR TIPO SERVICIOS: </label>
+            <input type="text" class="search" name="filterProveedor" placeholder="Buscar..." [(ngModel)]="filterProveedor">
+        </div>
         <table class="table table-dark table-responsive">
             <thead>
                 <tr>
@@ -11,6 +47,7 @@
                     <th scope="col">Correo</th>
                     <th scope="col">Numero</th>
                     <th scope="col">Tipo Servicio</th>
+                    <th scope="col">TOTAL Calificación</th>
                     <th scope="col">Detalle Servicio</th>
                     <th scope="col">Accion</th>
                     <th scope="col">Estado</th>
@@ -18,16 +55,19 @@
             </thead>
             <tbody>
 
-                <tr *ngFor="let key of dataProviderService">
+                <tr *ngFor="let key of (dataProviderService | filterEvents:filterProveedor)">
                     <td></td>
                     <td>{{key.nombreProveedor}}</td>
                     <td>{{key.apellidoProveedor}}</td>
                     <td>{{key.correoProveedor}}</td>
                     <td>{{key.celular}}</td>
                     <!-- <td>{{key.TipoServicio_idtipoServicio}}</td> -->
-                    <td *ngFor="let item of dataTypeService" [hidden]="item.idtipoServicio != key.TipoServicio_idtipoServicio">
-                            {{item.tipoServicio}}
-                    </td>
+                    
+                            <td *ngFor="let item of dataTypeService" [hidden]="item.idtipoServicio != key.TipoServicio_idtipoServicio">
+                                    {{item.tipoServicio}}
+                            </td>
+                   
+                    <td>{{key.calificacionT}}</td>
                     <td>
                         <div class="content-button">
                             <button class="btn btn-primary" (click)="modalOpen(content)">Detalle</button>
@@ -107,7 +147,7 @@
         <button class="btn btn-danger" (click)="modalOpen2(content3)">
             Terminar
         </button>
-        <p class="fw-bolder">Terminar</p>
+        <p class="fw-bolder">Terminar Evento</p>
     </div>
 
     <ng-template #onlyAccepted>
@@ -135,3 +175,5 @@
     <app-modal-disable-event [form]="form" [idEvento]="idEvento" [finishState]="2"></app-modal-disable-event>
 </ng-template>
 
+
+</div>

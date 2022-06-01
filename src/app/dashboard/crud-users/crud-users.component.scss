@@ -1,49 +1,195 @@
-:host {
+@import '../../app.component.scss';
+ :host {
     display: flex;
     flex-direction: column;
     align-self: center;
     justify-content: space-between;
-  }
+}
 
-  .thumbnail {
-    width: 70vw;
-    border-radius: 20px;
-  }
-
-  .content {
+.content {
     display: flex;
+    width: 90%;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     flex-grow: 1;
-    margin-top: 80px;
-  }
+    margin-top: 4vw;
+    height: auto!important;
+    margin-left: 5vw;
+    margin-bottom: 4vw;
+}
 
-  table {
-    width: 100%;
-  }
+.title {
+    font-family: 'Pacifico', cursive;
+    font-size: 7vw;
+    margin-bottom: 6vw;
+}
 
-  .mat-column-demo-position {
-    width: 32px;
-    border-right: 1px solid currentColor;
-    padding-right: 24px;
-    text-align: center;
-  }
+.textoTitulos {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+}
 
-  .mat-column-demo-name {
-    padding-left: 16px;
-    font-size: 20px;
-  }
+.textox {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 350;
+}
 
-  .mat-column-demo-weight {
-    font-style: italic;
-  }
+.content {
+    height: auto;
+    .tables {
+        overflow: scroll;
+        height: 55vw!important;
+    }
+    .tables table {
+        height: 30%!important;
+    }
+}
 
-  .mat-column-demo-symbol {
-    width: 32px;
-    text-align: center;
-    font-weight: bold;
-  }
-  .btn {
+.btn {
     margin: 20px;
-  }
+}
+
+.btnEditar {
+    background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
+    color: white;
+}
+
+.btnEditar:hover {
+    background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
+}
+
+.btnUser {
+    background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
+    color: white;
+}
+
+.btnUser:hover {
+    background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
+}
+
+@media only screen and (max-width: 1097px) {
+    .content {
+        width: 80vw!important;
+        margin-left: 4vw;
+        .tables {
+            overflow: scroll;
+            width: 80vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+}
+
+@media only screen and (max-width: 706px) {
+    .content {
+        margin-left: 6vw;
+    }
+}
+
+@media only screen and (max-width: 467px) {
+    .content {
+        width: 75vw!important;
+        margin-left: 8vw;
+        .tables {
+            overflow: scroll;
+            width: 75vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+}
+
+@media only screen and (max-width: 431px) {
+    .content {
+        width: 70vw!important;
+        margin-left: 9vw;
+        .tables {
+            overflow: scroll;
+            width: 70vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+}
+
+@media only screen and (max-width: 428px) {
+    .content {
+        margin-left: 2vw;
+    }
+}
+
+@media only screen and (max-width:378px) {
+    .content {
+        width: 65vw!important;
+        margin-left: 2vw;
+        .tables {
+            overflow: scroll;
+            width: 65vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+}
+
+@media only screen and (max-width: 345px) {
+    .content {
+        margin-left: 1vw;
+    }
+}
+
+@media only screen and (max-width:332px) {
+    .content {
+        width: 60vw!important;
+        margin-left: 0.5vw;
+        .tables {
+            overflow: scroll;
+            width: 60vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+}
+
+@media only screen and (max-width:304px) {
+    .content {
+        margin-bottom: 7vw;
+    }
+}
+
+@media only screen and (max-width:332px) {
+    .content {
+        width: 55vw!important;
+        margin-left: 0.2vw;
+        .tables {
+            overflow: scroll;
+            width: 55vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+}
+
+@media only screen and (max-width:291px) {
+    .content {
+        margin-bottom: 9vw;
+    }
+}
+
+@media only screen and (max-width:287px) {
+    .content {
+        margin-bottom: 11vw;
+    }
+}
+
+@media only screen and (max-width:282px) {
+    .content {
+        margin-bottom: 14vw;
+    }
+}

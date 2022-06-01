@@ -17,6 +17,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatLabel } from '@angular/material/form-field';
 import { EditEventComponent } from './event-in/edit-event/edit-event.component';
+import { FilterEventsPipe } from './event-in/event-provider/pipe/filter-events.pipe';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { EditEventComponent } from './event-in/edit-event/edit-event.component';
     EventProviderComponent,
     ModalProviderInfoComponent,
     EditEventComponent,
+    FilterEventsPipe,
   ],
   imports: [
     CommonModule,

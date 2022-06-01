@@ -1,4 +1,5 @@
 <body>
+    <!-- <form target="_blank" action="https://formsubmit.co/jordansaldarriaga14@gmail.com" method="POST" [formGroup]="peticionProveedor" > -->
     <form [formGroup]="peticionProveedor">
         <div class="form">
             <h1>¡Ser proveedor!</h1>
@@ -7,12 +8,12 @@
                 <label for="">Nombre</label>
             </div> -->
             <div class="grupo">
-                <input type="email" name="" id="email" required formControlName="Email"><span class="barra"></span>
+                <input type="email" name="email" id="email" required formControlName="Email"><span class="barra"></span>
                 <label for="">Email</label>
             </div>
 
             <div class="grupo">
-                <input type="text" name="" id="nombre" required formControlName="nombre"><span class="barra"></span>
+                <input type="text" name="name" id="nombre" required formControlName="nombre"><span class="barra"></span>
                 <label for="">Nombre</label>
             </div>
 
@@ -23,6 +24,7 @@
                     <span class="barra"></span>
                 </div>
             </div>
+            <!-- <button type="submit">Enviar información</button> -->
             <button class="btnsSuplier" (click)="enviarMailSolicitud(peticionProveedor.value)">Enviar información</button>
             <button class="btnsSuplier" (click)="cancel()">Cancelar</button>
 

@@ -10,6 +10,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { EventI } from 'src/app/models/event.interface';
 import { ServiceEventI } from 'src/app/main-home/providers/models/serviceEvent.interface';
 import { TypeServicesI } from 'src/app/dashboard/crud-services/models/typeServices.interface';
+import { ApiResultsServicesService } from '../../services/api.results-services.service';
+import { ResultServiceI } from '../../../../models/result-service.interface';
 
 
 @Component({
@@ -21,6 +23,7 @@ export class EventProviderComponent implements OnInit {
 
 @Input() form!: EventI;
 @Input() idEvento!: number;
+@Input() terminate!: boolean;
 
   createInv = new FormGroup({
     Evento_idEvento: new FormControl(''),
@@ -36,19 +39,46 @@ export class EventProviderComponent implements OnInit {
   dataProviderService!: InvitationProvSerI[];
   dataServiceState!: ServiceEventI[];
   dataTypeService!: TypeServicesI[]
+  dataResultService!: ResultServiceI[];
 
   
   number!:number;
-  constructor(private api:ApiService, private modalService: NgbModal, private route:ActivatedRoute) { }
+  constructor(private api:ApiService, private modalService: NgbModal, private route:ActivatedRoute, private apiRS: ApiResultsServicesService) { }
   closeResult = '';
+
+  filterProveedor = '';
 
   ngOnInit(): void {
     let state: number | null;
+    console.log("racineta rango: " + this.terminate);
     this.api.getAllProvServicesInv(1).subscribe(datas =>{
       console.log(datas);
       this.dataProviderService = datas;
+      
       this.dataProviderService.forEach(key => {
-        console.log(key.idServicios + "si");
+        // console.log(key.idServicios + ": proveedor");
+        let total:number = 0;
+        let iterable:number = 0;
+        this.apiRS.getResultsServices(key.idServicios).subscribe(data =>{
+          if(data){
+              this.dataResultService = data;
+
+              this.dataResultService.forEach(element2 => {
+                if(element2.calificacion){
+                  iterable += 1
+                  console.log("Resultado: "+ element2.idresultadoServicio +": " + element2.calificacion);
+                  total += Number(element2.calificacion);
+                }
+              });
+              console.log("TOTAL: " + total);
+              key.calificacionT = total/iterable;
+          }
+          else if(!data){
+            total = 0;
+            key.calificacionT = total;
+          }
+        })
+        
         console.log(this.idEvento)
         this.api.getStateInvitationService(key.idServicios.toString(), this.idEvento.toString()).subscribe(data =>{
           console.log(data);

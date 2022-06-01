@@ -6,6 +6,7 @@ import { ResponseI } from '../login/models/response.intarface';
 import { registerI } from '../register/register.interface';
 import { supplierRequestI } from '../supplier-request/supplierRequestI.interface';
 import { GlobalConstants } from 'src/app/global-constants';
+import { changeEmailI } from '../change-email/change-email.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +42,11 @@ export class accountService {
   postMail(form:supplierRequestI):Observable<ResponseI>{
     let direccion = this.API + "mail";
     return this.http.post<ResponseI>(direccion,form);
+  }
+
+  postEmail(form:changeEmailI):Observable<ResponseI>{
+    let direccion = this.API + "mailchange";
+    return this.http.post<ResponseI>(direccion, form);
   }
 
 }

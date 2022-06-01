@@ -1,61 +1,60 @@
-<div class="content">
-    <h2 class="fs-1 fw-bolder">Peticiones Eventos</h2>
+<h2 class="fs-1 fw-bolder title">
+    Peticiones Eventos</h2>
 
-    <!-- Jordan Table Start -->
+<!-- Jordan Table Start -->
 
-    <table class="table table-hover table-dark table-responsive">
+<div class="row tables">
+    <div class="col ">
+        <table class="table table-striped">
+            <thead class="titles">
 
-        <thead>
+                <tr>
 
-            <tr>
+                    <th class="textoTitulos" scope="col">Id de la petición</th>
+                    <th class="textoTitulos" scope="col">estadoPeticion</th>
+                    <th class="textoTitulos" scope="col">Evento_idEvento</th>
+                    <th class="textoTitulos" scope="col">Acciones</th>
 
-                <th scope="col">Id de la petición</th>
-                <th scope="col">estadoPeticion</th>
-                <th scope="col">Evento_idEvento</th>
-                <th scope="col">Acciones</th>
+                </tr>
 
-            </tr>
+            </thead>
 
-        </thead>
+            <tbody>
 
-        <tbody>
+                <tr *ngFor="let request of requests">
 
-            <tr *ngFor="let request of requests">
+                    <th class="textox" scope="row">{{request.idpeticionesEvento}}</th>
 
-                <th scope="row">{{request.idpeticionesEvento}}</th>
+                    <td class="textox">{{request.estadoPeticion}}</td>
 
-                <td>{{request.estadoPeticion}}</td>
+                    <td class="textox">{{request.Evento_idEvento }}</td>
 
-                <td>{{request.Evento_idEvento }}</td>
-
-                <!-- Grupo está sin respuesta -->
-                <div *ngIf="request.estadoPeticion==='1'">
-                    <div class="d-grid gap-2 d-md-block">
-                        <button (click)="aceptarPeticion(request.idpeticionesEvento)" type="button" class="btn btn-outline-warning btn-sm">Aceptar</button>
-                        <button (click)="rechazarPeticion(request.idpeticionesEvento)" type="button" class="btn btn-outline-danger btn-sm">Rechazar</button>
+                    <!-- Grupo está sin respuesta -->
+                    <div *ngIf="request.estadoPeticion==='1'">
+                        <div class="d-grid gap-2 d-md-block">
+                            <button (click)="aceptarPeticion(request.idpeticionesEvento)" type="button" class="btn btnHabilitar btn-sm">Aceptar</button>
+                            <button (click)="rechazarPeticion(request.idpeticionesEvento)" type="button" class="btn btn-secondary btn-sm">Rechazar</button>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Grupo está habilitado -->
-                <div *ngIf="request.estadoPeticion==='2'">
-                    <div class="form-check form-switch">
-                        <button (click)="rechazarPeticion(request.idpeticionesEvento)" type="button" class="btn btn-outline-danger btn-sm">Inhabilitar</button>
+                    <!-- Grupo está habilitado -->
+                    <div *ngIf="request.estadoPeticion==='2'">
+                        <div class="form-check form-switch">
+                            <button (click)="rechazarPeticion(request.idpeticionesEvento)" type="button" class="btn btn-secondary btn-sm">Inhabilitar</button>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Grupo está deshabilitado -->
-                <div *ngIf="request.estadoPeticion==='3'">
-                    <div class="form-check form-switch">
-                        <button (click)="aceptarPeticion(request.idpeticionesEvento)" type="button" class="btn btn-outline-warning btn-sm">Habilitar</button>
+                    <!-- Grupo está deshabilitado -->
+                    <div *ngIf="request.estadoPeticion==='3'">
+                        <div class="form-check form-switch">
+                            <button (click)="aceptarPeticion(request.idpeticionesEvento)" type="button" class="btn btnHabilitar btn-sm">Habilitar</button>
+                        </div>
                     </div>
-                </div>
 
-            </tr>
+                </tr>
 
-        </tbody>
+            </tbody>
 
-    </table>
-
-    <!-- Jordan Table Finish -->
-
+        </table>
+    </div>
 </div>

@@ -80,6 +80,16 @@ export class AuthService {
       return this.getUser && roles.includes(this.desencriptar(this.getRol));
     }
 
+    permisos(r: string[]): boolean {
+
+      if (r.includes(this.desencriptar(localStorage.getItem('nombreRol')))) {
+        return true;
+      }else{
+        return false;
+      }
+
+    }
+
   ngOnInit(): void {
 
   }

@@ -59,7 +59,8 @@ export class UpdateUserAccountComponent implements OnInit {
     nombre: new FormControl(''),
     apellidos: new FormControl(''),
     documento: new FormControl(''),
-    fechaNacimiento: new FormControl('')
+    fechaNacimiento: new FormControl(''),
+    Email: new FormControl('')
   });
 
   //Creamos formulario para poder actualizar contraseña.
@@ -116,6 +117,7 @@ export class UpdateUserAccountComponent implements OnInit {
         'apellidos' : this.datosPersona.apellidos,
         'documento' : this.datosPersona.documento,
         'fechaNacimiento' : this.datosPersona.fechaNacimiento,
+        'Email' : this.datosPersona.Email,
       })
 
     });
@@ -212,6 +214,11 @@ export class UpdateUserAccountComponent implements OnInit {
   //método para recuperación de password en caso de no saberlo.
   PasswordRecovery(){
     this.router.navigate(['loginRegister/forgot-password']);
+  }
+
+  //Método para solicitar cambio de correo electrónico.
+  emailChange(){
+    this.router.navigate(['loginRegister/change-email']);
   }
 
 }
