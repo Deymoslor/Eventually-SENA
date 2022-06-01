@@ -31,8 +31,8 @@ export class EventInComponent implements OnInit {
   terminate!: boolean;
   totalEvent!: number;
 
-  httpLocalHost = 'http://localhost:8181'; //SENA
-  // httpLocalHost = 'http://localhost'; //CASA
+  // httpLocalHost = 'http://localhost:8181'; //SENA
+  httpLocalHost = 'http://localhost'; //CASA
 
   dataEvent!: EventI;
   dataPersonJoin!: ParticipantsEventsI;
