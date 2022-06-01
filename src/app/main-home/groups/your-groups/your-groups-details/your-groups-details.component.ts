@@ -89,6 +89,24 @@ export class YourGroupsDetailsComponent implements OnInit {
     }
   }
 
+  modalOpen2(content:any){
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason2(reason)}`;
+    });
+  }
+
+  private getDismissReason2(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+
   editarGroup(id:number | undefined){
     this.id = this.childMessage;
     console.log('el id del fuckin grupo: ', this.childMessage);

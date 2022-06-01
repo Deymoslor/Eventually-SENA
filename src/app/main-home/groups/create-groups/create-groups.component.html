@@ -29,6 +29,8 @@
       ? 'is-invalid'
       : '' || createYourGroupForm.get('descripcionGrupo')?.hasError('minlength')
       ? 'is-invalid'
+      : '' || createYourGroupForm.get('descripcionGrupo')?.hasError('maxlength')
+      ? 'is-invalid'
       : '' ||
         ((createYourGroupForm.get('descripcionGrupo')?.touched ||
         createYourGroupForm.get('descripcionGrupo')?.dirty) &&
@@ -47,6 +49,11 @@ formControlName="descripcionGrupo"></textarea>
         {{
           createYourGroupForm.get("descripcionGrupo")?.hasError("minlength")
             ? " 5 letras requeridas"
+            : ""
+        }}
+        {{
+          createYourGroupForm.get("descripcionGrupo")?.hasError("maxlength")
+            ? " Ha excedido el limite de caracteres"
             : ""
         }}
   </div>

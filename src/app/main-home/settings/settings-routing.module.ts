@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { SettingsComponent } from './settings.component';
 import { UpdateUserAccountComponent } from './update-user-account/update-user-account.component';
 import { UserAccountComponent } from './user-account/user-account.component';
+import { RequestGroupsComponent } from './request-groups/request-groups.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,7 @@ const routes: Routes = [
     children: [
       {path: 'user-account', component: UserAccountComponent},
       {path: 'settings-account', component: UpdateUserAccountComponent},
+      {path: 'request-groups', component: RequestGroupsComponent},
       {
         path: '**',
         redirectTo: 'settings-account',
