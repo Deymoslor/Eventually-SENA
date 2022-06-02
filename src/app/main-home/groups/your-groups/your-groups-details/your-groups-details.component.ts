@@ -9,6 +9,8 @@ import { Group } from '../../see-groups/group';
 import { YourGroupsService } from "../your-groups.service";
 import { RelatedGroupsService } from '../../related-groups/related-groups.service';
 import { GroupsServiceService } from 'src/app/dashboard/crud-groups/service/groups-service.service';
+import { userService } from "../../../../dashboard/crud-users/service/userService.service";
+import { ListaPersonasI } from 'src/app/dashboard/crud-users/ListaPersonasI.interface';
 // import { ApiService } from 'src/app/services/api/api.service';
 
 @Component({
@@ -21,6 +23,7 @@ export class YourGroupsDetailsComponent implements OnInit {
   id: number | undefined;
   childMessage: number | undefined;
   likesI!: LikesI[];
+  public personas! : ListaPersonasI[];
 
   group!: Group;
   constructor(
@@ -33,6 +36,7 @@ export class YourGroupsDetailsComponent implements OnInit {
     private modalService: NgbModal,
     private fb: FormBuilder,
     private api: ApiService,
+    private userService:userService,
     private likes: ApiService
   ) { }
 
@@ -41,13 +45,16 @@ export class YourGroupsDetailsComponent implements OnInit {
   closeResult = '';
 
   ngOnInit(): void {
+    let idGrupos = this.route.snapshot.paramMap.get('id');
+    console.log(idGrupos);
+    this.userService.getGroupPerson(Number(idGrupos)).subscribe((data: any)=>{
+      this.personas = data;
+      console.log(this.personas);
+    })
     this.likes.getAllLikes(1).subscribe(data=>{
 
       this.likesI = data;
     })
-
-    let idGrupos = this.route.snapshot.paramMap.get('id');
-    console.log(idGrupos);
     // this.relatedService.getDetailsRelatedGroup(Number(idGrupos)).subscribe((data: any) => {
     //     console.log(data);
     //     this.group = data[0];
