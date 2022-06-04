@@ -34,7 +34,6 @@ export class RegisterComponent implements OnInit {
         Celular: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^[0-9]\d*$/)]],
         ciudad: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1 ]+$/)]],
         check1: ['', Validators.requiredTrue],
-        
       })
 
     }

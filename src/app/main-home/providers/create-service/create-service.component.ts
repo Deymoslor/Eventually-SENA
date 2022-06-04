@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import {NgbDateStruct, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
 import { TypeServicesI } from 'src/app/dashboard/crud-services/models/typeServices.interface';
 import { ApiService } from '../services/api.service';
@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../../core/service/auth.service';
 import { SupplierService } from 'src/app/dashboard/crud-suppliers/service/supplier.service';
 import { ProveedorIA } from './proveedorI.interface';
+import { timeStamp } from 'console';
 
 
 @Component({
@@ -20,9 +21,11 @@ export class CreateServiceComponent implements OnInit {
 
   datosProveedor!:ProveedorIA;
   ley!:number;
-  
+
+  lawForm: FormGroup;
+
   ServicesForm = new FormGroup({
-    idServicios: new FormControl(), 
+    idServicios: new FormControl(),
     nombreServicio : new FormControl(''),
     descripcionServicio: new FormControl(''),
     precioEstimado: new FormControl(),
@@ -33,15 +36,20 @@ export class CreateServiceComponent implements OnInit {
     estadoServicio: new FormControl(),
     Proveedor_idProveedor: new FormControl(1),
     TipoServicio_idtipoServicio: new FormControl('')
-  })
+  });
 
   dataTypeService!: TypeServicesI[]
-  
 
   model!: NgbDateStruct;
   date!: {year: number, month: number};
 
-  constructor(private calendar: NgbCalendar, private api: ApiService, private router:Router, private auth: AuthService, private supplierService: SupplierService) { }
+  constructor(private calendar: NgbCalendar, private api: ApiService, private router:Router, private auth: AuthService, private supplierService: SupplierService, private formBuilder:FormBuilder){
+
+    this.lawForm = this.formBuilder.group({
+      check: ['', Validators.requiredTrue],
+    })
+
+  }
 
   ngOnInit(): void {
     this.api.getAllTypeServices(1).subscribe(data =>{
@@ -57,6 +65,17 @@ export class CreateServiceComponent implements OnInit {
 
     })
 
+  }
+
+  postForm(form:any){
+    this.supplierService.updateSupplierLaw(this.auth.desencriptar(localStorage.getItem('id'))).subscribe(data =>{
+      // console.log(data[0]);
+      window.location.reload();
+    })
+  }
+
+  cancel(){
+    this.router.navigate(['providers/createService']);
   }
 
   postServiceProv(form: ServiceI){

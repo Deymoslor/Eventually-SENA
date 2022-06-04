@@ -1,6 +1,24 @@
 <!--THUMBNAIL of provider-->
-<div *ngIf="this.ley == 2" class="container">
-    <h1>Acepte esta ley pls c:</h1>
+<div *ngIf="this.ley == 2" class="container law">
+    <form ngNativeValidate [formGroup]="lawForm" (ngSubmit)="postForm(lawForm.value)">
+        <div class="check-container-politycs">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="invalidCheck" [ngClass]="lawForm.get('check')?.hasError('required') ? 'is-invalid' : ''" formControlName="check">
+                <label class="form-check-label" for="invalidCheck">
+                    Debe aceptar la ley 1480 de 2011 articulo 30 para poder continuar con su proceso.
+                </label>
+                <div class="invalid-feedback">
+                    {{
+                        lawForm.get("check")?.hasError("required")
+                        ? " Es obligatorio aceptar la ley para poder crear un servicio"
+                        : ""
+                    }}
+                </div>
+            </div>
+        </div>
+            <button *ngIf="lawForm.invalid" type="submit" [disabled]="lawForm.invalid" class="btnRegistroDisable btn btn-primary">Enviar</button>
+            <button *ngIf="lawForm.valid" type="submit" class="btnRegistro btn btn-primary">Enviar</button>
+    </form>
 </div>
 
 
@@ -18,12 +36,12 @@
                 <h5 class="modal-title fw-bolder fs-4" id="staticBackdropLabel">Crear Servicio</h5>
                 </div>
                 <div class="modal-body">
-                    
+
                         <div class="form-group">
                             <label for="">Nombre del Servicio:</label>
                             <input type="text" class="form-control" id=""
                             placeholder="Ej: El mejor evento" formControlName="nombreServicio">
-                            
+
                             <label for="">Tipo Servicio:</label>
                             <select class="form-select" id="input-group-text" formControlName="TipoServicio_idtipoServicio">
                                 <option selected> Escoge uno...</option>
@@ -44,7 +62,7 @@
 
                             <label for="exampleInputEmail1">Foto Servicio:</label>
                             <input class="form-control" formControlName="imagen" type="file" id="formFile">
-                            
+
                             <label for="">Precio estimado</label>
                             <input type="number" class="form-control" id="exampleInputEmail1"
                             value="0" formControlName="precioEstimado">
@@ -74,15 +92,15 @@
                                 </div>
                             </div>
                         </div>
-                    
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                     <button type="submit" class="btn btn-primary">Crear</button>
                 </div>
-            
+
             </div>
-            
+
         </div>
     </form>
 </div>

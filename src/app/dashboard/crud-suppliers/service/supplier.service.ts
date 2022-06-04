@@ -42,6 +42,12 @@ export class SupplierService {
     return this.http.get<ProveedorIA>(direccion);
   }
 
+  //Creamos metodo para que al proveedor se le acepte la ley.
+  updateSupplierLaw(idL:number):Observable<number>{
+    let direccion = this.API+"suppliers?idL=" + idL;
+    return this.http.get<number>(direccion);
+  }
+
   //Creamos el método para actualizar.
   putSupplier(form:any):Observable<ResponseI>{
     let direccion = this.API+"suppliers";
