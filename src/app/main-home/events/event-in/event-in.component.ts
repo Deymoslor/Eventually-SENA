@@ -7,8 +7,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from 'src/app/core/service/auth.service';
 import { ParticipantsEventsI } from '../../../models/participants-events.interface';
-import { resolve } from 'dns';
-import { rejects } from 'assert';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({

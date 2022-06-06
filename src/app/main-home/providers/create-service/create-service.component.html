@@ -35,8 +35,16 @@
                                 rows="2" formControlName="descripcionServicio"></textarea>
                         </div>
 
-                        <label for="exampleInputEmail1">Foto Servicio:</label>
-                        <input class="form-control" formControlName="imagen" type="file" id="formFile">
+                        <label for="">Imagen Servicio:</label>
+                        Esta foto podra ser vista por los creadores de eventos.
+                        <div class="mb-2">
+                            <input (change)="capturarFile($event)" type="file" formControlName="imagen" id="formFile">
+                        </div>
+                        <h4>PREVISUALIZACION</h4>
+                        <div *ngIf="previsualizacion">
+                            <img width="700px" [src]="previsualizacion" alt="">
+                        </div>
+
                         
                         <label for="">Precio estimado</label>
                         <input type="number" class="form-control" id="exampleInputEmail1"

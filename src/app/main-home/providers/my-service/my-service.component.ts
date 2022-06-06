@@ -17,6 +17,9 @@ export class MyServiceComponent implements OnInit {
   idProvider!: number;
   numb!:number
 
+  // httpLocalHost = 'http://localhost:8181'; //SENA
+  httpLocalHost = 'http://localhost'; //CASA
+
   ServicesForm = new FormGroup({
     idServicios: new FormControl(), 
     nombreServicio : new FormControl(''),
@@ -36,16 +39,19 @@ export class MyServiceComponent implements OnInit {
   ngOnInit(): void {
     this.idProvider = this.auth.desencriptar(localStorage.getItem('id'));
     this.api.getSingleServiceProvider(this.auth.desencriptar(localStorage.getItem('id'))).subscribe((data:any) =>{
+      
       if (data >= 0){
-        this.router.navigateByUrl('provider/createService')
+        this.router.navigateByUrl('provider/createService');
+        // break;
       }
       this.dataService = data[0];
+      console.log("my service; " + this.dataService.imagen);
       this.ServicesForm.setValue({
         'idServicios': this.dataService.idServicios,
         'nombreServicio': this.dataService.nombreServicio,
         'descripcionServicio': this.dataService.descripcionServicio,
         'precioEstimado': this.dataService.precioEstimado,
-        'imagen': this.dataService.imagen,
+        'imagen': this.dataService.imagen.replace('C:/xampp/htdocs', this.httpLocalHost),
         'historialEmpresas': this.dataService.historialEmpresas,
         'numeroContacto': this.dataService.numeroContacto,
         'correoContacto': this.dataService.correoContacto,
@@ -53,12 +59,15 @@ export class MyServiceComponent implements OnInit {
         'Proveedor_idProveedor': this.dataService.Proveedor_idProveedor,
         'TipoServicio_idtipoServicio': this.dataService.TipoServicio_idtipoServicio,
     })
+    console.log("id servicio: " + this.ServicesForm.get('imagen')!.value);
     })
+
+    
   }
 
   changeStateServiceProv(form:ServiceI){
       console.log(form);
-      if(form.estadoServicio == 0){
+      if(form.estadoServicio == 2){
         form.estadoServicio = 1;
       }else{
         form.estadoServicio = 2;
