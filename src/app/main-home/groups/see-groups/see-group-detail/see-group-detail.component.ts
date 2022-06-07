@@ -7,6 +7,8 @@ import { userService } from "../../../../dashboard/crud-users/service/userServic
 import { ListaPersonasI } from 'src/app/dashboard/crud-users/ListaPersonasI.interface';
 import { LikesI } from 'src/app/models/likes';
 import { ApiService } from 'src/app/services/api.service';
+import { FormControl, FormGroup } from '@angular/forms';
+import { GroupsServiceService } from 'src/app/dashboard/crud-groups/service/groups-service.service';
 
 @Component({
   selector: 'app-see-group-detail',
@@ -19,8 +21,22 @@ export class SeeGroupDetailComponent implements OnInit {
   public personas! : ListaPersonasI[];
   likesI!: LikesI[];
 
+  GroupForm  = new FormGroup({
+    idGrupos: new FormControl(''),
+    nombreGrupo: new FormControl(''),
+    descripcionGrupo: new FormControl(''),
+    privacidadGrupo: new FormControl(''),
+    InvitadosTotales: new FormControl(''),
+    gustos_idGusto: new FormControl(''),
+    imagen: new FormControl('')
+  })
+
+  // httpLocalHost = 'http://localhost:8181'; //SENA
+  httpLocalHost = 'http://localhost'; //CASA
+
   constructor(
     private SeeGroupsService: SeeGroupsService,
+    private promotedGroup: GroupsServiceService,
     private userService:userService,
     private route: ActivatedRoute,
     private router: Router,
@@ -49,9 +65,37 @@ export class SeeGroupDetailComponent implements OnInit {
 
     let idGrupos = this.route.snapshot.paramMap.get('id');
     console.log(idGrupos);
-    this.SeeGroupsService.getDetailsGroup(Number(idGrupos)).subscribe((data: any) =>{
+    // this.SeeGroupsService.getDetailsGroup(Number(idGrupos)).subscribe((data: any) =>{
+    //   console.log(data);
+    //   this.group = data[0];
+
+    //   // this.GroupForm.setValue({
+    //   //   'idGrupos': this.group.idPersona,
+    //   //   'nombreGrpo': this.group.nombreGrupo,
+    //   //   'descripcionGrupo': this.group.descripcionGrupo,
+    //   //   'privacidadGrupo': this.group.privacidadGrupo,
+    //   //   'invitadosTotales': this.group.InvitadosTotales,
+    //   //   'gustos_idGusto': this.group.gustos_idGusto,
+    //   //   'idPersona': this.group.idPersona,
+    //   //   'imagen': this.group.imagen.replace('C:/xampp/htdocs', this.httpLocalHost),
+    //   // });
+    // })
+    this.promotedGroup.getSingleGroup(Number(idGrupos)).subscribe((data: any) => {
       console.log(data);
       this.group = data[0];
+      if (this.group === null) {
+        console.log('esa vaina no sirvio');
+      } else {
+        this.GroupForm.setValue({
+          'idGrupos': this.group.idGrupos,
+          'nombreGrupo': this.group.nombreGrupo,
+          'descripcionGrupo': this.group.descripcionGrupo,
+          'privacidadGrupo': this.group.privacidadGrupo,
+          'InvitadosTotales': this.group.InvitadosTotales,
+          'gustos_idGusto': this.group.gustos_idGusto,
+          'imagen': this.group.imagen.replace('C:/xampp/htdocs', this.httpLocalHost),
+        });
+      }
     })
 
     this.userService.getGroupPerson(Number(idGrupos)).subscribe((data: any)=>{

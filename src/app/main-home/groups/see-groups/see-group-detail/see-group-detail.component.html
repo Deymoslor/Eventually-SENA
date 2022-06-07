@@ -2,14 +2,14 @@
   <a [routerLink]="['/groups/see-groups']" routerLinkActive="router-link-active"  class="back">&lt; Volver al inicio</a>
   <div class="container">
     <br>
-      <div class="img-container">
-        <img class="rounded card-img-top" src="../../../../../assets/group/prueba.jfif" alt="{{ group?.nombreGrupo }}">
-      </div>
+    <div class="img-container class-thumbnail">
+      <img class="thumbnail rounded card-img-top" [src]="GroupForm.get('imagen')?.value" alt="{{ group?.nombreGrupo }}" class="thumbnail">
+    </div>
       <div class="info">
         <div class="cart-row">
           <div>
             <p class="product-name h2">{{ group?.nombreGrupo }}</p>
-            <p class="product-short-description h5">{{ group?.descripcionGrupo }}</p>
+            <p class="product-short-description h5 col-md-10">{{ group?.descripcionGrupo }}</p>
           </div>
           <ng-container *ngFor="let likeI of likesI">
             <div *ngIf="group?.gustos_idGusto == likeI.idGusto">
@@ -19,7 +19,7 @@
           </ng-container>
         </div>
         <div class="cart-row">
-          <span class="price">{{ group?.invitadosTotales }} PARTICIPANTES</span>
+          <span class="price">{{ group?.InvitadosTotales }} PARTICIPANTES</span>
           <button class="btn btn-primary" title="Solicitar Unirse" (click)="share()">Unirse
           </button>
         </div>

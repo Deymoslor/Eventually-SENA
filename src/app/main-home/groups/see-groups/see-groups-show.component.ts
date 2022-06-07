@@ -13,11 +13,25 @@ import { AuthService } from 'src/app/core/service/auth.service';
   templateUrl: './see-groups-show.component.html',
   styleUrls: ['./see-groups-show.component.scss'],
 })
-export class SeeGroupsShowComponent{
+export class SeeGroupsShowComponent implements OnInit{
   @Input() group!: Groups;
   idPersona!:updatePersonaI;
   GroupPersonC!:GroupPerson;
   idPersonas = this.auth.desencriptar(localStorage.getItem('id'));
+
+  GroupForm  = new FormGroup({
+    idGrupos: new FormControl(''),
+    nombreGrupo: new FormControl(''),
+    descripcionGrupo: new FormControl(''),
+    privacidadGrupo: new FormControl(''),
+    invitadosTotales: new FormControl(''),
+    gustos_idGusto: new FormControl(''),
+    idPersona: new FormControl(''),
+    imagen: new FormControl('')
+  })
+
+  // httpLocalHost = 'http://localhost:8181'; //SENA
+  httpLocalHost = 'http://localhost'; //CASA
 
   constructor(
     private SeeGroupsService: SeeGroupsService,
@@ -26,9 +40,22 @@ export class SeeGroupsShowComponent{
     private fb: FormBuilder,
     private auth: AuthService
   ) { }
-  // ngOnInit(): void {
-  //   throw new Error('Method not implemented.');
-  // }
+
+  ngOnInit(): void {
+    // this.SeeGroupsService.getDetailsGroup(this.auth.desencriptar(localStorage.getItem('id'))).subscribe(data=>{
+    //   console.log(data);
+    //   this.GroupForm.setValue({
+    //     'idGrupos': this.group.idPersona,
+    //     'nombreGrpo': this.group.nombreGrupo,
+    //     'descripcionGrupo': this.group.descripcionGrupo,
+    //     'privacidadGrupo': this.group.privacidadGrupo,
+    //     'invitadosTotales': this.group.invitadosTotales,
+    //     'gustos_idGusto': this.group.gustos_idGusto,
+    //     'idPersona': this.group.idPersona,
+    //     'imagen': this.group.imagen.replace('C:/xampp/htdocs', this.httpLocalHost),
+    //   });
+    // })
+  }
 
   navigateToGroupDetails(): void {
     this.router.navigate(['show', this.group.idGrupos], {
