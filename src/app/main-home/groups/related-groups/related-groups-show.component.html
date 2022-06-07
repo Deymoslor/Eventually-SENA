@@ -1,7 +1,8 @@
 <div class="col-sm-12 aloo">
   <div class="card aloo" (click)="navigateToRelatedGroupDetails()">
     <div class="group">
-      <img class="rounded card-img-top" src="../../../../assets/group/prueba.jfif" alt="{{ group.nombreGrupo }}" (click)="navigateToRelatedGroupDetails()">
+      <!-- <img class="rounded card-img-top" src="../../../../assets/group/prueba.jfif" alt="{{ group.nombreGrupo }}" (click)="navigateToRelatedGroupDetails()"> -->
+      <img class="thumbnail rounded card-img-top" [src]="GroupForm.get('imagen')?.value">
     </div>
     <div class="card-body">
       <h5 class="card-title">{{ group.nombreGrupo }}</h5>
