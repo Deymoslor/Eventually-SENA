@@ -35,9 +35,43 @@ export class LeftMenuComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  logOut(){
-    this.router.navigate(["loginRegister/login"]);
-    // window.location.reload();
+  //Home
+  home(){
+    this.router.navigate(["main"]);
+  }
+  //invitado
+  myAccount(){
+    this.router.navigate(["main/settings/settings-account"]);
+  }
+  groups(){
+    this.router.navigate(["main/groups"]);
   }
 
+  // Proveedor
+  myService(){
+    this.router.navigate(["main/provider/myService"]);
+  }
+
+  createService(){
+    this.router.navigate(["main/provider/createService"]);
+  }
+  //Admin
+  groupsDash(){
+    this.router.navigate(["dashboard/groups"]);
+  }
+  servicesDash(){
+    this.router.navigate(["dashboard/services"]);
+  }
+  reportsDash(){
+    this.router.navigate(["dashboard/reports"]);
+  }
+  UsersDash(){
+    this.router.navigate(["dashboard/users"]);
+  }
+  suppliersDash(){
+    this.router.navigate(["dashboard/suppliers"]);
+  }
+  requestsDash(){
+    this.router.navigate(["dashboard/requests"]);
+  }
 }
