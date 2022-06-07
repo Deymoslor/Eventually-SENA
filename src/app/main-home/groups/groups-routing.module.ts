@@ -31,7 +31,8 @@ const routes: Routes = [
 
       {
         path: 'related-groups/:id',
-        component: RelatedGroupsDetailsComponent
+        component: YourGroupsDetailsComponent,
+        loadChildren: () => import('../events/events-routing.module').then(m => m.EventsRoutingModule)
       },
       {
         path: 'see-groups/show/:id',

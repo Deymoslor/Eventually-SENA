@@ -5,6 +5,7 @@ import { ListaPersonasI } from '../ListaPersonasI.interface';
 import { PersonaI } from '../modal-users/personaI.interface';
 import { ResponseI } from 'src/app/login-register/login/models/response.intarface';
 import { GlobalConstants } from 'src/app/global-constants';
+import { GroupPerson } from 'src/app/main-home/groups/see-groups/GroupPerson';
 
 
 @Injectable({
@@ -40,6 +41,23 @@ export class userService {
   getSinglePerson(id:number):Observable<PersonaI>{
     let direccion = this.API+"persons?id=" + id;
     return this.http.get<PersonaI>(direccion);
+  }
+
+  //Creamos método para obtener la persona mediante el filtro. Este método devuelve un observable de tipo PersonaI
+  getSourcePerson(grupo:number):Observable<ListaPersonasI[]>{
+    let direccion = this.API+"persons?grupo=" + grupo;
+    return this.http.get<ListaPersonasI[]>(direccion);
+  }
+
+  getGroupPerson(rgrupo:number):Observable<ListaPersonasI[]>{
+    let direccion = this.API+"persons?personGrupo=" + rgrupo;
+    return this.http.get<ListaPersonasI[]>(direccion);
+  }
+
+  //Creamos método para obtener la persona mediante el filtro. Este método devuelve un observable de tipo PersonaI
+  PostRequestGroupPerson(request:GroupPerson):Observable<Response>{
+    let direccion = this.API+"requestGroups";
+    return this.http.post<Response>(direccion, request);
   }
 
   //Creamos el método para actualizar.

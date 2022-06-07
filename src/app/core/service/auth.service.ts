@@ -17,7 +17,7 @@ export class AuthService {
   public port = GlobalConstants.port;
 
   //Definimos ruta raíz de el API.
-  API:string='http://localhost:'+this.port+'/Api-Eventually-SENA/';
+  API:string='http://localhost'+this.port+'/Api-Eventually-SENA/';
 
   //Cosa.
   public currentUser: BehaviorSubject<PersonaI>;

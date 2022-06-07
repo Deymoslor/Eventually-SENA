@@ -16,9 +16,9 @@ export class RelatedGroupsShowComponent implements OnInit {
   ) { }
 
   navigateToRelatedGroupDetails(): void {
-    this.router.navigate(['groups', this.group.idGrupos], {
-      relativeTo: this.route,
-    })
+    // this.router.navigate(['groups', this.group.idGrupos], {
+    //   relativeTo: this.route,
+    // })
   }
 
   share() {

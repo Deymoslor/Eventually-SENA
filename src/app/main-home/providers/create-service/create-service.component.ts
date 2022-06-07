@@ -6,7 +6,7 @@ import { ApiService } from '../services/api.service';
 import { ServiceI } from '../models/service.interface';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../core/service/auth.service';
-
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-create-service',
@@ -22,6 +22,7 @@ export class CreateServiceComponent implements OnInit {
     descripcionServicio: new FormControl(''),
     precioEstimado: new FormControl(),
     imagen: new FormControl(''),
+    fechaInicio: new FormControl(''),
     historialEmpresas: new FormControl(''),
     numeroContacto: new FormControl(),
     correoContacto: new FormControl(''),
@@ -31,23 +32,86 @@ export class CreateServiceComponent implements OnInit {
   })
 
   dataTypeService!: TypeServicesI[]
+
+
   
 
   model!: NgbDateStruct;
   date!: {year: number, month: number};
 
-  constructor(private calendar: NgbCalendar, private api: ApiService, private router:Router, private auth: AuthService) { }
+  public previsualizacion!: string;
+  public archivos: any = [];
+  actualDate!: Date;
+  dateS!: string;
+
+  constructor(private calendar: NgbCalendar, private api: ApiService, private router:Router, 
+    private auth: AuthService, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
-    this.api.getAllTypeServices(1).subscribe(data =>{
-      this.dataTypeService = data;
+    //Date operations
+    let date = new Date();
+    let year = date.getFullYear();
+    let month = date.getMonth();
+    let day = date.getDate();
+
+    this.actualDate = date;
+    this.dateS = this.actualDate.getFullYear() + "-" + ((this.actualDate.getMonth() + 1).toString().padStart(2,'0')) + "-" + (this.actualDate.getDate()).toString().padStart(2, '0');
+    // console.log('fecha actual: ' + this.dateS);
+    //Service operations
+    this.api.getSingleServiceProvider(this.auth.desencriptar(localStorage.getItem('id'))).subscribe((data:any) =>{
       console.log(data);
-    })
+      if(data){
+        console.log('entre!!');
+        this.router.navigateByUrl('provider/myService');
+      }else if(!data){
+        this.api.getAllTypeServices(1).subscribe(data =>{
+          this.dataTypeService = data;
+          console.log(data);
+        })
+      }
+    });
+
+    
+
+
   }
+
+  capturarFile(event): void {
+    const archivoCapturado = event.target.files[0];
+    this.extraerBase64(archivoCapturado).then((imagen: any) => {
+      this.previsualizacion = imagen.base;
+      console.log(imagen)
+    })
+    this.archivos.push(archivoCapturado);
+    console.log(event);
+  }
+
+  extraerBase64 = async ($event: any) => new Promise((resolve, reject) =>{
+    try {
+      const unsafeImg = window.URL.createObjectURL($event);
+      const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
+      const reader = new FileReader();
+      reader.readAsDataURL($event);
+      reader.onload = () => {
+        resolve({
+          base: reader.result
+        });
+      };
+      reader.onerror = error => {
+        resolve({
+          base: null
+        });
+      };
+    } catch (e) {
+      return null;
+    }
+    return $event;
+  });
 
   postServiceProv(form: ServiceI){
     console.log(form);
     form.Proveedor_idProveedor = this.auth.desencriptar(localStorage.getItem('id'));
+    form.imagen = this.previsualizacion;
     this.api.postServiceProv(form).subscribe(data=>{
       console.log(data);
     });
