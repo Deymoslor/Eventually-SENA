@@ -43,6 +43,7 @@ export class EventProviderComponent implements OnInit {
 
   
   number!:number;
+  idProv: any;
   constructor(private api:ApiService, private modalService: NgbModal, private route:ActivatedRoute, private apiRS: ApiResultsServicesService) { }
   closeResult = '';
 
@@ -150,6 +151,25 @@ export class EventProviderComponent implements OnInit {
     }
   }
 
+  modalOpen4(content4:any, idProveedor){
+    this.idProv = idProveedor;
+    this.modalService.open(content4, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason4(reason)}`;
+    });
+  }
+
+  private getDismissReason4(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+  
   postInvitation(forms: InvitationProvSerI){
     // let eventId = Number(this.route.snapshot.paramMap.get('id'));
     forms.Evento_idEvento = this.idEvento;

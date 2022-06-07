@@ -6,6 +6,9 @@ import { accountService } from '../service/accountService.service';
 import { Router } from '@angular/router';
 import { registerI } from './register.interface';
 import { parse } from 'cookie';
+// import { ResponseI } from '../../dashboard/crud-services/models/response.interface';
+import { ResponseI } from '../../core/ui/response.interface';
+import { AlertasService } from 'src/app/core/service/alertas.service';
 
 @Component({
   selector: 'app-register',
@@ -22,6 +25,7 @@ export class RegisterComponent implements OnInit {
     private service:accountService,
     private router:Router,
     private formBuilder:FormBuilder,
+    private alertas:AlertasService
     ) {
 
       this.nuevoForm = this.formBuilder.group({
@@ -34,7 +38,6 @@ export class RegisterComponent implements OnInit {
         Celular: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^[0-9]\d*$/)]],
         ciudad: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1 ]+$/)]],
         check1: ['', Validators.requiredTrue],
-        
       })
 
     }
@@ -92,7 +95,15 @@ export class RegisterComponent implements OnInit {
       // if (this.nuevoForm.get('check2')) {
         this.service.postUser(form).subscribe(data =>{
           console.log(data);
-          this.router.navigate(['/loginRegister/login']);
+          let respuesta:ResponseI = data;
+          //Verificamos si la respuesta es exitosa.
+          if(respuesta.status == 'ok'){
+            this.alertas.showSuccess('Usuario registrado','Registro exitoso');
+            this.router.navigate(['/loginRegister/login']);
+          }else{
+            this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+            window.location.reload();
+          }
         });
       // }
       // console.log('Primera condi');

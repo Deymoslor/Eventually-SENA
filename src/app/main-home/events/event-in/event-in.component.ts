@@ -7,9 +7,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from 'src/app/core/service/auth.service';
 import { ParticipantsEventsI } from '../../../models/participants-events.interface';
-import { resolve } from 'dns';
-import { rejects } from 'assert';
 import { DomSanitizer } from '@angular/platform-browser';
+import { GlobalConstants } from '../../../global-constants';
 
 @Component({
   selector: 'app-event-in',
@@ -31,8 +30,8 @@ export class EventInComponent implements OnInit {
   terminate!: boolean;
   totalEvent!: number;
 
-  httpLocalHost = 'http://localhost:8181'; //SENA
-  // httpLocalHost = 'http://localhost'; //CASA
+  // httpLocalHost = 'http://localhost:8181'; //SENA
+  httpLocalHost = 'http://localhost'; //CASA
 
   dataEvent!: EventI;
   dataPersonJoin!: ParticipantsEventsI;
@@ -135,7 +134,7 @@ export class EventInComponent implements OnInit {
           'descripcionEvento': this.dataEvent.descripcionEvento,
           'fechaEvento': this.dataEvent.fechaEvento,
           'tipoEvento': this.dataEvent.tipoEvento,
-          'imagen': this.dataEvent.imagen.replace('C:/xampp/htdocs', this.httpLocalHost),
+          'imagen': this.dataEvent.imagen.replace('C:/xampp/htdocs', GlobalConstants.httpLocalHost),
           'participantesTotales': this.dataEvent.participantesTotales,
           'Grupos_idGrupos': this.dataEvent.Grupos_idGrupos,
           'estadoEvento': this.dataEvent.estadoEvento
@@ -260,8 +259,8 @@ export class EventInComponent implements OnInit {
     this.api.postEvent(form, this.auth.desencriptar(localStorage.getItem('id')), form.Grupos_idGrupos).subscribe( data => {
       console.log(data);
     })
-    // this.createEventForm.reset();
-    // this.refresh();
+    this.createEventForm.reset();
+    this.refresh();
   }
 
   refresh(){

@@ -5,6 +5,8 @@ import { PersonaI } from './personaI.interface';
 import { PersonaModalI } from './personaModalI.interface';
 import { userService } from '../service/userService.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ResponseI } from '../../../core/ui/response.interface';
+import { AlertasService } from 'src/app/core/service/alertas.service';
 
 @Component({
   selector: 'app-modal-users',
@@ -23,7 +25,8 @@ export class ModalUsersComponent implements OnInit {
     private calendar:NgbCalendar,
     private activerouter: ActivatedRoute,
     private router: Router,
-    private userService:userService
+    private userService:userService,
+    private alertas:AlertasService
   ) { }
 
   //Creamos una variable que será de tipo PersonaI para poder almacenar los datos traidos con la consulta. Para esto, además necesitamos un formGroup.
@@ -114,8 +117,19 @@ export class ModalUsersComponent implements OnInit {
     //llamamos el método de actualizar desde el servicio.
     this.userService.putPerson(form).subscribe((data:any) =>{
       console.log(data);
-      //Recargamos página.
-      window.location.reload();
+      // setTimeout(function(){
+      //   window.location.reload();
+      // }, 7000);
+      setTimeout(() =>{
+        window.location.reload();
+      },5000);
+      let respuesta:ResponseI = data;
+      if (respuesta.status == 'ok') {
+        this.alertas.showSuccess('El usuario ha sido editado exitosamente','Usuario editado');
+        //Recargamos página.
+      }else{
+        this.alertas.showError(respuesta.result.error_msg,'Error');
+      }
     });
 
   }

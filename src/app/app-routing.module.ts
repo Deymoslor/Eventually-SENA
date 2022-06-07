@@ -13,6 +13,11 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'dashboard',
+    loadChildren: () => import('./dashboard/dashboard-routing.module').then(m => m.DashboardRoutingModule),
+    canActivate: [AuthGuard],
+  },
+  {
     path: 'loginRegister',
     loadChildren: () => import('./login-register/login-register-router.module').then(m => m.LoginRegisterRouterModule),
     //Llamamos a la guarda para revisar si está autenticado o no y darle paso o no.

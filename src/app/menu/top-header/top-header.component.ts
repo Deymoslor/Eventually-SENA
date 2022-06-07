@@ -51,4 +51,14 @@ export class TopHeaderComponent implements OnInit {
     // this.router.navigateByUrl("http://localhost:4200/loginRegister");
   }
 
+  //Redirección del administrado para los usuarios.
+  dashboard(){
+    this.router.navigate(["dashboard/users"]);
+  }
+
+  //Redirección para el proveedor a sus servicios.
+  myService(){
+    this.router.navigate(["main/provider/myService"]);
+  }
+
 }
