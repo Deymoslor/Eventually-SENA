@@ -75,3 +75,4 @@ export class LeftMenuComponent implements OnInit {
     this.router.navigate(["dashboard/requests"]);
   }
 }
+

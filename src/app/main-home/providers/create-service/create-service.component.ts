@@ -6,14 +6,11 @@ import { ApiService } from '../services/api.service';
 import { ServiceI } from '../models/service.interface';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../core/service/auth.service';
-<<<<<<< HEAD
 import { SupplierService } from 'src/app/dashboard/crud-suppliers/service/supplier.service';
 import { ProveedorIA } from './proveedorI.interface';
 import { timeStamp } from 'console';
 
-=======
 import { DomSanitizer } from '@angular/platform-browser';
->>>>>>> master
 
 @Component({
   selector: 'app-create-service',
@@ -44,33 +41,25 @@ export class CreateServiceComponent implements OnInit {
   });
 
   dataTypeService!: TypeServicesI[]
-<<<<<<< HEAD
-=======
 
 
-  
->>>>>>> master
+
 
   model!: NgbDateStruct;
   date!: {year: number, month: number};
 
-<<<<<<< HEAD
-  constructor(private calendar: NgbCalendar, private api: ApiService, private router:Router, private auth: AuthService, private supplierService: SupplierService, private formBuilder:FormBuilder){
-
-    this.lawForm = this.formBuilder.group({
-      check: ['', Validators.requiredTrue],
-    })
-
-  }
-=======
   public previsualizacion!: string;
   public archivos: any = [];
   actualDate!: Date;
   dateS!: string;
 
-  constructor(private calendar: NgbCalendar, private api: ApiService, private router:Router, 
-    private auth: AuthService, private sanitizer: DomSanitizer) { }
->>>>>>> master
+  constructor(private calendar: NgbCalendar, private api: ApiService, private router:Router,
+    private auth: AuthService, private sanitizer: DomSanitizer,private supplierService: SupplierService, private formBuilder:FormBuilder) {
+
+      this.lawForm = this.formBuilder.group({
+            check: ['', Validators.requiredTrue],
+          })
+    }
 
   ngOnInit(): void {
     //Date operations
@@ -85,8 +74,16 @@ export class CreateServiceComponent implements OnInit {
     //Service operations
     this.api.getSingleServiceProvider(this.auth.desencriptar(localStorage.getItem('id'))).subscribe((data:any) =>{
       console.log(data);
-<<<<<<< HEAD
-    })
+      if(data){
+        console.log('entre!!');
+        this.router.navigateByUrl('provider/myService');
+      }else if(!data){
+        this.api.getAllTypeServices(1).subscribe(data =>{
+          this.dataTypeService = data;
+          console.log(data);
+        })
+      }
+    });
 
     this.supplierService.getSingleSupplier(this.auth.desencriptar(localStorage.getItem('id'))).subscribe(data =>{
 
@@ -107,22 +104,6 @@ export class CreateServiceComponent implements OnInit {
 
   cancel(){
     this.router.navigate(['providers/createService']);
-=======
-      if(data){
-        console.log('entre!!');
-        this.router.navigateByUrl('provider/myService');
-      }else if(!data){
-        this.api.getAllTypeServices(1).subscribe(data =>{
-          this.dataTypeService = data;
-          console.log(data);
-        })
-      }
-    });
-
-    
-
-
->>>>>>> master
   }
 
   capturarFile(event): void {
