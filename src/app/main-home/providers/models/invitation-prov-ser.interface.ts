@@ -15,4 +15,5 @@ export interface InvitationProvSerI {
     Evento_idEvento: number;
     Servicio_idServicios: number;
     estadoInvitacion: number;
+    calificacionT: number;
 }

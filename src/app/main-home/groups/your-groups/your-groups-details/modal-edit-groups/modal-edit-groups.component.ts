@@ -38,7 +38,6 @@ export class ModalEditGroupsComponent implements OnInit {
   ngOnChanges(): void {
     let idGrupos = this.activerouter.snapshot.paramMap.get('id')
     console.log(idGrupos);
-    console.log(this.childMessage);
     if(Number(idGrupos) > 0){
       this.ApiGroup.getDetailsYourGroup(Number(idGrupos)).subscribe((data: any) =>{
         this.datesGroup =data[0];

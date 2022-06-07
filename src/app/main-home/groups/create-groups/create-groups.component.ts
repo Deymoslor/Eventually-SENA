@@ -24,6 +24,7 @@ export class CreateGroupsComponent implements OnInit {
     nombreGrupo: new FormControl(''),
     descripcionGrupo: new FormControl(''),
     privacidadGrupo: new FormControl(''),
+    InvitadosTotales: new FormControl(''),
     check: new FormControl(''),
     gustos_idGusto: new FormControl(''),
     idPersona: new FormControl(''),
@@ -41,9 +42,10 @@ export class CreateGroupsComponent implements OnInit {
     })
 
     this.createYourGroupForm = this.fb.group({
-      nombreGrupo: ['', [Validators.required, Validators.minLength(2)]],
-      descripcionGrupo: ['', [Validators.required, Validators.minLength(5)]],
+      nombreGrupo: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
+      descripcionGrupo: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(500)]],
       privacidadGrupo: ['', Validators.required],
+      InvitadosTotales: ['0'],
       check: ['', Validators.required],
       gustos_idGusto: ['', Validators.required],
       idPersona: [this.auth.desencriptar(localStorage.getItem('id'))]
@@ -53,7 +55,7 @@ export class CreateGroupsComponent implements OnInit {
   postForm(form:Group){
     console.log(form);
 
-    this.create.postYourGroup(form).subscribe(data => {
+    this.create.postYourGroup(form).subscribe((data: any) => {
       console.log(data);
     })
     this.createYourGroupForm.reset();

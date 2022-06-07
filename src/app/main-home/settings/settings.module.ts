@@ -7,6 +7,7 @@ import { SettingsRoutingModule } from './settings-routing.module';
 import { FooterModule } from 'src/app/footer/footer.module';
 import { MenuModule } from 'src/app/menu/menu.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RequestGroupsComponent } from './request-groups/request-groups.component';
 
 
 
@@ -15,7 +16,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   declarations: [
     SettingsComponent,
     UpdateUserAccountComponent,
-    UserAccountComponent
+    UserAccountComponent,
+    RequestGroupsComponent
   ],
   imports: [
     CommonModule,

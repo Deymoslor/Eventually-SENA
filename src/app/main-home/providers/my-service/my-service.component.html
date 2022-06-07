@@ -16,8 +16,8 @@
         <div class="form-check form-switch">
             <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" (click)="changeStateServiceProv(ServicesForm.value)" *ngIf="ServicesForm.get('estadoServicio')?.value == 1" checked>
             <label class="form-check-label fs-5" for="flexSwitchCheckChecked" *ngIf="ServicesForm.get('estadoServicio')?.value == 1">Deshabilitar Servicio</label>
-            <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" (click)="changeStateServiceProv(ServicesForm.value)" *ngIf="ServicesForm.get('estadoServicio')?.value == 0">
-            <label class="form-check-label fs-5" for="flexSwitchCheckChecked" *ngIf="ServicesForm.get('estadoServicio')?.value == 0">Habilitar Servicio</label>
+            <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" (click)="changeStateServiceProv(ServicesForm.value)" *ngIf="ServicesForm.get('estadoServicio')?.value == 2">
+            <label class="form-check-label fs-5" for="flexSwitchCheckChecked" *ngIf="ServicesForm.get('estadoServicio')?.value == 2">Habilitar Servicio</label>
         </div> 
     </div>
 </section>
@@ -38,7 +38,7 @@
     </div>
     <div class="info-content">
         <label class="fs-5 fw-bold">Foto servicio</label>
-        <img src="{{ServicesForm.get('imagen')?.value}}" alt="">
+        <img width="400px" [src]="ServicesForm.get('imagen')?.value" alt="">
     </div>
     <div class="info-content">
         <label class="fs-5 fw-bold">Precio estimado</label>
@@ -50,7 +50,7 @@
     </div>
     <div class="info-content">
         <label class="fs-5 fw-bold">Fecha desde que se realiza el servicio</label>
-        <p class="fs-6">[EN ESPERA]</p>
+        <p class="fs-6">{{ServicesForm.get('fechaInicio')?.value}}</p>
     </div>
     <div class="info-content">
         <label class="fs-5 fw-bold">Numero de contacto</label>

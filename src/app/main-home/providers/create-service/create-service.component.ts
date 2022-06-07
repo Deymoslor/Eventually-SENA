@@ -6,10 +6,14 @@ import { ApiService } from '../services/api.service';
 import { ServiceI } from '../models/service.interface';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../core/service/auth.service';
+<<<<<<< HEAD
 import { SupplierService } from 'src/app/dashboard/crud-suppliers/service/supplier.service';
 import { ProveedorIA } from './proveedorI.interface';
 import { timeStamp } from 'console';
 
+=======
+import { DomSanitizer } from '@angular/platform-browser';
+>>>>>>> master
 
 @Component({
   selector: 'app-create-service',
@@ -30,6 +34,7 @@ export class CreateServiceComponent implements OnInit {
     descripcionServicio: new FormControl(''),
     precioEstimado: new FormControl(),
     imagen: new FormControl(''),
+    fechaInicio: new FormControl(''),
     historialEmpresas: new FormControl(''),
     numeroContacto: new FormControl(),
     correoContacto: new FormControl(''),
@@ -39,10 +44,17 @@ export class CreateServiceComponent implements OnInit {
   });
 
   dataTypeService!: TypeServicesI[]
+<<<<<<< HEAD
+=======
+
+
+  
+>>>>>>> master
 
   model!: NgbDateStruct;
   date!: {year: number, month: number};
 
+<<<<<<< HEAD
   constructor(private calendar: NgbCalendar, private api: ApiService, private router:Router, private auth: AuthService, private supplierService: SupplierService, private formBuilder:FormBuilder){
 
     this.lawForm = this.formBuilder.group({
@@ -50,11 +62,30 @@ export class CreateServiceComponent implements OnInit {
     })
 
   }
+=======
+  public previsualizacion!: string;
+  public archivos: any = [];
+  actualDate!: Date;
+  dateS!: string;
+
+  constructor(private calendar: NgbCalendar, private api: ApiService, private router:Router, 
+    private auth: AuthService, private sanitizer: DomSanitizer) { }
+>>>>>>> master
 
   ngOnInit(): void {
-    this.api.getAllTypeServices(1).subscribe(data =>{
-      this.dataTypeService = data;
+    //Date operations
+    let date = new Date();
+    let year = date.getFullYear();
+    let month = date.getMonth();
+    let day = date.getDate();
+
+    this.actualDate = date;
+    this.dateS = this.actualDate.getFullYear() + "-" + ((this.actualDate.getMonth() + 1).toString().padStart(2,'0')) + "-" + (this.actualDate.getDate()).toString().padStart(2, '0');
+    // console.log('fecha actual: ' + this.dateS);
+    //Service operations
+    this.api.getSingleServiceProvider(this.auth.desencriptar(localStorage.getItem('id'))).subscribe((data:any) =>{
       console.log(data);
+<<<<<<< HEAD
     })
 
     this.supplierService.getSingleSupplier(this.auth.desencriptar(localStorage.getItem('id'))).subscribe(data =>{
@@ -76,11 +107,60 @@ export class CreateServiceComponent implements OnInit {
 
   cancel(){
     this.router.navigate(['providers/createService']);
+=======
+      if(data){
+        console.log('entre!!');
+        this.router.navigateByUrl('provider/myService');
+      }else if(!data){
+        this.api.getAllTypeServices(1).subscribe(data =>{
+          this.dataTypeService = data;
+          console.log(data);
+        })
+      }
+    });
+
+    
+
+
+>>>>>>> master
   }
+
+  capturarFile(event): void {
+    const archivoCapturado = event.target.files[0];
+    this.extraerBase64(archivoCapturado).then((imagen: any) => {
+      this.previsualizacion = imagen.base;
+      console.log(imagen)
+    })
+    this.archivos.push(archivoCapturado);
+    console.log(event);
+  }
+
+  extraerBase64 = async ($event: any) => new Promise((resolve, reject) =>{
+    try {
+      const unsafeImg = window.URL.createObjectURL($event);
+      const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
+      const reader = new FileReader();
+      reader.readAsDataURL($event);
+      reader.onload = () => {
+        resolve({
+          base: reader.result
+        });
+      };
+      reader.onerror = error => {
+        resolve({
+          base: null
+        });
+      };
+    } catch (e) {
+      return null;
+    }
+    return $event;
+  });
 
   postServiceProv(form: ServiceI){
     console.log(form);
     form.Proveedor_idProveedor = this.auth.desencriptar(localStorage.getItem('id'));
+    form.imagen = this.previsualizacion;
     this.api.postServiceProv(form).subscribe(data=>{
       console.log(data);
     });
