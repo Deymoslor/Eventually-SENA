@@ -32,8 +32,18 @@ export class AuthGuard implements CanActivate {
     //Verificamos si existe.
     if (currentUser) {
       if (next.data.roles && !this.authService.hasAccessToModule(next.data.roles)) {
-        this.router.navigate(["/groups"]);
+          // this.router.navigate(["dashboard/users"]);
+          // return false;
+        if(this.authService.desencriptar(localStorage.getItem("nombreRol")) === "INVITADO"){
+        this.router.navigate(["main/groups"]);
         return false;
+        }else if(this.authService.desencriptar(localStorage.getItem("nombreRol")) === "PROVEEDOR"){
+          this.router.navigate(["main/provider/myService"]);
+          return false;
+        }else if(this.authService.desencriptar(localStorage.getItem("nombreRol")) === "ADMIN"){
+          this.router.navigate(["dashboard/users"]);
+          return false;
+        }
       }
       //En caso de existir devolvemos true.
       return true;

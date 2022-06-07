@@ -107,8 +107,22 @@ export class LoginComponent implements OnInit {
         // this.authService.encriptar
         localStorage.setItem("nombreRol",this.authService.encriptar(dataResponse.result.rol));
 
-        this.router.navigate(["/groups"]);
-        window.location.reload();
+        //Condicionales para verificar rol y saber a donde dirigirlo.
+        if(this.authService.desencriptar(localStorage.getItem("nombreRol")) === "INVITADO"){
+          //En caso de ser usuario.
+          // console.log(this.authService.desencriptar(localStorage.getItem("nombreRol")));
+          this.router.navigate(["/main/groups"]);
+          window.location.reload();
+        }else if(this.authService.desencriptar(localStorage.getItem("nombreRol")) === "PROVEEDOR"){
+          //En caso de ser proveedor.
+          this.router.navigate(["main/provider/myService"]);
+          window.location.reload();
+        }else if(this.authService.desencriptar(localStorage.getItem("nombreRol")) === "ADMIN"){
+          //En caso de ser admin.
+          this.router.navigate(["dashboard/users"]);
+          window.location.reload();
+        }
+
       }else{
         this.errorStatus = true;
         this.errorMsg = dataResponse.result.error_msg;
