@@ -16,7 +16,11 @@ import { MainHomeModule } from './main-home/main-home.module';
 import { MenuModule } from './menu/menu.module';
 import { SuppliersModule } from './suppliers/suppliers.module';
 import { FooterModule } from './footer/footer.module';
-import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -39,7 +43,9 @@ import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
     HttpClientModule,
     MainHomeModule,
     MenuModule,
-    FooterModule
+    FooterModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(), // ToastrModule added
 
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],

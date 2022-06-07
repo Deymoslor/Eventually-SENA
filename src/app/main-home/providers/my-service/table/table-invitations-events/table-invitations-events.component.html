@@ -1,4 +1,5 @@
-<!--TABLE-->
+<div *ngIf="invitations; else notInvitations">
+    <!--TABLE-->
     <div class="table-responsive" *ngIf="accepted != true">
         <table class="table table-dark table-responsive">
             <thead>
@@ -44,6 +45,11 @@
     
 <!--TABLE//-->
 
-<div  *ngIf="accepted != false">
-    EVENTO ACEPTADO, PORFAVOR TERMINAR EL EVENTO.
+    <div  *ngIf="accepted != false">
+        EVENTO ACEPTADO, PORFAVOR TERMINAR EL EVENTO.
+    </div>
+
 </div>
+<ng-template #notInvitations>
+    SEA PACIENTE, USTED SE ENCUENTRA SIN INVITACIONES A PARTICIPACION DE EVENTOS.
+</ng-template>

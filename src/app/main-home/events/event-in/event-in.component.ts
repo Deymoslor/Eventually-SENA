@@ -7,9 +7,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from 'src/app/core/service/auth.service';
 import { ParticipantsEventsI } from '../../../models/participants-events.interface';
-import { resolve } from 'dns';
-import { rejects } from 'assert';
 import { DomSanitizer } from '@angular/platform-browser';
+import { GlobalConstants } from '../../../global-constants';
 
 @Component({
   selector: 'app-event-in',
@@ -31,8 +30,8 @@ export class EventInComponent implements OnInit {
   terminate!: boolean;
   totalEvent!: number;
 
-  httpLocalHost = 'http://localhost:8181'; //SENA
-  // httpLocalHost = 'http://localhost'; //CASA
+  // httpLocalHost = 'http://localhost:8181'; //SENA
+  httpLocalHost = 'http://localhost'; //CASA
 
   dataEvent!: EventI;
   dataPersonJoin!: ParticipantsEventsI;
@@ -64,7 +63,7 @@ export class EventInComponent implements OnInit {
   closeResult = '';
 
   createEventForm = new FormGroup({
-    
+
   });
 
   ngOnInit(): void {
@@ -78,7 +77,7 @@ export class EventInComponent implements OnInit {
 
     this.actualDate = date;
     console.log("fecha actual: " + this.actualDate);
-    
+
 
     // date = new Date(year + "-" + month + "-" + day);
     // console.log("fecha: " + date);
@@ -135,7 +134,7 @@ export class EventInComponent implements OnInit {
           'descripcionEvento': this.dataEvent.descripcionEvento,
           'fechaEvento': this.dataEvent.fechaEvento,
           'tipoEvento': this.dataEvent.tipoEvento,
-          'imagen': this.dataEvent.imagen.replace('C:/xampp/htdocs', this.httpLocalHost),
+          'imagen': this.dataEvent.imagen.replace('C:/xampp/htdocs', GlobalConstants.httpLocalHost),
           'participantesTotales': this.dataEvent.participantesTotales,
           'Grupos_idGrupos': this.dataEvent.Grupos_idGrupos,
           'estadoEvento': this.dataEvent.estadoEvento
@@ -153,7 +152,7 @@ export class EventInComponent implements OnInit {
         console.log("FECHA REALIZACIONIF: " + this.dateEvent);
         if(this.actualDate < this.dateTerminate){
           this.terminate = false
-          
+
         }else if(this.actualDate >= this.dateTerminate){
           this.terminate = true;
         }
@@ -172,11 +171,11 @@ export class EventInComponent implements OnInit {
       }
      });
 
-     
+
 
   }
 
-  
+
   capturarFile(event): void {
     const archivoCapturado = event.target.files[0];
     this.extraerBase64(archivoCapturado).then((imagen: any) => {
@@ -208,7 +207,7 @@ export class EventInComponent implements OnInit {
     }
     return $event;
   });
-  
+
 
   editEvent(idE:number ){
     this.router.navigate(['events/edit', idE]);
@@ -260,8 +259,8 @@ export class EventInComponent implements OnInit {
     this.api.postEvent(form, this.auth.desencriptar(localStorage.getItem('id')), form.Grupos_idGrupos).subscribe( data => {
       console.log(data);
     })
-    // this.createEventForm.reset();
-    // this.refresh();
+    this.createEventForm.reset();
+    this.refresh();
   }
 
   refresh(){

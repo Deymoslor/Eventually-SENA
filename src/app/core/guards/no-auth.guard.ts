@@ -27,8 +27,18 @@ export class NoAuthGuard implements CanActivate {
     const currentUser = this.authService.getUser;
 
     if (currentUser){
-      this.router.navigate(['groups']);
-      return false;
+        // this.router.navigate(["dashboard/users"]);
+        // return false;
+      if(this.authService.desencriptar(localStorage.getItem("nombreRol")) === "INVITADO"){
+        this.router.navigate(["main/groups"]);
+        return false;
+      }else if(this.authService.desencriptar(localStorage.getItem("nombreRol")) === "PROVEEDOR"){
+        this.router.navigate(["main/provider/myService"]);
+        return false;
+      }else if(this.authService.desencriptar(localStorage.getItem("nombreRol")) === "ADMIN"){
+        this.router.navigate(["dashboard/users"]);
+        return false;
+      }
     }
     return true;
   }

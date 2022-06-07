@@ -69,55 +69,9 @@
                    
                     <td>{{key.calificacionT}}</td>
                     <td>
-                        <div class="content-button">
-                            <button class="btn btn-primary" (click)="modalOpen(content)">Detalle</button>
-                            <ng-template #content let-modal>
-                                <!-- <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button> -->
-
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="staticBackdropLabel">Detalle Servicio</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                        <div class="check-form">
-                                            <label class="fs-3">Nombre del Servicio:</label>
-                                            <p class="fw-bolder fs-5">{{key.nombreServicio}}</p>
-                                        </div>
-
-                                        <div class="check-form">
-                                            <label class="fs-3">Descripcion:</label>
-
-                                            <p class="fw-bolder fs-5">{{key.descripcionServicio}}</p>
-                                        </div>
-                                        <div class="check-form">
-                                            <label class="fs-3">Precio estimado:</label>
-
-                                            <p class="fw-bolder fs-5">{{key.precioEstimado}}</p>
-                                        </div>
-                                        <div class="check-form">
-                                            <label class="fs-3">Imagen:</label>
-
-                                            <p class="fw-bolder fs-5">{{key.imagen}}</p>
-                                        </div>
-                                        <div class="check-form">
-                                            <label class="fs-3">Historial empresas:</label>
-
-                                            <p class="fw-bolder fs-5">{{key.historialEmpresas}}</p>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <!-- <div class="modal-footer">
-                                                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Crear evento</button>
-                                            </div> -->
-
-
-
-
-                                <!-- <app-modal-disable-event [idEvent]="eventGroupForm.get('idEvento')?.value" [form]="eventGroupForm.value"></app-modal-disable-event> -->
-                            </ng-template>
-                        </div>
+                        <button class="btn btn-primary" (click)="modalOpen4(content4, key.idProveedor)">
+                            Detalle
+                        </button>
                     </td>
                     <td>
                         <div class="content-button">
@@ -173,6 +127,11 @@
 <ng-template #content3 let-modal3>
     <button type="button" class="btn-close" aria-label="Close" (click)="modal3.dismiss('Cross click')"></button>
     <app-modal-disable-event [form]="form" [idEvento]="idEvento" [finishState]="2"></app-modal-disable-event>
+</ng-template>
+
+<ng-template #content4 let-modal4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal4.dismiss('Cross click')"></button>
+    <app-modal-info-ser-prov [idProv]="idProv"></app-modal-info-ser-prov>
 </ng-template>
 
 

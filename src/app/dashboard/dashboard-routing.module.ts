@@ -23,7 +23,7 @@ const routes: Routes = [
   {
     path: 'dashboard', component:DashboardComponent,
     canActivate: [AuthGuard],
-    // data: {roles: RESOURCE_BY_ROLES.PANEL_ADMIN},
+    data: {roles: RESOURCE_BY_ROLES.PANEL_ADMIN},
     children: [
       {path: 'events', component: CrudEventsComponent},
       {path: 'services', component: CrudServicesComponent},

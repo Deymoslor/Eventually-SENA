@@ -138,8 +138,8 @@
                                     </div>
                                 </a>
                             </li>
-                            <li class="d-flex mt-3">
-                                <a class="dropdown-item">
+                            <li class="d-flex mt-3" *ngIf="this.rol === 'ADMIN'">
+                                <a class="dropdown-item pointer" (click)="dashboard()">
                                     <div class="row">
                                         <div class="col-12 d-flex align-items-center justify-content-center">
                                             <div class="col-2">
@@ -157,6 +157,32 @@
                                     </div>
                                 </a>
                             </li>
+
+                            <!-- para redirigir al proveedor a su lugar INICIO-->
+
+                            <li class="d-flex" *ngIf="this.rol === 'PROVEEDOR'" (click)="myService()">
+                                <a class="dropdown-item" routerLink="../settings">
+                                    <div class="row">
+                                        <div class="col-12 d-flex align-items-center justify-content-center">
+                                            <div class="col-2">
+                                                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                            </div>
+                                            <div class="col-10 p-1 menuDrop">
+                                                <div class="col-5 spaceDropdownMenu">
+                                                    <h2>Mi servicio</h2>
+                                                </div>
+                                                <div class="col-5 spaceDropdownMenu">
+                                                    <h3>Apartado para proveedores</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <!-- para redirigir al proveedor a su lugar FIN-->
+
+
                             <li class="d-flex mt-3">
                                 <a class="dropdown-item" (click)="logOut()" routerLink="../loginRegister">
                                     <div class="row">
