@@ -17,16 +17,6 @@ export class SeeGroupsComponent implements OnInit {
   groups!: Groups[];
   group!: Group;
 
-  // GroupForm  = new FormGroup({
-  //   idGrupos: new FormControl(''),
-  //   nombreGrupo: new FormControl(''),
-  //   descripcionGrupo: new FormControl(''),
-  //   privacidadGrupo: new FormControl(''),
-  //   invitadosTotales: new FormControl(''),
-  //   gustos_idGusto: new FormControl(''),
-  //   idPersona: new FormControl(''),
-  //   imagen: new FormControl('')
-  // })
   // get groups(): Group[] {
   //   const groups = this.SeeGroupsService.groups;
 
@@ -38,9 +28,6 @@ export class SeeGroupsComponent implements OnInit {
   // orderBy$: Observable<string | null> = this.route.queryParamMap.pipe(
   //   map((queryParamMap) => queryParamMap.get('orderBy'))
   // );
-  // httpLocalHost = 'http://localhost:8181'; //SENA
-  httpLocalHost = 'http://localhost'; //CASA
-
   constructor(private SeeGroupsService: SeeGroupsService, private route: ActivatedRoute, private auth: AuthService) { }
 
   ngOnInit(): void {
@@ -49,16 +36,6 @@ export class SeeGroupsComponent implements OnInit {
 
       this.groups = data;
 
-      // this.GroupForm.setValue({
-      //   'idGrupos': this.group.idPersona,
-      //   'nombreGrpo': this.group.nombreGrupo,
-      //   'descripcionGrupo': this.group.descripcionGrupo,
-      //   'privacidadGrupo': this.group.privacidadGrupo,
-      //   'invitadosTotales': this.group.invitadosTotales,
-      //   'gustos_idGusto': this.group.gustos_idGusto,
-      //   'idPersona': this.group.idPersona,
-      //   'imagen': this.group.imagen.replace('C:/xampp/htdocs', this.httpLocalHost),
-      // });
     })
   }
 

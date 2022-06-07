@@ -7,6 +7,7 @@ import { GroupPerson } from './GroupPerson';
 import { Groups } from './groups';
 import { SeeGroupsService } from "./see-groups.service";
 import { AuthService } from 'src/app/core/service/auth.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-see-groups-show',
@@ -15,6 +16,7 @@ import { AuthService } from 'src/app/core/service/auth.service';
 })
 export class SeeGroupsShowComponent implements OnInit{
   @Input() group!: Groups;
+  listGroups!: Groups; 
   idPersona!:updatePersonaI;
   GroupPersonC!:GroupPerson;
   idPersonas = this.auth.desencriptar(localStorage.getItem('id'));
@@ -25,36 +27,52 @@ export class SeeGroupsShowComponent implements OnInit{
     descripcionGrupo: new FormControl(''),
     privacidadGrupo: new FormControl(''),
     invitadosTotales: new FormControl(''),
-    gustos_idGusto: new FormControl(''),
-    idPersona: new FormControl(''),
     imagen: new FormControl('')
   })
 
-  // httpLocalHost = 'http://localhost:8181'; //SENA
-  httpLocalHost = 'http://localhost'; //CASA
+  httpLocalHost = 'http://localhost:8181'; //SENA
+  // httpLocalHost = 'http://localhost'; //CASA
 
   constructor(
     private SeeGroupsService: SeeGroupsService,
     private router: Router,
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    private auth: AuthService
+    private auth: AuthService,
+    private sanitizator: DomSanitizer
   ) { }
 
   ngOnInit(): void {
-    // this.SeeGroupsService.getDetailsGroup(this.auth.desencriptar(localStorage.getItem('id'))).subscribe(data=>{
-    //   console.log(data);
-    //   this.GroupForm.setValue({
-    //     'idGrupos': this.group.idPersona,
-    //     'nombreGrpo': this.group.nombreGrupo,
-    //     'descripcionGrupo': this.group.descripcionGrupo,
-    //     'privacidadGrupo': this.group.privacidadGrupo,
-    //     'invitadosTotales': this.group.invitadosTotales,
-    //     'gustos_idGusto': this.group.gustos_idGusto,
-    //     'idPersona': this.group.idPersona,
-    //     'imagen': this.group.imagen.replace('C:/xampp/htdocs', this.httpLocalHost),
-    //   });
+    console.log(this.group);
+    // this.SeeGroupsService.getPromotedGroups(this.auth.desencriptar(localStorage.getItem('id'))).subscribe(data=>{
+    //   if (this.group.imagen) {
+    //     console.log(this.group.imagen);
+    //     // this.sanitizator.bypassSecurityTrustStyle(this.group.imagen)
+    //     // this.group.imagen.replace('C:/xampp/htdocs', this.httpLocalHost);
+    //   }else{
+    //     this.group.imagen = '';
+    //   }
     // })
+
+    this.SeeGroupsService.getDetailsGroup(this.group.idGrupos).subscribe(data => {
+      // console.log(data)
+
+      this.listGroups = data[0];
+        if (this.listGroups.imagen) {
+          // element.imagen.replace('C:/xampp/htdocs', this.httpLocalHost);  
+          this.GroupForm.setValue({
+            idGrupos: this.listGroups.idGrupos,
+            nombreGrupo: this.listGroups.nombreGrupo,
+            descripcionGrupo: this.listGroups.descripcionGrupo,
+            privacidadGrupo: this.listGroups.privacidadGrupo,
+            invitadosTotales: this.listGroups.InvitadosTotales,
+            imagen:  this.listGroups.imagen.replace('C:/xampp/htdocs', this.httpLocalHost)
+          })
+        }
+        else{
+
+        }
+    })
   }
 
   navigateToGroupDetails(): void {

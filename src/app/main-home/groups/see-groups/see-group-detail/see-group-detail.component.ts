@@ -31,8 +31,8 @@ export class SeeGroupDetailComponent implements OnInit {
     imagen: new FormControl('')
   })
 
-  // httpLocalHost = 'http://localhost:8181'; //SENA
-  httpLocalHost = 'http://localhost'; //CASA
+  httpLocalHost = 'http://localhost:8181'; //SENA
+  // httpLocalHost = 'http://localhost'; //CASA
 
   constructor(
     private SeeGroupsService: SeeGroupsService,

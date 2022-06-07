@@ -37,8 +37,8 @@ export class YourGroupsDetailsComponent implements OnInit {
     gustos_idGusto: new FormControl(''),
     imagen: new FormControl('')
   })
-  // httpLocalHost = 'http://localhost:8181'; //SENA
-  httpLocalHost = 'http://localhost'; //CASA
+  httpLocalHost = 'http://localhost:8181'; //SENA
+  // httpLocalHost = 'http://localhost'; //CASA
   group!: Group;
   constructor(
     private YourGroupsService: YourGroupsService,
