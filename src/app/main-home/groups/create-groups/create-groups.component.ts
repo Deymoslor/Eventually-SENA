@@ -5,6 +5,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { Group } from '../see-groups/group';
 import { YourGroupsService } from '../your-groups/your-groups.service';
 import { AuthService } from 'src/app/core/service/auth.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-create-groups',
@@ -14,6 +15,8 @@ import { AuthService } from 'src/app/core/service/auth.service';
 export class CreateGroupsComponent implements OnInit {
 
   likesI!: LikesI[];
+  public previsualizacion!: string;
+  public archivos: any = [];
 
   share() {
     window.alert('The product has been shared!');
@@ -32,7 +35,7 @@ export class CreateGroupsComponent implements OnInit {
 
   // swal("Oops!", "Something went wrong on the page!", "error");
 
-  constructor(private create:YourGroupsService, private fb:FormBuilder, private likes: ApiService, private auth: AuthService) { }
+  constructor(private create:YourGroupsService, private fb:FormBuilder, private likes: ApiService, private auth: AuthService, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     this.likes.getAllLikes(1).subscribe(data=>{
@@ -52,9 +55,41 @@ export class CreateGroupsComponent implements OnInit {
     })
   }
 
+  capturarFile(event): void {
+    const archivoCapturado = event.target.files[0];
+    this.extraerBase64(archivoCapturado).then((imagen: any) => {
+      this.previsualizacion = imagen.base;
+      console.log(imagen)
+    })
+    this.archivos.push(archivoCapturado);
+    console.log(event);
+  }
+
+  extraerBase64 = async ($event: any) => new Promise((resolve, reject) =>{
+    try {
+      const unsafeImg = window.URL.createObjectURL($event);
+      const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
+      const reader = new FileReader();
+      reader.readAsDataURL($event);
+      reader.onload = () => {
+        resolve({
+          base: reader.result
+        });
+      };
+      reader.onerror = error => {
+        resolve({
+          base: null
+        });
+      };
+    } catch (e) {
+      return null;
+    }
+    return $event;
+  });
+
   postForm(form:Group){
     console.log(form);
-
+    form.imagen = this.previsualizacion;
     this.create.postYourGroup(form).subscribe((data: any) => {
       console.log(data);
     })

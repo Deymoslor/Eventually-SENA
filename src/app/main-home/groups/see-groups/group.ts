@@ -3,8 +3,8 @@ export interface Group {
   nombreGrupo: string;
   descripcionGrupo: string;
   privacidadGrupo: number;
-  invitadosTotales: number;
+  InvitadosTotales: number;
   gustos_idGusto: number;
   idPersona: number;
-  imagen: any;
+  imagen: string;
 }

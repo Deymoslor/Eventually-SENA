@@ -7,6 +7,9 @@
 <a [routerLink]="['/groups/your-groups']" routerLinkActive="router-link-active" class="back">&lt; Volver al inicio</a>
 <div class="container">
     <br>
+    <div class="img-container class-thumbnail">
+      <img class="thumbnail rounded card-img-top" [src]="GroupForm.get('imagen')?.value" alt="{{ group?.nombreGrupo }}" class="thumbnail">
+    </div>
     <div class="info">
         <p class="product-name">{{ group?.nombreGrupo }}</p>
         <br>
@@ -51,16 +54,19 @@
                             <li class="nav-item dropdown">
                                 <a class="h4 nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Opciones</a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="h5 dropdown-item" role="button" href="#">Regresar</a></li>
-                                    <!-- <li><a class="h5 dropdown-item" role="button" href="#">Crear evento</a></li> -->
-                                    <!-- <li><a class="h5 dropdown-item" role="button" (click)="editarGroup(group?.idGrupos)" (click)="modalOpen(content)">Editar grupo Modal</a></li> -->
-                                    <li><a class="h5 dropdown-item" role="button" (click)="editarGroup(group?.idGrupos)" data-bs-toggle="modal" data-bs-target="#content-modal" role="button" (click)="modalOpen(content)">Editar grupo</a></li>
-                                    <div *ngIf="group?.privacidadGrupo == 1">
+                                  <ng-container *ngFor="let element of personas">
+                                    <div *ngIf="element.idPersona == personaId && element.estadoPersona_idEstadoPersona == 1">
+                                      <li><a class="h5 dropdown-item" role="button" (click)="editarGroup(group?.idGrupos)" data-bs-toggle="modal" data-bs-target="#content-modal" role="button" (click)="modalOpen(content)">Editar grupo</a></li>
+                                    <div *ngIf="group?.privacidadGrupo == 1 && element.idPersona == personaId && element.estadoPersona_idEstadoPersona == 1">
                                       <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#content-modal2" role="button" (click)="modalOpen2(content2)">Invitar amigo</a></li>
+                                      <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#modal-report-events-groups-organizer">Reportes</a></li>
+                                    </div>
                                     </div>
                                     <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#modal-events-completed">Ver eventos realizados</a></li>
-                                    <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#modal-report-events-groups-organizer">Reportes</a></li>
-                                    <li><a class="h5 dropdown-item" role="button" href="#">Deshabilitar Grupo</a></li>
+                                    <div *ngIf="element.idPersona == personaId && element.estadoPersona_idEstadoPersona == 1">
+                                      <li><a class="h5 dropdown-item" role="button" href="#">Deshabilitar Grupo</a></li>
+                                    </div>
+                                  </ng-container>
                                 </ul>
                             </li>
                         </ul>

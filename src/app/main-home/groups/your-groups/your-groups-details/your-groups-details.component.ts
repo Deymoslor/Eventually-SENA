@@ -11,6 +11,8 @@ import { RelatedGroupsService } from '../../related-groups/related-groups.servic
 import { GroupsServiceService } from 'src/app/dashboard/crud-groups/service/groups-service.service';
 import { userService } from "../../../../dashboard/crud-users/service/userService.service";
 import { ListaPersonasI } from 'src/app/dashboard/crud-users/ListaPersonasI.interface';
+import { AuthService } from 'src/app/core/service/auth.service';
+import { GroupPersonDetails } from './group-person-details';
 // import { ApiService } from 'src/app/services/api/api.service';
 
 @Component({
@@ -23,8 +25,20 @@ export class YourGroupsDetailsComponent implements OnInit {
   id: number | undefined;
   childMessage: number | undefined;
   likesI!: LikesI[];
-  public personas! : ListaPersonasI[];
+  public personas! : GroupPersonDetails[];
+  personaId = this.auth.desencriptar(localStorage.getItem('id'));
 
+  GroupForm  = new FormGroup({
+    idGrupos: new FormControl(''),
+    nombreGrupo: new FormControl(''),
+    descripcionGrupo: new FormControl(''),
+    privacidadGrupo: new FormControl(''),
+    InvitadosTotales: new FormControl(''),
+    gustos_idGusto: new FormControl(''),
+    imagen: new FormControl('')
+  })
+  // httpLocalHost = 'http://localhost:8181'; //SENA
+  httpLocalHost = 'http://localhost'; //CASA
   group!: Group;
   constructor(
     private YourGroupsService: YourGroupsService,
@@ -37,7 +51,8 @@ export class YourGroupsDetailsComponent implements OnInit {
     private fb: FormBuilder,
     private api: ApiService,
     private userService:userService,
-    private likes: ApiService
+    private likes: ApiService,
+    private auth: AuthService,
   ) { }
 
   event!: EventI | null;
@@ -55,17 +70,22 @@ export class YourGroupsDetailsComponent implements OnInit {
 
       this.likesI = data;
     })
-    // this.relatedService.getDetailsRelatedGroup(Number(idGrupos)).subscribe((data: any) => {
-    //     console.log(data);
-    //     this.group = data[0];
-    //   })
-    // this.YourGroupsService.getDetailsYourGroup(Number(idGrupos)).subscribe((data: any) => {
-    //   console.log(data);
-    //   this.group = data[0];
-    // })
     this.promotedGroup.getSingleGroup(Number(idGrupos)).subscribe((data: any) => {
       console.log(data);
       this.group = data[0];
+      if (this.group === null) {
+        console.log('esa vaina no sirvio');
+      } else {
+        this.GroupForm.setValue({
+          'idGrupos': this.group.idGrupos,
+          'nombreGrupo': this.group.nombreGrupo,
+          'descripcionGrupo': this.group.descripcionGrupo,
+          'privacidadGrupo': this.group.privacidadGrupo,
+          'InvitadosTotales': this.group.InvitadosTotales,
+          'gustos_idGusto': this.group.gustos_idGusto,
+          'imagen': this.group.imagen.replace('C:/xampp/htdocs', this.httpLocalHost),
+        });
+      }
     })
 
     if (this.group === null) {
