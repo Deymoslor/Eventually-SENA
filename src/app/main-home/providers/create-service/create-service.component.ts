@@ -54,12 +54,15 @@ export class CreateServiceComponent implements OnInit {
   dateS!: string;
 
   constructor(private calendar: NgbCalendar, private api: ApiService, private router:Router,
-    private auth: AuthService, private sanitizer: DomSanitizer,private supplierService: SupplierService, private formBuilder:FormBuilder) {
+     private auth: AuthService, private supplierService: SupplierService, private formBuilder:FormBuilder,
+      private sanitizer: DomSanitizer){
 
-      this.lawForm = this.formBuilder.group({
-            check: ['', Validators.requiredTrue],
-          })
-    }
+    this.lawForm = this.formBuilder.group({
+      check: ['', Validators.requiredTrue],
+    })
+
+  }
+
 
   ngOnInit(): void {
     //Date operations
