@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/service/auth.service';
 import { IleftNavMenu } from 'src/app/core/ui/ILeftNavMenu.interface';
 import { ROLES_ENUM } from '../../constants/roles.enum';
@@ -17,7 +18,7 @@ export class LeftMenuComponent implements OnInit {
   constructor(
 
     private authService: AuthService,
-
+    private router: Router,
   ) { }
 
   hasPermission(r: ROLES_ENUM[] | undefined): boolean {
@@ -32,6 +33,11 @@ export class LeftMenuComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  logOut(){
+    this.router.navigate(["loginRegister/login"]);
+    // window.location.reload();
   }
 
 }
