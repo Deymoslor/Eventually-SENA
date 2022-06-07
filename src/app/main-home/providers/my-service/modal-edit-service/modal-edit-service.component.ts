@@ -5,6 +5,7 @@ import { TypeServicesI } from 'src/app/dashboard/crud-services/models/typeServic
 import { ServiceI } from '../../models/service.interface';
 import { ApiService } from '../../services/api.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { GlobalConstants } from '../../../../global-constants';
 
 
 @Component({
@@ -14,8 +15,6 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class ModalEditServiceComponent implements OnInit {
 
-// httpLocalHost = 'http://localhost:8181'; //SENA
-httpLocalHost = 'http://localhost'; //CASA
 
   ServicesForm = new FormGroup({
     idServicios: new FormControl(''),
@@ -23,6 +22,7 @@ httpLocalHost = 'http://localhost'; //CASA
     descripcionServicio: new FormControl(''),
     precioEstimado: new FormControl(),
     imagen: new FormControl(''),
+    fechaInicio: new FormControl(''),
     historialEmpresas: new FormControl(''),
     numeroContacto: new FormControl(),
     correoContacto: new FormControl(''),
@@ -42,11 +42,20 @@ httpLocalHost = 'http://localhost'; //CASA
   public previsualizacion!: string;
   public archivos: any = [];  
   imagenLlegada!: string
+  actualDate!: Date;
+  dateS!: string;
 
   constructor(private calendar: NgbCalendar, private api: ApiService, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
-    
+    //Date operations
+    let date = new Date();
+    let year = date.getFullYear();
+    let month = date.getMonth();
+    let day = date.getDate();
+
+    this.actualDate = date;
+    this.dateS = this.actualDate.getFullYear() + "-" + ((this.actualDate.getMonth() + 1).toString().padStart(2,'0')) + "-" + (this.actualDate.getDate()).toString().padStart(2, '0');
   }
 
   capturarFile(event): void {
@@ -90,7 +99,7 @@ httpLocalHost = 'http://localhost'; //CASA
       console.log(data[0]);
       try {
         this.dataService = data[0];
-        let actualImage = this.dataService.imagen.replace('C:/xampp/htdocs', this.httpLocalHost);
+        let actualImage = this.dataService.imagen.replace('C:/xampp/htdocs', GlobalConstants.httpLocalHost);
         
         this.previsualizacion = actualImage;
         console.log("imagen: " + this.previsualizacion);
@@ -100,6 +109,7 @@ httpLocalHost = 'http://localhost'; //CASA
           descripcionServicio: this.dataService.descripcionServicio,
           precioEstimado: this.dataService.precioEstimado,
           imagen: '',
+          fechaInicio: this.dataService.fechaInicio,
           historialEmpresas: this.dataService.historialEmpresas,
           numeroContacto: this.dataService.numeroContacto,
           correoContacto: this.dataService.correoContacto,

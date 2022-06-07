@@ -36,6 +36,14 @@
                         <p class="fs-3 fw-bolder">FOTO:</p>
                             <img width="500px" [src]="previsualizacion" alt="">
                     </div>
+
+                    <label for="">Fecha Desde que realiza el servicio:</label>
+                        <input type="date" class="form-control" formControlName="fechaInicio" max="{{dateS}}">
+                        <style>
+                             ::ng-deep .cdk-overlay-container {
+                                z-index: 2000;
+                            }
+                        </style>
                     
                     <label for="">Precio estimado</label>
                     <input type="number" class="form-control" id="exampleInputEmail1"

@@ -22,6 +22,7 @@ export class CreateServiceComponent implements OnInit {
     descripcionServicio: new FormControl(''),
     precioEstimado: new FormControl(),
     imagen: new FormControl(''),
+    fechaInicio: new FormControl(''),
     historialEmpresas: new FormControl(''),
     numeroContacto: new FormControl(),
     correoContacto: new FormControl(''),
@@ -40,23 +41,37 @@ export class CreateServiceComponent implements OnInit {
 
   public previsualizacion!: string;
   public archivos: any = [];
+  actualDate!: Date;
+  dateS!: string;
 
   constructor(private calendar: NgbCalendar, private api: ApiService, private router:Router, 
     private auth: AuthService, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
-    this.api.getSingleServiceProvider(this.auth.desencriptar(localStorage.getItem('id'))).subscribe((data:any) =>{
-      if(data){
+    //Date operations
+    let date = new Date();
+    let year = date.getFullYear();
+    let month = date.getMonth();
+    let day = date.getDate();
 
-      }else{
-        
+    this.actualDate = date;
+    this.dateS = this.actualDate.getFullYear() + "-" + ((this.actualDate.getMonth() + 1).toString().padStart(2,'0')) + "-" + (this.actualDate.getDate()).toString().padStart(2, '0');
+    // console.log('fecha actual: ' + this.dateS);
+    //Service operations
+    this.api.getSingleServiceProvider(this.auth.desencriptar(localStorage.getItem('id'))).subscribe((data:any) =>{
+      console.log(data);
+      if(data){
+        console.log('entre!!');
+        this.router.navigateByUrl('provider/myService');
+      }else if(!data){
+        this.api.getAllTypeServices(1).subscribe(data =>{
+          this.dataTypeService = data;
+          console.log(data);
+        })
       }
     });
 
-    this.api.getAllTypeServices(1).subscribe(data =>{
-      this.dataTypeService = data;
-      console.log(data);
-    })
+    
 
 
   }

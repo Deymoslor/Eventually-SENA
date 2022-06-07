@@ -45,6 +45,14 @@
                             <img width="700px" [src]="previsualizacion" alt="">
                         </div>
 
+                        <label for="">Fecha Desde que realiza el servicio:</label>
+                        <input type="date" class="form-control" formControlName="fechaInicio" value="{{dateS}}"  max="{{dateS}}">
+                        <style>
+                             ::ng-deep .cdk-overlay-container {
+                                z-index: 2000;
+                            }
+                        </style>
+
                         
                         <label for="">Precio estimado</label>
                         <input type="number" class="form-control" id="exampleInputEmail1"

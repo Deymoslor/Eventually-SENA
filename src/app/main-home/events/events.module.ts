@@ -18,6 +18,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatLabel } from '@angular/material/form-field';
 import { EditEventComponent } from './event-in/edit-event/edit-event.component';
 import { FilterEventsPipe } from './event-in/event-provider/pipe/filter-events.pipe';
+import { ModalInfoSerProvComponent } from './event-in/event-provider/modal-info-ser-prov/modal-info-ser-prov.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { FilterEventsPipe } from './event-in/event-provider/pipe/filter-events.p
     ModalProviderInfoComponent,
     EditEventComponent,
     FilterEventsPipe,
+    ModalInfoSerProvComponent,
   ],
   imports: [
     CommonModule,

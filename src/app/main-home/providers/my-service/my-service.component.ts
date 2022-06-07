@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ServiceI } from '../models/service.interface';
 import { AuthService } from 'src/app/core/service/auth.service';
+import { GlobalConstants } from '../../../global-constants';
 
 @Component({
   selector: 'app-my-service',
@@ -17,8 +18,6 @@ export class MyServiceComponent implements OnInit {
   idProvider!: number;
   numb!:number
 
-  // httpLocalHost = 'http://localhost:8181'; //SENA
-  httpLocalHost = 'http://localhost'; //CASA
 
   ServicesForm = new FormGroup({
     idServicios: new FormControl(), 
@@ -26,6 +25,7 @@ export class MyServiceComponent implements OnInit {
     descripcionServicio: new FormControl(''),
     precioEstimado: new FormControl(),
     imagen: new FormControl(''),
+    fechaInicio: new FormControl(''),
     historialEmpresas: new FormControl(''),
     numeroContacto: new FormControl(),
     correoContacto: new FormControl(''),
@@ -51,7 +51,8 @@ export class MyServiceComponent implements OnInit {
         'nombreServicio': this.dataService.nombreServicio,
         'descripcionServicio': this.dataService.descripcionServicio,
         'precioEstimado': this.dataService.precioEstimado,
-        'imagen': this.dataService.imagen.replace('C:/xampp/htdocs', this.httpLocalHost),
+        'imagen': this.dataService.imagen.replace('C:/xampp/htdocs', GlobalConstants.httpLocalHost),
+        'fechaInicio': this.dataService.fechaInicio,
         'historialEmpresas': this.dataService.historialEmpresas,
         'numeroContacto': this.dataService.numeroContacto,
         'correoContacto': this.dataService.correoContacto,

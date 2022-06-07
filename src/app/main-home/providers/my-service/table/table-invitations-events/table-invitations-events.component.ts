@@ -11,7 +11,8 @@ import { ApiService } from '../../../services/api.service';
 export class TableInvitationsEventsComponent implements OnInit {
 
   @Input() childMessage!: number;
-
+  
+  invitations: boolean = false;
   accepted: boolean = false;
   dataServiceEventProv!: ServiceEventI[];
 
@@ -20,13 +21,19 @@ export class TableInvitationsEventsComponent implements OnInit {
   ngOnInit(): void {
     console.log("id proveedor: " + this.childMessage);
     this.api.getAllServiceEventProv(this.childMessage).subscribe(data =>{
-      console.log(data);
-      data.forEach(key => {
-        if (key.estadoInvitacion == 1) {
-          this.accepted = true;
+      if(data){
+        this.invitations = true;
+        console.log(data);
+        data.forEach(key => {
+          if (key.estadoInvitacion == 1) {
+            this.accepted = true;
+          }
+        });
+        this.dataServiceEventProv = data;
         }
-      });
-      this.dataServiceEventProv = data;
+      else if(!data){
+        this.invitations = false;
+      }
     })
   }
 
