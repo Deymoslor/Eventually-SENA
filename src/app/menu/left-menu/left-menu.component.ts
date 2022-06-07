@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/service/auth.service';
 import { IleftNavMenu } from 'src/app/core/ui/ILeftNavMenu.interface';
 import { ROLES_ENUM } from '../../constants/roles.enum';
@@ -17,7 +18,7 @@ export class LeftMenuComponent implements OnInit {
   constructor(
 
     private authService: AuthService,
-
+    private router: Router,
   ) { }
 
   hasPermission(r: ROLES_ENUM[] | undefined): boolean {
@@ -34,4 +35,43 @@ export class LeftMenuComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //Home
+  home(){
+    this.router.navigate(["main"]);
+  }
+  //invitado
+  myAccount(){
+    this.router.navigate(["main/settings/settings-account"]);
+  }
+  groups(){
+    this.router.navigate(["main/groups"]);
+  }
+
+  // Proveedor
+  myService(){
+    this.router.navigate(["main/provider/myService"]);
+  }
+
+  createService(){
+    this.router.navigate(["main/provider/createService"]);
+  }
+  //Admin
+  groupsDash(){
+    this.router.navigate(["dashboard/groups"]);
+  }
+  servicesDash(){
+    this.router.navigate(["dashboard/services"]);
+  }
+  reportsDash(){
+    this.router.navigate(["dashboard/reports"]);
+  }
+  UsersDash(){
+    this.router.navigate(["dashboard/users"]);
+  }
+  suppliersDash(){
+    this.router.navigate(["dashboard/suppliers"]);
+  }
+  requestsDash(){
+    this.router.navigate(["dashboard/requests"]);
+  }
 }

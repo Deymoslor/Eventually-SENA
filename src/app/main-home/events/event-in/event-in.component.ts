@@ -30,7 +30,9 @@ export class EventInComponent implements OnInit {
   terminate!: boolean;
   totalEvent!: number;
 
-  
+  // httpLocalHost = 'http://localhost:8181'; //SENA
+  httpLocalHost = 'http://localhost'; //CASA
+
   dataEvent!: EventI;
   dataPersonJoin!: ParticipantsEventsI;
 
@@ -61,7 +63,7 @@ export class EventInComponent implements OnInit {
   closeResult = '';
 
   createEventForm = new FormGroup({
-    
+
   });
 
   ngOnInit(): void {
@@ -75,7 +77,7 @@ export class EventInComponent implements OnInit {
 
     this.actualDate = date;
     console.log("fecha actual: " + this.actualDate);
-    
+
 
     // date = new Date(year + "-" + month + "-" + day);
     // console.log("fecha: " + date);
@@ -150,7 +152,7 @@ export class EventInComponent implements OnInit {
         console.log("FECHA REALIZACIONIF: " + this.dateEvent);
         if(this.actualDate < this.dateTerminate){
           this.terminate = false
-          
+
         }else if(this.actualDate >= this.dateTerminate){
           this.terminate = true;
         }
@@ -169,11 +171,11 @@ export class EventInComponent implements OnInit {
       }
      });
 
-     
+
 
   }
 
-  
+
   capturarFile(event): void {
     const archivoCapturado = event.target.files[0];
     this.extraerBase64(archivoCapturado).then((imagen: any) => {
@@ -205,7 +207,7 @@ export class EventInComponent implements OnInit {
     }
     return $event;
   });
-  
+
 
   editEvent(idE:number ){
     this.router.navigate(['events/edit', idE]);
