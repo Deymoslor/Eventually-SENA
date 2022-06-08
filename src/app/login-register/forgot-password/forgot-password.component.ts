@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import { accountService } from '../service/accountService.service';
+import { AlertasService } from '../../core/service/alertas.service';
+import { ResponseI } from 'src/app/login-register/login/models/response.intarface';
 
 @Component({
   selector: 'app-forgot-password',
@@ -18,7 +20,8 @@ export class ForgotPasswordComponent implements OnInit {
 
   constructor(
     private router:Router,
-    private accountService:accountService
+    private accountService:accountService,
+    private alertas:AlertasService,
   ) { }
 
   ngOnInit(): void {
@@ -26,16 +29,21 @@ export class ForgotPasswordComponent implements OnInit {
 
   //Creamos variable de recuperación de contraseña.
   sendRecoveryMail(form:any){
-
     console.log(form);
-
-
     //llamamos al servicio para ejecutar el método.
     this.accountService.postRecovery(form).subscribe(data =>{
       //Imprimomos lo que nos devuelve la función.
       // console.log(data);
-      //redirecionamos a el login.
-      this.router.navigate(['/loginRegister']);
+      let respuesta:ResponseI = data;
+      if(respuesta.status == 'ok'){
+        this.alertas.showSuccess('Revisa tu correo electrónico incluido spam','Reestablecimiento de contraseña realizado');
+        setTimeout(() =>{
+          //redirecionamos a el login.
+          this.router.navigate(['/loginRegister']);
+        },5000)
+      }else{
+        this.alertas.showError(respuesta.result.error_msg,'Error');
+      }
     });
 
   }
