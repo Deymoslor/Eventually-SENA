@@ -13,7 +13,7 @@ import { GlobalConstants } from 'src/app/global-constants';
 export class SeeGroupsService {
 
   port = GlobalConstants.port;
-  
+
   API:string='http://localhost'+this.port+'/API-Eventually-SENA/';
 
   constructor(private http:HttpClient) { }

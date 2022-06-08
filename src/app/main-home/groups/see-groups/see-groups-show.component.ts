@@ -7,28 +7,73 @@ import { GroupPerson } from './GroupPerson';
 import { Groups } from './groups';
 import { SeeGroupsService } from "./see-groups.service";
 import { AuthService } from 'src/app/core/service/auth.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-see-groups-show',
   templateUrl: './see-groups-show.component.html',
   styleUrls: ['./see-groups-show.component.scss'],
 })
-export class SeeGroupsShowComponent{
+export class SeeGroupsShowComponent implements OnInit{
   @Input() group!: Groups;
+  listGroups!: Groups; 
   idPersona!:updatePersonaI;
   GroupPersonC!:GroupPerson;
   idPersonas = this.auth.desencriptar(localStorage.getItem('id'));
+
+  GroupForm  = new FormGroup({
+    idGrupos: new FormControl(''),
+    nombreGrupo: new FormControl(''),
+    descripcionGrupo: new FormControl(''),
+    privacidadGrupo: new FormControl(''),
+    invitadosTotales: new FormControl(''),
+    imagen: new FormControl('')
+  })
+
+  httpLocalHost = 'http://localhost:8181'; //SENA
+  // httpLocalHost = 'http://localhost'; //CASA
 
   constructor(
     private SeeGroupsService: SeeGroupsService,
     private router: Router,
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    private auth: AuthService
+    private auth: AuthService,
+    private sanitizator: DomSanitizer
   ) { }
-  // ngOnInit(): void {
-  //   throw new Error('Method not implemented.');
-  // }
+
+  ngOnInit(): void {
+    console.log(this.group);
+    // this.SeeGroupsService.getPromotedGroups(this.auth.desencriptar(localStorage.getItem('id'))).subscribe(data=>{
+    //   if (this.group.imagen) {
+    //     console.log(this.group.imagen);
+    //     // this.sanitizator.bypassSecurityTrustStyle(this.group.imagen)
+    //     // this.group.imagen.replace('C:/xampp/htdocs', this.httpLocalHost);
+    //   }else{
+    //     this.group.imagen = '';
+    //   }
+    // })
+
+    this.SeeGroupsService.getDetailsGroup(this.group.idGrupos).subscribe(data => {
+      // console.log(data)
+
+      this.listGroups = data[0];
+        if (this.listGroups.imagen) {
+          // element.imagen.replace('C:/xampp/htdocs', this.httpLocalHost);  
+          this.GroupForm.setValue({
+            idGrupos: this.listGroups.idGrupos,
+            nombreGrupo: this.listGroups.nombreGrupo,
+            descripcionGrupo: this.listGroups.descripcionGrupo,
+            privacidadGrupo: this.listGroups.privacidadGrupo,
+            invitadosTotales: this.listGroups.InvitadosTotales,
+            imagen:  this.listGroups.imagen.replace('C:/xampp/htdocs', this.httpLocalHost)
+          })
+        }
+        else{
+
+        }
+    })
+  }
 
   navigateToGroupDetails(): void {
     this.router.navigate(['show', this.group.idGrupos], {

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { combineLatest, map, Observable } from 'rxjs';
 import { AuthService } from 'src/app/core/service/auth.service';
+import { Group } from './group';
 import { Groups } from './groups';
 import { SeeGroupsService } from './see-groups.service';
 
@@ -13,6 +15,8 @@ import { SeeGroupsService } from './see-groups.service';
 export class SeeGroupsComponent implements OnInit {
   id!: number;
   groups!: Groups[];
+  group!: Group;
+
   // get groups(): Group[] {
   //   const groups = this.SeeGroupsService.groups;
 
@@ -24,7 +28,6 @@ export class SeeGroupsComponent implements OnInit {
   // orderBy$: Observable<string | null> = this.route.queryParamMap.pipe(
   //   map((queryParamMap) => queryParamMap.get('orderBy'))
   // );
-
   constructor(private SeeGroupsService: SeeGroupsService, private route: ActivatedRoute, private auth: AuthService) { }
 
   ngOnInit(): void {
@@ -32,6 +35,7 @@ export class SeeGroupsComponent implements OnInit {
       console.log(data);
 
       this.groups = data;
+
     })
   }
 
