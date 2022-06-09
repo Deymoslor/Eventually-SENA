@@ -40,6 +40,8 @@ export class TableRequestGroupsComponent implements OnInit {
 
       //Llamamos a la variable que creamos arriba para asignarle los datos que hay en la variable data.
       this.requests = data;
+      console.log('entre');
+      console.log(this.requests);
     });
 
   }

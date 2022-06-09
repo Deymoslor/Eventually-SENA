@@ -6,6 +6,7 @@ import { RequestEventsI } from './requestsEventsI.interface';
 import { RequestEventsService } from './request-events.service';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-table-request-event',
@@ -18,11 +19,14 @@ export class TableRequestEventComponent implements OnInit {
   datosPeticion!:RequestEventsI;
 
   requests!:ListaRequestEventsI[];
+  closeResult!: string;
+  idEvent!: string;
 
   constructor(
     //Inyectamos nuestro servicio.
     private RequestEventsService:RequestEventsService,
 
+    private modalService: NgbModal,
     //Inyectamos el router.
     private router:Router
   ) { }
@@ -36,7 +40,7 @@ export class TableRequestEventComponent implements OnInit {
 
       //Llamamos a la variable que creamos arriba para asignarle los datos que hay en la variable data.
       this.requests = data;
-
+      console.log(this.requests)
     });
 
   }
@@ -71,6 +75,29 @@ export class TableRequestEventComponent implements OnInit {
         window.location.reload();
       });
     });
+  }
+
+  getIdEvent(idEvent : string):void {
+    this.idEvent = idEvent;
+    // console.log(this.idGroup);
+  }
+
+  modalOpen(content:any){
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
 
 }
