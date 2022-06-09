@@ -35,6 +35,8 @@ import { EventReportComponent } from './crud-reports/typeReport/event-report/eve
 import { GroupReportComponent } from './crud-reports/typeReport/group-report/group-report.component';
 import { UserReportComponent } from './crud-reports/typeReport/user-report/user-report.component';
 import { FooterModule } from '../footer/footer.module';
+import { DatailGroupComponent } from './requests/table-request-groups/datail-group/datail-group.component';
+import { DatailEventComponent } from './requests/table-request-event/datail-event/datail-event.component';
 
 
 
@@ -66,7 +68,9 @@ import { FooterModule } from '../footer/footer.module';
     CreateTypeServicesComponent,
     EventReportComponent,
     GroupReportComponent,
-    UserReportComponent
+    UserReportComponent,
+    DatailGroupComponent,
+    DatailEventComponent
 
   ],
   imports: [

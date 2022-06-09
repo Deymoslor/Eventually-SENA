@@ -25,9 +25,15 @@
 
                     <th class="textox" scope="row">{{request.idpeticionesGrupo}}</th>
 
-                    <td class="textox">{{request.estadoPeticion}}</td>
+                    <td class="textox">
+                        <div *ngIf="request.estadoPeticion == '1'">POR REVISAR</div>
+                        <div *ngIf="request.estadoPeticion == '2'">ACEPTADO</div>
+                        <div *ngIf="request.estadoPeticion == '3'">RECHAZADO</div>
+                    </td>
 
-                    <td class="textox">{{request.Grupos_idGrupos}}</td>
+                    <td class="textox">
+                        <button class="btn-primary" data-bs-toggle="modal20" data-bs-target="#content-modal20" role="button" (click)="modalOpen(content); getIdGroup(request.Grupos_idGrupos)">Detalle Grupo</button>
+                    </td>
 
                     <!-- Grupo está sin respuesta -->
                     <div *ngIf="request.estadoPeticion==='1'">
@@ -59,3 +65,9 @@
         </table>
     </div>
 </div>
+
+<ng-template #content let-modal20>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal20.dismiss('Cross click')"></button>
+    <!-- <app-modal-disable-event [idEvento]="eventGroupForm.get('idEvento')?.value" [form]="eventGroupForm.value"></app-modal-disable-event> -->
+    <app-datail-group [idGroup]="idGroup"></app-datail-group>
+</ng-template>

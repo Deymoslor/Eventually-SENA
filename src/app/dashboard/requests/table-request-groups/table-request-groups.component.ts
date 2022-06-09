@@ -6,6 +6,7 @@ import { RequestGroupsI } from './requestsGroupsI.interface';
 import { ListaRequestGroupsI } from './ListaRequestGroupsI.interface';
 import { Router } from '@angular/router';
 import { RequestGroupsService } from './request-groups.service';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-table-request-groups',
@@ -18,14 +19,17 @@ export class TableRequestGroupsComponent implements OnInit {
   datosPeticion!:RequestGroupsI;
 
   requests!:ListaRequestGroupsI[];
+  idGroup!: string;
 
   constructor(
     //Inyectamos nuestro servicio.
     private RequestGroupsService:RequestGroupsService,
-
+    private modalService: NgbModal,
     //Inyectamos el router.
     private router:Router
   ) { }
+
+  closeResult = '';
 
   ngOnInit(): void {
 
@@ -36,7 +40,6 @@ export class TableRequestGroupsComponent implements OnInit {
 
       //Llamamos a la variable que creamos arriba para asignarle los datos que hay en la variable data.
       this.requests = data;
-
     });
 
   }
@@ -72,5 +75,29 @@ export class TableRequestGroupsComponent implements OnInit {
       });
     });
   }
+
+  getIdGroup(idGroup : string):void {
+    this.idGroup = idGroup;
+    // console.log(this.idGroup);
+  }
+
+  modalOpen(content:any){
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+
 
 }

@@ -25,7 +25,11 @@
 
                     <th class="textox" scope="row">{{request.idpeticionesEvento}}</th>
 
-                    <td class="textox">{{request.estadoPeticion}}</td>
+                    <td class="textox">
+                        <div *ngIf="request.estadoPeticion == '1'">POR REVISAR</div>
+                        <div *ngIf="request.estadoPeticion == '2'">ACEPTADO</div>
+                        <div *ngIf="request.estadoPeticion == '3'">RECHAZADO</div>
+                    </td>
 
                     <td class="textox">{{request.Evento_idEvento }}</td>
 
