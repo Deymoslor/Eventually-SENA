@@ -103,10 +103,15 @@
                     </li>
                 </div>
 
+                <!-- <div class="img-container class-thumbnail">
+                    <img class="thumbnail rounded card-img-top" [src]="GroupForm.get('imagen')?.value" alt="{{ group?.nombreGrupo }}" class="thumbnail">
+                </div> -->
 
                 <div class="col-3">
                     <li class="nav-item dropdown btn-group menuUser">
-                        <img class="imgUser btn dropdown-toggle rounded-circle" id="dropdownMenuOffset" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="35,5" src="../../../assets/user/20.jpg" alt="">
+                        <!-- <img class="imgUser btn dropdown-toggle rounded-circle" id="dropdownMenuOffset" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="35,5" src="../../../assets/user/20.jpg" alt=""> -->
+
+                        <img class="imgUser btn dropdown-toggle rounded-circle" id="dropdownMenuOffset" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="35,5" [src]="perfilForm.get('imagen')?.value" alt="{{ updatedPersona?.nombre }}">
 
 
                         <ul class="dropdown-menu dropdown-menu-end">

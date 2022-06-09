@@ -46,6 +46,22 @@
 
                     <div class="separator"></div>
 
+                    <!-- Imagen de pefil -->
+                    <div class="mb-3">
+                        <div>
+                            <label for="">Imagen de perfil:</label>
+                            <div class="mb-2">
+                              <input (change)="capturarFile($event)" type="file">
+                            </div>
+                            <h4 *ngIf="previsualizacion != ''">PREVISUALIZACION</h4>
+                            <div *ngIf="previsualizacion != ''">
+                              <img width="500px" [src]="previsualizacion" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="separator"></div>
+
                     <!-- Email -->
                     <!-- <div class="mb-3">
                           <label for="" class="form-label">Correo</label>

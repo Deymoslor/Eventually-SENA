@@ -9,6 +9,8 @@ import { AuthService } from 'src/app/core/service/auth.service';
 import { IdPerson, LikesI, LikesPerson } from 'src/app/models/likes';
 import { ApiService } from '../../../services/api.service';
 import { PersonaI } from 'src/app/dashboard/crud-users/modal-users/personaI.interface';
+import { DomSanitizer } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-update-user-account',
@@ -17,12 +19,18 @@ import { PersonaI } from 'src/app/dashboard/crud-users/modal-users/personaI.inte
 })
 export class UpdateUserAccountComponent implements OnInit {
 
+  //Variable para previsualizar la imagen.
+  public previsualizacion: string = '';
+  //Variable para almacenar en archivos.
+  public archivos: any = [];
+
   constructor(
 
     private updateServiceService: UpdateServiceService,
     private router: Router,
     private authService: AuthService,
-    private ApiService: ApiService
+    private ApiService: ApiService,
+    private sanitizer: DomSanitizer,
 
   ) { }
 
@@ -123,6 +131,40 @@ export class UpdateUserAccountComponent implements OnInit {
     });
   }
 
+  //Método para capturar imagen.
+  capturarFile(event): void {
+    const archivoCapturado = event.target.files[0];
+    this.extraerBase64(archivoCapturado).then((imagen: any) => {
+      this.previsualizacion = imagen.base;
+      // console.log(imagen)
+    })
+    this.archivos.push(archivoCapturado);
+    // console.log(event);
+  }
+
+  //Método para transformar imagen a base64.
+  extraerBase64 = async ($event: any) => new Promise((resolve, reject) =>{
+    try {
+      const unsafeImg = window.URL.createObjectURL($event);
+      const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
+      const reader = new FileReader();
+      reader.readAsDataURL($event);
+      reader.onload = () => {
+        resolve({
+          base: reader.result
+        });
+      };
+      reader.onerror = error => {
+        resolve({
+          base: null
+        });
+      };
+    } catch (e) {
+      return null;
+    }
+    return $event;
+  });
+
   agregarGusto(nombreGusto:any){
     console.log('Click agregar');
     this.updateServiceService.getLikeId(nombreGusto).subscribe((data:any) =>{
@@ -162,6 +204,9 @@ export class UpdateUserAccountComponent implements OnInit {
 
   //Método que se ejecuta cuando se hace submit de formulario para enviar los datos editados.
   postForm(form:updatePersonaI){
+    //le pasamos al formulario la imagen previsualizada.
+    form.imagen = this.previsualizacion;
+    console.log(form.imagen);
 
     //llamamos el método de actualizar desde el servicio.
     this.updateServiceService.putPerson(form).subscribe((data:any) =>{

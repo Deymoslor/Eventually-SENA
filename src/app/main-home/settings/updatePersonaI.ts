@@ -5,4 +5,5 @@ export interface updatePersonaI{
     documento: string;
     fechaNacimiento: string;
     Email : string;
+    imagen : string;
 }
