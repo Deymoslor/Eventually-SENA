@@ -1,29 +1,45 @@
 <div>
-  <br>
-  <br>
+    <br>
+    <br>
 </div>
-<form [formGroup]="createYourGroupForm" (ngSubmit)="postForm(createYourGroupForm.value)" class="row g-3">
-  <div class="col-md-4">
-    <label for="validationDefault01" class="form-label">Nombre grupo</label>
-    <input type="text" class="form-control" id=""
-    placeholder="Ej: Nombre del Grupo"
-    [ngClass]="(createYourGroupForm.get('nombreGrupo')?.touched || createYourGroupForm.get('nombreGrupo')?.dirty) &&
-    createYourGroupForm.get('nombreGrupo')?.errors ? 'is-invalid' : ''" formControlName="nombreGrupo">
-    <div class="invalid-feedback">
-      {{ createYourGroupForm.get("nombreGrupo")?.hasError("required") ? "Nombre requerido" : "" }}
+<form [formGroup]="createYourGroupForm" (ngSubmit)="postForm(createYourGroupForm.value)" class="row g-3 texto">
+    <div class="container d-flex firts">
+        <div class="row firts">
+            <div class="col-12 d-flex firts">
+                <div class="texto col-4 firts">
+                    <label for="validationDefault01" class="form-label titulos">Nombre grupo</label>
+                    <input type="text" class="form-control firtsContainer" id="" placeholder="Ej: Nombre del Grupo" [ngClass]="(createYourGroupForm.get('nombreGrupo')?.touched || createYourGroupForm.get('nombreGrupo')?.dirty) &&
+      createYourGroupForm.get('nombreGrupo')?.errors ? 'is-invalid' : ''" formControlName="nombreGrupo">
+                    <div class="invalid-feedback">
+                        {{ createYourGroupForm.get("nombreGrupo")?.hasError("required") ? "Nombre requerido" : "" }}
+                    </div>
+                </div>
+                <div class="col-4 firts input">
+                    <label for="validationDefaultUsername" class="form-label titulos">Estado</label>
+                    <div class="input-group firtsContainer">
+                        <input value="Deshabilitado" type="text" class="form-control firtsContainer" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2" disabled>
+                    </div>
+                </div>
+                <div class="texto col-4 firts input">
+
+                    <label for="exampleInputEmail1" class="titulos label">Gusto:</label>
+                    <select class="form-select firtsContainer" aria-label="Default select example" [ngClass]="
+              (createYourGroupForm.get('gustos_idGusto')?.touched || createYourGroupForm.get('gustos_idGusto')?.dirty) &&
+              createYourGroupForm.get('gustos_idGusto')?.hasError('required') ? 'is-invalid' : ''" formControlName="gustos_idGusto">
+                <option *ngFor="let likeI of likesI" value="{{ likeI.idGusto }}">{{ likeI.nombreGusto }}</option>
+              </select>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="col-md-4">
-    <label for="validationDefaultUsername" class="form-label">Estado</label>
-    <div class="input-group">
-      <input value="Deshabilitado" type="text" class="form-control" id="validationDefaultUsername"  aria-describedby="inputGroupPrepend2" disabled>
-    </div>
-  </div>
-  <div class="mb-3">
-    <label for="validationTextarea" class="form-label">Descripción</label>
-    <div class="mb-2">
-      <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Explica de que tratará y dónde será."
-      rows="2" [ngClass]="(createYourGroupForm.get('descripcionGrupo')?.touched ||
+
+    <div class="container d-flex second">
+        <div class="row second">
+            <div class="col-12 d-flex second r">
+                <div class="col-9">
+                    <label for="validationTextarea" class="form-label titulos">Descripción</label>
+                    <div class="mb-2">
+                        <textarea class="form-control textArea" id="exampleFormControlTextarea1" placeholder="Explica de que tratará y dónde será." rows="2" [ngClass]="(createYourGroupForm.get('descripcionGrupo')?.touched ||
       createYourGroupForm.get('descripcionGrupo')?.dirty) &&
       createYourGroupForm.get('descripcionGrupo')?.hasError('required')
       ? 'is-invalid'
@@ -36,75 +52,54 @@
         createYourGroupForm.get('descripcionGrupo')?.dirty) &&
           !createYourGroupForm.get('descripcionGrupo')?.invalid)
       ? 'is-valid'
-      : ''"
-
-formControlName="descripcionGrupo"></textarea>
-  </div>
-  <div class="invalid-feedback">
-      {{
-        createYourGroupForm.get("descripcionGrupo")?.hasError("required")
-            ? " Descripcion requerida"
-            : ""
-        }}
-        {{
-          createYourGroupForm.get("descripcionGrupo")?.hasError("minlength")
-            ? " 5 letras requeridas"
-            : ""
-        }}
-        {{
-          createYourGroupForm.get("descripcionGrupo")?.hasError("maxlength")
-            ? " Ha excedido el limite de caracteres"
-            : ""
-        }}
-  </div>
-    <!-- <div class="invalid-feedback">
+      : ''" formControlName="descripcionGrupo"></textarea>
+                    </div>
+                    <div class="invalid-feedback">
+                        {{ createYourGroupForm.get("descripcionGrupo")?.hasError("required") ? " Descripcion requerida" : "" }} {{ createYourGroupForm.get("descripcionGrupo")?.hasError("minlength") ? " 5 letras requeridas" : "" }} {{ createYourGroupForm.get("descripcionGrupo")?.hasError("maxlength")
+                        ? " Ha excedido el limite de caracteres" : "" }}
+                    </div>
+                    <!-- <div class="invalid-feedback">
       Please enter a message in the textarea.
     </div> -->
-  </div>
-  <div class="col-md-3">
-    <label for="validationDefault04" class="form-label">Privacidad</label>
-    <div class="form-check">
-      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
-    [ngClass]="(createYourGroupForm.get('privacidadGrupo')?.touched || createYourGroupForm.get('privacidadGrupo')?.dirty) &&
-    createYourGroupForm.get('privacidadGrupo')?.errors ? 'is-invalid' : ''" formControlName="privacidadGrupo" name="privacidadGrupo" value="2">
-    <label class="form-check-label" for="flexRadioDefault">Publico</label>
+                </div>
+                <div class="second input col-3">
+                    <label for="validationDefault04" class="form-label titulos">Privacidad</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" [ngClass]="(createYourGroupForm.get('privacidadGrupo')?.touched || createYourGroupForm.get('privacidadGrupo')?.dirty) &&
+                createYourGroupForm.get('privacidadGrupo')?.errors ? 'is-invalid' : ''" formControlName="privacidadGrupo" name="privacidadGrupo" value="2">
+                        <label class="form-check-label" for="flexRadioDefault titulos">Publico</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" [ngClass]="(createYourGroupForm.get('privacidadGrupo')?.touched || createYourGroupForm.get('privacidadGrupo')?.dirty) &&
+                createYourGroupForm.get('privacidadGrupo')?.errors ? 'is-invalid' : ''" formControlName="privacidadGrupo" name="privacidadGrupo" value="1">
+                        <label class="form-check-label" for="flexRadioDefault titulos">Privado</label>
+                    </div>
+                    <div class="invalid-feddback">
+                        {{ createYourGroupForm.get("privacidadGrupo")?.hasError("required") ? "Privacidad Requerida" : "" }}
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="form-check">
-      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
-    [ngClass]="(createYourGroupForm.get('privacidadGrupo')?.touched || createYourGroupForm.get('privacidadGrupo')?.dirty) &&
-    createYourGroupForm.get('privacidadGrupo')?.errors ? 'is-invalid' : ''" formControlName="privacidadGrupo" name="privacidadGrupo" value="1">
-    <label class="form-check-label" for="flexRadioDefault">Privado</label>
-    </div>
-    <div class="invalid-feddback">
-      {{ createYourGroupForm.get("privacidadGrupo")?.hasError("required") ? "Privacidad Requerida" : "" }}
-    </div>
-  </div>
-  <div>
-    <label for="exampleInputEmail1">Gusto:</label>
-    <select class="form-select" aria-label="Default select example" [ngClass]="
-    (createYourGroupForm.get('gustos_idGusto')?.touched || createYourGroupForm.get('gustos_idGusto')?.dirty) &&
-    createYourGroupForm.get('gustos_idGusto')?.hasError('required') ? 'is-invalid' : ''" formControlName="gustos_idGusto">
-      <option *ngFor="let likeI of likesI" value="{{ likeI.idGusto }}">{{ likeI.nombreGusto }}</option>
-    </select>
-  </div>
-  <div class="col-12">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="invalidCheck" [ngClass]="
+
+    <div class="container d-flex third">
+        <div class="row third">
+            <div class="col-12 d-flex third">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" [ngClass]="
 
       createYourGroupForm.get('check')?.hasError('required') ? 'is-invalid' : ''" formControlName="check">
-      <label class="form-check-label" for="invalidCheck">
+                    <label class="form-check-label" for="invalidCheck">
           Para la creación de el evento deberá estar de acuerdo con la ley 1480 de 2011 articulo 30 con respecto al evento a crear.
       </label>
-      <div class="invalid-feedback">
-          {{
-            createYourGroupForm.get("check")?.hasError("required")
-              ? " debe de estar de acuerdo con las politicas"
-              : ""
-          }}
-      </div>
+                    <div class="invalid-feedback">
+                        {{ createYourGroupForm.get("check")?.hasError("required") ? " debe de estar de acuerdo con las politicas" : "" }}
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="col-12">
-    <button class="btn btn-primary" type="submit" [disabled]="createYourGroupForm.invalid" (click)="share()">Crear</button>
-  </div>
+    <div class="col-12">
+        <button class="btn btn-primary" type="submit" [disabled]="createYourGroupForm.invalid" (click)="share()">Crear</button>
+    </div>
 </form>

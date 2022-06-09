@@ -1,0 +1,52 @@
+@import '../../../app.component.scss';
+.texto {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 350;
+}
+
+.titulos {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+}
+
+.firtsContainer {
+    width: 20vw;
+}
+
+.firts {
+    margin: 0;
+    padding: 0;
+    border: 1px solid red;
+    width: auto;
+}
+
+.input {
+    margin-left: 4vw!important;
+}
+
+.label {
+    margin-bottom: 8px;
+}
+
+.second {
+    margin: 0;
+    padding: 0;
+    border: 1px solid green;
+    width: auto;
+}
+
+.textArea {
+    width: 54vw;
+    height: 10vw;
+}
+
+.r {
+    margin-left: 5vw;
+}
+
+.third {
+    margin: 0;
+    padding: 0;
+    border: 1px solid blue;
+    width: auto;
+}

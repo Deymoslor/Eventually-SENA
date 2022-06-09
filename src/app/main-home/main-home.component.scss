@@ -1,33 +1,69 @@
-    * {
-        height: auto;
-        margin: 0;
-        padding: 0;
-    }
+* {
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
 
-    body {
-        width: 100%;
-        height: auto;
-        margin: 0;
-        padding: 0;
-        z-index: 3;
-        padding-top: 5rem;
-        margin-bottom: 2vw;
-        border: 1px solid green;
-    }
+body {
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    z-index: 3;
+    padding-top: 5rem;
+    margin-bottom: 2vw;
+    border: 1px solid green;
+}
 
-    .leftMenu {
-        width: 6rem;
-        border: 1px solid red;
-        margin: 0;
-        padding: 0;
-    }
+.leftMenu {
+    width: 6rem;
+    border: 1px solid red;
+    margin: 0;
+    padding: 0;
+}
 
+.principalContainer {
+    width: 90vw;
+    height: auto;
+    border: 1px solid blue;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 994px) {
     .principalContainer {
-        width: 90vw;
-        height: auto;
-        border: 1px solid blue;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        justify-content: center;
+        width: 85vw;
     }
+}
+
+@media only screen and (max-width: 876px) {
+    .principalContainer {
+        width: 80vw;
+    }
+}
+
+@media only screen and (max-width: 610px) {
+    .principalContainer {
+        width: 75vw;
+    }
+}
+
+@media only screen and (max-width: 467px) {
+    .principalContainer {
+        width: 70vw;
+    }
+}
+
+@media only screen and (max-width: 383px) {
+    .principalContainer {
+        width: 65vw;
+    }
+}
+
+@media only screen and (max-width: 331px) {
+    .principalContainer {
+        width: 60vw;
+    }
+}
