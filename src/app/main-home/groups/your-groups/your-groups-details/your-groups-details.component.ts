@@ -26,6 +26,7 @@ export class YourGroupsDetailsComponent implements OnInit {
   childMessage: number | undefined;
   likesI!: LikesI[];
   public personas! : GroupPersonDetails[];
+  manager!: GroupPersonDetails;
   personaId = this.auth.desencriptar(localStorage.getItem('id'));
 
   GroupForm  = new FormGroup({
@@ -37,8 +38,8 @@ export class YourGroupsDetailsComponent implements OnInit {
     gustos_idGusto: new FormControl(''),
     imagen: new FormControl('')
   })
-  httpLocalHost = 'http://localhost:8181'; //SENA
-  // httpLocalHost = 'http://localhost'; //CASA
+  // httpLocalHost = 'http://localhost:8181'; //SENA
+  httpLocalHost = 'http://localhost'; //CASA
   group!: Group;
   constructor(
     private YourGroupsService: YourGroupsService,
@@ -92,10 +93,10 @@ export class YourGroupsDetailsComponent implements OnInit {
       this.router.navigate(['group']);
     }
 
-    // this.EventService.getSigleEventGroup(Number(idGrupos)).subscribe((data: any) => {
-    //   console.log(data);
-    //   this.event = data[0];
-    // })
+    this.userService.getManagerGroup(this.personaId,Number(idGrupos)).subscribe((data: any) => {
+      this.manager = data[0];
+      console.log(this.manager);
+    })
   }
 
   modalOpen(content:any){

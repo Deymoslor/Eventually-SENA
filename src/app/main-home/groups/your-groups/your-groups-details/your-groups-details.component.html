@@ -4,22 +4,32 @@
 <ng-template #content2 let-modal2>
   <app-modal-source-users [childMessage]=id></app-modal-source-users>
 </ng-template>
-<a [routerLink]="['/groups/your-groups']" routerLinkActive="router-link-active" class="back">&lt; Volver al inicio</a>
+<div *ngIf="manager?.idPersona == personaId && manager?.estadoPersona_idEstadoPersona == 1">
+  <a [routerLink]="['/groups/your-groups']" routerLinkActive="router-link-active" class="back">&lt; Volver al inicio</a>
+</div>
+<ng-container *ngFor="let item of personas">
+  <div *ngIf="item.idPersona == personaId && item.estadoPersona_idEstadoPersona == 2">
+    <a [routerLink]="['/groups/related-groups']" routerLinkActive="router-link-active" class="back">&lt; Volver al inicio</a>
+  </div>
+</ng-container>
 <div class="container">
     <br>
-    <div class="img-container class-thumbnail">
-      <img class="thumbnail rounded card-img-top" [src]="GroupForm.get('imagen')?.value" alt="{{ group?.nombreGrupo }}" class="thumbnail">
+    <div class="img-container class-thumbnail" *ngIf="!GroupForm.get('imagen')?.value">
+      <img class="rounded card-img-top" src="../../../../assets/group/prueba.jfif">
+    </div>
+    <div class="img-container class-thumbnail" *ngIf="GroupForm.get('imagen')?.value">
+      <img class="rounded card-img-top" [src]="GroupForm.get('imagen')?.value" alt="{{ group?.nombreGrupo }}">
     </div>
     <div class="info">
         <p class="product-name">{{ group?.nombreGrupo }}</p>
         <br>
         <div class="row g-5">
-            <div class="col-md-8">
-              <div>
+            <div class="col-md-7">
+              <div class="card-row">
                 <p class="product-name h2">Sobre</p>
-                <p class="product-short-description h5">{{group?.descripcionGrupo}}</p>
+                <p class="product-short-description h5 ">{{group?.descripcionGrupo}}</p>
               </div>
-              <div class="cart-row">
+              <div class="cart-row" *ngIf="personas">
                 <table class="table table-striped">
                   <thead>
                     <tr>
@@ -29,13 +39,19 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let persona of personas">
-                      <td class="product-short-description">{{persona.nombre}}</td>
-                      <td class="product-short-description">{{persona.Email}}</td>
-                      <td class="product-short-description">{{persona.estado}}</td>
-                    </tr>
+                    <ng-container *ngFor="let persona of personas">
+                      <tr *ngIf="persona.idPersona != personaId">
+                        <td class="product-short-description">{{persona.nombre}}</td>
+                        <td class="product-short-description">{{persona.Email}}</td>
+                        <td class="product-short-description">{{persona.estado}}</td>
+                      </tr>
+                    </ng-container>
                   </tbody>
                 </table>
+              </div>
+              <br>
+              <div *ngIf="!personas">
+                <p class="product-name h2">no hay participantes en este grupo</p>
               </div>
 
             </div>
@@ -54,20 +70,14 @@
                             <li class="nav-item dropdown">
                                 <a class="h4 nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Opciones</a>
                                 <ul class="dropdown-menu">
-                                  <ng-container *ngFor="let element of personas">
-                                    <div *ngIf="element.idPersona == personaId && element.estadoPersona_idEstadoPersona == 1">
-                                      <li><a class="h5 dropdown-item" role="button" (click)="editarGroup(group?.idGrupos)" data-bs-toggle="modal" data-bs-target="#content-modal" role="button" (click)="modalOpen(content)">Editar grupo</a></li>
-                                    <div *ngIf="group?.privacidadGrupo == 1 && element.idPersona == personaId && element.estadoPersona_idEstadoPersona == 1">
-                                      <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#content-modal2" role="button" (click)="modalOpen2(content2)">Invitar amigo</a></li>
-                                      <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#modal-report-events-groups-organizer">Reportes</a></li>
-                                    </div>
-                                    </div>
-                                    <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#modal-events-completed">Ver eventos realizados</a></li>
-                                    <div *ngIf="element.idPersona == personaId && element.estadoPersona_idEstadoPersona == 1">
-                                      <li><a class="h5 dropdown-item" role="button" href="#">Deshabilitar Grupo</a></li>
-                                    </div>
-                                  </ng-container>
-                                </ul>
+                                  <div *ngIf="manager?.idPersona == personaId && manager?.estadoPersona_idEstadoPersona == 1">
+                                    <li><a class="h5 dropdown-item" role="button" (click)="editarGroup(group?.idGrupos)" data-bs-toggle="modal" data-bs-target="#content-modal" role="button" (click)="modalOpen(content)">Editar grupo</a></li>
+                                    <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#content-modal2" role="button" (click)="modalOpen2(content2)">Invitar amigo</a></li>
+                                    <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#modal-report-events-groups-organizer">Reportes</a></li>
+                                    <li><a class="h5 dropdown-item" role="button" href="#">Deshabilitar Grupo</a></li>
+                                  </div>
+                                  <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#modal-events-completed">Ver eventos realizados</a></li>
+                              </ul>
                             </li>
                         </ul>
                     </div>
