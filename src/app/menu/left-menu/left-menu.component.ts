@@ -71,6 +71,9 @@ export class LeftMenuComponent implements OnInit {
   suppliersDash(){
     this.router.navigate(["dashboard/suppliers"]);
   }
+  gustosDash(){
+    this.router.navigate(["dashboard/likes"]);
+  }
   requestsDash(){
     this.router.navigate(["dashboard/requests"]);
   }
