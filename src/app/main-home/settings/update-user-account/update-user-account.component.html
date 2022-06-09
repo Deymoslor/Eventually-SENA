@@ -32,7 +32,6 @@
                     <div class="mb-3">
                         <b><label class="form-label">Fecha de Nacimiento</label></b>
                         <input required type="date" class="form-control" formControlName="fechaNacimiento" aria-describedby="helpId" placeholder="Escribe tu fecha de nacimiento">
-
                     </div>
 
                     <!-- Correo electrónico -->
@@ -59,6 +58,15 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- INICIO Botón para actualizar imagen -->
+
+                    <div class="btnChangeLikes d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary btn-lg" (click)="actualizarImagen(passwordForm.value)" (click)="changePassword(passwordForm.value)">Actualizar imagen de perfil</button>
+                    </div>
+
+                    <!-- FIN Botón para actualizar imagen -->
+
 
                     <div class="separator"></div>
 

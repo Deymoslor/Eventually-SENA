@@ -10,7 +10,9 @@ import { IdPerson, LikesI, LikesPerson } from 'src/app/models/likes';
 import { ApiService } from '../../../services/api.service';
 import { PersonaI } from 'src/app/dashboard/crud-users/modal-users/personaI.interface';
 import { DomSanitizer } from '@angular/platform-browser';
-
+import { AlertasService } from 'src/app/core/service/alertas.service';
+import { ResponseI } from '../../../core/ui/response.interface';
+import { GlobalConstants } from 'src/app/global-constants';
 
 @Component({
   selector: 'app-update-user-account',
@@ -24,6 +26,16 @@ export class UpdateUserAccountComponent implements OnInit {
   //Variable para almacenar en archivos.
   public archivos: any = [];
 
+  //Variables generales para la toma de imagenes.
+  public httpLocalHost = GlobalConstants.httpLocalHost;
+
+  //interfaz de actualización de la persona para poder traer la propiedad imagen.
+  public updatePersona! : updatePersonaI;
+
+  perfilForm  = new FormGroup({
+    imagen: new FormControl('')
+  })
+
   constructor(
 
     private updateServiceService: UpdateServiceService,
@@ -31,6 +43,7 @@ export class UpdateUserAccountComponent implements OnInit {
     private authService: AuthService,
     private ApiService: ApiService,
     private sanitizer: DomSanitizer,
+    private alertas:AlertasService,
 
   ) { }
 
@@ -68,7 +81,7 @@ export class UpdateUserAccountComponent implements OnInit {
     apellidos: new FormControl(''),
     documento: new FormControl(''),
     fechaNacimiento: new FormControl(''),
-    Email: new FormControl('')
+    Email: new FormControl(''),
   });
 
   //Creamos formulario para poder actualizar contraseña.
@@ -210,9 +223,27 @@ export class UpdateUserAccountComponent implements OnInit {
 
     //llamamos el método de actualizar desde el servicio.
     this.updateServiceService.putPerson(form).subscribe((data:any) =>{
+      let respuesta:ResponseI = data;
+      //Verificamos si la respuesta es exitosa.
+      if(respuesta.status == 'ok'){
+        this.alertas.showSuccess('Información de perfil actualizada','Acción exitosa');
+        // console.log("Entrando aquí");
+        setTimeout(() =>{
+          //redirecionamos a el login.
+          window.location.reload();
+        },2000);
+      }else{
+        this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+        window.location.reload();
+      }
       //Recargamos página.
       window.location.reload();
     });
+
+  }
+
+  //Método para actualizar imagen:
+  actualizarImagen(form:any){
 
   }
 
@@ -243,10 +274,19 @@ export class UpdateUserAccountComponent implements OnInit {
     //Llamamos al método del servicio que nos permite actualizar la contraseña.
     this.updateServiceService.putPassword(form).subscribe((data:any) =>{
       // console.log(data);
-
-      //regargamos página.
-      window.location.reload();
-
+      let respuesta:ResponseI = data;
+      //Verificamos si la respuesta es exitosa.
+      if(respuesta.status == 'ok'){
+        this.alertas.showSuccess('Contraseña actualizada correctamente','Contraseña actualizada');
+        // console.log("Entrando aquí");
+        setTimeout(() =>{
+          //redirecionamos a el login.
+          window.location.reload();
+        },2000);
+      }else{
+        this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+        window.location.reload();
+      }
     });
   }
 

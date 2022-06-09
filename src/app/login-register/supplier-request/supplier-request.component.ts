@@ -43,7 +43,7 @@ export class SupplierRequestComponent implements OnInit {
         setTimeout(() =>{
           //redirecionamos a el login.
           this.router.navigate(['/loginRegister']);
-        },5000);
+        },2000);
       }else{
         this.alertas.showError(respuesta.result.error_msg,'Error');
       }

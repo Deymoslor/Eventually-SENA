@@ -122,7 +122,7 @@ export class ModalUsersComponent implements OnInit {
       // }, 7000);
       setTimeout(() =>{
         window.location.reload();
-      },5000);
+      },2000);
       let respuesta:ResponseI = data;
       if (respuesta.status == 'ok') {
         this.alertas.showSuccess('El usuario ha sido editado exitosamente','Usuario editado');

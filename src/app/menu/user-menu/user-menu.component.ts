@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { AuthService } from 'src/app/core/service/auth.service';
 import { UpdateServiceService } from 'src/app/main-home/settings/settingsService/update-service.service';
 import { updatePersonaI } from 'src/app/main-home/settings/updatePersonaI';
+import { SupplierService } from 'src/app/dashboard/crud-suppliers/service/supplier.service';
 
 @Component({
   selector: 'app-user-menu',
@@ -23,13 +24,14 @@ export class UserMenuComponent{
   })
 
   //Variables generales para la toma de imagenes.
-  // httpLocalHost = 'http://localhost:8181'; //SENA
-  httpLocalHost = 'http://localhost'; //CASA
+  httpLocalHost = 'http://localhost:8181'; //SENA
+  // httpLocalHost = 'http://localhost'; //CASA
 
   constructor(
 
     private authService: AuthService,
     private updateService: UpdateServiceService,
+    private supplierService: SupplierService,
 
   ){ }
 
@@ -49,18 +51,18 @@ export class UserMenuComponent{
         this.nombrePerfil = this.updatedPersona.nombre;
         // this.fotoPerfil = datosPersona.imagen;
         this.perfilForm.setValue({
-          // 'imagen': this.group.imagen.replace('C:/xampp/htdocs', this.httpLocalHost),
-          'imagen' : this.updatedPersona.imagen.replace('J:/Programas/Xampp/htdocs', this.httpLocalHost),
+          'imagen': this.updatedPersona.imagen.replace('C:/xampp/htdocs', this.httpLocalHost),
+          // 'imagen' : this.updatedPersona.imagen.replace('J:/Programas/Xampp/htdocs', this.httpLocalHost),
         })
       });
     }else{
       //Buscamos si es proveedor para traer su nombrem en caso de venir vacío buscamos en proveedor.
-      // this.supplierService.getSingleSupplier(this.authService.desencriptar(localStorage.getItem('id'))).subscribe((data:any) =>{
-      //   let datosProveedor = data[0];
-      //   this.perfilForm.setValue({
-      //     'imagen': this.updatedPersona.imagen.replace('C:/xampp/htdocs', this.httpLocalHost),
-      //   })
-      // });
+      this.supplierService.getSingleSupplier(this.authService.desencriptar(localStorage.getItem('id'))).subscribe((data:any) =>{
+        let datosProveedor = data[0];
+        this.perfilForm.setValue({
+          'imagen': this.updatedPersona.imagen.replace('C:/xampp/htdocs', this.httpLocalHost),
+        })
+      });
       console.log('Es proveedor');
 
     }

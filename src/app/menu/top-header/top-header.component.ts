@@ -6,6 +6,8 @@ import { UpdateServiceService } from '../../main-home/settings/settingsService/u
 import { SupplierService } from '../../dashboard/crud-suppliers/service/supplier.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { updatePersonaI } from '../../main-home/settings/updatePersonaI';
+import { GlobalConstants } from 'src/app/global-constants';
+import { globalAccountConstants } from 'src/app/constants/globalAccountConstants';
 
 @Component({
   selector: 'app-top-header',
@@ -17,23 +19,21 @@ export class TopHeaderComponent implements OnInit {
   public rol!:string;
   public nombrePerfil:any = undefined;
   public fotoPerfil:any = undefined;
+  //Variables generales para la toma de imagenes.
+  public httpLocalHost = GlobalConstants.httpLocalHost;
 
   //interfaz de actualización de la persona para poder traer la propiedad imagen.
-  public updatedPersona! : updatePersonaI;
+  public updatePersona! : updatePersonaI;
 
   perfilForm  = new FormGroup({
     imagen: new FormControl('')
   })
 
-  //Variables generales para la toma de imagenes.
-  // httpLocalHost = 'http://localhost:8181'; //SENA
-  httpLocalHost = 'http://localhost'; //CASA
-
   constructor(
     private router: Router,
     private authService: AuthService,
     private updateService: UpdateServiceService,
-    private supplierService: SupplierService
+    private supplierService: SupplierService,
   ) { }
 
   ngOnInit(): void {
@@ -45,24 +45,26 @@ export class TopHeaderComponent implements OnInit {
     if(this.rol != 'PROVEEDOR'){
       //Buscamos si es invitado para traer su nombre, en caso de venir vacío buscamos en proveedor.
       this.updateService.getSinglePerson(this.authService.desencriptar(localStorage.getItem('id'))).subscribe((data:any) =>{
-        this.updatedPersona = data[0];
-        this.nombrePerfil = this.updatedPersona.nombre;
+        this.updatePersona = data[0];
+        // console.log(this.updatePersona.imagen);
+        this.nombrePerfil = this.updatePersona.nombre;
         // this.fotoPerfil = datosPersona.imagen;
         this.perfilForm.setValue({
-          // 'imagen': this.group.imagen.replace('C:/xampp/htdocs', this.httpLocalHost),
-          'imagen' : this.updatedPersona.imagen.replace('J:/Programas/Xampp/htdocs', this.httpLocalHost),
-        })
-      });
-    }else{
-      //Buscamos si es proveedor para traer su nombrem en caso de venir vacío buscamos en proveedor.
-      this.supplierService.getSingleSupplier(this.authService.desencriptar(localStorage.getItem('id'))).subscribe((data:any) =>{
-        this.updatedPersona = data[0];
-        this.perfilForm.setValue({
-          // 'imagen': this.group.imagen.replace('C:/xampp/htdocs', this.httpLocalHost),
-          'imagen' : this.updatedPersona.imagen.replace('J:/Programas/Xampp/htdocs', this.httpLocalHost),
+          'imagen': this.updatePersona.imagen.replace('C:/xampp/htdocs', this.httpLocalHost),
+          // 'imagen' : this.updatedPersona.imagen.replace('J:/Programas/Xampp/htdocs', this.httpLocalHost),
         })
       });
     }
+    // }else{
+    //   //Buscamos si es proveedor para traer su nombrem en caso de venir vacío buscamos en proveedor.
+    //   this.supplierService.getSingleSupplier(this.authService.desencriptar(localStorage.getItem('id'))).subscribe((data:any) =>{
+    //     this.updatePersona = data[0];
+    //     this.perfilForm.setValue({
+    //       // 'imagen': this.updatePersona.imagen.replace('C:/xampp/htdocs', this.httpLocalHost),
+    //       // 'imagen' : this.updatedPersona.imagen.replace('J:/Programas/Xampp/htdocs', this.httpLocalHost),
+    //     })
+    //   });
+    // }
 
   }
 

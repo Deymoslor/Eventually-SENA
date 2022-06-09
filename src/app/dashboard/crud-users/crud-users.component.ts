@@ -8,38 +8,8 @@ import { PersonaI } from './modal-users/personaI.interface';
 import { FormGroup, FormControl} from '@angular/forms';
 import { AuthService } from 'src/app/core/service/auth.service';
 import { globalAccountConstants } from 'src/app/constants/globalAccountConstants';
-
-
-//Interfaz para definir los datos de la table.
-// export interface PeriodicElement {
-//   position: number;
-//   firstName: string;
-//   lastName: string;
-//   document: number;
-//   bornDate: string;
-//   email: string;
-//   state: string;
-//   actions: null;
-// }
-
-//Toda la información que tendrá la tabla
-// let ELEMENT_DATAORIGINAL: PeriodicElement[] = [
-//   {position: 1, firstName: 'Jordan', lastName: 'Flórez', document: 1001236570, bornDate: '14/04/2003', email: 'jordan@gmail.com', state: '', actions:null}
-//   // {position: 2, firstName: 'Dylan', lastName: 'Murillo', document: 1554894878, bornDate: '09/04/2003', email: 'Dylan@gmail.com', state: '', actions:null},
-//   // {position: 3, firstName: 'Oscar', lastName: 'Rolón', document: 5668756427, bornDate: '05/08/2003', email: 'Oscar@gmail.com', state: '', actions:null},
-//   // {position: 4, firstName: 'Santiago', lastName: 'Usuga', document: 6657899548, bornDate: '09/03/2003', email: 'Santiago@gmail.com', state: '', actions:null},
-//   // {position: 5, firstName: 'Juan', lastName: 'Zapata', document: 4657984125, bornDate: '25/11/2003', email: 'Juan@gmail.com', state: '', actions:null},
-//   // {position: 6, firstName: 'Miguel', lastName: 'Soto', document: 7945249861, bornDate: '15/10/2003', email: 'Miguel@gmail.com', state: '', actions:null},
-// ];
-
-// let ELEMENT_DATA: ListaPersonasI[] = [
-//   // {position: 1, firstName: 'Jordan', lastName: 'Flórez', document: 1001236570, bornDate: '14/04/2003', email: 'jordan@gmail.com', state: '', actions:null}
-//   // {position: 2, firstName: 'Dylan', lastName: 'Murillo', document: 1554894878, bornDate: '09/04/2003', email: 'Dylan@gmail.com', state: '', actions:null},
-//   // {position: 3, firstName: 'Oscar', lastName: 'Rolón', document: 5668756427, bornDate: '05/08/2003', email: 'Oscar@gmail.com', state: '', actions:null},
-//   // {position: 4, firstName: 'Santiago', lastName: 'Usuga', document: 6657899548, bornDate: '09/03/2003', email: 'Santiago@gmail.com', state: '', actions:null},
-//   // {position: 5, firstName: 'Juan', lastName: 'Zapata', document: 4657984125, bornDate: '25/11/2003', email: 'Juan@gmail.com', state: '', actions:null},
-//   // {position: 6, firstName: 'Miguel', lastName: 'Soto', document: 7945249861, bornDate: '15/10/2003', email: 'Miguel@gmail.com', state: '', actions:null},
-// ];
+import { AlertasService } from 'src/app/core/service/alertas.service';
+import { ResponseI } from '../../core/ui/response.interface';
 
 @Component({
   selector: 'app-crud-users',
@@ -101,7 +71,9 @@ constructor(
   //Inyectamos el router.
   private router:Router,
 
-  private globalAccountConstants:globalAccountConstants
+  private globalAccountConstants:globalAccountConstants,
+
+  private alertas:AlertasService,
 
   ) { }
 
@@ -177,11 +149,19 @@ constructor(
       this.datosPersona.token = token;
 
       this.userService.putPerson(this.datosPersona).subscribe((data:any) =>{
-
-        // console.log("Entrando aquí");
-
-        window.location.reload();
-
+        let respuesta:ResponseI = data;
+        //Verificamos si la respuesta es exitosa.
+        if(respuesta.status == 'ok'){
+          this.alertas.showSuccess('Estado de usuario actualizado','Acción exitosa');
+          // console.log("Entrando aquí");
+          setTimeout(() =>{
+            //redirecionamos a el login.
+            window.location.reload();
+          },2000);
+        }else{
+          this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+          window.location.reload();
+        }
       });
 
 
@@ -203,8 +183,19 @@ constructor(
 
         this.userService.putPerson(this.datosPersona).subscribe((data:any) =>{
 
-          window.location.reload();
-
+          let respuesta:ResponseI = data;
+          //Verificamos si la respuesta es exitosa.
+          if(respuesta.status == 'ok'){
+            this.alertas.showSuccess('Estado de usuario actualizado','Acción exitosa');
+            // console.log("Entrando aquí");
+            setTimeout(() =>{
+              //redirecionamos a el login.
+              window.location.reload();
+            },2000);
+          }else{
+            this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+            window.location.reload();
+          }
         });
 
       });

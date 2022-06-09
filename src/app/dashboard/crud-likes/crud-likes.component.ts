@@ -4,6 +4,8 @@ import {MatTableDataSource} from '@angular/material/table';
 import { LikesI } from 'src/app/models/likes';
 
 import { ApiService } from 'src/app/services/api.service';
+import { AlertasService } from 'src/app/core/service/alertas.service';
+import { ResponseI } from '../../core/ui/response.interface';
 
 // export interface PeriodicElement {
 //   position: number;
@@ -44,7 +46,8 @@ export class CrudLikesComponent implements OnInit {
   likes?:LikesI[];
 
   constructor(
-    private api:ApiService
+    private api:ApiService,
+    private alertas:AlertasService,
   ) { }
 
   ngOnInit(): void {
@@ -76,11 +79,19 @@ export class CrudLikesComponent implements OnInit {
       // this.likesStatus.token = token;
 
       this.api.putLikes(this.likesData).subscribe((data:any) =>{
-
-        console.log("Entrando aquí");
-
-        window.location.reload();
-
+        let respuesta:ResponseI = data;
+        //Verificamos si la respuesta es exitosa.
+        if(respuesta.status == 'ok'){
+          this.alertas.showSuccess('Estado de gusto actualizado','Acción exitosa');
+          // console.log("Entrando aquí");
+          setTimeout(() =>{
+            //redirecionamos a el login.
+            window.location.reload();
+          },2000);
+        }else{
+          this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+          window.location.reload();
+        }
       });
 
 
@@ -103,9 +114,19 @@ export class CrudLikesComponent implements OnInit {
         // console.log(this.likesStatus[0]);
 
         this.api.putLikes(this.likesData).subscribe((data:any) =>{
-
-          window.location.reload();
-
+          let respuesta:ResponseI = data;
+          //Verificamos si la respuesta es exitosa.
+          if(respuesta.status == 'ok'){
+            this.alertas.showSuccess('Estado gusto actualizado','Acción exitosa');
+            // console.log("Entrando aquí");
+            setTimeout(() =>{
+              //redirecionamos a el login.
+              window.location.reload();
+            },2000);
+          }else{
+            this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+            window.location.reload();
+          }
         });
 
       });
