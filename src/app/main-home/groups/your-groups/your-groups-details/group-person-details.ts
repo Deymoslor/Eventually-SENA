@@ -1,4 +1,6 @@
 export interface GroupPersonDetails {
+  idDetalleGrupoPersona:number;
+  idGrupos:number;
   idPersona:number;
   nombre:string;
   apellidos:string;

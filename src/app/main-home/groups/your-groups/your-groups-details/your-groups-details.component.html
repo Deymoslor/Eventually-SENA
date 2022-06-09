@@ -43,7 +43,7 @@
                       <tr *ngIf="persona.idPersona != personaId">
                         <td class="product-short-description">{{persona.nombre}}</td>
                         <td class="product-short-description">{{persona.Email}}</td>
-                        <td class="product-short-description">{{persona.estado}}</td>
+                        <td class="product-short-description"><button class="btn btnEditar justify-content-md-center" (click)="putEditDetail(persona.idGrupos,persona.idDetalleGrupoPersona,persona.idPersona, 4)">Eliminar</button></td>
                       </tr>
                     </ng-container>
                   </tbody>

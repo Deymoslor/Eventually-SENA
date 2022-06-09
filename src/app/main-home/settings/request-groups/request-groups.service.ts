@@ -23,6 +23,12 @@ export class RequestGroupsService {
     return this.http.get<RequestGroups[]>(direccion);
   }
 
+  getRequestGuests(guests:number, idGrupo:number):Observable<RequestGroups[]>{
+    let direccion = this.API + "requestGroups?guests=" + guests + "idGrupo=" + idGrupo;
+
+    return this.http.get<RequestGroups[]>(direccion);
+  }
+
   getDetailsGroup(id:number):Observable<RequestGroups>{
     let direccion = this.API + "requestGroups?id=" + id;
     return this.http.get<RequestGroups>(direccion);
