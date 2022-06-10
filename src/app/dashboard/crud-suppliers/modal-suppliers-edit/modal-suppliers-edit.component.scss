@@ -37,6 +37,15 @@
     background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
 }
 
+.btnGuardar {
+    background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
+    color: white;
+}
+
+.btnGuardar:hover {
+    background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
+}
+
 // #state:disabled {}
 @media only screen and (max-width: 1464px) {
     .titlePrincipal {
