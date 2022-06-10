@@ -35,12 +35,6 @@ export class YourGroupsDetailsComponent implements OnInit {
   requestGroupI!: RequestGroups;
 
   GroupForm  = new FormGroup({
-    idGrupos: new FormControl(''),
-    nombreGrupo: new FormControl(''),
-    descripcionGrupo: new FormControl(''),
-    privacidadGrupo: new FormControl(''),
-    InvitadosTotales: new FormControl(''),
-    gustos_idGusto: new FormControl(''),
     imagen: new FormControl('')
   })
   // httpLocalHost = 'http://localhost:8181'; //SENA
@@ -80,16 +74,19 @@ export class YourGroupsDetailsComponent implements OnInit {
     this.promotedGroup.getSingleGroup(Number(idGrupos)).subscribe((data: any) => {
       console.log(data);
       this.group = data[0];
-      if (this.group === null) {
+      if (this.group == null) {
         console.log('esa vaina no sirvio');
-      } else {
+      }
+      if(!this.group.imagen){
+        console.log('esa vaina no sirasdfadfavio');
+        this.group.imagen = '';
         this.GroupForm.setValue({
-          'idGrupos': this.group.idGrupos,
-          'nombreGrupo': this.group.nombreGrupo,
-          'descripcionGrupo': this.group.descripcionGrupo,
-          'privacidadGrupo': this.group.privacidadGrupo,
-          'InvitadosTotales': this.group.InvitadosTotales,
-          'gustos_idGusto': this.group.gustos_idGusto,
+          'imagen': this.group.imagen,
+        });
+      } 
+      else {
+        console.log('ENTREEEEEEEE')
+        this.GroupForm.setValue({
           'imagen': this.group.imagen.replace('C:/xampp/htdocs', GlobalConstants.httpLocalHost),
         });
       }

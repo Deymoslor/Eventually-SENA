@@ -35,11 +35,13 @@ export class ModalEditGroupsComponent implements OnInit {
     })
   }
   ngOnChanges(): void {
+    console.log(this.childMessage);
     let idGrupos = this.activerouter.snapshot.paramMap.get('id')
     console.log(idGrupos);
-    if(Number(idGrupos) > 0){
+    if(Number(idGrupos)){
       this.ApiGroup.getDetailsYourGroup(Number(idGrupos)).subscribe((data: any) =>{
         this.datesGroup =data[0];
+        console.log(data);
         this.editForm.setValue({
           'idGrupos': this.datesGroup.idGrupos,
           'descripcionGrupo': this.datesGroup.descripcionGrupo,

@@ -13,13 +13,15 @@
   </div>
 </ng-container>
 <div class="container">
+  <form [formGroup]="GroupForm">
     <br>
-    <div class="img-container class-thumbnail" *ngIf="!GroupForm.get('imagen')?.value">
+    <div class="img-container class-thumbnail" *ngIf="!GroupForm.get('imagen')!.value">
       <img class="rounded card-img-top" src="../../../../assets/group/prueba.jfif">
     </div>
     <div class="img-container class-thumbnail" *ngIf="GroupForm.get('imagen')?.value">
       <img class="rounded card-img-top" [src]="GroupForm.get('imagen')?.value" alt="{{ group?.nombreGrupo }}">
     </div>
+  </form>
     <div class="info">
         <p class="product-name">{{ group?.nombreGrupo }}</p>
         <br>
@@ -71,8 +73,10 @@
                                 <a class="h4 nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Opciones</a>
                                 <ul class="dropdown-menu">
                                   <div *ngIf="manager?.idPersona == personaId && manager?.estadoPersona_idEstadoPersona == 1">
-                                    <li><a class="h5 dropdown-item" role="button" (click)="editarGroup(group?.idGrupos)" data-bs-toggle="modal" data-bs-target="#content-modal" role="button" (click)="modalOpen(content)">Editar grupo</a></li>
-                                    <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#content-modal2" role="button" (click)="modalOpen2(content2)">Invitar amigo</a></li>
+                                    <li><a class="h5 dropdown-item" role="button" (click)="editarGroup(GroupForm.get('idGrupos')?.value)" data-bs-toggle="modal" data-bs-target="#content-modal" role="button" (click)="modalOpen(content)">Editar grupo</a></li>
+                                    <div *ngIf="group?.privacidadGrupo == 1">
+                                      <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#content-modal2" role="button" (click)="modalOpen2(content2)">Invitar amigo</a></li>
+                                    </div>
                                     <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#modal-report-events-groups-organizer">Reportes</a></li>
                                     <li><a class="h5 dropdown-item" role="button" href="#">Deshabilitar Grupo</a></li>
                                   </div>
