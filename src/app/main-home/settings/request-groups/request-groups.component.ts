@@ -36,7 +36,7 @@ export class RequestGroupsComponent implements OnInit {
 
     window.alert('la respuesta de la solicitúd se ha cargado exitosamente');
 
-    // window.location.reload();
+    window.location.reload();
   }
 
 }

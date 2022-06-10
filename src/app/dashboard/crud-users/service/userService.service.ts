@@ -50,7 +50,7 @@ export class userService {
     return this.http.get<ListaPersonasI[]>(direccion);
   }
 
-  getGroupPerson(rgrupo:number):Observable<ListaPersonasI[]>{
+  getGroupPerson(rgrupo:number):Observable<GroupPersonDetails[]>{
     let direccion = this.API+"persons?personGrupo=" + rgrupo;
     return this.http.get<GroupPersonDetails[]>(direccion);
   }

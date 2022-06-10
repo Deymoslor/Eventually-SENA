@@ -15,6 +15,7 @@ import { AuthService } from 'src/app/core/service/auth.service';
 import { GroupPersonDetails } from './group-person-details';
 import { GlobalConstants } from 'src/app/global-constants';
 import { RequestGroups } from 'src/app/main-home/settings/request-groups/request-groups';
+import { RequestGroupsService } from "src/app/main-home/settings/request-groups/request-groups.service";
 // import { ApiService } from 'src/app/services/api/api.service';
 
 @Component({
@@ -45,8 +46,8 @@ export class YourGroupsDetailsComponent implements OnInit {
   // httpLocalHost = 'http://localhost:8181'; //SENA
   httpLocalHost = 'http://localhost'; //CASA
   group!: Group;
-  RequestGroupsService: any;
   constructor(
+    private RequestGroupsService: RequestGroupsService,
     private YourGroupsService: YourGroupsService,
     private relatedService : RelatedGroupsService,
     private promotedGroup: GroupsServiceService,
@@ -99,11 +100,10 @@ export class YourGroupsDetailsComponent implements OnInit {
       console.log(this.manager);
     })
 
-    let persona = this.auth.desencriptar(localStorage.getItem('id'));
-    this.RequestGroupsService.getRequestGuests(Number(persona), this.personaId,Number(idGrupos)).subscribe(data => {
+    this.RequestGroupsService.getRequestGuests(Number(idGrupos)).subscribe(data => {
       console.log(data);
 
-      this.requestGroups = data;
+      this.personas = data;
     })
 
     if (this.group === null) {
@@ -215,8 +215,8 @@ export class YourGroupsDetailsComponent implements OnInit {
       console.log(data);
     })
 
-    window.alert('la respuesta de la solicitúd se ha cargado exitosamente');
+    window.alert('se ha eliminado el invitado exitosamente');
 
-    // window.location.reload();
+    window.location.reload();
   }
 }
