@@ -7,10 +7,6 @@
             </div>
 
             <form [formGroup]="editForm" (ngSubmit)="postEditForm(editForm.value)" class="textox form">
-                <div class=" form-group">
-                    <label for="">id:</label>
-                    <input type="number" class="form-control" id="" placeholder="Ej: solo para probar" formControlName="idGrupos">
-                </div>
                 <div class="form-group">
                     <label for="">Nombre:</label>
                     <input type="text" class="form-control" id="" placeholder="Ej: El mejor evento de la historia" formControlName="nombreGrupo">
@@ -19,6 +15,17 @@
                 <label for="">Descripción:</label>
                 <div class="mb-2">
                     <textarea type="text" class="form-control" id="exampleFormControlTextarea1" placeholder="Explica de que tratará" rows="2" formControlName="descripcionGrupo"></textarea>
+                </div>
+
+                <div>
+                  <label for="">Imagen Grupo:</label>
+                  <div class="mb-2">
+                    <input (change)="capturarFile($event)" type="file">
+                  </div>
+                  <h4>PREVISUALIZACION</h4>
+                  <div *ngIf="previsualizacion">
+                    <img width="150px" [src]="previsualizacion" alt="">
+                  </div>
                 </div>
 
                 <div>

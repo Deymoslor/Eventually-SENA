@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { LikesI } from 'src/app/models/likes';
 import { ApiService } from 'src/app/services/api.service';
@@ -14,6 +15,8 @@ import { GroupsServiceService } from '../service/groups-service.service';
 export class ModalGroupsComponent implements OnInit {
 
   likesI!: LikesI[];
+  public previsualizacion!: string;
+  public archivos: any = [];
   model: NgbDateStruct | undefined;
   date: {year: number; month: number;} | undefined;
 
@@ -28,7 +31,7 @@ export class ModalGroupsComponent implements OnInit {
     gustos_idGusto: new FormControl('')
   });
 
-  constructor(private apiGroup:GroupsServiceService, private fb: FormBuilder, private likes: ApiService) { }
+  constructor(private apiGroup:GroupsServiceService, private fb: FormBuilder, private likes: ApiService, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
 
@@ -48,6 +51,38 @@ export class ModalGroupsComponent implements OnInit {
       gustos_idGusto: ['', Validators.required],
     })
   }
+
+  capturarFile(event): void {
+    const archivoCapturado = event.target.files[0];
+    this.extraerBase64(archivoCapturado).then((imagen: any) => {
+      this.previsualizacion = imagen.base;
+      console.log(imagen)
+    })
+    this.archivos.push(archivoCapturado);
+    console.log(event);
+  }
+
+  extraerBase64 = async ($event: any) => new Promise((resolve, reject) =>{
+    try {
+      const unsafeImg = window.URL.createObjectURL($event);
+      const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
+      const reader = new FileReader();
+      reader.readAsDataURL($event);
+      reader.onload = () => {
+        resolve({
+          base: reader.result
+        });
+      };
+      reader.onerror = error => {
+        resolve({
+          base: null
+        });
+      };
+    } catch (e) {
+      return null;
+    }
+    return $event;
+  });
 
   postForm(form:Group){
     console.log(form);
