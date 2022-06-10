@@ -1,13 +1,13 @@
 @import '../app.component.scss';
 body .container {
-    max-width: 100vw;
-    width: 95%;
+    width: auto;
     margin-top: 0;
     margin: 0;
     padding: 0;
     padding-top: 5rem;
     height: auto!important;
     margin-bottom: 4vw;
+    border: 1px solid red;
 }
 
 body {
@@ -15,11 +15,17 @@ body {
 }
 
 .containerDash {
-    width: aut;
+    width: 88vw;
+    border: 1px solid blue;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .men {
-    width: 10%;
+    width: 7rem;
+    border: 1px solid green;
 }
 
 
@@ -67,34 +73,79 @@ body {
 
 /*footer*/
 
-// .footer {
-//     margin: 0;
-//     padding: 0;
-//     bottom: 0;
-//     border: 1px solid red;
-//     width: 200%;
-// }
-@media only screen and (max-width: 427px) {
-    // .containerDash {
-    //     width: 60%;
-    // }
+.footer {
+    margin: 0;
+    padding: 0;
+    bottom: 0;
+    border: 1px solid red;
+    width: 200%;
+}
+
+@media only screen and (max-width: 1068px) {
+    .containerDash {
+        width: 88vw;
+    }
+}
+
+@media only screen and (max-width: 1038px) {
+    .containerDash {
+        width: 86vw;
+    }
+}
+
+@media only screen and (max-width: 889px) {
+    .containerDash {
+        width: 84vw;
+    }
+}
+
+@media only screen and (max-width: 779px) {
+    .containerDash {
+        width: 82vw;
+    }
+}
+
+@media only screen and (max-width: 693px) {
+    .containerDash {
+        width: 80vw;
+    }
+}
+
+@media only screen and (max-width: 623px) {
+    .containerDash {
+        width: 75vw;
+    }
+}
+
+@media only screen and (max-width: 617px) {
+    .containerDash {
+        width: 82vw;
+    }
     .men {
         width: 5rem;
     }
 }
 
-// @media only screen and (max-width: 399px) {
-//     .containerDash {
-//         width: 20%;
-//     }
-//     .tables {
-//         overflow: scroll;
-//     }
-//     .tables .table {
-//         width: 2%!important;
-//         margin: 0;
-//     }
-//     .d {
-//         padding-left: -1rem;
-//     }
-// }
+@media only screen and (max-width: 515px) {
+    .containerDash {
+        width: 80vw;
+    }
+}
+
+@media only screen and (max-width: 463px) {
+    .containerDash {
+        width: 75vw;
+    }
+}
+
+@media only screen and (max-width: 372px) {
+    .containerDash {
+        width: 70vw;
+    }
+}
+
+@media only screen and (max-width: 315px) {
+    .containerDash {
+        width: 65vw;
+    }
+}

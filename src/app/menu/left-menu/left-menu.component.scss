@@ -30,7 +30,14 @@
     }
 }
 
+.menucito {
+    display: none;
+}
+
 @media only screen and (max-width: 617px) {
+    .menucito {
+        display: block;
+    }
     .leftMenu {
         width: 4rem;
         margin: 0.5rem;
