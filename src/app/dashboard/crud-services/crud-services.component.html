@@ -16,8 +16,8 @@
                         <th class="textoTitulos" scope="col">Numero contacto</th>
                         <th class="textoTitulos" scope="col">Correo Contacto</th>
                         <th class="textoTitulos" scope="col">Estado Servicio</th>
-                        <th class="textoTitulos" scope="col">Id Proveedor</th>
-                        <th class="textoTitulos" scope="col">Id Tipo Servicio</th>
+                        <th class="textoTitulos" scope="col">Nombre Proveedor</th>
+                        <th class="textoTitulos" scope="col">Tipo Servicio</th>
                         <th class="textoTitulos" scope="col">Accion</th>
                     </tr>
                 </thead>
@@ -32,9 +32,14 @@
                         <td class="textox">{{ service.historialEmpresas }}</td>
                         <td class="textox">{{ service.numeroContacto }}</td>
                         <td class="textox">{{ service.correoContacto }}</td>
-                        <td class="textox">{{ service.estadoServicio }}</td>
-                        <td class="textox">{{ service.Proveedor_idProveedor }}</td>
-                        <td class="textox">{{ service.TipoServicio_idtipoServicio }}</td>
+                        <td *ngIf="service.estadoServicio == '1'" class="textox">ACEPTADO</td>
+                        <td *ngIf="service.estadoServicio == '0'" class="textox">INHABILITADO</td>
+                        <td class="textox" *ngFor="let provider of dataProvider" [hidden]="provider.idProveedor!= service.Proveedor_idProveedor ">
+                                {{provider.nombreProveedor}}
+                        </td>
+                        <td class="textox" *ngFor="let type of TypeServices" [hidden]="type.idtipoServicio != service.TipoServicio_idtipoServicio">
+                            {{type.tipoServicio}}
+                        </td>
                         <!-- (click)="editEvent(event.idEvento)" -->
                         <td class="textox"><button class="btn btnEditar" (click)="modalServiceOpen(contentService, service.idServicios)">Editar</button></td>
                     </tr>
@@ -63,7 +68,8 @@
 
                         <th class="textox" scope="row">{{ TypeService.idtipoServicio }}</th>
                         <td class="textox">{{ TypeService.tipoServicio }}</td>
-                        <td class="textox">{{ TypeService.estadoTipoServicio}}</td>
+                        <td class="textox" *ngIf="TypeService.estadoTipoServicio == 1">Habilitado</td>
+                        <td class="textox" *ngIf="TypeService.estadoTipoServicio == 0">Deshabilitado</td>
                         <td class="textox"><button class="btn btnEditar" (click)="modalTypeServiceOpen(contentType, TypeService.idtipoServicio)">Editar</button></td>
                     </tr>
                 </tbody>
