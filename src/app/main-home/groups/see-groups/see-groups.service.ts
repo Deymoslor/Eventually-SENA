@@ -29,6 +29,11 @@ export class SeeGroupsService {
     return this.http.get<Group>(direccion);
   }
 
+  getDetailsGroup2(id:string):Observable<Group>{
+    let direccion = this.API + "Groups?id=" + id;
+    return this.http.get<Group>(direccion);
+  }
+
   postDetailsGroupPerson(GroupPersonC:GroupPerson):Observable<Response>{
     let direccion = this.API + "Groups";
     return this.http.post<Response>(direccion, GroupPersonC);

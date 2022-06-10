@@ -11,8 +11,8 @@
                 <tr>
 
                     <th class="textoTitulos" scope="col">Id de la petición</th>
-                    <th class="textoTitulos" scope="col">estadoPeticion</th>
-                    <th class="textoTitulos" scope="col">Evento_idEvento</th>
+                    <th class="textoTitulos" scope="col">estado Petición</th>
+                    <th class="textoTitulos" scope="col">Evento</th>
                     <th class="textoTitulos" scope="col">Acciones</th>
 
                 </tr>
@@ -25,9 +25,15 @@
 
                     <th class="textox" scope="row">{{request.idpeticionesEvento}}</th>
 
-                    <td class="textox">{{request.estadoPeticion}}</td>
+                    <td class="textox">
+                        <div *ngIf="request.estadoPeticion == '1'">POR REVISAR</div>
+                        <div *ngIf="request.estadoPeticion == '2'">ACEPTADO</div>
+                        <div *ngIf="request.estadoPeticion == '3'">RECHAZADO</div>
+                    </td>
 
-                    <td class="textox">{{request.Evento_idEvento }}</td>
+                    <td class="textox">
+                        <button class="btn-primary" data-bs-toggle="modal21" data-bs-target="#content-modal21" role="button" (click)="modalOpen(content); getIdEvent(request.Evento_idEvento)">Detalle Evento</button>
+                    </td>
 
                     <!-- Grupo está sin respuesta -->
                     <div *ngIf="request.estadoPeticion==='1'">
@@ -58,3 +64,9 @@
         </table>
     </div>
 </div>
+
+<ng-template #content let-modal21>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal21.dismiss('Cross click')"></button>
+    <!-- <app-modal-disable-event [idEvento]="eventGroupForm.get('idEvento')?.value" [form]="eventGroupForm.value"></app-modal-disable-event> -->
+    <app-datail-event [idEvent]="idEvent"></app-datail-event>
+</ng-template>
