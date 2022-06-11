@@ -1,41 +1,72 @@
 <div class="modal-dialog modal-lg modal-dialog-scrollable">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">Detalle Grupo</h5>
-            <!-- <button type="button" class="btn-close" aria-label="Close" (click)="modal2.dismiss('Cross click')"></button> -->
-        </div>
-        <div class="modal-body">
-            <div class="form-group">
-                <label for="">Nombre:</label>
-                <p>{{this.dataGroup.nombreGrupo}}</p>
+    <div class="modal-header">
+        <h1 class="titlePrincipal" id="staticBackdropLabel">Detalle de Grupo</h1>
+        <!-- <button type="button" class="btn-close" aria-label="Close" (click)="modal2.dismiss('Cross click')"></button> -->
+    </div>
+    <div class="modal-body textox">
+        <div class="form-group">
+            <div class="container d-flex">
+                <div class=" row dflex">
 
-                <label for="">Privacidad:</label>
-                <p>{{this.dataGroup.privacidadGrupo}}</p>
+                    <div class="row filaInfo">
+                        <div class="col-6 colTitulo">
+                            <label class="title " for=" ">Nombre:</label>
+                        </div>
+                        <div class="col-6 colCont">
+                            <p>{{this.dataGroup.nombreGrupo}}</p>
+                        </div>
+                    </div>
 
-                <label for="">Descripción:</label>
-                <div class="mb-2">
-                    <p>{{this.dataGroup.descripcionGrupo}}</p>
+                    <div class="row filaInfo">
+                        <div class="col-6 colTitulo">
+                            <label class="title " for=" ">Privacidad:</label>
+                        </div>
+                        <div class="col-6 colCont">
+                            <p>{{this.dataGroup.privacidadGrupo}}</p>
+                        </div>
+                    </div>
+
+
+                    <div class="row filaInfo">
+                        <div class="col-6 colTitulo">
+                            <label class="title " for=" ">Descripción:</label>
+                        </div>
+                        <div class="col-6 colCont">
+                            <p>{{this.dataGroup.descripcionGrupo}}</p>
+
+                        </div>
+                    </div>
+
+
+                    <div class="row filaInfo">
+                        <div class="col-6 colTitulo">
+                            <label class="title " for="exampleInputEmail1 ">Gusto:</label>
+                        </div>
+                        <div class="col-6 colCont">
+                            <p>{{this.dataGroup.gustos_idGusto}}</p>
+                        </div>
+                    </div>
+
+                    <div class="row filaInfo">
+                        <div class="col-6 colTitulo">
+                            <label class="title " for=" ">InvitadosTotales:</label>
+                        </div>
+                        <div class="col-6 colCont">
+                            <p>{{this.dataGroup.InvitadosTotales}}</p>
+                        </div>
+                    </div>
+
+                    <div class="row filaInfo">
+                        <div class="col-6 colTitulo">
+                            <label class="title " for=" ">Imagen:</label>
+                        </div>
+                        <div class="col-6 colCont">
+                            <img class="img-fluid" [src]="this.dataGroup.imagen " alt="si ">
+                        </div>
+                    </div>
                 </div>
-
-                <div>
-                    <label for="exampleInputEmail1">Gusto:</label>
-                    <p>{{this.dataGroup.gustos_idGusto}}</p>
-                </div>
-
-                <label for="">InvitadosTotales:</label>
-                <div class="mb-2">
-                    <p>{{this.dataGroup.InvitadosTotales}}</p>
-                </div>
-
-                <label for="">imagen:</label>
-                <div class="mb-2">
-                    <img [src]="this.dataGroup.imagen" alt="si">
-                </div>
-
             </div>
         </div>
+
     </div>
-        <div class="modal-footer">
-            <!-- <button type="submit" class="btn btn-primary" [disabled]="createEventForm.invalid" data-bs-dismiss="modal">Crear evento</button> -->
-        </div>
 </div>
