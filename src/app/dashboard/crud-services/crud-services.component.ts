@@ -8,6 +8,9 @@ import { ServiceI } from './models/services.interface';
 import { SupplierService } from '../crud-suppliers/service/supplier.service';
 import { ProveedorI } from '../crud-suppliers/modal-suppliers-create/ProveedorI.interface';
 import { ListaProveedoresI } from '../crud-suppliers/ListaProveedoresI.interface';
+import { GlobalConstants } from 'src/app/global-constants';
+import { DomSanitizer } from '@angular/platform-browser';
+import { content } from 'html2canvas/dist/types/css/property-descriptors/content';
 
 @Component({
   selector: 'app-crud-services',
@@ -45,10 +48,14 @@ export class CrudServicesComponent implements OnInit {
   TypeServices!: TypeServicesI[];
   closeResult!: string;
 
+  previsualizacion!: string;
+  public archivos: any = [];
+
   Services!: ServiceI[];
+  idService!: number;
 
   constructor(private api: ApiService, private router: Router, private modalService: NgbModal,
-    private apiProvider: SupplierService) { }
+    private apiProvider: SupplierService, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     this.api.getAllTypeServices(1).subscribe(data => {
@@ -72,10 +79,10 @@ export class CrudServicesComponent implements OnInit {
     console.log('chica que dice');
   }
 
-  createEvent() {
-    this.router.navigate(['dashboard/createTypeServices']);
-    console.log(this.router)
-  }
+  // createEvent() {
+  //   this.router.navigate(['dashboard/createTypeServices']);
+  //   console.log(this.router)
+  // }
 
   //MODAL
   modalTypeServiceOpen(content: any, numb: number) {
@@ -98,16 +105,23 @@ export class CrudServicesComponent implements OnInit {
   }
 
   modalServiceOpen(content: any, numb: number) {
-    this.idTipo = numb;
-    this.api.getSingleService(this.idTipo).subscribe((data: any) => {
+    this.idService = numb;
+    this.api.getSingleService(this.idService).subscribe((data: any) => {
       this.dataService = data[0];
-      console.log(this.dataService.TipoServicio_idtipoServicio)
+      
+      if(this.dataService.imagen){
+        this.previsualizacion = this.dataService.imagen.replace('C:/xampp/htdocs', GlobalConstants.httpLocalHost);
+      }else{
+        this.previsualizacion = '';
+      }
+
+      console.log(this.previsualizacion)
       this.ServicesForm.setValue({
         'idServicios': this.dataService.idServicios,
         'nombreServicio': this.dataService.nombreServicio,
         'descripcionServicio': this.dataService.descripcionServicio,
         'precioEstimado': this.dataService.precioEstimado,
-        'imagen': this.dataService.imagen,
+        'imagen': '',
         'historialEmpresas': this.dataService.historialEmpresas,
         'numeroContacto': this.dataService.numeroContacto,
         'correoContacto': this.dataService.correoContacto,
@@ -116,6 +130,44 @@ export class CrudServicesComponent implements OnInit {
         'TipoServicio_idtipoServicio': this.dataService.TipoServicio_idtipoServicio,
       })
     })
+
+    
+
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result: any) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason: any) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  modalCreateServiceOpen(content: any, numb: number) {
+    // this.idService = numb;
+    // this.api.getSingleService(this.idService).subscribe((data: any) => {
+    //   this.dataService = data[0];
+      
+    //   if(this.dataService.imagen){
+    //     this.previsualizacion = this.dataService.imagen.replace('C:/xampp/htdocs', GlobalConstants.httpLocalHost);
+    //   }else{
+    //     this.previsualizacion = '';
+    //   }
+
+    //   console.log(this.previsualizacion)
+    //   this.ServicesForm.setValue({
+    //     'idServicios': this.dataService.idServicios,
+    //     'nombreServicio': this.dataService.nombreServicio,
+    //     'descripcionServicio': this.dataService.descripcionServicio,
+    //     'precioEstimado': this.dataService.precioEstimado,
+    //     'imagen': '',
+    //     'historialEmpresas': this.dataService.historialEmpresas,
+    //     'numeroContacto': this.dataService.numeroContacto,
+    //     'correoContacto': this.dataService.correoContacto,
+    //     'estadoServicio': this.dataService.estadoServicio,
+    //     'Proveedor_idProveedor': this.dataService.Proveedor_idProveedor,
+    //     'TipoServicio_idtipoServicio': this.dataService.TipoServicio_idtipoServicio,
+    //   })
+    // })
+
+    
 
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result: any) => {
       this.closeResult = `Closed with: ${result}`;
@@ -160,7 +212,7 @@ export class CrudServicesComponent implements OnInit {
         'nombreServicio': this.dataService.nombreServicio,
         'descripcionServicio': this.dataService.descripcionServicio,
         'precioEstimado': this.dataService.precioEstimado,
-        'imagen': this.dataService.imagen,
+        'imagen': '',
         'historialEmpresas': this.dataService.historialEmpresas,
         'numeroContacto': this.dataService.numeroContacto,
         'correoContacto': this.dataService.correoContacto,
@@ -175,7 +227,7 @@ export class CrudServicesComponent implements OnInit {
         'nombreServicio': this.dataService.nombreServicio,
         'descripcionServicio': this.dataService.descripcionServicio,
         'precioEstimado': this.dataService.precioEstimado,
-        'imagen': this.dataService.imagen,
+        'imagen': '',
         'historialEmpresas': this.dataService.historialEmpresas,
         'numeroContacto': this.dataService.numeroContacto,
         'correoContacto': this.dataService.correoContacto,
@@ -195,7 +247,7 @@ export class CrudServicesComponent implements OnInit {
   }
 
   postEditFormServices(form: ServiceI) {
-    console.log(form);
+    form.imagen = this.previsualizacion;
     this.api.putService(form).subscribe(data => {
       console.log(data);
     });
@@ -203,6 +255,39 @@ export class CrudServicesComponent implements OnInit {
   }
 
   refresh(): void { window.location.reload(); }
+
+
+  capturarFile(event): void {
+    const archivoCapturado = event.target.files[0];
+    this.extraerBase64(archivoCapturado).then((imagen: any) => {
+      this.previsualizacion = imagen.base;
+      console.log("previsualizacion: " + this.previsualizacion);
+    })
+    this.archivos.push(archivoCapturado);
+    // console.log(event);
+  }
+
+  extraerBase64 = async ($event: any) => new Promise((resolve, reject) =>{
+    try {
+      const unsafeImg = window.URL.createObjectURL($event);
+      const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
+      const reader = new FileReader();
+      reader.readAsDataURL($event);
+      reader.onload = () => {
+        resolve({
+          base: reader.result
+        });
+      };
+      reader.onerror = error => {
+        resolve({
+          base: null
+        });
+      };
+    } catch (e) {
+      return null;
+    }
+    return $event;
+  });
 
 
 }
