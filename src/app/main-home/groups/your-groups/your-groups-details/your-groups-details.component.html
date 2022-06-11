@@ -72,7 +72,9 @@
                                 <ul class="dropdown-menu">
                                   <div *ngIf="manager?.idPersona == personaId && manager?.estadoPersona_idEstadoPersona == 1">
                                     <li><a class="h5 dropdown-item" role="button" (click)="editarGroup(group?.idGrupos)" data-bs-toggle="modal" data-bs-target="#content-modal" role="button" (click)="modalOpen(content)">Editar grupo</a></li>
-                                    <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#content-modal2" role="button" (click)="modalOpen2(content2)">Invitar amigo</a></li>
+                                    <div *ngIf="group?.privacidadGrupo == 1">
+                                      <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#content-modal2" role="button" (click)="modalOpen2(content2)">Invitar amigo</a></li>
+                                    </div>
                                     <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#modal-report-events-groups-organizer">Reportes</a></li>
                                     <li><a class="h5 dropdown-item" role="button" href="#">Deshabilitar Grupo</a></li>
                                   </div>
