@@ -1,0 +1,43 @@
+<div class="modal fade" id="content-modal-suppliersEdit" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="titlePrincipal" id="staticBackdropLabel">Edición de proveedor</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Jordan Form Start-->
+                <form class="textox" [formGroup]="editarForm" (ngSubmit)="postForm(editarForm.value)">
+                    <div class="form-group">
+                        <label for="">Nombres del proveedor:</label>
+                        <input type="text" class="form-control" id="" placeholder="MeetUp/Jorge" formControlName="nombreProveedor">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Apellidos del proveedor:</label>
+                        <input type="text" class="form-control" id="" placeholder="MeetUp/Martinez" formControlName="apellidoProveedor">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Email del proveedor:</label>
+                        <input type="text" class="form-control" id="" placeholder="MeetUp@gmail.com" formControlName="correoProveedor">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Fecha de nacimiento del proveedor:</label>
+                        <input type="date" class="form-control" id="" placeholder="MeetUp@gmail.com" formControlName="fechaNacimiento">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Celular del proveedor:</label>
+                        <input type="text" class="form-control" id="" placeholder="3207954891" formControlName="celular">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btnGuardar" (click)="postForm(editarForm.value)">Editar</button>
+            </div>
+        </div>
+    </div>
+</div>

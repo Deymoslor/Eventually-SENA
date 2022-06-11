@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LikesI } from 'src/app/models/likes';
 import { ApiService } from 'src/app/services/api.service';
@@ -15,18 +16,16 @@ export class ModalEditGroupsComponent implements OnInit {
 
   @Input() childMessage: number | undefined;
   likesI!: LikesI[];
+  public previsualizacion!: string;
+  public archivos: any = [];
 
-  constructor(private activerouter:ActivatedRoute , private router:Router, private ApiGroup:YourGroupsService, private likes: ApiService) { }
+  constructor(private activerouter:ActivatedRoute , private router:Router, private ApiGroup:YourGroupsService, private likes: ApiService, private sanitizer: DomSanitizer) { }
 
   datesGroup!: Group;
   editForm = new FormGroup({
     idGrupos: new FormControl(''),
-    nombreGrupo: new FormControl(''),
     descripcionGrupo: new FormControl(''),
     privacidadGrupo: new FormControl(''),
-    // InvitadosTotales: new FormControl(''),
-    // EstadosGrupo_idEstadosGrupo1: new FormControl(''),
-    gustos_idGusto: new FormControl(''),
   })
 
   ngOnInit(): void {
@@ -43,10 +42,8 @@ export class ModalEditGroupsComponent implements OnInit {
         this.datesGroup =data[0];
         this.editForm.setValue({
           'idGrupos': this.datesGroup.idGrupos,
-          'nombreGrupo': this.datesGroup.nombreGrupo,
           'descripcionGrupo': this.datesGroup.descripcionGrupo,
           'privacidadGrupo': this.datesGroup.privacidadGrupo,
-          'gustos_idGusto': this.datesGroup.gustos_idGusto
         });
         console.log(this.editForm.get('idGrupos')?.value);
       });
@@ -69,8 +66,41 @@ export class ModalEditGroupsComponent implements OnInit {
     // })
   }
 
+  capturarFile(event): void {
+    const archivoCapturado = event.target.files[0];
+    this.extraerBase64(archivoCapturado).then((imagen: any) => {
+      this.previsualizacion = imagen.base;
+      console.log(imagen)
+    })
+    this.archivos.push(archivoCapturado);
+    console.log(event);
+  }
+
+  extraerBase64 = async ($event: any) => new Promise((resolve, reject) =>{
+    try {
+      const unsafeImg = window.URL.createObjectURL($event);
+      const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
+      const reader = new FileReader();
+      reader.readAsDataURL($event);
+      reader.onload = () => {
+        resolve({
+          base: reader.result
+        });
+      };
+      reader.onerror = error => {
+        resolve({
+          base: null
+        });
+      };
+    } catch (e) {
+      return null;
+    }
+    return $event;
+  });
+
   postEditForm(form: Group)
   {
+    form.imagen = this.previsualizacion;
     console.log(form);
     this.ApiGroup.putGroup(form).subscribe( data =>{
       console.log(data);

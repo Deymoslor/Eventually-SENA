@@ -6,4 +6,5 @@ export interface Group{
   InvitadosTotales:number;
   EstadosGrupo_idEstadosGrupo1:number;
   gustos_idGusto:number;
+  imagen: string;
 }

@@ -23,11 +23,9 @@
                         <td>{{ like.nombreGusto }}</td>
                         <!-- <td>{{ like.tipoGusto }}</td> -->
                         <td>
+                            <br>
                             <div *ngIf="like.estadoGusto==1">
 
-                                <td></td>
-                                <br>
-                                <br>
 
                                 <div class="form-check form-switch">
 
@@ -41,9 +39,6 @@
 
                             <div *ngIf="like.estadoGusto==2">
 
-                                <td></td>
-                                <br>
-                                <br>
 
                                 <div class="form-check form-switch">
 
@@ -58,12 +53,14 @@
 
                         <!-- <td>{{ like.estadoGusto }}</td> -->
                         <!-- (click)="editEvent(event.idEvento)" -->
-                        <td><button class="btn btnEditar" data-bs-toggle="modal" data-bs-target="#edit-likes-Modal" (click)="editLikes(like.idGusto)">Editar</button></td>
+                        <td><button class="btn btnEditar" data-bs-toggle="modal" data-bs-target="#edit-likes-Modal" (click)="editLikes(like.idGusto)">
+                          <svg  width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><title>Editar</title><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                        </button></td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div><button class="btn btnCrear" data-bs-toggle="modal" data-bs-target="#likes-modal">
-        Crear Gusto
+        Crear
     </button>
 </div>

@@ -31,8 +31,8 @@ export class SeeGroupDetailComponent implements OnInit {
     imagen: new FormControl('')
   })
 
-  httpLocalHost = 'http://localhost:8181'; //SENA
-  // httpLocalHost = 'http://localhost'; //CASA
+  // httpLocalHost = 'http://localhost:8181'; //SENA
+  httpLocalHost = 'http://localhost'; //CASA
 
   constructor(
     private SeeGroupsService: SeeGroupsService,
@@ -69,16 +69,16 @@ export class SeeGroupDetailComponent implements OnInit {
     //   console.log(data);
     //   this.group = data[0];
 
-    //   // this.GroupForm.setValue({
-    //   //   'idGrupos': this.group.idPersona,
-    //   //   'nombreGrpo': this.group.nombreGrupo,
-    //   //   'descripcionGrupo': this.group.descripcionGrupo,
-    //   //   'privacidadGrupo': this.group.privacidadGrupo,
-    //   //   'invitadosTotales': this.group.InvitadosTotales,
-    //   //   'gustos_idGusto': this.group.gustos_idGusto,
-    //   //   'idPersona': this.group.idPersona,
-    //   //   'imagen': this.group.imagen.replace('C:/xampp/htdocs', this.httpLocalHost),
-    //   // });
+    //   this.GroupForm.setValue({
+    //     'idGrupos': this.group.idPersona,
+    //     'nombreGrpo': this.group.nombreGrupo,
+    //     'descripcionGrupo': this.group.descripcionGrupo,
+    //     'privacidadGrupo': this.group.privacidadGrupo,
+    //     'InvitadosTotales': this.group.InvitadosTotales,
+    //     'gustos_idGusto': this.group.gustos_idGusto,
+    //     'idPersona': this.group.idPersona,
+    //     'imagen': this.group.imagen.replace('C:/xampp/htdocs', this.httpLocalHost),
+    //   });
     // })
     this.promotedGroup.getSingleGroup(Number(idGrupos)).subscribe((data: any) => {
       console.log(data);

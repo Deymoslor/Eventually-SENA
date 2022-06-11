@@ -5,6 +5,7 @@ import { GroupsServiceService } from "../service/groups-service.service";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { ApiService } from 'src/app/services/api.service';
 import { LikesI } from 'src/app/models/likes';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-modal-edit-groups',
@@ -15,8 +16,10 @@ export class ModalEditGroupsComponent implements OnInit {
 
   @Input() childMessage!: number;
   likesI!: LikesI[];
+  public previsualizacion!: string;
+  public archivos: any = [];
 
-  constructor(private activerouter:ActivatedRoute , private router:Router, private ApiGroup:GroupsServiceService, private likes: ApiService) { }
+  constructor(private activerouter:ActivatedRoute , private router:Router, private ApiGroup:GroupsServiceService, private likes: ApiService, private sanitizer: DomSanitizer) { }
 
   datesGroup!: Group;
   editForm = new FormGroup({
@@ -57,8 +60,41 @@ export class ModalEditGroupsComponent implements OnInit {
     };
   }
 
+  capturarFile(event): void {
+    const archivoCapturado = event.target.files[0];
+    this.extraerBase64(archivoCapturado).then((imagen: any) => {
+      this.previsualizacion = imagen.base;
+      console.log(imagen)
+    })
+    this.archivos.push(archivoCapturado);
+    console.log(event);
+  }
+
+  extraerBase64 = async ($event: any) => new Promise((resolve, reject) =>{
+    try {
+      const unsafeImg = window.URL.createObjectURL($event);
+      const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
+      const reader = new FileReader();
+      reader.readAsDataURL($event);
+      reader.onload = () => {
+        resolve({
+          base: reader.result
+        });
+      };
+      reader.onerror = error => {
+        resolve({
+          base: null
+        });
+      };
+    } catch (e) {
+      return null;
+    }
+    return $event;
+  });
+
   postEditForm(form: Group)
   {
+    form.imagen = this.previsualizacion;
     console.log(form);
     this.ApiGroup.putGroup(form).subscribe( data =>{
       console.log(data);

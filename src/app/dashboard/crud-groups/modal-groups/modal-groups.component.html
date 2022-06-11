@@ -143,6 +143,16 @@
                                     : ""
                                 }}
                             </div>
+                            <div>
+                              <label for="">Imagen Grupo:</label>
+                              <div class="mb-2">
+                                <input (change)="capturarFile($event)" type="file">
+                              </div>
+                              <h4>PREVISUALIZACION</h4>
+                              <div *ngIf="previsualizacion">
+                                <img width="500px" [src]="previsualizacion" alt="">
+                              </div>
+                            </div>
 
                             <label for="exampleInputEmail1">Gusto:</label>
                             <select class="form-select" aria-label="Default select example" [ngClass]="

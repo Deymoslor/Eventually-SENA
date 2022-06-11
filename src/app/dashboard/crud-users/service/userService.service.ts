@@ -6,6 +6,7 @@ import { PersonaI } from '../modal-users/personaI.interface';
 import { ResponseI } from 'src/app/login-register/login/models/response.intarface';
 import { GlobalConstants } from 'src/app/global-constants';
 import { GroupPerson } from 'src/app/main-home/groups/see-groups/GroupPerson';
+import { GroupPersonDetails } from 'src/app/main-home/groups/your-groups/your-groups-details/group-person-details';
 
 
 @Injectable({
@@ -49,9 +50,14 @@ export class userService {
     return this.http.get<ListaPersonasI[]>(direccion);
   }
 
-  getGroupPerson(rgrupo:number):Observable<ListaPersonasI[]>{
+  getGroupPerson(rgrupo:number):Observable<GroupPersonDetails[]>{
     let direccion = this.API+"persons?personGrupo=" + rgrupo;
-    return this.http.get<ListaPersonasI[]>(direccion);
+    return this.http.get<GroupPersonDetails[]>(direccion);
+  }
+
+  getManagerGroup(manager:number, group:number):Observable<GroupPersonDetails>{
+    let direccion = this.API+"persons?organizadorGrupo=" + manager +"&Grupo=" + group;
+    return this.http.get<GroupPersonDetails>(direccion);
   }
 
   //Creamos método para obtener la persona mediante el filtro. Este método devuelve un observable de tipo PersonaI
