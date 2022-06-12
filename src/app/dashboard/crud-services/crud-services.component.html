@@ -28,7 +28,9 @@
                         <td class="textox">{{ service.nombreServicio }}</td>
                         <td class="textox">{{ service.descripcionServicio }}</td>
                         <td class="textox">{{ service.precioEstimado }}</td>
-                        <td class="textox"><img style="width:500px;" src="{{ service.imagen }}" alt=""></td>
+                        <td class="textox">
+                            <img class="imgTabla" src="{{ service.imagen }}" alt="">
+                        </td>
                         <td class="textox">{{ service.historialEmpresas }}</td>
                         <td class="textox">{{ service.numeroContacto }}</td>
                         <td class="textox">{{ service.correoContacto }}</td>
@@ -49,7 +51,7 @@
     </div>
     <!--TABLE//-->
 
-    <h2 class="fs-1 title">Tipos de Servicios</h2>
+    <h2 class="fs-1 title title2">Tipos de Servicios</h2>
 
     <!--TABLE-->
     <div class="row tables">
@@ -77,7 +79,7 @@
         </div>
     </div>
     <button class="btn btnCrear" class="btn btnEditar" data-bs-toggle="modalCreateTypeDash" data-bs-target="#content-modalCreateTypeDash" (click)="modalCreateServiceOpen(contentCreateType, 1)">
-      Crear Tipo Servicio
+      Crear
   </button>
 </div>
 <!--TABLE//-->

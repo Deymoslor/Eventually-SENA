@@ -77,6 +77,7 @@
 .btnUser {
     background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
     color: white;
+    width: auto;
 }
 
 .btnUser:hover {
@@ -93,6 +94,22 @@
         // .tables table {
         //     width: 10%!important;
         // }
+    }
+}
+
+@media only screen and (max-width: 1063px) {
+    .content {
+        margin-bottom: 4vw;
+        width: 75vw!important;
+        height: 50rem!important;
+        .tables {
+            overflow: scroll;
+            width: 75vw!important;
+            height: 50rem!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
     }
 }
 
