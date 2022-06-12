@@ -93,6 +93,9 @@ header {
     }
 }
 
+// .ocultar {
+//     display: none;
+// }
 .notif {
     margin-top: 0.5rem;
 }
@@ -105,8 +108,15 @@ header {
     display: none;
 }
 
-.pointer{
+.pointer {
     cursor: pointer;
+}
+
+.menus {
+    // border: 5px solid green;
+    .ulMenus {
+        padding-left: 10vw;
+    }
 }
 
 @media only screen and (max-width: 1920px) {
@@ -168,16 +178,28 @@ header {
 @media only screen and (max-width: 1254px) {
     .menus {
         width: auto;
-        padding-left: 22rem;
+        padding-left: 35vw;
         margin-top: 0;
+    }
+}
+
+@media only screen and (max-width: 1233px) {
+    .menus {
+        padding-left: 32vw;
     }
 }
 
 @media only screen and (max-width: 1193px) {
     .menus {
         width: auto;
-        padding-left: 27rem;
+        padding-left: 31vw!important;
         margin-top: 0;
+    }
+}
+
+@media only screen and (max-width: 1135px) {
+    .menus {
+        padding-left: 28vw!important;
     }
 }
 
@@ -197,11 +219,23 @@ header {
     }
 }
 
+@media only screen and (max-width: 1072px) {
+    .menus {
+        padding-left: 25vw!important;
+    }
+}
+
 @media only screen and (max-width: 1062px) {
     .menus {
         width: auto;
         padding-left: 10rem;
         margin-top: 0;
+    }
+}
+
+@media only screen and (max-width: 1015px) {
+    .menus {
+        padding-left: 22vw!important;
     }
 }
 
@@ -213,11 +247,29 @@ header {
     }
 }
 
+@media only screen and (max-width: 966px) {
+    .menus {
+        padding-left: 20vw!important;
+    }
+}
+
 @media only screen and (max-width: 976px) {
     .menus {
         width: auto;
         padding-left: 5rem;
         margin-top: 0;
+    }
+}
+
+@media only screen and (max-width: 933px) {
+    .menus {
+        padding-left: 18vw!important;
+    }
+}
+
+@media only screen and (max-width: 904px) {
+    .menus {
+        padding-left: 15vw!important;
     }
 }
 
@@ -229,11 +281,23 @@ header {
     }
 }
 
+@media only screen and (max-width: 863px) {
+    .menus {
+        padding-left: 12vw!important;
+    }
+}
+
 @media only screen and (max-width: 853px) {
     .menus {
         width: auto;
         padding-left: 0rem;
         margin-top: 0;
+    }
+}
+
+@media only screen and (max-width: 825px) {
+    .menus {
+        padding-left: 10vw!important;
     }
 }
 
@@ -267,7 +331,7 @@ header {
 @media only screen and (max-width: 730px) {
     .menus {
         width: auto;
-        padding-left: -3rem;
+        padding-left: 15vw!important;
         margin-top: 0;
         margin-left: 3.5rem;
     }
@@ -376,7 +440,13 @@ header {
     }
 }
 
-@media only screen and (max-width: 573px) {
+@media only screen and (max-width: 598px) {
+    .menus {
+        padding-left: 18vw!important;
+    }
+}
+
+@media only screen and (max-width: 577px) {
     .menus {
         width: auto;
         padding-left: -3rem;
@@ -405,6 +475,12 @@ header {
         .varSearch {
             margin-left: -1rem;
         }
+    }
+}
+
+@media only screen and (max-width: 541px) {
+    .menus {
+        padding-left: 25vw!important;
     }
 }
 

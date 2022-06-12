@@ -9,12 +9,10 @@
             <thead class="titles">
 
                 <tr>
-
                     <th class="textoTitulos" scope="col">Id de la petición</th>
-                    <th class="textoTitulos" scope="col">estadoPeticion</th>
-                    <th class="textoTitulos" scope="col">Grupos_idGrupos</th>
+                    <th class="textoTitulos" scope="col">estado Peticion</th>
+                    <th class="textoTitulos" scope="col">Grupo</th>
                     <th class="textoTitulos" scope="col">Acciones</th>
-
                 </tr>
 
             </thead>
@@ -25,9 +23,15 @@
 
                     <th class="textox" scope="row">{{request.idpeticionesGrupo}}</th>
 
-                    <td class="textox">{{request.estadoPeticion}}</td>
+                    <td class="textox">
+                        <div *ngIf="request.estadoPeticion == '1'">POR REVISAR</div>
+                        <div *ngIf="request.estadoPeticion == '2'">ACEPTADO</div>
+                        <div *ngIf="request.estadoPeticion == '3'">RECHAZADO</div>
+                    </td>
 
-                    <td class="textox">{{request.Grupos_idGrupos}}</td>
+                    <td class="textox">
+                        <button class="btn-primary" data-bs-toggle="modal20" data-bs-target="#content-modal20" role="button" (click)="modalOpen(content); getIdGroup(request.Grupos_idGrupos)">Detalle Grupo</button>
+                    </td>
 
                     <!-- Grupo está sin respuesta -->
                     <div *ngIf="request.estadoPeticion==='1'">
@@ -47,7 +51,7 @@
                     <!-- Grupo está deshabilitado -->
                     <div *ngIf="request.estadoPeticion==='3'">
                         <div class="form-check form-switch">
-                            <button (click)="aceptarPeticion(request.idpeticionesGrupo)" type="button" class="btnbtn-secondary btn-sm">Habilitar</button>
+                            <button (click)="aceptarPeticion(request.idpeticionesGrupo)" type="button" class="btn btnHabilitar btn-sm">Habilitar</button>
                         </div>
                     </div>
 
@@ -59,3 +63,9 @@
         </table>
     </div>
 </div>
+
+<ng-template #content let-modal20>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal20.dismiss('Cross click')"></button>
+    <!-- <app-modal-disable-event [idEvento]="eventGroupForm.get('idEvento')?.value" [form]="eventGroupForm.value"></app-modal-disable-event> -->
+    <app-datail-group [idGroup]="idGroup"></app-datail-group>
+</ng-template>

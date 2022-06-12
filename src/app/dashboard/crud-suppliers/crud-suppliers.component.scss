@@ -24,6 +24,21 @@
     height: auto!important;
 }
 
+.content {
+    height: 55vw!important;
+    margin-top: 2rem!important;
+    margin: 0 auto;
+    max-width: 100vw;
+    .tables {
+        overflow: scroll;
+        max-width: 100vw;
+        height: 85rem!important;
+    }
+    .tables table {
+        height: 30%!important;
+    }
+}
+
 .textoTitulos {
     font-family: 'Ubuntu', sans-serif;
     font-weight: 700;
@@ -57,13 +72,27 @@
     background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
 }
 
-@media only screen and (max-width: 970px) {
+@media only screen and (max-width: 1167px) {
     .content {
-        width: 74vw!important;
-        margin-left: 10vw!important;
+        height: 45vw!important;
+        // margin-left: 4vw;
+        .tables {
+            height: 45vw!important;
+        }
+        // .tables table {
+        //     width: 10%!important;
+        // }
+    }
+}
+
+@media only screen and (max-width: 938px) {
+    .content {
+        width: 75vw!important;
+        height: 50vw!important;
         .tables {
             overflow: scroll;
-            width: 74vw!important;
+            width: 75vw!important;
+            height: 50vw!important;
         }
         .tables table {
             width: 10%!important;
@@ -71,10 +100,55 @@
     }
 }
 
-@media only screen and (max-width: 428px) {
+@media only screen and (max-width: 895px) {
+    .content {
+        width: 70vw!important;
+        .tables {
+            overflow: scroll;
+            width: 70vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+}
+
+@media only screen and (max-width: 895px) {
+    .content {
+        width: 75vw!important;
+        // margin-left: 4vw;
+        height: 35rem!important;
+        .tables {
+            overflow: scroll;
+            width: 75vw!important;
+            height: 35rem!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+}
+
+@media only screen and (max-width: 624px) {
+    .content {
+        width: 70vw!important;
+        // margin-left: 4vw;
+        height: 30rem!important;
+        .tables {
+            overflow: scroll;
+            width: 70vw!important;
+            height: 30rem!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+}
+
+@media only screen and (max-width: 463px) {
     .content {
         width: 65vw!important;
-        margin-left: 4vw!important;
+        // margin-left: 4vw;
         .tables {
             overflow: scroll;
             width: 65vw!important;
@@ -85,28 +159,16 @@
     }
 }
 
-@media only screen and (max-width: 350px) {
+@media only screen and (max-width: 372px) {
     .content {
-        margin-left: 2vw!important;
-    }
-}
-
-@media only screen and (max-width: 338px) {
-    .content {
-        width: 55vw!important;
-        margin-left: 4vw!important;
+        width: 60vw!important;
+        // margin-left: 4vw;
         .tables {
             overflow: scroll;
-            width: 55vw!important;
+            width: 60vw!important;
         }
         .tables table {
-            width: 10%!important;
+            width: 8%!important;
         }
-    }
-}
-
-@media only screen and (max-width: 294px) {
-    .content {
-        margin-left: 1vw!important;
     }
 }

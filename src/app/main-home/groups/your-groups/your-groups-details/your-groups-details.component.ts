@@ -13,6 +13,9 @@ import { userService } from "../../../../dashboard/crud-users/service/userServic
 import { ListaPersonasI } from 'src/app/dashboard/crud-users/ListaPersonasI.interface';
 import { AuthService } from 'src/app/core/service/auth.service';
 import { GroupPersonDetails } from './group-person-details';
+import { GlobalConstants } from 'src/app/global-constants';
+import { RequestGroups } from 'src/app/main-home/settings/request-groups/request-groups';
+import { RequestGroupsService } from "src/app/main-home/settings/request-groups/request-groups.service";
 // import { ApiService } from 'src/app/services/api/api.service';
 
 @Component({
@@ -26,7 +29,10 @@ export class YourGroupsDetailsComponent implements OnInit {
   childMessage: number | undefined;
   likesI!: LikesI[];
   public personas! : GroupPersonDetails[];
+  manager!: GroupPersonDetails;
   personaId = this.auth.desencriptar(localStorage.getItem('id'));
+  requestGroups!: RequestGroups[];
+  requestGroupI!: RequestGroups;
 
   GroupForm  = new FormGroup({
     idGrupos: new FormControl(''),
@@ -37,10 +43,11 @@ export class YourGroupsDetailsComponent implements OnInit {
     gustos_idGusto: new FormControl(''),
     imagen: new FormControl('')
   })
-  httpLocalHost = 'http://localhost:8181'; //SENA
-  // httpLocalHost = 'http://localhost'; //CASA
+  // httpLocalHost = 'http://localhost:8181'; //SENA
+  httpLocalHost = 'http://localhost'; //CASA
   group!: Group;
   constructor(
+    private RequestGroupsService: RequestGroupsService,
     private YourGroupsService: YourGroupsService,
     private relatedService : RelatedGroupsService,
     private promotedGroup: GroupsServiceService,
@@ -83,19 +90,26 @@ export class YourGroupsDetailsComponent implements OnInit {
           'privacidadGrupo': this.group.privacidadGrupo,
           'InvitadosTotales': this.group.InvitadosTotales,
           'gustos_idGusto': this.group.gustos_idGusto,
-          'imagen': this.group.imagen.replace('C:/xampp/htdocs', this.httpLocalHost),
+          'imagen': this.group.imagen.replace('C:/xampp/htdocs', GlobalConstants.httpLocalHost),
         });
       }
+    })
+
+    this.userService.getManagerGroup(this.personaId,Number(idGrupos)).subscribe((data: any) => {
+      this.manager = data[0];
+      console.log(this.manager);
+    })
+
+    this.RequestGroupsService.getRequestGuests(Number(idGrupos)).subscribe(data => {
+      console.log(data);
+
+      this.personas = data;
     })
 
     if (this.group === null) {
       this.router.navigate(['group']);
     }
 
-    // this.EventService.getSigleEventGroup(Number(idGrupos)).subscribe((data: any) => {
-    //   console.log(data);
-    //   this.event = data[0];
-    // })
   }
 
   modalOpen(content:any){
@@ -192,4 +206,17 @@ export class YourGroupsDetailsComponent implements OnInit {
     })
   }
   refresh(): void { window.location.reload(); }
+
+  putEditDetail(group: Number, detail: Number, idPersona: Number, estadoPersona: Number){
+    console.log('grupos: ', group, 'detalle: ', detail, 'el idPersona: ', idPersona, 'el Estado Persona: ', estadoPersona);
+    const newDetail = {idGrupos: group, idDetalleGrupoPersonas: detail, idPersona: idPersona, estadoPersona_idEstadoPersona: estadoPersona}
+
+    this.RequestGroupsService.putDetailsPersonGroup(newDetail).subscribe( data =>{
+      console.log(data);
+    })
+
+    window.alert('se ha eliminado el invitado exitosamente');
+
+    window.location.reload();
+  }
 }

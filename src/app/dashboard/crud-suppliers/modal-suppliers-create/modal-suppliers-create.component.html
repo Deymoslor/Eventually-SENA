@@ -1,47 +1,42 @@
-<div class="modal fade" id="content-modal-suppliersCreate" tabindex="-1" >
+<div class="modal fade" id="content-modal-suppliersCreate" tabindex="-1">
     <div class="modal-dialog modal-lg modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="staticBackdropLabel">Creacion de proveedor</h4>
+                <h5 class="titlePrincipal" id="staticBackdropLabel">Crear Proveedor</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <!-- Jordan Form Start-->
-                <form [formGroup]="createSupplierForm" (ngSubmit)="postForm(createSupplierForm.value)">
+                <form class="textox" [formGroup]="createSupplierForm" (ngSubmit)="postForm(createSupplierForm.value)">
                     <div class="form-group">
                         <label for="">Nombres del proveedor:</label>
-                        <input type="text" class="form-control" id=""
-                        placeholder="MeetUp/Jorge" formControlName="nombreProveedor">
+                        <input type="text" class="form-control" id="" placeholder="MeetUp/Jorge" formControlName="nombreProveedor">
                     </div>
 
                     <div class="form-group">
                         <label for="">Apellidos del proveedor:</label>
-                        <input type="text" class="form-control" id=""
-                        placeholder="MeetUp/Martinez" formControlName="apellidoProveedor">
+                        <input type="text" class="form-control" id="" placeholder="MeetUp/Martinez" formControlName="apellidoProveedor">
                     </div>
 
                     <div class="form-group">
                         <label for="">Email del proveedor:</label>
-                        <input type="text" class="form-control" id=""
-                        placeholder="MeetUp@gmail.com" formControlName="correoProveedor">
+                        <input type="text" class="form-control" id="" placeholder="MeetUp@gmail.com" formControlName="correoProveedor">
                     </div>
 
                     <div class="form-group">
                         <label for="">Fecha de nacimiento del proveedor:</label>
-                        <input type="date" class="form-control" id=""
-                        placeholder="12/04/2022" formControlName="fechaNacimiento">
+                        <input type="date" class="form-control" id="" placeholder="12/04/2022" formControlName="fechaNacimiento">
                     </div>
 
                     <div class="form-group">
                         <label for="">Celular del proveedor:</label>
-                        <input type="text" class="form-control" id=""
-                        placeholder="3207954891" formControlName="celular">
+                        <input type="text" class="form-control" id="" placeholder="3207954891" formControlName="celular">
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" (click)="postForm(createSupplierForm.value)">Crear Proveedor</button>
+                <button type="button" class="btn btnGuardar" (click)="postForm(createSupplierForm.value)">Crear</button>
             </div>
         </div>
     </div>

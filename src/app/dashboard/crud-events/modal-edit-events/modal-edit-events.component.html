@@ -3,7 +3,7 @@
         <div class="modal-dialog modal-lg modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="titlePrincipal" id="staticBackdropLabel">Creación de eventos</h1>
+                    <h1 class="titlePrincipal" id="staticBackdropLabel">Editar de eventos</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -57,15 +57,15 @@
                         <input type="text" class="form-control" id="" placeholder="Ej: El mejor evento" formControlName="estadoEvento" [readonly]="true">
                         <div class="form-check form-switch">
                             <div *ngIf="editForm.get('estadoEvento')?.value == 1 || editForm.get('estadoEvento')?.value == 0">
-                                <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" *ngIf="editForm.get('estadoEvento')?.value == 0" (click)="switchStateEvent(editForm.get('estadoEvento')?.value)" >
-                                <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" *ngIf="editForm.get('estadoEvento')?.value == 1" (click)="switchStateEvent(editForm.get('estadoEvento')?.value)" checked >
+                                <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" *ngIf="editForm.get('estadoEvento')?.value == 0" (click)="switchStateEvent(editForm.get('estadoEvento')?.value)">
+                                <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" *ngIf="editForm.get('estadoEvento')?.value == 1" (click)="switchStateEvent(editForm.get('estadoEvento')?.value)" checked>
                                 <label class="form-check-label fw-bolder fs-4 label" for="flexSwitchCheckChecked" *ngIf="editForm.get('estadoEvento')?.value == 0">Habilitar evento</label>
                                 <label class="form-check-label fw-bolder fs-4 label" for="flexSwitchCheckChecked" *ngIf="editForm.get('estadoEvento')?.value == 1">Deshabilitar evento</label>
                             </div>
                             <div *ngIf="editForm.get('estadoEvento')?.value == 3">
                                 EVENTO TERMINADO
                             </div>
-                        </div> 
+                        </div>
 
                         <!-- <div class="check-container-politycs">
                             <div class="form-check">
@@ -79,7 +79,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="textox btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="textox btn btnGuardar" data-bs-dismiss="modal" (click)="refresh()">Guardar</button>
+                    <button type="submit" class="textox btn btnGuardar" data-bs-dismiss="modal" (click)="refresh()">Editar</button>
                 </div>
             </div>
         </div>

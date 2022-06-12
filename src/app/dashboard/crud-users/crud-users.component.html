@@ -14,10 +14,10 @@
                     <tr>
 
                         <th class="textoTitulos" scope="col">ID</th>
-                        <th class="textoTitulos" scope="col">nombre</th>
-                        <th class="textoTitulos" scope="col">apellidos</th>
-                        <th class="textoTitulos" scope="col">documento</th>
-                        <th class="textoTitulos" scope="col">fechaNacimiento</th>
+                        <th class="textoTitulos" scope="col">Nombre</th>
+                        <th class="textoTitulos" scope="col">Apellidos</th>
+                        <th class="textoTitulos" scope="col">Documento</th>
+                        <th class="textoTitulos" scope="col">FechaNacimiento</th>
                         <th class="textoTitulos" scope="col">Email</th>
                         <th class="textoTitulos" scope="col">Estado</th>
                         <th class="textoTitulos" scope="col">Acciones</th>
@@ -42,41 +42,39 @@
 
                         <td class="textox">{{persona.Email}}</td>
 
-
-                        <div *ngIf="persona.estado==='Activo'">
-
-                            <td></td>
+                        <td>
                             <br>
-                            <br>
+                            <div *ngIf="persona.estado==='Activo'">
 
-                            <div class="form-check form-switch">
+                                <div class="form-check form-switch">
 
-                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked (click)="cambioEstado(persona.estado,persona.idPersona)">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked (click)="cambioEstado(persona.estado,persona.idPersona)">
 
-                                <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+                                    <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+
+                                </div>
 
                             </div>
 
-                        </div>
+                            <div *ngIf="persona.estado==='Inactivo'">
 
-                        <div *ngIf="persona.estado==='Inactivo'">
 
-                            <td></td>
-                            <br>
-                            <br>
+                                <div class="form-check form-switch">
 
-                            <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" (click)="cambioEstado(persona.estado,persona.idPersona)">
 
-                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" (click)="cambioEstado(persona.estado,persona.idPersona)">
+                                    <label class="form-check-label" for="flexSwitchCheckChecked"></label>
 
-                                <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+                                </div>
 
                             </div>
+                        </td>
 
-                        </div>
 
                         <td>
-                            <button (click)="editarPersona(persona.idPersona)" data-bs-toggle="modal" data-bs-target="#content-modal-users" type="button" class="btn btnEditar btn-sm">Editar</button>
+                            <button (click)="editarPersona(persona.idPersona)" data-bs-toggle="modal" data-bs-target="#content-modal-users" type="button" class="btn btnEditar btn-sm">
+                              <svg  width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><title>Editar</title><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                            </button>
                         </td>
 
                     </tr>
@@ -89,10 +87,12 @@
 
             <!-- Jordan Table Finish -->
 
-            <button class="btn btnUser col-2 d-md-flex justify-content-md-center" data-bs-toggle="modal" data-bs-target="#content-modal-users">
 
-        Crear
-
-    </button>
 
         </div>
+    </div>
+    <button class="btn btnUser col-2 d-md-flex justify-content-md-center" data-bs-toggle="modal" data-bs-target="#content-modal-users">
+
+      Crear
+
+  </button></div>

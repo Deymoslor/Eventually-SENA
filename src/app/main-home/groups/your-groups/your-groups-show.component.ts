@@ -4,6 +4,8 @@ import { Group } from '../see-groups/group';
 import { YourGroupsDetailsComponent } from './your-groups-details/your-groups-details.component';
 import { SeeGroupsService } from "../../groups/see-groups/see-groups.service";
 import { FormControl, FormGroup } from '@angular/forms';
+import { GroupsServiceService } from 'src/app/dashboard/crud-groups/service/groups-service.service';
+import { GlobalConstants } from 'src/app/global-constants';
 
 @Component({
   selector: 'app-your-groups-show',
@@ -20,37 +22,37 @@ export class YourGroupsShowComponent implements OnInit {
     nombreGrupo: new FormControl(''),
     descripcionGrupo: new FormControl(''),
     privacidadGrupo: new FormControl(''),
-    invitadosTotales: new FormControl(''),
+    InvitadosTotales: new FormControl(''),
+    gustos_idGusto: new FormControl(''),
     imagen: new FormControl('')
   })
 
-  httpLocalHost = 'http://localhost:8181'; //SENA
-  // httpLocalHost = 'http://localhost'; //CASA
+  // httpLocalHost = 'http://localhost:8181'; //SENA
+  httpLocalHost = 'http://localhost'; //CASA
 
   constructor(
     private SeeGroupsService: SeeGroupsService,
+    private promotedGroup: GroupsServiceService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
   ngOnInit(): void {
-    this.SeeGroupsService.getDetailsGroup(this.group.idGrupos).subscribe(data => {
-      // console.log(data)
-
-      this.listGroups = data[0];
-        if (this.listGroups.imagen) {
-          // element.imagen.replace('C:/xampp/htdocs', this.httpLocalHost);  
-          this.GroupForm.setValue({
-            idGrupos: this.listGroups.idGrupos,
-            nombreGrupo: this.listGroups.nombreGrupo,
-            descripcionGrupo: this.listGroups.descripcionGrupo,
-            privacidadGrupo: this.listGroups.privacidadGrupo,
-            invitadosTotales: this.listGroups.InvitadosTotales,
-            imagen:  this.listGroups.imagen.replace('C:/xampp/htdocs', this.httpLocalHost)
-          })
-        }
-        else{
-
-        }
+    this.promotedGroup.getSingleGroup(this.group.idGrupos).subscribe((data: any) => {
+      console.log(data);
+      this.group = data[0];
+      if (this.group === null) {
+        console.log('esa vaina no sirvio');
+      } else {
+        this.GroupForm.setValue({
+          'idGrupos': this.group.idGrupos,
+          'nombreGrupo': this.group.nombreGrupo,
+          'descripcionGrupo': this.group.descripcionGrupo,
+          'privacidadGrupo': this.group.privacidadGrupo,
+          'InvitadosTotales': this.group.InvitadosTotales,
+          'gustos_idGusto': this.group.gustos_idGusto,
+          'imagen': this.group.imagen.replace('C:/xampp/htdocs', GlobalConstants.httpLocalHost),
+        });
+      }
     })
   }
 

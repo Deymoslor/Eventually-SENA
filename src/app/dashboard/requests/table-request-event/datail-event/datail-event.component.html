@@ -1,0 +1,36 @@
+<div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Detalle evento</h5>
+            <!-- <button type="button" class="btn-close" aria-label="Close" (click)="modal2.dismiss('Cross click')"></button> -->
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="">Nombre:</label>
+                <p>{{this.dataEvent.nombreEvento}}</p>
+
+                <label for="">descripcion del Evento:</label>
+                <p>{{this.dataEvent.descripcionEvento}}</p>
+
+                <label for="">fecha del Evento:</label>
+                <div class="mb-2">
+                    <p>{{this.dataEvent.fechaEvento}}</p>
+                </div>
+
+                <div>
+                    <label for="exampleInputEmail1">imagen:</label>
+                    <img [src]="this.dataEvent.imagen" alt="">
+                </div>
+
+                <label for="">participantes Totales:</label>
+                <div class="mb-2">
+                    <p>{{this.dataEvent.participantesTotales}}</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+        <div class="modal-footer">
+            <!-- <button type="submit" class="btn btn-primary" [disabled]="createEventForm.invalid" data-bs-dismiss="modal">Crear evento</button> -->
+        </div>
+</div>
