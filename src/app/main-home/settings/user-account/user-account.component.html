@@ -1,7 +1,7 @@
-<article class="cards1 card shadow-sm">
-    <div class="card-body">
+<article class="cards1  shadow-sm">
+    <div class="">
         <div>
-            <h1 class="m-0 h1">Información Personal</h1><br>
+            <h1 class="m-0 h1 titlePrincipal">Información Personal</h1><br>
             <!-- {{childMessage}} -->
         </div>
         <div class="card ">
@@ -9,10 +9,12 @@
                 <form [formGroup]="editarForm">
                     <!-- Nombre -->
                     <div class="mb-3">
-                        <b><label class="form-label">Nombres</label></b>
+                        <b><label class="form-label textoTitulos">Nombres</label></b>
                         <br>
                         <!-- <input required type="text" class="form-control" formControlName="nombre" aria-describedby="helpId" placeholder="Escribe tu nombre"> -->
-                        {{this.datosPersona.nombre}}
+                        <p class="textox">
+                            {{this.datosPersona.nombre}}
+                        </p>
 
                         <div class="separator"></div>
 
@@ -20,10 +22,12 @@
 
                     <!-- Apellidos -->
                     <div class="mb-3">
-                        <b><label class="form-label">Apellidos</label></b>
+                        <b><label class="form-label textoTitulos">Apellidos</label></b>
                         <!-- <input required type="text" class="form-control" formControlName="apellidos" aria-describedby="helpId" placeholder="Escribe tus apellidos"> -->
                         <br>
-                        {{this.datosPersona.apellidos}}
+                        <p class="textox">
+                            {{this.datosPersona.apellidos}}
+                        </p>
 
                         <div class="separator"></div>
 
@@ -31,10 +35,12 @@
 
                     <!-- Documento -->
                     <div class="mb-3">
-                        <b><label class="form-label">Documento</label></b>
+                        <b><label class="form-label textoTitulos">Documento</label></b>
                         <!-- <input required type="text" class="form-control" formControlName="documento" aria-describedby="helpId" placeholder="Escribe tu documento"> -->
                         <br>
-                        {{this.datosPersona.documento}}
+                        <p class="textox">
+                            {{this.datosPersona.documento}}
+                        </p>
 
                         <div class="separator"></div>
 
@@ -42,10 +48,12 @@
 
                     <!-- fechaNacimiento -->
                     <div class="mb-3">
-                        <b><label class="form-label">Fecha de Nacimiento</label></b>
+                        <b><label class="form-label textoTitulos">Fecha de Nacimiento</label></b>
                         <!-- <input required type="date" class="form-control" formControlName="fechaNacimiento" aria-describedby="helpId" placeholder="Escribe tu fecha de nacimiento"> -->
                         <br>
-                        {{this.datosPersona.fechaNacimiento}}
+                        <p class="textox">
+                            {{this.datosPersona.fechaNacimiento}}
+                        </p>
 
                         <div class="separator"></div>
 
@@ -63,10 +71,10 @@
                     <div class="selectNewLikes input-group mb-3">
 
                         <div id="account-topics-subscribed" class="clearfix">
-                            <p id="account-topics-add-more">¡Estos son tus gustos!</p>
+                            <p class="textoTitulos" id="account-topics-add-more">¡Estos son tus gustos!</p>
                             <ul *ngFor="let gustos of misGustos" id="account-topics-subscribed-list" class="account-topics-list clearfix">
-                                <li class="account-topics-item" data-topicid="1589" >
-                                    <div class="account-topics-name">{{gustos.nombreGusto}}</div>
+                                <li class="account-topics-item" data-topicid="1589">
+                                    <div class="textox .account-topics-item">{{gustos.nombreGusto}}</div>
                                 </li>
                                 <!-- EJEMPLO:
                                 <li class="account-topics-item" data-topicid="7203">
