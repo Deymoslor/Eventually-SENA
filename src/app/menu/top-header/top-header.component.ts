@@ -8,6 +8,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { updatePersonaI } from '../../main-home/settings/updatePersonaI';
 import { GlobalConstants } from 'src/app/global-constants';
 import { globalAccountConstants } from 'src/app/constants/globalAccountConstants';
+import { updateImagenProfile } from '../user-menu/updateImagenProfile.interface';
 
 @Component({
   selector: 'app-top-header',
@@ -16,14 +17,18 @@ import { globalAccountConstants } from 'src/app/constants/globalAccountConstants
 })
 export class TopHeaderComponent implements OnInit {
 
-  public rol!:string;
-  public nombrePerfil:any = undefined;
-  public fotoPerfil:any = undefined;
   //Variables generales para la toma de imagenes.
   public httpLocalHost = GlobalConstants.httpLocalHost;
 
+  public rol!:string;
+  public nombrePerfil:any = undefined;
+  public fotoPerfil:any = undefined;
+
   //interfaz de actualización de la persona para poder traer la propiedad imagen.
   public updatePersona! : updatePersonaI;
+
+  //interfaz de actualización de la persona para poder traer la propiedad imagen.
+  public imagenProfile! : updateImagenProfile;
 
   perfilForm  = new FormGroup({
     imagen: new FormControl('')
@@ -45,13 +50,20 @@ export class TopHeaderComponent implements OnInit {
     if(this.rol != 'PROVEEDOR'){
       //Buscamos si es invitado para traer su nombre, en caso de venir vacío buscamos en proveedor.
       this.updateService.getSinglePerson(this.authService.desencriptar(localStorage.getItem('id'))).subscribe((data:any) =>{
-        this.updatePersona = data[0];
+
+        //para la imagen de la persona.
+        this.imagenProfile = data[0];
         // console.log(this.updatePersona.imagen);
+
+        //para los datos de la persona.
+        this.updatePersona = data[0];
+
         this.nombrePerfil = this.updatePersona.nombre;
         // this.fotoPerfil = datosPersona.imagen;
+
         this.perfilForm.setValue({
-          'imagen': this.updatePersona.imagen.replace('C:/xampp/htdocs', this.httpLocalHost),
-          // 'imagen' : this.updatedPersona.imagen.replace('J:/Programas/Xampp/htdocs', this.httpLocalHost),
+          // 'imagen': this.updatePersona.imagen.replace('C:/xampp/htdocs', this.httpLocalHost),
+          'imagen' : this.imagenProfile.imagen.replace('J:/Programas/Xampp/htdocs', this.httpLocalHost),
         })
       });
     }

@@ -13,6 +13,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { AlertasService } from 'src/app/core/service/alertas.service';
 import { ResponseI } from '../../../core/ui/response.interface';
 import { GlobalConstants } from 'src/app/global-constants';
+import { updateImagenProfile } from 'src/app/menu/user-menu/updateImagenProfile.interface';
+import { ImagenProfileService } from '../imagenProfileService/imagen-profile.service';
 
 @Component({
   selector: 'app-update-user-account',
@@ -29,11 +31,17 @@ export class UpdateUserAccountComponent implements OnInit {
   //Variables generales para la toma de imagenes.
   public httpLocalHost = GlobalConstants.httpLocalHost;
 
-  //interfaz de actualización de la persona para poder traer la propiedad imagen.
+  //interfaz de actualización de la persona.
   public updatePersona! : updatePersonaI;
 
-  perfilForm  = new FormGroup({
-    imagen: new FormControl('')
+  //interfaz de la imagen de la persona.
+  public imagenProfile! : updateImagenProfile;
+
+  //Form group para cambiar imagen.
+  imagenPerfilForm  = new FormGroup({
+    idPersona: new FormControl(''),
+    imagen: new FormControl(''),
+    token: new FormControl(''),
   })
 
   constructor(
@@ -42,6 +50,7 @@ export class UpdateUserAccountComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private ApiService: ApiService,
+    private imagenProfileService: ImagenProfileService,
     private sanitizer: DomSanitizer,
     private alertas:AlertasService,
 
@@ -217,16 +226,12 @@ export class UpdateUserAccountComponent implements OnInit {
 
   //Método que se ejecuta cuando se hace submit de formulario para enviar los datos editados.
   postForm(form:updatePersonaI){
-    //le pasamos al formulario la imagen previsualizada.
-    form.imagen = this.previsualizacion;
-    console.log(form.imagen);
-
     //llamamos el método de actualizar desde el servicio.
     this.updateServiceService.putPerson(form).subscribe((data:any) =>{
       let respuesta:ResponseI = data;
       //Verificamos si la respuesta es exitosa.
       if(respuesta.status == 'ok'){
-        this.alertas.showSuccess('Información de perfil actualizada','Acción exitosa');
+        this.alertas.showSuccess('Información de perfil actualizada','Actualización exitosa');
         // console.log("Entrando aquí");
         setTimeout(() =>{
           //redirecionamos a el login.
@@ -236,14 +241,35 @@ export class UpdateUserAccountComponent implements OnInit {
         this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
         window.location.reload();
       }
-      //Recargamos página.
-      window.location.reload();
     });
 
   }
 
   //Método para actualizar imagen:
   actualizarImagen(form:any){
+    //le pasamos al formulario la imagen previsualizada.
+    form.imagen = this.previsualizacion;
+    //le pasamos al formulario el token.
+    form.token = localStorage.getItem('token');
+    //le pasamos al formulario el id.
+    form.idPersona = this.authService.desencriptar(localStorage.getItem('id'));
+
+    this.imagenProfileService.putPerson(form).subscribe((data:any) =>{
+      // console.log(data);
+      let respuesta:ResponseI = data;
+      //Verificamos si la respuesta es exitosa.
+      if(respuesta.status == 'ok'){
+        this.alertas.showSuccess('Imagen de perfil actualizada','Actualización exitosa');
+        // console.log("Entrando aquí");
+        setTimeout(() =>{
+          //redirecionamos a el login.
+          window.location.reload();
+        },2000);
+      }else{
+        this.alertas.showError(respuesta.result.error_msg,'Problemas encontrados');
+        window.location.reload();
+      }
+    })
 
   }
 
@@ -285,7 +311,10 @@ export class UpdateUserAccountComponent implements OnInit {
         },2000);
       }else{
         this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
-        window.location.reload();
+        setTimeout(() =>{
+          //redirecionamos a el login.
+          window.location.reload();
+        },2000);
       }
     });
   }

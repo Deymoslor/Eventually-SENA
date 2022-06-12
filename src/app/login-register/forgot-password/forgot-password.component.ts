@@ -39,7 +39,7 @@ export class ForgotPasswordComponent implements OnInit {
         this.alertas.showSuccess('Revisa tu correo electrónico incluido spam','Reestablecimiento de contraseña realizado');
         setTimeout(() =>{
           //redirecionamos a el login.
-          this.router.navigate(['/loginRegister']);
+          this.router.navigate(['/settings/settings-account']);
         },5000)
       }else{
         this.alertas.showError(respuesta.result.error_msg,'Error');
@@ -50,7 +50,7 @@ export class ForgotPasswordComponent implements OnInit {
 
   cancel():any{
 
-    this.router.navigate(['/loginRegister']);
+    this.router.navigate(['/settings/settings-account']);
 
   }
 

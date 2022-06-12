@@ -57,7 +57,7 @@ export class ChangeEmailComponent implements OnInit {
   }
 
   cancel(){
-
+    this.router.navigate(['/settings/settings-account']);
   }
 
 }

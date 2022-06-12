@@ -34,6 +34,13 @@
                         <input required type="date" class="form-control" formControlName="fechaNacimiento" aria-describedby="helpId" placeholder="Escribe tu fecha de nacimiento">
                     </div>
 
+                    <div class="btnChangeLikes d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary btn-lg" (click)="postForm(editarForm.value)">Actualizar Información</button>
+                    </div>
+
+                    <div class="separator"></div>
+                    <br>
+
                     <!-- Correo electrónico -->
                     <div class="mb-3">
                         <b><label class="form-label">Correo Electrónico</label></b><br>
@@ -45,27 +52,32 @@
 
                     <div class="separator"></div>
 
-                    <!-- Imagen de pefil -->
-                    <div class="mb-3">
-                        <div>
-                            <label for="">Imagen de perfil:</label>
-                            <div class="mb-2">
-                              <input (change)="capturarFile($event)" type="file">
-                            </div>
-                            <h4 *ngIf="previsualizacion != ''">PREVISUALIZACION</h4>
-                            <div *ngIf="previsualizacion != ''">
-                              <img width="500px" [src]="previsualizacion" alt="">
+                    <br>
+
+                    <form [formGroup]="imagenPerfilForm">
+                        <!-- Imagen de pefil -->
+                        <div class="mb-3">
+                            <div>
+                                <label for="">Imagen de perfil:</label>
+                                <div class="mb-2">
+                                <input (change)="capturarFile($event)" type="file">
+                                </div>
+                                <h4 *ngIf="previsualizacion != ''">PREVISUALIZACION</h4>
+                                <div *ngIf="previsualizacion != ''">
+                                <img width="500px" [src]="previsualizacion" alt="x">
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- INICIO Botón para actualizar imagen -->
 
-                    <div class="btnChangeLikes d-flex justify-content-center">
-                        <button type="submit" class="btn btn-primary btn-lg" (click)="actualizarImagen(passwordForm.value)" (click)="changePassword(passwordForm.value)">Actualizar imagen de perfil</button>
-                    </div>
+                        <!-- INICIO Botón para actualizar imagen -->
 
-                    <!-- FIN Botón para actualizar imagen -->
+                        <div class="btnChangeLikes d-flex justify-content-center">
+                            <button type="submit" class="btn btn-primary btn-lg" (click)="actualizarImagen(imagenPerfilForm.value)">Actualizar imagen de perfil</button>
+                        </div>
+
+                        <!-- FIN Botón para actualizar imagen -->
+                    </form>
 
 
                     <div class="separator"></div>
@@ -78,6 +90,8 @@
                         </div> -->
 
                     <!-- Selección de gustos -->
+
+                    <br>
 
                     <div class="selectNewLikes input-group mb-3">
                     <!-- <b><label class="input-group-text" for="inputGroupSelect01">Gustos actuales</label></b>
@@ -127,10 +141,6 @@
                     </div>
 
                     <!-- Fin de la selección de gustos -->
-
-                    <div class="btnChangeLikes d-flex justify-content-center">
-                        <button type="submit" class="btn btn-primary btn-lg" (click)="postForm(editarForm.value)">Actualizar Información</button>
-                    </div>
 
                     <br>
 
