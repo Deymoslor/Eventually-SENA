@@ -9,6 +9,7 @@ import { LikesI } from 'src/app/models/likes';
 import { ApiService } from 'src/app/services/api.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { GroupsServiceService } from 'src/app/dashboard/crud-groups/service/groups-service.service';
+import { GlobalConstants } from 'src/app/global-constants';
 
 @Component({
   selector: 'app-see-group-detail',
@@ -31,9 +32,6 @@ export class SeeGroupDetailComponent implements OnInit {
     imagen: new FormControl('')
   })
 
-  // httpLocalHost = 'http://localhost:8181'; //SENA
-  httpLocalHost = 'http://localhost'; //CASA
-
   constructor(
     private SeeGroupsService: SeeGroupsService,
     private promotedGroup: GroupsServiceService,
@@ -48,14 +46,6 @@ export class SeeGroupDetailComponent implements OnInit {
     idPersonas = this.auth.desencriptar(localStorage.getItem('id'));
 
   ngOnInit(): void {
-    // const idGrupos = this.route.snapshot.paramMap.get('id');
-    // this.group = this.SeeGroupsService.getDetailsGroup(Number(idGrupos)).subscribe(data =>{
-    //   console.log(data);
-    // })
-
-    // if (this.group === null) {
-    //   this.router.navigate(['group']);
-    // }
 
     this.likes.getAllLikes(1).subscribe(data=>{
       console.log(data);
@@ -65,21 +55,6 @@ export class SeeGroupDetailComponent implements OnInit {
 
     let idGrupos = this.route.snapshot.paramMap.get('id');
     console.log(idGrupos);
-    // this.SeeGroupsService.getDetailsGroup(Number(idGrupos)).subscribe((data: any) =>{
-    //   console.log(data);
-    //   this.group = data[0];
-
-    //   this.GroupForm.setValue({
-    //     'idGrupos': this.group.idPersona,
-    //     'nombreGrpo': this.group.nombreGrupo,
-    //     'descripcionGrupo': this.group.descripcionGrupo,
-    //     'privacidadGrupo': this.group.privacidadGrupo,
-    //     'InvitadosTotales': this.group.InvitadosTotales,
-    //     'gustos_idGusto': this.group.gustos_idGusto,
-    //     'idPersona': this.group.idPersona,
-    //     'imagen': this.group.imagen.replace('C:/xampp/htdocs', this.httpLocalHost),
-    //   });
-    // })
     this.promotedGroup.getSingleGroup(Number(idGrupos)).subscribe((data: any) => {
       console.log(data);
       this.group = data[0];
@@ -93,7 +68,7 @@ export class SeeGroupDetailComponent implements OnInit {
           'privacidadGrupo': this.group.privacidadGrupo,
           'InvitadosTotales': this.group.InvitadosTotales,
           'gustos_idGusto': this.group.gustos_idGusto,
-          'imagen': this.group.imagen.replace('C:/xampp/htdocs', this.httpLocalHost),
+          'imagen': this.group.imagen.replace('C:/xampp/htdocs', GlobalConstants.httpLocalHost),
         });
       }
     })

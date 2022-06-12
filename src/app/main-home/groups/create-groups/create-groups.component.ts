@@ -88,12 +88,14 @@ export class CreateGroupsComponent implements OnInit {
   });
 
   postForm(form:Group){
-    form.imagen = this.previsualizacion;
-    console.log(form);
-    this.create.postYourGroup(form).subscribe((data: any) => {
-      console.log(data);
-    })
-    this.createYourGroupForm.reset();
+    if (this.previsualizacion) {
+      form.imagen = this.previsualizacion;
+      console.log(form);
+      this.create.postYourGroup(form).subscribe((data: any) => {
+        console.log(data);
+      })
+      this.createYourGroupForm.reset();
+    }
   }
 
   guardar(){

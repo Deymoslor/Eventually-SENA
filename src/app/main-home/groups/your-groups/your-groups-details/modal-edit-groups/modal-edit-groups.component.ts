@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
+import { GlobalConstants } from 'src/app/global-constants';
 import { LikesI } from 'src/app/models/likes';
 import { ApiService } from 'src/app/services/api.service';
 import { Group } from '../../../see-groups/group';
@@ -15,36 +16,35 @@ import { YourGroupsService } from '../../your-groups.service';
 export class ModalEditGroupsComponent implements OnInit {
 
   @Input() childMessage: number | undefined;
-  likesI!: LikesI[];
   public previsualizacion!: string;
   public archivos: any = [];
 
-  constructor(private activerouter:ActivatedRoute , private router:Router, private ApiGroup:YourGroupsService, private likes: ApiService, private sanitizer: DomSanitizer) { }
+  constructor(private activerouter:ActivatedRoute , private router:Router, private fb: FormBuilder, private ApiGroup:YourGroupsService, private likes: ApiService, private sanitizer: DomSanitizer) { }
 
   datesGroup!: Group;
   editForm = new FormGroup({
     idGrupos: new FormControl(''),
     descripcionGrupo: new FormControl(''),
     privacidadGrupo: new FormControl(''),
+    imagen: new FormControl('')
   })
 
   ngOnInit(): void {
-    this.likes.getAllLikes(1).subscribe(data=>{
-
-      this.likesI = data;
-    })
   }
   ngOnChanges(): void {
+    console.log(this.childMessage);
     let idGrupos = this.activerouter.snapshot.paramMap.get('id')
     console.log(idGrupos);
-    if(Number(idGrupos) > 0){
+    if(Number(idGrupos)){
       this.ApiGroup.getDetailsYourGroup(Number(idGrupos)).subscribe((data: any) =>{
         this.datesGroup =data[0];
-        this.editForm.setValue({
-          'idGrupos': this.datesGroup.idGrupos,
-          'descripcionGrupo': this.datesGroup.descripcionGrupo,
-          'privacidadGrupo': this.datesGroup.privacidadGrupo,
-        });
+        console.log(data);
+        this.editForm = this.fb.group({
+          idGrupos: [this.datesGroup.idGrupos],
+          descripcionGrupo: [this.datesGroup.descripcionGrupo, [Validators.required, Validators.minLength(5)]],
+          privacidadGrupo: [this.datesGroup.privacidadGrupo, Validators.required],
+          imagen: [this.datesGroup.imagen.replace('C:/xampp/htdocs', GlobalConstants.httpLocalHost)]
+        })
         console.log(this.editForm.get('idGrupos')?.value);
       });
     }else{

@@ -9,13 +9,13 @@
                 <div class="form-group">
                     <label for="">Privacidad:</label>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" formControlName="privacidadGrupo" value="2" checked>
+                        <input class="form-check-input" type="radio" name="privacidadGrupo" id="flexRadioDefault1" formControlName="privacidadGrupo" value="2">
                         <label class="form-check-label" for="flexRadioDefault1">
                           Publica
                       </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" formControlName="privacidadGrupo" value="1">
+                        <input class="form-check-input" type="radio" name="privacidadGrupo" id="flexRadioDefault2" formControlName="privacidadGrupo" value="1">
                         <label class="form-check-label" for="flexRadioDefault2">
                           Privada
                       </label>
@@ -23,7 +23,19 @@
 
                     <label for="">Descripción:</label>
                     <div class="mb-2">
-                        <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Explica de que tratará" rows="2" formControlName="descripcionGrupo"></textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Explica de que tratará" rows="2" formControlName="descripcionGrupo"
+                        [ngClass]="(editForm.get('descripcionGrupo')?.touched ||
+                        editForm.get('descripcionGrupo')?.dirty) &&
+                        editForm.get('descripcionGrupo')?.hasError('required')
+                        ? 'is-invalid'
+                        : '' || editForm.get('descripcionGrupo')?.hasError('minlength')
+                        ? 'is-invalid'
+                        : '' ||
+                          ((editForm.get('descripcionGrupo')?.touched ||
+                          editForm.get('descripcionGrupo')?.dirty) &&
+                            !editForm.get('descripcionGrupo')?.invalid)
+                        ? 'is-valid'
+                        : ''"></textarea>
                     </div>
                     <div>
                       <label for="">Imagen Grupo:</label>
@@ -34,11 +46,14 @@
                       <div *ngIf="previsualizacion">
                         <img width="150px" [src]="previsualizacion" alt="">
                       </div>
+                      <div *ngIf="!previsualizacion">
+                        <img width="150px" [src]="editForm.get('imagen')?.value" alt="imagen">
+                      </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="btn btn-primary" (click)="refresh()">Editar gusto</button>
+                    <button type="submit" class="btn btn-primary" [disabled]="editForm.invalid" (click)="refresh()">Editar grupo</button>
                 </div>
             </div>
         </form>
