@@ -5,6 +5,12 @@ import { Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ServiceI } from './models/services.interface';
+import { SupplierService } from '../crud-suppliers/service/supplier.service';
+import { ProveedorI } from '../crud-suppliers/modal-suppliers-create/ProveedorI.interface';
+import { ListaProveedoresI } from '../crud-suppliers/ListaProveedoresI.interface';
+import { GlobalConstants } from 'src/app/global-constants';
+import { DomSanitizer } from '@angular/platform-browser';
+import { content } from 'html2canvas/dist/types/css/property-descriptors/content';
 
 @Component({
   selector: 'app-crud-services',
@@ -14,14 +20,14 @@ import { ServiceI } from './models/services.interface';
 export class CrudServicesComponent implements OnInit {
 
   typeServicesForm = new FormGroup({
-    idtipoServicio : new FormControl(''),
+    idtipoServicio: new FormControl(''),
     tipoServicio: new FormControl(''),
     estadoTipoServicio: new FormControl('')
   })
 
   ServicesForm = new FormGroup({
-    idServicios: new FormControl(), 
-    nombreServicio : new FormControl(''),
+    idServicios: new FormControl(),
+    nombreServicio: new FormControl(''),
     descripcionServicio: new FormControl(''),
     precioEstimado: new FormControl(),
     imagen: new FormControl(''),
@@ -35,24 +41,36 @@ export class CrudServicesComponent implements OnInit {
 
   dataType!: TypeServicesI;
   dataService!: ServiceI;
-  idTipo?:number;
+  idTipo?: number;
+
+  dataProvider!: ListaProveedoresI[];
 
   TypeServices!: TypeServicesI[];
   closeResult!: string;
 
-  Services!: ServiceI[];
+  previsualizacion!: string;
+  public archivos: any = [];
 
-  constructor(private api:ApiService, private router:Router, private modalService: NgbModal) { }
+  Services!: ServiceI[];
+  idService!: number;
+
+  constructor(private api: ApiService, private router: Router, private modalService: NgbModal,
+    private apiProvider: SupplierService, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
-    this.api.getAllTypeServices(1).subscribe(data =>{
-      console.log(data);
+    this.api.getAllTypeServices(1).subscribe(data => {
+      // console.log(data);
       this.TypeServices = data;
     })
 
-    this.api.getAllServices(1).subscribe(data =>{
-      console.log(data);
+    this.api.getAllServices(1).subscribe(data => {
+      // console.log(data);
       this.Services = data;
+    })
+
+    this.apiProvider.getAllSuppliers(1).subscribe(data =>{
+      // console.log(data);
+      this.dataProvider =data;
     })
 
   }
@@ -61,52 +79,97 @@ export class CrudServicesComponent implements OnInit {
     console.log('chica que dice');
   }
 
-  createEvent(){
-      this.router.navigate(['dashboard/createTypeServices']);
-      console.log(this.router)
-  }
+  // createEvent() {
+  //   this.router.navigate(['dashboard/createTypeServices']);
+  //   console.log(this.router)
+  // }
 
   //MODAL
-  modalTypeServiceOpen(content:any, numb:number){
+  modalTypeServiceOpen(content: any, numb: number) {
     this.idTipo = numb;
-    this.api.getSingleTypeService(this.idTipo).subscribe((data:any) =>{
+    this.api.getSingleTypeService(this.idTipo).subscribe((data: any) => {
       this.dataType = data[0];
       console.log(this.dataType);
       this.typeServicesForm.setValue({
-        'idtipoServicio': this.dataType.idtipoServicio ,
+        'idtipoServicio': this.dataType.idtipoServicio,
         'tipoServicio': this.dataType.tipoServicio,
         'estadoTipoServicio': this.dataType.estadoTipoServicio
       })
     })
-    
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result: any) => {
+
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result: any) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason: any) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
 
-  modalServiceOpen(content:any, numb:number){
-    this.idTipo = numb;
-    this.api.getSingleService(this.idTipo).subscribe((data:any) =>{
+  modalServiceOpen(content: any, numb: number) {
+    this.idService = numb;
+    this.api.getSingleService(this.idService).subscribe((data: any) => {
       this.dataService = data[0];
-      console.log(this.dataService.TipoServicio_idtipoServicio)
+      
+      if(this.dataService.imagen){
+        this.previsualizacion = this.dataService.imagen.replace('C:/xampp/htdocs', GlobalConstants.httpLocalHost);
+      }else{
+        this.previsualizacion = '';
+      }
+
+      console.log(this.previsualizacion)
       this.ServicesForm.setValue({
-          'idServicios': this.dataService.idServicios,
-          'nombreServicio': this.dataService.nombreServicio,
-          'descripcionServicio': this.dataService.descripcionServicio,
-          'precioEstimado': this.dataService.precioEstimado,
-          'imagen': this.dataService.imagen,
-          'historialEmpresas': this.dataService.historialEmpresas,
-          'numeroContacto': this.dataService.numeroContacto,
-          'correoContacto': this.dataService.correoContacto,
-          'estadoServicio': this.dataService.estadoServicio,
-          'Proveedor_idProveedor': this.dataService.Proveedor_idProveedor,
-          'TipoServicio_idtipoServicio': this.dataService.TipoServicio_idtipoServicio,
+        'idServicios': this.dataService.idServicios,
+        'nombreServicio': this.dataService.nombreServicio,
+        'descripcionServicio': this.dataService.descripcionServicio,
+        'precioEstimado': this.dataService.precioEstimado,
+        'imagen': '',
+        'historialEmpresas': this.dataService.historialEmpresas,
+        'numeroContacto': this.dataService.numeroContacto,
+        'correoContacto': this.dataService.correoContacto,
+        'estadoServicio': this.dataService.estadoServicio,
+        'Proveedor_idProveedor': this.dataService.Proveedor_idProveedor,
+        'TipoServicio_idtipoServicio': this.dataService.TipoServicio_idtipoServicio,
       })
     })
+
     
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result: any) => {
+
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result: any) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason: any) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  modalCreateServiceOpen(content: any, numb: number) {
+    // this.idService = numb;
+    // this.api.getSingleService(this.idService).subscribe((data: any) => {
+    //   this.dataService = data[0];
+      
+    //   if(this.dataService.imagen){
+    //     this.previsualizacion = this.dataService.imagen.replace('C:/xampp/htdocs', GlobalConstants.httpLocalHost);
+    //   }else{
+    //     this.previsualizacion = '';
+    //   }
+
+    //   console.log(this.previsualizacion)
+    //   this.ServicesForm.setValue({
+    //     'idServicios': this.dataService.idServicios,
+    //     'nombreServicio': this.dataService.nombreServicio,
+    //     'descripcionServicio': this.dataService.descripcionServicio,
+    //     'precioEstimado': this.dataService.precioEstimado,
+    //     'imagen': '',
+    //     'historialEmpresas': this.dataService.historialEmpresas,
+    //     'numeroContacto': this.dataService.numeroContacto,
+    //     'correoContacto': this.dataService.correoContacto,
+    //     'estadoServicio': this.dataService.estadoServicio,
+    //     'Proveedor_idProveedor': this.dataService.Proveedor_idProveedor,
+    //     'TipoServicio_idtipoServicio': this.dataService.TipoServicio_idtipoServicio,
+    //   })
+    // })
+
+    
+
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result: any) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason: any) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -123,48 +186,48 @@ export class CrudServicesComponent implements OnInit {
     }
   }
 
-  switchStateEvent(num: number){
-    if(num != 1){
+  switchStateEvent(num: number) {
+    if (num != 1) {
       console.log("hola soy el num " + num);
       this.typeServicesForm.setValue({
-          'idtipoServicio': this.dataType.idtipoServicio,
-          'tipoServicio': this.dataType.tipoServicio,
-          'estadoTipoServicio': 1
+        'idtipoServicio': this.dataType.idtipoServicio,
+        'tipoServicio': this.dataType.tipoServicio,
+        'estadoTipoServicio': 1
       })
-    }else if (num == 1) {
+    } else if (num == 1) {
       console.log("hola soy el num " + num);
       this.typeServicesForm.setValue({
-          'idtipoServicio': this.dataType.idtipoServicio,
-          'tipoServicio': this.dataType.tipoServicio,
-          'estadoTipoServicio': 0
+        'idtipoServicio': this.dataType.idtipoServicio,
+        'tipoServicio': this.dataType.tipoServicio,
+        'estadoTipoServicio': 0
       })
-    } 
+    }
   }
 
-  switchStateService(num: number){
-    if(num != 1){
-      console.log("hola soy el num " + num);
-      this.ServicesForm.setValue({
-          'idServicios': this.dataService.idServicios,
-          'nombreServicio': this.dataService.nombreServicio,
-          'descripcionServicio': this.dataService.descripcionServicio,
-          'precioEstimado': this.dataService.precioEstimado,
-          'imagen': this.dataService.imagen,
-          'historialEmpresas': this.dataService.historialEmpresas,
-          'numeroContacto': this.dataService.numeroContacto,
-          'correoContacto': this.dataService.correoContacto,
-          'estadoServicio': 1,
-          'Proveedor_idProveedor': this.dataService.Proveedor_idProveedor,
-          'TipoServicio_idtipoServicio': this.dataService.TipoServicio_idtipoServicio,
-      })
-    }else if (num == 1) {
+  switchStateService(num: number) {
+    if (num != 1) {
       console.log("hola soy el num " + num);
       this.ServicesForm.setValue({
         'idServicios': this.dataService.idServicios,
         'nombreServicio': this.dataService.nombreServicio,
         'descripcionServicio': this.dataService.descripcionServicio,
         'precioEstimado': this.dataService.precioEstimado,
-        'imagen': this.dataService.imagen,
+        'imagen': '',
+        'historialEmpresas': this.dataService.historialEmpresas,
+        'numeroContacto': this.dataService.numeroContacto,
+        'correoContacto': this.dataService.correoContacto,
+        'estadoServicio': 1,
+        'Proveedor_idProveedor': this.dataService.Proveedor_idProveedor,
+        'TipoServicio_idtipoServicio': this.dataService.TipoServicio_idtipoServicio,
+      })
+    } else if (num == 1) {
+      console.log("hola soy el num " + num);
+      this.ServicesForm.setValue({
+        'idServicios': this.dataService.idServicios,
+        'nombreServicio': this.dataService.nombreServicio,
+        'descripcionServicio': this.dataService.descripcionServicio,
+        'precioEstimado': this.dataService.precioEstimado,
+        'imagen': '',
         'historialEmpresas': this.dataService.historialEmpresas,
         'numeroContacto': this.dataService.numeroContacto,
         'correoContacto': this.dataService.correoContacto,
@@ -172,26 +235,59 @@ export class CrudServicesComponent implements OnInit {
         'Proveedor_idProveedor': this.dataService.Proveedor_idProveedor,
         'TipoServicio_idtipoServicio': this.dataService.TipoServicio_idtipoServicio,
       })
-    } 
+    }
   }
 
-  postEditFormType(form: TypeServicesI){
+  postEditFormType(form: TypeServicesI) {
     console.log(form);
-    this.api.putTypeService(form).subscribe(data=>{
+    this.api.putTypeService(form).subscribe(data => {
       console.log(data);
     });
     this.refresh();
   }
 
-  postEditFormServices(form: ServiceI){
-    console.log(form);
-    this.api.putService(form).subscribe(data=>{
+  postEditFormServices(form: ServiceI) {
+    form.imagen = this.previsualizacion;
+    this.api.putService(form).subscribe(data => {
       console.log(data);
     });
     this.refresh();
   }
 
   refresh(): void { window.location.reload(); }
+
+
+  capturarFile(event): void {
+    const archivoCapturado = event.target.files[0];
+    this.extraerBase64(archivoCapturado).then((imagen: any) => {
+      this.previsualizacion = imagen.base;
+      console.log("previsualizacion: " + this.previsualizacion);
+    })
+    this.archivos.push(archivoCapturado);
+    // console.log(event);
+  }
+
+  extraerBase64 = async ($event: any) => new Promise((resolve, reject) =>{
+    try {
+      const unsafeImg = window.URL.createObjectURL($event);
+      const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
+      const reader = new FileReader();
+      reader.readAsDataURL($event);
+      reader.onload = () => {
+        resolve({
+          base: reader.result
+        });
+      };
+      reader.onerror = error => {
+        resolve({
+          base: null
+        });
+      };
+    } catch (e) {
+      return null;
+    }
+    return $event;
+  });
 
 
 }

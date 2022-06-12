@@ -16,8 +16,8 @@
                         <th class="textoTitulos" scope="col">Numero contacto</th>
                         <th class="textoTitulos" scope="col">Correo Contacto</th>
                         <th class="textoTitulos" scope="col">Estado Servicio</th>
-                        <th class="textoTitulos" scope="col">Id Proveedor</th>
-                        <th class="textoTitulos" scope="col">Id Tipo Servicio</th>
+                        <th class="textoTitulos" scope="col">Nombre Proveedor</th>
+                        <th class="textoTitulos" scope="col">Tipo Servicio</th>
                         <th class="textoTitulos" scope="col">Accion</th>
                     </tr>
                 </thead>
@@ -32,9 +32,14 @@
                         <td class="textox">{{ service.historialEmpresas }}</td>
                         <td class="textox">{{ service.numeroContacto }}</td>
                         <td class="textox">{{ service.correoContacto }}</td>
-                        <td class="textox">{{ service.estadoServicio }}</td>
-                        <td class="textox">{{ service.Proveedor_idProveedor }}</td>
-                        <td class="textox">{{ service.TipoServicio_idtipoServicio }}</td>
+                        <td *ngIf="service.estadoServicio == '1'" class="textox">ACEPTADO</td>
+                        <td *ngIf="service.estadoServicio == '0'" class="textox">INHABILITADO</td>
+                        <td class="textox" *ngFor="let provider of dataProvider" [hidden]="provider.idProveedor!= service.Proveedor_idProveedor ">
+                                {{provider.nombreProveedor}}
+                        </td>
+                        <td class="textox" *ngFor="let type of TypeServices" [hidden]="type.idtipoServicio != service.TipoServicio_idtipoServicio">
+                            {{type.tipoServicio}}
+                        </td>
                         <!-- (click)="editEvent(event.idEvento)" -->
                         <td class="textox"><button class="btn btnEditar" (click)="modalServiceOpen(contentService, service.idServicios)">Editar</button></td>
                     </tr>
@@ -63,14 +68,16 @@
 
                         <th class="textox" scope="row">{{ TypeService.idtipoServicio }}</th>
                         <td class="textox">{{ TypeService.tipoServicio }}</td>
-                        <td class="textox">{{ TypeService.estadoTipoServicio}}</td>
+                        <td class="textox" *ngIf="TypeService.estadoTipoServicio == 1">Habilitado</td>
+                        <td class="textox" *ngIf="TypeService.estadoTipoServicio == 0">Deshabilitado</td>
                         <td class="textox"><button class="btn btnEditar" (click)="modalTypeServiceOpen(contentType, TypeService.idtipoServicio)">Editar</button></td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
-    <button class="btn btnCrear" (click)="createEvent()">
+    <button class="btn btnCrear" class="btn btnEditar" data-bs-toggle="modalCreateTypeDash"  data-bs-target="#content-modalCreateTypeDash" 
+    (click)="modalCreateServiceOpen(contentCreateType, 1)">
       Crear Tipo Servicio
   </button>
 </div>
@@ -78,13 +85,18 @@
 
 <!-- Create new type services -->
 
+<ng-template  #contentCreateType let-modalCreateTypeDash>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modalCreateTypeDash.dismiss('Cross click')"></button>
+    <app-create-type-services></app-create-type-services>
+</ng-template>
 
-<ng-template #contentType let-modal>
+
+<ng-template #contentType let-modalEditTypeService>
     <!-- Modal -->
     <div class="modal-content modal-dialog modal-lg modal-dialog-scrollable">
         <div class="modal-header">
             <h5 class="titlePrincipal" id="staticBackdropLabel">Editar Tipo Servicio</h5>
-            <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+            <button type="button" class="btn-close" aria-label="Close" (click)="modalEditTypeService.dismiss('Cross click')"></button>
         </div>
         <form class="textox" [formGroup]="typeServicesForm" (ngSubmit)="postEditFormType(typeServicesForm.value)">
             <div class="modal-body">
@@ -112,12 +124,12 @@
     </div>
 </ng-template>
 
-<ng-template #contentService let-modal>
+<ng-template #contentService let-modalEditService>
     <!-- Modal -->
     <div class="modal-content modal-dialog modal-lg modal-dialog-scrollable">
         <div class="modal-header">
             <h5 class="titlePrincipal" id="staticBackdropLabel">Editar Servicio</h5>
-            <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+            <button type="button" class="btn-close" aria-label="Close" (click)="modalEditService.dismiss('Cross click')"></button>
         </div>
         <form class="textox" [formGroup]="ServicesForm" (ngSubmit)="postEditFormServices(ServicesForm.value)">
             <div class="modal-body">
@@ -136,8 +148,14 @@
                 <label for="exampleInputEmail1">Precio estimado:</label>
                 <input type="number" class="form-control" id="exampleInputEmail1" min="1" max="200000000" formControlName="precioEstimado">
 
-                <label for="">Imagen:</label>
-                <input type="text" class="form-control" id="" placeholder="" formControlName="imagen">
+                <label for="">Imagen evento:</label>
+                            <div class="mb-2">modalServiceOpen
+                                <input (change)="capturarFile($event)" formControlName="imagen" type="file">
+                            </div>
+                            <h4>PREVISUALIZACION</h4>
+                            <div *ngIf="previsualizacion">
+                                <img width="500px" [src]="previsualizacion" alt="">
+                            </div>
 
                 <label for="">Historial de empresas:</label>
                 <div class="mb-2">
@@ -161,8 +179,8 @@
                 <div class="form-check form-switch">
                     <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" *ngIf="ServicesForm.get('estadoServicio')?.value != 1" (click)="switchStateService(ServicesForm.get('estadoServicio')?.value)">
                     <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" *ngIf="ServicesForm.get('estadoServicio')?.value == 1" (click)="switchStateService(ServicesForm.get('estadoServicio')?.value)" checked>
-                    <label class="form-check-label fw-bolder fs-4 label" for="flexSwitchCheckChecked" *ngIf="ServicesForm.get('estadoServicio')?.value != 1">Habilitar TIPO</label>
-                    <label class="form-check-label fw-bolder fs-4 label" for="flexSwitchCheckChecked" *ngIf="ServicesForm.get('estadoServicio')?.value == 1">Deshabilitar TIPO</label>
+                    <label class="form-check-label fw-bolder fs-4 label" for="flexSwitchCheckChecked" *ngIf="ServicesForm.get('estadoServicio')?.value != 1">Habilitar Servicio</label>
+                    <label class="form-check-label fw-bolder fs-4 label" for="flexSwitchCheckChecked" *ngIf="ServicesForm.get('estadoServicio')?.value == 1">Deshabilitar Servicio</label>
                 </div>
 
             </div>
