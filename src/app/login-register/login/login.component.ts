@@ -3,10 +3,10 @@ import { accountService } from '../service/accountService.service';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { loginI } from './models/login.interface';
-import { ResponseI } from './models/response.intarface';
 import { globalAccountConstants } from 'src/app/constants/globalAccountConstants';
 import { AuthService } from 'src/app/core/service/auth.service';
 import { AlertasService } from 'src/app/core/service/alertas.service';
+import { ResponseI } from '../../core/ui/response.interface';
 
 @Component({
   selector: 'app-login',
