@@ -9,7 +9,7 @@ export class AlertasService {
   constructor(private toast:ToastrService) { }
 
   showSuccess(texto,titulo){
-    this.toast.success(texto,titulo,{progressBar:true});
+    this.toast.success(texto,titulo,{progressBar:true,timeOut:2000});
   }
 
   showError(texto,titulo){

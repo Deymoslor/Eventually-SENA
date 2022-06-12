@@ -4,6 +4,8 @@ import { Router, ActivatedRoute} from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SupplierService } from '../service/supplier.service';
 import { ProveedorI } from './ProveedorI.interface';
+import { ResponseI } from 'src/app/login-register/login/models/response.intarface';
+import { AlertasService } from 'src/app/core/service/alertas.service';
 
 @Component({
   selector: 'app-modal-suppliers-create',
@@ -22,7 +24,8 @@ export class ModalSuppliersCreateComponent implements OnInit {
   constructor(
 
     private router: Router,
-    private supplierService: SupplierService
+    private supplierService: SupplierService,
+    private alertas:AlertasService,
 
   ) { }
 
@@ -124,8 +127,17 @@ export class ModalSuppliersCreateComponent implements OnInit {
     //llamamos el método de actualizar desde el servicio.
     this.supplierService.postSupplier(form).subscribe((data:any) =>{
       console.log(data);
-      //Recargamos página.
-      window.location.reload();
+      let respuesta:ResponseI = data;
+      //Verificamos si la respuesta es exitosa.
+      if(respuesta.status == 'ok'){
+        this.alertas.showSuccess('Proveedor creado exitosamente','Creación exitosa');
+          setTimeout(() => {
+            //Recargamos página.
+            window.location.reload();
+          }, 2000);
+      }else{
+        this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+      }
     });
 
   }

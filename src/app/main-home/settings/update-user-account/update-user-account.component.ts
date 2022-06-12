@@ -9,6 +9,12 @@ import { AuthService } from 'src/app/core/service/auth.service';
 import { IdPerson, LikesI, LikesPerson } from 'src/app/models/likes';
 import { ApiService } from '../../../services/api.service';
 import { PersonaI } from 'src/app/dashboard/crud-users/modal-users/personaI.interface';
+import { DomSanitizer } from '@angular/platform-browser';
+import { AlertasService } from 'src/app/core/service/alertas.service';
+import { ResponseI } from '../../../core/ui/response.interface';
+import { GlobalConstants } from 'src/app/global-constants';
+import { updateImagenProfile } from 'src/app/menu/user-menu/updateImagenProfile.interface';
+import { ImagenProfileService } from '../imagenProfileService/imagen-profile.service';
 
 @Component({
   selector: 'app-update-user-account',
@@ -17,12 +23,36 @@ import { PersonaI } from 'src/app/dashboard/crud-users/modal-users/personaI.inte
 })
 export class UpdateUserAccountComponent implements OnInit {
 
+  //Variable para previsualizar la imagen.
+  public previsualizacion: string = '';
+  //Variable para almacenar en archivos.
+  public archivos: any = [];
+
+  //Variables generales para la toma de imagenes.
+  public httpLocalHost = GlobalConstants.httpLocalHost;
+
+  //interfaz de actualización de la persona.
+  public updatePersona! : updatePersonaI;
+
+  //interfaz de la imagen de la persona.
+  public imagenProfile! : updateImagenProfile;
+
+  //Form group para cambiar imagen.
+  imagenPerfilForm  = new FormGroup({
+    idPersona: new FormControl(''),
+    imagen: new FormControl(''),
+    token: new FormControl(''),
+  })
+
   constructor(
 
     private updateServiceService: UpdateServiceService,
     private router: Router,
     private authService: AuthService,
-    private ApiService: ApiService
+    private ApiService: ApiService,
+    private imagenProfileService: ImagenProfileService,
+    private sanitizer: DomSanitizer,
+    private alertas:AlertasService,
 
   ) { }
 
@@ -60,7 +90,7 @@ export class UpdateUserAccountComponent implements OnInit {
     apellidos: new FormControl(''),
     documento: new FormControl(''),
     fechaNacimiento: new FormControl(''),
-    Email: new FormControl('')
+    Email: new FormControl(''),
   });
 
   //Creamos formulario para poder actualizar contraseña.
@@ -123,6 +153,40 @@ export class UpdateUserAccountComponent implements OnInit {
     });
   }
 
+  //Método para capturar imagen.
+  capturarFile(event): void {
+    const archivoCapturado = event.target.files[0];
+    this.extraerBase64(archivoCapturado).then((imagen: any) => {
+      this.previsualizacion = imagen.base;
+      // console.log(imagen)
+    })
+    this.archivos.push(archivoCapturado);
+    // console.log(event);
+  }
+
+  //Método para transformar imagen a base64.
+  extraerBase64 = async ($event: any) => new Promise((resolve, reject) =>{
+    try {
+      const unsafeImg = window.URL.createObjectURL($event);
+      const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
+      const reader = new FileReader();
+      reader.readAsDataURL($event);
+      reader.onload = () => {
+        resolve({
+          base: reader.result
+        });
+      };
+      reader.onerror = error => {
+        resolve({
+          base: null
+        });
+      };
+    } catch (e) {
+      return null;
+    }
+    return $event;
+  });
+
   agregarGusto(nombreGusto:any){
     console.log('Click agregar');
     this.updateServiceService.getLikeId(nombreGusto).subscribe((data:any) =>{
@@ -162,12 +226,50 @@ export class UpdateUserAccountComponent implements OnInit {
 
   //Método que se ejecuta cuando se hace submit de formulario para enviar los datos editados.
   postForm(form:updatePersonaI){
-
     //llamamos el método de actualizar desde el servicio.
     this.updateServiceService.putPerson(form).subscribe((data:any) =>{
-      //Recargamos página.
-      window.location.reload();
+      let respuesta:ResponseI = data;
+      //Verificamos si la respuesta es exitosa.
+      if(respuesta.status == 'ok'){
+        this.alertas.showSuccess('Información de perfil actualizada','Actualización exitosa');
+        // console.log("Entrando aquí");
+        setTimeout(() =>{
+          //redirecionamos a el login.
+          window.location.reload();
+        },2000);
+      }else{
+        this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+        window.location.reload();
+      }
     });
+
+  }
+
+  //Método para actualizar imagen:
+  actualizarImagen(form:any){
+    //le pasamos al formulario la imagen previsualizada.
+    form.imagen = this.previsualizacion;
+    //le pasamos al formulario el token.
+    form.token = localStorage.getItem('token');
+    //le pasamos al formulario el id.
+    form.idPersona = this.authService.desencriptar(localStorage.getItem('id'));
+
+    this.imagenProfileService.putPerson(form).subscribe((data:any) =>{
+      // console.log(data);
+      let respuesta:ResponseI = data;
+      //Verificamos si la respuesta es exitosa.
+      if(respuesta.status == 'ok'){
+        this.alertas.showSuccess('Imagen de perfil actualizada','Actualización exitosa');
+        // console.log("Entrando aquí");
+        setTimeout(() =>{
+          //redirecionamos a el login.
+          window.location.reload();
+        },2000);
+      }else{
+        this.alertas.showError(respuesta.result.error_msg,'Problemas encontrados');
+        window.location.reload();
+      }
+    })
 
   }
 
@@ -198,10 +300,22 @@ export class UpdateUserAccountComponent implements OnInit {
     //Llamamos al método del servicio que nos permite actualizar la contraseña.
     this.updateServiceService.putPassword(form).subscribe((data:any) =>{
       // console.log(data);
-
-      //regargamos página.
-      window.location.reload();
-
+      let respuesta:ResponseI = data;
+      //Verificamos si la respuesta es exitosa.
+      if(respuesta.status == 'ok'){
+        this.alertas.showSuccess('Contraseña actualizada correctamente','Contraseña actualizada');
+        // console.log("Entrando aquí");
+        setTimeout(() =>{
+          //redirecionamos a el login.
+          window.location.reload();
+        },2000);
+      }else{
+        this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+        setTimeout(() =>{
+          //redirecionamos a el login.
+          window.location.reload();
+        },2000);
+      }
     });
   }
 

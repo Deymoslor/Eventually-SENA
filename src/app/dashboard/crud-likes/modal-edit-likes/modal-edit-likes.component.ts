@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { LikesI } from 'src/app/models/likes';
 import { ApiService } from 'src/app/services/api.service';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
+import { AlertasService } from 'src/app/core/service/alertas.service';
+
 
 @Component({
   selector: 'app-modal-edit-likes',
@@ -13,7 +15,8 @@ export class ModalEditLikesComponent implements OnInit {
  @Input() childMessage!:number
 
   constructor(
-    private api:ApiService
+    private api:ApiService,
+    private alertas:AlertasService
   ) { }
 
   public likes!:LikesI;
@@ -56,10 +59,22 @@ export class ModalEditLikesComponent implements OnInit {
   }
 
   postEditLike(form:LikesI){
+    
     // console.log(form);
     this.api.putLikes(form).subscribe(data=>{
-      // console.log(data);
-      window.location.reload();
+      let respuesta:any = data;
+      //Verificamos si la respuesta es exitosa.
+      if(respuesta.status == 'ok'){
+        this.alertas.showSuccess('Gusto actualizado','Acción exitosa');
+        // console.log("Entrando aquí");
+        setTimeout(() =>{
+          // console.log(data);
+          window.location.reload();
+        },2000);
+      }else{
+        this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+        window.location.reload();
+      }
     })
   }
 }

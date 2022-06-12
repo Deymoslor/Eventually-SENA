@@ -2,8 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
+import { ResponseI } from 'src/app/login-register/login/models/response.intarface';
 import { ProveedorI } from '../modal-suppliers-create/ProveedorI.interface';
 import { SupplierService } from '../service/supplier.service';
+import { AlertasService } from 'src/app/core/service/alertas.service';
 
 @Component({
   selector: 'app-modal-suppliers-edit',
@@ -23,7 +25,8 @@ export class ModalSuppliersEditComponent implements OnInit {
     private calendar:NgbCalendar,
     private activerouter: ActivatedRoute,
     private router: Router,
-    private supplierService: SupplierService
+    private supplierService: SupplierService,
+    private alertas:AlertasService
 
   ) { }
 
@@ -125,8 +128,17 @@ export class ModalSuppliersEditComponent implements OnInit {
     //llamamos el método de actualizar desde el servicio.
     this.supplierService.putSupplier(form).subscribe((data:any) =>{
       // console.log(data);
-      //Recargamos página.
-      window.location.reload();
+      let respuesta:ResponseI = data;
+          //Verificamos si la respuesta es exitosa.
+          if(respuesta.status == 'ok'){
+            this.alertas.showSuccess('Proveedor actualizado exitosamente','actualización exitosa');
+              setTimeout(() => {
+                //Recargamos página.
+                window.location.reload();
+              }, 2000);
+          }else{
+            this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+          }
     });
 
   }
