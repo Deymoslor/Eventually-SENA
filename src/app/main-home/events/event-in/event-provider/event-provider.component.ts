@@ -12,6 +12,8 @@ import { ServiceEventI } from 'src/app/main-home/providers/models/serviceEvent.i
 import { TypeServicesI } from 'src/app/dashboard/crud-services/models/typeServices.interface';
 import { ApiResultsServicesService } from '../../services/api.results-services.service';
 import { ResultServiceI } from '../../../../models/result-service.interface';
+import { ResponseI } from 'src/app/core/ui/response.interface';
+import { AlertasService } from 'src/app/core/service/alertas.service';
 
 
 @Component({
@@ -44,7 +46,9 @@ export class EventProviderComponent implements OnInit {
   
   number!:number;
   idProv: any;
-  constructor(private api:ApiService, private modalService: NgbModal, private route:ActivatedRoute, private apiRS: ApiResultsServicesService) { }
+  constructor(private api:ApiService, private modalService: NgbModal,
+     private route:ActivatedRoute, private apiRS: ApiResultsServicesService,
+     private alertas: AlertasService) { }
   closeResult = '';
 
   filterProveedor = '';
@@ -177,8 +181,21 @@ export class EventProviderComponent implements OnInit {
     console.log(forms);
     this.api.postInvitationService(forms).subscribe(data =>{
       console.log(forms);
+      let respuesta:ResponseI = data;
+      //Verificamos si la respuesta es exitosa.
+      if(respuesta.status == 'ok'){
+        this.alertas.showSuccess('Invitacion enviada','Proveedor invitado');
+        setTimeout(()=>{
+          this.refresh();
+        },2000);
+      }else{
+        this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+        setTimeout(()=>{
+          this.refresh();
+        },2000);
+      }
     })
-    this.refresh();
+    // this.refresh();
   }
 
   refresh(){

@@ -7,11 +7,9 @@
 <div *ngIf="manager?.idPersona == personaId && manager?.estadoPersona_idEstadoPersona == 1">
   <a [routerLink]="['/groups/your-groups']" routerLinkActive="router-link-active" class="back">&lt; Volver al inicio</a>
 </div>
-<ng-container *ngFor="let item of personas">
-  <div *ngIf="item.idPersona == personaId && item.estadoPersona_idEstadoPersona == 2">
-    <a [routerLink]="['/groups/related-groups']" routerLinkActive="router-link-active" class="back">&lt; Volver al inicio</a>
-  </div>
-</ng-container>
+<div *ngIf="manager?.idPersona != personaId">
+  <a [routerLink]="['/groups/related-groups']" routerLinkActive="router-link-active" class="back">&lt; Volver al inicio</a>
+</div>
 <div class="container">
     <br>
     <div class="img-container class-thumbnail" *ngIf="!GroupForm.get('imagen')?.value">

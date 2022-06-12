@@ -81,7 +81,15 @@ export class YourGroupsDetailsComponent implements OnInit {
       console.log(data);
       this.group = data[0];
       if (this.group === null) {
-        console.log('esa vaina no sirvio');
+        this.GroupForm.setValue({
+          'idGrupos': '',
+          'nombreGrupo': '',
+          'descripcionGrupo':'',
+          'privacidadGrupo': '',
+          'InvitadosTotales': '',
+          'gustos_idGusto':'',
+          'imagen':''
+        });
       } else {
         this.GroupForm.setValue({
           'idGrupos': this.group.idGrupos,

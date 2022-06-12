@@ -75,9 +75,14 @@
                     </td>
                     <td>
                         <div class="content-button">
-                            <button class="btn btn-primary" type="submit" (click)="postInvitation(key)">Invitar</button>
+                            <button class="btn btn-primary" type="submit" [disabled]="key.estadoInvitacion" (click)="postInvitation(key)">Invitar</button>
                         </div>
                     </td>
+                    <!-- <td *ngIf="!key.estadoInvitacion == null">
+                        <div class="content-button">
+                            <button class="btn btn-primary" type="submit" disabled (click)="postInvitation(key)">Invitar</button>
+                        </div>
+                    </td> -->
                     <td *ngIf=" key.estadoInvitacion == null">
                         Sin invitar
                     </td>

@@ -4,8 +4,7 @@
             <h1>Registro</h1>
             <div class="grupo">
                 <input type="text" name="" id="email"  formControlName="nombre" placeholder="Introduce tu nombre" [ngClass]="(nuevoForm.get('nombre')?.touched || nuevoForm.get('nombre')?.dirty) &&
-                nuevoForm.get('nombre')?.errors ? 'is-invalid' : '' || nuevoForm.get('documento')?.hasError('minlength')
-                ? 'is-invalid' : '' || nuevoForm.get('documento')?.hasError('pattern')
+                nuevoForm.get('nombre')?.errors ? 'is-invalid' : '' || nuevoForm.get('nombre')?.hasError('pattern')
                 ? 'is-invalid' : ''" formControlName="nombre"><span class="barra"></span>
                 <label for="">Nombre</label>
                 <div class="invalid-feedback">
