@@ -59,8 +59,8 @@ export class UserMenuComponent{
         this.nombrePerfil = this.datosPersona.nombre;
 
         this.imagenPerfilForm.setValue({
-          // 'imagen': this.imagenProfile.imagen.replace('C:/xampp/htdocs', this.httpLocalHost),
-          'imagen' : this.imagenProfile.imagen.replace('J:/Programas/Xampp/htdocs', this.httpLocalHost),
+          'imagen': this.imagenProfile.imagen.replace('C:/xampp/htdocs', this.httpLocalHost),
+          // 'imagen' : this.imagenProfile.imagen.replace('J:/Programas/Xampp/htdocs', this.httpLocalHost),
         })
       });
     }else{
