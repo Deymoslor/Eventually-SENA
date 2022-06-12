@@ -32,18 +32,53 @@
                     <div class="mb-3">
                         <b><label class="form-label">Fecha de Nacimiento</label></b>
                         <input required type="date" class="form-control" formControlName="fechaNacimiento" aria-describedby="helpId" placeholder="Escribe tu fecha de nacimiento">
-
                     </div>
+
+                    <div class="btnChangeLikes d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary btn-lg" (click)="postForm(editarForm.value)">Actualizar Información</button>
+                    </div>
+
+                    <div class="separator"></div>
+                    <br>
 
                     <!-- Correo electrónico -->
                     <div class="mb-3">
-                        <b><label class="form-label">Correo Electrónico</label></b>
+                        <b><label class="form-label">Correo Electrónico</label></b><br>
                         <p>{{this.datosPersona.Email}}</p>
-
                         <div class="recuperar">
                             <p>Para cambiar tu correo electrónico debes solicitarlo <br> dando click aquí ⊂(◉‿◉)つ  <a href="" routerLink="loginRegister/forgot-password" (click)="emailChange()">Cambiar correo electrónico</a></p>
                         </div>
                     </div>
+
+                    <div class="separator"></div>
+
+                    <br>
+
+                    <form [formGroup]="imagenPerfilForm">
+                        <!-- Imagen de pefil -->
+                        <div class="mb-3">
+                            <div>
+                                <label for="">Imagen de perfil:</label>
+                                <div class="mb-2">
+                                <input (change)="capturarFile($event)" type="file">
+                                </div>
+                                <h4 *ngIf="previsualizacion != ''">PREVISUALIZACION</h4>
+                                <div *ngIf="previsualizacion != ''">
+                                <img width="500px" [src]="previsualizacion" alt="x">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- INICIO Botón para actualizar imagen -->
+
+                        <div class="btnChangeLikes d-flex justify-content-center">
+                            <button type="submit" class="btn btn-primary btn-lg" (click)="actualizarImagen(imagenPerfilForm.value)">Actualizar imagen de perfil</button>
+                        </div>
+
+                        <!-- FIN Botón para actualizar imagen -->
+                    </form>
+
 
                     <div class="separator"></div>
 
@@ -55,6 +90,8 @@
                         </div> -->
 
                     <!-- Selección de gustos -->
+
+                    <br>
 
                     <div class="selectNewLikes input-group mb-3">
                     <!-- <b><label class="input-group-text" for="inputGroupSelect01">Gustos actuales</label></b>
@@ -104,10 +141,6 @@
                     </div>
 
                     <!-- Fin de la selección de gustos -->
-
-                    <div class="btnChangeLikes d-flex justify-content-center">
-                        <button type="submit" class="btn btn-primary btn-lg" (click)="postForm(editarForm.value)">Actualizar Información</button>
-                    </div>
 
                     <br>
 

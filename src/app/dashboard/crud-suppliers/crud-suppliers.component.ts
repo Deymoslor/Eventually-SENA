@@ -6,6 +6,9 @@ import { ProveedorI } from './modal-suppliers-create/ProveedorI.interface';
 import { ListaProveedoresI } from './ListaProveedoresI.interface';
 import { SupplierService } from './service/supplier.service';
 import { Router } from '@angular/router';
+import { AlertasService } from 'src/app/core/service/alertas.service';
+import { ResponseI } from 'src/app/login-register/login/models/response.intarface';
+
 @Component({
   selector: 'app-crud-suppliers',
   templateUrl: './crud-suppliers.component.html',
@@ -49,7 +52,9 @@ export class CrudSuppliersComponent implements OnInit {
     private SupplierService:SupplierService,
 
     //Inyectamos el router.
-    private router:Router
+    private router:Router,
+
+    private alertas:AlertasService
 
   ) { }
 
@@ -62,7 +67,7 @@ export class CrudSuppliersComponent implements OnInit {
     //Obtenemos todos los pacientes.
     this.SupplierService.getAllSuppliers(1).subscribe(data=>{
       //recibimos por consola los datso que nos esté trayendo.
-      
+
 
       //Llamamos a la variable que creamos arriba para asignarle los datos que hay en la variable data.
       this.proveedores = data;
@@ -105,8 +110,16 @@ export class CrudSuppliersComponent implements OnInit {
 
       this.SupplierService.putSupplier(this.datosProveedor).subscribe((data:any) =>{
         // console.log(data);
-        window.location.reload();
-
+        let respuesta:ResponseI = data;
+        //Verificamos si la respuesta es exitosa.
+        if(respuesta.status == 'ok'){
+          this.alertas.showSuccess('Proveedor cambiado de estado','cambio exitoso');
+            setTimeout(() => {
+              window.location.reload();
+            }, 2000);
+        }else{
+          this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+        }
       });
 
 
@@ -128,7 +141,16 @@ export class CrudSuppliersComponent implements OnInit {
         console.log(this.datosProveedor)
         this.SupplierService.putSupplier(this.datosProveedor).subscribe((data:any) =>{
           // console.log(data)
-          window.location.reload();
+          let respuesta:ResponseI = data;
+          //Verificamos si la respuesta es exitosa.
+          if(respuesta.status == 'ok'){
+            this.alertas.showSuccess('Proveedor cambiado de estado','cambio exitoso');
+              setTimeout(() => {
+                window.location.reload();
+              }, 2000);
+          }else{
+            this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+          }
 
         });
 

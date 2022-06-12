@@ -1,59 +1,125 @@
-@import '../../../app.component.scss';
-.title {
-    font-family: 'Pacifico', cursive;
-    font-size: 7vw;
-    margin-bottom: 6vw;
-}
+    @import '../../../app.component.scss';
+    .title {
+        font-family: 'Pacifico', cursive;
+        font-size: 7vw;
+        margin-top: 6rem;
+        margin-bottom: 4vw;
+    }
 
-.textoTitulos {
-    font-family: 'Ubuntu', sans-serif;
-    font-weight: 700;
-}
+    .textoTitulos {
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: 700;
+    }
 
-.textox {
-    font-family: 'Ubuntu', sans-serif;
-    font-weight: 350;
-}
+    .textox {
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: 350;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        padding-top: 1.5rem;
+    }
 
-.tables {
-    overflow: scroll;
-    height: 55vw!important;
-    margin-bottom: 8vw;
-}
-
-.tables table {
-    height: 30%!important;
-}
-
-.btn {
-    margin: 20px;
-}
-
-.btnHabilitar {
-    background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
-    color: white;
-}
-
-.btnHabilitar:hover {
-    background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
-}
-
-@media only screen and (max-width: 648px) {
     .tables {
         overflow: scroll;
-        width: 70vw!important;
+        max-width: 100vw;
+        height: 25rem!important;
     }
-    .tables table {
-        width: 10%!important;
-    }
-}
 
-@media only screen and (max-width: 403px) {
-    .tables {
-        overflow: scroll;
-        width: 65vw!important;
-    }
     .tables table {
-        width: 10%!important;
+        height: 20%!important;
     }
-}
+
+    .btn {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: 350;
+    }
+
+    .btnHabilitar {
+        background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2)!important;
+        color: white!important;
+        border: 0px!important;
+        border-radius: 10%!important;
+        width: auto!important;
+        height: auto!important;
+        margin-right: 0.5rem;
+    }
+
+    .btnHabilitar:hover {
+        background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
+    }
+
+    @media only screen and (max-width: 1167px) {
+        .tables {
+            height: 45vw!important;
+        }
+        // .tables table {
+        //     width: 10%!important;
+        // }
+    }
+
+    @media only screen and (max-width: 938px) {
+        .tables {
+            overflow: scroll;
+            width: 75vw!important;
+            height: 50vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+
+    @media only screen and (max-width: 895px) {
+        .tables {
+            overflow: scroll;
+            width: 70vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+
+    @media only screen and (max-width: 895px) {
+        .tables {
+            overflow: scroll;
+            width: 75vw!important;
+            height: 35rem!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+
+    @media only screen and (max-width: 624px) {
+        .tables {
+            overflow: scroll;
+            width: 70vw!important;
+            height: 30rem!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+
+    @media only screen and (max-width: 463px) {
+        // margin-left: 4vw;
+        .tables {
+            overflow: scroll;
+            width: 65vw!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+
+    @media only screen and (max-width: 372px) {
+        // margin-left: 4vw;
+        .tables {
+            overflow: scroll;
+            width: 60vw!important;
+        }
+        .tables table {
+            width: 8%!important;
+        }
+    }

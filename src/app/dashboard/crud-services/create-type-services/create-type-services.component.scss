@@ -1,27 +1,136 @@
-.main-content {
-  display: inline-block;
-  flex-direction: column;
-  width: 90vw;
+@import '../../../app.component.scss';
+.titlePrincipal {
+    font-family: 'Pacifico', cursive;
+    margin: 0 auto;
+    font-size: 3vw;
+    padding: 1.5rem;
 }
 
-.content {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  align-self: center;
-  justify-content: center;
-  flex-grow: 1;
-  margin-top: 40px;
-  margin: 5px 5px;
-  padding-top: 200px;
+.modal-header {
+    // border: 1px solid blue;
+    margin: 0;
+    padding: 0;
 }
 
-.container-buttons {
-  display: flex;
-  flex-direction: row;
-  margin-top: 20px;
+.textox {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 350;
+    font-size: 1.2rem;
 }
 
-.container-buttons button {
-  margin: 15px;
+input {
+    width: 15rem;
+    margin-top: 2rem;
+}
+
+form {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.title {
+    font-weight: 700;
+}
+
+.check {
+    width: 50px;
+    height: 30px;
+    margin: 10px 4px;
+}
+
+.label {
+    margin: 10px 4px;
+}
+
+.form-check {
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.btnCrear {
+    background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
+    color: white;
+}
+
+.container {
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.boton {
+    width: center;
+    margin: 0 auto;
+    // border: 1px solid red;
+}
+
+.btnCrear:hover {
+    background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
+}
+
+.filaInfo {
+    // border: 1px solid green;
+    width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+img {
+    width: 12rem;
+}
+
+.colTitulo {
+    width: 50%;
+    margin-top: 2rem;
+}
+
+.colCont {
+    width: 50%;
+    margin-bottom: 2rem;
+}
+
+// #state:disabled {}
+@media only screen and (max-width: 1464px) {
+    .titlePrincipal {
+        font-size: 3vw;
+    }
+}
+
+@media only screen and (max-width: 1042px) {
+    .titlePrincipal {
+        font-size: 3vw;
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    .titlePrincipal {
+        font-size: 3rem;
+    }
+    input {
+        width: 10rem;
+    }
+}
+
+@media only screen and (max-width: 504px) {
+    .titlePrincipal {
+        font-size: 1.5rem;
+    }
+    .textox {
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (max-width: 362px) {
+    input {
+        width: 8rem;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .textox {
+        font-size: 0.8rem;
+    }
 }

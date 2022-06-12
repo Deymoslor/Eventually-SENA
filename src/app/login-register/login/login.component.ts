@@ -6,6 +6,7 @@ import { loginI } from './models/login.interface';
 import { ResponseI } from './models/response.intarface';
 import { globalAccountConstants } from 'src/app/constants/globalAccountConstants';
 import { AuthService } from 'src/app/core/service/auth.service';
+import { AlertasService } from 'src/app/core/service/alertas.service';
 
 @Component({
   selector: 'app-login',
@@ -50,7 +51,9 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
 
     //Inyectamos variables de cuenta globales.
-    private globalAccountConstants:globalAccountConstants
+    private globalAccountConstants:globalAccountConstants,
+
+    private alertas:AlertasService,
     ) {
         // //Retomamos la información del formulario.
         // this.formUsers = this.formulario.group({
@@ -124,8 +127,11 @@ export class LoginComponent implements OnInit {
         }
 
       }else{
-        this.errorStatus = true;
-        this.errorMsg = dataResponse.result.error_msg;
+        let respuesta:ResponseI = data;
+        this.alertas.showError(respuesta.result.error_msg,'Error');
+
+        // this.errorStatus = true;
+        // this.errorMsg = dataResponse.result.error_msg;
       }
     });
 

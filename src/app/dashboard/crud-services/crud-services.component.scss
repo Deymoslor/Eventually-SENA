@@ -25,14 +25,13 @@
 }
 
 .content {
+    margin-top: 4vw;
     display: flex;
     width: 90%;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     flex-grow: 1;
-    margin-top: 4vw;
-    height: auto!important;
     // margin-left: 4vw;
 }
 
@@ -47,15 +46,26 @@
 }
 
 .content {
-    height: auto;
+    height: 85rem!important;
+    margin-top: 2rem!important;
+    margin: 0 auto;
+    width: 75vw!important;
     .tables {
         overflow: scroll;
-        height: 30vw!important;
-        margin-bottom: 4vw;
+        width: 78vw!important;
+        height: 85rem!important;
     }
     .tables table {
         height: 30%!important;
     }
+}
+
+.imgTabla {
+    width: 20vw!important;
+}
+
+.title2 {
+    margin-top: 6vw;
 }
 
 .btn {
@@ -80,42 +90,27 @@
     background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
 }
 
-// @media only screen and (max-width: 1213px) {
-//     .content {
-//         margin-left: 6vw!important;
-//     }
-// }
-// @media only screen and (max-width: 1129px) {
-//     .content {
-//         margin-left: 4vw!important;
-//     }
-// }
-@media only screen and (max-width: 1097px) {
+@media only screen and (max-width: 1167px) {
     .content {
-        width: 86vw!important;
+        height: 85rem!important;
         // margin-left: 4vw;
         .tables {
-            overflow: scroll;
-            width: 86vw!important;
+            height: 85rem!important;
         }
-        .tables table {
-            width: 10%!important;
-        }
+        // .tables table {
+        //     width: 10%!important;
+        // }
     }
 }
 
-// @media only screen and (max-width: 930px) {
-//     .content {
-//         margin-bottom: 6vw;
-//     }
-// }
-@media only screen and (max-width: 718px) {
+@media only screen and (max-width: 938px) {
     .content {
-        width: 82vw!important;
-        // margin-left: 6vw!important;
+        width: 75vw!important;
+        height: 80rem!important;
         .tables {
             overflow: scroll;
-            width: 82vw!important;
+            width: 75vw!important;
+            height: 80rem!important;
         }
         .tables table {
             width: 10%!important;
@@ -123,57 +118,9 @@
     }
 }
 
-@media only screen and (max-width: 627px) {
-    .content {
-        width: 78vw!important;
-        // margin-left: 8vw!important;
-        .tables {
-            overflow: scroll;
-            width: 78vw!important;
-        }
-        .tables table {
-            width: 10%!important;
-        }
-    }
-}
-
-@media only screen and (max-width: 970px) {
-    .content {
-        width: 60vw!important;
-        // margin-left: 10vw!important;
-        .tables {
-            overflow: scroll;
-            width: 60vw!important;
-        }
-        .tables table {
-            width: 10%!important;
-        }
-    }
-}
-
-// @media only screen and (max-width: 427px) {
-//     .content {
-//         margin-left: 4vw!important;
-//     }
-// }
-@media only screen and (max-width: 387px) {
-    .content {
-        width: 74vw!important;
-        // margin-left: 2.5vw!important;
-        .tables {
-            overflow: scroll;
-            width: 74vw!important;
-        }
-        .tables table {
-            width: 10%!important;
-        }
-    }
-}
-
-@media only screen and (max-width: 361px) {
+@media only screen and (max-width: 895px) {
     .content {
         width: 70vw!important;
-        // margin-left: 2.5vw!important;
         .tables {
             overflow: scroll;
             width: 70vw!important;
@@ -184,10 +131,42 @@
     }
 }
 
-@media only screen and (max-width: 330px) {
+@media only screen and (max-width: 895px) {
+    .content {
+        width: 75vw!important;
+        // margin-left: 4vw;
+        height: 75rem!important;
+        .tables {
+            overflow: scroll;
+            width: 75vw!important;
+            height: 75rem!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+}
+
+@media only screen and (max-width: 624px) {
+    .content {
+        width: 70vw!important;
+        // margin-left: 4vw;
+        height: 70rem!important;
+        .tables {
+            overflow: scroll;
+            width: 70vw!important;
+            height: 70rem!important;
+        }
+        .tables table {
+            width: 10%!important;
+        }
+    }
+}
+
+@media only screen and (max-width: 463px) {
     .content {
         width: 65vw!important;
-        // margin-left: -1vw!important;
+        // margin-left: 4vw;
         .tables {
             overflow: scroll;
             width: 65vw!important;
@@ -198,16 +177,16 @@
     }
 }
 
-@media only screen and (max-width: 281px) {
+@media only screen and (max-width: 372px) {
     .content {
         width: 60vw!important;
-        // margin-left: -1vw!important;
+        // margin-left: 4vw;
         .tables {
             overflow: scroll;
             width: 60vw!important;
         }
         .tables table {
-            width: 10%!important;
+            width: 8%!important;
         }
     }
 }

@@ -38,12 +38,28 @@ body {
     }
 }
 
+    body {
+        width: 100%;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        z-index: 3;
+        padding-top: 5rem;
+        margin-bottom: 2vw;
+        // border: 1px solid green;
+    }
 @media only screen and (max-width: 876px) {
     .principalContainer {
         width: 80vw;
     }
 }
 
+    .leftMenu {
+        width: 6rem;
+        // border: 1px solid red;
+        margin: 0;
+        padding: 0;
+    }
 @media only screen and (max-width: 610px) {
     .principalContainer {
         width: 75vw;
@@ -64,6 +80,13 @@ body {
 
 @media only screen and (max-width: 331px) {
     .principalContainer {
+        width: 90vw;
+        height: auto;
+        // border: 1px solid blue;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
         width: 60vw;
     }
 }
