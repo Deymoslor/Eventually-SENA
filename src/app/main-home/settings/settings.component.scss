@@ -1,18 +1,86 @@
 @import '../../app.component.scss';
 body .container {
-    max-width: 100vw;
-    width: 100%;
+    width: auto;
     height: 4.5rem;
     z-index: 3;
-    margin-top: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    // border: 1px solid rgb(77, 128, 0);
+    margin: 0;
+    padding: 0;
 }
 
 .menuSettingsUser {
-    width: auto;
+    width: 19rem;
+    // border: 1px solid purple;
 }
 
 .settingsContent {
     margin-left: 1rem;
-    width: 100%;
+    width: 65vw;
+    // border: 1px solid palevioletred;
     height: auto;
+}
+
+.textox {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 350;
+}
+
+@media only screen and (max-width: 1326px) {
+    .settingsContent {
+        width: 60vw;
+    }
+}
+
+@media only screen and (max-width: 1020px) {
+    .menuSettingsUser {
+        width: 30vw;
+    }
+}
+
+@media only screen and (max-width: 1109px) {
+    .settingsContent {
+        width: 55vw;
+    }
+}
+
+@media only screen and (max-width: 994px) {
+    .settingsContent {
+        width: 45vw;
+    }
+}
+
+@media only screen and (max-width: 981px) {
+    .menuSettingsUser {
+        width: 27vw;
+    }
+}
+
+@media only screen and (max-width: 786px) {
+    .menuSettingsUser {
+        width: 6.5rem;
+    }
+}
+
+@media only screen and (max-width: 494px) {
+    .menuSettingsUser {
+        width: 18vw;
+    }
+}
+
+@media only screen and (max-width: 474px) {
+    .menuSettingsUser {
+        width: 16vw;
+    }
+}
+
+@media only screen and (max-width: 379px) {
+    .settingsContent {
+        width: 14vw;
+        margin-left: 0.5rem;
+    }
 }

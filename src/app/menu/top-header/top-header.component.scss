@@ -301,7 +301,7 @@ header {
     }
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 804px) {
     .menus {
         width: auto;
         padding-left: -3rem;
@@ -366,6 +366,22 @@ header {
         padding-left: -3rem;
         margin-top: 0;
         margin-left: 1.5rem;
+    }
+    .search {
+        width: 16rem!important;
+        height: 5rem;
+        .varSearch {
+            margin-left: -1rem;
+        }
+    }
+}
+
+@media only screen and (max-width: 659px) {
+    .menus {
+        width: auto;
+        padding-left: -2rem;
+        margin-top: 0;
+        margin-left: 1rem;
     }
     .search {
         width: 16rem!important;

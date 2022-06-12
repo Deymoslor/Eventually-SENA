@@ -1,18 +1,23 @@
 <!-- Modal -->
-<div class="modal-content modal-dialog modal-lg modal-dialog-scrollable">
-    <div class="modal-header">
+<div class="modal-content  modal-dialog-scrollable" width="auto">
+    <div class="modal-header" width="auto">
         <h5 class="titlePrincipal" id="staticBackdropLabel">Editar Tipo Servicio</h5>
         <!-- <button type="button" class="btn-close" aria-label="Close" (click)="modalCreateTypeDash.dismiss('Cross click')"></button> -->
     </div>
-    <form [formGroup]="createTypeServices" (ngSubmit)="postForm(createTypeServices.value)">       
-        <label for="">Nombre del Evento:</label>
-        <input type="text" class="form-control" id=""
-        placeholder="" formControlName="tipoServicio">
-        
-        <div class="modal-footer">
-            <button type="submit" class="btn btn-primary">Crear Tipo Servicio</button>
+    <form width="auto" [formGroup]="createTypeServices" (ngSubmit)="postForm(createTypeServices.value)">
+        <div class="container d-flex" width="auto">
+            <div class="row filaInfo">
+                <div class="col-6 colTitulo">
+                    <label class="title" for="">Nombre del Evento:</label>
+                </div>
+                <div class="col-6 colCont">
+                    <input type="text" class="form-control" id="" placeholder="" formControlName="tipoServicio">
+                </div>
+
+                <div class="col-2 boton">
+                    <button type="submit" class="btn btnCrear">Crear</button>
+                </div>
+            </div>
         </div>
     </form>
 </div>
-
-

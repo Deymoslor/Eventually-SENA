@@ -28,14 +28,16 @@
                         <td class="textox">{{ service.nombreServicio }}</td>
                         <td class="textox">{{ service.descripcionServicio }}</td>
                         <td class="textox">{{ service.precioEstimado }}</td>
-                        <td class="textox">{{ service.imagen }}</td>
+                        <td class="textox">
+                            <img class="imgTabla" src="{{ service.imagen }}" alt="">
+                        </td>
                         <td class="textox">{{ service.historialEmpresas }}</td>
                         <td class="textox">{{ service.numeroContacto }}</td>
                         <td class="textox">{{ service.correoContacto }}</td>
                         <td *ngIf="service.estadoServicio == '1'" class="textox">ACEPTADO</td>
                         <td *ngIf="service.estadoServicio == '0'" class="textox">INHABILITADO</td>
                         <td class="textox" *ngFor="let provider of dataProvider" [hidden]="provider.idProveedor!= service.Proveedor_idProveedor ">
-                                {{provider.nombreProveedor}}
+                            {{provider.nombreProveedor}}
                         </td>
                         <td class="textox" *ngFor="let type of TypeServices" [hidden]="type.idtipoServicio != service.TipoServicio_idtipoServicio">
                             {{type.tipoServicio}}
@@ -49,7 +51,7 @@
     </div>
     <!--TABLE//-->
 
-    <h2 class="fs-1 title">Tipos de Servicios</h2>
+    <h2 class="fs-1 title title2">Tipos de Servicios</h2>
 
     <!--TABLE-->
     <div class="row tables">
@@ -76,16 +78,15 @@
             </table>
         </div>
     </div>
-    <button class="btn btnCrear" class="btn btnEditar" data-bs-toggle="modalCreateTypeDash"  data-bs-target="#content-modalCreateTypeDash" 
-    (click)="modalCreateServiceOpen(contentCreateType, 1)">
-      Crear Tipo Servicio
+    <button class="btn btnCrear" class="btn btnEditar" data-bs-toggle="modalCreateTypeDash" data-bs-target="#content-modalCreateTypeDash" (click)="modalCreateServiceOpen(contentCreateType, 1)">
+      Crear
   </button>
 </div>
 <!--TABLE//-->
 
 <!-- Create new type services -->
 
-<ng-template  #contentCreateType let-modalCreateTypeDash>
+<ng-template #contentCreateType let-modalCreateTypeDash>
     <button type="button" class="btn-close" aria-label="Close" (click)="modalCreateTypeDash.dismiss('Cross click')"></button>
     <app-create-type-services></app-create-type-services>
 </ng-template>
@@ -149,13 +150,13 @@
                 <input type="number" class="form-control" id="exampleInputEmail1" min="1" max="200000000" formControlName="precioEstimado">
 
                 <label for="">Imagen evento:</label>
-                            <div class="mb-2">modalServiceOpen
-                                <input (change)="capturarFile($event)" formControlName="imagen" type="file">
-                            </div>
-                            <h4>PREVISUALIZACION</h4>
-                            <div *ngIf="previsualizacion">
-                                <img width="500px" [src]="previsualizacion" alt="">
-                            </div>
+                <div class="mb-2">modalServiceOpen
+                    <input (change)="capturarFile($event)" formControlName="imagen" type="file">
+                </div>
+                <h4>PREVISUALIZACION</h4>
+                <div *ngIf="previsualizacion">
+                    <img width="500px" [src]="previsualizacion" alt="">
+                </div>
 
                 <label for="">Historial de empresas:</label>
                 <div class="mb-2">

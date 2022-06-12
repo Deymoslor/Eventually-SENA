@@ -61,11 +61,20 @@ export class CrudServicesComponent implements OnInit {
     this.api.getAllTypeServices(1).subscribe(data => {
       // console.log(data);
       this.TypeServices = data;
+
     })
 
     this.api.getAllServices(1).subscribe(data => {
-      // console.log(data);
+      console.log(data);
       this.Services = data;
+
+      this.Services.forEach(element => {
+        if (element.imagen){
+          element.imagen= element.imagen.replace('C:/xampp/htdocs', GlobalConstants.httpLocalHost);
+        }else{
+         element.imagen='';
+        }
+      });
     })
 
     this.apiProvider.getAllSuppliers(1).subscribe(data =>{
@@ -108,7 +117,7 @@ export class CrudServicesComponent implements OnInit {
     this.idService = numb;
     this.api.getSingleService(this.idService).subscribe((data: any) => {
       this.dataService = data[0];
-      
+
       if(this.dataService.imagen){
         this.previsualizacion = this.dataService.imagen.replace('C:/xampp/htdocs', GlobalConstants.httpLocalHost);
       }else{
@@ -131,7 +140,7 @@ export class CrudServicesComponent implements OnInit {
       })
     })
 
-    
+
 
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result: any) => {
       this.closeResult = `Closed with: ${result}`;
@@ -144,7 +153,7 @@ export class CrudServicesComponent implements OnInit {
     // this.idService = numb;
     // this.api.getSingleService(this.idService).subscribe((data: any) => {
     //   this.dataService = data[0];
-      
+
     //   if(this.dataService.imagen){
     //     this.previsualizacion = this.dataService.imagen.replace('C:/xampp/htdocs', GlobalConstants.httpLocalHost);
     //   }else{
@@ -167,7 +176,7 @@ export class CrudServicesComponent implements OnInit {
     //   })
     // })
 
-    
+
 
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result: any) => {
       this.closeResult = `Closed with: ${result}`;

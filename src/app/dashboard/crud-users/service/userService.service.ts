@@ -6,9 +6,7 @@ import { PersonaI } from '../modal-users/personaI.interface';
 import { ResponseI } from 'src/app/login-register/login/models/response.intarface';
 import { GlobalConstants } from 'src/app/global-constants';
 import { GroupPerson } from 'src/app/main-home/groups/see-groups/GroupPerson';
-import { AlertasService } from 'src/app/core/service/alertas.service';
 import { GroupPersonDetails } from 'src/app/main-home/groups/your-groups/your-groups-details/group-person-details';
-
 
 @Injectable({
   providedIn: 'root'
