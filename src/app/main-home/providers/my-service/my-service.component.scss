@@ -26,10 +26,35 @@
     text-align: center;
 }
 
+.invitations-section {
+    height: auto;
+    // border: 1px solid red;
+    padding: 0;
+    margin: 0;
+}
+
+.r {
+    // border: 1px solid red;
+    padding: 0;
+    margin: 0;
+}
+
+.table-invitations {
+    // border: 1px solid purple;
+    padding: 0;
+    margin: 0;
+}
+
 .textoTitulos {
     font-family: 'Ubuntu', sans-serif;
     font-weight: 700;
     margin-bottom: 1rem;
+}
+
+.ti {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    font-size: 3.5rem;
 }
 
 .textox {
@@ -116,6 +141,7 @@
 .btnEditar {
     background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
     color: white;
+    margin-left: 5rem;
 }
 
 .btnEditar:hover {
@@ -123,6 +149,9 @@
 }
 
 @media only screen and (max-width: 1075px) {
+    .ti {
+        font-size: 2.5rem;
+    }
     .textox {
         font-size: 0.5rem!important;
     }

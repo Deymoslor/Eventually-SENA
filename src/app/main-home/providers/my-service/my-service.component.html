@@ -146,20 +146,44 @@
 
 
                         </div>
-                        <div class="row ">
-                            <div class="col-4 contCampo">
-                                <div class="row">
 
-                                    <div class="col-2 contCampo">
-                                        <div class="row">
-                                            <button class="btn textox btnEditar  s" data-bs-toggle="modal" data-bs-target="#content-modal-edit-service">
-                                Editar
-                            </button>
+                        <div class="row ">
+                            <div class="col-12 ">
+                                <div class="row ">
+
+                                    <section class="invitations-section" *ngIf="ServicesForm.get('estadoServicio')?.value == 1; ">
+                                        <h2 class="textoTitulos ti">Invitaciones a eventos</h2>
+                                        <div class="table-invitations">
+                                            <app-table-invitations-events [childMessage]="idProvider"></app-table-invitations-events>
                                         </div>
-                                    </div>
+
+                                    </section>
+                                    <ng-template #dissabledService>
+                                        <div class="disabledService textox">
+                                            SERVICIO DESHABILITADO, PARA ACCEDER A LAS DIFERENTES OPCIONES DE ESTE, VUELVA A HABILITAR EL SERVICIO
+                                        </div>
+
+                                    </ng-template>
                                 </div>
                             </div>
                         </div>
+
+
+
+                        <button class="btn textox btnEditar  s" data-bs-toggle="modal" data-bs-target="#content-modal-edit-service">
+                                Editar
+                            </button>
+
+
+
+
+
+
+                        <button class="btn textox btnEditar  s" data-bs-toggle="modal" data-bs-target="#content-modal-create-service">
+                              Crear
+                          </button>
+
+
 
                     </div>
                 </div>
