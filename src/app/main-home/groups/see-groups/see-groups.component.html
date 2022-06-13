@@ -1,5 +1,9 @@
-<div class="card-group">
+<div class="card-group" *ngIf="groups">
   <app-see-groups-show *ngFor="let group of groups"
   [group]="group">
   </app-see-groups-show>
+</div>
+<div *ngIf="!groups">
+  <br>
+  <p class="product-name h2">Debes de escoger un gusto antes de unirte a un grupo.</p>
 </div>

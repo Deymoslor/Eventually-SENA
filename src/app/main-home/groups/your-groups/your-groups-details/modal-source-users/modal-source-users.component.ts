@@ -5,6 +5,8 @@ import { userService } from "../../../../../dashboard/crud-users/service/userSer
 import { AuthService } from 'src/app/core/service/auth.service';
 import { ListaPersonasI } from 'src/app/dashboard/crud-users/ListaPersonasI.interface';
 import { finalize, map } from 'rxjs';
+import { ResponseI } from 'src/app/login-register/login/models/response.intarface';
+import { AlertasService } from 'src/app/core/service/alertas.service';
 
 @Component({
   selector: 'app-modal-source-users',
@@ -23,7 +25,8 @@ export class ModalSourceUsersComponent implements OnInit {
               private userService:userService,
               private authService: AuthService,
               private router:Router,
-              private activerouter:ActivatedRoute) { }
+              private activerouter:ActivatedRoute,
+              private alertas:AlertasService,) { }
 
   filterPersona = '';
 
@@ -35,17 +38,28 @@ export class ModalSourceUsersComponent implements OnInit {
       console.log(this.personas);
     })
   }
-  share(idPersonas): void {
+  share(idPersonas, nombre): void {
     let idGrupos = this.activerouter.snapshot.paramMap.get('id')
     console.log(' la variable idGrupos: ', idGrupos);
     console.log(' la variable idPersonas: ', idPersonas);
     const newDetail = {idGrupos: Number(idGrupos), idPersonas: idPersonas}
-    this.userService.PostRequestGroupPerson(newDetail).subscribe(data =>
-      console.log(data)
-
+    this.userService.PostRequestGroupPerson(newDetail).subscribe(data => {
+      console.log(data);
+      let respuesta:ResponseI = data;
+          //Verificamos si la respuesta es exitosa.
+          if(respuesta.status == 'ok'){
+            this.alertas.showSuccess('has enviado una invitación a '+nombre+' ','Invitación exitosa');
+            setTimeout(() => {
+              window.location.reload();
+            }, 2000);
+          }else{
+            this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+            setTimeout(() => {
+              window.location.reload();
+            }, 2000);
+          }
+    }
     );
-    window.alert('se ha enviado la solicitúd de unirse');
-    window.location.reload();
   }
 
 }

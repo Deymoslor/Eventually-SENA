@@ -2,7 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AlertasService } from 'src/app/core/service/alertas.service';
 import { GlobalConstants } from 'src/app/global-constants';
+import { ResponseI } from 'src/app/login-register/login/models/response.intarface';
 import { LikesI } from 'src/app/models/likes';
 import { ApiService } from 'src/app/services/api.service';
 import { Group } from '../../../see-groups/group';
@@ -19,7 +21,13 @@ export class ModalEditGroupsComponent implements OnInit {
   public previsualizacion!: string;
   public archivos: any = [];
 
-  constructor(private activerouter:ActivatedRoute , private router:Router, private fb: FormBuilder, private ApiGroup:YourGroupsService, private likes: ApiService, private sanitizer: DomSanitizer) { }
+  constructor(private activerouter:ActivatedRoute ,
+    private router:Router,
+    private fb: FormBuilder,
+    private ApiGroup:YourGroupsService,
+    private likes: ApiService,
+    private sanitizer: DomSanitizer,
+    private alertas:AlertasService,) { }
 
   datesGroup!: Group;
   editForm = new FormGroup({
@@ -104,8 +112,20 @@ export class ModalEditGroupsComponent implements OnInit {
     console.log(form);
     this.ApiGroup.putGroup(form).subscribe( data =>{
       console.log(data);
+      let respuesta:ResponseI = data;
+          //Verificamos si la respuesta es exitosa.
+          if(respuesta.status == 'ok'){
+            this.alertas.showSuccess('has editado grupo','Edición exitosa');
+            setTimeout(() => {
+              window.location.reload();
+            }, 2000);
+          }else{
+            this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+            setTimeout(() => {
+              window.location.reload();
+            }, 2000);
+          }
     })
   }
-  refresh(): void { window.location.reload(); }
 
 }

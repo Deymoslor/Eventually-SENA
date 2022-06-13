@@ -16,6 +16,9 @@ import { GroupPersonDetails } from './group-person-details';
 import { GlobalConstants } from 'src/app/global-constants';
 import { RequestGroups } from 'src/app/main-home/settings/request-groups/request-groups';
 import { RequestGroupsService } from "src/app/main-home/settings/request-groups/request-groups.service";
+import { ResponseI } from 'src/app/login-register/login/models/response.intarface';
+import { AlertasService } from 'src/app/core/service/alertas.service';
+import { SeeGroupsService } from '../../see-groups/see-groups.service';
 // import { ApiService } from 'src/app/services/api/api.service';
 
 @Component({
@@ -29,8 +32,10 @@ export class YourGroupsDetailsComponent implements OnInit {
   childMessage: number | undefined;
   likesI!: LikesI[];
   public personas! : GroupPersonDetails[];
+  InvitadoPresente! : GroupPersonDetails;
   manager!: GroupPersonDetails;
   personaId = this.auth.desencriptar(localStorage.getItem('id'));
+  idGrupos = this.route.snapshot.paramMap.get('id');
 
   GroupForm  = new FormGroup({
     imagen: new FormControl('')
@@ -38,6 +43,7 @@ export class YourGroupsDetailsComponent implements OnInit {
   group!: Group;
   constructor(
     private RequestGroupsService: RequestGroupsService,
+    private SeeGroupsService: SeeGroupsService,
     private YourGroupsService: YourGroupsService,
     private relatedService : RelatedGroupsService,
     private promotedGroup: GroupsServiceService,
@@ -50,22 +56,26 @@ export class YourGroupsDetailsComponent implements OnInit {
     private userService:userService,
     private likes: ApiService,
     private auth: AuthService,
+    private alertas:AlertasService,
   ) { }
 
   closeResult = '';
 
   ngOnInit(): void {
-    let idGrupos = this.route.snapshot.paramMap.get('id');
+    console.log(this.personaId);
     // console.log(idGrupos);
-    this.userService.getGroupPerson(Number(idGrupos)).subscribe((data: any)=>{
+    this.userService.getGroupPerson(Number(this.idGrupos),this.personaId).subscribe((data: any)=>{
       this.personas = data;
       // console.log(this.personas);
+    })
+    this.RequestGroupsService.getRequestGuests(Number(this.idGrupos),this.personaId).subscribe((data: any) =>{
+      this.InvitadoPresente = data[0];
     })
     this.likes.getAllLikes(1).subscribe(data=>{
 
       this.likesI = data;
     })
-    this.promotedGroup.getSingleGroup(Number(idGrupos)).subscribe((data: any) => {
+    this.promotedGroup.getSingleGroup(Number(this.idGrupos)).subscribe((data: any) => {
       console.log(data);
       this.group = data[0];
       if (this.group == null) {
@@ -85,7 +95,7 @@ export class YourGroupsDetailsComponent implements OnInit {
       }
     })
 
-    this.userService.getManagerGroup(this.personaId,Number(idGrupos)).subscribe((data: any) => {
+    this.userService.getManagerGroup(this.personaId,Number(this.idGrupos)).subscribe((data: any) => {
       this.manager = data[0];
       // console.log(this.manager);
     })
@@ -190,16 +200,65 @@ export class YourGroupsDetailsComponent implements OnInit {
   }
   refresh(): void { window.location.reload(); }
 
-  putEditDetail(group: Number, detail: Number, idPersona: Number, estadoPersona: Number){
+  putEditDetail(group: number, detail: number, idPersona: number, estadoPersona: number){
     console.log('grupos: ', group, 'detalle: ', detail, 'el idPersona: ', idPersona, 'el Estado Persona: ', estadoPersona);
-    const newDetail = {idGrupos: group, idDetalleGrupoPersonas: detail, idPersona: idPersona, estadoPersona_idEstadoPersona: estadoPersona}
-
+    const newDetail = {idGrupos: Number(group), idDetalleGrupoPersonas: Number(detail), idPersona: Number(idPersona), estadoPersona_idEstadoPersona: Number(estadoPersona)}
+    const newDetail2 = {idGrupos: group, idPersonas: idPersona}
     this.RequestGroupsService.putDetailsPersonGroup(newDetail).subscribe( data =>{
       console.log(data);
+      let respuesta:ResponseI = data;
+          //Verificamos si la respuesta es exitosa.
+          if(respuesta.status == 'ok'){
+            this.SeeGroupsService.putGroupPerson(newDetail2).subscribe(data1 =>{
+              console.log(data1);
+              let respuesta2:ResponseI = data1;
+              if (respuesta2.status == 'ok') {
+                this.alertas.showSuccess('has expulsado el participante del grupo','Eliminación exitosa');
+                setTimeout(() => {
+                  window.location.reload();
+                }, 2000);
+              }else{
+                this.alertas.showError(respuesta2.result.error_msg,'Problemas de Actualización');
+                setTimeout(() => {
+                  window.location.reload();
+                }, 2000);
+              }
+            })
+          }else{
+            this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+            window
+          }
     })
+  }
 
-    window.alert('se ha eliminado el invitado exitosamente');
-
-    window.location.reload();
+  putDeleteDetail(group: number, detail: number, idPersona: number, estadoPersona: number){
+    console.log('grupos: ', group, 'detalle: ', detail, 'el idPersona: ', idPersona, 'el Estado Persona: ', estadoPersona);
+    const newDetail = {idGrupos: group, idDetalleGrupoPersonas: detail, idPersona: idPersona, estadoPersona_idEstadoPersona: estadoPersona}
+    const newDetail2 = {idGrupos: group, idPersonas: idPersona}
+    this.RequestGroupsService.putDetailsPersonGroup(newDetail).subscribe( data =>{
+      console.log(data);
+      let respuesta:ResponseI = data;
+          //Verificamos si la respuesta es exitosa.
+          if(respuesta.status == 'ok'){
+            this.SeeGroupsService.putGroupPerson(newDetail2).subscribe(data1 =>{
+              console.log(data1);
+              let respuesta2:ResponseI = data1;
+              if (respuesta2.status == 'ok') {
+                this.alertas.showSuccess('has salido del grupo','Petición exitosa');
+                this.router.navigate(['main/groups/related-groups',]);
+              }else{
+                this.alertas.showError(respuesta2.result.error_msg,'Problemas de Actualización');
+                setTimeout(() => {
+                  window.location.reload();
+                }, 2000);
+              }
+            })
+          }else{
+            this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+            setTimeout(() => {
+              window.location.reload();
+            }, 2000);
+          }
+    })
   }
 }

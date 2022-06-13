@@ -6,6 +6,8 @@ import { Group } from './group';
 import { updatePersonaI } from '../../settings/updatePersonaI';
 import { GroupPerson } from './GroupPerson';
 import { GlobalConstants } from 'src/app/global-constants';
+import { ResponseI } from 'src/app/login-register/login/models/response.intarface';
+import { ResponseIde } from './response';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +16,7 @@ export class SeeGroupsService {
 
   port = GlobalConstants.port;
 
-  API:string='http://localhost'+this.port+'/API-Eventually-SENA/';
+  API:string='http://localhost'+this.port+'/Api-Eventually-SENA/';
 
   constructor(private http:HttpClient) { }
 
@@ -34,9 +36,14 @@ export class SeeGroupsService {
     return this.http.get<Group>(direccion);
   }
 
-  postDetailsGroupPerson(GroupPersonC:GroupPerson):Observable<Response>{
+  postDetailsGroupPerson(GroupPersonC:GroupPerson):Observable<ResponseI>{
     let direccion = this.API + "Groups";
-    return this.http.post<Response>(direccion, GroupPersonC);
+    return this.http.post<ResponseI>(direccion, GroupPersonC);
+  }
+
+  putGroupPerson(GroupPersonC:GroupPerson):Observable<ResponseIde>{
+    let direccion = this.API + "Groups";
+    return this.http.put<ResponseIde>(direccion, GroupPersonC);
   }
 
   getSinglePerson(id:any):Observable<updatePersonaI>{
