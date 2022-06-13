@@ -3,7 +3,7 @@ import { TypeServicesI } from './models/typeServices.interface';
 import { ApiService } from './services/api.service';
 import { Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { ServiceI } from './models/services.interface';
 import { SupplierService } from '../crud-suppliers/service/supplier.service';
 import { ProveedorI } from '../crud-suppliers/modal-suppliers-create/ProveedorI.interface';
@@ -11,6 +11,8 @@ import { ListaProveedoresI } from '../crud-suppliers/ListaProveedoresI.interface
 import { GlobalConstants } from 'src/app/global-constants';
 import { DomSanitizer } from '@angular/platform-browser';
 import { content } from 'html2canvas/dist/types/css/property-descriptors/content';
+import { ResponseI } from 'src/app/core/ui/response.interface';
+import { AlertasService } from 'src/app/core/service/alertas.service';
 
 @Component({
   selector: 'app-crud-services',
@@ -55,7 +57,30 @@ export class CrudServicesComponent implements OnInit {
   idService!: number;
 
   constructor(private api: ApiService, private router: Router, private modalService: NgbModal,
-    private apiProvider: SupplierService, private sanitizer: DomSanitizer) { }
+    private apiProvider: SupplierService, private sanitizer: DomSanitizer, private alertas: AlertasService,
+    private fb: FormBuilder) {
+
+      this.ServicesForm = this.fb.group({
+        idServicios: ['', [Validators.required, Validators.pattern(/^[0-9]\d*$/)]],
+        nombreServicio: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
+        descripcionServicio: ['', [Validators.required, Validators.minLength(20), Validators.maxLength(500)]],
+        precioEstimado: ['', [Validators.required, Validators.pattern(/^[0-9]\d*$/)]],
+        imagen: ['', []],
+        historialEmpresas: ['', [Validators.required, Validators.minLength(20), Validators.maxLength(300)]],
+        numeroContacto: ['', [Validators.required, Validators.pattern(/^[0-9]\d*$/)]],
+        correoContacto: ['', [Validators.required, Validators.email]],
+        estadoServicio: ['', [Validators.required]],
+        Proveedor_idProveedor: ['', []],
+        TipoServicio_idtipoServicio: ['', []]
+      })
+
+      this.typeServicesForm = this.fb.group({
+        idtipoServicio: ['', [Validators.required, Validators.pattern(/^[0-9]\d*$/)]],
+        tipoServicio: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(15)]],
+        estadoTipoServicio: ['']
+      })
+
+     }
 
   ngOnInit(): void {
     this.api.getAllTypeServices(1).subscribe(data => {
@@ -251,16 +276,41 @@ export class CrudServicesComponent implements OnInit {
     console.log(form);
     this.api.putTypeService(form).subscribe(data => {
       console.log(data);
+      let respuesta:ResponseI = data;
+          //Verificamos si la respuesta es exitosa.
+          if(respuesta.status == 'ok'){
+            this.alertas.showSuccess('Edicion exitosa','Registro exitoso');
+            setTimeout(()=>{
+              this.refresh();
+            },2000);
+          }else{
+            this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+            setTimeout(()=>{
+              // this.refresh();
+            },2000);
+          }
     });
     this.refresh();
   }
 
   postEditFormServices(form: ServiceI) {
-    form.imagen = this.previsualizacion;
+    form.imagen = this.previsualizacion.replace(GlobalConstants.httpLocalHost, 'C:/xampp/htdocs');
     this.api.putService(form).subscribe(data => {
       console.log(data);
+      let respuesta:ResponseI = data;
+          //Verificamos si la respuesta es exitosa.
+          if(respuesta.status == 'ok'){
+            this.alertas.showSuccess('Edicion exitosa','Registro exitoso');
+            setTimeout(()=>{
+              this.refresh();
+            },2000);
+          }else{
+            this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+            setTimeout(()=>{
+              // this.refresh();
+            },2000);
+          }
     });
-    this.refresh();
   }
 
   refresh(): void { window.location.reload(); }
