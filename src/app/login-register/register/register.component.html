@@ -10,7 +10,7 @@
                 <label for="">Nombre</label>
                 <div class="invalid-feedback">
                     {{ nuevoForm.get("nombre")?.hasError("required") ? "Campo requerido" : "" }}
-                    {{ nuevoForm.get("nombre")?.hasError("pattern") ? "Campo solo con letras y sin espacios" : "" }}
+                    {{ nuevoForm.get("nombre")?.hasError("pattern") ? "Campo solo con letras" : "" }}
                 </div>
             </div>
             <!-- {{nuevoForm.get("nombre")?.errors | json}} -->
@@ -122,7 +122,7 @@
 
             <button *ngIf="nuevoForm.invalid" type="submit" [disabled]="nuevoForm.invalid" class="btnRegistroDisable">Registrarse</button>
             <button *ngIf="nuevoForm.valid" type="submit" class="btnRegistro">Registrarse</button>
-            <button class="btnsSuplier" (click)="cancel()">Cancelar</button>
+
 
             <!-- <pre>{{ formUsers.value | json }}</pre> -->
         </div>

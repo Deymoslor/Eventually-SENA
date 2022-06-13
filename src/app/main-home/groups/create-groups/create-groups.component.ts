@@ -17,21 +17,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class CreateGroupsComponent implements OnInit {
 
+  createYourGroupForm : FormGroup;
+
   likesI!: LikesI[];
   public previsualizacion!: string;
   public archivos: any = [];
   idGrupos = this.route.snapshot.paramMap.get('id');
 
-  createYourGroupForm = new FormGroup({
-    idGroups: new FormControl(''),
-    nombreGrupo: new FormControl(''),
-    descripcionGrupo: new FormControl(''),
-    privacidadGrupo: new FormControl(''),
-    InvitadosTotales: new FormControl(''),
-    check: new FormControl(''),
-    gustos_idGusto: new FormControl(''),
-    idPersona: new FormControl(''),
-  });
   share() {
     window.alert('The product has been shared!');
   }
@@ -45,7 +37,22 @@ export class CreateGroupsComponent implements OnInit {
     private sanitizer: DomSanitizer,
     private alertas:AlertasService,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private formBuilder:FormBuilder,
+    ) {
+
+      this.createYourGroupForm = this.formBuilder.group({
+        idGroups: [],
+        nombreGrupo: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/)]],
+        descripcionGrupo: [' ',[Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1 ]+$/)]],
+        privacidadGrupo: ['', Validators.requiredTrue],
+        InvitadosTotales: ['', Validators.required],
+        check: ['', Validators.requiredTrue],
+        gustos_idGusto: [],
+        idPersona: [],
+      });
+
+    }
 
   ngOnInit(): void {
     this.likes.getAllLikes(1).subscribe(data=>{
@@ -54,15 +61,15 @@ export class CreateGroupsComponent implements OnInit {
       this.likesI = data;
     })
 
-    this.createYourGroupForm = this.fb.group({
-      nombreGrupo: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
-      descripcionGrupo: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(500)]],
-      privacidadGrupo: ['', Validators.required],
-      InvitadosTotales: ['0'],
-      check: ['', Validators.required],
-      gustos_idGusto: ['', Validators.required],
-      idPersona: [this.auth.desencriptar(localStorage.getItem('id'))]
-    })
+    // this.createYourGroupForm = this.fb.group({
+    //   nombreGrupo: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
+    //   descripcionGrupo: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(500)]],
+    //   privacidadGrupo: ['', Validators.required],
+    //   InvitadosTotales: ['0'],
+    //   check: ['', Validators.required],
+    //   gustos_idGusto: ['', Validators.required],
+    //   idPersona: [this.auth.desencriptar(localStorage.getItem('id'))]
+    // })
   }
 
   capturarFile(event): void {
