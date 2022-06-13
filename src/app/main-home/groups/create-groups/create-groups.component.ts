@@ -46,9 +46,8 @@ export class CreateGroupsComponent implements OnInit {
         nombreGrupo: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/), Validators.minLength(2),Validators.maxLength(30)]],
         descripcionGrupo: ['',[Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1 ]+$/), Validators.minLength(2),Validators.maxLength(300)]],
         privacidadGrupo: ['', Validators.required],
-        InvitadosTotales: ['', Validators.required],
         check: ['', Validators.requiredTrue],
-        imagen: [this.previsualizacion, [Validators.required]],
+        imagen: ['', [Validators.required]],
         gustos_idGusto: ['', Validators.required],
         idPersona: [],
       });

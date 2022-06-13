@@ -84,7 +84,7 @@
                         <div class="r">
                             <label class="form-label titulos" for="">Imagen Grupo:</label>
                             <div class="mb-2 input">
-                                <input class="s" (change)="capturarFile($event)" type="file" [ngClass]="createYourGroupForm.get('imagen')?.hasError('required') ? 'is-invalid' : ''">
+                                <input class="s" (change)="capturarFile($event)" type="file" [ngClass]="createYourGroupForm.get('imagen')?.hasError('required') ? 'is-invalid' : ''" formControlName="imagen">
                                 <div class="invalid-feddback texto" *ngIf="!previsualizacion">
                                   {{ createYourGroupForm.get("imagen")?.hasError("required") ? "imagen Requerida" : "" }}
                                 </div>
