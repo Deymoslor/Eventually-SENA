@@ -9,6 +9,10 @@ import { LikesI } from 'src/app/models/likes';
 import { ApiService } from 'src/app/services/api.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { GroupsServiceService } from 'src/app/dashboard/crud-groups/service/groups-service.service';
+import { GlobalConstants } from 'src/app/global-constants';
+import { AlertasService } from 'src/app/core/service/alertas.service';
+import { ResponseI } from 'src/app/login-register/login/models/response.intarface';
+import { ResponseIde } from '../response';
 
 @Component({
   selector: 'app-see-group-detail',
@@ -31,9 +35,6 @@ export class SeeGroupDetailComponent implements OnInit {
     imagen: new FormControl('')
   })
 
-  // httpLocalHost = 'http://localhost:8181'; //SENA
-  httpLocalHost = 'http://localhost'; //CASA
-
   constructor(
     private SeeGroupsService: SeeGroupsService,
     private promotedGroup: GroupsServiceService,
@@ -42,45 +43,22 @@ export class SeeGroupDetailComponent implements OnInit {
     private router: Router,
     private auth: AuthService,
     private likes: ApiService,
+    private alertas:AlertasService,
     ) { }
 
     group!: Group;
+    idGrupos = this.route.snapshot.paramMap.get('id');
     idPersonas = this.auth.desencriptar(localStorage.getItem('id'));
 
   ngOnInit(): void {
-    // const idGrupos = this.route.snapshot.paramMap.get('id');
-    // this.group = this.SeeGroupsService.getDetailsGroup(Number(idGrupos)).subscribe(data =>{
-    //   console.log(data);
-    // })
-
-    // if (this.group === null) {
-    //   this.router.navigate(['group']);
-    // }
 
     this.likes.getAllLikes(1).subscribe(data=>{
       console.log(data);
 
       this.likesI = data;
     })
-
-    let idGrupos = this.route.snapshot.paramMap.get('id');
-    console.log(idGrupos);
-    // this.SeeGroupsService.getDetailsGroup(Number(idGrupos)).subscribe((data: any) =>{
-    //   console.log(data);
-    //   this.group = data[0];
-
-    //   this.GroupForm.setValue({
-    //     'idGrupos': this.group.idPersona,
-    //     'nombreGrpo': this.group.nombreGrupo,
-    //     'descripcionGrupo': this.group.descripcionGrupo,
-    //     'privacidadGrupo': this.group.privacidadGrupo,
-    //     'InvitadosTotales': this.group.InvitadosTotales,
-    //     'gustos_idGusto': this.group.gustos_idGusto,
-    //     'idPersona': this.group.idPersona,
-    //     'imagen': this.group.imagen.replace('C:/xampp/htdocs', this.httpLocalHost),
-    //   });
-    // })
-    this.promotedGroup.getSingleGroup(Number(idGrupos)).subscribe((data: any) => {
+    console.log(this.idGrupos);
+    this.promotedGroup.getSingleGroup(Number(this.idGrupos)).subscribe((data: any) => {
       console.log(data);
       this.group = data[0];
       if (this.group === null) {
@@ -93,15 +71,17 @@ export class SeeGroupDetailComponent implements OnInit {
           'privacidadGrupo': this.group.privacidadGrupo,
           'InvitadosTotales': this.group.InvitadosTotales,
           'gustos_idGusto': this.group.gustos_idGusto,
-          'imagen': this.group.imagen.replace('C:/xampp/htdocs', this.httpLocalHost),
+          'imagen': this.group.imagen.replace('C:/xampp/htdocs', GlobalConstants.httpLocalHost),
         });
       }
     })
 
-    this.userService.getGroupPerson(Number(idGrupos)).subscribe((data: any)=>{
+    this.userService.getGroupPerson(Number(this.idGrupos),this.idPersonas).subscribe((data: any)=>{
       this.personas = data;
       console.log(this.personas);
     })
+
+    console.log(' la variable idGrupos: ', this.group.idGrupos);
   }
 
   ngOnChanges(): void {
@@ -117,16 +97,29 @@ export class SeeGroupDetailComponent implements OnInit {
   share(): void {
     console.log(' la variable idGrupos: ', this.group.idGrupos);
     console.log(' la variable idPersonas: ', this.idPersonas);
-    // console.log(this.GroupPersonC.idGrupos);
-    // this.GroupPersonC.idGrupos = this.group.idGrupos;
-    // this.GroupPersonC.idPersonas = Number(this.idPersonas);
-    // console.log(this.GroupPersonC);
     const newDetail = {idGrupos: this.group.idGrupos, idPersonas: Number(this.idPersonas)}
-    this.SeeGroupsService.postDetailsGroupPerson(newDetail).subscribe(data =>
-      console.log(data)
-
-    );
-    window.alert('te has unido al grupo');
+    this.SeeGroupsService.postDetailsGroupPerson(newDetail).subscribe(data =>{
+      console.log(data);
+      let respuesta:ResponseI = data;
+      //Verificamos si la respuesta es exitosa.
+      if(respuesta.status == 'ok'){
+        this.SeeGroupsService.putGroupPerson(newDetail).subscribe(data1 =>{
+          console.log(data1);
+          let respuesta2:ResponseIde = data1;
+          if (respuesta2.status == 'ok') {
+            this.alertas.showSuccess('Te has unido al grupo','Petición exitosa');
+            this.router.navigate(['main/groups/related-groups/',this.idGrupos]);
+          }else{
+            this.alertas.showError(respuesta2.result.error_msg,'Problemas de Actualización');
+            window.location.reload();
+          }
+        })
+      }else{
+        this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+        window.location.reload();
+      }
+    });
+    // window.alert('te has unido al grupo');
   }
 
 }

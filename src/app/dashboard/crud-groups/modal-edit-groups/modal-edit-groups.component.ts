@@ -2,10 +2,11 @@ import { Component, Input, OnInit } from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import { Group } from "./group.interface";
 import { GroupsServiceService } from "../service/groups-service.service";
-import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { FormGroup, FormControl, Validators, FormBuilder } from "@angular/forms";
 import { ApiService } from 'src/app/services/api.service';
 import { LikesI } from 'src/app/models/likes';
 import { DomSanitizer } from '@angular/platform-browser';
+import { GlobalConstants } from 'src/app/global-constants';
 
 @Component({
   selector: 'app-modal-edit-groups',
@@ -19,7 +20,7 @@ export class ModalEditGroupsComponent implements OnInit {
   public previsualizacion!: string;
   public archivos: any = [];
 
-  constructor(private activerouter:ActivatedRoute , private router:Router, private ApiGroup:GroupsServiceService, private likes: ApiService, private sanitizer: DomSanitizer) { }
+  constructor(private activerouter:ActivatedRoute , private fb: FormBuilder, private router:Router, private ApiGroup:GroupsServiceService, private likes: ApiService, private sanitizer: DomSanitizer) { }
 
   datesGroup!: Group;
   editForm = new FormGroup({
@@ -30,6 +31,7 @@ export class ModalEditGroupsComponent implements OnInit {
     InvitadosTotales: new FormControl(''),
     EstadosGrupo_idEstadosGrupo1: new FormControl(''),
     gustos_idGusto: new FormControl(''),
+    imagen: new FormControl(''),
   })
 
   ngOnInit(): void {
@@ -46,15 +48,18 @@ export class ModalEditGroupsComponent implements OnInit {
     if(this.childMessage > 0){
       this.ApiGroup.getSingleGroup(this.childMessage).subscribe((data: any) =>{
         this.datesGroup =data[0];
-        this.editForm.setValue({
-          'idGrupos': this.datesGroup.idGrupos,
-          'nombreGrupo': this.datesGroup.nombreGrupo,
-          'descripcionGrupo': this.datesGroup.descripcionGrupo,
-          'privacidadGrupo': this.datesGroup.privacidadGrupo,
-          'InvitadosTotales': this.datesGroup.InvitadosTotales,
-          'EstadosGrupo_idEstadosGrupo1': this.datesGroup.EstadosGrupo_idEstadosGrupo1,
-          'gustos_idGusto': this.datesGroup.gustos_idGusto
-        });
+        console.log(this.datesGroup);
+        this.editForm = this.fb.group({
+          idGrupos: [this.datesGroup.idGrupos],
+          nombreGrupo: [this.datesGroup.nombreGrupo, [Validators.required, Validators.minLength(2)]],
+          descripcionGrupo: [this.datesGroup.descripcionGrupo, [Validators.required, Validators.minLength(5)]],
+          privacidadGrupo: [this.datesGroup.privacidadGrupo, Validators.required],
+          InvitadosTotales: [this.datesGroup.InvitadosTotales, Validators.required],
+          EstadosGrupo_idEstadosGrupo1: [this.datesGroup.EstadosGrupo_idEstadosGrupo1, Validators.required],
+          gustos_idGusto: [this.datesGroup.gustos_idGusto, Validators.required],
+          imagen: [this.datesGroup.imagen.replace('C:/xampp/htdocs', GlobalConstants.httpLocalHost)]
+        })
+        console.log(this.editForm.get('imagen')?.value);
         console.log(this.editForm.get('idGrupos')?.value);
       });
     };

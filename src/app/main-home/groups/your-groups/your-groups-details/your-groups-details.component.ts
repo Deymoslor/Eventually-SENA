@@ -16,6 +16,9 @@ import { GroupPersonDetails } from './group-person-details';
 import { GlobalConstants } from 'src/app/global-constants';
 import { RequestGroups } from 'src/app/main-home/settings/request-groups/request-groups';
 import { RequestGroupsService } from "src/app/main-home/settings/request-groups/request-groups.service";
+import { ResponseI } from 'src/app/login-register/login/models/response.intarface';
+import { AlertasService } from 'src/app/core/service/alertas.service';
+import { SeeGroupsService } from '../../see-groups/see-groups.service';
 // import { ApiService } from 'src/app/services/api/api.service';
 
 @Component({
@@ -29,25 +32,18 @@ export class YourGroupsDetailsComponent implements OnInit {
   childMessage: number | undefined;
   likesI!: LikesI[];
   public personas! : GroupPersonDetails[];
+  InvitadoPresente! : GroupPersonDetails;
   manager!: GroupPersonDetails;
   personaId = this.auth.desencriptar(localStorage.getItem('id'));
-  requestGroups!: RequestGroups[];
-  requestGroupI!: RequestGroups;
+  idGrupos = this.route.snapshot.paramMap.get('id');
 
   GroupForm  = new FormGroup({
-    idGrupos: new FormControl(''),
-    nombreGrupo: new FormControl(''),
-    descripcionGrupo: new FormControl(''),
-    privacidadGrupo: new FormControl(''),
-    InvitadosTotales: new FormControl(''),
-    gustos_idGusto: new FormControl(''),
     imagen: new FormControl('')
   })
-  // httpLocalHost = 'http://localhost:8181'; //SENA
-  httpLocalHost = 'http://localhost'; //CASA
   group!: Group;
   constructor(
     private RequestGroupsService: RequestGroupsService,
+    private SeeGroupsService: SeeGroupsService,
     private YourGroupsService: YourGroupsService,
     private relatedService : RelatedGroupsService,
     private promotedGroup: GroupsServiceService,
@@ -60,59 +56,50 @@ export class YourGroupsDetailsComponent implements OnInit {
     private userService:userService,
     private likes: ApiService,
     private auth: AuthService,
+    private alertas:AlertasService,
   ) { }
-
-  event!: EventI | null;
 
   closeResult = '';
 
   ngOnInit(): void {
-    let idGrupos = this.route.snapshot.paramMap.get('id');
-    console.log(idGrupos);
-    this.userService.getGroupPerson(Number(idGrupos)).subscribe((data: any)=>{
+    console.log(this.personaId);
+    // console.log(idGrupos);
+    this.userService.getGroupPerson(Number(this.idGrupos),this.personaId).subscribe((data: any)=>{
       this.personas = data;
-      console.log(this.personas);
+      // console.log(this.personas);
+    })
+    this.RequestGroupsService.getRequestGuests(Number(this.idGrupos),this.personaId).subscribe((data: any) =>{
+      this.InvitadoPresente = data[0];
     })
     this.likes.getAllLikes(1).subscribe(data=>{
 
       this.likesI = data;
     })
-    this.promotedGroup.getSingleGroup(Number(idGrupos)).subscribe((data: any) => {
+    this.promotedGroup.getSingleGroup(Number(this.idGrupos)).subscribe((data: any) => {
       console.log(data);
       this.group = data[0];
-      if (this.group === null) {
+      if (this.group == null) {
+        console.log('ERROR IMAGEN 1');
+      }
+      if(!this.group.imagen){
+        console.log('ERROR IMAGEN 2');
+        this.group.imagen = '';
         this.GroupForm.setValue({
-          'idGrupos': '',
-          'nombreGrupo': '',
-          'descripcionGrupo':'',
-          'privacidadGrupo': '',
-          'InvitadosTotales': '',
-          'gustos_idGusto':'',
-          'imagen':''
+          'imagen': this.group.imagen,
         });
-      } else {
+      }
+      else {
         this.GroupForm.setValue({
-          'idGrupos': this.group.idGrupos,
-          'nombreGrupo': this.group.nombreGrupo,
-          'descripcionGrupo': this.group.descripcionGrupo,
-          'privacidadGrupo': this.group.privacidadGrupo,
-          'InvitadosTotales': this.group.InvitadosTotales,
-          'gustos_idGusto': this.group.gustos_idGusto,
           'imagen': this.group.imagen.replace('C:/xampp/htdocs', GlobalConstants.httpLocalHost),
         });
       }
     })
 
-    this.userService.getManagerGroup(this.personaId,Number(idGrupos)).subscribe((data: any) => {
+    this.userService.getManagerGroup(this.personaId,Number(this.idGrupos)).subscribe((data: any) => {
       this.manager = data[0];
-      console.log(this.manager);
+      // console.log(this.manager);
     })
 
-    this.RequestGroupsService.getRequestGuests(Number(idGrupos)).subscribe(data => {
-      console.log(data);
-
-      this.personas = data;
-    })
 
     if (this.group === null) {
       this.router.navigate(['group']);
@@ -156,9 +143,25 @@ export class YourGroupsDetailsComponent implements OnInit {
     }
   }
 
+  modalOpen3(content:any){
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason3(reason)}`;
+    });
+  }
+
+  private getDismissReason3(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+
   editarGroup(id:number | undefined){
-    this.id = this.childMessage;
-    console.log('el id del fuckin grupo: ', this.childMessage);
   }
   datesGroup!: Group;
   editForm = new FormGroup({
@@ -166,15 +169,12 @@ export class YourGroupsDetailsComponent implements OnInit {
     nombreGrupo: new FormControl(''),
     descripcionGrupo: new FormControl(''),
     privacidadGrupo: new FormControl(''),
-    // InvitadosTotales: new FormControl(''),
-    // EstadosGrupo_idEstadosGrupo1: new FormControl(''),
-    gustos_idGusto: new FormControl(''),
   })
 
   ngOnChanges(): void {
     let idGrupos = this.route.snapshot.paramMap.get('id')
     console.log(idGrupos);
-    console.log(this.childMessage);
+    // console.log(this.childMessage);
     if(Number(idGrupos) > 0){
       this.YourGroupsService.getDetailsYourGroup(Number(idGrupos)).subscribe((data: any) =>{
         this.datesGroup =data[0];
@@ -183,27 +183,12 @@ export class YourGroupsDetailsComponent implements OnInit {
           'nombreGrupo': this.datesGroup.nombreGrupo,
           'descripcionGrupo': this.datesGroup.descripcionGrupo,
           'privacidadGrupo': this.datesGroup.privacidadGrupo,
-          'gustos_idGusto': this.datesGroup.gustos_idGusto
         });
         console.log(this.editForm.get('idGrupos')?.value);
       });
     }else{
-      console.log("no se pudo :(");
+      console.log("ERROR");
     };
-
-    // let eventId = this.activeRouter.snapshot.paramMap.get('idE');
-    // this.api.getSingleEvent(eventId).subscribe((data: any) =>{
-    //   this.dataEvent =data[0];
-    //   this.editFormIn.setValue({
-    //     'idEvento': this.dataEvent.idEvento,
-    //     'nombreEvento': this.dataEvent.nombreEvento,
-    //     'descripcionEvento': this.dataEvent.descripcionEvento,
-    //     'fechaEvento': this.dataEvent.fechaEvento,
-    //     'tipoEvento': this.dataEvent.tipoEvento,
-    //     'participantesTotales': this.dataEvent.participantesTotales,
-    //     'estadoEvento': this.dataEvent.estadoEvento
-    //   })
-    // })
   }
 
   postEditForm(form: Group)
@@ -215,16 +200,65 @@ export class YourGroupsDetailsComponent implements OnInit {
   }
   refresh(): void { window.location.reload(); }
 
-  putEditDetail(group: Number, detail: Number, idPersona: Number, estadoPersona: Number){
+  putEditDetail(group: number, detail: number, idPersona: number, estadoPersona: number){
     console.log('grupos: ', group, 'detalle: ', detail, 'el idPersona: ', idPersona, 'el Estado Persona: ', estadoPersona);
-    const newDetail = {idGrupos: group, idDetalleGrupoPersonas: detail, idPersona: idPersona, estadoPersona_idEstadoPersona: estadoPersona}
-
+    const newDetail = {idGrupos: Number(group), idDetalleGrupoPersonas: Number(detail), idPersona: Number(idPersona), estadoPersona_idEstadoPersona: Number(estadoPersona)}
+    const newDetail2 = {idGrupos: group, idPersonas: idPersona}
     this.RequestGroupsService.putDetailsPersonGroup(newDetail).subscribe( data =>{
       console.log(data);
+      let respuesta:ResponseI = data;
+          //Verificamos si la respuesta es exitosa.
+          if(respuesta.status == 'ok'){
+            this.SeeGroupsService.putGroupPerson(newDetail2).subscribe(data1 =>{
+              console.log(data1);
+              let respuesta2:ResponseI = data1;
+              if (respuesta2.status == 'ok') {
+                this.alertas.showSuccess('has expulsado el participante del grupo','Eliminación exitosa');
+                setTimeout(() => {
+                  window.location.reload();
+                }, 2000);
+              }else{
+                this.alertas.showError(respuesta2.result.error_msg,'Problemas de Actualización');
+                setTimeout(() => {
+                  window.location.reload();
+                }, 2000);
+              }
+            })
+          }else{
+            this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+            window
+          }
     })
+  }
 
-    window.alert('se ha eliminado el invitado exitosamente');
-
-    window.location.reload();
+  putDeleteDetail(group: number, detail: number, idPersona: number, estadoPersona: number){
+    console.log('grupos: ', group, 'detalle: ', detail, 'el idPersona: ', idPersona, 'el Estado Persona: ', estadoPersona);
+    const newDetail = {idGrupos: group, idDetalleGrupoPersonas: detail, idPersona: idPersona, estadoPersona_idEstadoPersona: estadoPersona}
+    const newDetail2 = {idGrupos: group, idPersonas: idPersona}
+    this.RequestGroupsService.putDetailsPersonGroup(newDetail).subscribe( data =>{
+      console.log(data);
+      let respuesta:ResponseI = data;
+          //Verificamos si la respuesta es exitosa.
+          if(respuesta.status == 'ok'){
+            this.SeeGroupsService.putGroupPerson(newDetail2).subscribe(data1 =>{
+              console.log(data1);
+              let respuesta2:ResponseI = data1;
+              if (respuesta2.status == 'ok') {
+                this.alertas.showSuccess('has salido del grupo','Petición exitosa');
+                this.router.navigate(['main/groups/related-groups',]);
+              }else{
+                this.alertas.showError(respuesta2.result.error_msg,'Problemas de Actualización');
+                setTimeout(() => {
+                  window.location.reload();
+                }, 2000);
+              }
+            })
+          }else{
+            this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+            setTimeout(() => {
+              window.location.reload();
+            }, 2000);
+          }
+    })
   }
 }

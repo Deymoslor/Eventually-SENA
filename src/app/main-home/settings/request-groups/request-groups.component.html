@@ -1,15 +1,20 @@
 <div class="modal-body">
-    <div *ngFor="let group of groups">
-        <div class="card w-100">
-            <div class="card-body">
-                <h5 class="card-title">{{group.nombreGrupo}}</h5>
-                <p class="card-text">{{group.descripcionGrupo}}.</p>
-                <!-- <p class="card-text">{{group.idDetalleGrupoPersona}} no me da :c</p> -->
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="putEditDetail(group.idGrupos,group.idDetalleGrupoPersona,group.idPersona, 2)">Unirse</button>
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="putEditDetail(group.idGrupos,group.idDetalleGrupoPersona,group.idPersona, 4)">Rechazar</button>
-            </div>
+  <div *ngIf="groups">
+    <ng-container *ngFor="let group of groups">
+      <div class="card w-100">
+        <div class="card-body">
+            <h5 class="card-title">{{group.nombreGrupo}}</h5>
+            <p class="card-text">{{group.descripcionGrupo}}.</p>
+            <!-- <p class="card-text">{{group.idDetalleGrupoPersona}} no me da :c</p> -->
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="putEditDetail(group.idGrupos,group.idDetalleGrupoPersona,group.idPersona, 2)">Unirse</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="putEditDetail(group.idGrupos,group.idDetalleGrupoPersona,group.idPersona, 4)">Rechazar</button>
         </div>
     </div>
+    </ng-container>
+  </div>
+  <div *ngIf="!groups">
+    <p class="product-name h2">no has recibido ninguna invitación :(</p>
+  </div>
   </div>

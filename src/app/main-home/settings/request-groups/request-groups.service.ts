@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { RequestGroups } from './request-groups';
 import { Observable } from 'rxjs';
 import { GroupPersonDetails } from '../../groups/your-groups/your-groups-details/group-person-details';
+import { ResponseI } from 'src/app/login-register/login/models/response.intarface';
 
 export interface newDetail {idGrupos: Number, idDetalleGrupoPersonas: Number, idPersona: Number, estadoPersona_idEstadoPersona: Number}
 @Injectable({
@@ -24,10 +25,10 @@ export class RequestGroupsService {
     return this.http.get<RequestGroups[]>(direccion);
   }
 
-  getRequestGuests(idGrupo:number):Observable<GroupPersonDetails[]>{
-    let direccion = this.API + "requestGroups?idGrupo=" + idGrupo;
+  getRequestGuests(idGrupo:number,idPersona:number):Observable<GroupPersonDetails>{
+    let direccion = this.API + "requestGroups?idGrupo=" + idGrupo+"&idPersona="+idPersona;
 
-    return this.http.get<GroupPersonDetails[]>(direccion);
+    return this.http.get<GroupPersonDetails>(direccion);
   }
 
   getDetailsGroup(id:number):Observable<RequestGroups>{
@@ -35,9 +36,9 @@ export class RequestGroupsService {
     return this.http.get<RequestGroups>(direccion);
   }
 
-  putDetailsPersonGroup(form:newDetail):Observable<Response>{
+  putDetailsPersonGroup(form:newDetail):Observable<ResponseI>{
     let direccion = this.API + "requestGroups"
-    return this.http.put<Response>(direccion, form);
+    return this.http.put<ResponseI>(direccion, form);
   }
 
 }
