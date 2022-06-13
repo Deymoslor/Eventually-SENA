@@ -1,15 +1,15 @@
 <div class="col-sm-12 aloo">
-  <div class="card aloo" (click)="navigateToRelatedGroupDetails()">
-    <div *ngIf="!GroupForm.get('imagen')?.value">
-      <img class="rounded card-img-top" src="../../../../assets/group/prueba.jfif">
+    <div class="card aloo" (click)="navigateToRelatedGroupDetails()">
+        <div *ngIf="!GroupForm.get('imagen')?.value">
+            <img class="rounded card-img-top" src="../../../../assets/group/prueba.jfif">
+        </div>
+        <div class="group" *ngIf="GroupForm.get('imagen')?.value">
+            <img class="thumbnail rounded card-img-top" width="280px" [src]="GroupForm.get('imagen')?.value" alt="{{ group?.nombreGrupo }}" class="thumbnail">
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{ group.nombreGrupo }}</h5>
+            <p class="card-text">{{ group.InvitadosTotales }}</p>
+            <button [routerLink]="[group.idGrupos]" routerLinkActive="router-link-active" class="btn btnVer">ver</button>
+        </div>
     </div>
-    <div class="group" *ngIf="GroupForm.get('imagen')?.value">
-      <img class="thumbnail rounded card-img-top" width="280px" [src]="GroupForm.get('imagen')?.value"  alt="{{ group?.nombreGrupo }}" class="thumbnail">
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">{{ group.nombreGrupo }}</h5>
-      <p class="card-text">{{ group.InvitadosTotales }}</p>
-      <button [routerLink]="[group.idGrupos]" routerLinkActive="router-link-active" class="btn btn-primary">ver</button>
-    </div>
-  </div>
 </div>

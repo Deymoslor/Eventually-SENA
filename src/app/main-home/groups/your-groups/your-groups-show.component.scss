@@ -1,12 +1,29 @@
-.group{
-  height: 5%;
+@import '../../../app.component.scss';
+.group {
+    height: 5%;
 }
 
-.aloo{
-  margin: 1em;
+.aloo {
+    margin: 1em;
 }
 
-.card-title{
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 100%;
+.card-title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 100%;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.btnVer {
+    background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
+    color: white;
+}
+
+.btnVer:hover {
+    background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
 }
