@@ -9,8 +9,11 @@
     font-weight: 700;
 }
 
-.firtsContainer {
-    width: 20vw;
+.container {
+    border: 5px solid black;
+    width: 86vw;
+    margin: 0;
+    padding: 0;
 }
 
 .firts {
@@ -20,33 +23,22 @@
     width: auto;
 }
 
-.input {
-    margin-left: 4vw!important;
-}
-
-.label {
-    margin-bottom: 8px;
-}
-
-.second {
+.row .firts {
     margin: 0;
     padding: 0;
-    border: 1px solid green;
-    width: auto;
+    border: 5px solid purple;
+    // width: 100%;
 }
 
-.textArea {
-    width: 54vw;
-    height: 10vw;
-}
-
-.r {
-    margin-left: 5vw;
+.row .second {
+    margin: 0;
+    padding: 0;
+    border: 5px solid gray;
+    // width: 100%;
 }
 
 .third {
-    margin: 0;
-    padding: 0;
-    border: 1px solid blue;
-    width: auto;
+    width: 100%;
+    width: 100%;
+    border: 5px solid green;
 }
