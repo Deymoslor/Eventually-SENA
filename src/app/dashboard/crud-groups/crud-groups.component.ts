@@ -42,6 +42,8 @@ export class CrudGroupsComponent implements OnInit {
 
   datosGrupo!:Group;
 
+  public previsualizacion!: string;
+
   // displayedColumns: string[] = ['position', 'NameGroups', 'DescriptionGroups', 'Privacy', 'TotalUsers','StateGroup', 'actions'];
   // dataSource = new MatTableDataSource(ELEMENT_DATA);
 
@@ -70,12 +72,23 @@ export class CrudGroupsComponent implements OnInit {
       this.GroupsServiceService.getSingleGroup(id).subscribe((data:any) => {
         this.datosGrupo = data[0];
         this.datosGrupo.EstadosGrupo_idEstadosGrupo1 = 1;
-<<<<<<< HEAD
-=======
         this.datosGrupo.imagen == null;
->>>>>>> master
+        this.datosGrupo.imagen = this.previsualizacion;
+        console.log(this.datosGrupo);
         this.GroupsServiceService.putGroup(this.datosGrupo).subscribe((data:any) =>{
-        window.location.reload();
+          let respuesta:ResponseI = data;
+          //Verificamos si la respuesta es exitosa.
+          if(respuesta.status == 'ok'){
+            this.alertas.showSuccess('Estado cambiado correctamente','Actulización exitosa');
+            setTimeout(() =>{
+              window.location.reload();
+            },2000);
+          }else{
+            this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+            setTimeout(() =>{
+              window.location.reload();
+            },2000);
+          }
         });
       });
     } else if (num == 1) {
@@ -83,12 +96,23 @@ export class CrudGroupsComponent implements OnInit {
       this.GroupsServiceService.getSingleGroup(id).subscribe((data:any) => {
         this.datosGrupo = data[0];
         this.datosGrupo.EstadosGrupo_idEstadosGrupo1 = 2;
-<<<<<<< HEAD
-=======
         this.datosGrupo.imagen == null;
->>>>>>> master
+        this.datosGrupo.imagen = this.previsualizacion;
+        console.log(this.datosGrupo);
         this.GroupsServiceService.putGroup(this.datosGrupo).subscribe((data:any) =>{
-          window.location.reload();
+          let respuesta:ResponseI = data;
+          //Verificamos si la respuesta es exitosa.
+          if(respuesta.status == 'ok'){
+            this.alertas.showSuccess('Estado cambiado correctamente','Actulización exitosa');
+            setTimeout(() =>{
+              window.location.reload();
+            },2000);
+          }else{
+            this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+            setTimeout(() =>{
+              window.location.reload();
+            },2000);
+          }
         });
       });
     }
@@ -100,9 +124,22 @@ export class CrudGroupsComponent implements OnInit {
       this.GroupsServiceService.getSingleGroup(id).subscribe((data:any) => {
         this.datosGrupo = data[0];
         this.datosGrupo.privacidadGrupo = 1;
-        this.datosGrupo.imagen == null;
+        this.datosGrupo.imagen = this.previsualizacion;
+        console.log(this.datosGrupo);
         this.GroupsServiceService.putGroup(this.datosGrupo).subscribe((data:any) =>{
-        window.location.reload();
+          let respuesta:ResponseI = data;
+          //Verificamos si la respuesta es exitosa.
+          if(respuesta.status == 'ok'){
+            this.alertas.showSuccess('privacidad cambiada correctamente','Actulización exitosa');
+            setTimeout(() =>{
+              window.location.reload();
+            },2000);
+          }else{
+            this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+            setTimeout(() =>{
+              window.location.reload();
+            },2000);
+          }
         });
       });
     } else if (num == 1) {
@@ -110,9 +147,22 @@ export class CrudGroupsComponent implements OnInit {
       this.GroupsServiceService.getSingleGroup(id).subscribe((data:any) => {
         this.datosGrupo = data[0];
         this.datosGrupo.privacidadGrupo = 2;
-        this.datosGrupo.imagen == null;
+        this.datosGrupo.imagen = this.previsualizacion;
+        console.log(this.datosGrupo);
         this.GroupsServiceService.putGroup(this.datosGrupo).subscribe((data:any) =>{
-        window.location.reload();
+          let respuesta:ResponseI = data;
+          //Verificamos si la respuesta es exitosa.
+          if(respuesta.status == 'ok'){
+            this.alertas.showSuccess('privacidad cambiada correctamente','Actulización exitosa');
+            setTimeout(() =>{
+              window.location.reload();
+            },2000);
+          }else{
+            this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+            setTimeout(() =>{
+              window.location.reload();
+            },2000);
+          }
         });
       });
     }

@@ -1,11 +1,13 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {NgbDateStruct, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
 import { TypeServicesI } from 'src/app/dashboard/crud-services/models/typeServices.interface';
 import { ServiceI } from '../../models/service.interface';
 import { ApiService } from '../../services/api.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { GlobalConstants } from '../../../../global-constants';
+import { ResponseI } from 'src/app/core/ui/response.interface';
+import { AlertasService } from 'src/app/core/service/alertas.service';
 
 
 @Component({
@@ -28,7 +30,8 @@ export class ModalEditServiceComponent implements OnInit {
     correoContacto: new FormControl(''),
     estadoServicio: new FormControl(),
     Proveedor_idProveedor: new FormControl(1),
-    TipoServicio_idtipoServicio: new FormControl('')
+    TipoServicio_idtipoServicio: new FormControl(''),
+    check: new FormControl('')
   })
 
   @Input() childMessage!: number;
@@ -45,7 +48,26 @@ export class ModalEditServiceComponent implements OnInit {
   actualDate!: Date;
   dateS!: string;
 
-  constructor(private calendar: NgbCalendar, private api: ApiService, private sanitizer: DomSanitizer) { }
+  constructor(private calendar: NgbCalendar, private api: ApiService, private sanitizer: DomSanitizer,
+    private alertas: AlertasService, private fb:FormBuilder) {
+
+      this.ServicesForm = this.fb.group({
+        idServicios: [''],
+        nombreServicio : ['', [Validators.required, Validators.minLength(5), Validators.maxLength(30)]],
+        descripcionServicio: ['', [Validators.required, Validators.minLength(15), Validators.maxLength(300)]],
+        precioEstimado: ['' , [Validators.required, Validators.pattern(/^[0-9]\d*$/)]],
+        imagen: [''],
+        fechaInicio: ['' , [Validators.required]],
+        historialEmpresas: ['' , [Validators.required, Validators.minLength(15), Validators.maxLength(300)]],
+        numeroContacto: ['' , [Validators.required, Validators.pattern(/^[0-9]\d*$/)]],
+        correoContacto: ['' , [Validators.required, Validators.email]],
+        estadoServicio: [''],
+        Proveedor_idProveedor: [''],
+        TipoServicio_idtipoServicio: [''],
+        check: ['', Validators.requiredTrue]
+      })
+
+     }
 
   ngOnInit(): void {
     //Date operations
@@ -94,44 +116,59 @@ export class ModalEditServiceComponent implements OnInit {
     console.log("id servicio: " + this.childMessage)
     this.api.getAllTypeServices(1).subscribe(data =>{
       this.dataTypeService = data;
-    })
-    this.api.getSingleServiceProv(this.childMessage).subscribe((data: any) =>{
-      console.log(data[0]);
-      try {
+      this.api.getSingleServiceProv(this.childMessage).subscribe((data: any) =>{
         this.dataService = data[0];
-        let actualImage = this.dataService.imagen.replace('C:/xampp/htdocs', GlobalConstants.httpLocalHost);
+        console.log(this.dataService);
+          console.log(this.dataService);
+          if (this.dataService.imagen) {
+            this.previsualizacion = this.dataService.imagen.replace('C:/xampp/htdocs', GlobalConstants.httpLocalHost);
+          }
+          console.log("imagen: " + this.previsualizacion);
+          this.ServicesForm.setValue({
+            idServicios: this.dataService.idServicios,
+            nombreServicio : this.dataService.nombreServicio,
+            descripcionServicio: this.dataService.descripcionServicio,
+            precioEstimado: this.dataService.precioEstimado,
+            imagen: '',
+            fechaInicio: this.dataService.fechaInicio,
+            historialEmpresas: this.dataService.historialEmpresas,
+            numeroContacto: this.dataService.numeroContacto,
+            correoContacto: this.dataService.correoContacto,
+            estadoServicio: this.dataService.estadoServicio,
+            Proveedor_idProveedor: this.dataService.Proveedor_idProveedor,
+            TipoServicio_idtipoServicio: this.dataService.TipoServicio_idtipoServicio,
+            check: null
+          })
+          
+
+
         
-        this.previsualizacion = actualImage;
-        console.log("imagen: " + this.previsualizacion);
-        this.ServicesForm.setValue({
-          idServicios: this.dataService.idServicios,
-          nombreServicio : this.dataService.nombreServicio,
-          descripcionServicio: this.dataService.descripcionServicio,
-          precioEstimado: this.dataService.precioEstimado,
-          imagen: '',
-          fechaInicio: this.dataService.fechaInicio,
-          historialEmpresas: this.dataService.historialEmpresas,
-          numeroContacto: this.dataService.numeroContacto,
-          correoContacto: this.dataService.correoContacto,
-          estadoServicio: this.dataService.estadoServicio,
-          Proveedor_idProveedor: this.dataService.Proveedor_idProveedor,
-          TipoServicio_idtipoServicio: this.dataService.TipoServicio_idtipoServicio
-        })
-        
-      } catch (e) {
-        console.log(e);
-      }
+      })
     })
+    
     
   }
 
   putEditForm(form: ServiceI){
     console.log(form);
-    form.imagen = this.previsualizacion;
+    form.imagen = this.previsualizacion.replace(GlobalConstants.httpLocalHost, 'C:/xampp/htdocs');
     this.api.putService(form).subscribe(data=>{
       console.log(data);
+      let respuesta:ResponseI = data;
+          //Verificamos si la respuesta es exitosa.
+          if(respuesta.status == 'ok'){
+            this.alertas.showSuccess('Deshabilitar Servicio','Función exitosa');
+            setTimeout(()=>{
+              this.refresh();
+            },2000);
+          }else{
+            this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+            setTimeout(()=>{
+              this.refresh();
+            },2000);
+          }
     });
-    this.refresh();
+    // this.refresh();
   }
 
   refresh(){

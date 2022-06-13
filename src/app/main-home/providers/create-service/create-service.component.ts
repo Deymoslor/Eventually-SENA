@@ -11,6 +11,8 @@ import { ProveedorIA } from './proveedorI.interface';
 import { timeStamp } from 'console';
 
 import { DomSanitizer } from '@angular/platform-browser';
+import { ResponseI } from 'src/app/core/ui/response.interface';
+import { AlertasService } from 'src/app/core/service/alertas.service';
 
 @Component({
   selector: 'app-create-service',
@@ -55,10 +57,23 @@ export class CreateServiceComponent implements OnInit {
 
   constructor(private calendar: NgbCalendar, private api: ApiService, private router:Router,
      private auth: AuthService, private supplierService: SupplierService, private formBuilder:FormBuilder,
-      private sanitizer: DomSanitizer){
+      private sanitizer: DomSanitizer, private alertas: AlertasService){
 
     this.lawForm = this.formBuilder.group({
       check: ['', Validators.requiredTrue],
+    })
+
+    this.ServicesForm = this.formBuilder.group({
+      nombreServicio : ['', [Validators.required, Validators.minLength(5), Validators.maxLength(30)]],
+      descripcionServicio: ['', [Validators.required, Validators.minLength(15), Validators.maxLength(300)]],
+      precioEstimado: ['' , [Validators.required, Validators.pattern(/^[0-9]\d*$/)]],
+      imagen: [''],
+      fechaInicio: ['' , [Validators.required]],
+      historialEmpresas: ['' , [Validators.required, Validators.minLength(15), Validators.maxLength(300)]],
+      numeroContacto: ['' , [Validators.required, Validators.pattern(/^[0-9]\d*$/)]],
+      correoContacto: ['' , [Validators.required, Validators.email]],
+      TipoServicio_idtipoServicio: ['', [Validators.required]],
+      check: ['', Validators.requiredTrue]
     })
 
   }
@@ -100,9 +115,25 @@ export class CreateServiceComponent implements OnInit {
 
   postForm(form:any){
     this.supplierService.updateSupplierLaw(this.auth.desencriptar(localStorage.getItem('id'))).subscribe(data =>{
-      // console.log(data[0]);
-      window.location.reload();
+      console.log(data);
+      let respuesta:ResponseI = data;
+          //Verificamos si la respuesta es exitosa.
+          if(respuesta.status == 'ok'){
+            this.alertas.showSuccess('Deshabilitar Servicio','Función exitosa');
+            setTimeout(()=>{
+              this.refresh();
+            },2000);
+          }else{
+            this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+            setTimeout(()=>{
+              this.refresh();
+            },2000);
+          }
     })
+  }
+
+  refresh(){
+    window.location.reload();
   }
 
   cancel(){
@@ -147,9 +178,22 @@ export class CreateServiceComponent implements OnInit {
     form.imagen = this.previsualizacion;
     this.api.postServiceProv(form).subscribe(data=>{
       console.log(data);
+      let respuesta:ResponseI = data;
+          //Verificamos si la respuesta es exitosa.
+          if(respuesta.status == 'ok'){
+            this.alertas.showSuccess('Deshabilitar Servicio','Función exitosa');
+            setTimeout(()=>{
+              this.refresh();
+            },2000);
+          }else{
+            this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+            setTimeout(()=>{
+              this.refresh();
+            },2000);
+          }
     });
 
-    this.router.navigateByUrl('provider/myService');
+    // this.router.navigateByUrl('provider/myService');
   }
 
 }
