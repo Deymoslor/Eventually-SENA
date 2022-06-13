@@ -1,27 +1,217 @@
+@import '../../../../../app.component.scss';
 //Invitations - Table
-.table-invitations {
-  display: block;
-  align-self: center;
-  width: 100%;
+.tables {
+    width: 50vw;
 }
 
-table {
-  width: 100%;
+.btn {
+    width: auto;
 }
 
-.mat-column-position {
-  width: 32px;
-  border-right: 1px solid currentColor;
-  padding-right: 24px;
-  text-align: center;
+.btnAceptar {
+    background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
+    color: white;
+    margin-left: 1rem;
 }
 
-.mat-column-nameProvider {
-  padding-left: 16px;
-  font-size: 16px;
+.btnAceptar:hover {
+    background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
 }
 
-.content-button{
-  display: flex;
-  justify-content: space-around;
+.textoTitulos {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.textox {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 350;
+    font-size: 1rem;
+}
+
+.tituloImg {
+    font-family: 'Pacifico', cursive;
+    margin: 0 auto;
+    font-size: 8vw;
+    text-align: center;
+}
+
+@media only screen and (max-width: 1075px) {
+    .textox {
+        font-size: 0.5rem!important;
+    }
+    .tituloImg {
+        font-size: 2rem!important;
+    }
+    .rowP {
+        // border: 1px solid red;
+        width: 75vw;
+    }
+    .clou {
+        width: 75Vw;
+    }
+    .rowP {
+        // border: 1px solid red;
+        width: 80vw;
+    }
+    // .clou {
+    //     width: 55Vw;
+    // }
+    .campos {
+        width: 11.5rem;
+        // border: 1px solid red;
+    }
+    .contCampo {
+        width: 23.5rem;
+        // border: 1px solid black;
+    }
+    .rs {
+        width: auto;
+        // border: 1px solid purple;
+    }
+    .contCampo2 {
+        width: 57.5rem;
+        // border: 1px solid purple;
+    }
+    .campos2 {
+        width: 5rem;
+        // border: 1px solid pink;
+    }
+    .campos3 {
+        width: 42rem;
+        // border: 1px solid blue;
+    }
+    .responsiveD {
+        .columna {
+            // border: 1px solid green;
+            width: 47.5rem;
+        }
+    }
+    .colme {
+        .responsiveD {
+            padding-left: 2rem;
+            overflow: scroll;
+            width: 50vw!important;
+        }
+    }
+}
+
+@media only screen and (max-width: 825px) {
+    .tituloImg {
+        font-size: 1.5rem!important;
+    }
+}
+
+@media only screen and (max-width: 668px) {
+    .campos {
+        width: 9rem;
+        // border: 1px solid red;
+    }
+    .contCampo {
+        width: 19rem;
+        // border: 1px solid black;
+    }
+    .rs {
+        width: auto;
+        // border: 1px solid purple;
+    }
+    .contCampo2 {
+        width: 38rem;
+        // border: 1px solid purple;
+    }
+    .campos2 {
+        width: 5rem;
+        // border: 1px solid pink;
+    }
+    .campos3 {
+        width: 32.5rem;
+        // border: 1px solid blue;
+    }
+    .responsiveD {
+        .columna {
+            // border: 1px solid green;
+            width: 47.5rem;
+        }
+    }
+    .colme {
+        .responsiveD {
+            padding-left: 2rem;
+            overflow: scroll;
+            width: 50vw!important;
+        }
+    }
+}
+
+@media only screen and (max-width:629px) {
+    .rowP {
+        margin-bottom: 5vw;
+    }
+}
+
+@media only screen and (max-width:526px) {
+    .rowP {
+        // border: 1px solid red;
+        width: 70vw;
+    }
+    .colme {
+        .responsiveD {
+            padding-left: 1rem;
+            overflow: scroll;
+            width: 45vw!important;
+        }
+    }
+}
+
+@media only screen and (max-width:526px) {
+    .rowP {
+        // border: 1px solid red;
+        width: 70vw;
+    }
+    .colme {
+        .responsiveD {
+            padding-left: 1rem;
+            overflow: scroll;
+            width: 45vw!important;
+        }
+    }
+}
+
+@media only screen and (max-width:502px) {
+    .tituloImg {
+        font-size: 1rem!important;
+    }
+}
+
+@media only screen and (max-width:383px) {
+    .tituloImg {
+        font-size: 0.8rem!important;
+    }
+    .colme {
+        .responsiveD {
+            overflow: scroll;
+            width: 45vw!important;
+        }
+    }
+}
+
+@media only screen and (max-width:367px) {
+    .colme {
+        .responsiveD {
+            overflow: scroll;
+            width: 40vw!important;
+        }
+    }
+}
+
+@media only screen and (max-width:332px) {
+    .tituloImg {
+        font-size: 0.6rem!important;
+    }
+}
+
+.textox {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 350;
+    font-size: 1rem;
 }

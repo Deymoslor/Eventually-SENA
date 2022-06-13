@@ -1,0 +1,102 @@
+@import '../../../../app.component.scss';
+.titlePrincipal {
+    font-family: 'Pacifico', cursive;
+    margin: 0 auto;
+    font-size: 3vw;
+    padding: 1.5rem;
+}
+
+.modal-header {
+    // border: 1px solid blue;
+    margin: 0;
+    padding: 0;
+}
+
+.textox {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 350;
+    font-size: 1.2rem;
+}
+
+.title {
+    font-weight: 700;
+}
+
+.check {
+    width: 50px;
+    height: 30px;
+    margin: 10px 4px;
+}
+
+.label {
+    margin: 10px 4px;
+}
+
+.form-check {
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.btnGuardar {
+    background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
+    color: white;
+}
+
+.btnGuardar:hover {
+    background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
+}
+
+.filaInfo {
+    // border: 1px solid green;
+    width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+img {
+    width: 12rem;
+}
+
+.colTitulo {
+    width: 50%;
+}
+
+.colCont {
+    width: 50%;
+}
+
+// #state:disabled {}
+@media only screen and (max-width: 1464px) {
+    .titlePrincipal {
+        font-size: 3vw;
+    }
+}
+
+@media only screen and (max-width: 1042px) {
+    .titlePrincipal {
+        font-size: 3vw;
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    .titlePrincipal {
+        font-size: 3rem;
+    }
+}
+
+@media only screen and (max-width: 504px) {
+    .titlePrincipal {
+        font-size: 1.5rem;
+    }
+    .textox {
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .textox {
+        font-size: 0.8rem;
+    }
+}

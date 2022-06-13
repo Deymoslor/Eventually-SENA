@@ -9,6 +9,9 @@ import { AuthService } from 'src/app/core/service/auth.service';
 import { ParticipantsEventsI } from '../../../models/participants-events.interface';
 import { DomSanitizer } from '@angular/platform-browser';
 import { GlobalConstants } from '../../../global-constants';
+import { ResponseI } from 'src/app/core/ui/response.interface';
+import { AlertasService } from 'src/app/core/service/alertas.service';
+import { DetailGroupPesonI } from '../../../models/detail-group-peson.interface';
 
 @Component({
   selector: 'app-event-in',
@@ -35,6 +38,9 @@ export class EventInComponent implements OnInit {
 
   dataEvent!: EventI;
   dataPersonJoin!: ParticipantsEventsI;
+  public dataStatePersonGroup!: DetailGroupPesonI;
+
+  statePersonGroup!: number;
 
 
   eventGroupForm = new FormGroup({
@@ -57,14 +63,39 @@ export class EventInComponent implements OnInit {
   public previsualizacion!: string;
   public archivos: any = [];
 
+  createEventForm: FormGroup;
+  cambioCorreoForm!: FormGroup;
+
+  
+
   constructor(private api:ApiService, private router:Router, private modalService: NgbModal,
      private route: ActivatedRoute, private fb: FormBuilder, private auth: AuthService,
-     private sanitizer: DomSanitizer) { }
+     private sanitizer: DomSanitizer, private alertas: AlertasService) {
+
+      this.createEventForm = this.fb.group({
+        nombreEvento: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
+        tipoEvento: ['', Validators.required],
+        descripcionEvento: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(500)]],
+        fechaEvento: ['', Validators.required],
+        imagen: ['', [Validators.required]],
+        participantesTotales: ['2', [Validators.required, Validators.pattern(/^[0-9]\d*$/), Validators.min(2), Validators.max(200)]],
+        check: ['', Validators.requiredTrue],
+        // cellPhone: this.getPhoneFromGroup(),
+        // homePhone: this.getPhoneFromGroup(),
+        // email: new FormControl('', [Validators.email]),
+      });
+
+      // this.cambioCorreoForm = this.fb.group({
+      //   nombre: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1 ]+$/)]],
+      //   apellidos: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1 ]+$/)]],
+      //   documento: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(10), Validators.pattern(/^[0-9]\d*$/)]],
+      //   Email1: ['',[Validators.required, Validators.email]],
+      //   Email2: ['',[Validators.required, Validators.email]],
+      //   msg: [' ',[Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1 ]+$/)]],
+      // })
+
+      }
   closeResult = '';
-
-  createEventForm = new FormGroup({
-
-  });
 
   ngOnInit(): void {
 
@@ -90,22 +121,11 @@ export class EventInComponent implements OnInit {
     console.log("String fecha: " + this.dateS);
 
     this.idGroup = this.route.snapshot.paramMap.get('id');
-    this.api.getStatePersonGroup(this.auth.desencriptar(localStorage.getItem("id")), this.idGroup).subscribe((data) =>{
-      // console.log(data[0]);
-      this.stateGroupPerson = data[0].estadoPersona_idEstadoPersona;
-    })
+    // this.stateGroupPerson = 2
+   
+   
 
-    this.createEventForm = this.fb.group({
-      nombreEvento: ['', [Validators.required, Validators.minLength(2)]],
-      tipoEvento: ['', Validators.required],
-      descripcionEvento: ['', [Validators.required, Validators.minLength(5)]],
-      fechaEvento: ['', Validators.required],
-      participantesTotales: ['2', Validators.required],
-      check: ['', Validators.requiredTrue],
-      // cellPhone: this.getPhoneFromGroup(),
-      // homePhone: this.getPhoneFromGroup(),
-      // email: new FormControl('', [Validators.email]),
-    });
+    
 
     let idGrupos = this.route.snapshot.paramMap.get('id');
     this.api.getSigleEventGroup(Number(idGrupos)).subscribe((data: any) =>{
@@ -128,22 +148,37 @@ export class EventInComponent implements OnInit {
         this.idEventExist = this.dataEvent.idEvento;
         this.dateEvent = new Date(this.dataEvent.fechaEvento);
         this.dateTerminate = new Date(this.dataEvent.fechaEvento);
-        this.eventGroupForm.setValue({
-          'idEvento': this.dataEvent.idEvento,
-          'nombreEvento': this.dataEvent.nombreEvento,
-          'descripcionEvento': this.dataEvent.descripcionEvento,
-          'fechaEvento': this.dataEvent.fechaEvento,
-          'tipoEvento': this.dataEvent.tipoEvento,
-          'imagen': this.dataEvent.imagen.replace('C:/xampp/htdocs', GlobalConstants.httpLocalHost),
-          'participantesTotales': this.dataEvent.participantesTotales,
-          'Grupos_idGrupos': this.dataEvent.Grupos_idGrupos,
-          'estadoEvento': this.dataEvent.estadoEvento
-        })
+        if (this.dataEvent.imagen) {
+          this.eventGroupForm.setValue({
+            'idEvento': this.dataEvent.idEvento,
+            'nombreEvento': this.dataEvent.nombreEvento,
+            'descripcionEvento': this.dataEvent.descripcionEvento,
+            'fechaEvento': this.dataEvent.fechaEvento,
+            'tipoEvento': this.dataEvent.tipoEvento,
+            'imagen': this.dataEvent.imagen.replace('C:/xampp/htdocs', GlobalConstants.httpLocalHost),
+            'participantesTotales': this.dataEvent.participantesTotales,
+            'Grupos_idGrupos': this.dataEvent.Grupos_idGrupos,
+            'estadoEvento': this.dataEvent.estadoEvento
+          })
+        }else{
+          this.eventGroupForm.setValue({
+            'idEvento': this.dataEvent.idEvento,
+            'nombreEvento': this.dataEvent.nombreEvento,
+            'descripcionEvento': this.dataEvent.descripcionEvento,
+            'fechaEvento': this.dataEvent.fechaEvento,
+            'tipoEvento': this.dataEvent.tipoEvento,
+            'imagen': '',
+            'participantesTotales': this.dataEvent.participantesTotales,
+            'Grupos_idGrupos': this.dataEvent.Grupos_idGrupos,
+            'estadoEvento': this.dataEvent.estadoEvento
+          })
+        }
         // console.log("IMAGEN: " + this.eventGroupForm.get('imagen')?.value);
         this.aforo = this.dataEvent.participantesTotales;
+        console.log("aforo: " + this.aforo);
         this.api.getTotalPersonsEvent(this.idEventExist).subscribe((data) =>{
-          console.log("totalP: " + data[0].total);
-          this.totalPersonsIn = data[0].total;
+          // console.log(data.total);
+          this.totalPersonsIn = data.total;
         })
         this.dateEvent.setDate(this.dateEvent.getDate() - 2);
         this.dateTerminate.setDate(this.dateTerminate.getDate() + 2);
@@ -158,7 +193,7 @@ export class EventInComponent implements OnInit {
         }
 
         this.api.getPersonExistEvent(this.auth.desencriptar(localStorage.getItem('id')), this.idEventExist).subscribe(data => {
-          console.log(data);
+          // console.log(data);
 
           if(data){
             this.existPerson = 1;
@@ -169,7 +204,24 @@ export class EventInComponent implements OnInit {
         })
 
       }
+
+      this.api.getStatePersonGroup(this.auth.desencriptar(localStorage.getItem("id")), this.idGroup).subscribe((data) =>{
+        console.log(data[0]);
+        
+        this.dataStatePersonGroup = data[0]
+        if (this.dataStatePersonGroup.estadoPersona_idEstadoPersona == 1) {
+          this.statePersonGroup = this.dataStatePersonGroup.estadoPersona_idEstadoPersona;
+          console.log('object');
+        }else{
+          this.statePersonGroup = 2;
+          console.log('object');
+        }
+        console.log(this.stateGroupPerson);
+      })
+      // console.log('ESTADI PERSONA GRUPO: ' + this.dataStatePersonGroup.estadoPersona_idEstadoPersona);
      });
+
+     
 
 
 
@@ -258,9 +310,18 @@ export class EventInComponent implements OnInit {
     form.imagen = this.previsualizacion;
     this.api.postEvent(form, this.auth.desencriptar(localStorage.getItem('id')), form.Grupos_idGrupos).subscribe( data => {
       console.log(data);
+      let respuesta:ResponseI = data;
+          //Verificamos si la respuesta es exitosa.
+          if(respuesta.status == 'ok'){
+            this.alertas.showSuccess('Evento registrado','Registro exitoso');
+            setTimeout(this.refresh,2000);
+          }else{
+            this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+            // window.location.reload();
+          }
     })
-    this.createEventForm.reset();
-    this.refresh();
+    // this.createEventForm.reset();
+    // this.refresh();
   }
 
   refresh(){
@@ -277,8 +338,18 @@ export class EventInComponent implements OnInit {
     // this.dataPersonJoin.idParticipantesEvento[0] = this.idEventExist;
     this.api.postJoinPersonEvent(this.joinEventForm.value).subscribe(data =>{
       console.log(data);
+
+      let respuesta:ResponseI = data;
+          //Verificamos si la respuesta es exitosa.
+          if(respuesta.status == 'ok'){
+            this.alertas.showSuccess('Union exitosa','Registro exitoso');
+            setTimeout(this.refresh,2000);
+          }else{
+            this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+            setTimeout(this.refresh,2000);
+          }
     });
-    this.refresh();
+    // this.refresh();
   }
 
 }

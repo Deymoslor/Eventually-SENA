@@ -25,6 +25,7 @@ import { FilterPipe } from './pipes/filter.pipe';
     TableUsersGroupsComponent,
     ModalEditGroupsComponent,
     ModalSourceUsersComponent,
+    ModalEventsCompletedComponent,
     FilterPipe,
 
   ],

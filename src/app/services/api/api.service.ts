@@ -50,6 +50,11 @@ export class ApiService {
     return this.http.get<EventI>(dir);
   }
 
+  getListFinishEvents(group:number):Observable<ListEventsI[]>{
+    let dir = this.url + "eventos?group=" + group;
+    return this.http.get<ListEventsI[]>(dir);
+  }
+
   putEvent(form:EventI):Observable<ResponseI>{
     let dir = this.url + "eventos";
     return this.http.put<ResponseI>(dir, form);
@@ -86,7 +91,7 @@ export class ApiService {
 
   //Get total persons in a event.
   getTotalPersonsEvent(idEvento: number):Observable<ParticipantsEventsI>{
-    let dir = this.url + "eventos?idEventP=" + idEvento 
+    let dir = this.url + "eventos?idEventP=" + idEvento
     return this.http.get<ParticipantsEventsI>(dir);
   }
 

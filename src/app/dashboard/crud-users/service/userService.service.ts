@@ -6,11 +6,16 @@ import { PersonaI } from '../modal-users/personaI.interface';
 import { ResponseI } from 'src/app/login-register/login/models/response.intarface';
 import { GlobalConstants } from 'src/app/global-constants';
 import { GroupPerson } from 'src/app/main-home/groups/see-groups/GroupPerson';
+<<<<<<< HEAD
 import { AlertasService } from 'src/app/core/service/alertas.service';
 import { GroupPersonDetails } from 'src/app/main-home/groups/your-groups/your-groups-details/group-person-details';
 
 
 
+=======
+import { GroupPersonDetails } from 'src/app/main-home/groups/your-groups/your-groups-details/group-person-details';
+
+>>>>>>> master
 @Injectable({
   providedIn: 'root'
 })
@@ -52,8 +57,8 @@ export class userService {
     return this.http.get<ListaPersonasI[]>(direccion);
   }
 
-  getGroupPerson(rgrupo:number):Observable<GroupPersonDetails[]>{
-    let direccion = this.API+"persons?personGrupo=" + rgrupo;
+  getGroupPerson(rgrupo:number, participante:number):Observable<GroupPersonDetails[]>{
+    let direccion = this.API+"persons?personGrupo=" + rgrupo+"&participanteGrupo="+participante;
     return this.http.get<GroupPersonDetails[]>(direccion);
   }
 
@@ -63,9 +68,9 @@ export class userService {
   }
 
   //Creamos método para obtener la persona mediante el filtro. Este método devuelve un observable de tipo PersonaI
-  PostRequestGroupPerson(request:GroupPerson):Observable<Response>{
+  PostRequestGroupPerson(request:GroupPerson):Observable<ResponseI>{
     let direccion = this.API+"requestGroups";
-    return this.http.post<Response>(direccion, request);
+    return this.http.post<ResponseI>(direccion, request);
   }
 
   //Creamos el método para actualizar.

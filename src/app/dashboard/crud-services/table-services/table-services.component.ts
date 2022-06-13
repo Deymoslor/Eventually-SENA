@@ -4,7 +4,7 @@ import {MatTableDataSource} from '@angular/material/table';
 
 export interface PeriodicElementService {
   position: number;
-  nameService: string;  
+  nameService: string;
   description: string;
   TypeService: string;
   nameProvider: string;
@@ -29,11 +29,11 @@ const ELEMENT_DATASERVICE: PeriodicElementService[] = [
 export class TableServicesComponent implements OnInit {
 
   displayedColumnsService: string[] = ['position', 'nameService', 'description', 'TypeService', 'nameProvider', 'state', 'actions'];
-  dataSource = new MatTableDataSource(ELEMENT_DATASERVICE); 
+  dataSource = new MatTableDataSource(ELEMENT_DATASERVICE);
 
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
-  
+
 
   constructor() { }
 

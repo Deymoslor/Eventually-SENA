@@ -3,6 +3,9 @@ import { EventI } from '../../../../models/event.interface';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ApiService } from '../../../../services/api/api.service';
 import { ResultServiceI } from 'src/app/models/result-service.interface';
+import { GlobalConstants } from 'src/app/global-constants';
+import { ResponseI } from 'src/app/core/ui/response.interface';
+import { AlertasService } from 'src/app/core/service/alertas.service';
 
 @Component({
   selector: 'app-modal-disable-event',
@@ -25,7 +28,7 @@ export class ModalDisableEventComponent implements OnInit {
     descripcionResultado: new FormControl(''),
   })
 
-  constructor(private api:ApiService,) { }
+  constructor(private api:ApiService, private alertas: AlertasService) { }
 
   ngOnInit(): void {
     console.log(this.form);
@@ -38,23 +41,51 @@ export class ModalDisableEventComponent implements OnInit {
     idresult: 0;
     this.form.estadoEvento = 3;
     if(this.finishState == 2){
+      this.form.imagen = this.form.imagen.replace(GlobalConstants.httpLocalHost, 'C:/xampp/htdocs')
       this.api.putEvent(this.form).subscribe(data=>{
         console.log(data);
+        let respuesta:ResponseI = data;
+          //Verificamos si la respuesta es exitosa.
+          if(respuesta.status == 'ok'){
+            this.alertas.showSuccess('Accion exitosa','Evento terminado');
+            setTimeout(()=>{
+              this.refresh();
+            },2000);
+          }else{
+            this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+            setTimeout(()=>{
+              this.refresh();
+            },2000);
+          }
       });
-      this.refresh();
+      // this.refresh();
     }else if(this.finishState == 1){
       let idResult = 0;
-      this.api.postResultEvent(form).subscribe((data) =>{
-        console.log(data.result['idResult'])
+      this.api.postResultEvent(form).subscribe((dataR) =>{
+        console.log(dataR.result['idResult'])
         // idResult = data.result['idResult']
-        this.form.resultadoservicios_idresultadoServicio = data.result['idResult'];
+        this.form.resultadoservicios_idresultadoServicio = dataR.result['idResult'];
+        this.form.imagen = this.form.imagen.replace(GlobalConstants.httpLocalHost, 'C:/xampp/htdocs')
       this.api.putEvent(this.form).subscribe(data=>{
         console.log(data)
+        let respuesta:ResponseI = data;
+        //Verificamos si la respuesta es exitosa.
+        if(respuesta.status == 'ok'){
+          this.alertas.showSuccess('Union exitosa','Registro exitoso');
+          setTimeout(()=>{
+            this.refresh();
+          },2000);
+        }else{
+          this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+          setTimeout(()=>{
+            this.refresh();
+          },2000);
+        }
       });
       })
       
       
-      this.refresh();
+      // this.refresh();
     }
     console.log(form)
   }

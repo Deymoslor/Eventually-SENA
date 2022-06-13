@@ -7,79 +7,135 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group textox">
-
-                        <label for="">ID del Evento:</label>
-                        <input type="text" class="form-control" id="" placeholder="Ej: El mejor evento" formControlName="idEvento">
-
-                        <label for="">Nombre del Evento:</label>
-                        <input type="text" class="form-control" id="" placeholder="Ej: El mejor evento" formControlName="nombreEvento">
-
-                        <label for="">Tipo de Evento:</label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" formControlName="tipoEvento" name="tipoEvento" value="presencial" checked>
-                            <label class="form-check-label" for="flexRadioDefault1">
-                                Presencial
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" formControlName="tipoEvento" name="tipoEvento" value="virtual">
-                            <label class="form-check-label" for="flexRadioDefault2">
-                                Virtual
-                            </label>
-                        </div>
-
-                        <label for="">Descripcion Evento:</label>
-                        <div class="mb-2">
-                            <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Explica de que tratará" rows="2" formControlName="descripcionEvento"></textarea>
-                        </div>
-
-                        <label for="">Fecha Realizacion:</label>
-                        <input matInput [matDatepicker]="picker" class="form-control" formControlName="fechaEvento" style="display: inline; width: 90%;">
-                        <mat-datepicker-toggle matSuffix [for]="picker" style="color: #000; "></mat-datepicker-toggle>
-                        <mat-datepicker class="modal" #picker></mat-datepicker>
-
-                        <style>
-                             ::ng-deep .cdk-overlay-container {
-                                z-index: 2000;
-                            }
-                        </style>
-
-
-
-                        <label for="exampleInputEmail1">Numero Participantes:</label>
-                        <input type="number" class="form-control" id="exampleInputEmail1" min="2" max="200" formControlName="participantesTotales">
-
-                        <label for="">ID del Grupo:</label>
-                        <input type="text" class="form-control" id="" placeholder="Ej: El mejor evento" formControlName="Grupos_idGrupos">
-
-                        <label for="">Estado Evento:</label>
-                        <input type="text" class="form-control" id="" placeholder="Ej: El mejor evento" formControlName="estadoEvento" [readonly]="true">
-                        <div class="form-check form-switch">
-                            <div *ngIf="editForm.get('estadoEvento')?.value == 1 || editForm.get('estadoEvento')?.value == 0">
-                                <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" *ngIf="editForm.get('estadoEvento')?.value == 0" (click)="switchStateEvent(editForm.get('estadoEvento')?.value)">
-                                <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" *ngIf="editForm.get('estadoEvento')?.value == 1" (click)="switchStateEvent(editForm.get('estadoEvento')?.value)" checked>
-                                <label class="form-check-label fw-bolder fs-4 label" for="flexSwitchCheckChecked" *ngIf="editForm.get('estadoEvento')?.value == 0">Habilitar evento</label>
-                                <label class="form-check-label fw-bolder fs-4 label" for="flexSwitchCheckChecked" *ngIf="editForm.get('estadoEvento')?.value == 1">Deshabilitar evento</label>
+                    <div class="form-group">     
+                            <div class="grupoForm">
+                                <label for="">Nombre del Evento:</label>
+                                <input type="text" class="form-control" id="nombreEvento" placeholder="Ej: El mejor evento" formControlName="nombreEvento" [ngClass]="
+                                (editForm.get('nombreEvento')?.touched || editForm.get('nombreEvento')?.dirty) &&
+                                editForm.get('nombreEvento')?.hasError('required') ? 'is-invalid' : '' || editForm.get('nombreEvento')?.hasError('minlength') 
+                                            ? 'is-invalid' : '' || editForm.get('nombreEvento')?.hasError('maxlength')
+                                            ? 'is-invalid' : ''" >
+                                <div class="invalid-feedback">
+                                    {{ editForm.get("nombreEvento")?.hasError("required") ? "Nombre requerido" : "" }}
+                                    {{ editForm.get("nombreEvento")?.hasError("minlength") ? "Campo mínimo de 2 carácteres" : "" }}
+                                    {{ editForm.get("nombreEvento")?.hasError("maxlength") ? "Campo maximo de 30 carácteres" : "" }}
+                                </div>
                             </div>
-                            <div *ngIf="editForm.get('estadoEvento')?.value == 3">
-                                EVENTO TERMINADO
+    
+                            <div class="groupForm">
+                                <label for="">Tipo de Evento:</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" [ngClass]="
+                                            (editForm.get('tipoEvento')?.touched || editForm.get('tipoEvento')?.dirty) &&
+                                                editForm.get('tipoEvento')?.errors ? 'is-invalid' : ''" formControlName="tipoEvento" name="tipoEvento" value="presencial" checked>
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                Presencial
+                                            </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" [ngClass]="
+                                            (editForm.get('tipoEvento')?.touched || editForm.get('tipoEvento')?.dirty) &&
+                                                editForm.get('tipoEvento')?.errors ? 'is-invalid' : ''" formControlName="tipoEvento" name="tipoEvento" value="virtual">
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                                Virtual
+                                            </label>
+                                </div>
+                                <div class="invalid-feedback">
+                                    {{ editForm.get("tipoEvento")?.hasError("required") ? "Tipo Requerido" : "" }}
+                                </div>
                             </div>
-                        </div>
-
-                        <!-- <div class="check-container-politycs">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                <label class="form-check-label" for="defaultCheck1">
-                                    Para la creación de el evento deberá estar de acuerdo con la ley 1480 de 2011 articulo 30 con respecto al evento a crear.
-                                </label>
+    
+                           <div class="groupForm">
+                                <label for="">Imagen evento:</label>
+                                <div class="mb-2">
+                                    <input (change)="capturarFile($event)" type="file" [ngClass]="
+                                    (editForm.get('imagen')?.touched || editForm.get('imagen')?.dirty) &&
+                                        editForm.get('imagen')?.errors ? 'is-invalid' : ''" formControlName="imagen" >
+                                </div>
+                                <h4>PREVISUALIZACION</h4>
+                                <div *ngIf="previsualizacion">
+                                    <img width="500px" [src]="previsualizacion" alt="">
+                                </div>
+                                <div class="invalid-feedback">
+                                    {{ editForm.get("imagen")?.hasError("required") ? "Imagen requerida" : "" }} 
+                                </div>
+                           </div>
+    
+                           <div class="groupForm">
+                                <label for="">Descripcion Evento:</label>
+                                    <textarea class="form-control" type="text" id="descripcionEvento" formControlName="descripcionEvento" placeholder="Explica de que tratará y dónde será." rows="2" [ngClass]="
+                                    (editForm.get('descripcionEvento')?.touched || editForm.get('descripcionEvento')?.dirty) &&
+                                    editForm.get('descripcionEvento')?.hasError('required') 
+                                    ? 'is-invalid' : '' || editForm.get('descripcionEvento')?.hasError('minlength') 
+                                    ? 'is-invalid' : '' || editForm.get('descripcionEvento')?.hasError('maxlength')
+                                    ? 'is-invalid' : ''" ></textarea>
+                                <div class="invalid-feedback">
+                                    {{ editForm.get("descripcionEvento")?.hasError("required") ? "Descripcion requerida" : "" }} 
+                                    {{ editForm.get("descripcionEvento")?.hasError("minlength") ? "Campo mínimo de 10 carácteres" : "" }}
+                                    {{ editForm.get("descripcionEvento")?.hasError("maxlength") ? "Campo maximo de 500 carácteres" : "" }}
+                                </div>
+                           </div>
+                           <!-- {{editForm.get("descripcionEvento")?.errors | json}} -->
+    
+                            <div class="groupForm">
+                                <label for="">Fecha Realizacion:</label>
+                            <input type="date" class="form-control" [ngClass]="
+                                    (editForm.get('fechaEvento')?.touched || editForm.get('fechaEvento')?.dirty) &&
+                                        editForm.get('fechaEvento')?.hasError('required') ? 'is-invalid' : ''" formControlName="fechaEvento"  min="{{dateS}}">
+                            <div class="invalid-feedback">
+                                {{ editForm.get("fechaEvento")?.hasError("required") ? " Fecha requerida" : "" }}
                             </div>
-                        </div> -->
+                            <style>
+                                 ::ng-deep .cdk-overlay-container {
+                                    z-index: 2000;
+                                }
+                            </style>
+    
+                            </div>
+    
+                            <div class="groupForm">
+                                <label for="exampleInputEmail1">Numero Participantes maximo:</label>
+                                <input type="number" class="form-control" id="exampleInputEmail1" min="2" max="200" [ngClass]="
+                                        (editForm.get('participantesTotales')?.touched || editForm.get('participantesTotales')?.dirty) &&
+                                            editForm.get('participantesTotales')?.hasError('required') 
+                                            ? 'is-invalid' : '' || editForm.get('participantesTotales')?.hasError('min') 
+                                            ? 'is-invalid' : '' || editForm.get('participantesTotales')?.hasError('max') 
+                                            ? 'is-invalid' : ''" formControlName="participantesTotales">
+    
+                                <div class="invalid-feedback">
+                                    {{ editForm.get("participantesTotales")?.hasError("required") ? " Numero de participantes requeridos" : "" }}
+                                    {{ editForm.get("participantesTotales")?.hasError("min") ? "Minimo 2 participantes" : "" }}
+                                    {{ editForm.get("participantesTotales")?.hasError("max") ? "Maximo 200 participantes" : "" }}                        
+                                </div>
+                            </div>
+    
+                            <div class="groupForm">
+                                <label for="">ID del Grupo:</label>
+                            <input type="text" class="form-control" id="" placeholder="Ej: El mejor evento" formControlName="Grupos_idGrupos">
+                            </div>
+    
+                            <div class="groupForm">
+                                <label for="">Estado Evento:</label>
+                                <input type="text" class="form-control" id="" placeholder="Ej: El mejor evento" formControlName="estadoEvento" [readonly]="true">
+                                <div class="form-check form-switch">
+                                    <div *ngIf="editForm.get('estadoEvento')?.value == 1 || editForm.get('estadoEvento')?.value == 3">
+                                        <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" *ngIf="editForm.get('estadoEvento')?.value == 3" (click)="switchStateEvent(editForm.get('estadoEvento')?.value)">
+                                        <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" *ngIf="editForm.get('estadoEvento')?.value == 1" (click)="switchStateEvent(editForm.get('estadoEvento')?.value)" checked>
+                                        <label class="form-check-label fw-bolder fs-4 label" for="flexSwitchCheckChecked" *ngIf="editForm.get('estadoEvento')?.value == 3">Habilitar evento</label>
+                                        <label class="form-check-label fw-bolder fs-4 label" for="flexSwitchCheckChecked" *ngIf="editForm.get('estadoEvento')?.value == 1">Deshabilitar evento</label>
+                                    </div>
+                                    <div *ngIf="editForm.get('estadoEvento')?.value == 0">
+                                        <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" *ngIf="editForm.get('estadoEvento')?.value == 0" (click)="switchStateEvent(editForm.get('estadoEvento')?.value)">
+                                        <label class="form-check-label fw-bolder fs-4 label" for="flexSwitchCheckChecked" *ngIf="editForm.get('estadoEvento')?.value == 0">Habilitar evento</label>
+                                    </div>
+                                </div>
+                            </div>
+                        
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="textox btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="textox btn btnGuardar" data-bs-dismiss="modal" (click)="refresh()">Editar</button>
+                    <button type="submit" class="textox btn btnGuardar" data-bs-dismiss="modal" [disabled]="editForm.invalid">Editar</button>
                 </div>
             </div>
         </div>

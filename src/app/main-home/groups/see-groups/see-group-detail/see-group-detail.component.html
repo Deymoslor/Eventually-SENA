@@ -3,7 +3,7 @@
   <div class="container">
     <br>
     <div *ngIf="!GroupForm.get('imagen')?.value">
-      <img class="rounded card-img-top" src="../../../../assets/group/prueba.jfif" alt="{{ group.nombreGrupo }}">
+      <img class="rounded card-img-top" src="../../../../assets/group/prueba.jfif" alt="{{ group?.nombreGrupo }}">
     </div>
     <div class="img-container class-thumbnail" *ngIf="GroupForm.get('imagen')?.value">
       <img class="thumbnail rounded card-img-top" [src]="GroupForm.get('imagen')?.value" alt="{{ group?.nombreGrupo }}" class="thumbnail">

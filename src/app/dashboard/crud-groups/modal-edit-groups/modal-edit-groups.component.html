@@ -9,12 +9,26 @@
             <form [formGroup]="editForm" (ngSubmit)="postEditForm(editForm.value)" class="textox form">
                 <div class="form-group">
                     <label for="">Nombre:</label>
-                    <input type="text" class="form-control" id="" placeholder="Ej: El mejor evento de la historia" formControlName="nombreGrupo">
+                    <input type="text" class="form-control" id="" placeholder="Ej: El mejor evento de la historia" formControlName="nombreGrupo"
+                    [ngClass]="(editForm.get('nombreGrupo')?.touched || editForm.get('nombreGrupo')?.dirty) &&
+                    editForm.get('nombreGrupo')?.errors ? 'is-invalid' : ''">
                 </div>
 
                 <label for="">Descripción:</label>
                 <div class="mb-2">
-                    <textarea type="text" class="form-control" id="exampleFormControlTextarea1" placeholder="Explica de que tratará" rows="2" formControlName="descripcionGrupo"></textarea>
+                    <textarea type="text" class="form-control" id="exampleFormControlTextarea1" placeholder="Explica de que tratará" rows="2" formControlName="descripcionGrupo"
+                    [ngClass]="(editForm.get('descripcionGrupo')?.touched ||
+                    editForm.get('descripcionGrupo')?.dirty) &&
+                    editForm.get('descripcionGrupo')?.hasError('required')
+                    ? 'is-invalid'
+                    : '' || editForm.get('descripcionGrupo')?.hasError('minlength')
+                    ? 'is-invalid'
+                    : '' ||
+                      ((editForm.get('descripcionGrupo')?.touched ||
+                      editForm.get('descripcionGrupo')?.dirty) &&
+                        !editForm.get('descripcionGrupo')?.invalid)
+                    ? 'is-valid'
+                    : ''"></textarea>
                 </div>
 
                 <div>
@@ -26,8 +40,10 @@
                   <div *ngIf="previsualizacion">
                     <img width="150px" [src]="previsualizacion" alt="">
                   </div>
+                  <div *ngIf="!previsualizacion">
+                    <img width="150px" [src]="editForm.get('imagen')?.value" alt="imagen">
+                  </div>
                 </div>
-
                 <div>
                     <label for="exampleInputEmail1">Gusto:</label>
                     <select class="form-select" aria-label="Default select example" formControlName="gustos_idGusto">
@@ -37,7 +53,7 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="btn btnGuardar">Editar</button>
+                    <button type="submit" class="btn btnGuardar" [disabled]="editForm.invalid">Editar</button>
                 </div>
             </form>
         </div>

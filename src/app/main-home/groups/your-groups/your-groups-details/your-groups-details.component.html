@@ -4,22 +4,25 @@
 <ng-template #content2 let-modal2>
   <app-modal-source-users [childMessage]=id></app-modal-source-users>
 </ng-template>
+<ng-template #content3 let-modal3>
+  <app-modal-events-completed></app-modal-events-completed>
+</ng-template>
 <div *ngIf="manager?.idPersona == personaId && manager?.estadoPersona_idEstadoPersona == 1">
   <a [routerLink]="['/groups/your-groups']" routerLinkActive="router-link-active" class="back">&lt; Volver al inicio</a>
 </div>
-<ng-container *ngFor="let item of personas">
-  <div *ngIf="item.idPersona == personaId && item.estadoPersona_idEstadoPersona == 2">
-    <a [routerLink]="['/groups/related-groups']" routerLinkActive="router-link-active" class="back">&lt; Volver al inicio</a>
-  </div>
-</ng-container>
+<div *ngIf="manager?.idPersona != personaId">
+  <a [routerLink]="['/groups/related-groups']" routerLinkActive="router-link-active" class="back">&lt; Volver al inicio</a>
+</div>
 <div class="container">
+  <form [formGroup]="GroupForm">
     <br>
-    <div class="img-container class-thumbnail" *ngIf="!GroupForm.get('imagen')?.value">
+    <div class="img-container class-thumbnail" *ngIf="!GroupForm.get('imagen')!.value">
       <img class="rounded card-img-top" src="../../../../assets/group/prueba.jfif">
     </div>
     <div class="img-container class-thumbnail" *ngIf="GroupForm.get('imagen')?.value">
       <img class="rounded card-img-top" [src]="GroupForm.get('imagen')?.value" alt="{{ group?.nombreGrupo }}">
     </div>
+  </form>
     <div class="info">
         <p class="product-name">{{ group?.nombreGrupo }}</p>
         <br>
@@ -35,7 +38,9 @@
                     <tr>
                       <th>Nombre</th>
                       <th>Email</th>
-                      <th>Rol</th>
+                      <div *ngIf="manager">
+                        <th>Acción</th>
+                      </div>
                     </tr>
                   </thead>
                   <tbody>
@@ -43,15 +48,20 @@
                       <tr *ngIf="persona.idPersona != personaId">
                         <td class="product-short-description">{{persona.nombre}}</td>
                         <td class="product-short-description">{{persona.Email}}</td>
-                        <td class="product-short-description"><button class="btn btnEditar justify-content-md-center" (click)="putEditDetail(persona.idGrupos,persona.idDetalleGrupoPersona,persona.idPersona, 4)">Eliminar</button></td>
+                        <div *ngIf="manager">
+                          <td class="product-short-description"><button class="btn btnEditar justify-content-md-center" (click)="putEditDetail(persona.idGrupos,persona.idDetalleGrupoPersona,persona.idPersona, 4)">Eliminar</button></td>
+                        </div>
                       </tr>
                     </ng-container>
                   </tbody>
                 </table>
               </div>
               <br>
-              <div *ngIf="!personas">
+              <div *ngIf="!personas && manager">
                 <p class="product-name h2">no hay participantes en este grupo</p>
+              </div>
+              <div *ngIf="!personas && !manager">
+                <p class="product-name h2">Eres el unico participante en este grupo</p>
               </div>
 
             </div>
@@ -72,11 +82,15 @@
                                 <ul class="dropdown-menu">
                                   <div *ngIf="manager?.idPersona == personaId && manager?.estadoPersona_idEstadoPersona == 1">
                                     <li><a class="h5 dropdown-item" role="button" (click)="editarGroup(group?.idGrupos)" data-bs-toggle="modal" data-bs-target="#content-modal" role="button" (click)="modalOpen(content)">Editar grupo</a></li>
-                                    <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#content-modal2" role="button" (click)="modalOpen2(content2)">Invitar amigo</a></li>
-                                    <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#modal-report-events-groups-organizer">Reportes</a></li>
-                                    <li><a class="h5 dropdown-item" role="button" href="#">Deshabilitar Grupo</a></li>
+                                    <div *ngIf="group?.privacidadGrupo == 1">
+                                      <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#content-modal2" role="button" (click)="modalOpen2(content2)">Invitar amigo</a></li>
+                                    </div>
+                                    <!-- <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#modal-report-events-groups-organizer">Reportes</a></li> -->
                                   </div>
-                                  <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#modal-events-completed">Ver eventos realizados</a></li>
+                                  <div *ngIf="InvitadoPresente">
+                                    <li><a class="h5 dropdown-item" role="button" (click)="putDeleteDetail(InvitadoPresente.idGrupos,InvitadoPresente.idDetalleGrupoPersona,personaId, 4)">Salir del grupo</a></li>
+                                  </div>
+                                  <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#content-modal3" role="button" (click)="modalOpen3(content3)">Ver eventos realizados</a></li>
                               </ul>
                             </li>
                         </ul>

@@ -1,7 +1,7 @@
 <article class="cards1 card shadow-sm">
     <div class="card-body">
         <div>
-            <h1 class="m-0 h1">Actualizar Información</h1><br>
+            <h1 class="m-0 h1 titlePrincipal">Actualizar Información</h1><br>
             <!-- {{childMessage}} -->
         </div>
         <div class="card ">
@@ -73,10 +73,10 @@
 
                     <!-- Correo electrónico -->
                     <div class="mb-3">
-                        <b><label class="form-label">Correo Electrónico</label></b><br>
+                        <b><label class="form-label textoTitulos">Correo Electrónico</label></b><br>
                         <p>{{this.datosPersona.Email}}</p>
-                        <div class="recuperar">
-                            <p>Para cambiar tu correo electrónico debes solicitarlo <br> dando click aquí ⊂(◉‿◉)つ  <a href="" routerLink="loginRegister/forgot-password" (click)="emailChange()">Cambiar correo electrónico</a></p>
+                        <div class="recuperar textox">
+                            <p>Para cambiar tu correo electrónico debes solicitarlo <br> dando click aquí ⊂(◉‿◉)つ <a href="" routerLink="loginRegister/forgot-password" (click)="emailChange()">Cambiar correo electrónico</a></p>
                         </div>
                     </div>
 
@@ -88,13 +88,13 @@
                         <!-- Imagen de pefil -->
                         <div class="mb-3">
                             <div>
-                                <label for="">Imagen de perfil:</label>
+                                <label class="textoTitulos" for="">Imagen de perfil:</label>
                                 <div class="mb-2">
-                                <input (change)="capturarFile($event)" type="file">
+                                    <input class="imgAc" (change)="capturarFile($event)" type="file">
                                 </div>
-                                <h4 *ngIf="previsualizacion != ''">PREVISUALIZACION</h4>
+                                <h4 class="textox" *ngIf="previsualizacion != ''">PREVISUALIZACION</h4>
                                 <div *ngIf="previsualizacion != ''">
-                                <img width="500px" [src]="previsualizacion" alt="x">
+                                    <img class="imgA" [src]="previsualizacion" alt="x">
                                 </div>
                             </div>
                         </div>
@@ -124,7 +124,7 @@
                     <br>
 
                     <div class="selectNewLikes input-group mb-3">
-                    <!-- <b><label class="input-group-text" for="inputGroupSelect01">Gustos actuales</label></b>
+                        <!-- <b><label class="input-group-text" for="inputGroupSelect01">Gustos actuales</label></b>
                         <select class="form-select" id="inputGroupSelect01">
                             <option selected>Musica,Baile</option>
                             <option value="1">Musica</option>
@@ -132,41 +132,49 @@
                             <option value="3">Deporte</option>
                         </select> -->
 
-                            <div id="account-topics-subscribed" class="clearfix">
-                                <p id="account-topics-add-more">¡Estos son tus gustos!</p>
-                                <ul *ngFor="let gustos of misGustos" id="account-topics-subscribed-list" class="account-topics-list clearfix">
-                                    <li class="account-topics-item" data-topicid="1589" >
-                                        <div class="account-topics-name">{{gustos.nombreGusto}}</div>
-                                        <a (click)="quitarGusto(gustos.nombreGusto)" class="account-topics-remove"></a>
-                                    </li>
-                                    <!-- EJEMPLO:
+                        <div id="account-topics-subscribed" class="clearfix">
+                            <p class="textoTitulos" id="account-topics-add-more">¡Estos son tus gustos!</p>
+                            <ul class="textox" *ngFor="let gustos of misGustos" id="account-topics-subscribed-list" class="account-topics-list clearfix">
+                                <li class="account-topics-item" data-topicid="1589">
+                                    <div class="account-topics-name">{{gustos.nombreGusto}}</div>
+                                    <a (click)="quitarGusto(gustos.nombreGusto)" class="account-topics-remove"></a>
+                                </li>
+                                <!-- EJEMPLO:
                                     <li class="account-topics-item" data-topicid="7203">
                                         <div class="account-topics-name">Education &amp; Technology</div>
                                         <a class="account-topics-remove"></a>
                                     </li> -->
-                                </ul>
-                            </div>
+                            </ul>
+                        </div>
 
-                            <div id="account-topics-subscribed" class="clearfix">
-                                <!-- <p id="account-topics-add-more">¡Añade intereses adicionales!para que te podamos recomendar los grupos de Meetup más adecuados para ti.</p> -->
-                                <p id="account-topics-add-more">¡Añade intereses adicionales!</p>
-                                <ul *ngFor="let gusto of gustos" id="account-topics-subscribed-list" class="account-topics-list clearfix">
+                        <div id="account-topics-subscribed" class="clearfix">
+                            <!-- <p id="account-topics-add-more">¡Añade intereses adicionales!para que te podamos recomendar los grupos de Meetup más adecuados para ti.</p> -->
+                            <p class="textoTitulos" id="account-topics-add-more">¡Añade intereses adicionales!</p>
+                            <ul class="textox" *ngFor="let gusto of gustos" id="account-topics-subscribed-list" class="account-topics-list clearfix">
 
                                 <li class="account-topics-item j-subscribe-to-topic" data-topicid="106688">
                                     <!-- <span class="sprite spritebg add_icon"></span> -->
                                     <!-- <span class="spritebg"></span> -->
-                                    <div class="account-topics-name"><span (click)="agregarGusto(gusto.nombreGusto)" class="spritebg"></span>{{gusto.nombreGusto}}</div>
+                                    <div class="account-topics-name">
+
+                                        <a (click)="agregarGusto(gusto.nombreGusto)">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                                        </a>{{gusto.nombreGusto}}
+
+
+                                        <!-- <span (click)="agregarGusto(gusto.nombreGusto)" class="spritebg"></span> -->
+                                    </div>
                                 </li>
 
                                 <!-- EJEMPLO -->
                                 <!-- <li class="account-topics-item j-subscribe-to-topic" data-topicid="106688"> -->
-                                    <!-- <span class="sprite spritebg add_icon"></span> -->
-                                    <!-- <span class="spritebg"></span> -->
-                                    <!-- <div class="account-topics-name"><span (click)="texto()" class="spritebg"></span>Ministerio cristiano</div>
+                                <!-- <span class="sprite spritebg add_icon"></span> -->
+                                <!-- <span class="spritebg"></span> -->
+                                <!-- <div class="account-topics-name"><span (click)="texto()" class="spritebg"></span>Ministerio cristiano</div>
                                 </li> -->
 
-                                </ul>
-                            </div>
+                            </ul>
+                        </div>
 
                     </div>
 
@@ -182,6 +190,7 @@
                     <br>
                     <!-- Password Antiguo -->
                     <div class="mb-3">
+<<<<<<< HEAD
                         <b><label class="form-label">Contraseña actual (o código de recuperación)</label></b>
                         <input required type="password" class="form-control" formControlName="oldPassword" aria-describedby="helpId" placeholder="Escribe tu contraseña antigua o código de recuperación" [ngClass]="(passwordForm.get('oldPassword')?.touched || passwordForm.get('oldPassword')?.dirty) &&
                         passwordForm.get('oldPassword')?.hasError('required') ? 'is-invalid' : '' || passwordForm.get('oldPassword')?.hasError('maxlength')
@@ -192,14 +201,19 @@
                             {{ passwordForm.get("oldPassword")?.hasError("maxlength") ? "Máximo 12 caracteres" : "" }}
                             {{ passwordForm.get("oldPassword")?.hasError("minlength") ? "Mínimo 6 caracteres" : "" }}
                         </div>
+=======
+                        <b><label class="form-label textoTitulos">Contraseña actual (o código de recuperación)</label></b>
+                        <input class="textox" required type="password" class="form-control" formControlName="oldPassword" aria-describedby="helpId" placeholder="Escribe tu contraseña antigua o código de recuperación">
+>>>>>>> master
 
                         <div class="recuperar">
-                            <p>O recupera tu contraseña ⊂(◉‿◉)つ  <a href="" routerLink="loginRegister/forgot-password" (click)="PasswordRecovery()">Recuperar contraseña</a></p>
+                            <p class="textox">O recupera tu contraseña ⊂(◉‿◉)つ <a href="" routerLink="loginRegister/forgot-password" (click)="PasswordRecovery()">Recuperar contraseña</a></p>
                         </div>
                     </div>
 
                     <!-- Password Nuevo -->
                     <div class="mb-3">
+<<<<<<< HEAD
                         <b><label class="form-label">Contraseña nueva</label></b>
                         <input required type="password" class="form-control" formControlName="newPassword" aria-describedby="helpId" placeholder="Escribe tu contraseña nueva" [ngClass]="(passwordForm.get('newPassword')?.touched || passwordForm.get('newPassword')?.dirty) &&
                         passwordForm.get('newPassword')?.hasError('required') ? 'is-invalid' : '' || passwordForm.get('newPassword')?.hasError('maxlength')
@@ -216,6 +230,14 @@
                         <button *ngIf="passwordForm.invalid" type="submit" class="btnActualizacionDisable btn btn-primary btn-lg" [disabled]="passwordForm.invalid" (click)="completarForm(passwordForm.value)" (click)="changePassword(passwordForm.value)">Actualizar contraseña</button>
 
                         <button *ngIf="passwordForm.valid" type="submit" class="btnActualizacion btn btn-primary btn-lg" (click)="completarForm(passwordForm.value)" (click)="changePassword(passwordForm.value)">Actualizar contraseña</button>
+=======
+                        <b><label class="form-label textoTitulos">Contraseña nueva</label></b>
+                        <input class="textox" required type="password" class="form-control" formControlName="newPassword" aria-describedby="helpId" placeholder="Escribe tu contraseña nueva">
+                    </div>
+
+                    <div class="btnChangeLikes d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary textox" (click)="completarForm(passwordForm.value)" (click)="changePassword(passwordForm.value)">Actualizar contraseña</button>
+>>>>>>> master
                     </div>
 
                 </form>

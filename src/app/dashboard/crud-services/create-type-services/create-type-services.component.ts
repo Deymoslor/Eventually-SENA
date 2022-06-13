@@ -27,10 +27,9 @@ export class CreateTypeServicesComponent implements OnInit {
       console.log(data);
     })
     this.createTypeServices.reset();
+    this.refresh();
   }
 
-  goback(){
-    this.router.navigate(['dashboard/services']);
-  }
+  refresh(): void { window.location.reload(); }
 
 }
