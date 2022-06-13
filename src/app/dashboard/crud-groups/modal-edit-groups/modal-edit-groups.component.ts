@@ -60,7 +60,7 @@ export class ModalEditGroupsComponent implements OnInit {
           EstadosGrupo_idEstadosGrupo1: [this.datesGroup.EstadosGrupo_idEstadosGrupo1, Validators.required],
           gustos_idGusto: [this.datesGroup.gustos_idGusto, Validators.required],
           // imagen: [this.datesGroup.imagen.replace('C:/xampp/htdocs', GlobalConstants.httpLocalHost)]
-          imagen: [this.datesGroup.imagen.replace('J:/Programas/Xampp/htdocs', GlobalConstants.httpLocalHost)]
+          imagen: [this.datesGroup.imagen.replace('C:/xampp/htdocs', GlobalConstants.httpLocalHost)]
         })
         console.log(this.editForm.get('imagen')?.value);
         console.log(this.editForm.get('idGrupos')?.value);
