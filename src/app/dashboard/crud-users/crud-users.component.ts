@@ -194,7 +194,6 @@ constructor(
             },2000);
           }else{
             this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
-            window.location.reload();
           }
         });
 

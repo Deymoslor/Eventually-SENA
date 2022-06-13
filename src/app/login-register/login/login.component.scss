@@ -164,6 +164,11 @@ button {
     background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
 }
 
+.btnIniciarDisabled{
+    // background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
+    background: #ccc;
+}
+
 @media screen and (max-width: 500px) {
     form {
         width: 80%;

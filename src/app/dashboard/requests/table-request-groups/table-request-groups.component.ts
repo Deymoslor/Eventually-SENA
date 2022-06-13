@@ -7,6 +7,8 @@ import { ListaRequestGroupsI } from './ListaRequestGroupsI.interface';
 import { Router } from '@angular/router';
 import { RequestGroupsService } from './request-groups.service';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ResponseI } from 'src/app/core/ui/response.interface';
+import { AlertasService } from 'src/app/core/service/alertas.service';
 
 @Component({
   selector: 'app-table-request-groups',
@@ -26,7 +28,8 @@ export class TableRequestGroupsComponent implements OnInit {
     private RequestGroupsService:RequestGroupsService,
     private modalService: NgbModal,
     //Inyectamos el router.
-    private router:Router
+    private router:Router,
+    private alertas: AlertasService,
   ) { }
 
   closeResult = '';
@@ -58,7 +61,19 @@ export class TableRequestGroupsComponent implements OnInit {
 
       this.RequestGroupsService.putRequest(this.datosPeticion).subscribe((data:any) =>{
         // console.log("Entrando aquí");
-        window.location.reload();
+        let respuesta:ResponseI = data;
+        //Verificamos si la respuesta es exitosa.
+        if(respuesta.status == 'ok'){
+          this.alertas.showSuccess('Grupo aceptado/habilitado exitosamente','Acción exitosa');
+          setTimeout(() =>{
+            window.location.reload();
+          },2000);
+        }else{
+          this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+          setTimeout(() =>{
+            window.location.reload();
+          },2000);
+        }
       });
     });
   }
@@ -73,7 +88,19 @@ export class TableRequestGroupsComponent implements OnInit {
       this.datosPeticion.token = token;
       this.RequestGroupsService.putRequest(this.datosPeticion).subscribe((data:any) =>{
         // console.log("Entrando aquí");
-        window.location.reload();
+        let respuesta:ResponseI = data;
+        //Verificamos si la respuesta es exitosa.
+        if(respuesta.status == 'ok'){
+          this.alertas.showSuccess('Grupo rechazado/inhabilitado exitosamente','Acción exitosa');
+          setTimeout(() =>{
+            window.location.reload();
+          },2000);
+        }else{
+          this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+          setTimeout(() =>{
+            window.location.reload();
+          },2000);
+        }
       });
     });
   }

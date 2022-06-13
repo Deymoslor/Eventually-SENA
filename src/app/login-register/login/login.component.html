@@ -8,16 +8,32 @@
         <div class="form">
             <h1>Iniciar sesión</h1>
             <div class="grupo">
-                <input type="email" id="email" required formControlName="email"><span class="barra"></span>
+                <input type="email" id="email" required formControlName="email"[ngClass]="(loginForm.get('email')?.touched || loginForm.get('email')?.dirty) &&
+                loginForm.get('email')?.errors ? 'is-invalid' : '' || loginForm.get('email')?.hasError('email')
+                ? 'is-invalid' : ''"><span class="barra"></span>
                 <label for="">Email</label>
+                <div class="invalid-feedback">
+                    {{ loginForm.get("email")?.hasError("required") ? "Campo requerido" : "" }}
+                    {{ loginForm.get("email")?.hasError("email") ? "Campo de email persona@example.com" : "" }}
+                </div>
             </div>
+
             <div class="grupo">
-                <input type="password" name="" id="password" required formControlName="password"><span class="barra"></span>
-                <label for="">Password</label>
+                <input type="password" name="" id="password" required formControlName="password" [ngClass]="(loginForm.get('password')?.touched || loginForm.get('password')?.dirty) &&
+                loginForm.get('password')?.hasError('required') ? 'is-invalid' : '' || loginForm.get('password')?.hasError('maxlength')
+                ? 'is-invalid' : '' || loginForm.get('password')?.hasError('minlength')
+                ? 'is-invalid' : ''"><span class="barra"></span>
+                <label for="">Contraseña</label>
+                <div class="invalid-feedback">
+                    {{ loginForm.get("password")?.hasError("required") ? "Campo requerido" : "" }}
+                    {{ loginForm.get("password")?.hasError("maxlength") ? "Máximo 12 caracteres" : "" }}
+                    {{ loginForm.get("password")?.hasError("minlength") ? "Mínimo 6 caracteres" : "" }}
+                </div>
             </div>
 
             <!-- <button (click)="login()">Iniciar</button> -->
-            <button class="btnIniciar">Iniciar</button>
+            <button *ngIf="loginForm.invalid" type="submit" class="btnIniciarDisabled" [disabled]="loginForm.invalid">Iniciar</button>
+            <button *ngIf="loginForm.valid" type="submit" class="btnIniciar">Iniciar</button>
             <button class="btnIniciar" (click)="register()">Crear cuenta</button>
 
             <div class="a-divider text-center ">

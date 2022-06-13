@@ -33,20 +33,18 @@ export class UserReportComponent implements OnInit {
   }
 
   createPDF(){
-
     // const pdfDefinition: any = {
     //   content: [
     //     {
     //       layout: 'lightHorizontalLines', // optional
     //       table: {
-    //       headerRows: 1,
-    //       widths: [ '*', 'auto', 100, '*' ],
-
-    //       body: [
-    //         [ 'Nombre', 'Documento', 'Fecha de nacimiento', 'Correo' ],
-    //         [ '{{ this.personas:nombreUser }}', 'Value 2', 'Value 3', 'Value 4' ],
-    //       ]
-    //     }
+    //         headerRows: 1,
+    //         widths: [ '*', 'auto', 100, '*' ],
+    //         body: [
+    //           [ 'Nombre', 'Documento', 'Fecha de nacimiento', 'Correo' ],
+    //           [ '{{ this.personas:nombreUser }}', 'Value 2', 'Value 3', 'Value 4' ],
+    //         ]
+    //       }
     //     }
     //   ]
     // }
@@ -54,14 +52,12 @@ export class UserReportComponent implements OnInit {
     html2canvas(document.getElementById('exportthis')!).then(function (canvas) {
       var data = canvas.toDataURL();
       var pdfDefinition = {
-          content: [{
-              image: data,
-              width: 500,
-          }]
+        content: [{
+            image: data,
+            width: 500,
+        }]
       };
       pdfMake.createPdf(pdfDefinition).download("Reportes_User.pdf");
-  });
-
+    });
   }
-
 }

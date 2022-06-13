@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { PersonaI } from './personaI.interface';
 import { PersonaModalI } from './personaModalI.interface';
 import { userService } from '../service/userService.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { ResponseI } from '../../../core/ui/response.interface';
 import { AlertasService } from 'src/app/core/service/alertas.service';
 
@@ -21,32 +21,37 @@ export class ModalUsersComponent implements OnInit {
   //Input para recibir el id que viene por parte del padre, el crud-users.component general.
   @Input() childMessage!: number;
 
+  editarForm: FormGroup;
+
   constructor(
     private calendar:NgbCalendar,
     private activerouter: ActivatedRoute,
     private router: Router,
+    private formBuilder:FormBuilder,
     private userService:userService,
     private alertas:AlertasService
-  ) { }
+  ) {
+
+    //Creamos el FormGroup que nos sirve para poder tener el formulario con los campos correctos y en caso de necesitar validators.
+    this.editarForm = this.formBuilder.group({
+      idPersona: [],
+      token: [],
+      nombre: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1 ]+$/)]],
+      apellidos: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1 ]+$/)]],
+      documento: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(10), Validators.pattern(/^[0-9]\d*$/)]],
+      fechaNacimiento: ['',Validators.required],
+      Email: ['',[Validators.required, Validators.email]],
+      // password: ,
+      celular: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^[0-9]\d*$/)]],
+      ciudad: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1 ]+$/)]],
+      estado: [],
+      // roles_idRoles:
+    });
+
+  }
 
   //Creamos una variable que será de tipo PersonaI para poder almacenar los datos traidos con la consulta. Para esto, además necesitamos un formGroup.
   datosPersona!:PersonaI;
-
-  //Creamos el FormGroup que nos sirve para poder tener el formulario con los campos correctos y en caso de necesitar validators.
-  editarForm = new FormGroup({
-    idPersona: new FormControl(''),
-    token: new FormControl(''),
-    nombre: new FormControl(''),
-    apellidos: new FormControl(''),
-    documento: new FormControl(''),
-    fechaNacimiento: new FormControl(''),
-    Email: new FormControl(''),
-    // password: new FormControl(''),
-    celular: new FormControl(''),
-    ciudad: new FormControl(''),
-    estado: new FormControl(''),
-    // roles_idRoles: new FormControl('')
-  });
 
   ngOnInit(): void {
 
