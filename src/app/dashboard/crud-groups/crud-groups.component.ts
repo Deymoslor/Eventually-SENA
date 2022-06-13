@@ -70,6 +70,10 @@ export class CrudGroupsComponent implements OnInit {
       this.GroupsServiceService.getSingleGroup(id).subscribe((data:any) => {
         this.datosGrupo = data[0];
         this.datosGrupo.EstadosGrupo_idEstadosGrupo1 = 1;
+<<<<<<< HEAD
+=======
+        this.datosGrupo.imagen == null;
+>>>>>>> master
         this.GroupsServiceService.putGroup(this.datosGrupo).subscribe((data:any) =>{
         window.location.reload();
         });
@@ -79,6 +83,10 @@ export class CrudGroupsComponent implements OnInit {
       this.GroupsServiceService.getSingleGroup(id).subscribe((data:any) => {
         this.datosGrupo = data[0];
         this.datosGrupo.EstadosGrupo_idEstadosGrupo1 = 2;
+<<<<<<< HEAD
+=======
+        this.datosGrupo.imagen == null;
+>>>>>>> master
         this.GroupsServiceService.putGroup(this.datosGrupo).subscribe((data:any) =>{
           window.location.reload();
         });
@@ -92,6 +100,7 @@ export class CrudGroupsComponent implements OnInit {
       this.GroupsServiceService.getSingleGroup(id).subscribe((data:any) => {
         this.datosGrupo = data[0];
         this.datosGrupo.privacidadGrupo = 1;
+        this.datosGrupo.imagen == null;
         this.GroupsServiceService.putGroup(this.datosGrupo).subscribe((data:any) =>{
         window.location.reload();
         });
@@ -101,6 +110,7 @@ export class CrudGroupsComponent implements OnInit {
       this.GroupsServiceService.getSingleGroup(id).subscribe((data:any) => {
         this.datosGrupo = data[0];
         this.datosGrupo.privacidadGrupo = 2;
+        this.datosGrupo.imagen == null;
         this.GroupsServiceService.putGroup(this.datosGrupo).subscribe((data:any) =>{
         window.location.reload();
         });
