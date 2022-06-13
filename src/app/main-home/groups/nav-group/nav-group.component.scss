@@ -1,0 +1,11 @@
+@import '../../../app.component.scss';
+.textoTitulos {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+}
+
+.router-link-active {
+    background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
+    color: white;
+    border-radius: 0.5rem;
+}
