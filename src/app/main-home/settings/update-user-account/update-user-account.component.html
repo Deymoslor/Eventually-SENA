@@ -190,7 +190,6 @@
                     <br>
                     <!-- Password Antiguo -->
                     <div class="mb-3">
-<<<<<<< HEAD
                         <b><label class="form-label">Contraseña actual (o código de recuperación)</label></b>
                         <input required type="password" class="form-control" formControlName="oldPassword" aria-describedby="helpId" placeholder="Escribe tu contraseña antigua o código de recuperación" [ngClass]="(passwordForm.get('oldPassword')?.touched || passwordForm.get('oldPassword')?.dirty) &&
                         passwordForm.get('oldPassword')?.hasError('required') ? 'is-invalid' : '' || passwordForm.get('oldPassword')?.hasError('maxlength')
@@ -201,10 +200,6 @@
                             {{ passwordForm.get("oldPassword")?.hasError("maxlength") ? "Máximo 12 caracteres" : "" }}
                             {{ passwordForm.get("oldPassword")?.hasError("minlength") ? "Mínimo 6 caracteres" : "" }}
                         </div>
-=======
-                        <b><label class="form-label textoTitulos">Contraseña actual (o código de recuperación)</label></b>
-                        <input class="textox" required type="password" class="form-control" formControlName="oldPassword" aria-describedby="helpId" placeholder="Escribe tu contraseña antigua o código de recuperación">
->>>>>>> master
 
                         <div class="recuperar">
                             <p class="textox">O recupera tu contraseña ⊂(◉‿◉)つ <a href="" routerLink="loginRegister/forgot-password" (click)="PasswordRecovery()">Recuperar contraseña</a></p>
@@ -213,7 +208,6 @@
 
                     <!-- Password Nuevo -->
                     <div class="mb-3">
-<<<<<<< HEAD
                         <b><label class="form-label">Contraseña nueva</label></b>
                         <input required type="password" class="form-control" formControlName="newPassword" aria-describedby="helpId" placeholder="Escribe tu contraseña nueva" [ngClass]="(passwordForm.get('newPassword')?.touched || passwordForm.get('newPassword')?.dirty) &&
                         passwordForm.get('newPassword')?.hasError('required') ? 'is-invalid' : '' || passwordForm.get('newPassword')?.hasError('maxlength')
@@ -230,14 +224,6 @@
                         <button *ngIf="passwordForm.invalid" type="submit" class="btnActualizacionDisable btn btn-primary btn-lg" [disabled]="passwordForm.invalid" (click)="completarForm(passwordForm.value)" (click)="changePassword(passwordForm.value)">Actualizar contraseña</button>
 
                         <button *ngIf="passwordForm.valid" type="submit" class="btnActualizacion btn btn-primary btn-lg" (click)="completarForm(passwordForm.value)" (click)="changePassword(passwordForm.value)">Actualizar contraseña</button>
-=======
-                        <b><label class="form-label textoTitulos">Contraseña nueva</label></b>
-                        <input class="textox" required type="password" class="form-control" formControlName="newPassword" aria-describedby="helpId" placeholder="Escribe tu contraseña nueva">
-                    </div>
-
-                    <div class="btnChangeLikes d-flex justify-content-center">
-                        <button type="submit" class="btn btn-primary textox" (click)="completarForm(passwordForm.value)" (click)="changePassword(passwordForm.value)">Actualizar contraseña</button>
->>>>>>> master
                     </div>
 
                 </form>

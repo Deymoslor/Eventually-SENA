@@ -4,14 +4,9 @@
             <h1>Registro</h1>
             <div class="grupo">
                 <input type="text" name="" id="email"  formControlName="nombre" placeholder="Introduce tu nombre" [ngClass]="(nuevoForm.get('nombre')?.touched || nuevoForm.get('nombre')?.dirty) &&
-<<<<<<< HEAD
                 nuevoForm.get('nombre')?.errors ? 'is-invalid' : '' || nuevoForm.get('documento')?.hasError('minlength')
                 ? 'is-invalid' : '' || nuevoForm.get('documento')?.hasError('pattern')
                 ? 'is-invalid' : ''"><span class="barra"></span>
-=======
-                nuevoForm.get('nombre')?.errors ? 'is-invalid' : '' || nuevoForm.get('nombre')?.hasError('pattern')
-                ? 'is-invalid' : ''" formControlName="nombre"><span class="barra"></span>
->>>>>>> master
                 <label for="">Nombre</label>
                 <div class="invalid-feedback">
                     {{ nuevoForm.get("nombre")?.hasError("required") ? "Campo requerido" : "" }}
@@ -127,7 +122,7 @@
 
             <button *ngIf="nuevoForm.invalid" type="submit" [disabled]="nuevoForm.invalid" class="btnRegistroDisable">Registrarse</button>
             <button *ngIf="nuevoForm.valid" type="submit" class="btnRegistro">Registrarse</button>
-            <button class="botoncitosexy" (click)="cancel()">Cancelar</button>
+
 
             <!-- <pre>{{ formUsers.value | json }}</pre> -->
         </div>

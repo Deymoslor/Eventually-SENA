@@ -22,7 +22,7 @@ export class ModalEditGroupsComponent implements OnInit {
   public previsualizacion!: string;
   public archivos: any = [];
 
-  constructor(private activerouter:ActivatedRoute , private router:Router, private ApiGroup:GroupsServiceService, private likes: ApiService, private sanitizer: DomSanitizer, private alertas:AlertasService) { }
+  constructor(private activerouter:ActivatedRoute , private router:Router, private ApiGroup:GroupsServiceService, private likes: ApiService, private sanitizer: DomSanitizer, private alertas:AlertasService, private fb: FormBuilder) { }
 
   datesGroup!: Group;
   editForm = new FormGroup({
@@ -59,7 +59,8 @@ export class ModalEditGroupsComponent implements OnInit {
           InvitadosTotales: [this.datesGroup.InvitadosTotales, Validators.required],
           EstadosGrupo_idEstadosGrupo1: [this.datesGroup.EstadosGrupo_idEstadosGrupo1, Validators.required],
           gustos_idGusto: [this.datesGroup.gustos_idGusto, Validators.required],
-          imagen: [this.datesGroup.imagen.replace('C:/xampp/htdocs', GlobalConstants.httpLocalHost)]
+          // imagen: [this.datesGroup.imagen.replace('C:/xampp/htdocs', GlobalConstants.httpLocalHost)]
+          imagen: [this.datesGroup.imagen.replace('J:/Programas/Xampp/htdocs', GlobalConstants.httpLocalHost)]
         })
         console.log(this.editForm.get('imagen')?.value);
         console.log(this.editForm.get('idGrupos')?.value);
@@ -106,7 +107,7 @@ export class ModalEditGroupsComponent implements OnInit {
     console.log(form);
     this.ApiGroup.putGroup(form).subscribe( data =>{
       console.log(data);
-      let respuesta:ResponseI = data[0];
+      let respuesta:ResponseI = data;
       //Verificamos si la respuesta es exitosa.
       if(respuesta.status == 'ok'){
         this.alertas.showSuccess('Grupo actualizado correctamente','Actulización exitosa');
