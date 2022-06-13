@@ -32,6 +32,9 @@ export class CreateGroupsComponent implements OnInit {
     gustos_idGusto: new FormControl(''),
     idPersona: new FormControl(''),
   });
+  share() {
+    window.alert('The product has been shared!');
+  }
 
   // swal("Oops!", "Something went wrong on the page!", "error");
 

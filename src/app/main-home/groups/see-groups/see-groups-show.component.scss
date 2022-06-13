@@ -1,12 +1,22 @@
-.group{
-  height: 5%;
+@import '../../../app.component.scss';
+.group {
+    height: 5%;
 }
 
-.aloo{
-  margin: 0.5em;
+.aloo {
+    margin: 0.5em;
 }
 
-.card-title{
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 100%;
+.card-title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 100%;
+}
+
+.btnVer {
+    background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
+    color: white;
+}
+
+.btnVer:hover {
+    background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
 }
