@@ -75,9 +75,9 @@ export class CrudServicesComponent implements OnInit {
       })
 
       this.typeServicesForm = this.fb.group({
-        idtipoServicio: ['', [Validators.required, Validators.pattern(/^[0-9]\d*$/)]],
-        tipoServicio: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(15)]],
-        estadoTipoServicio: ['']
+        idtipoServicio: ['', [Validators.required]],
+        tipoServicio: ['', [Validators.required, Validators.minLength(5)]],
+        estadoTipoServicio: ['', []]
       })
 
      }

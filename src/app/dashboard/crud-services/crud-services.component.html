@@ -102,48 +102,24 @@
         <form class="textox" [formGroup]="typeServicesForm" (ngSubmit)="postEditFormType(typeServicesForm.value)">
             <div class="modal-body">
 
-                <div class="formGroupType">
-                    <label for="">Id Tipo Servicio:</label>
-                    <input type="text" class="form-control" id="" placeholder="" formControlName="idtipoServicio"
-                    [ngClass]=" (typeServicesForm.get('idtipoServicio')?.touched || typeServicesForm.get('idtipoServicio')?.dirty) &&
-                    typeServicesForm.get('idtipoServicio')?.hasError('required') 
-                    ? 'is-invalid' : '' || typeServicesForm.get('idtipoServicio')?.hasError('pattern') 
-                    ? 'is-invalid' : ''">
-                    <div class="invalid-feedback">
-                        {{ typeServicesForm.get("idtipoServicio")?.hasError("required") ? "Campo requerido" : "" }}
-                        {{ typeServicesForm.get("idtipoServicio")?.hasError("pattern") ? "Campo solo numeros" : "" }}
-                    </div>
-                </div>
+                <label for="">Id Tipo Servicio:</label>
+                <input type="text" class="form-control" id="" placeholder="" formControlName="idtipoServicio">
 
-               <div class="formGroupType">
-                 <label for="">Nombre del Evento:</label>
-                    <input type="text" class="form-control" id="" placeholder="" formControlName="tipoServicio"
-                    [ngClass]=" (typeServicesForm.get('tipoServicio')?.touched || typeServicesForm.get('tipoServicio')?.dirty) &&
-                    typeServicesForm.get('tipoServicio')?.hasError('required') 
-                    ? 'is-invalid' : '' || typeServicesForm.get('tipoServicio')?.hasError('minlength') 
-                    ? 'is-invalid' : '' || typeServicesForm.get('tipoServicio')?.hasError('maxlength') 
-                    ? 'is-invalid' : ''">
-                    <div class="invalid-feedback">
-                        {{ typeServicesForm.get("tipoServicio")?.hasError("required") ? "Campo requerido" : "" }}
-                        {{ typeServicesForm.get("tipoServicio")?.hasError("minlength") ? "Campo requerido con 5 caracteres" : "" }}
-                        {{ typeServicesForm.get("tipoServicio")?.hasError("maxlength") ? "Campo requerido con maximo 15 caracteres" : "" }}
-                    </div>
-               </div>
+                <label for="">Nombre del Evento:</label>
+                <input type="text" class="form-control" id="" placeholder="" formControlName="tipoServicio">
 
-                <div class="formGroupType">
-                    <label for="">Estado Evento:</label>
-                    <input type="text" class="form-control" id="" placeholder="Ej: El mejor evento" formControlName="estadoTipoServicio" [readonly]="true">
-                    <div class="form-check form-switch">
-                        <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" *ngIf="typeServicesForm.get('estadoTipoServicio')?.value != 1" (click)="switchStateEvent(typeServicesForm.get('estadoTipoServicio')?.value)">
-                        <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" *ngIf="typeServicesForm.get('estadoTipoServicio')?.value == 1" (click)="switchStateEvent(typeServicesForm.get('estadoTipoServicio')?.value)" checked>
-                        <label class="form-check-label fw-bolder fs-4 label" for="flexSwitchCheckChecked" *ngIf="typeServicesForm.get('estadoTipoServicio')?.value != 1">Habilitar TIPO</label>
-                        <label class="form-check-label fw-bolder fs-4 label" for="flexSwitchCheckChecked" *ngIf="typeServicesForm.get('estadoTipoServicio')?.value == 1">Deshabilitar TIPO</label>
-                    </div>
+                <label for="">Estado Evento:</label>
+                <input type="text" class="form-control" id="" placeholder="Ej: El mejor evento" formControlName="estadoTipoServicio" [readonly]="true">
+                <div class="form-check form-switch">
+                    <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" *ngIf="typeServicesForm.get('estadoTipoServicio')?.value != 1" (click)="switchStateEvent(typeServicesForm.get('estadoTipoServicio')?.value)">
+                    <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" *ngIf="typeServicesForm.get('estadoTipoServicio')?.value == 1" (click)="switchStateEvent(typeServicesForm.get('estadoTipoServicio')?.value)" checked>
+                    <label class="form-check-label fw-bolder fs-4 label" for="flexSwitchCheckChecked" *ngIf="typeServicesForm.get('estadoTipoServicio')?.value != 1">Habilitar TIPO</label>
+                    <label class="form-check-label fw-bolder fs-4 label" for="flexSwitchCheckChecked" *ngIf="typeServicesForm.get('estadoTipoServicio')?.value == 1">Deshabilitar TIPO</label>
                 </div>
 
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btnEditar" [disabled]="typeServicesForm.invalid">Editar</button>
+                <button type="submit" class="btn btnEditar">Editar</button>
             </div>
         </form>
     </div>
@@ -159,19 +135,8 @@
         <form class="textox" [formGroup]="ServicesForm" (ngSubmit)="postEditFormServices(ServicesForm.value)">
             <div class="modal-body">
 
-                <div class="formGroup">
-                    <label for="">Id Servicio:</label>
-                    <input type="text" class="form-control" id="" placeholder="" formControlName="idServicios"
-                    [ngClass]=" (ServicesForm.get('idServicios')?.touched || ServicesForm.get('idServicios')?.dirty) &&
-                    ServicesForm.get('idServicios')?.hasError('required') 
-                    ? 'is-invalid' : '' || ServicesForm.get('idServicios')?.hasError('pattern') 
-                    ? 'is-invalid' : ''">
-
-                    <div class="invalid-feedback">
-                        {{ ServicesForm.get("idServicios")?.hasError("required") ? "Campo requerido" : "" }}
-                        {{ ServicesForm.get("idServicios")?.hasError("pattern") ? "Campo solo numeros" : "" }}
-                    </div>
-                </div>
+                <label for="">Id Servicio:</label>
+                <input type="text" class="form-control" id="" placeholder="" formControlName="idServicios">
 
                 <div class="formGroup">
                     <label for="">Nombre del servicio:</label>
@@ -205,6 +170,8 @@
                     </div>
                 </div>
 
+                
+
                 <div class="formGroup">
                     <label for="exampleInputEmail1">Precio estimado:</label>
                     <input type="number" class="form-control" id="exampleInputEmail1" min="1" max="200000000" formControlName="precioEstimado"
@@ -221,7 +188,7 @@
 
                 <div class="formGroup">
                     <label for="">Imagen evento:</label>
-                    <div class="mb-2">modalServiceOpen
+                    <div class="mb-2">
                         <input (change)="capturarFile($event)" formControlName="imagen" type="file">
                     </div>
                     <h4>PREVISUALIZACION</h4>
@@ -242,6 +209,17 @@
                         {{ ServicesForm.get("historialEmpresas")?.hasError("required") ? "Campo requerido" : "" }}
                         {{ ServicesForm.get("historialEmpresas")?.hasError("minlength") ? "Campo requerido con 20 caracteres" : "" }}
                         {{ ServicesForm.get("historialEmpresas")?.hasError("maxlength") ? "Campo requerido con maximo 300 caracteres" : "" }}
+                    </div>
+                </div>
+
+                <div class="formGroup">
+                    <label for="">Fecha inicio:</label>
+                    <input type="date" class="form-control" formControlName="fechaInicio"
+                        [ngClass]=" (ServicesForm.get('fechaInicio')?.touched || ServicesForm.get('fechaInicio')?.dirty) &&
+                    ServicesForm.get('fechaInicio')?.hasError('required') 
+                    ? 'is-invalid' : ''">
+                    <div class="invalid-feedback">
+                        {{ ServicesForm.get("fechaInicio")?.hasError("required") ? "Campo requerido" : "" }}
                     </div>
                 </div>
 
@@ -272,42 +250,34 @@
                     </div>
                </div>
 
-                <div class="formGroup">
-                    <label for="exampleInputEmail1">Id Proveedor:</label>
-                    <input type="number" class="form-control" id="exampleInputEmail1" min="1" max="1000" formControlName="Proveedor_idProveedor"
-                    [ngClass]=" (ServicesForm.get('Proveedor_idProveedor')?.touched || ServicesForm.get('Proveedor_idProveedor')?.dirty) &&
-                    ServicesForm.get('Proveedor_idProveedor')?.hasError('required') 
-                    ? 'is-invalid' : ''">
-                </div>
+                <label for="exampleInputEmail1">Id Proveedor:</label>
+                <input type="number" class="form-control" id="exampleInputEmail1" min="1" max="1000" formControlName="Proveedor_idProveedor">
 
                 <div class="formGroup">
-                    <label for="exampleInputEmail1">Id Tipo Servicio:</label>
-                    <input type="number" class="form-control" id="exampleInputEmail1" min="1" max="1000" formControlName="TipoServicio_idtipoServicio"
-                    [ngClass]=" (ServicesForm.get('TipoServicio_idtipoServicio')?.touched || ServicesForm.get('TipoServicio_idtipoServicio')?.dirty) &&
-                    ServicesForm.get('TipoServicio_idtipoServicio')?.hasError('required') 
-                    ? 'is-invalid' : ''">
+                    <label for="">Tipo Servicio:</label>
+                    <select class="form-select" id="input-group-text" formControlName="TipoServicio_idtipoServicio">
+                            <option selected> Escoge uno...</option>
+                            <option value="{{typeService.idtipoServicio}}" *ngFor="let typeService of TypeServices">{{typeService.tipoServicio}}</option>
+                    </select>
+
+                    <!-- <div class="invalid-feedback">
+                        {{ ServicesForm.get("TipoServicio_idtipoServicio")?.hasError("required") ? "Campo requerido" : "" }}
+                        {{ ServicesForm.get("TipoServicio_idtipoServicio")?.hasError("pattern") ? "Campo de solo numeros" : "" }}
+                    </div> -->
                 </div>
 
-                <div class="formGroup">
-                    <label for="">Estado Servicio:</label>
-                    <input type="text" class="form-control" id="" placeholder="Ej: El mejor evento" formControlName="estadoServicio" [readonly]="true"
-                    [ngClass]=" (ServicesForm.get('estadoServicio')?.touched || ServicesForm.get('estadoServicio')?.dirty) &&
-                    ServicesForm.get('estadoServicio')?.hasError('required') 
-                    ? 'is-invalid' : ''">
-                    <div class="form-check form-switch">
-                        <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" *ngIf="ServicesForm.get('estadoServicio')?.value != 1" (click)="switchStateService(ServicesForm.get('estadoServicio')?.value)">
-                        <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" *ngIf="ServicesForm.get('estadoServicio')?.value == 1" (click)="switchStateService(ServicesForm.get('estadoServicio')?.value)" checked>
-                        <label class="form-check-label fw-bolder fs-4 label" for="flexSwitchCheckChecked" *ngIf="ServicesForm.get('estadoServicio')?.value != 1">Habilitar Servicio</label>
-                        <label class="form-check-label fw-bolder fs-4 label" for="flexSwitchCheckChecked" *ngIf="ServicesForm.get('estadoServicio')?.value == 1">Deshabilitar Servicio</label>
-                    </div>
-                    <div class="invalid-feedback">
-                        {{ ServicesForm.get("estadoServicio")?.hasError("required") ? "Campo requerido" : "" }}
-                    </div>
+                <label for="">Estado Servicio:</label>
+                <input type="text" class="form-control" id="" placeholder="Ej: El mejor evento" formControlName="estadoServicio" [readonly]="true">
+                <div class="form-check form-switch">
+                    <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" *ngIf="ServicesForm.get('estadoServicio')?.value != 1" (click)="switchStateService(ServicesForm.get('estadoServicio')?.value)">
+                    <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" *ngIf="ServicesForm.get('estadoServicio')?.value == 1" (click)="switchStateService(ServicesForm.get('estadoServicio')?.value)" checked>
+                    <label class="form-check-label fw-bolder fs-4 label" for="flexSwitchCheckChecked" *ngIf="ServicesForm.get('estadoServicio')?.value != 1">Habilitar Servicio</label>
+                    <label class="form-check-label fw-bolder fs-4 label" for="flexSwitchCheckChecked" *ngIf="ServicesForm.get('estadoServicio')?.value == 1">Deshabilitar Servicio</label>
                 </div>
 
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btnEditar" [disabled]="ServicesForm.invalid">Editar</button>
+                <button type="submit" class="btn btnEditar">Editar</button>
             </div>
         </form>
     </div>

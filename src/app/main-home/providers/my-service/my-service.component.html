@@ -3,7 +3,7 @@
 <div class="container d-flex card shadow-sm ">
     <div class="row rowP dd">
         <div class="row rowP">
-            <u><p class="titlePrincipal">Mis Servicio</p></u>
+            <u><p class="titlePrincipal">Mi Servicio</p></u>
         </div>
         <div class="row rowP textox">
             <div class="col-3 lastcontCampo2">
@@ -46,8 +46,8 @@
                                     <div class="col-3 campos ">
                                         <label class="textoTitulos">Tipo Servicio</label>
                                     </div>
-                                    <div class="col-3 campos">
-                                        <p class="textox">{{ServicesForm.get('TipoServicio_idtipoServicio')?.value}}</p>
+                                    <div class="col-3 campos" *ngFor="let key of dataTypeService">
+                                        <p class="textox"*ngIf="ServicesForm.get('TipoServicio_idtipoServicio')?.value == key.idtipoServicio">{{key.tipoServicio}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -139,7 +139,12 @@
                                         <label class="textoTitulos">Estado</label>
                                     </div>
                                     <div class="col-3 campos">
-                                        <p class="Textox">{{ServicesForm.get('fechaInicio')?.value}}</p>
+                                        <div *ngIf="ServicesForm.get('estadoServicio')?.value == 1">
+                                            <p class="Textox">HABILITADO</p>
+                                        </div>
+                                        <div *ngIf="ServicesForm.get('estadoServicio')?.value == 0">
+                                            <p class="Textox">HABILITADO</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -173,18 +178,6 @@
                         <button class="btn textox btnEditar  s" data-bs-toggle="modal" data-bs-target="#content-modal-edit-service">
                                 Editar
                             </button>
-
-
-
-
-
-
-                        <button class="btn textox btnEditar  s" data-bs-toggle="modal" data-bs-target="#content-modal-create-service">
-                              Crear
-                          </button>
-
-
-
                     </div>
                 </div>
             </div>

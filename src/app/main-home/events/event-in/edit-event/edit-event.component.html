@@ -78,49 +78,49 @@
                             <input type="date" class="form-control" [ngClass]="
                                     (editFormIn.get('fechaEvento')?.touched || editFormIn.get('fechaEvento')?.dirty) &&
                                         editFormIn.get('fechaEvento')?.hasError('required') ? 'is-invalid' : ''" formControlName="fechaEvento"  min="{{dateS}}">
-                            <div class="invalid-feedback">
-                                {{ editFormIn.get("fechaEvento")?.hasError("required") ? " Fecha requerida" : "" }}
-                            </div>
-                            <style>
-                                 ::ng-deep .cdk-overlay-container {
-                                    z-index: 2000;
-                                }
-                            </style>
-    
-                            </div>
-    
-                            <div class="groupForm">
-                                <label for="exampleInputEmail1">Numero Participantes maximo:</label>
-                                <input type="number" class="form-control" id="exampleInputEmail1" min="2" max="200" [ngClass]="
-                                        (editFormIn.get('participantesTotales')?.touched || editFormIn.get('participantesTotales')?.dirty) &&
-                                            editFormIn.get('participantesTotales')?.hasError('required') 
-                                            ? 'is-invalid' : '' || editFormIn.get('participantesTotales')?.hasError('min') 
-                                            ? 'is-invalid' : '' || editFormIn.get('participantesTotales')?.hasError('max') 
-                                            ? 'is-invalid' : ''" formControlName="participantesTotales">
-    
-                                <div class="invalid-feedback">
-                                    {{ editFormIn.get("participantesTotales")?.hasError("required") ? " Numero de participantes requeridos" : "" }}
-                                    {{ editFormIn.get("participantesTotales")?.hasError("min") ? "Minimo 2 participantes" : "" }}
-                                    {{ editFormIn.get("participantesTotales")?.hasError("max") ? "Maximo 200 participantes" : "" }}                        
+                                        <div class="invalid-feedback">
+                                            {{ editFormIn.get("fechaEvento")?.hasError("required") ? " Fecha requerida" : "" }}
+                                        </div>
+                                        <style>
+                                             ::ng-deep .cdk-overlay-container {
+                                                z-index: 2000;
+                                            }
+                                        </style>
+                
+                                        </div>
+                
+                                        <div class="groupForm">
+                                            <label for="exampleInputEmail1">Numero Participantes maximo:</label>
+                                            <input type="number" class="form-control" id="exampleInputEmail1" min="2" max="200" [ngClass]="
+                                                    (editFormIn.get('participantesTotales')?.touched || editFormIn.get('participantesTotales')?.dirty) &&
+                                                        editFormIn.get('participantesTotales')?.hasError('required') 
+                                                        ? 'is-invalid' : '' || editFormIn.get('participantesTotales')?.hasError('min') 
+                                                        ? 'is-invalid' : '' || editFormIn.get('participantesTotales')?.hasError('max') 
+                                                        ? 'is-invalid' : ''" formControlName="participantesTotales">
+                
+                                            <div class="invalid-feedback">
+                                                {{ editFormIn.get("participantesTotales")?.hasError("required") ? " Numero de participantes requeridos" : "" }}
+                                                {{ editFormIn.get("participantesTotales")?.hasError("min") ? "Minimo 2 participantes" : "" }}
+                                                {{ editFormIn.get("participantesTotales")?.hasError("max") ? "Maximo 200 participantes" : "" }}                        
+                                            </div>
+                                        </div>
+                
+                                        <div class="groupForm">
+                                            <input type="checkbox" checked name="" id="check"  formControlName="check" [ngClass]="(editFormIn.get('check')?.touched || editFormIn.get('check')?.dirty) &&
+                                            editFormIn.get('check')?.errors ? 'is-invalid' : ''" >
+                                            <label>Aceptas 1480 de 2011 articulo 30 sobre contenido explicito.</label>
+                                            <div class="invalid-feedback">
+                                                {{ editFormIn.get("check")?.hasError("required") ? "Debe estar de acuerdo con las políticas." : "" }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                <!-- goback(editFormIn.get('Grupos_idGrupos')?.value) -->
+                                    <div class="container-buttons">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="goback(dataEvent.Grupos_idGrupos)">Cerrar</button>
+                                        <!-- (click)="refresh()" -->
+                                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="editFormIn.invalid" >Guardar</button>
+                                    </div>
                                 </div>
-                            </div>
-    
-                            <div class="groupForm">
-                                <input type="checkbox" checked name="" id="check"  formControlName="check" [ngClass]="(editFormIn.get('check')?.touched || editFormIn.get('check')?.dirty) &&
-                                editFormIn.get('check')?.errors ? 'is-invalid' : ''" >
-                                <label>Aceptas 1480 de 2011 articulo 30 sobre contenido explicito.</label>
-                                <div class="invalid-feedback">
-                                    {{ editFormIn.get("check")?.hasError("required") ? "Debe estar de acuerdo con las políticas." : "" }}
-                                </div>
-                            </div>
-                        </div>
-                    <!-- goback(editFormIn.get('Grupos_idGrupos')?.value) -->
-                        <div class="container-buttons">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="goback(dataEvent.Grupos_idGrupos)">Cerrar</button>
-                            <!-- (click)="refresh()" -->
-                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="editFormIn.invalid" >Guardar</button>
-                        </div>
-                    </div>
-
+            
       </form>  
 </div>
