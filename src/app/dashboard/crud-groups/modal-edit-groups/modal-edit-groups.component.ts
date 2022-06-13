@@ -53,8 +53,8 @@ export class ModalEditGroupsComponent implements OnInit {
         console.log(this.datesGroup);
         this.editForm = this.fb.group({
           idGrupos: [this.datesGroup.idGrupos],
-          nombreGrupo: [this.datesGroup.nombreGrupo, [Validators.required, Validators.minLength(2)]],
-          descripcionGrupo: [this.datesGroup.descripcionGrupo, [Validators.required, Validators.minLength(5)]],
+          nombreGrupo: [this.datesGroup.nombreGrupo, [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
+          descripcionGrupo: [this.datesGroup.descripcionGrupo, [Validators.required, Validators.minLength(5), Validators.maxLength(300)]],
           privacidadGrupo: [this.datesGroup.privacidadGrupo, Validators.required],
           InvitadosTotales: [this.datesGroup.InvitadosTotales, Validators.required],
           EstadosGrupo_idEstadosGrupo1: [this.datesGroup.EstadosGrupo_idEstadosGrupo1, Validators.required],

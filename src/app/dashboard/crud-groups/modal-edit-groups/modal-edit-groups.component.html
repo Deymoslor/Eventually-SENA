@@ -12,23 +12,35 @@
                     <input type="text" class="form-control" id="" placeholder="Ej: El mejor evento de la historia" formControlName="nombreGrupo"
                     [ngClass]="(editForm.get('nombreGrupo')?.touched || editForm.get('nombreGrupo')?.dirty) &&
                     editForm.get('nombreGrupo')?.errors ? 'is-invalid' : ''">
+                    <div class="invalid-feedback">
+                      {{ editForm.get("nombreGrupo")?.hasError("required") ? "Nombre requerido" : "" }}
+                      {{ editForm.get("nombreGrupo")?.hasError("minlength") ? "Minimo 2 letras" : "" }}
+                      {{ editForm.get("nombreGrupo")?.hasError("maxlength") ? "Maximo 30 letras" : "" }}
+                  </div>
                 </div>
 
                 <label for="">Descripción:</label>
                 <div class="mb-2">
-                    <textarea type="text" class="form-control" id="exampleFormControlTextarea1" placeholder="Explica de que tratará" rows="2" formControlName="descripcionGrupo"
-                    [ngClass]="(editForm.get('descripcionGrupo')?.touched ||
+                  <textarea class="form-control textArea" id="exampleFormControlTextarea1" placeholder="Explica de que tratará y dónde será." rows="2" [ngClass]="(editForm.get('descripcionGrupo')?.touched ||
+                  editForm.get('descripcionGrupo')?.dirty) &&
+                  editForm.get('descripcionGrupo')?.hasError('required')
+                  ? 'is-invalid'
+                  : '' || editForm.get('descripcionGrupo')?.hasError('minlength')
+                  ? 'is-invalid'
+                  : '' || editForm.get('descripcionGrupo')?.hasError('maxlength')
+                  ? 'is-invalid'
+                  : '' ||
+                    ((editForm.get('descripcionGrupo')?.touched ||
                     editForm.get('descripcionGrupo')?.dirty) &&
-                    editForm.get('descripcionGrupo')?.hasError('required')
-                    ? 'is-invalid'
-                    : '' || editForm.get('descripcionGrupo')?.hasError('minlength')
-                    ? 'is-invalid'
-                    : '' ||
-                      ((editForm.get('descripcionGrupo')?.touched ||
-                      editForm.get('descripcionGrupo')?.dirty) &&
-                        !editForm.get('descripcionGrupo')?.invalid)
-                    ? 'is-valid'
-                    : ''"></textarea>
+                      !editForm.get('descripcionGrupo')?.invalid)
+                  ? 'is-valid'
+                  : ''" formControlName="descripcionGrupo"></textarea>
+                  <div class="invalid-feedback">
+                    {{ editForm.get("descripcionGrupo")?.hasError("required") ? " Descripcion requerida" : "" }}
+                    {{ editForm.get("descripcionGrupo")?.hasError("minlength") ? " 5 letras requeridas" : "" }}
+                    {{ editForm.get("descripcionGrupo")?.hasError("maxlength")
+                    ? " Ha excedido el limite de caracteres" : "" }}
+                  </div>
                 </div>
 
                 <div>
@@ -46,9 +58,14 @@
                 </div>
                 <div>
                     <label for="exampleInputEmail1">Gusto:</label>
-                    <select class="form-select" aria-label="Default select example" formControlName="gustos_idGusto">
+                    <select class="form-select firtsContainer" aria-label="Default select example" [ngClass]="
+                    (editForm.get('gustos_idGusto')?.touched || editForm.get('gustos_idGusto')?.dirty) &&
+                    editForm.get('gustos_idGusto')?.hasError('required') ? 'is-invalid' : ''" formControlName="gustos_idGusto">
                     <option *ngFor="let likeI of likesI" value="{{ likeI.idGusto }}">{{ likeI.nombreGusto }}</option>
-                  </select>
+                    </select>
+                    <div class="invalid-feedback texto">
+                      {{ editForm.get("gustos_idGusto")?.hasError("required") ? "Gusto requerido" : "" }}
+                    </div>
                 </div>
 
                 <div class="modal-footer">
