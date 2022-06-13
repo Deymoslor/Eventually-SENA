@@ -116,9 +116,9 @@ export class ModalEditGroupsComponent implements OnInit {
           //Verificamos si la respuesta es exitosa.
           if(respuesta.status == 'ok'){
             this.alertas.showSuccess('has editado grupo','Edición exitosa');
-            setTimeout(() => {
-              window.location.reload();
-            }, 2000);
+            // setTimeout(() => {
+            //   window.location.reload();
+            // }, 2000);
           }else{
             this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
             setTimeout(() => {
