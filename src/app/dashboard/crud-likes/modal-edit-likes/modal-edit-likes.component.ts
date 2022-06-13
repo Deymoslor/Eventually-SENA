@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { LikesI } from 'src/app/models/likes';
 import { ApiService } from 'src/app/services/api.service';
-import { FormGroup, FormControl, Validators} from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 import { AlertasService } from 'src/app/core/service/alertas.service';
 
 
@@ -12,21 +12,24 @@ import { AlertasService } from 'src/app/core/service/alertas.service';
 })
 export class ModalEditLikesComponent implements OnInit {
 
+  editForm: FormGroup;
+
  @Input() childMessage!:number
 
   constructor(
     private api:ApiService,
-    private alertas:AlertasService
-  ) { }
+    private alertas:AlertasService,
+    private formBuilder:FormBuilder,
+    ) {
+      this.editForm = this.formBuilder.group({
+        nombreGusto: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1 ]+$/)]],
+        idGusto: [''],
+        estadoGusto: ['']
+        // idtipoGusto:new FormControl(''),
+      })
+      }
 
   public likes!:LikesI;
-
-  editForm  = new FormGroup({
-    nombreGusto:new FormControl(''),
-    idGusto:new FormControl(''),
-    estadoGusto:new FormControl('')
-    // idtipoGusto:new FormControl(''),
-  })
 
   // typeslikes?:TypesLikesI[];
 
@@ -59,7 +62,7 @@ export class ModalEditLikesComponent implements OnInit {
   }
 
   postEditLike(form:LikesI){
-    
+
     // console.log(form);
     this.api.putLikes(form).subscribe(data=>{
       let respuesta:any = data;

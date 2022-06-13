@@ -10,33 +10,69 @@
                 <form class="textox" [formGroup]="createSupplierForm" (ngSubmit)="postForm(createSupplierForm.value)">
                     <div class="form-group">
                         <label for="">Nombres del proveedor:</label>
-                        <input type="text" class="form-control" id="" placeholder="MeetUp/Jorge" formControlName="nombreProveedor">
+                        <input type="text" class="form-control" id="" placeholder="MeetUp/Jorge" formControlName="nombreProveedor" [ngClass]="(createSupplierForm.get('nombreProveedor')?.touched || createSupplierForm.get('nombreProveedor')?.dirty) &&
+                        createSupplierForm.get('nombreProveedor')?.errors ? 'is-invalid' : '' || createSupplierForm.get('nombreProveedor')?.hasError('minlength')
+                        ? 'is-invalid' : '' || createSupplierForm.get('nombreProveedor')?.hasError('pattern')
+                        ? 'is-invalid' : ''">
+                        <div class="invalid-feedback">
+                            {{ createSupplierForm.get("nombreProveedor")?.hasError("required") ? "Campo requerido" : "" }}
+                            {{ createSupplierForm.get("nombreProveedor")?.hasError("pattern") ? "Campo solo con letras" : "" }}
+                        </div>
                     </div>
 
                     <div class="form-group">
                         <label for="">Apellidos del proveedor:</label>
-                        <input type="text" class="form-control" id="" placeholder="MeetUp/Martinez" formControlName="apellidoProveedor">
+                        <input type="text" class="form-control" id="" placeholder="MeetUp/Martinez" formControlName="apellidoProveedor" [ngClass]="(createSupplierForm.get('apellidos')?.touched || createSupplierForm.get('apellidos')?.dirty) &&
+                        createSupplierForm.get('apellidos')?.errors ? 'is-invalid' : '' || createSupplierForm.get('apellidos')?.hasError('pattern')
+                        ? 'is-invalid' : ''">
+                        <div class="invalid-feedback">
+                            {{ createSupplierForm.get("apellidos")?.hasError("required") ? "Campo requerido" : "" }}
+                            {{ createSupplierForm.get("apellidos")?.hasError("pattern") ? "Campo solo con letras" : "" }}
+                        </div>
                     </div>
 
                     <div class="form-group">
                         <label for="">Email del proveedor:</label>
-                        <input type="text" class="form-control" id="" placeholder="MeetUp@gmail.com" formControlName="correoProveedor">
+                        <input type="text" class="form-control" id="" placeholder="MeetUp@gmail.com" formControlName="correoProveedor" [ngClass]="(createSupplierForm.get('correoProveedor')?.touched || createSupplierForm.get('correoProveedor')?.dirty) &&
+                        createSupplierForm.get('correoProveedor')?.errors ? 'is-invalid' : '' || createSupplierForm.get('email')?.hasError('email')
+                        ? 'is-invalid' : ''">
+                        <div class="invalid-feedback">
+                            {{ createSupplierForm.get("correoProveedor")?.hasError("required") ? "Campo requerido" : "" }}
+                            {{ createSupplierForm.get("correoProveedor")?.hasError("email") ? "Campo de email persona@example.com" : "" }}
+                        </div>
                     </div>
 
                     <div class="form-group">
                         <label for="">Fecha de nacimiento del proveedor:</label>
-                        <input type="date" class="form-control" id="" placeholder="12/04/2022" formControlName="fechaNacimiento">
+                        <input type="date" class="form-control" id="" placeholder="12/04/2022" formControlName="fechaNacimiento" [ngClass]="(createSupplierForm.get('fechaNacimiento')?.touched || createSupplierForm.get('fechaNacimiento')?.dirty) &&
+                        createSupplierForm.get('fechaNacimiento')?.errors ? 'is-invalid' : ''" >
+                        <div class="invalid-feedback">
+                            {{ createSupplierForm.get("fechaNacimiento")?.hasError("required") ? "Campo requerido" : "" }}
+                        </div>
                     </div>
 
                     <div class="form-group">
                         <label for="">Celular del proveedor:</label>
-                        <input type="text" class="form-control" id="" placeholder="3207954891" formControlName="celular">
+                        <input type="text" class="form-control" id="" placeholder="3207954891" formControlName="celular" [ngClass]="(createSupplierForm.get('celular')?.touched || createSupplierForm.get('celular')?.dirty) &&
+                        createSupplierForm.get('celular')?.errors ? 'is-invalid' : '' || createSupplierForm.get('celular')?.hasError('maxlength')
+                        ? 'is-invalid' : '' || createSupplierForm.get('celular')?.hasError('minlength')
+                        ? 'is-invalid' : '' || createSupplierForm.get('celular')?.hasError('pattern')
+                        ? 'is-invalid' : ''" >
+                        <div class="invalid-feedback">
+                            {{ createSupplierForm.get("celular")?.hasError("pattern") ? "Campo solo numérico" : "" }}
+                        </div>
+                        <div class="invalid-feedback">
+                            {{ createSupplierForm.get("celular")?.hasError("required") ? "Campo requerido" : "" }}
+                            {{ createSupplierForm.get("celular")?.hasError("maxlength") ? "Campo de 10 caracteres" : "" }}
+                            {{ createSupplierForm.get("celular")?.hasError("minlength") ? "Campo de 10 caracteres" : "" }}
+                        </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btnGuardar" (click)="postForm(createSupplierForm.value)">Crear</button>
+                <button *ngIf="createSupplierForm.invalid" type="button" class="btn btnGuardar" [disabled]="createSupplierForm.invalid" (click)="postForm(createSupplierForm.value)">Crear</button>
+                <button *ngIf="createSupplierForm.valid" type="button" class="btn btnGuardar" (click)="postForm(createSupplierForm.value)">Crear</button>
             </div>
         </div>
     </div>

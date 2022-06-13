@@ -49,7 +49,7 @@ export class ModalEditGroupsComponent implements OnInit {
         console.log(data);
         this.editForm = this.fb.group({
           idGrupos: [this.datesGroup.idGrupos],
-          descripcionGrupo: [this.datesGroup.descripcionGrupo, [Validators.required, Validators.minLength(5)]],
+          descripcionGrupo: [this.datesGroup.descripcionGrupo, [Validators.required, Validators.minLength(5), Validators.maxLength(300)]],
           privacidadGrupo: [this.datesGroup.privacidadGrupo, Validators.required],
           imagen: [this.datesGroup.imagen.replace('C:/xampp/htdocs', GlobalConstants.httpLocalHost)]
         })

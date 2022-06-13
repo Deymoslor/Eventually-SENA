@@ -9,6 +9,7 @@ import { updatePersonaI } from '../../main-home/settings/updatePersonaI';
 import { GlobalConstants } from 'src/app/global-constants';
 import { globalAccountConstants } from 'src/app/constants/globalAccountConstants';
 import { updateImagenProfile } from '../user-menu/updateImagenProfile.interface';
+import { ProveedorI } from 'src/app/dashboard/crud-suppliers/modal-suppliers-create/ProveedorI.interface';
 
 @Component({
   selector: 'app-top-header',
@@ -26,6 +27,9 @@ export class TopHeaderComponent implements OnInit {
 
   //interfaz de actualización de la persona para poder traer la propiedad imagen.
   public updatePersona! : updatePersonaI;
+
+  //interfaz de actualización de la persona para poder traer la propiedad imagen.
+  public updateSupplier! : ProveedorI;
 
   //interfaz de actualización de la persona para poder traer la propiedad imagen.
   public imagenProfile! : updateImagenProfile;
@@ -62,21 +66,23 @@ export class TopHeaderComponent implements OnInit {
         // this.fotoPerfil = datosPersona.imagen;
 
         this.perfilForm.setValue({
-          'imagen': this.imagenProfile.imagen.replace('C:/xampp/htdocs', this.httpLocalHost),
-          // 'imagen' : this.imagenProfile.imagen.replace('J:/Programas/Xampp/htdocs', this.httpLocalHost),
+          // 'imagen': this.imagenProfile.imagen.replace('C:/xampp/htdocs', this.httpLocalHost),
+          'imagen' : this.imagenProfile.imagen.replace('J:/Programas/Xampp/htdocs', this.httpLocalHost),
         })
       });
+    }else{
+      //Buscamos si es proveedor para traer su nombrem en caso de venir vacío buscamos en proveedor.
+      this.supplierService.getSingleSupplier(this.authService.desencriptar(localStorage.getItem('id'))).subscribe((data:any) =>{
+        this.updateSupplier = data[0];
+
+        this.nombrePerfil = this.updateSupplier.nombreProveedor;
+
+        // this.perfilForm.setValue({
+        //   // 'imagen': this.updatePersona.imagen.replace('C:/xampp/htdocs', this.httpLocalHost),
+        //   'imagen' : this.updatedPersona.imagen.replace('J:/Programas/Xampp/htdocs', this.httpLocalHost),
+        // })
+      });
     }
-    // }else{
-    //   //Buscamos si es proveedor para traer su nombrem en caso de venir vacío buscamos en proveedor.
-    //   this.supplierService.getSingleSupplier(this.authService.desencriptar(localStorage.getItem('id'))).subscribe((data:any) =>{
-    //     this.updatePersona = data[0];
-    //     this.perfilForm.setValue({
-    //       // 'imagen': this.updatePersona.imagen.replace('C:/xampp/htdocs', this.httpLocalHost),
-    //       // 'imagen' : this.updatedPersona.imagen.replace('J:/Programas/Xampp/htdocs', this.httpLocalHost),
-    //     })
-    //   });
-    // }
 
   }
 

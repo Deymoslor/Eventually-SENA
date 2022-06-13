@@ -1,6 +1,8 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { ResponseI } from 'src/app/core/ui/response.interface';
 import { ServiceEventI } from '../../../models/serviceEvent.interface';
 import { ApiService } from '../../../services/api.service';
+import { AlertasService } from 'src/app/core/service/alertas.service';
 
 
 @Component({
@@ -16,7 +18,7 @@ export class TableInvitationsEventsComponent implements OnInit {
   accepted: boolean = false;
   dataServiceEventProv!: ServiceEventI[];
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService, private alertas: AlertasService) { }
 
   ngOnInit(): void {
     console.log("id proveedor: " + this.childMessage);
@@ -25,6 +27,7 @@ export class TableInvitationsEventsComponent implements OnInit {
         this.invitations = true;
         console.log(data);
         data.forEach(key => {
+          console.log(key);
           if (key.estadoInvitacion == 1) {
             this.accepted = true;
           }
@@ -42,6 +45,19 @@ export class TableInvitationsEventsComponent implements OnInit {
       form.estadoInvitacion = 1;
     this.api.putServiceEventProv(form).subscribe(data=>{
       console.log(data);
+      let respuesta:ResponseI = data;
+          //Verificamos si la respuesta es exitosa.
+          if(respuesta.status == 'ok'){
+            this.alertas.showSuccess('Edicion exitosa','Registro exitoso');
+            setTimeout(()=>{
+              this.refresh();
+            },2000);
+          }else{
+            this.alertas.showSuccess('Edicion exitosa','Registro exitoso');
+            setTimeout(()=>{
+              this.refresh();
+            },2000);
+          }
     });
     // this.refresh();
 }
@@ -51,6 +67,19 @@ export class TableInvitationsEventsComponent implements OnInit {
       form.estadoInvitacion = 2;
     this.api.putServiceEventProv(form).subscribe(data=>{
       console.log(data);
+      let respuesta:ResponseI = data;
+          //Verificamos si la respuesta es exitosa.
+          if(respuesta.status == 'ok'){
+            this.alertas.showSuccess('Edicion exitosa','Registro exitoso');
+            setTimeout(()=>{
+              this.refresh();
+            },2000);
+          }else{
+            this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+            setTimeout(()=>{
+              // this.refresh();
+            },2000);
+          }
     });
     // this.refresh();
   }

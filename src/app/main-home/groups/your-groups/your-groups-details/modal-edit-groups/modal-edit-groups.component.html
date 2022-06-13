@@ -23,19 +23,26 @@
 
                     <label for="">Descripción:</label>
                     <div class="mb-2">
-                        <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Explica de que tratará" rows="2" formControlName="descripcionGrupo"
-                        [ngClass]="(editForm.get('descripcionGrupo')?.touched ||
+                      <textarea class="form-control textArea" id="exampleFormControlTextarea1" placeholder="Explica de que tratará y dónde será." rows="2" [ngClass]="(editForm.get('descripcionGrupo')?.touched ||
+                      editForm.get('descripcionGrupo')?.dirty) &&
+                      editForm.get('descripcionGrupo')?.hasError('required')
+                      ? 'is-invalid'
+                      : '' || editForm.get('descripcionGrupo')?.hasError('minlength')
+                      ? 'is-invalid'
+                      : '' || editForm.get('descripcionGrupo')?.hasError('maxlength')
+                      ? 'is-invalid'
+                      : '' ||
+                        ((editForm.get('descripcionGrupo')?.touched ||
                         editForm.get('descripcionGrupo')?.dirty) &&
-                        editForm.get('descripcionGrupo')?.hasError('required')
-                        ? 'is-invalid'
-                        : '' || editForm.get('descripcionGrupo')?.hasError('minlength')
-                        ? 'is-invalid'
-                        : '' ||
-                          ((editForm.get('descripcionGrupo')?.touched ||
-                          editForm.get('descripcionGrupo')?.dirty) &&
-                            !editForm.get('descripcionGrupo')?.invalid)
-                        ? 'is-valid'
-                        : ''"></textarea>
+                          !editForm.get('descripcionGrupo')?.invalid)
+                      ? 'is-valid'
+                      : ''" formControlName="descripcionGrupo"></textarea>
+                      <div class="invalid-feedback">
+                        {{ editForm.get("descripcionGrupo")?.hasError("required") ? " Descripcion requerida" : "" }}
+                        {{ editForm.get("descripcionGrupo")?.hasError("minlength") ? " 5 letras requeridas" : "" }}
+                        {{ editForm.get("descripcionGrupo")?.hasError("maxlength")
+                        ? " Ha excedido el limite de caracteres" : "" }}
+                      </div>
                     </div>
                     <div>
                       <label for="">Imagen Grupo:</label>

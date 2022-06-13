@@ -85,6 +85,11 @@
     background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
 }
 
+.btnCrearDisable{
+    // background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
+    background: #ccc;
+}
+
 @media only screen and (max-width: 905px) {
     .input {
         width: 22vw;

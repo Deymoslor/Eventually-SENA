@@ -5,6 +5,8 @@ import { GroupsServiceService } from './service/groups-service.service';
 import { Router } from '@angular/router';
 import { ListGroups } from './listGroups.interface';
 import { Group } from './modal-edit-groups/group.interface';
+import { ResponseI } from 'src/app/core/ui/response.interface';
+import { AlertasService } from 'src/app/core/service/alertas.service';
 
 // export interface PeriodicElement {
 //   position: number;
@@ -40,12 +42,14 @@ export class CrudGroupsComponent implements OnInit {
 
   datosGrupo!:Group;
 
+  public previsualizacion!: string;
+
   // displayedColumns: string[] = ['position', 'NameGroups', 'DescriptionGroups', 'Privacy', 'TotalUsers','StateGroup', 'actions'];
   // dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   // @ViewChild(MatPaginator, { static: true })
   // paginator!: MatPaginator;
-  constructor( private GroupsServiceService:GroupsServiceService, private router:Router) { }
+  constructor( private GroupsServiceService:GroupsServiceService, private router:Router, private alertas:AlertasService) { }
 
   ngOnInit(): void {
     // this.dataSource.paginator = this.paginator;
@@ -68,9 +72,23 @@ export class CrudGroupsComponent implements OnInit {
       this.GroupsServiceService.getSingleGroup(id).subscribe((data:any) => {
         this.datosGrupo = data[0];
         this.datosGrupo.EstadosGrupo_idEstadosGrupo1 = 1;
+        this.datosGrupo.imagen == null;
+        this.datosGrupo.imagen = this.previsualizacion;
+        console.log(this.datosGrupo);
         this.GroupsServiceService.putGroup(this.datosGrupo).subscribe((data:any) =>{
-          console.log("Entrando aquí");
-        window.location.reload();
+          let respuesta:ResponseI = data;
+          //Verificamos si la respuesta es exitosa.
+          if(respuesta.status == 'ok'){
+            this.alertas.showSuccess('Estado cambiado correctamente','Actulización exitosa');
+            setTimeout(() =>{
+              window.location.reload();
+            },2000);
+          }else{
+            this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+            setTimeout(() =>{
+              window.location.reload();
+            },2000);
+          }
         });
       });
     } else if (num == 1) {
@@ -78,9 +96,23 @@ export class CrudGroupsComponent implements OnInit {
       this.GroupsServiceService.getSingleGroup(id).subscribe((data:any) => {
         this.datosGrupo = data[0];
         this.datosGrupo.EstadosGrupo_idEstadosGrupo1 = 2;
+        this.datosGrupo.imagen == null;
+        this.datosGrupo.imagen = this.previsualizacion;
+        console.log(this.datosGrupo);
         this.GroupsServiceService.putGroup(this.datosGrupo).subscribe((data:any) =>{
-          console.log("Entrando aquí");
-        window.location.reload();
+          let respuesta:ResponseI = data;
+          //Verificamos si la respuesta es exitosa.
+          if(respuesta.status == 'ok'){
+            this.alertas.showSuccess('Estado cambiado correctamente','Actulización exitosa');
+            setTimeout(() =>{
+              window.location.reload();
+            },2000);
+          }else{
+            this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+            setTimeout(() =>{
+              window.location.reload();
+            },2000);
+          }
         });
       });
     }
@@ -92,9 +124,22 @@ export class CrudGroupsComponent implements OnInit {
       this.GroupsServiceService.getSingleGroup(id).subscribe((data:any) => {
         this.datosGrupo = data[0];
         this.datosGrupo.privacidadGrupo = 1;
+        this.datosGrupo.imagen = this.previsualizacion;
+        console.log(this.datosGrupo);
         this.GroupsServiceService.putGroup(this.datosGrupo).subscribe((data:any) =>{
-          console.log("Entrando aquí");
-        window.location.reload();
+          let respuesta:ResponseI = data;
+          //Verificamos si la respuesta es exitosa.
+          if(respuesta.status == 'ok'){
+            this.alertas.showSuccess('privacidad cambiada correctamente','Actulización exitosa');
+            setTimeout(() =>{
+              window.location.reload();
+            },2000);
+          }else{
+            this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+            setTimeout(() =>{
+              window.location.reload();
+            },2000);
+          }
         });
       });
     } else if (num == 1) {
@@ -102,9 +147,22 @@ export class CrudGroupsComponent implements OnInit {
       this.GroupsServiceService.getSingleGroup(id).subscribe((data:any) => {
         this.datosGrupo = data[0];
         this.datosGrupo.privacidadGrupo = 2;
+        this.datosGrupo.imagen = this.previsualizacion;
+        console.log(this.datosGrupo);
         this.GroupsServiceService.putGroup(this.datosGrupo).subscribe((data:any) =>{
-          console.log("Entrando aquí");
-        window.location.reload();
+          let respuesta:ResponseI = data;
+          //Verificamos si la respuesta es exitosa.
+          if(respuesta.status == 'ok'){
+            this.alertas.showSuccess('privacidad cambiada correctamente','Actulización exitosa');
+            setTimeout(() =>{
+              window.location.reload();
+            },2000);
+          }else{
+            this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+            setTimeout(() =>{
+              window.location.reload();
+            },2000);
+          }
         });
       });
     }

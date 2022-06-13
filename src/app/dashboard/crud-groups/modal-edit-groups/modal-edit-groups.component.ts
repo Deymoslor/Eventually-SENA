@@ -6,6 +6,8 @@ import { FormGroup, FormControl, Validators, FormBuilder } from "@angular/forms"
 import { ApiService } from 'src/app/services/api.service';
 import { LikesI } from 'src/app/models/likes';
 import { DomSanitizer } from '@angular/platform-browser';
+import { AlertasService } from 'src/app/core/service/alertas.service';
+import { ResponseI } from 'src/app/core/ui/response.interface';
 import { GlobalConstants } from 'src/app/global-constants';
 
 @Component({
@@ -20,7 +22,7 @@ export class ModalEditGroupsComponent implements OnInit {
   public previsualizacion!: string;
   public archivos: any = [];
 
-  constructor(private activerouter:ActivatedRoute , private fb: FormBuilder, private router:Router, private ApiGroup:GroupsServiceService, private likes: ApiService, private sanitizer: DomSanitizer) { }
+  constructor(private activerouter:ActivatedRoute , private router:Router, private ApiGroup:GroupsServiceService, private likes: ApiService, private sanitizer: DomSanitizer, private alertas:AlertasService, private fb: FormBuilder) { }
 
   datesGroup!: Group;
   editForm = new FormGroup({
@@ -51,13 +53,14 @@ export class ModalEditGroupsComponent implements OnInit {
         console.log(this.datesGroup);
         this.editForm = this.fb.group({
           idGrupos: [this.datesGroup.idGrupos],
-          nombreGrupo: [this.datesGroup.nombreGrupo, [Validators.required, Validators.minLength(2)]],
-          descripcionGrupo: [this.datesGroup.descripcionGrupo, [Validators.required, Validators.minLength(5)]],
+          nombreGrupo: [this.datesGroup.nombreGrupo, [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
+          descripcionGrupo: [this.datesGroup.descripcionGrupo, [Validators.required, Validators.minLength(5), Validators.maxLength(300)]],
           privacidadGrupo: [this.datesGroup.privacidadGrupo, Validators.required],
           InvitadosTotales: [this.datesGroup.InvitadosTotales, Validators.required],
           EstadosGrupo_idEstadosGrupo1: [this.datesGroup.EstadosGrupo_idEstadosGrupo1, Validators.required],
           gustos_idGusto: [this.datesGroup.gustos_idGusto, Validators.required],
           imagen: [this.datesGroup.imagen.replace('C:/xampp/htdocs', GlobalConstants.httpLocalHost)]
+          // imagen: [this.datesGroup.imagen.replace('J:/Programas/Xampp/htdocs', GlobalConstants.httpLocalHost)]
         })
         console.log(this.editForm.get('imagen')?.value);
         console.log(this.editForm.get('idGrupos')?.value);
@@ -99,10 +102,24 @@ export class ModalEditGroupsComponent implements OnInit {
 
   postEditForm(form: Group)
   {
+
     form.imagen = this.previsualizacion;
     console.log(form);
     this.ApiGroup.putGroup(form).subscribe( data =>{
       console.log(data);
+      let respuesta:ResponseI = data;
+      //Verificamos si la respuesta es exitosa.
+      if(respuesta.status == 'ok'){
+        this.alertas.showSuccess('Grupo actualizado correctamente','Actulización exitosa');
+        setTimeout(() =>{
+          window.location.reload();
+        },2000);
+      }else{
+        this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+        setTimeout(() =>{
+          window.location.reload();
+        },2000);
+      }
     })
   }
   refresh(): void { window.location.reload(); }

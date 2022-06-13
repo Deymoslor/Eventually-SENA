@@ -7,6 +7,8 @@ import { RequestEventsService } from './request-events.service';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { ResponseI } from 'src/app/core/ui/response.interface';
+import { AlertasService } from 'src/app/core/service/alertas.service';
 
 @Component({
   selector: 'app-table-request-event',
@@ -28,7 +30,9 @@ export class TableRequestEventComponent implements OnInit {
 
     private modalService: NgbModal,
     //Inyectamos el router.
-    private router:Router
+    private router:Router,
+
+    private alertas:AlertasService,
   ) { }
 
   ngOnInit(): void {
@@ -57,7 +61,19 @@ export class TableRequestEventComponent implements OnInit {
 
       this.RequestEventsService.putRequest(this.datosPeticion).subscribe((data:any) =>{
         // console.log("Entrando aquí");
-        window.location.reload();
+        let respuesta:ResponseI = data;
+        //Verificamos si la respuesta es exitosa.
+        if(respuesta.status == 'ok'){
+          this.alertas.showSuccess('Eventos aceptado/habilitado exitosamente','Acción exitosa');
+          setTimeout(() =>{
+            window.location.reload();
+          },2000);
+        }else{
+          this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+          setTimeout(() =>{
+            window.location.reload();
+          },2000);
+        }
       });
     });
   }
@@ -72,7 +88,19 @@ export class TableRequestEventComponent implements OnInit {
       this.datosPeticion.token = token;
       this.RequestEventsService.putRequest(this.datosPeticion).subscribe((data:any) =>{
         // console.log("Entrando aquí");
-        window.location.reload();
+        let respuesta:ResponseI = data;
+        //Verificamos si la respuesta es exitosa.
+        if(respuesta.status == 'ok'){
+          this.alertas.showSuccess('Eventos rechazado/inhabilitado exitosamente','Acción exitosa');
+          setTimeout(() =>{
+            window.location.reload();
+          },2000);
+        }else{
+          this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+          setTimeout(() =>{
+            window.location.reload();
+          },2000);
+        }
       });
     });
   }

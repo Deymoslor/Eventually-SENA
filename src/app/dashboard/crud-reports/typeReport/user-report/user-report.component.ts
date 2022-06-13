@@ -7,6 +7,7 @@ import { ApiTypeReportService } from '../api-type-report.service';
 import { Router } from '@angular/router';
 import * as pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from 'pdfmake/build/vfs_fonts';
+import jsPDF from 'jspdf';
 (<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
@@ -33,20 +34,18 @@ export class UserReportComponent implements OnInit {
   }
 
   createPDF(){
-
     // const pdfDefinition: any = {
     //   content: [
     //     {
     //       layout: 'lightHorizontalLines', // optional
     //       table: {
-    //       headerRows: 1,
-    //       widths: [ '*', 'auto', 100, '*' ],
-
-    //       body: [
-    //         [ 'Nombre', 'Documento', 'Fecha de nacimiento', 'Correo' ],
-    //         [ '{{ this.personas:nombreUser }}', 'Value 2', 'Value 3', 'Value 4' ],
-    //       ]
-    //     }
+    //         headerRows: 1,
+    //         widths: [ '*', 'auto', 100, '*' ],
+    //         body: [
+    //           [ 'Nombre', 'Documento', 'Fecha de nacimiento', 'Correo' ],
+    //           [ '{{ this.personas:nombreUser }}', 'Value 2', 'Value 3', 'Value 4' ],
+    //         ]
+    //       }
     //     }
     //   ]
     // }
@@ -60,8 +59,6 @@ export class UserReportComponent implements OnInit {
           }]
       };
       pdfMake.createPdf(pdfDefinition).download("Reportes_User.pdf");
-  });
-
+    });
   }
-
 }

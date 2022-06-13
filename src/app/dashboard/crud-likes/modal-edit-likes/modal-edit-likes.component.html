@@ -11,7 +11,13 @@
                         <!-- Buscar solucion -->
                         <!--  -->
                         <label for="">Nombre del gusto:</label>
-                        <input type="text" class="form-control inputG" id="" formControlName="nombreGusto" placeholder="Nombre del gusto">
+                        <input type="text" class="form-control inputG" id="" formControlName="nombreGusto" placeholder="Nombre del gusto" [ngClass]="(editForm.get('nombreGusto')?.touched || editForm.get('nombreGusto')?.dirty) &&
+                        editForm.get('nombreGusto')?.hasError('required') ? 'is-invalid' : '' || editForm.get('nombreGusto')?.hasError('pattern')
+                        ? 'is-invalid' : ''">
+                        <div class="invalid-feedback">
+                            {{ editForm.get("nombreGusto")?.hasError("required") ? "Campo requerido" : "" }}
+                            {{ editForm.get("nombreGusto")?.hasError("pattern") ? "Campo solo con letras" : "" }}
+                        </div>
                         <!-- <div class="input-group mb-3 selectTypeLike">
                             <label class="input-group-text" for="inputGroupSelect01">Tipo</label>
                             <select formControlName="idtipoGusto" class="form-select" id="inputGroupSelect01">
@@ -40,7 +46,9 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="textox btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="textox btn btnGuardar">Editar</button>
+                    <button *ngIf="editForm.valid" type="submit" class="textox btn btnGuardar">Editar</button>
+                    <button *ngIf="editForm.invalid" [disabled]="editForm.invalid" type="submit" class="textox btn btnGuardar">Editar</button>
+
                 </div>
             </div>
         </div>

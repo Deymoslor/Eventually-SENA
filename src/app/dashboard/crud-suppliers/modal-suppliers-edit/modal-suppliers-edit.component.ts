@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
 import { ResponseI } from 'src/app/login-register/login/models/response.intarface';
@@ -20,31 +20,37 @@ export class ModalSuppliersEditComponent implements OnInit {
   //Input para recibir el id que viene por parte del padre, el crud-users.component general.
   @Input() childMessage!: number;
 
+  editarForm: FormGroup;
+
   constructor(
 
     private calendar:NgbCalendar,
     private activerouter: ActivatedRoute,
     private router: Router,
+    private formBuilder:FormBuilder,
     private supplierService: SupplierService,
     private alertas:AlertasService
 
-  ) { }
+  ) {
+
+    //Creamos el FormGroup que nos sirve para poder tener el formulario con los campos correctos y en caso de necesitar validators.
+    this.editarForm = this.formBuilder.group({
+      idProveedor: [''],
+      token: [''],
+      nombreProveedor: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1 ]+$/)]],
+      apellidoProveedor: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1 ]+$/)]],
+      correoProveedor: ['', [Validators.required, Validators.email]],
+      codigoAcceso: [''],
+      fechaNacimiento: ['', Validators.required],
+      celular: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^[0-9]\d*$/)]],
+      estado: [''],
+    });
+
+  }
 
   //Creamos una variable que será de tipo PersonaI para poder almacenar los datos traidos con la consulta. Para esto, además necesitamos un formGroup.
   datosProveedor!:ProveedorI;
 
-  //Creamos el FormGroup que nos sirve para poder tener el formulario con los campos correctos y en caso de necesitar validators.
-  editarForm = new FormGroup({
-    idProveedor: new FormControl(''),
-    token: new FormControl(''),
-    nombreProveedor: new FormControl(''),
-    apellidoProveedor: new FormControl(''),
-    correoProveedor: new FormControl(''),
-    codigoAcceso: new FormControl(''),
-    fechaNacimiento: new FormControl(''),
-    celular: new FormControl(''),
-    estado: new FormControl(''),
-  });
 
   ngOnInit(): void {
 
