@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { accountService } from '../service/accountService.service';
 import { supplierRequestI } from './supplierRequestI.interface';
-import { FormGroup, FormControl, Validators} from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 import { ResponseI } from '../login/models/response.intarface';
 import { AlertasService } from 'src/app/core/service/alertas.service';
 
@@ -13,19 +13,24 @@ import { AlertasService } from 'src/app/core/service/alertas.service';
 })
 export class SupplierRequestComponent implements OnInit {
 
-  peticionProveedor = new FormGroup({
-    Email: new FormControl(''),
-    nombre: new FormControl(''),
-    msg: new FormControl('')
-  });
+  peticionProveedor : FormGroup;
 
   constructor(
 
     private router:Router,
+    private formBuilder:FormBuilder,
     private accountService:accountService,
     private alertas:AlertasService,
 
-  ) { }
+  ) {
+
+    this.peticionProveedor = this.formBuilder.group({
+      Email: ['',[Validators.required, Validators.email]],
+      nombre: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1 ]+$/)]],
+      msg: ['Por favor digite aquí toda la información relevante a su persona / empresa (numero de identificación, labor, tiempo de experiencia. . .) y la razón por la que desea entrar a ser proveedor en Eventually.',[Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1 ]+$/)]]
+    });
+
+  }
 
   ngOnInit(): void {
   }
@@ -51,9 +56,19 @@ export class SupplierRequestComponent implements OnInit {
 
   }
 
+  clean(){
+    // console.log('Test');
+    this.peticionProveedor.setValue({
+      'Email': this.peticionProveedor.value.Email,
+      'nombre': this.peticionProveedor.value.nombre,
+      'msg' : "",
+    });
+  }
+
   //Servicio para cancelar la solicitud y volver al login.
   cancel(){
     this.router.navigate(['/loginRegister']);
   }
+
 
 }

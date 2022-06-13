@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbDateStruct, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
 import { Router, ActivatedRoute} from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { SupplierService } from '../service/supplier.service';
 import { ProveedorI } from './ProveedorI.interface';
 import { ResponseI } from 'src/app/login-register/login/models/response.intarface';
@@ -21,29 +21,34 @@ export class ModalSuppliersCreateComponent implements OnInit {
   //Input para recibir el id que viene por parte del padre, el crud-users.component general.
   // @Input() childMessage!: number;
 
+  createSupplierForm: FormGroup;
+
   constructor(
 
     private router: Router,
     private supplierService: SupplierService,
     private alertas:AlertasService,
+    private formBuilder:FormBuilder,
 
-  ) { }
+  ) {
+
+    //Creamos el FormGroup que nos sirve para poder tener el formulario con los campos correctos y en caso de necesitar validators.
+    this.createSupplierForm = this.formBuilder.group({
+      idProveedor: [],
+      token: [],
+      nombreProveedor: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1 ]+$/)]],
+      apellidoProveedor: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1 ]+$/)]],
+      correoProveedor: ['',[Validators.required, Validators.email]],
+      codigoAceeso: [],
+      fechaNacimiento: ['',Validators.required],
+      celular: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^[0-9]\d*$/)]],
+      estado: [],
+    });
+
+  }
 
   //Creamos una variable que será de tipo PersonaI para poder almacenar los datos traidos con la consulta. Para esto, además necesitamos un formGroup.
   datosProveedor!:ProveedorI;
-
-  //Creamos el FormGroup que nos sirve para poder tener el formulario con los campos correctos y en caso de necesitar validators.
-  createSupplierForm = new FormGroup({
-    idProveedor: new FormControl(''),
-    token: new FormControl(''),
-    nombreProveedor: new FormControl(''),
-    apellidoProveedor: new FormControl(''),
-    correoProveedor: new FormControl(''),
-    codigoAceeso: new FormControl(''),
-    fechaNacimiento: new FormControl(''),
-    celular: new FormControl(''),
-    estado: new FormControl(''),
-  });
 
   ngOnInit(): void {
   }

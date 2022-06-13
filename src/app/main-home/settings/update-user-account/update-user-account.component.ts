@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { updatePersonaI } from '../updatePersonaI';
 import { UpdateServiceService } from '../settingsService/update-service.service';
 import { Router } from '@angular/router';
@@ -22,6 +22,13 @@ import { ImagenProfileService } from '../imagenProfileService/imagen-profile.ser
   styleUrls: ['./update-user-account.component.scss'],
 })
 export class UpdateUserAccountComponent implements OnInit {
+
+  // --------Inicio---------- Variables para las validaciones.
+  editarForm : FormGroup;
+
+  passwordForm : FormGroup;
+
+  // --------Fin----------Variables para las validaciones.
 
   //Variable para previsualizar la imagen.
   public previsualizacion: string = '';
@@ -51,10 +58,32 @@ export class UpdateUserAccountComponent implements OnInit {
     private authService: AuthService,
     private ApiService: ApiService,
     private imagenProfileService: ImagenProfileService,
+    private formBuilder: FormBuilder,
     private sanitizer: DomSanitizer,
     private alertas:AlertasService,
 
-  ) { }
+  ) {
+
+    //Creamos el FormGroup que nos sirve para poder tener el formulario con los campos correctos y en caso de necesitar validators.
+    this.editarForm = this.formBuilder.group ({
+      idPersona : [''],
+      token : [''],
+      nombre : ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1 ]+$/)]],
+      apellidos : ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1 ]+$/)]],
+      documento : ['', [Validators.required, Validators.minLength(7), Validators.maxLength(10), Validators.pattern(/^[0-9]\d*$/)]],
+      fechaNacimiento : ['',Validators.required],
+      Email : ['',[Validators.required, Validators.email]],
+    });
+
+    //Creamos formulario para poder actualizar contraseña.
+    this.passwordForm = this.formBuilder.group({
+      idPersona: [],
+      token: [],
+      oldPassword: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]],
+      newPassword: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]],
+    })
+
+  }
 
   //Creamos una variable que será de tipo updatePersonaI para poder almacenar los datos traidos con la consulta. Para esto, además necesitamos un formGroup.
   datosPersona!:updatePersonaI;
@@ -82,25 +111,6 @@ export class UpdateUserAccountComponent implements OnInit {
     Persona_idPersona : new FormControl('',Validators.required)
   });
 
-  //Creamos el FormGroup que nos sirve para poder tener el formulario con los campos correctos y en caso de necesitar validators.
-  editarForm = new FormGroup({
-    idPersona: new FormControl(''),
-    token: new FormControl(''),
-    nombre: new FormControl(''),
-    apellidos: new FormControl(''),
-    documento: new FormControl(''),
-    fechaNacimiento: new FormControl(''),
-    Email: new FormControl(''),
-  });
-
-  //Creamos formulario para poder actualizar contraseña.
-  passwordForm = new FormGroup({
-    idPersona: new FormControl(''),
-    token: new FormControl(''),
-    oldPassword: new FormControl(''),
-    newPassword: new FormControl('')
-  })
-
   misGustos!:LikesPerson[];
   listaMisGustos!:any;
   gustos!:LikesI[];
@@ -117,7 +127,6 @@ export class UpdateUserAccountComponent implements OnInit {
     this.updateServiceService.getPersonLikes(this.authService.desencriptar(localStorage.getItem('id'))).subscribe(data =>{
       this.misGustos=data;
     });
-
 
     //----------------------------Cosas de la persona.
 
@@ -239,10 +248,12 @@ export class UpdateUserAccountComponent implements OnInit {
         },2000);
       }else{
         this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
-        window.location.reload();
+        setTimeout(() =>{
+          //Recargamos el sitio.
+          window.location.reload();
+        },2000);
       }
     });
-
   }
 
   //Método para actualizar imagen:
@@ -262,12 +273,15 @@ export class UpdateUserAccountComponent implements OnInit {
         this.alertas.showSuccess('Imagen de perfil actualizada','Actualización exitosa');
         // console.log("Entrando aquí");
         setTimeout(() =>{
-          //redirecionamos a el login.
+          //rRecargamos el sitio.
           window.location.reload();
         },2000);
       }else{
         this.alertas.showError(respuesta.result.error_msg,'Problemas encontrados');
-        window.location.reload();
+        setTimeout(() =>{
+          //redirecionamos a el login.
+          window.location.reload();
+        },2000);
       }
     })
 
@@ -289,9 +303,7 @@ export class UpdateUserAccountComponent implements OnInit {
       'oldPassword' : form.oldPassword,
       'newPassword' : form.newPassword
     })
-
     // console.log(this.passwordForm);
-
   }
 
   //Método que se ejecuta para actualizar la contraseña comprobando antigua y nueva.

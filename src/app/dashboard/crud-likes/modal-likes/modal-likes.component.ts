@@ -16,15 +16,15 @@ export class ModalLikesComponent implements OnInit {
   // model: NgbDateStruct | undefined;
   // date: { year: number; month: number;} | undefined;
 
-  createLikeForm = new FormGroup({
+  createLikeForm : FormGroup;
 
-    nombreGusto: new FormControl(''),
-    idtipoGusto: new FormControl(''),
-    estadoGusto: new FormControl('2'),
+  constructor(private ng:FormBuilder,private calendar: NgbCalendar,private api:ApiService,private alertas:AlertasService, private formBuilder: FormBuilder,) {
 
-  });
-
-  constructor(private ng:FormBuilder,private calendar: NgbCalendar,private api:ApiService,private alertas:AlertasService) {
+    this.createLikeForm = this.formBuilder.group({
+      nombreGusto: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1 ]+$/)]],
+      idtipoGusto: [],
+      estadoGusto: [],
+    })
 
   }
 
