@@ -12,81 +12,127 @@ body {
     z-index: 3;
     padding-top: 5rem;
     margin-bottom: 2vw;
-    border: 1px solid green;
+    // border: 1px solid green;
 }
 
 .leftMenu {
-    width: 6rem;
-    border: 1px solid red;
+    width: 7rem;
+    // border: 1px solid red;
     margin: 0;
     padding: 0;
 }
 
 .principalContainer {
-    width: 90vw;
-    height: auto;
-    border: 1px solid blue;
-    padding: 0;
-    margin: 0;
+    width: 88vw;
+    // border: 1px solid blue;
+    margin: 0 auto;
     display: flex;
+    // height: 50rem!important;
     justify-content: center;
+    flex-direction: column;
 }
 
-@media only screen and (max-width: 994px) {
+.content-asidebar .content {
+    // background-color: #0389c9;
+    height: 35vw;
+    width: 16vw;
+    margin-right: 10px;
+}
+
+.content-asidebar {
+    display: block;
+    margin-top: 5%;
+}
+
+
+/*footer*/
+
+.footer {
+    margin: 0;
+    padding: 0;
+    bottom: 0;
+    // border: 1px solid red;
+    width: 200%;
+}
+
+@media only screen and (max-width: 1068px) {
     .principalContainer {
-        width: 85vw;
+        width: 88vw;
     }
 }
 
-    body {
-        width: 100%;
-        height: auto;
-        margin: 0;
-        padding: 0;
-        z-index: 3;
-        padding-top: 5rem;
-        margin-bottom: 2vw;
-        // border: 1px solid green;
+@media only screen and (max-width: 1038px) {
+    .principalContainer {
+        width: 86vw;
     }
-@media only screen and (max-width: 876px) {
+}
+
+@media only screen and (max-width: 932px) {
+    .principalContainer {
+        width: 82vw;
+    }
+}
+
+@media only screen and (max-width: 889px) {
+    .principalContainer {
+        width: 84vw;
+    }
+}
+
+@media only screen and (max-width: 779px) {
+    .principalContainer {
+        width: 82vw;
+    }
+}
+
+@media only screen and (max-width: 693px) {
     .principalContainer {
         width: 80vw;
     }
 }
 
-    .leftMenu {
-        width: 6rem;
-        // border: 1px solid red;
-        margin: 0;
-        padding: 0;
-    }
-@media only screen and (max-width: 610px) {
+@media only screen and (max-width: 623px) {
     .principalContainer {
         width: 75vw;
     }
 }
 
-@media only screen and (max-width: 467px) {
+@media only screen and (max-width: 617px) {
+    .principalContainer {
+        width: 82vw;
+    }
+    .leftMenu {
+        width: 5rem;
+    }
+}
+
+@media only screen and (max-width: 515px) {
+    .principalContainer {
+        width: 80vw;
+    }
+}
+
+@media only screen and (max-width: 463px) {
+    .principalContainer {
+        width: 75vw;
+    }
+}
+
+@media only screen and (max-width: 378px) {
+    .leftMenu {
+        width: 4.5rem;
+        padding-left: -0.5rem;
+    }
+}
+
+@media only screen and (max-width: 372px) {
     .principalContainer {
         width: 70vw;
     }
 }
 
-@media only screen and (max-width: 383px) {
+@media only screen and (max-width: 315px) {
     .principalContainer {
         width: 65vw;
-    }
-}
-
-@media only screen and (max-width: 331px) {
-    .principalContainer {
-        width: 90vw;
-        height: auto;
-        // border: 1px solid blue;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        justify-content: center;
-        width: 60vw;
     }
 }

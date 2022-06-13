@@ -1,100 +1,240 @@
-@import '../../../app.component.scss';
-.cards1 {
-    border-radius: 1rem;
-    margin-top: 1rem;
-}
-
-.selectNewLikes {
-    label {
-        border-radius: 14rem;
+    @import '../../../app.component.scss';
+    .cards1 {
+        border-radius: 1rem;
+        margin-top: 1rem;
+        margin: 0;
+        padding: 0;
     }
-    select {
-        border-radius: 14rem;
+
+    .titlePrincipal {
+        font-family: 'Pacifico', cursive;
+        margin: 0 auto;
+        font-size: 3vw;
+        padding: 1.5rem;
     }
-    option {
-        text-align: center;
+
+    .card {
+        margin: 0;
+        padding: 0;
     }
-}
 
-.btnChangeLikes .btn-primary {
-    background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
-}
+    .card-body {
+        margin: 0;
+        padding: 0;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
 
-.btnChangeLikes .btn-primary:hover {
-    background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
-}
+    .selectNewLikes {
+        label {
+            border-radius: 14rem;
+        }
+        select {
+            border-radius: 14rem;
+        }
+        option {
+            text-align: center;
+        }
+    }
 
-.separator{
-    background: #ccc;
-    width: 100%;
-    height: 2px;
-    margin-top: 16px;
-}
+    .textoTitulos {
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: 700;
+    }
 
-// Selección de gustos
+    .textox {
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: 350;
+    }
 
-.account-topics-item {
-  float: left;
-  position: relative;
-  background: #f2f2f2;
-  padding: 4px 8px;
-  margin: 0 6px 6px 0;
-  width: 236px;
-  overflow: hidden;
-}
+    .account-topics-name {
+        a {
+            svg {
+                width: 1rem;
+                stroke: gray;
+            }
+            svg:hover {
+                stroke: rgba(128, 128, 128, 0.778);
+            }
+        }
+    }
 
-.account-topics-remove {
-    position: absolute;
-    right: 6px;
-    top: 6px;
-    width: 12px;
-    height: 12px;
-    background: url(../../../../assets/images/accountSettings/sprite_x.png) 0 0 no-repeat;
-      background-color: rgba(0, 0, 0, 0);
-      background-position-x: 0px;
-      background-position-y: 0px;
-      background-repeat: no-repeat;
-      background-attachment: scroll;
-      background-image: url("../../../../assets/images/accountSettings/sprite_x.png");
-      background-size: auto;
-      background-origin: padding-box;
-      background-clip: border-box;
-    display: none;
-}
+    .btnChangeLikes .btn-primary {
+        background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
+    }
 
-.account-topics-item:hover .account-topics-remove {
-    display: block;
-}
+    .btnChangeLikes .btn-primary:hover {
+        background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
+    }
 
-a, a:active, a:hover, a:link, a:visited {
-cursor: hand;
-cursor: pointer;
-color: #1f24cc;
-text-decoration: none;
-    text-decoration-line: none;
-    text-decoration-style: solid;
-    text-decoration-color: currentcolor;
-    // text-decoration-thickness: auto;
-}
+    .separator {
+        background: #ccc;
+        width: 100%;
+        height: 2px;
+        margin-top: 16px;
+    }
 
-.account-topics-name {
-    font-size: 13px;
-    width: 208px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
+    // Selección de gustos
+    .account-topics-item {
+        float: left;
+        position: relative;
+        background: #f2f2f2;
+        padding: 4px 8px;
+        margin: 0 6px 6px 0;
+        width: 236px;
+        overflow: hidden;
+    }
 
-.spritebg {
-    margin-right: 5px;
-    display: block;
-    width: 18px;
-    height: 18px;
-    float: left;
-    background: #ccc;
-    border-radius: 50%;
-}
+    .account-topics-remove {
+        position: absolute;
+        right: 6px;
+        top: 6px;
+        width: 12px;
+        height: 12px;
+        background: url(../../../../assets/images/accountSettings/sprite_x.png) 0 0 no-repeat;
+        background-color: rgba(0, 0, 0, 0);
+        background-position-x: 0px;
+        background-position-y: 0px;
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        background-image: url("../../../../assets/images/accountSettings/sprite_x.png");
+        background-size: auto;
+        background-origin: padding-box;
+        background-clip: border-box;
+        display: none;
+    }
 
-.account-topics-name:hover .spritebg {
-    background: #000
-}
+    .account-topics-item:hover .account-topics-remove {
+        display: block;
+    }
+
+    a,
+    a:active,
+    a:hover,
+    a:link,
+    a:visited {
+        cursor: hand;
+        cursor: pointer;
+        color: #1f24cc;
+        text-decoration: none;
+        text-decoration-line: none;
+        text-decoration-style: solid;
+        text-decoration-color: currentcolor;
+        // text-decoration-thickness: auto;
+    }
+
+    .account-topics-name {
+        font-size: 13px;
+        width: 208px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .spritebg {
+        margin-right: 5px;
+        display: block;
+        width: 18px;
+        height: 18px;
+        float: left;
+        background: #ccc;
+        border-radius: 50%;
+    }
+
+    .account-topics-item {
+        width: 8rem;
+    }
+
+    .account-topics-name:hover .spritebg {
+        background: #000
+    }
+
+    .imgAc {
+        width: 25vw;
+    }
+
+    .imgA {
+        width: 20vw;
+    }
+
+    @media only screen and (max-width:607px) {
+        .imgAc {
+            width: 9.5rem;
+        }
+    }
+
+    @media only screen and (max-width:494px) {
+        .account-topics-item {
+            width: 25vw;
+            div {
+                font-size: 2vw;
+            }
+        }
+    }
+
+    @media only screen and (max-width:462px) {
+        .account-topics-item {
+            width: 25vw;
+            div {
+                font-size: 0.6rem;
+            }
+        }
+        .imgAc {
+            font-size: 0.6rem;
+        }
+        .cards1 {
+            width: 13rem;
+        }
+    }
+
+    @media only screen and (max-width:378px) {
+        .cards1 {
+            width: 55vw;
+        }
+        input {
+            width: 40vw;
+        }
+        .btn {
+            width: 40vw;
+        }
+    }
+
+    @media only screen and (max-width:299px) {
+        .cards1 {
+            width: 45vw;
+        }
+        input {
+            width: 35vw;
+        }
+        .btn {
+            width: 35vw;
+        }
+        .imgAc {
+            width: 7.1rem;
+        }
+    }
+
+    // sssssss
+    @media only screen and (max-width: 1464px) {
+        .titlePrincipal {
+            font-size: 3vw;
+        }
+    }
+
+    @media only screen and (max-width: 1042px) {
+        .titlePrincipal {
+            font-size: 3vw;
+        }
+    }
+
+    @media only screen and (max-width: 850px) {
+        .titlePrincipal {
+            font-size: 3rem;
+        }
+    }
+
+    @media only screen and (max-width: 504px) {
+        .titlePrincipal {
+            font-size: 1.5rem;
+        }
+    }

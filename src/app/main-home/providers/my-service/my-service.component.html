@@ -1,78 +1,169 @@
 <app-modal-edit-service [childMessage]="ServicesForm.get('idServicios')?.value"></app-modal-edit-service>
 <!--THUMBNAIL of provider-->
-<section class="thumbnail img-fluid">
-    <div class="title">
-        <h2 class="fs-1 fw-bold">Servicio</h2>
-    </div>
-</section>
-<!--Options of provider-->
-<section class="options-providers">
-    <div class="left-options">
-        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#content-modal-edit-service">
-            Editar Servicio
-        </button>
-    </div>
-    <div class="right-options">
-        <div class="form-check form-switch">
-            <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" (click)="changeStateServiceProv(ServicesForm.value)" *ngIf="ServicesForm.get('estadoServicio')?.value == 1" checked>
-            <label class="form-check-label fs-5" for="flexSwitchCheckChecked" *ngIf="ServicesForm.get('estadoServicio')?.value == 1">Deshabilitar Servicio</label>
-            <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" (click)="changeStateServiceProv(ServicesForm.value)" *ngIf="ServicesForm.get('estadoServicio')?.value == 2">
-            <label class="form-check-label fs-5" for="flexSwitchCheckChecked" *ngIf="ServicesForm.get('estadoServicio')?.value == 2">Habilitar Servicio</label>
-        </div> 
-    </div>
-</section>
-<!--Service provided-->
-<section class="service-provided-section" *ngIf="ServicesForm.get('estadoServicio')?.value == 1; else dissabledService">
+<div class="container d-flex card shadow-sm ">
+    <div class="row rowP dd">
+        <div class="row rowP">
+            <u><p class="titlePrincipal">Mis Servicio</p></u>
+        </div>
+        <div class="row rowP textox">
+            <div class="col-3 lastcontCampo2">
+                <div class="right-options">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" (click)="changeStateServiceProv(ServicesForm.value)" *ngIf="ServicesForm.get('estadoServicio')?.value == 1" checked>
+                        <label class="form-check-label textox" for="flexSwitchCheckChecked" *ngIf="ServicesForm.get('estadoServicio')?.value == 1">Deshabilitar</label>
+                        <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" (click)="changeStateServiceProv(ServicesForm.value)" *ngIf="ServicesForm.get('estadoServicio')?.value == 2">
+                        <label class="form-check-label textox" for="flexSwitchCheckChecked" *ngIf="ServicesForm.get('estadoServicio')?.value == 2">Habilitar</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 columna colme d-flex textox" *ngIf="ServicesForm.get('estadoServicio')?.value == 1;">
+                <!-- <div class="col-12 columna r d-flex" *ngIf="ServicesForm.get('estadoServicio')?.value == 1; else dissabledService"></div> -->
+                <div class="col-4 columna  f">
+                    <div class="row">
+                        <label class="textoTitulos tituloImg">Foto servicio</label>
+                    </div>
+                    <div class="row">
+                        <img class="img-fluid" [src]="ServicesForm.get('imagen')?.value" alt="">
+                    </div>
 
-    <div class="info-content">
-        <label class="fs-5 fw-bold">Nombre Servicio</label>
-        <p class="fs-6">{{ServicesForm.get('nombreServicio')?.value}}</p>
-    </div>
-    <div class="info-content">
-        <label class="fs-5 fw-bold">Tipo Servicio</label>
-        <p class="fs-6">{{ServicesForm.get('TipoServicio_idtipoServicio')?.value}}</p>
-    </div>
-    <div class="info-content">
-        <label class="fs-5 fw-bold">Descripcion Servicio</label>
-        <p class="fs-6">{{ServicesForm.get('descripcionServicio')?.value}}</p>
-    </div>
-    <div class="info-content">
-        <label class="fs-5 fw-bold">Foto servicio</label>
-        <img width="400px" [src]="ServicesForm.get('imagen')?.value" alt="">
-    </div>
-    <div class="info-content">
-        <label class="fs-5 fw-bold">Precio estimado</label>
-        <p class="fs-6">{{ServicesForm.get('precioEstimado')?.value}}</p>
-    </div>
-    <div class="info-content">
-        <label class="fs-5 fw-bold">Empresas en las que trabajo anteriormente</label>
-        <p class="fs-6">{{ServicesForm.get('historialEmpresas')?.value}}</p>
-    </div>
-    <div class="info-content">
-        <label class="fs-5 fw-bold">Fecha desde que se realiza el servicio</label>
-        <p class="fs-6">{{ServicesForm.get('fechaInicio')?.value}}</p>
-    </div>
-    <div class="info-content">
-        <label class="fs-5 fw-bold">Numero de contacto</label>
-        <p class="fs-6">{{ServicesForm.get('numeroContacto')?.value}}</p>
-    </div>
-    <div class="info-content">
-        <label class="fs-5 fw-bold">Correo de contacto</label>
-        <p class="fs-6">{{ServicesForm.get('correoContacto')?.value}}</p>
-    </div>
-</section>
-<!--Invitation to events-->
-<section class="invitations-section" *ngIf="ServicesForm.get('estadoServicio')?.value == 1; else dissabledService">
-    <h2 class="fw-bolder">Invitaciones a eventos</h2>
-    <div class="table-invitations">
-        <app-table-invitations-events [childMessage]="idProvider"></app-table-invitations-events>
-    </div>
-    
-</section>
+                </div>
+                <div class="responsiveD">
+                    <div class="col-8 columna clou">
+                        <div class="row">
+                            <div class="col-4 contCampo">
+                                <div class="row rs">
+                                    <div class="col-3 campos">
+                                        <label class="textoTitulos">Nombre Servicio</label>
+                                    </div>
+                                    <div class="col-3 campos">
+                                        <p class="">{{ServicesForm.get('nombreServicio')?.value}}</p>
 
-<ng-template #dissabledService>
-    <div class="disabledService">
-        SERVICIO DESHABILITADO, PARA ACCEDER A LAS DIFERENTES OPCIONES DE ESTE, VUELVA A HABILITAR EL SERVICIO
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4 contCampo">
+                                <div class="row">
+                                    <div class="col-3 campos ">
+                                        <label class="textoTitulos">Tipo Servicio</label>
+                                    </div>
+                                    <div class="col-3 campos">
+                                        <p class="textox">{{ServicesForm.get('TipoServicio_idtipoServicio')?.value}}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6 contCampo2">
+                                <div class="row">
+                                    <div class="col-3 campos2">
+                                        <label class="textoTitulos">Descripcion Servicio</label>
+                                    </div>
+                                    <div class="col-3 campos3">
+
+                                        <p class="textox">{{ServicesForm.get('descripcionServicio')?.value}}</p>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-4 contCampo">
+                                <div class="row">
+                                    <div class="col-3 campos">
+                                        <label class="textoTitulos">Precio estimado</label>
+                                    </div>
+                                    <div class="col-4 campos">
+                                        <p class="textox">{{ServicesForm.get('precioEstimado')?.value}}</p>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4 contCampo">
+                                <div class="row">
+                                    <div class="col-3 campos ">
+                                        <label class="textoTitulos">Empresas en las que trabajo anteriormente</label>
+                                    </div>
+                                    <div class="col-3 campos">
+                                        <p class="Textox">{{ServicesForm.get('historialEmpresas')?.value}}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-4 contCampo">
+                                <div class="row">
+                                    <div class="col-3 campos">
+                                        <label class="textoTitulos">Numero de contacto</label>
+                                    </div>
+                                    <div class="col-4 campos">
+                                        <p class="textox">{{ServicesForm.get('numeroContacto')?.value}}</p>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4 contCampo">
+                                <div class="row">
+                                    <div class="col-3 campos">
+                                        <label class="textoTitulos">Correo de contacto</label>
+                                    </div>
+                                    <div class="col-3 ">
+                                        <p class="textox">{{ServicesForm.get('correoContacto')?.value}}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-4 contCampo">
+                                <div class="row">
+                                    <div class="col-3 campos">
+                                        <label class="textoTitulos">Fecha desde que se realiza el servicio</label>
+                                    </div>
+                                    <div class="col-3 campos">
+                                        <p class="Textox">{{ServicesForm.get('fechaInicio')?.value}}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-4 contCampo">
+                                <div class="row">
+                                    <div class="col-3 campos">
+                                        <label class="textoTitulos">Estado</label>
+                                    </div>
+                                    <div class="col-3 campos">
+                                        <p class="Textox">{{ServicesForm.get('fechaInicio')?.value}}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="row ">
+                            <div class="col-4 contCampo">
+                                <div class="row">
+
+                                    <div class="col-2 contCampo">
+                                        <div class="row">
+                                            <button class="btn textox btnEditar  s" data-bs-toggle="modal" data-bs-target="#content-modal-edit-service">
+                                Editar
+                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    
-</ng-template>
+</div>

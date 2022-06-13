@@ -1,4 +1,4 @@
-<div *ngIf="stateGroupPerson == 1">
+<div *ngIf="statePersonGroup == 1">
     <div *ngIf="eventGroupForm.get('estadoEvento')?.value == 1">
         
 
@@ -113,8 +113,8 @@
     </div>
 </div>
 
-<div *ngIf="stateGroupPerson == 2">
-    <div *ngIf="eventGroupForm.get('estadoEvento')?.value == 0 || eventGroupForm.get('estadoEvento')?.value == 3">
+<div *ngIf="statePersonGroup == 2">
+    <div *ngIf="this.eventGroupForm.get('estadoEvento')?.value == 0 || eventGroupForm.get('estadoEvento')?.value == 3">
         <h2>En este momento no se encuentra un evento, sea paciente mientras el organizador crea un evento.</h2>
     </div>
 
@@ -198,6 +198,10 @@
     </div>
 </div>
 
+<div *ngIf="this.stateGroupPerson == 2">
+    HOLA BRO
+</div>
+
 
 <ng-template #content2 let-modal2>
     <!-- <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button> -->
@@ -210,68 +214,78 @@
                     <button type="button" class="btn-close" aria-label="Close" (click)="modal2.dismiss('Cross click')"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group">
-                        <label for="">Nombre del Evento:</label>
-                        <input type="text" class="form-control" id="" placeholder="Ej: El mejor evento" [ngClass]="
-                                (createEventForm.get('nombreEvento')?.touched || createEventForm.get('nombreEvento')?.dirty) &&
-                                    createEventForm.get('nombreEvento')?.errors ? 'is-invalid' : ''" formControlName="nombreEvento">
-                        <div class="invalid-feedback">
-                            {{ createEventForm.get("nombreEvento")?.hasError("required") ? "Nombre requerida" : "" }}
+                    <div class="form">
+                        <div class="grupoForm">
+                            <label for="">Nombre del Evento:</label>
+                            <input type="text" class="form-control" id="nombreEvento" placeholder="Ej: El mejor evento" formControlName="nombreEvento" [ngClass]="
+                            (createEventForm.get('nombreEvento')?.touched || createEventForm.get('nombreEvento')?.dirty) &&
+                            createEventForm.get('nombreEvento')?.hasError('required') ? 'is-invalid' : '' || createEventForm.get('nombreEvento')?.hasError('minlength') 
+                                        ? 'is-invalid' : '' || createEventForm.get('nombreEvento')?.hasError('maxlength')
+                                        ? 'is-invalid' : ''" >
+                            <div class="invalid-feedback">
+                                {{ createEventForm.get("nombreEvento")?.hasError("required") ? "Nombre requerido" : "" }}
+                                {{ createEventForm.get("nombreEvento")?.hasError("minlength") ? "Campo mínimo de 2 carácteres" : "" }}
+                                {{ createEventForm.get("nombreEvento")?.hasError("maxlength") ? "Campo maximo de 30 carácteres" : "" }}
+                            </div>
                         </div>
 
-                        <label for="">Tipo de Evento:</label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" [ngClass]="
-                                    (createEventForm.get('tipoEvento')?.touched || createEventForm.get('tipoEvento')?.dirty) &&
-                                        createEventForm.get('tipoEvento')?.errors ? 'is-invalid' : ''" formControlName="tipoEvento" name="tipoEvento" value="presencial" checked>
-                            <label class="form-check-label" for="flexRadioDefault1">
-                                        Presencial
-                                    </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" [ngClass]="
-                                    (createEventForm.get('tipoEvento')?.touched || createEventForm.get('tipoEvento')?.dirty) &&
-                                        createEventForm.get('tipoEvento')?.errors ? 'is-invalid' : ''" formControlName="tipoEvento" name="tipoEvento" value="virtual">
-                            <label class="form-check-label" for="flexRadioDefault2">
-                                        Virtual
-                                    </label>
-                        </div>
-                        <div class="invalid-feedback">
-                            {{ createEventForm.get("tipoEvento")?.hasError("required") ? "Tipo Requerido" : "" }}
-                        </div>
-
-                        <label for="">Imagen evento:</label>
-                        <div class="mb-2">
-                            <input (change)="capturarFile($event)" type="file">
-                        </div>
-                        <h4>PREVISUALIZACION</h4>
-                        <div *ngIf="previsualizacion">
-                            <img width="500px" [src]="previsualizacion" alt="">
-                        </div>
-                        <div class="invalid-feedback">
-                            {{ createEventForm.get("descripcionEvento")?.hasError("required") ? " Descripcion requerida" : "" }} {{ createEventForm.get("descripcionEvento")?.hasError("minlength") ? " 5 letras requeridas" : "" }}
+                        <div class="groupForm">
+                            <label for="">Tipo de Evento:</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" [ngClass]="
+                                        (createEventForm.get('tipoEvento')?.touched || createEventForm.get('tipoEvento')?.dirty) &&
+                                            createEventForm.get('tipoEvento')?.errors ? 'is-invalid' : ''" formControlName="tipoEvento" name="tipoEvento" value="presencial" checked>
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                            Presencial
+                                        </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" [ngClass]="
+                                        (createEventForm.get('tipoEvento')?.touched || createEventForm.get('tipoEvento')?.dirty) &&
+                                            createEventForm.get('tipoEvento')?.errors ? 'is-invalid' : ''" formControlName="tipoEvento" name="tipoEvento" value="virtual">
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                            Virtual
+                                        </label>
+                            </div>
+                            <div class="invalid-feedback">
+                                {{ createEventForm.get("tipoEvento")?.hasError("required") ? "Tipo Requerido" : "" }}
+                            </div>
                         </div>
 
-                        <label for="">Descripcion Evento:</label>
-                        <div class="mb-2">
-                            <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Explica de que tratará y dónde será." rows="2" [ngClass]="(createEventForm.get('descripcionEvento')?.touched ||
-                                    createEventForm.get('descripcionEvento')?.dirty) &&
-                                    createEventForm.get('descripcionEvento')?.hasError('required')
-                                    ? 'is-invalid'
-                                    : '' || createEventForm.get('descripcionEvento')?.hasError('minlength')
-                                    ? 'is-invalid'
-                                    : '' ||
-                                      ((createEventForm.get('descripcionEvento')?.touched ||
-                                      createEventForm.get('descripcionEvento')?.dirty) &&
-                                        !createEventForm.get('descripcionEvento')?.invalid)
-                                    ? 'is-valid'
-                                    : ''" formControlName="descripcionEvento"></textarea>
-                        </div>
-                        <div class="invalid-feedback">
-                            {{ createEventForm.get("descripcionEvento")?.hasError("required") ? " Descripcion requerida" : "" }} {{ createEventForm.get("descripcionEvento")?.hasError("minlength") ? " 5 letras requeridas" : "" }}
-                        </div>
+                       <div class="groupForm">
+                            <label for="">Imagen evento:</label>
+                            <div class="mb-2">
+                                <input (change)="capturarFile($event)" type="file" [ngClass]="
+                                (createEventForm.get('imagen')?.touched || createEventForm.get('imagen')?.dirty) &&
+                                    createEventForm.get('imagen')?.errors ? 'is-invalid' : ''" formControlName="imagen" >
+                            </div>
+                            <h4>PREVISUALIZACION</h4>
+                            <div *ngIf="previsualizacion">
+                                <img width="500px" [src]="previsualizacion" alt="">
+                            </div>
+                            <div class="invalid-feedback">
+                                {{ createEventForm.get("imagen")?.hasError("required") ? "Imagen requerida" : "" }} 
+                            </div>
+                       </div>
 
-                        <label for="">Fecha Realizacion:</label>
+                       <div class="groupForm">
+                            <label for="">Descripcion Evento:</label>
+                                <textarea class="form-control" type="text" id="descripcionEvento" formControlName="descripcionEvento" placeholder="Explica de que tratará y dónde será." rows="2" [ngClass]="
+                                (createEventForm.get('descripcionEvento')?.touched || createEventForm.get('descripcionEvento')?.dirty) &&
+                                createEventForm.get('descripcionEvento')?.hasError('required') 
+                                ? 'is-invalid' : '' || createEventForm.get('descripcionEvento')?.hasError('minlength') 
+                                ? 'is-invalid' : '' || createEventForm.get('descripcionEvento')?.hasError('maxlength')
+                                ? 'is-invalid' : ''" ></textarea>
+                            <div class="invalid-feedback">
+                                {{ createEventForm.get("descripcionEvento")?.hasError("required") ? "Descripcion requerida" : "" }} 
+                                {{ createEventForm.get("descripcionEvento")?.hasError("minlength") ? "Campo mínimo de 10 carácteres" : "" }}
+                                {{ createEventForm.get("descripcionEvento")?.hasError("maxlength") ? "Campo maximo de 500 carácteres" : "" }}
+                            </div>
+                       </div>
+                       <!-- {{createEventForm.get("descripcionEvento")?.errors | json}} -->
+
+                        <div class="groupForm">
+                            <label for="">Fecha Realizacion:</label>
                         <input type="date" class="form-control" [ngClass]="
                                 (createEventForm.get('fechaEvento')?.touched || createEventForm.get('fechaEvento')?.dirty) &&
                                     createEventForm.get('fechaEvento')?.hasError('required') ? 'is-invalid' : ''" formControlName="fechaEvento"value="{{dateS}}"  min="{{dateS}}">
@@ -284,33 +298,35 @@
                             }
                         </style>
 
-
-                        <label for="exampleInputEmail1">Numero Participantes maximo:</label>
-                        <input type="number" class="form-control" id="exampleInputEmail1" min="2" max="200" [ngClass]="
-                                 (createEventForm.get('participantesTotales')?.touched || createEventForm.get('participantesTotales')?.dirty) &&
-                                     createEventForm.get('participantesTotales')?.hasError('required') ? 'is-invalid' : ''" formControlName="participantesTotales">
-
-                        <div class="invalid-feedback">
-                            {{ createEventForm.get("participantesTotales")?.hasError("required") ? " Numero de participantes requeridos" : "" }}
                         </div>
 
+                        <div class="groupForm">
+                            <label for="exampleInputEmail1">Numero Participantes maximo:</label>
+                            <input type="number" class="form-control" id="exampleInputEmail1" min="2" max="200" [ngClass]="
+                                    (createEventForm.get('participantesTotales')?.touched || createEventForm.get('participantesTotales')?.dirty) &&
+                                        createEventForm.get('participantesTotales')?.hasError('required') 
+                                        ? 'is-invalid' : '' || createEventForm.get('participantesTotales')?.hasError('min') 
+                                        ? 'is-invalid' : '' || createEventForm.get('participantesTotales')?.hasError('max') 
+                                        ? 'is-invalid' : ''" formControlName="participantesTotales">
 
-                        <div class="check-container-politycs">
-
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="invalidCheck" [ngClass]="
-
-                                        createEventForm.get('check')?.hasError('required') ? 'is-invalid' : ''" formControlName="check">
-                                <label class="form-check-label" for="invalidCheck">
-                                        Para la creación de el evento deberá estar de acuerdo con la ley 1480 de 2011 articulo 30 con respecto al evento a crear.
-                                    </label>
-                                <div class="invalid-feedback">
-                                    {{ createEventForm.get("check")?.hasError("required") ? " Numero de participantes requeridos" : "" }}
-                                </div>
+                            <div class="invalid-feedback">
+                                {{ createEventForm.get("participantesTotales")?.hasError("required") ? " Numero de participantes requeridos" : "" }}
+                                {{ createEventForm.get("participantesTotales")?.hasError("min") ? "Minimo 2 participantes" : "" }}
+                                {{ createEventForm.get("participantesTotales")?.hasError("max") ? "Maximo 200 participantes" : "" }}                        
                             </div>
+                        </div>
 
+                        <div class="groupForm">
+                            <input type="checkbox" checked name="" id="check"  formControlName="check" [ngClass]="(createEventForm.get('check')?.touched || createEventForm.get('check')?.dirty) &&
+                            createEventForm.get('check')?.errors ? 'is-invalid' : ''" >
+                            <label>Aceptas 1480 de 2011 articulo 30 sobre contenido explicito.</label>
+                            <div class="invalid-feedback">
+                                {{ createEventForm.get("check")?.hasError("required") ? "Debe estar de acuerdo con las políticas." : "" }}
+                            </div>
                         </div>
                     </div>
+                        
+                        
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary" [disabled]="createEventForm.invalid" data-bs-dismiss="modal">Crear evento</button>

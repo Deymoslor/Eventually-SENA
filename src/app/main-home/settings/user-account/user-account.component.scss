@@ -4,6 +4,23 @@
     margin-top: 1rem;
 }
 
+.titlePrincipal {
+    font-family: 'Pacifico', cursive;
+    margin: 0 auto;
+    font-size: 3vw;
+    padding: 1.5rem;
+}
+
+.textoTitulos {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+}
+
+.textox {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 350;
+}
+
 .selectNewLikes {
     label {
         border-radius: 14rem;
@@ -24,7 +41,7 @@
     background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
 }
 
-.separator{
+.separator {
     background: #ccc;
     width: 100%;
     height: 2px;
@@ -32,7 +49,6 @@
 }
 
 //Muestra de grupos.
-
 .account-topics-item {
     float: left;
     position: relative;
@@ -50,4 +66,91 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-  
+
+@media only screen and (max-width:640px) {
+    .account-topics-item {
+        width: 25vw;
+    }
+}
+
+@media only screen and (max-width:607px) {
+    .imgAc {
+        width: 9.5rem;
+    }
+}
+
+@media only screen and (max-width:494px) {
+    .account-topics-item {
+        width: 25vw;
+        div {
+            font-size: 2vw;
+        }
+    }
+}
+
+@media only screen and (max-width:462px) {
+    .account-topics-item {
+        width: 25vw;
+        div {
+            font-size: 0.6rem;
+        }
+    }
+    .imgAc {
+        font-size: 0.6rem;
+    }
+    .cards1 {
+        width: 13rem;
+    }
+}
+
+@media only screen and (max-width:378px) {
+    .cards1 {
+        width: 55vw;
+    }
+    input {
+        width: 40vw;
+    }
+    .btn {
+        width: 40vw;
+    }
+}
+
+@media only screen and (max-width:299px) {
+    .cards1 {
+        width: 45vw;
+    }
+    input {
+        width: 35vw;
+    }
+    .btn {
+        width: 35vw;
+    }
+    .imgAc {
+        width: 7.1rem;
+    }
+}
+
+// sssssss
+@media only screen and (max-width: 1464px) {
+    .titlePrincipal {
+        font-size: 3vw;
+    }
+}
+
+@media only screen and (max-width: 1042px) {
+    .titlePrincipal {
+        font-size: 3vw;
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    .titlePrincipal {
+        font-size: 3rem;
+    }
+}
+
+@media only screen and (max-width: 504px) {
+    .titlePrincipal {
+        font-size: 1.5rem;
+    }
+}

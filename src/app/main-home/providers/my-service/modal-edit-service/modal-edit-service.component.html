@@ -1,86 +1,79 @@
-<div class="modal fade" id="content-modal-edit-service" tabindex="-1" >
-  
+<div class="modal fade" id="content-modal-edit-service" tabindex="-1">
+
     <form [formGroup]="ServicesForm" (ngSubmit)="putEditForm(ServicesForm.value)">
-    <div class="modal-dialog modal-lg modal-dialog-scrollable">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">Editar Servicio</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label for="">Nombre del Servicio:</label>
-                    <input type="text" class="form-control" id=""
-                    placeholder="Ej: El mejor evento" formControlName="nombreServicio">
-                    
-                    <label for="">Tipo Servicio:</label>
-                    <select class="form-select" id="input-group-text" formControlName="TipoServicio_idtipoServicio">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="titlePrincipal" id="staticBackdropLabel">Editar Servicio</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body ">
+                    <div class="form-group">
+                        <label class="textoTitulos" for="">Nombre del Servicio:</label>
+                        <input type="text" class="form-control textox" id="" placeholder="Ej: El mejor evento" formControlName="nombreServicio">
+
+                        <label class="textoTitulos" for="">Tipo Servicio:</label>
+                        <select class="form-select textox" id="input-group-text" formControlName="TipoServicio_idtipoServicio">
                         <option value="{{typeService.idtipoServicio}}" *ngFor="let typeService of dataTypeService">{{typeService.tipoServicio}}</option>
                     </select>
 
-                    <!-- <div class="form-check" *ngFor="let typeService of dataTypeService">
+                        <!-- <div class="form-check" *ngFor="let typeService of dataTypeService">
                         <input class="form-check-input" type="radio" value="typeService.idTipoServicio"  name="{{typeService.tipoServicio}}" id="flexRadioDefault1">
                         <label class="form-check-label" for="flexRadioDefault1">
                             {{typeService.tipoServicio}}
                         </label>
                     </div> -->
-                    <label for="">Descripcion Servicio:</label>
-                    <div class="mb-2">
-                        <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Explica de que trata."
-                            rows="2" formControlName="descripcionServicio"></textarea>
-                    </div>
+                        <label class="textoTitulos" for="">Descripcion Servicio:</label>
+                        <div class="mb-2">
+                            <textarea class="form-control textox" id="exampleFormControlTextarea1" placeholder="Explica de que trata." rows="2" formControlName="descripcionServicio"></textarea>
+                        </div>
 
-                    <div>
-                        <label for="exampleInputEmail1">Foto Servicio:</label>
-                        <input class="form-control" (change)="capturarFile($event)" type="file" formControlName="imagen" id="formFile">
-                        <p class="fs-3 fw-bolder">FOTO:</p>
-                            <img width="500px" [src]="previsualizacion" alt="">
-                    </div>
+                        <div>
+                            <label class="textoTitulos" for="exampleInputEmail1">Foto Servicio:</label>
+                            <input class="form-control" (change)="capturarFile($event)" type="file" formControlName="imagen" id="formFile">
+                            <p class="fs-3 fw-bolder">FOTO:</p>
+                            <img class="imagen img-fluid" [src]="previsualizacion" alt="">
+                        </div>
 
-                    <label for="">Fecha Desde que realiza el servicio:</label>
-                        <input type="date" class="form-control" formControlName="fechaInicio" max="{{dateS}}">
+                        <label class="textoTitulos" for="">Fecha Desde que realiza el servicio:</label>
+                        <input class="textox" type="date" class="form-control" formControlName="fechaInicio" max="{{dateS}}">
                         <style>
                              ::ng-deep .cdk-overlay-container {
                                 z-index: 2000;
                             }
                         </style>
-                    
-                    <label for="">Precio estimado</label>
-                    <input type="number" class="form-control" id="exampleInputEmail1"
-                    value="0" formControlName="precioEstimado">
 
-                    <label for="exampleInputEmail1">Empresas en las que trabajo anteriormente:</label>
-                    <input type="text" class="form-control" id=""
-                    placeholder="Ej: Ducales, Saltin Noel" formControlName="historialEmpresas">
+                        <label class="textoTitulos" for="">Precio estimado</label>
+                        <input class="textox" type="number" class="form-control" id="exampleInputEmail1" value="0" formControlName="precioEstimado">
 
-                    <!-- <label for="exampleInputEmail1">Fecha desde que realiza el servicio:</label>
+                        <label class="textoTitulos" for="exampleInputEmail1">Empresas en las que trabajo anteriormente:</label>
+                        <input class="textox" type="text" class="form-control" id="" placeholder="Ej: Ducales, Saltin Noel" formControlName="historialEmpresas">
+
+                        <!-- <label for="exampleInputEmail1">Fecha desde que realiza el servicio:</label>
                     <div>
                         <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next"></ngb-datepicker>
                     </div> -->
 
-                    <label for="exampleInputEmail1">Numero de contacto:</label>
-                    <input type="text" class="form-control" id=""
-                    placeholder="Ej: +57 999 999 99 99" formControlName="numeroContacto">
+                        <label class="textoTitulos" for="exampleInputEmail1">Numero de contacto:</label>
+                        <input class="textox" type="text" class="form-control" id="" placeholder="Ej: +57 999 999 99 99" formControlName="numeroContacto">
 
-                    <label for="exampleInputEmail1">Correo de contacto:</label>
-                    <input type="text" class="form-control" id=""
-                    placeholder="Ej: correo@correo.co.com" formControlName="correoContacto">
+                        <label class="textoTitulos" for="exampleInputEmail1">Correo de contacto:</label>
+                        <input class="textox" type="text" class="form-control" id="" placeholder="Ej: correo@correo.co.com" formControlName="correoContacto">
 
-                    <div class="check-container-politycs">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
+                        <div class="check-container-politycs">
+                            <div class="form-check">
+                                <input class="textox" class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                <label class="form-check-label" for="defaultCheck1">
                                 Solo puedes tener un servicio en tu cuenta de proveedor, por ende, asegúrate de tener información clara y llamativa, esta información podrá ser modificada posteriormente                            </label>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Cerrar</button>
-                <button type="submit" class="btn btn-primary" type="submit">Editar</button>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btnEditar textox" type="submit">Editar</button>
+                </div>
             </div>
         </div>
-    </div>
-</form>
+    </form>
 </div>
-
