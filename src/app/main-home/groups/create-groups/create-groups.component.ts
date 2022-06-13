@@ -51,7 +51,6 @@ export class CreateGroupsComponent implements OnInit {
         gustos_idGusto: ['', Validators.required],
         idPersona: [],
       });
-
     }
 
   ngOnInit(): void {

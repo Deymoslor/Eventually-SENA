@@ -79,7 +79,7 @@ export class UpdateUserAccountComponent implements OnInit {
     this.passwordForm = this.formBuilder.group({
       idPersona: [],
       token: [],
-      oldPassword: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]],
+      oldPassword: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(12)]],
       newPassword: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]],
     })
 
