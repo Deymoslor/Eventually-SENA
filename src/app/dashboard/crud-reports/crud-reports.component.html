@@ -13,18 +13,18 @@
     <div class="container mt-3">
       <ul class="nav nav-tabs">
         <li class="nav-item h5">
-          <a class="nav-link btn btn-primary" [routerLink]="['event-report']" routerLinkActive="router-link-active">Eventos</a>
+          <button type="button" class="nav-link btn btn-primary mb-3" [routerLink]="['event-report']">Eventos</button>
         </li>
         <li class="nav-item h5">
-          <a class="nav-link btn btn-warning" [routerLink]="['group-report']" routerLinkActive="router-link-active">Grupos</a>
+          <button type="button" class="nav-link btn btn-warning mb-3" [routerLink]="['group-report']">Grupos</button>
         </li>
         <li class="nav-item h5">
-          <a class="nav-link btn btn-primary" [routerLink]="['user-report']" routerLinkActive="router-link-active">Usuarios</a>
+          <button type="button" class="nav-link btn btn-primary mb-3" [routerLink]="['user-report']">Usuarios</button>
         </li>
       </ul>
-      <router-outlet></router-outlet>
     </div>
     <!--TABLE//-->
+    <router-outlet></router-outlet>
     <button class="btn btn-primary col-2 d-md-flex justify-content-md-center" data-bs-toggle="modal" data-bs-target="#reports-modal">
       Crear Reporte
   </button>

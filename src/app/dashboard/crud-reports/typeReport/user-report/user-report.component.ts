@@ -7,6 +7,7 @@ import { ApiTypeReportService } from '../api-type-report.service';
 import { Router } from '@angular/router';
 import * as pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from 'pdfmake/build/vfs_fonts';
+import jsPDF from 'jspdf';
 (<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
@@ -52,10 +53,10 @@ export class UserReportComponent implements OnInit {
     html2canvas(document.getElementById('exportthis')!).then(function (canvas) {
       var data = canvas.toDataURL();
       var pdfDefinition = {
-        content: [{
-            image: data,
-            width: 500,
-        }]
+          content: [{
+              image: data,
+              width: 500,
+          }]
       };
       pdfMake.createPdf(pdfDefinition).download("Reportes_User.pdf");
     });

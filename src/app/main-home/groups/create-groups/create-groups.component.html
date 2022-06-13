@@ -11,9 +11,11 @@
 
                         <label for="validationDefault01" class="form-label titulos input">Nombre grupo</label>
                         <input type="text" class="form-control firtsContainer texto" id="" placeholder="Ej: Nombre del Grupo" [ngClass]="(createYourGroupForm.get('nombreGrupo')?.touched || createYourGroupForm.get('nombreGrupo')?.dirty) &&
-      createYourGroupForm.get('nombreGrupo')?.errors ? 'is-invalid' : ''" formControlName="nombreGrupo">
+                          createYourGroupForm.get('nombreGrupo')?.errors ? 'is-invalid' : ''" formControlName="nombreGrupo">
                         <div class="invalid-feedback">
                             {{ createYourGroupForm.get("nombreGrupo")?.hasError("required") ? "Nombre requerido" : "" }}
+                            {{ createYourGroupForm.get("nombreGrupo")?.hasError("minlength") ? "Minimo 2 letras" : "" }}
+                            {{ createYourGroupForm.get("nombreGrupo")?.hasError("maxlength") ? "Miaximo 50 letras" : "" }}
                         </div>
                     </div>
                     <div class="col-4 firts input i">
@@ -26,10 +28,10 @@
 
                         <label for="exampleInputEmail1" class="titulos label">Gusto:</label>
                         <select class="form-select firtsContainer" aria-label="Default select example" [ngClass]="
-              (createYourGroupForm.get('gustos_idGusto')?.touched || createYourGroupForm.get('gustos_idGusto')?.dirty) &&
-              createYourGroupForm.get('gustos_idGusto')?.hasError('required') ? 'is-invalid' : ''" formControlName="gustos_idGusto">
-                <option *ngFor="let likeI of likesI" value="{{ likeI.idGusto }}">{{ likeI.nombreGusto }}</option>
-              </select>
+                        (createYourGroupForm.get('gustos_idGusto')?.touched || createYourGroupForm.get('gustos_idGusto')?.dirty) &&
+                        createYourGroupForm.get('gustos_idGusto')?.hasError('required') ? 'is-invalid' : ''" formControlName="gustos_idGusto">
+                        <option *ngFor="let likeI of likesI" value="{{ likeI.idGusto }}">{{ likeI.nombreGusto }}</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -40,23 +42,25 @@
                         <label for="validationTextarea" class="form-label titulos">Descripción</label>
                         <div class="mb-2">
                             <textarea class="form-control textArea" id="exampleFormControlTextarea1" placeholder="Explica de que tratará y dónde será." rows="2" [ngClass]="(createYourGroupForm.get('descripcionGrupo')?.touched ||
-      createYourGroupForm.get('descripcionGrupo')?.dirty) &&
-      createYourGroupForm.get('descripcionGrupo')?.hasError('required')
-      ? 'is-invalid'
-      : '' || createYourGroupForm.get('descripcionGrupo')?.hasError('minlength')
-      ? 'is-invalid'
-      : '' || createYourGroupForm.get('descripcionGrupo')?.hasError('maxlength')
-      ? 'is-invalid'
-      : '' ||
-        ((createYourGroupForm.get('descripcionGrupo')?.touched ||
-        createYourGroupForm.get('descripcionGrupo')?.dirty) &&
-          !createYourGroupForm.get('descripcionGrupo')?.invalid)
-      ? 'is-valid'
-      : ''" formControlName="descripcionGrupo"></textarea>
-                        </div>
-                        <div class="invalid-feedback">
-                            {{ createYourGroupForm.get("descripcionGrupo")?.hasError("required") ? " Descripcion requerida" : "" }} {{ createYourGroupForm.get("descripcionGrupo")?.hasError("minlength") ? " 5 letras requeridas" : "" }} {{ createYourGroupForm.get("descripcionGrupo")?.hasError("maxlength")
-                            ? " Ha excedido el limite de caracteres" : "" }}
+                            createYourGroupForm.get('descripcionGrupo')?.dirty) &&
+                            createYourGroupForm.get('descripcionGrupo')?.hasError('required')
+                            ? 'is-invalid'
+                            : '' || createYourGroupForm.get('descripcionGrupo')?.hasError('minlength')
+                            ? 'is-invalid'
+                            : '' || createYourGroupForm.get('descripcionGrupo')?.hasError('maxlength')
+                            ? 'is-invalid'
+                            : '' ||
+                              ((createYourGroupForm.get('descripcionGrupo')?.touched ||
+                              createYourGroupForm.get('descripcionGrupo')?.dirty) &&
+                                !createYourGroupForm.get('descripcionGrupo')?.invalid)
+                            ? 'is-valid'
+                            : ''" formControlName="descripcionGrupo"></textarea>
+                            <div class="invalid-feedback">
+                              {{ createYourGroupForm.get("descripcionGrupo")?.hasError("required") ? " Descripcion requerida" : "" }}
+                              {{ createYourGroupForm.get("descripcionGrupo")?.hasError("minlength") ? " 5 letras requeridas" : "" }}
+                              {{ createYourGroupForm.get("descripcionGrupo")?.hasError("maxlength")
+                              ? " Ha excedido el limite de caracteres" : "" }}
+                          </div>
                         </div>
                         <!-- <div class="invalid-feedback">
       Please enter a message in the textarea.
@@ -82,6 +86,9 @@
                             <h4 class="titulos">PREVISUALIZACION</h4>
                             <div *ngIf="previsualizacion">
                                 <img class="imgGroup img-fluid" [src]="previsualizacion" alt="">
+                                <div class="invalid-feddback firtsContainer texto">
+                                  {{ createYourGroupForm.get("imagen")?.hasError("required") ? "imagen requerida" : "" }}
+                              </div>
                             </div>
                         </div>
 
@@ -92,12 +99,12 @@
 
                         <div class="form-check firtsContainer texto">
                             <input class="form-check-input firtsContainer texto" type="radio" name="flexRadioDefault" id="flexRadioDefault1" [ngClass]="(createYourGroupForm.get('privacidadGrupo')?.touched || createYourGroupForm.get('privacidadGrupo')?.dirty) &&
-                        createYourGroupForm.get('privacidadGrupo')?.errors ? 'is-invalid' : ''" formControlName="privacidadGrupo" name="privacidadGrupo" value="2">
+                            createYourGroupForm.get('privacidadGrupo')?.errors ? 'is-invalid' : ''" formControlName="privacidadGrupo" name="privacidadGrupo" value="2">
                             <label class="form-check-label" for="flexRadioDefault">Publico</label>
                         </div>
                         <div class="form-check firtsContainer texto">
                             <input class="form-check-input " type="radio" name="flexRadioDefault" id="flexRadioDefault1" [ngClass]="(createYourGroupForm.get('privacidadGrupo')?.touched || createYourGroupForm.get('privacidadGrupo')?.dirty) &&
-                        createYourGroupForm.get('privacidadGrupo')?.errors ? 'is-invalid' : ''" formControlName="privacidadGrupo" name="privacidadGrupo" value="1">
+                            createYourGroupForm.get('privacidadGrupo')?.errors ? 'is-invalid' : ''" formControlName="privacidadGrupo" name="privacidadGrupo" value="1">
                             <label class="form-check-label" for="flexRadioDefault">Privado</label>
                         </div>
                         <div class="invalid-feddback firtsContainer texto">
