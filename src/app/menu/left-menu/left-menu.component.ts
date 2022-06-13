@@ -41,7 +41,7 @@ export class LeftMenuComponent implements OnInit {
   }
   //invitado
   myAccount(){
-    this.router.navigate(["main/settings/settings-account"]);
+    this.router.navigate(["main/settings/user-account"]);
   }
   groups(){
     this.router.navigate(["main/groups"]);
