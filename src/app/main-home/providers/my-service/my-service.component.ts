@@ -5,6 +5,9 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ServiceI } from '../models/service.interface';
 import { AuthService } from 'src/app/core/service/auth.service';
 import { GlobalConstants } from '../../../global-constants';
+import { TypeServicesI } from 'src/app/dashboard/crud-services/models/typeServices.interface';
+import { ResponseI } from 'src/app/core/ui/response.interface';
+import { AlertasService } from 'src/app/core/service/alertas.service';
 
 @Component({
   selector: 'app-my-service',
@@ -13,7 +16,12 @@ import { GlobalConstants } from '../../../global-constants';
 })
 export class MyServiceComponent implements OnInit {
 
+  previsualizacion!: string;
+  public archivos: any = [];
+  actualImage!: string;
+
   dataService!: ServiceI;
+  dataTypeService!: TypeServicesI[]
 
   idProvider!: number;
   numb!:number
@@ -34,10 +42,15 @@ export class MyServiceComponent implements OnInit {
     TipoServicio_idtipoServicio: new FormControl('')
   })
 
-  constructor(private api: ApiService, private router: Router, private auth: AuthService) { }
+  constructor(private api: ApiService, private router: Router, private auth: AuthService,
+    private alertas: AlertasService) { }
 
   ngOnInit(): void {
     this.idProvider = this.auth.desencriptar(localStorage.getItem('id'));
+    this.api.getAllTypeServices(1).subscribe(data =>{
+      this.dataTypeService = data;
+    })
+
     this.api.getSingleServiceProvider(this.auth.desencriptar(localStorage.getItem('id'))).subscribe((data:any) =>{
       
       if (data >= 0){
@@ -45,13 +58,14 @@ export class MyServiceComponent implements OnInit {
         // break;
       }
       this.dataService = data[0];
+      this.previsualizacion = this.dataService.imagen.replace('C:/xampp/htdocs', GlobalConstants.httpLocalHost);
       console.log("my service; " + this.dataService.imagen);
       this.ServicesForm.setValue({
         'idServicios': this.dataService.idServicios,
         'nombreServicio': this.dataService.nombreServicio,
         'descripcionServicio': this.dataService.descripcionServicio,
         'precioEstimado': this.dataService.precioEstimado,
-        'imagen': this.dataService.imagen.replace('C:/xampp/htdocs', GlobalConstants.httpLocalHost),
+        'imagen': this.previsualizacion,
         'fechaInicio': this.dataService.fechaInicio,
         'historialEmpresas': this.dataService.historialEmpresas,
         'numeroContacto': this.dataService.numeroContacto,
@@ -68,6 +82,7 @@ export class MyServiceComponent implements OnInit {
 
   changeStateServiceProv(form:ServiceI){
       console.log(form);
+      form.imagen = this.previsualizacion.replace(GlobalConstants.httpLocalHost, 'C:/xampp/htdocs');
       if(form.estadoServicio == 2){
         form.estadoServicio = 1;
       }else{
@@ -75,8 +90,21 @@ export class MyServiceComponent implements OnInit {
       }
       this.api.putService(form).subscribe(data=>{
         console.log(data);
+        let respuesta:ResponseI = data;
+          //Verificamos si la respuesta es exitosa.
+          if(respuesta.status == 'ok'){
+            this.alertas.showSuccess('Deshabilitar Servicio','Función exitosa');
+            setTimeout(()=>{
+              this.refresh();
+            },2000);
+          }else{
+            this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+            setTimeout(()=>{
+              this.refresh();
+            },2000);
+          }
       });
-      this.refresh();
+      // this.refresh();
   }
 
   refresh(){

@@ -11,11 +11,19 @@
                     <label class="title" for="">Nombre del Evento:</label>
                 </div>
                 <div class="col-6 colCont">
-                    <input type="text" class="form-control" id="" placeholder="" formControlName="tipoServicio">
+                    <input type="text" class="form-control" id="" placeholder="" formControlName="tipoServicio"
+                    [ngClass]=" (createTypeServices.get('tipoServicio')?.touched || createTypeServices.get('tipoServicio')?.dirty) &&
+                    createTypeServices.get('tipoServicio')?.hasError('required') 
+                    ? 'is-invalid' : '' || createTypeServices.get('tipoServicio')?.hasError('pattern') 
+                    ? 'is-invalid' : ''">
+                    <div class="invalid-feedback">
+                        {{ createTypeServices.get("tipoServicio")?.hasError("required") ? "Campo requerido" : "" }}
+                        {{ createTypeServices.get("tipoServicio")?.hasError("pattern") ? "Campo requerido sin caracteres especiales o numeros" : "" }}
+                    </div>
                 </div>
 
                 <div class="col-2 boton">
-                    <button type="submit" class="btn btnCrear">Crear</button>
+                    <button type="submit" class="btn btnCrear" [disabled]="createTypeServices.invalid">Crear</button>
                 </div>
             </div>
         </div>

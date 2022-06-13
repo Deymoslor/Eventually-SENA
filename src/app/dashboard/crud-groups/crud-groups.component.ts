@@ -72,6 +72,7 @@ export class CrudGroupsComponent implements OnInit {
       this.GroupsServiceService.getSingleGroup(id).subscribe((data:any) => {
         this.datosGrupo = data[0];
         this.datosGrupo.EstadosGrupo_idEstadosGrupo1 = 1;
+        this.datosGrupo.imagen == null;
         this.datosGrupo.imagen = this.previsualizacion;
         console.log(this.datosGrupo);
         this.GroupsServiceService.putGroup(this.datosGrupo).subscribe((data:any) =>{
@@ -95,6 +96,7 @@ export class CrudGroupsComponent implements OnInit {
       this.GroupsServiceService.getSingleGroup(id).subscribe((data:any) => {
         this.datosGrupo = data[0];
         this.datosGrupo.EstadosGrupo_idEstadosGrupo1 = 2;
+        this.datosGrupo.imagen == null;
         this.datosGrupo.imagen = this.previsualizacion;
         console.log(this.datosGrupo);
         this.GroupsServiceService.putGroup(this.datosGrupo).subscribe((data:any) =>{

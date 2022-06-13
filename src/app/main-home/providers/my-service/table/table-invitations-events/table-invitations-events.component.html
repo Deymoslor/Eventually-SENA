@@ -7,7 +7,6 @@
             <thead>
                 <tr class="textoTitulos">
                     <th scope="col">No</th>
-                    <th scope="col">Calificacion</th>
                     <th scope="col">Nombre Evento</th>
                     <!-- <th scope="col">Fecha Realizacion</th> -->
                     <th scope="col">estado respuesta</th>
@@ -19,7 +18,6 @@
                 <tr class="textox" *ngFor="let key of dataServiceEventProv">
 
                     <td>{{key.idDetalleEvento}}</td>
-                    <td>{{key.calificacion}}</td>
                     <td>{{key.nombreEvento}}</td>
                     <td *ngIf="key.estadoInvitacion == 0">SIN RESPUESTA</td>
                     <td *ngIf="key.estadoInvitacion == 1">ACEPTADO</td>
