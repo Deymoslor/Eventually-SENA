@@ -10,32 +10,62 @@
                     <!-- Nombre -->
                     <div class="mb-3">
                         <b><label class="form-label">Nombres</label></b>
-                        <input required type="text" class="form-control" formControlName="nombre" aria-describedby="helpId" placeholder="Escribe tu nombre">
+                        <input required type="text" class="form-control" formControlName="nombre" aria-describedby="helpId" placeholder="Escribe tu nombre" [ngClass]="(editarForm.get('nombre')?.touched || editarForm.get('nombre')?.dirty) &&
+                        editarForm.get('nombre')?.errors ? 'is-invalid' : '' || editarForm.get('nombre')?.hasError('minlength')
+                        ? 'is-invalid' : '' || editarForm.get('nombre')?.hasError('pattern')
+                        ? 'is-invalid' : ''">
+                        <div class="invalid-feedback">
+                            {{ editarForm.get("nombre")?.hasError("required") ? "Campo requerido" : "" }}
+                            {{ editarForm.get("nombre")?.hasError("pattern") ? "Campo solo con letras" : "" }}
+                        </div>
 
                     </div>
 
                     <!-- Apellidos -->
                     <div class="mb-3">
                         <b><label class="form-label">Apellidos</label></b>
-                        <input required type="text" class="form-control" formControlName="apellidos" aria-describedby="helpId" placeholder="Escribe tus apellidos">
+                        <input required type="text" class="form-control" formControlName="apellidos" aria-describedby="helpId" placeholder="Escribe tus apellidos" [ngClass]="(editarForm.get('apellidos')?.touched || editarForm.get('apellidos')?.dirty) &&
+                        editarForm.get('apellidos')?.errors ? 'is-invalid' : '' || editarForm.get('apellidos')?.hasError('pattern')
+                        ? 'is-invalid' : ''">
+                        <div class="invalid-feedback">
+                            {{ editarForm.get("apellidos")?.hasError("required") ? "Campo requerido" : "" }}
+                            {{ editarForm.get("apellidos")?.hasError("pattern") ? "Campo solo con letras" : "" }}
+                        </div>
 
                     </div>
 
                     <!-- Documento -->
                     <div class="mb-3">
                         <b><label class="form-label">Documento</label></b>
-                        <input required type="text" class="form-control" formControlName="documento" aria-describedby="helpId" placeholder="Escribe tu documento">
+                        <input required type="text" class="form-control" formControlName="documento" aria-describedby="helpId" placeholder="Escribe tu documento" [ngClass]="(editarForm.get('documento')?.touched || editarForm.get('documento')?.dirty) &&
+                        editarForm.get('documento')?.hasError('required') ? 'is-invalid' : '' || editarForm.get('documento')?.hasError('minlength')
+                        ? 'is-invalid' : '' || editarForm.get('documento')?.hasError('maxlength')
+                        ? 'is-invalid' : '' || editarForm.get('documento')?.hasError('pattern')
+                        ? 'is-invalid' : ''">
+                        <div class="invalid-feedback">
+                            {{ editarForm.get("documento")?.hasError("required") ? "Campo requerido" : "" }}
+                            {{ editarForm.get("documento")?.hasError("minlength") ? "Campo mínimo de 7 carácteres" : "" }}
+                            {{ editarForm.get("documento")?.hasError("maxlength") ? "Campo máximo de 10 carácteres" : "" }}
+                        </div>
+                        <div class="invalid-feedback">
+                            {{ editarForm.get("documento")?.hasError("pattern") ? "Campo solo con numeros" : "" }}
+                        </div>
 
                     </div>
 
                     <!-- fechaNacimiento -->
                     <div class="mb-3">
                         <b><label class="form-label">Fecha de Nacimiento</label></b>
-                        <input required type="date" class="form-control" formControlName="fechaNacimiento" aria-describedby="helpId" placeholder="Escribe tu fecha de nacimiento">
+                        <input required type="date" class="form-control" formControlName="fechaNacimiento" aria-describedby="helpId" placeholder="Escribe tu fecha de nacimiento" [ngClass]="(editarForm.get('fechaNacimiento')?.touched || editarForm.get('fechaNacimiento')?.dirty) &&
+                        editarForm.get('fechaNacimiento')?.errors ? 'is-invalid' : ''" >
+                        <div class="invalid-feedback">
+                            {{ editarForm.get("fechaNacimiento")?.hasError("required") ? "Campo requerido" : "" }}
+                        </div>
                     </div>
 
                     <div class="btnChangeLikes d-flex justify-content-center">
-                        <button type="submit" class="btn btn-primary btn-lg" (click)="postForm(editarForm.value)">Actualizar Información</button>
+                        <button *ngIf="editarForm.invalid" type="submit" class="btnActualizacionDisable btn btn-primary btn-lg" [disabled]="editarForm.invalid" (click)="postForm(editarForm.value)">Actualizar Información</button>
+                        <button *ngIf="editarForm.valid" type="submit" class="btnActualizacion btn btn-primary btn-lg" (click)="postForm(editarForm.value)">Actualizar Información</button>
                     </div>
 
                     <div class="separator"></div>
@@ -69,11 +99,11 @@
                             </div>
                         </div>
 
-
                         <!-- INICIO Botón para actualizar imagen -->
 
                         <div class="btnChangeLikes d-flex justify-content-center">
-                            <button type="submit" class="btn btn-primary btn-lg" (click)="actualizarImagen(imagenPerfilForm.value)">Actualizar imagen de perfil</button>
+                            <button *ngIf="previsualizacion == ''" type="submit" class="btnActualizacionDisable btn btn-primary btn-lg" [disabled]="previsualizacion == ''"(click)="actualizarImagen(imagenPerfilForm.value)">Actualizar imagen de perfil</button>
+                            <button *ngIf="previsualizacion != ''" type="submit" class="btnActualizacion btn btn-primary btn-lg" (click)="actualizarImagen(imagenPerfilForm.value)">Actualizar imagen de perfil</button>
                         </div>
 
                         <!-- FIN Botón para actualizar imagen -->
@@ -153,22 +183,39 @@
                     <!-- Password Antiguo -->
                     <div class="mb-3">
                         <b><label class="form-label">Contraseña actual (o código de recuperación)</label></b>
-                        <input required type="password" class="form-control" formControlName="oldPassword" aria-describedby="helpId" placeholder="Escribe tu contraseña antigua o código de recuperación">
+                        <input required type="password" class="form-control" formControlName="oldPassword" aria-describedby="helpId" placeholder="Escribe tu contraseña antigua o código de recuperación" [ngClass]="(passwordForm.get('oldPassword')?.touched || passwordForm.get('oldPassword')?.dirty) &&
+                        passwordForm.get('oldPassword')?.hasError('required') ? 'is-invalid' : '' || passwordForm.get('oldPassword')?.hasError('maxlength')
+                        ? 'is-invalid' : '' || passwordForm.get('oldPassword')?.hasError('minlength')
+                        ? 'is-invalid' : ''">
+                        <div class="invalid-feedback">
+                            {{ passwordForm.get("oldPassword")?.hasError("required") ? "Campo requerido" : "" }}
+                            {{ passwordForm.get("oldPassword")?.hasError("maxlength") ? "Máximo 12 caracteres" : "" }}
+                            {{ passwordForm.get("oldPassword")?.hasError("minlength") ? "Mínimo 6 caracteres" : "" }}
+                        </div>
 
                         <div class="recuperar">
                             <p>O recupera tu contraseña ⊂(◉‿◉)つ  <a href="" routerLink="loginRegister/forgot-password" (click)="PasswordRecovery()">Recuperar contraseña</a></p>
                         </div>
-
                     </div>
 
                     <!-- Password Nuevo -->
                     <div class="mb-3">
                         <b><label class="form-label">Contraseña nueva</label></b>
-                        <input required type="password" class="form-control" formControlName="newPassword" aria-describedby="helpId" placeholder="Escribe tu contraseña nueva">
+                        <input required type="password" class="form-control" formControlName="newPassword" aria-describedby="helpId" placeholder="Escribe tu contraseña nueva" [ngClass]="(passwordForm.get('newPassword')?.touched || passwordForm.get('newPassword')?.dirty) &&
+                        passwordForm.get('newPassword')?.hasError('required') ? 'is-invalid' : '' || passwordForm.get('newPassword')?.hasError('maxlength')
+                        ? 'is-invalid' : '' || passwordForm.get('newPassword')?.hasError('minlength')
+                        ? 'is-invalid' : ''">
+                        <div class="invalid-feedback">
+                            {{ passwordForm.get("newPassword")?.hasError("required") ? "Campo requerido" : "" }}
+                            {{ passwordForm.get("newPassword")?.hasError("maxlength") ? "Máximo 12 caracteres" : "" }}
+                            {{ passwordForm.get("newPassword")?.hasError("minlength") ? "Mínimo 6 caracteres" : "" }}
+                        </div>
                     </div>
 
                     <div class="btnChangeLikes d-flex justify-content-center">
-                        <button type="submit" class="btn btn-primary btn-lg" (click)="completarForm(passwordForm.value)" (click)="changePassword(passwordForm.value)">Actualizar contraseña</button>
+                        <button *ngIf="passwordForm.invalid" type="submit" class="btnActualizacionDisable btn btn-primary btn-lg" [disabled]="passwordForm.invalid" (click)="completarForm(passwordForm.value)" (click)="changePassword(passwordForm.value)">Actualizar contraseña</button>
+
+                        <button *ngIf="passwordForm.valid" type="submit" class="btnActualizacion btn btn-primary btn-lg" (click)="completarForm(passwordForm.value)" (click)="changePassword(passwordForm.value)">Actualizar contraseña</button>
                     </div>
 
                 </form>

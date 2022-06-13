@@ -6,6 +6,8 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { ApiService } from 'src/app/services/api.service';
 import { LikesI } from 'src/app/models/likes';
 import { DomSanitizer } from '@angular/platform-browser';
+import { AlertasService } from 'src/app/core/service/alertas.service';
+import { ResponseI } from 'src/app/core/ui/response.interface';
 
 @Component({
   selector: 'app-modal-edit-groups',
@@ -19,7 +21,7 @@ export class ModalEditGroupsComponent implements OnInit {
   public previsualizacion!: string;
   public archivos: any = [];
 
-  constructor(private activerouter:ActivatedRoute , private router:Router, private ApiGroup:GroupsServiceService, private likes: ApiService, private sanitizer: DomSanitizer) { }
+  constructor(private activerouter:ActivatedRoute , private router:Router, private ApiGroup:GroupsServiceService, private likes: ApiService, private sanitizer: DomSanitizer, private alertas:AlertasService) { }
 
   datesGroup!: Group;
   editForm = new FormGroup({
@@ -94,10 +96,24 @@ export class ModalEditGroupsComponent implements OnInit {
 
   postEditForm(form: Group)
   {
+
     form.imagen = this.previsualizacion;
     console.log(form);
     this.ApiGroup.putGroup(form).subscribe( data =>{
       console.log(data);
+      let respuesta:ResponseI = data[0];
+      //Verificamos si la respuesta es exitosa.
+      if(respuesta.status == 'ok'){
+        this.alertas.showSuccess('Grupo actualizado correctamente','Actulización exitosa');
+        setTimeout(() =>{
+          window.location.reload();
+        },2000);
+      }else{
+        this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+        setTimeout(() =>{
+          window.location.reload();
+        },2000);
+      }
     })
   }
   refresh(): void { window.location.reload(); }

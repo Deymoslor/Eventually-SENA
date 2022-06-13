@@ -98,3 +98,16 @@ text-decoration: none;
 .account-topics-name:hover .spritebg {
     background: #000
 }
+
+.btnActualizacion {
+    background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
+}
+
+.btnActualizacion:hover {
+    background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
+}
+
+.btnActualizacionDisable {
+    // background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
+    background: #ccc;
+}

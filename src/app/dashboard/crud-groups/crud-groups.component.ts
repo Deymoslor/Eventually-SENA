@@ -5,6 +5,8 @@ import { GroupsServiceService } from './service/groups-service.service';
 import { Router } from '@angular/router';
 import { ListGroups } from './listGroups.interface';
 import { Group } from './modal-edit-groups/group.interface';
+import { ResponseI } from 'src/app/core/ui/response.interface';
+import { AlertasService } from 'src/app/core/service/alertas.service';
 
 // export interface PeriodicElement {
 //   position: number;
@@ -45,7 +47,7 @@ export class CrudGroupsComponent implements OnInit {
 
   // @ViewChild(MatPaginator, { static: true })
   // paginator!: MatPaginator;
-  constructor( private GroupsServiceService:GroupsServiceService, private router:Router) { }
+  constructor( private GroupsServiceService:GroupsServiceService, private router:Router, private alertas:AlertasService) { }
 
   ngOnInit(): void {
     // this.dataSource.paginator = this.paginator;
@@ -79,8 +81,20 @@ export class CrudGroupsComponent implements OnInit {
         this.datosGrupo = data[0];
         this.datosGrupo.EstadosGrupo_idEstadosGrupo1 = 2;
         this.GroupsServiceService.putGroup(this.datosGrupo).subscribe((data:any) =>{
-          console.log("Entrando aquí");
-        window.location.reload();
+          // console.log("Entrando aquí");
+          let respuesta:ResponseI = data;
+          //Verificamos si la respuesta es exitosa.
+          if(respuesta.status == 'ok'){
+            this.alertas.showSuccess('Grupo actualizado correctamente','Actulización exitosa');
+            setTimeout(() =>{
+              window.location.reload();
+            },2000);
+          }else{
+            this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+            setTimeout(() =>{
+              window.location.reload();
+            },2000);
+          }
         });
       });
     }

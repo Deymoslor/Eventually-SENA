@@ -10,33 +10,75 @@
                 <form class="textox" [formGroup]="editarForm" (ngSubmit)="postForm(editarForm.value)">
                     <div class="form-group">
                         <label for="">Nombres del proveedor:</label>
-                        <input type="text" class="form-control" id="" placeholder="MeetUp/Jorge" formControlName="nombreProveedor">
+                        <input type="text" class="form-control" id="" placeholder="MeetUp/Jorge" formControlName="nombreProveedor" [ngClass]="(editarForm.get('nombreProveedor')?.touched || editarForm.get('nombreProveedor')?.dirty) &&
+                        editarForm.get('nombreProveedor')?.errors ? 'is-invalid' : '' || editarForm.get('nombreProveedor')?.hasError('minlength')
+                        ? 'is-invalid' : '' || editarForm.get('nombreProveedor')?.hasError('pattern')
+                        ? 'is-invalid' : ''">
+                        <div class="invalid-feedback">
+                            {{ editarForm.get("nombreProveedor")?.hasError("required") ? "Campo requerido" : "" }}
+                            {{ editarForm.get("nombreProveedor")?.hasError("pattern") ? "Campo solo con letras" : "" }}
+                        </div>
                     </div>
+                    <!-- {{editarForm.get("nombreProveedor")?.errors | json}} -->
 
                     <div class="form-group">
                         <label for="">Apellidos del proveedor:</label>
-                        <input type="text" class="form-control" id="" placeholder="MeetUp/Martinez" formControlName="apellidoProveedor">
+                        <input type="text" class="form-control" id="" placeholder="MeetUp/Martinez" formControlName="apellidoProveedor" [ngClass]="(editarForm.get('apellidoProveedor')?.touched || editarForm.get('apellidoProveedor')?.dirty) &&
+                        editarForm.get('apellidoProveedor')?.errors ? 'is-invalid' : '' || editarForm.get('apellidoProveedor')?.hasError('pattern')
+                        ? 'is-invalid' : ''">
+                        <div class="invalid-feedback">
+                            {{ editarForm.get("apellidoProveedor")?.hasError("required") ? "Campo requerido" : "" }}
+                            {{ editarForm.get("apellidoProveedor")?.hasError("pattern") ? "Campo solo con letras" : "" }}
+                        </div>
                     </div>
+                    <!-- {{editarForm.get("apellidoProveedor")?.errors | json}} -->
 
                     <div class="form-group">
-                        <label for="">Email del proveedor:</label>
-                        <input type="text" class="form-control" id="" placeholder="MeetUp@gmail.com" formControlName="correoProveedor">
+                        <label for="">correo Proveedor del proveedor:</label>
+                        <input type="text" class="form-control" id="" placeholder="MeetUp@gmail.com" formControlName="correoProveedor" [ngClass]="(editarForm.get('correoProveedor')?.touched || editarForm.get('correoProveedor')?.dirty) &&
+                        editarForm.get('correoProveedor')?.errors ? 'is-invalid' : '' || editarForm.get('correoProveedor')?.hasError('correoProveedor')
+                        ? 'is-invalid' : ''">
+                        <div class="invalid-feedback">
+                            {{ editarForm.get("correoProveedor")?.hasError("required") ? "Campo requerido" : "" }}
+                            {{ editarForm.get("correoProveedor")?.hasError("email") ? "Campo de correo Proveedor persona@example.com" : "" }}
+                        </div>
                     </div>
+                    <!-- {{editarForm.get("correoProveedor")?.errors | json}} -->
 
                     <div class="form-group">
                         <label for="">Fecha de nacimiento del proveedor:</label>
-                        <input type="date" class="form-control" id="" placeholder="MeetUp@gmail.com" formControlName="fechaNacimiento">
+                        <input type="date" class="form-control" id="" placeholder="MeetUp@gmail.com" formControlName="fechaNacimiento" [ngClass]="(editarForm.get('fechaNacimiento')?.touched || editarForm.get('fechaNacimiento')?.dirty) &&
+                        editarForm.get('fechaNacimiento')?.errors ? 'is-invalid' : ''">
+                        <div class="invalid-feedback">
+                            {{ editarForm.get("fechaNacimiento")?.hasError("required") ? "Campo requerido" : "" }}
+                        </div>
                     </div>
+                    <!-- {{editarForm.get("fechaNacimiento")?.errors | json}} -->
 
                     <div class="form-group">
-                        <label for="">Celular del proveedor:</label>
-                        <input type="text" class="form-control" id="" placeholder="3207954891" formControlName="celular">
+                        <label for="">celular del proveedor:</label>
+                        <input type="text" class="form-control" id="" placeholder="3207954891" formControlName="celular" [ngClass]="(editarForm.get('celular')?.touched || editarForm.get('celular')?.dirty) &&
+                        editarForm.get('celular')?.errors ? 'is-invalid' : '' || editarForm.get('celular')?.hasError('maxlength')
+                        ? 'is-invalid' : '' || editarForm.get('celular')?.hasError('minlength')
+                        ? 'is-invalid' : '' || editarForm.get('celular')?.hasError('pattern')
+                        ? 'is-invalid' : ''">
+                        <div class="invalid-feedback">
+                            {{ editarForm.get("celular")?.hasError("pattern") ? "Campo solo numérico" : "" }}
+                        </div>
+                        <div class="invalid-feedback">
+                            {{ editarForm.get("celular")?.hasError("required") ? "Campo requerido" : "" }}
+                            {{ editarForm.get("celular")?.hasError("maxlength") ? "Campo de 10 caracteres" : "" }}
+                            {{ editarForm.get("celular")?.hasError("minlength") ? "Campo de 10 caracteres" : "" }}
+                        </div>
                     </div>
+                    <!-- {{editarForm.get("celular")?.errors | json}} -->
+
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btnGuardar" (click)="postForm(editarForm.value)">Editar</button>
+                <button *ngIf="editarForm.invalid" type="button" class="btn btnGuardar" [disabled]="editarForm.invalid" (click)="postForm(editarForm.value)">Editar</button>
+                <button *ngIf="editarForm.valid" type="button" class="btn btnGuardar" (click)="postForm(editarForm.value)">Editar</button>
             </div>
         </div>
     </div>

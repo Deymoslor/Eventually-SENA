@@ -15,6 +15,8 @@ import { ResponseI } from '../../core/ui/response.interface';
 })
 export class LoginComponent implements OnInit {
 
+  loginForm: FormGroup;
+
   //Input para los datos que queremos enviar.
   @Input() dataInput:any;
 
@@ -31,12 +33,7 @@ export class LoginComponent implements OnInit {
   errorStatus:boolean = false;
   errorMsg:any = "";
 
-  //Creamos una variable que hará referencia a nuestro formulario de login, este a su vez recibe 2 parámetros, el primero que es un array de formControls.
-  loginForm = new FormGroup({
-    //Aquí asignamos un elemento, email y password a un formControl que recibe 2 parámetros, el valor por defecto del campo y las validaciones que queramos.
-    email : new FormControl('',Validators.required),
-    password : new FormControl('',Validators.required)
-  });
+
 
   constructor(
     //Inyectamos el servicio.
@@ -50,6 +47,8 @@ export class LoginComponent implements OnInit {
 
     private authService: AuthService,
 
+    private formBuilder:FormBuilder,
+
     //Inyectamos variables de cuenta globales.
     private globalAccountConstants:globalAccountConstants,
 
@@ -60,6 +59,14 @@ export class LoginComponent implements OnInit {
         //   email:['']
         //   // password:['']
         // })
+
+        //Creamos una variable que hará referencia a nuestro formulario de login, este a su vez recibe 2 parámetros, el primero que es un array de formControls.
+        this.loginForm = this.formBuilder.group({
+          //Aquí asignamos un elemento, email y password a un formControl que recibe 2 parámetros, el valor por defecto del campo y las validaciones que queramos.
+          email : ['', [Validators.required, Validators.email]],
+          password : ['', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]],
+        });
+
       }
 
   ngOnInit(): void {

@@ -6,7 +6,7 @@
                 <input type="text" name="" id="email"  formControlName="nombre" placeholder="Introduce tu nombre" [ngClass]="(nuevoForm.get('nombre')?.touched || nuevoForm.get('nombre')?.dirty) &&
                 nuevoForm.get('nombre')?.errors ? 'is-invalid' : '' || nuevoForm.get('documento')?.hasError('minlength')
                 ? 'is-invalid' : '' || nuevoForm.get('documento')?.hasError('pattern')
-                ? 'is-invalid' : ''" formControlName="nombre"><span class="barra"></span>
+                ? 'is-invalid' : ''"><span class="barra"></span>
                 <label for="">Nombre</label>
                 <div class="invalid-feedback">
                     {{ nuevoForm.get("nombre")?.hasError("required") ? "Campo requerido" : "" }}
@@ -85,19 +85,19 @@
                 </div>
             </div>
             <div class="grupo">
-                <input type="text" name="" id="password"  formControlName="Celular" placeholder="Introduce tu numero de teléfono" [ngClass]="(nuevoForm.get('Celular')?.touched || nuevoForm.get('Celular')?.dirty) &&
-                nuevoForm.get('Celular')?.errors ? 'is-invalid' : '' || nuevoForm.get('Celular')?.hasError('maxlength')
-                ? 'is-invalid' : '' || nuevoForm.get('Celular')?.hasError('minlength')
-                ? 'is-invalid' : '' || nuevoForm.get('Celular')?.hasError('pattern')
+                <input type="text" name="" id="password"  formControlName="celular" placeholder="Introduce tu numero de teléfono" [ngClass]="(nuevoForm.get('celular')?.touched || nuevoForm.get('celular')?.dirty) &&
+                nuevoForm.get('celular')?.errors ? 'is-invalid' : '' || nuevoForm.get('celular')?.hasError('maxlength')
+                ? 'is-invalid' : '' || nuevoForm.get('celular')?.hasError('minlength')
+                ? 'is-invalid' : '' || nuevoForm.get('celular')?.hasError('pattern')
                 ? 'is-invalid' : ''" ><span class="barra"></span>
                 <label for="">Número de teléfono celular</label>
                 <div class="invalid-feedback">
-                    {{ nuevoForm.get("Celular")?.hasError("pattern") ? "Campo solo numérico" : "" }}
+                    {{ nuevoForm.get("celular")?.hasError("pattern") ? "Campo solo numérico" : "" }}
                 </div>
                 <div class="invalid-feedback">
-                    {{ nuevoForm.get("Celular")?.hasError("required") ? "Campo requerido" : "" }}
-                    {{ nuevoForm.get("Celular")?.hasError("maxlength") ? "Campo de 10 caracteres" : "" }}
-                    {{ nuevoForm.get("Celular")?.hasError("minlength") ? "Campo de 10 caracteres" : "" }}
+                    {{ nuevoForm.get("celular")?.hasError("required") ? "Campo requerido" : "" }}
+                    {{ nuevoForm.get("celular")?.hasError("maxlength") ? "Campo de 10 caracteres" : "" }}
+                    {{ nuevoForm.get("celular")?.hasError("minlength") ? "Campo de 10 caracteres" : "" }}
                 </div>
             </div>
             <div class="grupo">
