@@ -89,10 +89,19 @@
                     <div class="col-4 firts input">
 
                         <label for="validationDefault04" class="form-label titulos">Privacidad</label>
-                        <div class="form-check firtsContainer">
-                            <input class="form-check-input texto" type="radio" name="flexRadioDefault" id="flexRadioDefault1" [ngClass]="(createYourGroupForm.get('privacidadGrupo')?.touched || createYourGroupForm.get('privacidadGrupo')?.dirty) &&
-  createYourGroupForm.get('privacidadGrupo')?.errors ? 'is-invalid' : ''" formControlName="privacidadGrupo" name="privacidadGrupo" value="2">
+
+                        <div class="form-check firtsContainer texto">
+                            <input class="form-check-input firtsContainer texto" type="radio" name="flexRadioDefault" id="flexRadioDefault1" [ngClass]="(createYourGroupForm.get('privacidadGrupo')?.touched || createYourGroupForm.get('privacidadGrupo')?.dirty) &&
+                        createYourGroupForm.get('privacidadGrupo')?.errors ? 'is-invalid' : ''" formControlName="privacidadGrupo" name="privacidadGrupo" value="2">
                             <label class="form-check-label" for="flexRadioDefault">Publico</label>
+                        </div>
+                        <div class="form-check firtsContainer texto">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" [ngClass]="(createYourGroupForm.get('privacidadGrupo')?.touched || createYourGroupForm.get('privacidadGrupo')?.dirty) &&
+                        createYourGroupForm.get('privacidadGrupo')?.errors ? 'is-invalid' : ''" formControlName="privacidadGrupo" name="privacidadGrupo" value="1">
+                            <label class="form-check-label" for="flexRadioDefault">Privado</label>
+                        </div>
+                        <div class="invalid-feddback firtsContainer texto">
+                            {{ createYourGroupForm.get("privacidadGrupo")?.hasError("required") ? "Privacidad Requerida" : "" }}
                         </div>
 
 
