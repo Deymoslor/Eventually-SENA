@@ -1,51 +1,53 @@
 <div *ngIf="invitations; else notInvitations">
+
     <!--TABLE-->
-    <div class="table-responsive" *ngIf="accepted != true">
-        <table class="table table-dark table-responsive">
+    <div class="table-responsive row tables" *ngIf="accepted != true">
+        <!-- <div class="col "> -->
+        <table class="table table-striped">
             <thead>
-            <tr>
-                <th scope="col">No</th>
-                <th scope="col">Calificacion</th>
-                <th scope="col">Nombre Evento</th>
-                <!-- <th scope="col">Fecha Realizacion</th> -->
-                <th scope="col">estado respuesta</th>
-                <th scope="col">Acciones</th>
-            </tr>
+                <tr class="textoTitulos">
+                    <th scope="col">No</th>
+                    <th scope="col">Calificacion</th>
+                    <th scope="col">Nombre Evento</th>
+                    <!-- <th scope="col">Fecha Realizacion</th> -->
+                    <th scope="col">estado respuesta</th>
+                    <th scope="col">Acciones</th>
+                </tr>
             </thead>
             <tbody>
-                
-            <tr *ngFor="let key of dataServiceEventProv">
-                
-                <td>{{key.idDetalleEvento}}</td>
-                <td>{{key.calificacion}}</td>
-                <td>{{key.nombreEvento}}</td>
-                <td *ngIf="key.estadoInvitacion == 0">SIN RESPUESTA</td>
-                <td *ngIf="key.estadoInvitacion == 1">ACEPTADO</td>
-                <td *ngIf="key.estadoInvitacion == 2">RECHAZADO</td>
-                <td *ngIf="key.estadoInvitacion == 3">TERMINADO</td>
-                <td *ngIf="key.estadoInvitacion == 0">
-                    <div class="content-button">
-                        <button class="btn btn-primary" (click)="changeStateServiceProvA(key)">Aceptar</button>
-                        <button class="btn btn-primary" (click)="changeStateServiceProvD(key)">Rechazar</button>    
-                    </div>
-                </td>
-                <td *ngIf="key.estadoInvitacion == 1">
-                    Evento aceptado
-                </td>
-                <td *ngIf="key.estadoInvitacion == 2">
-                    Evento Rechazado
-                </td>
-                <td *ngIf="key.estadoInvitacion == 3">
-                    Evento Terminado
-                </td>
-            </tr>
+
+                <tr class="textox" *ngFor="let key of dataServiceEventProv">
+
+                    <td>{{key.idDetalleEvento}}</td>
+                    <td>{{key.calificacion}}</td>
+                    <td>{{key.nombreEvento}}</td>
+                    <td *ngIf="key.estadoInvitacion == 0">SIN RESPUESTA</td>
+                    <td *ngIf="key.estadoInvitacion == 1">ACEPTADO</td>
+                    <td *ngIf="key.estadoInvitacion == 2">RECHAZADO</td>
+                    <td *ngIf="key.estadoInvitacion == 3">TERMINADO</td>
+                    <td *ngIf="key.estadoInvitacion == 0">
+                        <div class="content-button">
+                            <button class="btn btn-secondary textox" (click)="changeStateServiceProvA(key)">Aceptar</button>
+                            <button class="btn btnAceptar textox" (click)="changeStateServiceProvD(key)">Rechazar</button>
+                        </div>
+                    </td>
+                    <td *ngIf="key.estadoInvitacion == 1">
+                        Evento aceptado
+                    </td>
+                    <td *ngIf="key.estadoInvitacion == 2">
+                        Evento Rechazado
+                    </td>
+                    <td *ngIf="key.estadoInvitacion == 3">
+                        Evento Terminado
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>
-    
-<!--TABLE//-->
 
-    <div  *ngIf="accepted != false">
+    <!--TABLE//-->
+
+    <div *ngIf="accepted != false">
         EVENTO ACEPTADO, PORFAVOR TERMINAR EL EVENTO.
     </div>
 

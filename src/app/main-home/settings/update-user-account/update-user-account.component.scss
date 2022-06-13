@@ -5,26 +5,26 @@
         margin: 0;
         padding: 0;
     }
-    
+
     .titlePrincipal {
         font-family: 'Pacifico', cursive;
         margin: 0 auto;
         font-size: 3vw;
         padding: 1.5rem;
     }
-    
+
     .card {
         margin: 0;
         padding: 0;
     }
-    
+
     .card-body {
         margin: 0;
         padding: 0;
         margin-left: 0.5rem;
         margin-right: 0.5rem;
     }
-    
+
     .selectNewLikes {
         label {
             border-radius: 14rem;
@@ -36,21 +36,17 @@
             text-align: center;
         }
     }
-    
+
     .textoTitulos {
         font-family: 'Ubuntu', sans-serif;
         font-weight: 700;
     }
-    
+
     .textox {
         font-family: 'Ubuntu', sans-serif;
         font-weight: 350;
     }
-    
-    .r {
-        width: 50%;
-    }
-    
+
     .account-topics-name {
         a {
             svg {
@@ -62,22 +58,22 @@
             }
         }
     }
-    
+
     .btnChangeLikes .btn-primary {
         background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
     }
-    
+
     .btnChangeLikes .btn-primary:hover {
         background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
     }
-    
+
     .separator {
         background: #ccc;
         width: 100%;
         height: 2px;
         margin-top: 16px;
     }
-    
+
     // Selección de gustos
     .account-topics-item {
         float: left;
@@ -88,7 +84,7 @@
         width: 236px;
         overflow: hidden;
     }
-    
+
     .account-topics-remove {
         position: absolute;
         right: 6px;
@@ -107,11 +103,11 @@
         background-clip: border-box;
         display: none;
     }
-    
+
     .account-topics-item:hover .account-topics-remove {
         display: block;
     }
-    
+
     a,
     a:active,
     a:hover,
@@ -126,7 +122,7 @@
         text-decoration-color: currentcolor;
         // text-decoration-thickness: auto;
     }
-    
+
     .account-topics-name {
         font-size: 13px;
         width: 208px;
@@ -134,7 +130,7 @@
         text-overflow: ellipsis;
         white-space: nowrap;
     }
-    
+
     .spritebg {
         margin-right: 5px;
         display: block;
@@ -144,29 +140,29 @@
         background: #ccc;
         border-radius: 50%;
     }
-    
+
     .account-topics-item {
         width: 8rem;
     }
-    
+
     .account-topics-name:hover .spritebg {
         background: #000
     }
-    
+
     .imgAc {
         width: 25vw;
     }
-    
+
     .imgA {
         width: 20vw;
     }
-    
+
     @media only screen and (max-width:607px) {
         .imgAc {
             width: 9.5rem;
         }
     }
-    
+
     @media only screen and (max-width:494px) {
         .account-topics-item {
             width: 25vw;
@@ -175,7 +171,7 @@
             }
         }
     }
-    
+
     @media only screen and (max-width:462px) {
         .account-topics-item {
             width: 25vw;
@@ -190,7 +186,7 @@
             width: 13rem;
         }
     }
-    
+
     @media only screen and (max-width:378px) {
         .cards1 {
             width: 55vw;
@@ -202,7 +198,7 @@
             width: 40vw;
         }
     }
-    
+
     @media only screen and (max-width:299px) {
         .cards1 {
             width: 45vw;
@@ -217,26 +213,26 @@
             width: 7.1rem;
         }
     }
-    
+
     // sssssss
     @media only screen and (max-width: 1464px) {
         .titlePrincipal {
             font-size: 3vw;
         }
     }
-    
+
     @media only screen and (max-width: 1042px) {
         .titlePrincipal {
             font-size: 3vw;
         }
     }
-    
+
     @media only screen and (max-width: 850px) {
         .titlePrincipal {
             font-size: 3rem;
         }
     }
-    
+
     @media only screen and (max-width: 504px) {
         .titlePrincipal {
             font-size: 1.5rem;

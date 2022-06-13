@@ -26,7 +26,7 @@ import { FilterPipe } from './pipeGroups/filter.pipe';
     GroupsComponent,
     NavGroupComponent,
     // ModalEditGroupsComponent,
-    ModalEventsCompletedComponent,
+    // ModalEventsCompletedComponent,
     ModalReportEventsGroupsOrganizerComponent,
     ModalCreateEventComponent,
     FilterPipe,

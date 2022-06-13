@@ -49,8 +49,8 @@ export class userService {
     return this.http.get<ListaPersonasI[]>(direccion);
   }
 
-  getGroupPerson(rgrupo:number):Observable<GroupPersonDetails[]>{
-    let direccion = this.API+"persons?personGrupo=" + rgrupo;
+  getGroupPerson(rgrupo:number, participante:number):Observable<GroupPersonDetails[]>{
+    let direccion = this.API+"persons?personGrupo=" + rgrupo+"&participanteGrupo="+participante;
     return this.http.get<GroupPersonDetails[]>(direccion);
   }
 
@@ -60,9 +60,9 @@ export class userService {
   }
 
   //Creamos método para obtener la persona mediante el filtro. Este método devuelve un observable de tipo PersonaI
-  PostRequestGroupPerson(request:GroupPerson):Observable<Response>{
+  PostRequestGroupPerson(request:GroupPerson):Observable<ResponseI>{
     let direccion = this.API+"requestGroups";
-    return this.http.post<Response>(direccion, request);
+    return this.http.post<ResponseI>(direccion, request);
   }
 
   //Creamos el método para actualizar.
