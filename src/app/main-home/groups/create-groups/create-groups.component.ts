@@ -48,11 +48,10 @@ export class CreateGroupsComponent implements OnInit {
         privacidadGrupo: ['', Validators.required],
         InvitadosTotales: ['', Validators.required],
         check: ['', Validators.requiredTrue],
-        imagen: [this.previsualizacion, [Validators.required]],
+        imagen: ['', [Validators.required]],
         gustos_idGusto: ['', Validators.required],
         idPersona: [],
       });
-
     }
 
   ngOnInit(): void {

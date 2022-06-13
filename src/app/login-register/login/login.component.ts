@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit {
         this.loginForm = this.formBuilder.group({
           //Aquí asignamos un elemento, email y password a un formControl que recibe 2 parámetros, el valor por defecto del campo y las validaciones que queramos.
           email : ['', [Validators.required, Validators.email]],
-          password : ['', [Validators.required, Validators.minLength(4), Validators.maxLength(12)]],
+          password : ['', [Validators.required, Validators.minLength(3), Validators.maxLength(12)]],
         });
 
       }
