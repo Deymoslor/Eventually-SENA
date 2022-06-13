@@ -37,10 +37,10 @@
         <a *ngIf="permisos(['PROVEEDOR'])" (click)="myService()" class="nav-link optionLM options" routerLink="provider">
             <svg class="icon" class="icon" role="button" fill="none" stroke="white" viewBox="0 0 24 24" stroke-width="2"><title>Mi Servicio</title><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
         </a>
-
+        <!--
         <a *ngIf="permisos(['PROVEEDOR'])" (click)="createService()" class="nav-link optionLM options" routerLink="provider">
             <svg class="icon" class="icon" role="button" fill="none" stroke="white" viewBox="0 0 24 24" stroke-width="4"><title>Crear Servicio</title><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-        </a>
+        </a> -->
         <!-- Botones ADMIN -->
 
         <a *ngIf="permisos(['ADMIN'])" (click)="groupsDash()" class="nav-link optionLM options">
