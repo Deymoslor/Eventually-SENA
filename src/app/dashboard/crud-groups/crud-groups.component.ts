@@ -71,7 +71,6 @@ export class CrudGroupsComponent implements OnInit {
         this.datosGrupo = data[0];
         this.datosGrupo.EstadosGrupo_idEstadosGrupo1 = 1;
         this.GroupsServiceService.putGroup(this.datosGrupo).subscribe((data:any) =>{
-          console.log("Entrando aquí");
         window.location.reload();
         });
       });
@@ -81,20 +80,7 @@ export class CrudGroupsComponent implements OnInit {
         this.datosGrupo = data[0];
         this.datosGrupo.EstadosGrupo_idEstadosGrupo1 = 2;
         this.GroupsServiceService.putGroup(this.datosGrupo).subscribe((data:any) =>{
-          // console.log("Entrando aquí");
-          let respuesta:ResponseI = data;
-          //Verificamos si la respuesta es exitosa.
-          if(respuesta.status == 'ok'){
-            this.alertas.showSuccess('Grupo actualizado correctamente','Actulización exitosa');
-            setTimeout(() =>{
-              window.location.reload();
-            },2000);
-          }else{
-            this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
-            setTimeout(() =>{
-              window.location.reload();
-            },2000);
-          }
+          window.location.reload();
         });
       });
     }
@@ -107,7 +93,6 @@ export class CrudGroupsComponent implements OnInit {
         this.datosGrupo = data[0];
         this.datosGrupo.privacidadGrupo = 1;
         this.GroupsServiceService.putGroup(this.datosGrupo).subscribe((data:any) =>{
-          console.log("Entrando aquí");
         window.location.reload();
         });
       });
@@ -117,7 +102,6 @@ export class CrudGroupsComponent implements OnInit {
         this.datosGrupo = data[0];
         this.datosGrupo.privacidadGrupo = 2;
         this.GroupsServiceService.putGroup(this.datosGrupo).subscribe((data:any) =>{
-          console.log("Entrando aquí");
         window.location.reload();
         });
       });
