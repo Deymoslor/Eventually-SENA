@@ -39,7 +39,7 @@ export class GroupReportComponent implements OnInit {
     // let elements = document.querySelectorAll("#pdfGroups .theme-showcase");
     // const elements = document.getElementById('pdfGroups');
     const DATA = document.getElementById('pdfGroups');
-    const doc = new jsPDF('p','pt','a4');
+    // const doc = new jsPDF('p','pt','a4');
     const options = {
       background: 'white',
       scale: 3

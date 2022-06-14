@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { GlobalConstants } from 'src/app/global-constants';
 import { Groups } from 'src/app/main-home/groups/see-groups/groups';
 import { ListEventsI } from 'src/app/models/listEvents.interface';
 import { ListGroups } from '../../crud-groups/listGroups.interface';
@@ -10,8 +11,10 @@ import { ListaPersonasI } from '../../crud-users/ListaPersonasI.interface';
   providedIn: 'root'
 })
 export class ApiTypeReportService {
+  
+  port = GlobalConstants.port;
 
-  API:string='http://localhost/Api-Eventually-SENA/';
+  API:string='http://localhost'+this.port+'/Api-Eventually-SENA/';
 
   constructor(private http:HttpClient) { }
 
