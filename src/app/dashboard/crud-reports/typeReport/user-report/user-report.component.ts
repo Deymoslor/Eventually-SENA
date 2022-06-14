@@ -6,8 +6,10 @@ import { ListaPersonasI } from 'src/app/dashboard/crud-users/ListaPersonasI.inte
 import { ApiTypeReportService } from '../api-type-report.service';
 import { Router } from '@angular/router';
 import * as pdfMake from "pdfmake/build/pdfmake";
-import pdfFonts from 'pdfmake/build/vfs_fonts';
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import jsPDF from 'jspdf';
+import pdf from 'html-pdf';
+import path from 'path';
 (<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
@@ -34,31 +36,43 @@ export class UserReportComponent implements OnInit {
   }
 
   createPDF(){
-    // const pdfDefinition: any = {
-    //   content: [
-    //     {
-    //       layout: 'lightHorizontalLines', // optional
-    //       table: {
-    //         headerRows: 1,
-    //         widths: [ '*', 'auto', 100, '*' ],
-    //         body: [
-    //           [ 'Nombre', 'Documento', 'Fecha de nacimiento', 'Correo' ],
-    //           [ '{{ this.personas:nombreUser }}', 'Value 2', 'Value 3', 'Value 4' ],
-    //         ]
-    //       }
-    //     }
-    //   ]
-    // }
+    __dirname = path.resolve(path.dirname(''));
+    const content = `
+    <div class="container theme-showcase" role="main">
+    <div class="jumbotron">
+      <h1>Reporte de Usuarios</h1>
+      <p>TEste es el reporte de usuarios que se realiza en este mes.</p>
+    </div>
 
-    html2canvas(document.getElementById('exportthis')!).then(function (canvas) {
-      var data = canvas.toDataURL();
-      var pdfDefinition = {
-          content: [{
-              image: data,
-              width: 500,
-          }]
-      };
-      pdfMake.createPdf(pdfDefinition).download("Reportes_User.pdf");
-    });
+    <table class="table table-warning">
+      <thead>
+        <tr>
+          <th scope="col">No</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Apellido</th>
+          <th scope="col">documento</th>
+          <th scope="col">Email</th>
+        </tr>
+      </thead>
+      <tbody class="table-secondary">
+        <tr *ngFor="let persona of personas">
+          <th scope="row">{{persona.idPersona}}</th>
+          <td>{{persona.nombre}}</td>
+          <td>{{persona.apellidos}}</td>
+          <td>{{persona.documento}}</td>
+          <td>{{persona.Email}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  `;
+
+  pdf.create(content).toFile(`./${new Date().toISOString()}_usuarios.pdf`, function(err, res) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(res);
+    }
+  })
   }
 }

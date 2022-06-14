@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ListEventsI } from 'src/app/models/listEvents.interface';
 import { ApiTypeReportService } from '../api-type-report.service';
 import html2canvas from 'html2canvas';
@@ -7,6 +7,7 @@ import pdfFonts from 'pdfmake/build/vfs_fonts';
 import { ListGroups } from 'src/app/dashboard/crud-groups/listGroups.interface';
 import { Router } from '@angular/router';
 import jsPDF from 'jspdf';
+import { Socket } from 'dgram';
 (<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
@@ -20,11 +21,6 @@ export class GroupReportComponent implements OnInit {
 
   groups!:ListGroups[];
 
-  // displayedColumns: string[] = ['position', 'NameGroups', 'DescriptionGroups', 'Privacy', 'TotalUsers','StateGroup', 'actions'];
-  // dataSource = new MatTableDataSource(ELEMENT_DATA);
-
-  // @ViewChild(MatPaginator, { static: true })
-  // paginator!: MatPaginator;
   constructor( private Api:ApiTypeReportService, private router:Router) {
     this.downloadPDF();
   }
@@ -39,24 +35,42 @@ export class GroupReportComponent implements OnInit {
     })
   }
 
-  public downloadPDF(): void {
-    const DATA = document.getElementById('exportthis');
+  public downloadPDF() {
+    // let elements = document.querySelectorAll("#pdfGroups .theme-showcase");
+    // const elements = document.getElementById('pdfGroups');
+    const DATA = document.getElementById('pdfGroups');
     const doc = new jsPDF('p','pt','a4');
     const options = {
       background: 'white',
       scale: 3
     };
+    // doc.html(DATA,{
+    //   callback: (doc) => {
+    //     doc.save(`${new Date().toISOString()}_grupos.pdf`);
+    //   }
+    // })
 
     html2canvas(DATA!, options).then((canvas) => {
       const img = canvas.toDataURL();
 
       // Add image Canvas to PDF
-      const bufferX = 15;
-      const bufferY = 15;
-      const imgProps = (doc as any).getImageProperties(img);
-      const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
-      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-      doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
+      var imgWidth = 210;
+      var pageHeight = 295;
+      var imgHeight = canvas.height * imgWidth / canvas.width;
+      var heightLeft = imgHeight;
+
+      var doc = new jsPDF('p', 'mm', "a4");
+      var position = 0;
+
+      doc.addImage(img, 'PNG', 0, position, imgWidth, imgHeight+10);
+      heightLeft -= pageHeight;
+
+      while (heightLeft >= 0) {
+          position = heightLeft - imgHeight;
+          doc.addPage();
+          doc.addImage(img, 'PNG', 0, position, imgWidth, imgHeight+10);
+          heightLeft -= pageHeight;
+      }
       return doc;
     }).then((docResult) => {
       docResult.save(`${new Date().toISOString()}_grupos.pdf`);
