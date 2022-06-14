@@ -77,22 +77,48 @@ export class GroupReportComponent implements OnInit {
     });
   }
 
-  // createPDFGrupos(){
+  // single = [];
+  view: [number, number] = [700, 400];
 
+  // options
+  gradient: boolean = true;
+  showLegend: boolean = true;
+  showLabels: boolean = true;
+  isDoughnut: boolean = false;
 
+  single = [
+    {
+      "name": "Germany",
+      "value": 8940000
+    },
+    {
+      "name": "USA",
+      "value": 5000000
+    },
+    {
+      "name": "France",
+      "value": 7200000
+    },
+      {
+      "name": "UK",
+      "value": 6200000
+    }
+  ];
 
-  //   html2canvas(document.getElementById('pdfGroups')!).then(function (canvas) {
-  //     var data = canvas.toDataURL();
-  //     var doc = new jsPDF();
-  //     var pdfDefinition = {
-  //         content: [{
-  //             image: data,
-  //             width: 500,
-  //         }]
-  //     };
-  //     pdfMake.createPdf(pdfDefinition).download("Reportes_Grupos.pdf");
-  // });
+  colorScheme = {
+    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+  };
 
-  // }
+  onSelect(data: any): void {
+    console.log('Item clicked', JSON.parse(JSON.stringify(data)));
+  }
+
+  onActivate(data: any): void {
+    console.log('Activate', JSON.parse(JSON.stringify(data)));
+  }
+
+  onDeactivate(data: any): void {
+    console.log('Deactivate', JSON.parse(JSON.stringify(data)));
+  }
 
 }

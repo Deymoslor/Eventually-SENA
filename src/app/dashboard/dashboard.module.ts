@@ -38,6 +38,8 @@ import { FooterModule } from '../footer/footer.module';
 import { DatailGroupComponent } from './requests/table-request-groups/datail-group/datail-group.component';
 import { DatailEventComponent } from './requests/table-request-event/datail-event/datail-event.component';
 import { LandingAdminComponent } from './landing-admin/landing-admin.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -85,7 +87,9 @@ import { LandingAdminComponent } from './landing-admin/landing-admin.component';
     MenuModule,
     ReactiveFormsModule,
     MatDatepickerModule,
-    FooterModule
+    FooterModule,
+    NgxChartsModule,
+    BrowserAnimationsModule
   ]
 })
 export class DashboardModule { }
