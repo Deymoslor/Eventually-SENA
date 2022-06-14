@@ -43,7 +43,7 @@
                               <li><a class="dropdown-item" href="#">Separated link</a></li> -->
 
                             <li class="d-flex" *ngIf="this.rol != 'PROVEEDOR' ">
-                                <a class="dropdown-item" routerLink="../settings/user-account">
+                                <a class="dropdown-item" (click)="configP()">
                                     <div class="row">
                                         <div class="col-12 d-flex align-items-center justify-content-center">
                                             <div class="col-2">

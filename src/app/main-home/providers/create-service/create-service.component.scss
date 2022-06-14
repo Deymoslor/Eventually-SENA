@@ -1,20 +1,85 @@
-.thumbnail {
+@import '../../../app.component.scss';
+.content {
     display: flex;
+    width: 90%;
     flex-direction: column;
-    border-radius: 20px;
+    align-items: center;
+    justify-content: space-between;
+    flex-grow: 1;
+    margin-top: 4vw;
+    height: auto!important;
+}
+
+.imagen {
+    width: 20rem;
+}
+
+.r {
+    // border: 1px solid red;
+    margin: 0;
+    padding: 0;
+}
+
+.t {
+    // border: 1px solid purple;
+    margin: 0;
+    padding: 0;
     width: 100%;
-    height: 400px;
-    background-image: url("../../../../assets/main/providers/breadcrumb.jpg");
-  }
+}
 
-  .title {
-    margin-top: 20%;
-    align-self: center;
-  }
+.titlePrincipal {
+    font-family: 'Pacifico', cursive;
+    margin: 0 auto;
+    font-size: 8vw;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
 
-  .law{
+.textoTitulos {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+}
+
+.textox {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 350;
+}
+
+.law {
     display: flex;
     margin-top: 20%;
     margin-bottom: 30%;
     justify-content: center;
-  }
+}
+
+.btnCrear {
+    background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
+    color: white;
+}
+
+.btnCrear:hover {
+    background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
+}
+
+@media only screen and (max-width:488px) {
+    .textox {
+        font-size: 0.8rem;
+    }
+    .textoTitulos {
+        font-size: 0.8rem;
+    }
+}
+
+@media only screen and (max-width:454px) {
+    .modal-content {
+        // border: 1px solid black;
+        width: 96%;
+    }
+    .r {
+        width: 95%;
+    }
+    .m {
+        width: 98%;
+        // border: 1px solid black;
+    }
+}

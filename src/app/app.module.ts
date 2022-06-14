@@ -29,7 +29,7 @@ import { ToastrModule } from 'ngx-toastr';
     AppComponent,
     LandingpageComponent,
     HeaderComponent,
-    SuppliersComponent
+    SuppliersComponent,
   ],
   imports: [
     BrowserModule,

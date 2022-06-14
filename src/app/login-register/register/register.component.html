@@ -46,12 +46,15 @@
             <!-- {{nuevoForm.get("documento")?.errors | json}} -->
             <div class="grupo">
                 <input type="date" name="" id="fechaNacimiento"  formControlName="fechaNacimiento" placeholder="Introduce tu fecha de nacimiento" [ngClass]="(nuevoForm.get('fechaNacimiento')?.touched || nuevoForm.get('fechaNacimiento')?.dirty) &&
-                nuevoForm.get('fechaNacimiento')?.errors ? 'is-invalid' : ''" ><span class="barra"></span>
+                nuevoForm.get('fechaNacimiento')?.errors ? 'is-invalid' : '' || boolAge ? '' : 'is-invalid'" (change)="ageValidator(nuevoForm.get('fechaNacimiento')!.value)"><span class="barra"></span>
                 <label for="">Fecha de Nacimiento</label>
                 <div class="invalid-feedback">
                     {{ nuevoForm.get("fechaNacimiento")?.hasError("required") ? "Campo requerido" : "" }}
+                    <br>
+                    {{ boolAge == false ? "Debes ser mayor de edad para ingresar en el sistema" : "" }} 
                 </div>
             </div>
+            
             <div class="grupo">
                 <input class="email" type="email" name="" id="password"  formControlName="Email" placeholder="Introduce tu email" [ngClass]="(nuevoForm.get('Email')?.touched || nuevoForm.get('Email')?.dirty) &&
                 nuevoForm.get('Email')?.errors ? 'is-invalid' : '' || nuevoForm.get('email')?.hasError('email')
@@ -120,11 +123,15 @@
 
             <!-- <button (click)="sendData()">Registrarse</button> -->
 
-            <button *ngIf="nuevoForm.invalid" type="submit" [disabled]="nuevoForm.invalid" class="btnRegistroDisable">Registrarse</button>
-            <button *ngIf="nuevoForm.valid" type="submit" class="btnRegistro">Registrarse</button>
+            <button type="submit" *ngIf="nuevoForm.invalid && boolAge == false" [disabled]="nuevoForm.invalid && boolAge == false" class="btnRegistroDisable">Registrarse</button>
+            <button type="submit" *ngIf="nuevoForm.invalid && boolAge == true" [disabled]="nuevoForm.invalid && boolAge == true" class="btnRegistroDisable">Registrarse</button>
+            <button type="submit" *ngIf="nuevoForm.valid && boolAge == false" [disabled]="nuevoForm.valid && boolAge == false" class="btnRegistroDisable">Registrarse</button>
+            <button type="submit" *ngIf="nuevoForm.valid && boolAge" class="btnRegistro">Registrarse</button>
+            <!-- <button *ngIf="nuevoForm.valid" type="submit" class="btnRegistro">Registrarse</button> -->
+            <button class="btnsForgot" (click)="cancel()">Cancelar</button>
 
 
-            <!-- <pre>{{ formUsers.value | json }}</pre> -->
+            <!-- <pre>{{ nuevoForm.value | json }}</pre> -->
         </div>
     </form>
 </body>

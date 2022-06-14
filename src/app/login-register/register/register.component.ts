@@ -20,6 +20,7 @@ export class RegisterComponent implements OnInit {
   public lawValidator: boolean = false;
 
   nuevoForm: FormGroup;
+  boolAge: boolean = false;
 
   constructor(
     private service:accountService,
@@ -55,10 +56,27 @@ export class RegisterComponent implements OnInit {
     this.router.navigate(['/loginRegister']);
   }
 
-  postForm(form:registerI){
+  postForm(form: registerI){
+    if (this.boolAge) {
+      this.service.postUser(form).subscribe(data =>{
+        console.log(data);
+        let respuesta:ResponseI = data;
+        //Verificamos si la respuesta es exitosa.
+        if(respuesta.status == 'ok'){
+          this.alertas.showSuccess('Usuario registrado','Registro exitoso');
+          this.router.navigate(['/loginRegister/login']);
+        }else{
+          this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
+          window.location.reload();
+        }
+      });
+    }
+  }
+
+  ageValidator(dateF: string): void{
     //Log para revisar los datos del formulario.
     // console.log(form);
-    let dateU = form.fechaNacimiento;
+    let dateU = dateF;
     // console.log('fecha usuario: ' + dateU);
 
 
@@ -93,28 +111,18 @@ export class RegisterComponent implements OnInit {
       // }
 
       // if (this.nuevoForm.get('check2')) {
-        this.service.postUser(form).subscribe(data =>{
-          console.log(data);
-          let respuesta:ResponseI = data;
-          //Verificamos si la respuesta es exitosa.
-          if(respuesta.status == 'ok'){
-            this.alertas.showSuccess('Usuario registrado','Registro exitoso');
-            this.router.navigate(['/loginRegister/login']);
-          }else{
-            this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
-            window.location.reload();
-          }
-        });
+      this.boolAge = true;
       // }
       // console.log('Primera condi');
 
     }else if((yearS - yearU) == 17 && monthS == monthU && dayS == dayU){
-      this.service.postUser(form).subscribe(data =>{
-        console.log(data);
-        this.router.navigate(['/loginRegister/login']);
-      });
+      this.boolAge = true;
       // console.log("Cumple años este día");
+    }else{
+      this.boolAge = false
     }
+
+    console.log(this.boolAge);
   }
 
   // lawValidatorFunc(yearS:number,yearU:number,monthS:number,monthU:number){

@@ -10,12 +10,18 @@
                     <div class="texto col-4 firts input">
 
                         <label for="validationDefault01" class="form-label titulos input">Nombre grupo</label>
-                        <input type="text" class="form-control firtsContainer texto" id="" placeholder="Ej: Nombre del Grupo" [ngClass]="(createYourGroupForm.get('nombreGrupo')?.touched || createYourGroupForm.get('nombreGrupo')?.dirty) &&
-                          createYourGroupForm.get('nombreGrupo')?.errors ? 'is-invalid' : ''" formControlName="nombreGrupo">
+                        <input type="text" class="form-control firtsContainer texto" id="" placeholder="Ej: Nombre del Grupo" [ngClass]="(createYourGroupForm.get('nombreGrupo')?.touched 
+                        || createYourGroupForm.get('nombreGrupo')?.dirty) &&
+                          createYourGroupForm.get('nombreGrupo')?.errors 
+                          ? 'is-invalid' : '' || createYourGroupForm.get('nombreGrupo')?.errors 
+                          ? 'minlength' : '' || createYourGroupForm.get('nombreGrupo')?.errors 
+                          ? 'maxlength' : '' || createYourGroupForm.get('nombreGrupo')?.errors 
+                          ? 'pattern' : ''" formControlName="nombreGrupo">
                         <div class="invalid-feedback">
-                            {{ createYourGroupForm.get("nombreGrupo")?.hasError("required") ? "Nombre requerido" : "" }} {{ createYourGroupForm.get("nombreGrupo")?.hasError("minlength") ? "Minimo 2 letras" : "" }} {{ createYourGroupForm.get("nombreGrupo")?.hasError("maxlength")
-                            ? "Maximo 30 letras" : "" }} {{ createYourGroupForm.get("nombreGrupo")?.hasError("required") ? "Nombre requerido" : "" }} {{ createYourGroupForm.get("nombreGrupo")?.hasError("pattern") ? "Campo de solo letras" : "" }} {{ createYourGroupForm.get("nombreGrupo")?.hasError("maxlength")
-                            ? "Maximo 30 letras" : "" }}
+                            {{ createYourGroupForm.get("nombreGrupo")?.hasError("required") ? "Nombre requerido" : "" }}
+                            {{ createYourGroupForm.get("nombreGrupo")?.hasError("minlength") ? "Minimo 2 letras" : "" }} 
+                            {{ createYourGroupForm.get("nombreGrupo")?.hasError("maxlength")? "Maximo 30 letras" : "" }}
+                            {{ createYourGroupForm.get("nombreGrupo")?.hasError("pattern") ? "Campo de solo letras" : "" }}
                         </div>
                     </div>
                     <div class="col-4 firts input i">
@@ -52,14 +58,11 @@
                             ? 'is-invalid'
                             : '' || createYourGroupForm.get('descripcionGrupo')?.hasError('maxlength')
                             ? 'is-invalid'
-                            : '' ||
-                              ((createYourGroupForm.get('descripcionGrupo')?.touched ||
-                              createYourGroupForm.get('descripcionGrupo')?.dirty) &&
-                                !createYourGroupForm.get('descripcionGrupo')?.invalid)
-                            ? 'is-valid'
                             : ''" formControlName="descripcionGrupo"></textarea>
                             <div class="invalid-feedback">
-                                {{ createYourGroupForm.get("descripcionGrupo")?.hasError("required") ? " Descripcion requerida" : "" }} {{ createYourGroupForm.get("descripcionGrupo")?.hasError("minlength") ? " 5 letras requeridas" : "" }} {{ createYourGroupForm.get("descripcionGrupo")?.hasError("maxlength")
+                                {{ createYourGroupForm.get("descripcionGrupo")?.hasError("required") ? " Descripcion requerida" : "" }}
+                                 {{ createYourGroupForm.get("descripcionGrupo")?.hasError("minlength") ? " 5 letras requeridas" : "" }}
+                                  {{ createYourGroupForm.get("descripcionGrupo")?.hasError("maxlength" ? "maximo 300 letras" : "")
                                 ? " Ha excedido el limite de caracteres" : "" }}
                             </div>
                         </div>

@@ -1,151 +1,127 @@
-@import '../../app.component.scss';
-.cards {
-    border-radius: 1rem;
-    width: 18rem;
-    height: auto;
-    margin-top: 1rem;
-    position: fixed;
-    .nameUser {
-        padding-top: 0.5rem;
-    }
-    .mailUser {
-        color: $thirdLetter;
-    }
-    .iconUserMenu {
-        width: 2rem;
-    }
-}
-
-.imgUserM {
-    width: 10rem;
-    margin-bottom: 0.5rem;
-}
-
-a {
-    text-decoration: none;
-    color: black;
-}
-
-.useOption {
-    background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
-    width: auto;
-    border-radius: 0.5rem;
-}
-
-.useOption a {
-    color: white !important;
-    svg {
-        stroke: white !important;
-    }
-    .i {
-        fill: none !important;
-    }
-}
-
-.useOption:hover {
-    background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
-}
-
-@media only screen and (max-width: 981px) {
+    @import '../../app.component.scss';
     .cards {
-        width: 25vw;
+        border-radius: 1rem;
+        width: 18rem;
+        height: auto;
+        margin-top: 1rem;
+        position: fixed;
+        .nameUser {
+            padding-top: 0.5rem;
+        }
+        .mailUser {
+            color: $thirdLetter;
+        }
+        .iconUserMenu {
+            width: 2rem;
+        }
     }
-}
-
-@media only screen and (max-width: 809px) {
-    .cards {
-        width: 12.7rem;
+    
+    .imgUserM {
+        width: 10rem;
+        margin-bottom: 0.5rem;
     }
-}
-
-@media only screen and (max-width: 786px) {
-    .ocultar {
-        display: none;
+    
+    ul {
+        // padding: 0;
+        margin: 0;
+        li {
+            padding: 0;
+            margin: 0;
+            margin-bottom: 1rem;
+            a {
+                // padding: 0;
+                margin: 0;
+            }
+        }
     }
-    .cards {
+    
+    a {
+        text-decoration: none;
+        color: black;
+    }
+    
+    .useOption {
+        background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
         width: auto;
+        border-radius: 0.5rem;
     }
-    .imgUserM {
-        width: 4rem;
+    
+    .useOption a {
+        color: white !important;
+        svg {
+            stroke: white !important;
+        }
+        .i {
+            fill: none !important;
+        }
     }
-}
-
-@media only screen and (max-width: 494px) {
-    .imgUserM {
-        width: 2rem;
+    
+    .useOption:hover {
+        background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
     }
-    ul {
-        width: 10vw;
-        li {
+    
+    @media only screen and (max-width: 981px) {
+        .cards {
+            width: 25vw;
+        }
+    }
+    
+    @media only screen and (max-width: 809px) {
+        .cards {
+            width: 12.7rem;
+        }
+    }
+    
+    @media only screen and (max-width: 786px) {
+        .ocultar {
+            display: none;
+        }
+        .cards {
             width: auto;
-            a {
+        }
+        .imgUserM {
+            width: 4rem;
+        }
+    }
+    
+    @media only screen and (max-width: 504px) {
+        ul {
+            width: 7vw;
+        }
+    }
+    
+    @media only screen and (max-width: 494px) {
+        .imgUserM {
+            width: 2rem;
+        }
+        ul {
+            width: 10vw;
+            li {
                 width: auto;
-                svg {
-                    width: 6vw;
+                a {
+                    width: auto;
+                    svg {
+                        width: 6vw;
+                    }
                 }
             }
         }
     }
-}
-
-@media only screen and (max-width: 474px) {
-    .imgUserM {
-        width: 2rem;
-    }
-    ul {
-        width: 8vw;
-        li {
-            width: 11vw;
-            a {
-                width: auto;
-                svg {
-                    width: 6vw;
+    
+    @media only screen and (max-width: 474px) {
+        .imgUserM {
+            width: 2rem;
+        }
+        ul {
+            width: auto;
+            li {
+                width: 11vw;
+                a {
+                    width: auto;
+                    svg {
+                        width: 6vw;
+                    }
                 }
             }
         }
     }
-}
-
-@media only screen and (max-width: 378px) {
-    .imgUserM {
-        width: 1rem;
-    }
-    ul {
-        width: 3.5vw;
-        padding: 1px;
-        li {
-            padding: 1px;
-            width: 5vw;
-            a {
-                padding: 1px;
-                width: auto;
-                svg {
-                    padding: 1px;
-                    width: 4vw;
-                }
-            }
-        }
-    }
-}
-
-@media only screen and (max-width: 356px) {
-    .imgUserM {
-        width: 1rem;
-    }
-    ul {
-        width: 0.2vw;
-        padding: 1px;
-        li {
-            padding: 1px;
-            width: 4.5vw;
-            a {
-                padding: 0.1px;
-                width: auto;
-                svg {
-                    padding: 1px;
-                    width: 4vw;
-                }
-            }
-        }
-    }
-}

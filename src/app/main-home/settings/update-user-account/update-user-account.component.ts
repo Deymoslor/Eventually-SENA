@@ -149,15 +149,28 @@ export class UpdateUserAccountComponent implements OnInit {
       // console.log(this.datosPersona);
 
       //llamamos nuestro formulario de actualizar información para empezar a asignarle la información de los campos.
-      this.editarForm.setValue({
-        'idPersona' : idPersona,
-        'token' : token,
-        'nombre' : this.datosPersona.nombre,
-        'apellidos' : this.datosPersona.apellidos,
-        'documento' : this.datosPersona.documento,
-        'fechaNacimiento' : this.datosPersona.fechaNacimiento,
-        'Email' : this.datosPersona.Email,
-      })
+      if(this.datosPersona.Email){
+        this.editarForm.setValue({
+          'idPersona' : idPersona,
+          'token' : token,
+          'nombre' : this.datosPersona.nombre,
+          'apellidos' : this.datosPersona.apellidos,
+          'documento' : this.datosPersona.documento,
+          'fechaNacimiento' : this.datosPersona.fechaNacimiento,
+          'Email' : this.datosPersona.Email,
+        })
+      }else{
+        this.editarForm.setValue({
+          'idPersona' : idPersona,
+          'token' : token,
+          'nombre' : this.datosPersona.nombre,
+          'apellidos' : this.datosPersona.apellidos,
+          'documento' : this.datosPersona.documento,
+          'fechaNacimiento' : this.datosPersona.fechaNacimiento,
+          'Email' : '',
+        })
+      }
+      
 
     });
   }

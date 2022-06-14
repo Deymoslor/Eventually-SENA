@@ -39,6 +39,8 @@ export class ModalLikesComponent implements OnInit {
   }
 
   postForm(form:LikesI){
+    console.log(form);
+    form.estadoGusto = 1;
     this.api.postLike(form).subscribe( data => {
       let respuesta:ResponseI = data;
       //Verificamos si la respuesta es exitosa.
