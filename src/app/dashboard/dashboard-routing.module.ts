@@ -21,7 +21,7 @@ import { RESOURCE_BY_ROLES } from '../core/routes/internal.routes';
 
 const routes: Routes = [
   {
-    path: 'dashboard', component:DashboardComponent,
+    path: '', component:DashboardComponent,
     canActivate: [AuthGuard],
     data: {roles: RESOURCE_BY_ROLES.PANEL_ADMIN},
     children: [
@@ -38,6 +38,10 @@ const routes: Routes = [
       {path: 'suppliers', component: CrudSuppliersComponent},
       {path: 'requests', component: RequestsComponent},
       {path: 'createTypeServices', component: CreateTypeServicesComponent},
+      {
+        path: '**',
+        redirectTo: 'users',
+      }
     ]
   },
 ]

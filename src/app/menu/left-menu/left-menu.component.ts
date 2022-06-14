@@ -35,11 +35,11 @@ export class LeftMenuComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  //Home
-  home(){
-    this.router.navigate(["main/groups"]);
-  }
+
   //invitado
+  homeInvitado(){
+    this.router.navigate(["/main/groups"]);
+  }
   myAccount(){
     this.router.navigate(["main/settings/user-account"]);
   }
@@ -51,11 +51,17 @@ export class LeftMenuComponent implements OnInit {
   myService(){
     this.router.navigate(["main/provider/myService"]);
   }
-
-  createService(){
-    this.router.navigate(["main/provider/createService"]);
+  homeProveedor(){
+    this.router.navigate(["main/provider/myService"]);
   }
+
+  // createService(){
+  //   this.router.navigate(["main/provider/createService"]);
+  // }
   //Admin
+  homeAdmin(){
+    this.router.navigate(["dashboard/users"]);
+  }
   groupsDash(){
     this.router.navigate(["dashboard/groups"]);
   }

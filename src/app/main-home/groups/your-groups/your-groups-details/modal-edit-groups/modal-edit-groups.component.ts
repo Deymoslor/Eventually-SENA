@@ -46,7 +46,7 @@ export class ModalEditGroupsComponent implements OnInit {
     if(Number(idGrupos)){
       this.ApiGroup.getDetailsYourGroup(Number(idGrupos)).subscribe((data: any) =>{
         this.datesGroup =data[0];
-        console.log(data);
+        console.log(this.datesGroup);
         this.editForm = this.fb.group({
           idGrupos: [this.datesGroup.idGrupos],
           descripcionGrupo: [this.datesGroup.descripcionGrupo, [Validators.required, Validators.minLength(5), Validators.maxLength(300)]],
@@ -54,6 +54,7 @@ export class ModalEditGroupsComponent implements OnInit {
           imagen: [this.datesGroup.imagen.replace('C:/xampp/htdocs', GlobalConstants.httpLocalHost)]
         })
         console.log(this.editForm.get('idGrupos')?.value);
+        console.log(this.editForm.get('imagen')?.value);
       });
     }else{
       console.log("no se pudo :(");

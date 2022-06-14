@@ -66,10 +66,10 @@ const routes: Routes = [
         canActivate: [AuthGuard],
         data: {roles: RESOURCE_BY_ROLES.PANEL_INVITADO}
       },
-      // {
-      //   path: '**',
-      //   redirectTo: 'groups',
-      // }
+      {
+        path: '**',
+        redirectTo: 'groups',
+      }
     ],
   }
 ]
