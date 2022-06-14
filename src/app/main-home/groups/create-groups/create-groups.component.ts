@@ -42,14 +42,13 @@ export class CreateGroupsComponent implements OnInit {
     ) {
 
       this.createYourGroupForm = this.formBuilder.group({
-        idGroups: [],
         nombreGrupo: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/), Validators.minLength(2),Validators.maxLength(30)]],
-        descripcionGrupo: ['',[Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1 ]+$/), Validators.minLength(2),Validators.maxLength(300)]],
+        descripcionGrupo: ['',[Validators.required, Validators.minLength(2),Validators.maxLength(300)]],
         privacidadGrupo: ['', Validators.required],
         check: ['', Validators.requiredTrue],
         imagen: ['', [Validators.required]],
         gustos_idGusto: ['', Validators.required],
-        idPersona: [],
+        idPersona: [this.auth.desencriptar(localStorage.getItem('id'))],
       });
     }
 
@@ -108,6 +107,7 @@ export class CreateGroupsComponent implements OnInit {
       form.imagen = this.previsualizacion;
       console.log(form);
       this.create.postYourGroup(form).subscribe((data: any) => {
+        console.log(data);
         let respuesta:ResponseI = data;
           //Verificamos si la respuesta es exitosa.
           if(respuesta.status == 'ok'){
@@ -118,7 +118,7 @@ export class CreateGroupsComponent implements OnInit {
             window.location.reload();
           }
       })
-      this.createYourGroupForm.reset();
+      // this.createYourGroupForm.reset();
     }
   }
 

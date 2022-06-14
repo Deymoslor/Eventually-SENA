@@ -60,7 +60,7 @@ export class UserMenuComponent{
 
         this.imagenPerfilForm.setValue({
           // 'imagen': this.imagenProfile.imagen.replace('C:/xampp/htdocs', this.httpLocalHost),
-          'imagen' : this.imagenProfile.imagen.replace('J:/Programas/Xampp/htdocs', this.httpLocalHost),
+          'imagen' : this.imagenProfile.imagen.replace('C:/xampp/htdocs', GlobalConstants.httpLocalHost),
         })
       });
     }else{
@@ -69,7 +69,7 @@ export class UserMenuComponent{
         let datosProveedor = data[0];
         this.imagenPerfilForm.setValue({
           // 'imagen': this.imagenProfile.imagen.replace('C:/xampp/htdocs', this.httpLocalHost),
-          'imagen' : this.imagenProfile.imagen.replace('J:/Programas/Xampp/htdocs', this.httpLocalHost),
+          'imagen' : this.imagenProfile.imagen.replace('C:/xampp/htdocs', GlobalConstants.httpLocalHost),
         })
       });
       console.log('Es proveedor');
