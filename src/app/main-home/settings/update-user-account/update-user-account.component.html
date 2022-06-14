@@ -15,8 +15,7 @@
                         ? 'is-invalid' : '' || editarForm.get('nombre')?.hasError('pattern')
                         ? 'is-invalid' : ''">
                         <div class="invalid-feedback">
-                            {{ editarForm.get("nombre")?.hasError("required") ? "Campo requerido" : "" }}
-                            {{ editarForm.get("nombre")?.hasError("pattern") ? "Campo solo con letras" : "" }}
+                            {{ editarForm.get("nombre")?.hasError("required") ? "Campo requerido" : "" }} {{ editarForm.get("nombre")?.hasError("pattern") ? "Campo solo con letras" : "" }}
                         </div>
 
                     </div>
@@ -28,8 +27,7 @@
                         editarForm.get('apellidos')?.errors ? 'is-invalid' : '' || editarForm.get('apellidos')?.hasError('pattern')
                         ? 'is-invalid' : ''">
                         <div class="invalid-feedback">
-                            {{ editarForm.get("apellidos")?.hasError("required") ? "Campo requerido" : "" }}
-                            {{ editarForm.get("apellidos")?.hasError("pattern") ? "Campo solo con letras" : "" }}
+                            {{ editarForm.get("apellidos")?.hasError("required") ? "Campo requerido" : "" }} {{ editarForm.get("apellidos")?.hasError("pattern") ? "Campo solo con letras" : "" }}
                         </div>
 
                     </div>
@@ -43,9 +41,8 @@
                         ? 'is-invalid' : '' || editarForm.get('documento')?.hasError('pattern')
                         ? 'is-invalid' : ''">
                         <div class="invalid-feedback">
-                            {{ editarForm.get("documento")?.hasError("required") ? "Campo requerido" : "" }}
-                            {{ editarForm.get("documento")?.hasError("minlength") ? "Campo mínimo de 7 carácteres" : "" }}
-                            {{ editarForm.get("documento")?.hasError("maxlength") ? "Campo máximo de 10 carácteres" : "" }}
+                            {{ editarForm.get("documento")?.hasError("required") ? "Campo requerido" : "" }} {{ editarForm.get("documento")?.hasError("minlength") ? "Campo mínimo de 7 carácteres" : "" }} {{ editarForm.get("documento")?.hasError("maxlength") ? "Campo máximo de 10
+                            carácteres" : "" }}
                         </div>
                         <div class="invalid-feedback">
                             {{ editarForm.get("documento")?.hasError("pattern") ? "Campo solo con numeros" : "" }}
@@ -57,7 +54,7 @@
                     <div class="mb-3">
                         <b><label class="form-label">Fecha de Nacimiento</label></b>
                         <input required type="date" class="form-control" formControlName="fechaNacimiento" aria-describedby="helpId" placeholder="Escribe tu fecha de nacimiento" [ngClass]="(editarForm.get('fechaNacimiento')?.touched || editarForm.get('fechaNacimiento')?.dirty) &&
-                        editarForm.get('fechaNacimiento')?.errors ? 'is-invalid' : ''" >
+                        editarForm.get('fechaNacimiento')?.errors ? 'is-invalid' : ''">
                         <div class="invalid-feedback">
                             {{ editarForm.get("fechaNacimiento")?.hasError("required") ? "Campo requerido" : "" }}
                         </div>
@@ -102,7 +99,7 @@
                         <!-- INICIO Botón para actualizar imagen -->
 
                         <div class="btnChangeLikes d-flex justify-content-center">
-                            <button *ngIf="previsualizacion == ''" type="submit" class="btnActualizacionDisable btn btn-primary btn-lg" [disabled]="previsualizacion == ''"(click)="actualizarImagen(imagenPerfilForm.value)">Actualizar imagen de perfil</button>
+                            <button *ngIf="previsualizacion == ''" type="submit" class="btnActualizacionDisable btn btn-primary btn-lg" [disabled]="previsualizacion == ''" (click)="actualizarImagen(imagenPerfilForm.value)">Actualizar imagen de perfil</button>
                             <button *ngIf="previsualizacion != ''" type="submit" class="btnActualizacion btn btn-primary btn-lg" (click)="actualizarImagen(imagenPerfilForm.value)">Actualizar imagen de perfil</button>
                         </div>
 
@@ -196,9 +193,8 @@
                         ? 'is-invalid' : '' || passwordForm.get('oldPassword')?.hasError('minlength')
                         ? 'is-invalid' : ''">
                         <div class="invalid-feedback">
-                            {{ passwordForm.get("oldPassword")?.hasError("required") ? "Campo requerido" : "" }}
-                            {{ passwordForm.get("oldPassword")?.hasError("maxlength") ? "Máximo 12 caracteres" : "" }}
-                            {{ passwordForm.get("oldPassword")?.hasError("minlength") ? "Mínimo 6 caracteres" : "" }}
+                            {{ passwordForm.get("oldPassword")?.hasError("required") ? "Campo requerido" : "" }} {{ passwordForm.get("oldPassword")?.hasError("maxlength") ? "Máximo 12 caracteres" : "" }} {{ passwordForm.get("oldPassword")?.hasError("minlength") ? "Mínimo 3 caracteres"
+                            : "" }}
                         </div>
 
                         <div class="recuperar">
@@ -214,9 +210,8 @@
                         ? 'is-invalid' : '' || passwordForm.get('newPassword')?.hasError('minlength')
                         ? 'is-invalid' : ''">
                         <div class="invalid-feedback">
-                            {{ passwordForm.get("newPassword")?.hasError("required") ? "Campo requerido" : "" }}
-                            {{ passwordForm.get("newPassword")?.hasError("maxlength") ? "Máximo 12 caracteres" : "" }}
-                            {{ passwordForm.get("newPassword")?.hasError("minlength") ? "Mínimo 6 caracteres" : "" }}
+                            {{ passwordForm.get("newPassword")?.hasError("required") ? "Campo requerido" : "" }} {{ passwordForm.get("newPassword")?.hasError("maxlength") ? "Máximo 12 caracteres" : "" }} {{ passwordForm.get("newPassword")?.hasError("minlength") ? "Mínimo 3 caracteres"
+                            : "" }}
                         </div>
                     </div>
 

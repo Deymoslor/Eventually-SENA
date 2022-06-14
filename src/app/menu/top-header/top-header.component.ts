@@ -85,6 +85,8 @@ export class TopHeaderComponent implements OnInit {
     }
 
   }
+  configP(){
+    this.router.navigate(["main/settings/user"]);}
 
   logOut(){
     localStorage.clear();

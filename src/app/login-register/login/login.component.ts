@@ -121,15 +121,15 @@ export class LoginComponent implements OnInit {
         if(this.authService.desencriptar(localStorage.getItem("nombreRol")) === "INVITADO"){
           //En caso de ser usuario.
           // console.log(this.authService.desencriptar(localStorage.getItem("nombreRol")));
-          this.router.navigate(["/main/groups"]);
+          this.router.navigate(["/main/landingVisit"]);
           window.location.reload();
         }else if(this.authService.desencriptar(localStorage.getItem("nombreRol")) === "PROVEEDOR"){
           //En caso de ser proveedor.
-          this.router.navigate(["main/provider/myService"]);
+          this.router.navigate(["main/landingProv"]);
           window.location.reload();
         }else if(this.authService.desencriptar(localStorage.getItem("nombreRol")) === "ADMIN"){
           //En caso de ser admin.
-          this.router.navigate(["dashboard/users"]);
+          this.router.navigate(["dashboard/landingAdmin"]);
           window.location.reload();
         }
 

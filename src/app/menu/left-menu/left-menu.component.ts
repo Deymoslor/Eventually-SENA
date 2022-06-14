@@ -38,7 +38,7 @@ export class LeftMenuComponent implements OnInit {
 
   //invitado
   homeInvitado(){
-    this.router.navigate(["/main/groups"]);
+    this.router.navigate(["/main/landingVisit"]);
   }
   myAccount(){
     this.router.navigate(["main/settings/user-account"]);
@@ -49,7 +49,7 @@ export class LeftMenuComponent implements OnInit {
 
   // Proveedor
   myService(){
-    this.router.navigate(["main/provider/myService"]);
+    this.router.navigate(["main/landingProv"]);
   }
   homeProveedor(){
     this.router.navigate(["main/provider/myService"]);
@@ -60,7 +60,7 @@ export class LeftMenuComponent implements OnInit {
   // }
   //Admin
   homeAdmin(){
-    this.router.navigate(["dashboard/users"]);
+    this.router.navigate(["dashboard/landingAdmin"]);
   }
   groupsDash(){
     this.router.navigate(["dashboard/groups"]);

@@ -8,13 +8,12 @@
         <div class="form">
             <h1>Iniciar sesión</h1>
             <div class="grupo">
-                <input type="email" id="email" required formControlName="email"[ngClass]="(loginForm.get('email')?.touched || loginForm.get('email')?.dirty) &&
+                <input type="email" id="email" required formControlName="email" [ngClass]="(loginForm.get('email')?.touched || loginForm.get('email')?.dirty) &&
                 loginForm.get('email')?.errors ? 'is-invalid' : '' || loginForm.get('email')?.hasError('email')
                 ? 'is-invalid' : ''"><span class="barra"></span>
                 <label for="">Email</label>
                 <div class="invalid-feedback">
-                    {{ loginForm.get("email")?.hasError("required") ? "Campo requerido" : "" }}
-                    {{ loginForm.get("email")?.hasError("email") ? "Campo de email persona@example.com" : "" }}
+                    {{ loginForm.get("email")?.hasError("required") ? "Campo requerido" : "" }} {{ loginForm.get("email")?.hasError("email") ? "Campo de email persona@example.com" : "" }}
                 </div>
             </div>
 
@@ -25,9 +24,7 @@
                 ? 'is-invalid' : ''"><span class="barra"></span>
                 <label for="">Contraseña</label>
                 <div class="invalid-feedback">
-                    {{ loginForm.get("password")?.hasError("required") ? "Campo requerido" : "" }}
-                    {{ loginForm.get("password")?.hasError("maxlength") ? "Máximo 12 caracteres" : "" }}
-                    {{ loginForm.get("password")?.hasError("minlength") ? "Mínimo 6 caracteres" : "" }}
+                    {{ loginForm.get("password")?.hasError("required") ? "Campo requerido" : "" }} {{ loginForm.get("password")?.hasError("maxlength") ? "Máximo 12 caracteres" : "" }} {{ loginForm.get("password")?.hasError("minlength") ? "Mínimo 3 caracteres" : "" }}
                 </div>
             </div>
 

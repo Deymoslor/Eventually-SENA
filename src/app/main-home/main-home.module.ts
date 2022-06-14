@@ -18,6 +18,8 @@ import { SettingsModule } from './settings/settings.module';
 import { EventsModule } from './events/events.module';
 import { MyServiceComponent } from './providers/my-service/my-service.component';
 import { CreateServiceComponent } from './providers/create-service/create-service.component';
+import { LandingProvComponent } from './landing-prov/landing-prov.component';
+import { LandingVisitComponent } from './landing-visit/landing-visit.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { CreateServiceComponent } from './providers/create-service/create-servic
      ModalEditServiceComponent,
      MyServiceComponent,
      CreateServiceComponent,
+     LandingProvComponent,
+     LandingVisitComponent,
 
     ],
   imports: [
