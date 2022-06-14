@@ -16,12 +16,13 @@ import { GroupReportComponent } from './crud-reports/typeReport/group-report/gro
 import { UserReportComponent } from './crud-reports/typeReport/user-report/user-report.component';
 import { AuthGuard } from '../core/guards/auth.guard';
 import { RESOURCE_BY_ROLES } from '../core/routes/internal.routes';
+import { LandingAdminComponent } from './landing-admin/landing-admin.component';
 
 
 
 const routes: Routes = [
   {
-    path: 'dashboard', component:DashboardComponent,
+    path: '', component:DashboardComponent,
     canActivate: [AuthGuard],
     data: {roles: RESOURCE_BY_ROLES.PANEL_ADMIN},
     children: [
@@ -38,6 +39,11 @@ const routes: Routes = [
       {path: 'suppliers', component: CrudSuppliersComponent},
       {path: 'requests', component: RequestsComponent},
       {path: 'createTypeServices', component: CreateTypeServicesComponent},
+      {path: 'landingAdmin', component: LandingAdminComponent},
+      {
+        path: '**',
+        redirectTo: 'landingAdmin',
+      }
     ]
   },
 ]

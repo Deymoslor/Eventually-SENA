@@ -37,6 +37,7 @@ import { UserReportComponent } from './crud-reports/typeReport/user-report/user-
 import { FooterModule } from '../footer/footer.module';
 import { DatailGroupComponent } from './requests/table-request-groups/datail-group/datail-group.component';
 import { DatailEventComponent } from './requests/table-request-event/datail-event/datail-event.component';
+import { LandingAdminComponent } from './landing-admin/landing-admin.component';
 
 
 
@@ -70,7 +71,8 @@ import { DatailEventComponent } from './requests/table-request-event/datail-even
     GroupReportComponent,
     UserReportComponent,
     DatailGroupComponent,
-    DatailEventComponent
+    DatailEventComponent,
+    LandingAdminComponent
 
   ],
   imports: [

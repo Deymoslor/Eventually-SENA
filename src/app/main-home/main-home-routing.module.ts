@@ -6,6 +6,8 @@ import { ProvidersComponent } from './providers/providers.component';
 import { AuthGuard } from '../core/guards/auth.guard';
 import { ROLES_ENUM } from '../constants/roles.enum';
 import { RESOURCE_BY_ROLES } from '../core/routes/internal.routes';
+import { LandingProvComponent } from './landing-prov/landing-prov.component';
+import { LandingVisitComponent } from './landing-visit/landing-visit.component';
 
 /* const routes: Routes = [
   {
@@ -42,6 +44,9 @@ const routes: Routes = [
     path: '', // /main
     component: MainHomeComponent ,
     children: [
+      {path: 'landingProv', component: LandingProvComponent},
+      {path: 'landingVisit', component: LandingVisitComponent},
+
       {
         path: 'provider', component: ProvidersComponent,
         loadChildren: () => import('./providers/providers-routing.module').then(m => m.ProvidersRoutingModule),
@@ -66,10 +71,10 @@ const routes: Routes = [
         canActivate: [AuthGuard],
         data: {roles: RESOURCE_BY_ROLES.PANEL_INVITADO}
       },
-      // {
-      //   path: '**',
-      //   redirectTo: 'groups',
-      // }
+      {
+        path: '**',
+        redirectTo: 'groups',
+      }
     ],
   }
 ]

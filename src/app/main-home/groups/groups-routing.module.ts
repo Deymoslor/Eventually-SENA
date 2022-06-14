@@ -43,6 +43,10 @@ const routes: Routes = [
         component: YourGroupsDetailsComponent,
         loadChildren: () => import('../events/events-routing.module').then(m => m.EventsRoutingModule)
       },
+      {
+        path: '**',
+        redirectTo: 'see-groups',
+      }
     ],
   },
 ]

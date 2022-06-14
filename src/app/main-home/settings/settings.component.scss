@@ -80,7 +80,13 @@ body .container {
 
 @media only screen and (max-width: 379px) {
     .settingsContent {
-        width: 14vw;
+        width: 55vw;
         margin-left: 0.5rem;
+    }
+}
+
+@media only screen and (max-width: 323px) {
+    .settingsContent {
+        width: 50vw;
     }
 }

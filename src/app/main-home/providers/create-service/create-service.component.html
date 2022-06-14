@@ -19,13 +19,9 @@
 
 
 
-<div *ngIf="this.ley == 1" class="container">
-    <section class="thumbnail img-fluid">
-        <div class="title">
-            <h2 class="fs-1 fw-bold">Servicio</h2>
-        </div>
-    </section>
-    <form [formGroup]="ServicesForm" (ngSubmit)="postServiceProv(ServicesForm.value)">
+<div *ngIf="this.ley == 1" class="content t">
+    <u><h2 class="titlePrincipal">Crear servicio</h2></u>
+    <form class="r" [formGroup]="ServicesForm" (ngSubmit)="postServiceProv(ServicesForm.value)">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -35,139 +31,124 @@
 
                     <div class="form-group">
                         <div class="formGroup">
-                            <label for="">Nombre del servicio:</label>
-                            <input type="text" class="form-control" id="" placeholder="" formControlName="nombreServicio"
-                            [ngClass]=" (ServicesForm.get('nombreServicio')?.touched || ServicesForm.get('nombreServicio')?.dirty) &&
-                            ServicesForm.get('nombreServicio')?.hasError('required') 
-                            ? 'is-invalid' : '' || ServicesForm.get('nombreServicio')?.hasError('minlength') 
-                            ? 'is-invalid' : '' || ServicesForm.get('nombreServicio')?.hasError('maxlength') 
+                            <label class="textoTitulos" for="">Nombre del servicio:</label>
+                            <input type="text" class="form-control textox" id="" placeholder="" formControlName="nombreServicio" [ngClass]=" (ServicesForm.get('nombreServicio')?.touched || ServicesForm.get('nombreServicio')?.dirty) &&
+                            ServicesForm.get('nombreServicio')?.hasError('required')
+                            ? 'is-invalid' : '' || ServicesForm.get('nombreServicio')?.hasError('minlength')
+                            ? 'is-invalid' : '' || ServicesForm.get('nombreServicio')?.hasError('maxlength')
                             ? 'is-invalid' : ''">
-        
+
                             <div class="invalid-feedback">
-                                {{ ServicesForm.get("nombreServicio")?.hasError("required") ? "Campo requerido" : "" }}
-                                {{ ServicesForm.get("nombreServicio")?.hasError("minlength") ? "Campo requerido con 5 caracteres" : "" }}
-                                {{ ServicesForm.get("nombreServicio")?.hasError("maxlength") ? "Campo requerido con maximo 50 caracteres" : "" }}
+                                {{ ServicesForm.get("nombreServicio")?.hasError("required") ? "Campo requerido" : "" }} {{ ServicesForm.get("nombreServicio")?.hasError("minlength") ? "Campo requerido con 5 caracteres" : "" }} {{ ServicesForm.get("nombreServicio")?.hasError("maxlength")
+                                ? "Campo requerido con maximo 50 caracteres" : "" }}
                             </div>
                         </div>
-        
+
                         <div class="formGroup">
-                            <label for="">Descripcion Servicio:</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" formControlName="descripcionServicio" 
-                                [ngClass]=" (ServicesForm.get('descripcionServicio')?.touched || ServicesForm.get('descripcionServicio')?.dirty) &&
-                            ServicesForm.get('descripcionServicio')?.hasError('required') 
-                            ? 'is-invalid' : '' || ServicesForm.get('descripcionServicio')?.hasError('minlength') 
-                            ? 'is-invalid' : '' || ServicesForm.get('descripcionServicio')?.hasError('maxlength') 
+                            <label class="textoTitulos" for="">Descripcion Servicio:</label>
+                            <textarea class="form-control textox" id="exampleFormControlTextarea1" rows="2" formControlName="descripcionServicio" [ngClass]=" (ServicesForm.get('descripcionServicio')?.touched || ServicesForm.get('descripcionServicio')?.dirty) &&
+                            ServicesForm.get('descripcionServicio')?.hasError('required')
+                            ? 'is-invalid' : '' || ServicesForm.get('descripcionServicio')?.hasError('minlength')
+                            ? 'is-invalid' : '' || ServicesForm.get('descripcionServicio')?.hasError('maxlength')
                             ? 'is-invalid' : ''"></textarea>
-        
-                            <div class="invalid-feedback">
-                                {{ ServicesForm.get("descripcionServicio")?.hasError("required") ? "Campo requerido" : "" }}
-                                {{ ServicesForm.get("descripcionServicio")?.hasError("minlength") ? "Campo requerido con 20 caracteres" : "" }}
-                                {{ ServicesForm.get("descripcionServicio")?.hasError("maxlength") ? "Campo requerido con maximo 500 caracteres" : "" }}
+
+                            <div class="invalid-feedback textox">
+                                {{ ServicesForm.get("descripcionServicio")?.hasError("required") ? "Campo requerido" : "" }} {{ ServicesForm.get("descripcionServicio")?.hasError("minlength") ? "Campo requerido con 20 caracteres" : "" }} {{ ServicesForm.get("descripcionServicio")?.hasError("maxlength")
+                                ? "Campo requerido con maximo 500 caracteres" : "" }}
                             </div>
                         </div>
-        
+
                         <div class="formGroup">
-                            <label for="exampleInputEmail1">Precio estimado:</label>
-                            <input type="number" class="form-control" id="exampleInputEmail1" min="1" max="200000000" formControlName="precioEstimado"
-                            [ngClass]=" (ServicesForm.get('precioEstimado')?.touched || ServicesForm.get('precioEstimado')?.dirty) &&
-                            ServicesForm.get('precioEstimado')?.hasError('required') 
-                            ? 'is-invalid' : '' || ServicesForm.get('precioEstimado')?.hasError('pattern') 
+                            <label for="exampleInputEmail1 textoTitulos">Precio estimado:</label>
+                            <input type="number" class="form-control textox" id="exampleInputEmail1" min="1" max="200000000" formControlName="precioEstimado" [ngClass]=" (ServicesForm.get('precioEstimado')?.touched || ServicesForm.get('precioEstimado')?.dirty) &&
+                            ServicesForm.get('precioEstimado')?.hasError('required')
+                            ? 'is-invalid' : '' || ServicesForm.get('precioEstimado')?.hasError('pattern')
                             ? 'is-invalid' : ''">
-        
-                            <div class="invalid-feedback">
-                                {{ ServicesForm.get("precioEstimado")?.hasError("required") ? "Campo requerido" : "" }}
-                                {{ ServicesForm.get("precioEstimado")?.hasError("pattern") ? "Campo de solo numeros" : "" }}
+
+                            <div class="invalid-feedback textox">
+                                {{ ServicesForm.get("precioEstimado")?.hasError("required") ? "Campo requerido" : "" }} {{ ServicesForm.get("precioEstimado")?.hasError("pattern") ? "Campo de solo numeros" : "" }}
                             </div>
                         </div>
-        
+
                         <div class="formGroup">
-                            <label for="">Imagen evento:</label>
-                            <div class="mb-2">
-                                <input (change)="capturarFile($event)" formControlName="imagen" type="file">
+                            <label class="textoTitulos" for="">Imagen evento:</label>
+                            <div class="mb-2 ">
+                                <input class="textox m" (change)="capturarFile($event)" formControlName="imagen" type="file">
                             </div>
-                            <h4>PREVISUALIZACION</h4>
+                            <h4 class="textoTitulos">PREVISUALIZACION</h4>
                             <div *ngIf="previsualizacion">
-                                <img width="500px" [src]="previsualizacion" alt="">
+                                <img class="imagen img-fluid" [src]="previsualizacion" alt="">
                             </div>
-                            
+
                         </div>
 
                         <div class="formGroup">
-                            <label for="">Tipo Servicio:</label>
-                            <select class="form-select" id="input-group-text" formControlName="TipoServicio_idtipoServicio"
-                            [ngClass]=" (ServicesForm.get('TipoServicio_idtipoServicio')?.touched || ServicesForm.get('TipoServicio_idtipoServicio')?.dirty) &&
-                            ServicesForm.get('TipoServicio_idtipoServicio')?.hasError('required') 
-                            ? 'is-invalid' : '' || ServicesForm.get('TipoServicio_idtipoServicio')?.hasError('pattern') 
+                            <label class="textoTitulos" for="">Tipo Servicio:</label>
+                            <select class="form-select textox" id="input-group-text" formControlName="TipoServicio_idtipoServicio" [ngClass]=" (ServicesForm.get('TipoServicio_idtipoServicio')?.touched || ServicesForm.get('TipoServicio_idtipoServicio')?.dirty) &&
+                            ServicesForm.get('TipoServicio_idtipoServicio')?.hasError('required')
+                            ? 'is-invalid' : '' || ServicesForm.get('TipoServicio_idtipoServicio')?.hasError('pattern')
                             ? 'is-invalid' : ''">
-                                    <option selected> Escoge uno...</option>
-                                    <option value="{{typeService.idtipoServicio}}" *ngFor="let typeService of dataTypeService">{{typeService.tipoServicio}}</option>
+                                    <option class="textox" selected> Escoge uno...</option>
+                                    <option class="textox" value="{{typeService.idtipoServicio}}" *ngFor="let typeService of dataTypeService">{{typeService.tipoServicio}}</option>
                             </select>
-        
-                            <div class="invalid-feedback">
-                                {{ ServicesForm.get("TipoServicio_idtipoServicio")?.hasError("required") ? "Campo requerido" : "" }}
-                                {{ ServicesForm.get("TipoServicio_idtipoServicio")?.hasError("pattern") ? "Campo de solo numeros" : "" }}
-                            </div>
-                        </div>
-        
-                        <div class="formGroup">
-                            <label for="">Historial de empresas:</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" formControlName="historialEmpresas"
-                                [ngClass]=" (ServicesForm.get('historialEmpresas')?.touched || ServicesForm.get('historialEmpresas')?.dirty) &&
-                            ServicesForm.get('historialEmpresas')?.hasError('required') 
-                            ? 'is-invalid' : '' || ServicesForm.get('historialEmpresas')?.hasError('minlength') 
-                            ? 'is-invalid' : '' || ServicesForm.get('historialEmpresas')?.hasError('maxlength') 
-                            ? 'is-invalid' : ''"></textarea>
-                            <div class="invalid-feedback">
-                                {{ ServicesForm.get("historialEmpresas")?.hasError("required") ? "Campo requerido" : "" }}
-                                {{ ServicesForm.get("historialEmpresas")?.hasError("minlength") ? "Campo requerido con 20 caracteres" : "" }}
-                                {{ ServicesForm.get("historialEmpresas")?.hasError("maxlength") ? "Campo requerido con maximo 300 caracteres" : "" }}
+
+                            <div class="invalid-feedback textox">
+                                {{ ServicesForm.get("TipoServicio_idtipoServicio")?.hasError("required") ? "Campo requerido" : "" }} {{ ServicesForm.get("TipoServicio_idtipoServicio")?.hasError("pattern") ? "Campo de solo numeros" : "" }}
                             </div>
                         </div>
 
                         <div class="formGroup">
-                            <label for="">Fecha inicio:</label>
-                            <input type="date" class="form-control" formControlName="fechaInicio"
-                                [ngClass]=" (ServicesForm.get('fechaInicio')?.touched || ServicesForm.get('fechaInicio')?.dirty) &&
-                            ServicesForm.get('fechaInicio')?.hasError('required') 
-                            ? 'is-invalid' : ''"  max="{{dateS}}">
-                            <div class="invalid-feedback">
+                            <label class="textoTitulos" for="">Historial de empresas:</label>
+                            <textarea class="form-control textox" id="exampleFormControlTextarea1" rows="2" formControlName="historialEmpresas" [ngClass]=" (ServicesForm.get('historialEmpresas')?.touched || ServicesForm.get('historialEmpresas')?.dirty) &&
+                            ServicesForm.get('historialEmpresas')?.hasError('required')
+                            ? 'is-invalid' : '' || ServicesForm.get('historialEmpresas')?.hasError('minlength')
+                            ? 'is-invalid' : '' || ServicesForm.get('historialEmpresas')?.hasError('maxlength')
+                            ? 'is-invalid' : ''"></textarea>
+                            <div class="invalid-feedback textox">
+                                {{ ServicesForm.get("historialEmpresas")?.hasError("required") ? "Campo requerido" : "" }} {{ ServicesForm.get("historialEmpresas")?.hasError("minlength") ? "Campo requerido con 20 caracteres" : "" }} {{ ServicesForm.get("historialEmpresas")?.hasError("maxlength")
+                                ? "Campo requerido con maximo 300 caracteres" : "" }}
+                            </div>
+                        </div>
+
+                        <div class="formGroup">
+                            <label class="textoTitulos" for="">Fecha inicio:</label>
+                            <input type="date" class="textox form-control" formControlName="fechaInicio" [ngClass]=" (ServicesForm.get('fechaInicio')?.touched || ServicesForm.get('fechaInicio')?.dirty) &&
+                            ServicesForm.get('fechaInicio')?.hasError('required')
+                            ? 'is-invalid' : ''" max="{{dateS}}">
+                            <div class="invalid-feedback textox">
                                 {{ ServicesForm.get("fechaInicio")?.hasError("required") ? "Campo requerido" : "" }}
                             </div>
                         </div>
-        
+
                         <div class="formGroup">
-                            <label for="exampleInputEmail1">Numero de contacto:</label>
-                            <input type="number" class="form-control" id="exampleInputEmail1" min="1" max="200000000" formControlName="numeroContacto"
-                            [ngClass]=" (ServicesForm.get('numeroContacto')?.touched || ServicesForm.get('numeroContacto')?.dirty) &&
-                            ServicesForm.get('numeroContacto')?.hasError('required') 
-                            ? 'is-invalid' : '' || ServicesForm.get('numeroContacto')?.hasError('pattern') 
+                            <label class="textoTitulos" for="exampleInputEmail1">Numero de contacto:</label>
+                            <input type="number" class="form-control textox" id="exampleInputEmail1" min="1" max="200000000" formControlName="numeroContacto" [ngClass]=" (ServicesForm.get('numeroContacto')?.touched || ServicesForm.get('numeroContacto')?.dirty) &&
+                            ServicesForm.get('numeroContacto')?.hasError('required')
+                            ? 'is-invalid' : '' || ServicesForm.get('numeroContacto')?.hasError('pattern')
                             ? 'is-invalid' : ''">
-        
-                            <div class="invalid-feedback">
-                                {{ ServicesForm.get("numeroContacto")?.hasError("required") ? "Campo requerido" : "" }}
-                                {{ ServicesForm.get("numeroContacto")?.hasError("pattern") ? "Campo de solo numeros" : "" }}
+
+                            <div class="invalid-feedback textox">
+                                {{ ServicesForm.get("numeroContacto")?.hasError("required") ? "Campo requerido" : "" }} {{ ServicesForm.get("numeroContacto")?.hasError("pattern") ? "Campo de solo numeros" : "" }}
                             </div>
-        
+
                         </div>
-                       <div class="formGroup">
-                         <label for="">Correo de contacto:</label>
-                            <input type="email" class="form-control" id="" placeholder="" formControlName="correoContacto"
-                            [ngClass]=" (ServicesForm.get('correoContacto')?.touched || ServicesForm.get('correoContacto')?.dirty) &&
-                            ServicesForm.get('correoContacto')?.hasError('required') 
-                            ? 'is-invalid' : '' || ServicesForm.get('correoContacto')?.hasError('email') 
+                        <div class="formGroup">
+                            <label class="textoTitulos" for="">Correo de contacto:</label>
+                            <input type="email" class="form-control textox" id="" placeholder="" formControlName="correoContacto" [ngClass]=" (ServicesForm.get('correoContacto')?.touched || ServicesForm.get('correoContacto')?.dirty) &&
+                            ServicesForm.get('correoContacto')?.hasError('required')
+                            ? 'is-invalid' : '' || ServicesForm.get('correoContacto')?.hasError('email')
                             ? 'is-invalid' : ''">
-                            <div class="invalid-feedback">
-                                {{ ServicesForm.get("correoContacto")?.hasError("required") ? "Campo requerido" : "" }}
-                                {{ ServicesForm.get("correoContacto")?.hasError("email") ? "Campo de tipo email requerido" : "" }}
+                            <div class="invalid-feedback textox">
+                                {{ ServicesForm.get("correoContacto")?.hasError("required") ? "Campo requerido" : "" }} {{ ServicesForm.get("correoContacto")?.hasError("email") ? "Campo de tipo email requerido" : "" }}
                             </div>
-                       </div>
-        
+                        </div>
+
                         <div class="groupForm">
-                            <input type="checkbox" checked name="" id="check"  formControlName="check" [ngClass]="(ServicesForm.get('check')?.touched || ServicesForm.get('check')?.dirty) &&
-                            ServicesForm.get('check')?.errors ? 'is-invalid' : ''" >
-                            <label>Solo puedes tener un servicio en tu cuenta de proveedor, por ende, asegúrate de tener información clara y 
+                            <input type="checkbox" checked name="" id="check" formControlName="check" [ngClass]="(ServicesForm.get('check')?.touched || ServicesForm.get('check')?.dirty) &&
+                            ServicesForm.get('check')?.errors ? 'is-invalid' : ''">
+                            <label class="textox">Solo puedes tener un servicio en tu cuenta de proveedor, por ende, asegúrate de tener información clara y
                                 llamativa, esta información podrá ser modificada posteriormente.</label>
-                            <div class="invalid-feedback">
+                            <div class="invalid-feedback textox">
                                 {{ ServicesForm.get("check")?.hasError("required") ? "Debe estar de acuerdo con las políticas." : "" }}
                             </div>
                         </div>
@@ -178,8 +159,8 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="btn btn-primary" [disabled]="ServicesForm.invalid">Crear</button>
+                    <!-- <button type="button" class="btn btn-secondary textox" data-bs-dismiss="modal">Cerrar</button> -->
+                    <button type="submit" class="btn btnCrear textox" [disabled]="ServicesForm.invalid">Crear</button>
                 </div>
 
             </div>

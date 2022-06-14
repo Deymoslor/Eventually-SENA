@@ -1,0 +1,34 @@
+@import '../../../app.component.scss';
+.modal-body {
+    // border: 1px solid red;
+    min-height: 30rem;
+}
+
+.card {
+    width: auto;
+}
+
+.textoTitulos {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+}
+
+.textox {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 350;
+}
+
+.btnUnirse {
+    background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
+    color: white;
+}
+
+.btnUnirse:hover {
+    background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
+}
+
+@media only screen and (max-width:384px) {
+    .card {
+        width: 15vw;
+    }
+}

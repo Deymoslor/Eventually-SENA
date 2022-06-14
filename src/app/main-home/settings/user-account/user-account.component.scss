@@ -88,6 +88,19 @@
     }
 }
 
+@media only screen and (max-width:473px) {
+    .cards1 {
+        margin-left: 1rem;
+        width: 90%!important;
+    }
+}
+
+@media only screen and (max-width:377px) {
+    .card {
+        width: 90%!important;
+    }
+}
+
 @media only screen and (max-width:462px) {
     .account-topics-item {
         width: 25vw;
@@ -112,6 +125,12 @@
     }
     .btn {
         width: 40vw;
+    }
+}
+
+@media only screen and (max-width:326px) {
+    .titlePrincipal {
+        font-size: 1rem!important;
     }
 }
 

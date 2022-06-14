@@ -66,8 +66,8 @@ export class TopHeaderComponent implements OnInit {
         // this.fotoPerfil = datosPersona.imagen;
 
         this.perfilForm.setValue({
-          // 'imagen': this.imagenProfile.imagen.replace('C:/xampp/htdocs', this.httpLocalHost),
-          'imagen' : this.imagenProfile.imagen.replace('C:/xampp/htdocs', GlobalConstants.httpLocalHost),
+          'imagen': this.imagenProfile.imagen.replace('C:/xampp/htdocs', this.httpLocalHost),
+          // 'imagen' : this.imagenProfile.imagen.replace('J:/Programas/Xampp/htdocs', this.httpLocalHost),
         })
       });
     }else{
@@ -85,6 +85,8 @@ export class TopHeaderComponent implements OnInit {
     }
 
   }
+  configP(){
+    this.router.navigate(["main/settings/user"]);}
 
   logOut(){
     localStorage.clear();
