@@ -69,7 +69,7 @@ export class CreateServiceComponent implements OnInit {
       precioEstimado: ['' , [Validators.required, Validators.pattern(/^[0-9]\d*$/)]],
       imagen: [''],
       fechaInicio: ['' , [Validators.required]],
-      historialEmpresas: ['' , [Validators.required, Validators.minLength(15), Validators.maxLength(300)]],
+      historialEmpresas: ['' , [Validators.required, Validators.minLength(7), Validators.maxLength(300)]],
       numeroContacto: ['' , [Validators.required, Validators.pattern(/^[0-9]\d*$/)]],
       correoContacto: ['' , [Validators.required, Validators.email]],
       TipoServicio_idtipoServicio: ['', [Validators.required]],
