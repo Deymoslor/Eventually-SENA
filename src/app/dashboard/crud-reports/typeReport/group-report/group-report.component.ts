@@ -8,6 +8,8 @@ import { ListGroups } from 'src/app/dashboard/crud-groups/listGroups.interface';
 import { Router } from '@angular/router';
 import jsPDF from 'jspdf';
 import { Socket } from 'dgram';
+import { AllInvites } from './modals/all-invites';
+import { LegendPosition } from '@swimlane/ngx-charts';
 (<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
@@ -18,42 +20,44 @@ import { Socket } from 'dgram';
 export class GroupReportComponent implements OnInit {
 
   id!: number;
-
+  //esta propiedad sirve para traer toda la información acerca de los grupos
   groups!:ListGroups[];
+  //esta propiedad sirve para traer a los grupos con mayor numero de participantes
+  allMajorInvites!: AllInvites[];
+  allInvites!: AllInvites[];
 
   constructor( private Api:ApiTypeReportService, private router:Router) {
     this.downloadPDF();
   }
 
   ngOnInit(): void {
-    // this.dataSource.paginator = this.paginator;
-
+    //Aquí traemos todos los grupos
     this.Api.getAllGroups(1).subscribe(data=>{
-      console.log(data);
-
       this.groups = data;
+    })
+    //Aquí traemos los grupos con mas participantes
+    this.Api.getAllMajorInvite(1).subscribe(data=>{
+      this.allMajorInvites = data;
+    })
+    //Aquí traemos a todos los grupos con sus numero de participantes
+    this.Api.getAllInvite(1).subscribe(data=>{
+      this.allInvites = data;
     })
   }
 
+  //Añadimos la funcion donde generaremos el archivo PDF
   public downloadPDF() {
-    // let elements = document.querySelectorAll("#pdfGroups .theme-showcase");
-    // const elements = document.getElementById('pdfGroups');
+    // llamamos al id del HTML donde queremos realizar la imagen canvas para luego
+    // ser descargado como archivo PDF
     const DATA = document.getElementById('pdfGroups');
-    // const doc = new jsPDF('p','pt','a4');
     const options = {
       background: 'white',
       scale: 3
     };
-    // doc.html(DATA,{
-    //   callback: (doc) => {
-    //     doc.save(`${new Date().toISOString()}_grupos.pdf`);
-    //   }
-    // })
-
     html2canvas(DATA!, options).then((canvas) => {
       const img = canvas.toDataURL();
 
-      // Add image Canvas to PDF
+      // Añade imagen canvas al archivo PDF
       var imgWidth = 210;
       var pageHeight = 295;
       var imgHeight = canvas.height * imgWidth / canvas.width;
@@ -77,33 +81,15 @@ export class GroupReportComponent implements OnInit {
     });
   }
 
-  // single = [];
+  //Iniciamos con la grafica de los grupos con mas participantes
+
   view: [number, number] = [700, 400];
 
   // options
-  gradient: boolean = true;
+  gradient: boolean = false;
   showLegend: boolean = true;
   showLabels: boolean = true;
   isDoughnut: boolean = false;
-
-  single = [
-    {
-      "name": "Germany",
-      "value": 8940000
-    },
-    {
-      "name": "USA",
-      "value": 5000000
-    },
-    {
-      "name": "France",
-      "value": 7200000
-    },
-      {
-      "name": "UK",
-      "value": 6200000
-    }
-  ];
 
   colorScheme = {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
@@ -120,5 +106,25 @@ export class GroupReportComponent implements OnInit {
   onDeactivate(data: any): void {
     console.log('Deactivate', JSON.parse(JSON.stringify(data)));
   }
+
+  //finalizamos con los grupos con mas participantes
+  //Iniciamos con la grafíca que traerá a todos los grupos con el numero de participantes respectivos
+
+  // options
+  showXAxis: boolean = true;
+  showYAxis: boolean = true;
+  gradient1: boolean = false;
+  showXAxisLabel: boolean = true;
+  yAxisLabel: string = 'Country';
+  showYAxisLabel: boolean = true;
+  xAxisLabel: string = 'Population';
+  public legendPosition: LegendPosition = LegendPosition.Below;
+
+  single = [
+    {
+      "name": "Dylan Grupo",
+      "value": 8
+    },
+  ];
 
 }

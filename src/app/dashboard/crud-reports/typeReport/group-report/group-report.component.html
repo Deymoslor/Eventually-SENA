@@ -9,18 +9,81 @@
       <h1>Reporte de Grupos</h1>
       <p>TEste es el reporte de grupos que se realiza en este mes.</p>
     </div>
-
-    <ngx-charts-advanced-pie-chart
+    <br>
+    <div>
+      <br>
+      <br>
+    </div>
+    <div  class="jumbotron">
+      <div>
+        <h2>Los grupos con mas invitados activos</h2>
+        <ngx-charts-advanced-pie-chart
+          [view]="view"
+          scheme="cool"
+          [results]="allMajorInvites"
+          [gradient]="gradient"
+          (select)="onSelect($event)"
+          (activate)="onActivate($event)"
+          (deactivate)="onDeactivate($event)"
+          >
+        </ngx-charts-advanced-pie-chart>
+      </div>
+    </div>
+    <div class="jumbotron">
+      <h2>Los grupos con mayor eventos realizados</h2>
+      <ngx-charts-pie-grid
+        [view]="view"
+        scheme="cool"
+        [results]="single"
+        (select)="onSelect($event)">
+      </ngx-charts-pie-grid>
+    </div>
+    <div>
+      <div>
+        <br>
+        <br>
+      </div>
+      <div>
+        <br>
+        <br>
+      </div>
+    </div>
+    <div class="jumbotron">
+      <h2>Los grupos con el total de sus participantes</h2>
+      <ngx-charts-bar-horizontal
+        [view]="view"
+        scheme="cool"
+        [results]="allInvites"
+        [gradient]="gradient1"
+        [xAxis]="showXAxis"
+        [yAxis]="showYAxis"
+        [legend]="showLegend"
+        [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel"
+        [xAxisLabel]="xAxisLabel"
+        [yAxisLabel]="yAxisLabel"
+        (select)="onSelect($event)"
+        (activate)="onActivate($event)"
+        (deactivate)="onDeactivate($event)">
+      </ngx-charts-bar-horizontal>
+    </div>
+    <div class="jumbotron">
+      <h2> los gustos mas solicitados por los grupos</h2>
+      <ngx-charts-pie-chart
       [view]="view"
-      [scheme]="colorScheme"
+      scheme="cool"
       [results]="single"
       [gradient]="gradient"
+      [legend]="showLegend"
+      [legendPosition]="legendPosition"
+      [labels]="showLabels"
+      [doughnut]="isDoughnut"
       (select)="onSelect($event)"
       (activate)="onActivate($event)"
       (deactivate)="onDeactivate($event)"
       >
-    </ngx-charts-advanced-pie-chart>
-
+    </ngx-charts-pie-chart>
+    </div>
     <table class="table table-warning">
       <thead>
         <tr>
