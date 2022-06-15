@@ -1,107 +1,119 @@
 <ng-template #content let-modal>
-  <app-modal-edit-groups [childMessage]=id></app-modal-edit-groups>
+    <app-modal-edit-groups [childMessage]=id></app-modal-edit-groups>
 </ng-template>
 <ng-template #content2 let-modal2>
-  <app-modal-source-users [childMessage]=id></app-modal-source-users>
+    <app-modal-source-users [childMessage]=id></app-modal-source-users>
 </ng-template>
 <ng-template #content3 let-modal3>
-  <app-modal-events-completed></app-modal-events-completed>
+    <app-modal-events-completed></app-modal-events-completed>
 </ng-template>
-<div *ngIf="manager?.idPersona == personaId && manager?.estadoPersona_idEstadoPersona == 1">
-  <a [routerLink]="['/groups/your-groups']" routerLinkActive="router-link-active" class="back">&lt; Volver al inicio</a>
+<!-- <div *ngIf="manager?.idPersona == personaId && manager?.estadoPersona_idEstadoPersona == 1">
+    <a [routerLink]="['/groups/your-groups']" routerLinkActive="router-link-active" class="back">&lt; Volver al inicio</a>
 </div>
 <div *ngIf="manager?.idPersona != personaId">
-  <a [routerLink]="['/groups/related-groups']" routerLinkActive="router-link-active" class="back">&lt; Volver al inicio</a>
-</div>
-<div class="container">
-  <form [formGroup]="GroupForm">
-    <br>
-    <div class="img-container class-thumbnail" *ngIf="!GroupForm.get('imagen')!.value">
-      <img class="rounded card-img-top" src="../../../../assets/group/prueba.jfif">
-    </div>
-    <div class="img-container class-thumbnail" *ngIf="GroupForm.get('imagen')?.value">
-      <img class="rounded card-img-top" [src]="GroupForm.get('imagen')?.value" alt="{{ group?.nombreGrupo }}">
-    </div>
-  </form>
-    <div class="info">
-        <p class="product-name">{{ group?.nombreGrupo }}</p>
-        <br>
-        <div class="row g-5">
-            <div class="col-md-7">
-              <div class="card-row">
-                <p class="product-name h2">Sobre</p>
-                <p class="product-short-description h5 ">{{group?.descripcionGrupo}}</p>
-              </div>
-              <div class="cart-row" *ngIf="personas">
-                <table class="table table-striped">
-                  <thead>
-                    <tr>
-                      <th>Nombre</th>
-                      <th>Email</th>
-                      <div *ngIf="manager">
-                        <th>Acción</th>
-                      </div>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <ng-container *ngFor="let persona of personas">
-                      <tr *ngIf="persona.idPersona != personaId">
-                        <td class="product-short-description">{{persona.nombre}}</td>
-                        <td class="product-short-description">{{persona.Email}}</td>
-                        <div *ngIf="manager">
-                          <td class="product-short-description"><button class="btn btnEditar justify-content-md-center" (click)="putEditDetail(persona.idGrupos,persona.idDetalleGrupoPersona,persona.idPersona, 4)">Eliminar</button></td>
-                        </div>
-                      </tr>
-                    </ng-container>
-                  </tbody>
-                </table>
-              </div>
-              <br>
-              <div *ngIf="!personas && manager">
-                <p class="product-name h2">no hay participantes en este grupo</p>
-              </div>
-              <div *ngIf="!personas && !manager">
-                <p class="product-name h2">Eres el unico participante en este grupo</p>
-              </div>
+    <a [routerLink]="['/groups/related-groups']" routerLinkActive="router-link-active" class="back">&lt; Volver al inicio</a>
+</div> -->
+<div class="container card">
+    <form [formGroup]="GroupForm">
 
-            </div>
-            <div class="col-md-4">
-                <div class="position-sticky" style="top: 2rem;">
-                    <div class="p-4 mb-3 bg-light rounded">
-                      <ng-container *ngFor="let likeI of likesI">
-                        <div *ngIf="group?.gustos_idGusto == likeI.idGusto">
-                          <p class="product-name h2">Enfocado en</p>
-                          <p class="product-short-description h5">{{likeI.nombreGusto}}</p>
-                        </div>
-                      </ng-container>
-                    </div>
-                    <div class="p-4">
-                        <ul class="nav nav-taps">
-                            <li class="nav-item dropdown">
-                                <a class="h4 nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Opciones</a>
-                                <ul class="dropdown-menu">
-                                  <div *ngIf="manager?.idPersona == personaId && manager?.estadoPersona_idEstadoPersona == 1">
-                                    <li><a class="h5 dropdown-item" role="button" (click)="editarGroup(group?.idGrupos)" data-bs-toggle="modal" data-bs-target="#content-modal" role="button" (click)="modalOpen(content)">Editar grupo</a></li>
-                                    <div *ngIf="group?.privacidadGrupo == 1">
-                                      <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#content-modal2" role="button" (click)="modalOpen2(content2)">Invitar amigo</a></li>
-                                    </div>
-                                    <!-- <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#modal-report-events-groups-organizer">Reportes</a></li> -->
-                                  </div>
-                                  <div *ngIf="InvitadoPresente">
-                                    <li><a class="h5 dropdown-item" role="button" (click)="putDeleteDetail(InvitadoPresente.idGrupos,InvitadoPresente.idDetalleGrupoPersona,personaId, 4)">Salir del grupo</a></li>
-                                  </div>
-                                  <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#content-modal3" role="button" (click)="modalOpen3(content3)">Ver eventos realizados</a></li>
-                              </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- <button data-bs-toggle="modal" data-bs-target="#content-modal" role="button" (click)="modalOpen(content)">holaa</button> -->
+        <div class="img-container class-thumbnail" *ngIf="!GroupForm.get('imagen')!.value">
+            <img class="rounded  card-img-top" id="imagenGrupo" src="../../../../assets/group/prueba.jfif">
         </div>
-    </div>
-</div>
-<p class="h3">Evento a realizar</p>
-<router-outlet>
+        <div class="img-container class-thumbnail" *ngIf="GroupForm.get('imagen')?.value">
+            <img class="rounded card-img-top" id="imagenGrupo" [src]="GroupForm.get('imagen')?.value" alt="{{ group?.nombreGrupo }}">
+        </div>
+    </form>
+    <table>
+        <br>
+        <tr>
+            <td>
 
-</router-outlet>
+                <p class="product-name">{{ group?.nombreGrupo }}</p>
+                <br>
+            </td>
+            <td>
+
+                <tr>
+                    <p class="product-name h2">Sobre</p>
+                </tr>
+                <tr>
+                    <p class="product-short-description h5 ">{{group?.descripcionGrupo}}</p>
+
+                </tr>
+
+
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+
+                <ng-container *ngFor="let likeI of likesI">
+                    <div *ngIf="group?.gustos_idGusto == likeI.idGusto">
+                        <p class="product-name h2">Enfocado en</p>
+                        <p class="product-short-description h5">{{likeI.nombreGusto}}</p>
+                    </div>
+                </ng-container>
+            </td>
+            <td *ngIf="manager?.idPersona == personaId && manager?.estadoPersona_idEstadoPersona == 1">
+                <tr>
+                    <li><a class="h5 dropdown-item" role="button" (click)="editarGroup(group?.idGrupos)" data-bs-toggle="modal" data-bs-target="#content-modal" role="button" (click)="modalOpen(content)">Editar grupo</a></li>
+                </tr>
+                <tr *ngIf="group?.privacidadGrupo == 1">
+                    <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#content-modal2" role="button" (click)="modalOpen2(content2)">Invitar amigo</a></li>
+                </tr>
+                <!-- <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#modal-report-events-groups-organizer">Reportes</a></li> -->
+
+            </td>
+        </tr>
+        <tr>
+            <td *ngIf="InvitadoPresente">
+                <li><a class="h5 dropdown-item" role="button" (click)="putDeleteDetail(InvitadoPresente.idGrupos,InvitadoPresente.idDetalleGrupoPersona,personaId, 4)">Salir del grupo</a></li>
+            </td>
+            <td>
+                <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#content-modal3" role="button" (click)="modalOpen3(content3)">Ver eventos realizados</a></li>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <div *ngIf="manager">
+                                <th>Acción</th>
+                            </div>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-container *ngFor="let persona of personas">
+                            <tr *ngIf="persona.idPersona != personaId">
+                                <td class="product-short-description">{{persona.nombre}}</td>
+                                <td class="product-short-description">{{persona.Email}}</td>
+                                <div *ngIf="manager">
+                                    <td class="product-short-description"><button class="btn btnEditar justify-content-md-center" (click)="putEditDetail(persona.idGrupos,persona.idDetalleGrupoPersona,persona.idPersona, 4)">Eliminar</button></td>
+                                </div>
+                            </tr>
+                        </ng-container>
+                    </tbody>
+                </table>
+            </td>
+            <td>
+                <tr *ngIf="!personas && manager">
+                    <p class="product-name h2">no hay participantes en este grupo</p>
+                </tr>
+                <tr *ngIf="!personas && !manager">
+                    <p class="product-name h2">Eres el unico participante en este grupo</p>
+                </tr>
+            </td>
+        </tr>
+
+        <!-- <button data-bs-toggle="modal" data-bs-target="#content-modal" role="button" (click)="modalOpen(content)">holaa</button> -->
+        <tr>
+            <p class="h3">Evento a realizar</p>
+        </tr>
+    </table>
+    <router-outlet>
+
+    </router-outlet>
