@@ -33,7 +33,8 @@ export class NoAuthGuard implements CanActivate {
         this.router.navigate(["main/landingVisit"]);
         return false;
       }else if(this.authService.desencriptar(localStorage.getItem("nombreRol")) === "PROVEEDOR"){
-        this.router.navigate(["main/landingProv"]);
+        // this.router.navigate(["main/landingProv"]);
+        this.router.navigate(["main/provider/myService"]);
         return false;
       }else if(this.authService.desencriptar(localStorage.getItem("nombreRol")) === "ADMIN"){
         this.router.navigate(["dashboard/landingAdmin"]);
