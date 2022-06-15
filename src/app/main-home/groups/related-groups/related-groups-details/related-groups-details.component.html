@@ -1,42 +1,41 @@
+<!-- <a [routerLink]="['/groups/related-groups']" routerLinkActive="router-link-active"  class="back">&lt; Volver al inicio</a> -->
+<div class="container">
 
-  <a [routerLink]="['/groups/related-groups']" routerLinkActive="router-link-active"  class="back">&lt; Volver al inicio</a>
-  <div class="container">
-    <br>
-      <div class="info">
+    <div class="info">
         <p class="product-name">{{ group?.nombreGrupo }}</p>
         <br>
         <div class="row g-5">
-          <div class="col-md-8">
-            <p class="h3">Eventos a realizar</p>
-            <br>
-            <div class="col-md-6">
-              <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                <div class="col p-4 d-flex flex-column position-static">
-                  <p class=" h4 d-inline-block mb-2 text-primary">{{ event?.nombreEvento }}</p>
-                  <div class="mb-1 text-muted">{{ event?.fechaEvento }}</div>
-                  <p class="card-text mb-auto">{{ event?.descripcionEvento }}</p>
-                  <br>
-                  <a href="#" class="stretched-link">Participar</a>
+            <div class="col-md-8">
+                <p class="h3">Eventos a realizar</p>
+                <br>
+                <div class="col-md-6">
+                    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                        <div class="col p-4 d-flex flex-column position-static">
+                            <p class=" h4 d-inline-block mb-2 text-primary">{{ event?.nombreEvento }}</p>
+                            <div class="mb-1 text-muted">{{ event?.fechaEvento }}</div>
+                            <p class="card-text mb-auto">{{ event?.descripcionEvento }}</p>
+                            <br>
+                            <a href="#" class="stretched-link">Participar</a>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
-          <div class="col-md-4">
-            <div class="position-sticky" style="top: 2rem;">
-              <div class="p-4 mb-3 bg-light rounded">
-                <p class="h3 fst-italic">Sobre</p>
-                <p class="mb-0">{{ group?.descripcionGrupo }}</p>
-              </div>
+            <div class="col-md-4">
+                <div class="position-sticky" style="top: 2rem;">
+                    <div class="p-4 mb-3 bg-light rounded">
+                        <p class="h3 fst-italic">Sobre</p>
+                        <p class="mb-0">{{ group?.descripcionGrupo }}</p>
+                    </div>
 
-              <div class="p-4">
-                <h4 class="fst-italic">Opciones</h4>
-                <ol class="list-unstyled">
-                  <li><a [routerLink]="['/groups/related-groups']" routerLinkActive="router-link-active">Regresar</a></li>
-                  <li><a [routerLink]="['/groups/related-groups']" routerLinkActive="router-link-active">Abandonar grupo</a></li>
-                </ol>
-              </div>
+                    <div class="p-4">
+                        <h4 class="fst-italic">Opciones</h4>
+                        <ol class="list-unstyled">
+                            <li><a [routerLink]="['/groups/related-groups']" routerLinkActive="router-link-active">Regresar</a></li>
+                            <li><a [routerLink]="['/groups/related-groups']" routerLinkActive="router-link-active">Abandonar grupo</a></li>
+                        </ol>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-  </div>
+    </div>
+</div>
