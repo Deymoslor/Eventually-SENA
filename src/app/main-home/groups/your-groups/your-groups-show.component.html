@@ -1,10 +1,10 @@
-<div class="col-sm-12 aloo">
-    <div class="grid card aloo">
+<div class="col-sm-12 aloo b">
+    <div class="grid card aloo b">
         <div *ngIf="!GroupForm.get('imagen')?.value">
-            <img class="rounded card-img-top" src="../../../../assets/group/prueba.jfif">
+            <img class="rounded card-img-top" id="imagenGrupo" src="../../../../assets/group/prueba.jfif">
         </div>
         <div class="group" *ngIf="GroupForm.get('imagen')?.value">
-            <img class="thumbnail  card-img-top" style="padding: 0; margin: 0;" width="175px" [src]="GroupForm.get('imagen')?.value" alt="{{ group?.nombreGrupo }}" class="thumbnail">
+            <img class="thumbnail  card-img-top" id="imagenGrupo" [src]="GroupForm.get('imagen')?.value" alt="{{ group?.nombreGrupo }}" class="thumbnail">
         </div>
         <div class="card-body textox">
             <h5 class="card-title title">{{ group.nombreGrupo }}</h5>
