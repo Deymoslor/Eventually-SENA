@@ -47,6 +47,7 @@ export class EventInComponent implements OnInit {
     idEvento: new FormControl(''),
     nombreEvento: new FormControl(''),
     descripcionEvento: new FormControl(''),
+    direccion: new FormControl(''),
     fechaEvento: new FormControl(''),
     tipoEvento: new FormControl(''),
     imagen: new FormControl(''),
@@ -76,6 +77,7 @@ export class EventInComponent implements OnInit {
         nombreEvento: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
         tipoEvento: ['', Validators.required],
         descripcionEvento: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(500)]],
+        direccion: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(150)]],
         fechaEvento: ['', Validators.required],
         imagen: ['', [Validators.required]],
         participantesTotales: ['2', [Validators.required, Validators.pattern(/^[0-9]\d*$/), Validators.min(2), Validators.max(200)]],
@@ -137,6 +139,7 @@ export class EventInComponent implements OnInit {
           'idEvento': '1',
           'nombreEvento': '',
           'descripcionEvento': '',
+          'direccion': '',
           'fechaEvento': '',
           'tipoEvento': '',
           'imagen': '',
@@ -153,6 +156,7 @@ export class EventInComponent implements OnInit {
             'idEvento': this.dataEvent.idEvento,
             'nombreEvento': this.dataEvent.nombreEvento,
             'descripcionEvento': this.dataEvent.descripcionEvento,
+            'direccion': this.dataEvent.direccion,
             'fechaEvento': this.dataEvent.fechaEvento,
             'tipoEvento': this.dataEvent.tipoEvento,
             'imagen': this.dataEvent.imagen.replace('C:/xampp/htdocs', GlobalConstants.httpLocalHost),
@@ -165,6 +169,7 @@ export class EventInComponent implements OnInit {
             'idEvento': this.dataEvent.idEvento,
             'nombreEvento': this.dataEvent.nombreEvento,
             'descripcionEvento': this.dataEvent.descripcionEvento,
+            'direccion': this.dataEvent.direccion,
             'fechaEvento': this.dataEvent.fechaEvento,
             'tipoEvento': this.dataEvent.tipoEvento,
             'imagen': '',
@@ -211,10 +216,10 @@ export class EventInComponent implements OnInit {
         this.dataStatePersonGroup = data[0]
         if (this.dataStatePersonGroup.estadoPersona_idEstadoPersona == 1) {
           this.statePersonGroup = this.dataStatePersonGroup.estadoPersona_idEstadoPersona;
-          console.log('object');
+          // console.log('object');
         }else{
           this.statePersonGroup = 2;
-          console.log('object');
+          // console.log('object');
         }
         console.log(this.stateGroupPerson);
       })

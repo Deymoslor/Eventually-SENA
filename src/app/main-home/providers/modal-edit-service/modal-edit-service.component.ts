@@ -2,8 +2,8 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import {NgbDateStruct, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
 import { TypeServicesI } from 'src/app/dashboard/crud-services/models/typeServices.interface';
-import { ServiceI } from '../../models/service.interface';
-import { ApiService } from '../../services/api.service';
+import { ServiceI } from 'src/app/main-home/providers/models/service.interface';
+import { ApiService } from 'src/app/main-home/providers/services/api.service';
 
 @Component({
   selector: 'app-modal-edit-service',
@@ -37,6 +37,7 @@ export class ModalEditServiceComponent implements OnInit {
   constructor(private calendar: NgbCalendar, private api: ApiService) { }
 
   ngOnInit(): void {
+
   }
 
   ngOnChanges(): void {
@@ -46,7 +47,7 @@ export class ModalEditServiceComponent implements OnInit {
     })
     this.api.getSingleServiceProv(this.childMessage).subscribe((data: any) =>{
 
-      this.dataService = data[0]
+      this.dataService = data[0];
 
       this.ServicesForm.setValue({
         idServicios: this.dataService.idServicios,

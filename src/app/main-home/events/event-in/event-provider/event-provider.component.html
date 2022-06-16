@@ -55,11 +55,11 @@
                 <tbody>
 
                     <tr *ngFor="let key of dataProviderService | paginate
-                  : {
-                      itemsPerPage: tableSize,
-                      currentPage: page,
-                      totalItems: count
-                    };">
+                        : {
+                            itemsPerPage: tableSize,
+                            currentPage: page,
+                            totalItems: count
+                          };">
                         <td></td>
                         <td>{{key.nombreProveedor}}</td>
                         <td>{{key.apellidoProveedor}}</td>
@@ -74,8 +74,8 @@
                         <td>{{key.calificacionT}}</td>
                         <td>
                             <button class="btn btn-primary" (click)="modalOpen4(content4, key.idProveedor)">
-                              Detalle
-                          </button>
+                                    Detalle
+                                </button>
                         </td>
                         <td>
                             <div class="content-button">
@@ -83,10 +83,10 @@
                             </div>
                         </td>
                         <!-- <td *ngIf="!key.estadoInvitacion == null">
-                          <div class="content-button">
-                              <button class="btn btn-primary" type="submit" disabled (click)="postInvitation(key)">Invitar</button>
-                          </div>
-                      </td> -->
+                                <div class="content-button">
+                                    <button class="btn btn-primary" type="submit" disabled (click)="postInvitation(key)">Invitar</button>
+                                </div>
+                            </td> -->
                         <td *ngIf=" key.estadoInvitacion == null">
                             Sin invitar
                         </td>
@@ -120,8 +120,8 @@
 
     <div *ngIf="stateAccept != 1">
         <button class="btn btn-danger" (click)="modalOpen2(content3)">
-          Terminar
-      </button>
+                Terminar
+            </button>
         <p class="fw-bolder">Terminar Evento</p>
     </div>
 
@@ -130,8 +130,8 @@
             Se tiene un Servicio aceptado con el proveedor: {{nombreProveedor}}, con nombre de servicio: {{nombreServicio}}
         </div>
         <button class="btn btn-danger" (click)="modalOpen2(content2)">
-          Terminar
-      </button>
+                Terminar
+            </button>
         <p class="fw-bolder">Terminar y Resultados</p>
 
     </ng-template>

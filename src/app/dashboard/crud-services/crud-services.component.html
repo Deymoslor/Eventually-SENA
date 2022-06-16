@@ -4,6 +4,10 @@
     <!--TABLE-->
     <div class="row tables">
         <div class="col ">
+            <div class="searcher">
+                <label for="">BUSCAR NOMBRE GUSTO: </label>
+                <input type="text" class="search" name="filterServices" placeholder="Buscar..." [(ngModel)]="filterServices">
+            </div>
             <table class="table table-striped">
                 <thead class="titles">
                     <tr>
@@ -22,7 +26,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let service of Services">
+                    <tr *ngFor="let service of Services | paginate : {
+                        itemsPerPage: tableSize,currentPage: page,totalItems: count} |
+                        filterPipeServices:filterServices">
 
                         <th class="textox" scope="row">{{ service.idServicios }}</th>
                         <td class="textox">{{ service.nombreServicio }}</td>
@@ -47,6 +53,11 @@
                     </tr>
                 </tbody>
             </table>
+            <div>
+                <pagination-controls previousLabel="Prev"
+                nextLabel="Next"
+                (pageChange)="onTableDataChange($event)" ></pagination-controls>
+            </div>
         </div>
     </div>
     <!--TABLE//-->
@@ -66,7 +77,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let TypeService of TypeServices">
+                    <tr *ngFor="let TypeService of TypeServices | paginate : {
+                        itemsPerPage: tableSize2,currentPage: page2,totalItems: count2}">
 
                         <th class="textox" scope="row">{{ TypeService.idtipoServicio }}</th>
                         <td class="textox">{{ TypeService.tipoServicio }}</td>
@@ -76,6 +88,11 @@
                     </tr>
                 </tbody>
             </table>
+            <div>
+                <pagination-controls previousLabel="Prev"
+                nextLabel="Next"
+                (pageChange)="onTableDataChange2($event)" ></pagination-controls>
+            </div>
         </div>
     </div>
     <button class="btn btnCrear" class="btn btnEditar" data-bs-toggle="modalCreateTypeDash" data-bs-target="#content-modalCreateTypeDash" (click)="modalCreateServiceOpen(contentCreateType, 1)">
@@ -243,7 +260,7 @@
                     [ngClass]=" (ServicesForm.get('correoContacto')?.touched || ServicesForm.get('correoContacto')?.dirty) &&
                     ServicesForm.get('correoContacto')?.hasError('required')
                     ? 'is-invalid' : '' || ServicesForm.get('correoContacto')?.hasError('email')
-                    ? 'is-invalid' : ''">
+                    ? 'is-invalid' : ''" [readonly]="true">
                     <div class="invalid-feedback">
                         {{ ServicesForm.get("numeroContacto")?.hasError("required") ? "Campo requerido" : "" }}
                         {{ ServicesForm.get("numeroContacto")?.hasError("email") ? "Campo de tipo email requerido" : "" }}
@@ -253,21 +270,20 @@
                 <label for="exampleInputEmail1">Id Proveedor:</label>
                 <input type="number" class="form-control" id="exampleInputEmail1" min="1" max="1000" formControlName="Proveedor_idProveedor" [readonly]="true">
 
-                <label for="exampleInputEmail1">Nombre proveedor:</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" min="1" max="1000" formControlName="No name" value="{{this.correoProveedor}}" [readonly]="true">
+                <!-- INICIO Intento de select por nombre para actualizar el proveedor -->
 
-                <div class="formGroup">
-                    <label for="">Nombre proveedor:</label>
-                    <select class="form-select" id="input-group-text" formControlName="TipoServicio_idtipoServicio">
+                <!-- <label for="exampleInputEmail1">Correo proveedor:</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" min="1" max="1000" formControlName="No name" value="{{this.correoProveedor}}" [readonly]="true"> -->
+
+                <!-- <div class="formGroup">
+                    <label for="">Correo proveedor:</label>
+                    <select class="form-select" id="input-group-text" formControlName="No name">
                             <option selected> Escoge uno...</option>
-                            <option value="{{correoProveedorT.correoProveedor}}" *ngFor="let correoProveedorT of listaProveedores" (click)="buscarIdProveedor(correoProveedorT)">{{correoProveedorT.correoProveedor}}</option>
+                            <option value="{{correoProveedorT.correoProveedor}}" *ngFor="let correoProveedorT of listaProveedores" (click)="buscarIdProveedor(ServicesForm.value)">{{correoProveedorT.correoProveedor}}</option>
                     </select>
+                </div> -->
 
-                    <!-- <div class="invalid-feedback">
-                        {{ ServicesForm.get("TipoServicio_idtipoServicio")?.hasError("required") ? "Campo requerido" : "" }}
-                        {{ ServicesForm.get("TipoServicio_idtipoServicio")?.hasError("pattern") ? "Campo de solo numeros" : "" }}
-                    </div> -->
-                </div>
+                <!-- FIN Intento de select por nombre para actualizar el proveedor -->
 
                 <div class="formGroup">
                     <label for="">Tipo Servicio:</label>

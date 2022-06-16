@@ -38,7 +38,8 @@ export class CrudServicesComponent implements OnInit {
     correoContacto: new FormControl(''),
     estadoServicio: new FormControl(),
     Proveedor_idProveedor: new FormControl(''),
-    TipoServicio_idtipoServicio: new FormControl('')
+    TipoServicio_idtipoServicio: new FormControl(''),
+    correoProveedor: new FormControl(''),
   })
 
   dataType!: TypeServicesI;
@@ -51,17 +52,19 @@ export class CrudServicesComponent implements OnInit {
   public idProveedor!: any;
 
   TypeServices!: TypeServicesI[];
-  closeResult!: string;
+  closeResult2!: string;
 
   previsualizacion!: string;
   public archivos: any = [];
 
   Services!: ServiceI[];
   idService!: number;
+  
 
   constructor(private api: ApiService, private router: Router, private modalService: NgbModal,
     private apiProvider: SupplierService, private sanitizer: DomSanitizer, private alertas: AlertasService,
     private fb: FormBuilder) {
+      
 
       this.ServicesForm = this.fb.group({
         idServicios: ['', [Validators.required, Validators.pattern(/^[0-9]\d*$/)]],
@@ -84,6 +87,44 @@ export class CrudServicesComponent implements OnInit {
       })
 
      }
+
+    closeResult = '';
+
+    filterServices = '';
+
+  POSTS: any;
+  page: number = 1;
+  count: number = 0;
+  tableSize: number = 10;
+  tableSizes: any = [10, 20, 30, 40, 50];
+  lengthTable!: number
+
+  totalRecords!: number;
+
+  onTableDataChange(event: any) {
+    this.page = event;
+  }
+  onTableSizeChange(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+  }
+
+  POSTS2: any;
+  page2: number = 1;
+  count2: number = 0;
+  tableSize2: number = 4;
+  tableSizes2: any = [4, 8, 12, 16, 20];
+  lengthTable2!: number
+
+  totalRecords2!: number;
+
+  onTableDataChange2(event: any) {
+    this.page = event;
+  }
+  onTableSizeChange2(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+  }
 
   ngOnInit(): void {
     this.api.getAllTypeServices(1).subscribe(data => {
@@ -191,37 +232,21 @@ export class CrudServicesComponent implements OnInit {
     });
   }
 
-  //Formulario para sacar el correo del proveedor unico cuando presione.
-  buscarIdProveedor(correoProveedor:string){
-    console.log(correoProveedor);
+  // //Formulario para sacar el correo del proveedor unico cuando presione.
+  // buscarIdProveedor(correoProveedor:any){
+  //   // console.log(correoProveedor);
 
-    let correoOficial = correoProveedor[0];
+  //   let correoOficial = correoProveedor.correoContacto;
 
-    console.log(correoOficial);
+  //   console.log(correoOficial);
 
-
-    //Llamamos al api para buscar el id que le pertenece a el proveedor con ese correo.
-    this.apiProvider.getMailSupplier(correoProveedor).subscribe(data =>{
-      console.log(data[0]);
-      // this.idProveedor = data[0].idProveedor;
-      // console.log(this.idProveedor);
-    });
-
-    // this.ServicesForm.setValue({
-    //   'idServicios': this.dataService.idServicios,
-    //   'nombreServicio': this.dataService.nombreServicio,
-    //   'descripcionServicio': this.dataService.descripcionServicio,
-    //   'precioEstimado': this.dataService.precioEstimado,
-    //   'imagen': '',
-    //   'historialEmpresas': this.dataService.historialEmpresas,
-    //   'numeroContacto': this.dataService.numeroContacto,
-    //   'correoContacto': this.dataService.correoContacto,
-    //   'estadoServicio': this.dataService.estadoServicio,
-    //   'Proveedor_idProveedor': this.dataService.Proveedor_idProveedor,
-    //   // 'Proveedor_idProveedor': this.nombreProveedor,
-    //   'TipoServicio_idtipoServicio': this.dataService.TipoServicio_idtipoServicio,
-    // })
-  }
+  //   //Llamamos al api para buscar el id que le pertenece a el proveedor con ese correo.
+  //   this.apiProvider.getMailSupplier(correoProveedor).subscribe(data =>{
+  //     console.log(data[0]);
+  //     // this.idProveedor = data[0].idProveedor;
+  //     // console.log(this.idProveedor);
+  //   });
+  // }
 
   modalCreateServiceOpen(content: any, numb: number) {
     // this.idService = numb;
@@ -253,9 +278,9 @@ export class CrudServicesComponent implements OnInit {
 
 
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result: any) => {
-      this.closeResult = `Closed with: ${result}`;
+      this.closeResult2 = `Closed with: ${result}`;
     }, (reason: any) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      this.closeResult2 = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
 

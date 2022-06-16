@@ -67,13 +67,12 @@ export class CreateServiceComponent implements OnInit {
       nombreServicio : ['', [Validators.required, Validators.minLength(5), Validators.maxLength(30)]],
       descripcionServicio: ['', [Validators.required, Validators.minLength(15), Validators.maxLength(300)]],
       precioEstimado: ['' , [Validators.required, Validators.pattern(/^[0-9]\d*$/)]],
-      imagen: [''],
       fechaInicio: ['' , [Validators.required]],
       historialEmpresas: ['' , [Validators.required, Validators.minLength(7), Validators.maxLength(300)]],
-      numeroContacto: ['' , [Validators.required, Validators.pattern(/^[0-9]\d*$/)]],
+      numeroContacto: ['' , [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^[0-9]\d*$/)]],
       correoContacto: ['' , [Validators.required, Validators.email]],
       TipoServicio_idtipoServicio: ['', [Validators.required]],
-      check: ['', Validators.requiredTrue]
+      check: ['', Validators.requiredTrue],
     })
 
   }
@@ -119,7 +118,7 @@ export class CreateServiceComponent implements OnInit {
       let respuesta:ResponseI = data;
           //Verificamos si la respuesta es exitosa.
           if(respuesta.status == 'ok'){
-            this.alertas.showSuccess('Deshabilitar Servicio','Función exitosa');
+            this.alertas.showSuccess('Servicio creado exitosamente','Acción exitosa');
             setTimeout(()=>{
               this.refresh();
             },2000);

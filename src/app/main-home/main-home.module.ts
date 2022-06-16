@@ -20,6 +20,7 @@ import { MyServiceComponent } from './providers/my-service/my-service.component'
 import { CreateServiceComponent } from './providers/create-service/create-service.component';
 import { LandingProvComponent } from './landing-prov/landing-prov.component';
 import { LandingVisitComponent } from './landing-visit/landing-visit.component';
+import { NgxPaginationModule } from 'ngx-pagination'
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { LandingVisitComponent } from './landing-visit/landing-visit.component';
     SettingsModule,
     EventsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ]
 })
 export class MainHomeModule { }

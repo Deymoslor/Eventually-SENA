@@ -43,7 +43,7 @@ export class ModalEditServiceComponent implements OnInit {
   dataService!: ServiceI;
 
   public previsualizacion!: string;
-  public archivos: any = [];  
+  public archivos: any = [];
   imagenLlegada!: string
   actualDate!: Date;
   dateS!: string;
@@ -58,8 +58,8 @@ export class ModalEditServiceComponent implements OnInit {
         precioEstimado: ['' , [Validators.required, Validators.pattern(/^[0-9]\d*$/)]],
         imagen: [''],
         fechaInicio: ['' , [Validators.required]],
-        historialEmpresas: ['' , [Validators.required, Validators.minLength(15), Validators.maxLength(300)]],
-        numeroContacto: ['' , [Validators.required, Validators.pattern(/^[0-9]\d*$/)]],
+        historialEmpresas: ['' , [Validators.required, Validators.minLength(7), Validators.maxLength(300)]],
+        numeroContacto: ['' , [Validators.required, Validators.pattern(/^[0-9]\d*$/), Validators.maxLength(10), Validators.minLength(10)]],
         correoContacto: ['' , [Validators.required, Validators.email]],
         estadoServicio: [''],
         Proveedor_idProveedor: [''],
@@ -139,14 +139,14 @@ export class ModalEditServiceComponent implements OnInit {
             TipoServicio_idtipoServicio: this.dataService.TipoServicio_idtipoServicio,
             check: null
           })
-          
 
 
-        
+
+
       })
     })
-    
-    
+
+
   }
 
   putEditForm(form: ServiceI){
@@ -157,7 +157,7 @@ export class ModalEditServiceComponent implements OnInit {
       let respuesta:ResponseI = data;
           //Verificamos si la respuesta es exitosa.
           if(respuesta.status == 'ok'){
-            this.alertas.showSuccess('Deshabilitar Servicio','Función exitosa');
+            this.alertas.showSuccess('Servicio editado correctamente','Función exitosa');
             setTimeout(()=>{
               this.refresh();
             },2000);

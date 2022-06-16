@@ -5,7 +5,11 @@
 
     <div class="row tables">
         <div class="col ">
-            <table class="table table-striped">
+            <div class="searcher">
+                <label for="">BUSCAR NOMBRE EVENTO: </label>
+                <input type="text" class="search" name="filterEvento" placeholder="Buscar..." [(ngModel)]="filterEvento">
+            </div>
+            <table class="table table-striped"> 
                 <thead class="titles">
                     <tr>
                         <th class="textoTitulos" scope="col">Id</th>
@@ -22,7 +26,9 @@
 
                 <tbody>
                     <!-- <tr class="sepa"></tr> -->
-                    <tr *ngFor="let event of events">
+                    <tr *ngFor="let event of events | paginate : {
+                        itemsPerPage: tableSize,currentPage: page,totalItems: count} |
+                        filterPipeEvents:filterEvento">
                         <th scope="row">{{ event.idEvento }}</th>
                         <td>{{ event.nombreEvento }}</td>
                         <td>{{ event.descripcionEvento }}</td>
@@ -39,6 +45,11 @@
                     </tr>
                 </tbody>
             </table>
+            <div>
+                <pagination-controls previousLabel="Prev"
+                nextLabel="Next"
+                (pageChange)="onTableDataChange($event)" ></pagination-controls>
+            </div>
         </div>
     </div>
 </div>

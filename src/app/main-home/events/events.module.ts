@@ -19,6 +19,7 @@ import { MatLabel } from '@angular/material/form-field';
 import { EditEventComponent } from './event-in/edit-event/edit-event.component';
 import { FilterEventsPipe } from './event-in/event-provider/pipe/filter-events.pipe';
 import { ModalInfoSerProvComponent } from './event-in/event-provider/modal-info-ser-prov/modal-info-ser-prov.component';
+import {NgxPaginationModule} from 'ngx-pagination'
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { ModalInfoSerProvComponent } from './event-in/event-provider/modal-info-
     ReactiveFormsModule, 
     MatDatepickerModule,
     MatNativeDateModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    NgxPaginationModule
   ]
 })
 export class EventsModule { }
