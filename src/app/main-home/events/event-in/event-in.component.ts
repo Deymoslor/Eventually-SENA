@@ -66,7 +66,7 @@ export class EventInComponent implements OnInit {
   createEventForm: FormGroup;
   cambioCorreoForm!: FormGroup;
 
-  
+
 
   constructor(private api:ApiService, private router:Router, private modalService: NgbModal,
      private route: ActivatedRoute, private fb: FormBuilder, private auth: AuthService,
@@ -122,10 +122,10 @@ export class EventInComponent implements OnInit {
 
     this.idGroup = this.route.snapshot.paramMap.get('id');
     // this.stateGroupPerson = 2
-   
-   
 
-    
+
+
+
 
     let idGrupos = this.route.snapshot.paramMap.get('id');
     this.api.getSigleEventGroup(Number(idGrupos)).subscribe((data: any) =>{
@@ -207,7 +207,7 @@ export class EventInComponent implements OnInit {
 
       this.api.getStatePersonGroup(this.auth.desencriptar(localStorage.getItem("id")), this.idGroup).subscribe((data) =>{
         console.log(data[0]);
-        
+
         this.dataStatePersonGroup = data[0]
         if (this.dataStatePersonGroup.estadoPersona_idEstadoPersona == 1) {
           this.statePersonGroup = this.dataStatePersonGroup.estadoPersona_idEstadoPersona;
@@ -221,7 +221,7 @@ export class EventInComponent implements OnInit {
       // console.log('ESTADI PERSONA GRUPO: ' + this.dataStatePersonGroup.estadoPersona_idEstadoPersona);
      });
 
-     
+
 
 
 
@@ -262,7 +262,7 @@ export class EventInComponent implements OnInit {
 
 
   editEvent(idE:number ){
-    this.router.navigate(['events/edit', idE]);
+    this.router.navigate(['main/events/edit', idE]);
   }
 
   modalOpen(content:any){
