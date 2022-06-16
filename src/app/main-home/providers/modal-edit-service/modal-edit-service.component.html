@@ -1,5 +1,5 @@
 <div class="modal fade" id="content-modal-edit-service" tabindex="-1" >
-  
+
     <form [formGroup]="ServicesForm" (ngSubmit)="putEditForm(ServicesForm.value)">
     <div class="modal-dialog modal-lg modal-dialog-scrollable">
         <div class="modal-content">
@@ -12,7 +12,7 @@
                     <label for="">Nombre del Servicio:</label>
                     <input type="text" class="form-control" id=""
                     placeholder="Ej: El mejor evento" formControlName="nombreServicio">
-                    
+
                     <label for="">Tipo Servicio:</label>
                     <select class="form-select" id="input-group-text" formControlName="TipoServicio_idtipoServicio">
                         <option value="{{typeService.idTipoServicio}}" *ngFor="let typeService of dataTypeService">{{typeService.tipoServicio}}</option>
@@ -32,7 +32,7 @@
 
                     <label for="exampleInputEmail1">Foto Servicio:</label>
                     <input class="form-control" (change)="upload2()" type="file" id="formFile">
-                    
+
                     <label for="">Precio estimado</label>
                     <input type="number" class="form-control" id="exampleInputEmail1"
                     value="0" formControlName="precioEstimado">

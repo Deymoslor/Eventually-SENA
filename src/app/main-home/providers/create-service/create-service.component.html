@@ -43,6 +43,7 @@
                                 ? "Campo requerido con maximo 50 caracteres" : "" }}
                             </div>
                         </div>
+                        <!-- {{ServicesForm.get("nombreServicio")?.errors | json}} -->
 
                         <div class="formGroup">
                             <label class="textoTitulos" for="">Descripcion Servicio:</label>
@@ -57,6 +58,7 @@
                                 ? "Campo requerido con maximo 500 caracteres" : "" }}
                             </div>
                         </div>
+                        <!-- {{ServicesForm.get("descripcionServicio")?.errors | json}} -->
 
                         <div class="formGroup">
                             <label for="exampleInputEmail1 textoTitulos">Precio estimado:</label>
@@ -69,6 +71,7 @@
                                 {{ ServicesForm.get("precioEstimado")?.hasError("required") ? "Campo requerido" : "" }} {{ ServicesForm.get("precioEstimado")?.hasError("pattern") ? "Campo de solo numeros" : "" }}
                             </div>
                         </div>
+                        <!-- {{ServicesForm.get("precioEstimado")?.errors | json}} -->
 
                         <div class="formGroup">
                             <label class="textoTitulos" for="">Imagen evento:</label>
@@ -96,6 +99,7 @@
                                 {{ ServicesForm.get("TipoServicio_idtipoServicio")?.hasError("required") ? "Campo requerido" : "" }} {{ ServicesForm.get("TipoServicio_idtipoServicio")?.hasError("pattern") ? "Campo de solo numeros" : "" }}
                             </div>
                         </div>
+                        <!-- {{ServicesForm.get("TipoServicio_idtipoServicio")?.errors | json}} -->
 
                         <div class="formGroup">
                             <label class="textoTitulos" for="">Historial de empresas:</label>
@@ -109,6 +113,7 @@
                                 ? "Campo requerido con maximo 300 caracteres" : "" }}
                             </div>
                         </div>
+                        <!-- {{ServicesForm.get("historialEmpresas")?.errors | json}} -->
 
                         <div class="formGroup">
                             <label class="textoTitulos" for="">Fecha inicio:</label>
@@ -119,19 +124,28 @@
                                 {{ ServicesForm.get("fechaInicio")?.hasError("required") ? "Campo requerido" : "" }}
                             </div>
                         </div>
+                        <!-- {{ServicesForm.get("fechaInicio")?.errors | json}} -->
 
                         <div class="formGroup">
                             <label class="textoTitulos" for="exampleInputEmail1">Numero de contacto:</label>
-                            <input type="number" class="form-control textox" id="exampleInputEmail1" min="1" max="200000000" formControlName="numeroContacto" [ngClass]=" (ServicesForm.get('numeroContacto')?.touched || ServicesForm.get('numeroContacto')?.dirty) &&
-                            ServicesForm.get('numeroContacto')?.hasError('required')
+                            <input type="text" class="form-control textox" id="exampleInputEmail1" min="1" max="200000000" formControlName="numeroContacto" [ngClass]="(ServicesForm.get('numeroContacto')?.touched || ServicesForm.get('numeroContacto')?.dirty) &&
+                            ServicesForm.get('numeroContacto')?.errors ? 'is-invalid' : '' || ServicesForm.get('numeroContacto')?.hasError('maxlength')
+                            ? 'is-invalid' : '' || ServicesForm.get('numeroContacto')?.hasError('minlength')
                             ? 'is-invalid' : '' || ServicesForm.get('numeroContacto')?.hasError('pattern')
-                            ? 'is-invalid' : ''">
-
-                            <div class="invalid-feedback textox">
-                                {{ ServicesForm.get("numeroContacto")?.hasError("required") ? "Campo requerido" : "" }} {{ ServicesForm.get("numeroContacto")?.hasError("pattern") ? "Campo de solo numeros" : "" }}
+                            ? 'is-invalid' : ''" ><span class="barra"></span>
+                            <label for="">Número de teléfono celular</label>
+                            <div class="invalid-feedback">
+                                {{ ServicesForm.get("numeroContacto")?.hasError("pattern") ? "Campo solo numérico" : "" }}
+                            </div>
+                            <div class="invalid-feedback">
+                                {{ ServicesForm.get("numeroContacto")?.hasError("required") ? "Campo requerido" : "" }}
+                                {{ ServicesForm.get("numeroContacto")?.hasError("maxlength") ? "Campo de 10 caracteres" : "" }}
+                                {{ ServicesForm.get("numeroContacto")?.hasError("minlength") ? "Campo de 10 caracteres" : "" }}
                             </div>
 
                         </div>
+                        <!-- {{ServicesForm.get("numeroContacto")?.errors | json}} -->
+
                         <div class="formGroup">
                             <label class="textoTitulos" for="">Correo de contacto:</label>
                             <input type="email" class="form-control textox" id="" placeholder="" formControlName="correoContacto" [ngClass]=" (ServicesForm.get('correoContacto')?.touched || ServicesForm.get('correoContacto')?.dirty) &&
@@ -142,25 +156,27 @@
                                 {{ ServicesForm.get("correoContacto")?.hasError("required") ? "Campo requerido" : "" }} {{ ServicesForm.get("correoContacto")?.hasError("email") ? "Campo de tipo email requerido" : "" }}
                             </div>
                         </div>
+                        <!-- {{ServicesForm.get("correoContacto")?.errors | json}} -->
 
                         <div class="groupForm">
                             <input type="checkbox" checked name="" id="check" formControlName="check" [ngClass]="(ServicesForm.get('check')?.touched || ServicesForm.get('check')?.dirty) &&
                             ServicesForm.get('check')?.errors ? 'is-invalid' : ''">
-                            <label class="textox">Solo puedes tener un servicio en tu cuenta de proveedor, por ende, asegúrate de tener información clara y
-                                llamativa, esta información podrá ser modificada posteriormente.</label>
+                            <label class="textox">Solo puedes tener un servicio en tu cuenta de proveedor, por ende, asegúrate de tener información clara y                               llamativa, esta información podrá ser modificada posteriormente.</label>
                             <div class="invalid-feedback textox">
                                 {{ ServicesForm.get("check")?.hasError("required") ? "Debe estar de acuerdo con las políticas." : "" }}
                             </div>
                         </div>
+                        <!-- {{ServicesForm.get("check")?.errors | json}} -->
 
-                        <!-- {{ServicesForm?.errors | json}}
-                        <pre>{{ ServicesForm.value | json }}</pre> -->
+                        <!-- {{ServicesForm?.errors | json}} -->
+                        <!-- <pre>{{ ServicesForm.value | json }}</pre> -->
                     </div>
 
                 </div>
                 <div class="modal-footer">
                     <!-- <button type="button" class="btn btn-secondary textox" data-bs-dismiss="modal">Cerrar</button> -->
-                    <button type="submit" class="btn btnCrear textox" [disabled]="ServicesForm.invalid">Crear</button>
+                    <button *ngIf="ServicesForm.valid" type="submit" class="btn btnCrear textox">Crear</button>
+                    <button *ngIf="ServicesForm.invalid" type="submit" class="btn btnCrear textox" [disabled]="ServicesForm.invalid">Crear</button>
                 </div>
 
             </div>

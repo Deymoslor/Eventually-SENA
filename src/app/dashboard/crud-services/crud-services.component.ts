@@ -38,7 +38,8 @@ export class CrudServicesComponent implements OnInit {
     correoContacto: new FormControl(''),
     estadoServicio: new FormControl(),
     Proveedor_idProveedor: new FormControl(''),
-    TipoServicio_idtipoServicio: new FormControl('')
+    TipoServicio_idtipoServicio: new FormControl(''),
+    correoProveedor: new FormControl(''),
   })
 
   dataType!: TypeServicesI;
@@ -191,37 +192,21 @@ export class CrudServicesComponent implements OnInit {
     });
   }
 
-  //Formulario para sacar el correo del proveedor unico cuando presione.
-  buscarIdProveedor(correoProveedor:string){
-    console.log(correoProveedor);
+  // //Formulario para sacar el correo del proveedor unico cuando presione.
+  // buscarIdProveedor(correoProveedor:any){
+  //   // console.log(correoProveedor);
 
-    let correoOficial = correoProveedor[0];
+  //   let correoOficial = correoProveedor.correoContacto;
 
-    console.log(correoOficial);
+  //   console.log(correoOficial);
 
-
-    //Llamamos al api para buscar el id que le pertenece a el proveedor con ese correo.
-    this.apiProvider.getMailSupplier(correoProveedor).subscribe(data =>{
-      console.log(data[0]);
-      // this.idProveedor = data[0].idProveedor;
-      // console.log(this.idProveedor);
-    });
-
-    // this.ServicesForm.setValue({
-    //   'idServicios': this.dataService.idServicios,
-    //   'nombreServicio': this.dataService.nombreServicio,
-    //   'descripcionServicio': this.dataService.descripcionServicio,
-    //   'precioEstimado': this.dataService.precioEstimado,
-    //   'imagen': '',
-    //   'historialEmpresas': this.dataService.historialEmpresas,
-    //   'numeroContacto': this.dataService.numeroContacto,
-    //   'correoContacto': this.dataService.correoContacto,
-    //   'estadoServicio': this.dataService.estadoServicio,
-    //   'Proveedor_idProveedor': this.dataService.Proveedor_idProveedor,
-    //   // 'Proveedor_idProveedor': this.nombreProveedor,
-    //   'TipoServicio_idtipoServicio': this.dataService.TipoServicio_idtipoServicio,
-    // })
-  }
+  //   //Llamamos al api para buscar el id que le pertenece a el proveedor con ese correo.
+  //   this.apiProvider.getMailSupplier(correoProveedor).subscribe(data =>{
+  //     console.log(data[0]);
+  //     // this.idProveedor = data[0].idProveedor;
+  //     // console.log(this.idProveedor);
+  //   });
+  // }
 
   modalCreateServiceOpen(content: any, numb: number) {
     // this.idService = numb;

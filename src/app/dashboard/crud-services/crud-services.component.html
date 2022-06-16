@@ -243,7 +243,7 @@
                     [ngClass]=" (ServicesForm.get('correoContacto')?.touched || ServicesForm.get('correoContacto')?.dirty) &&
                     ServicesForm.get('correoContacto')?.hasError('required')
                     ? 'is-invalid' : '' || ServicesForm.get('correoContacto')?.hasError('email')
-                    ? 'is-invalid' : ''">
+                    ? 'is-invalid' : ''" [readonly]="true">
                     <div class="invalid-feedback">
                         {{ ServicesForm.get("numeroContacto")?.hasError("required") ? "Campo requerido" : "" }}
                         {{ ServicesForm.get("numeroContacto")?.hasError("email") ? "Campo de tipo email requerido" : "" }}
@@ -253,21 +253,20 @@
                 <label for="exampleInputEmail1">Id Proveedor:</label>
                 <input type="number" class="form-control" id="exampleInputEmail1" min="1" max="1000" formControlName="Proveedor_idProveedor" [readonly]="true">
 
-                <label for="exampleInputEmail1">Nombre proveedor:</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" min="1" max="1000" formControlName="No name" value="{{this.correoProveedor}}" [readonly]="true">
+                <!-- INICIO Intento de select por nombre para actualizar el proveedor -->
 
-                <div class="formGroup">
-                    <label for="">Nombre proveedor:</label>
-                    <select class="form-select" id="input-group-text" formControlName="TipoServicio_idtipoServicio">
+                <!-- <label for="exampleInputEmail1">Correo proveedor:</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" min="1" max="1000" formControlName="No name" value="{{this.correoProveedor}}" [readonly]="true"> -->
+
+                <!-- <div class="formGroup">
+                    <label for="">Correo proveedor:</label>
+                    <select class="form-select" id="input-group-text" formControlName="No name">
                             <option selected> Escoge uno...</option>
-                            <option value="{{correoProveedorT.correoProveedor}}" *ngFor="let correoProveedorT of listaProveedores" (click)="buscarIdProveedor(correoProveedorT)">{{correoProveedorT.correoProveedor}}</option>
+                            <option value="{{correoProveedorT.correoProveedor}}" *ngFor="let correoProveedorT of listaProveedores" (click)="buscarIdProveedor(ServicesForm.value)">{{correoProveedorT.correoProveedor}}</option>
                     </select>
+                </div> -->
 
-                    <!-- <div class="invalid-feedback">
-                        {{ ServicesForm.get("TipoServicio_idtipoServicio")?.hasError("required") ? "Campo requerido" : "" }}
-                        {{ ServicesForm.get("TipoServicio_idtipoServicio")?.hasError("pattern") ? "Campo de solo numeros" : "" }}
-                    </div> -->
-                </div>
+                <!-- FIN Intento de select por nombre para actualizar el proveedor -->
 
                 <div class="formGroup">
                     <label for="">Tipo Servicio:</label>
