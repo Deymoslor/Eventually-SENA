@@ -23,12 +23,12 @@
             <img class="rounded card-img-top" id="imagenGrupo" [src]="GroupForm.get('imagen')?.value" alt="{{ group?.nombreGrupo }}">
         </div>
     </form>
-    <table>
+    <table class="misMuchachos">
         <br>
         <tr>
             <td>
 
-                <p class="product-name">{{ group?.nombreGrupo }}</p>
+                <p class="product-name nombre">{{ group?.nombreGrupo }}</p>
                 <br>
             </td>
             <td>
@@ -75,38 +75,37 @@
             </td>
         </tr>
         <tr>
-            <td>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Email</th>
+
+            <table class="table table-striped tablita">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <div *ngIf="manager">
+                            <th>Acción</th>
+                        </div>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let persona of personas">
+                        <tr *ngIf="persona.idPersona != personaId">
+                            <td class="product-short-description">{{persona.nombre}}</td>
+                            <td class="product-short-description">{{persona.Email}}</td>
                             <div *ngIf="manager">
-                                <th>Acción</th>
+                                <td class="product-short-description"><button class="btn btnEditar justify-content-md-center" (click)="putEditDetail(persona.idGrupos,persona.idDetalleGrupoPersona,persona.idPersona, 4)">Eliminar</button></td>
                             </div>
                         </tr>
-                    </thead>
-                    <tbody>
-                        <ng-container *ngFor="let persona of personas">
-                            <tr *ngIf="persona.idPersona != personaId">
-                                <td class="product-short-description">{{persona.nombre}}</td>
-                                <td class="product-short-description">{{persona.Email}}</td>
-                                <div *ngIf="manager">
-                                    <td class="product-short-description"><button class="btn btnEditar justify-content-md-center" (click)="putEditDetail(persona.idGrupos,persona.idDetalleGrupoPersona,persona.idPersona, 4)">Eliminar</button></td>
-                                </div>
-                            </tr>
-                        </ng-container>
-                    </tbody>
-                </table>
-            </td>
-            <td>
-                <tr *ngIf="!personas && manager">
-                    <p class="product-name h2">no hay participantes en este grupo</p>
-                </tr>
-                <tr *ngIf="!personas && !manager">
-                    <p class="product-name h2">Eres el unico participante en este grupo</p>
-                </tr>
-            </td>
+                    </ng-container>
+                </tbody>
+            </table>
+
+            <div *ngIf="!personas && manager">
+                <p class="product-name h2">no hay participantes en este grupo</p>
+            </div>
+            <div *ngIf="!personas && !manager">
+                <p class="product-name h2">Eres el unico participante en este grupo</p>
+            </div>
+
         </tr>
 
         <!-- <button data-bs-toggle="modal" data-bs-target="#content-modal" role="button" (click)="modalOpen(content)">holaa</button> -->

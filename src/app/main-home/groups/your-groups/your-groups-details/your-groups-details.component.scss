@@ -12,6 +12,34 @@
     padding: 0;
 }
 
+.tablita {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.misMuchachos {
+    border: 1px solid purple;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+td {
+    width: 50%;
+    border: 1px solid blue;
+}
+
+tr {
+    border: 1px solid red;
+    width: 100%;
+}
+
+.nombre {
+    font-family: 'Pacifico', cursive;
+    font-size: 5rem;
+}
+
 .textox {
     font-family: 'Ubuntu', sans-serif!important;
     font-weight: 350!important;
