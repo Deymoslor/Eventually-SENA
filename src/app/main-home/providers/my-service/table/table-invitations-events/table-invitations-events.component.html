@@ -15,7 +15,8 @@
             </thead>
             <tbody>
 
-                <tr class="textox" *ngFor="let key of dataServiceEventProv">
+                <tr class="textox" *ngFor="let key of dataServiceEventProv | paginate : {
+                    itemsPerPage: tableSize,currentPage: page,totalItems: count}">
 
                     <td>{{key.idDetalleEvento}}</td>
                     <td>{{key.nombreEvento}}</td>
@@ -41,6 +42,11 @@
                 </tr>
             </tbody>
         </table>
+        <div>
+            <pagination-controls previousLabel="Prev"
+            nextLabel="Next"
+            (pageChange)="onTableDataChange($event)" ></pagination-controls>
+        </div>
     </div>
 
     <!--TABLE//-->

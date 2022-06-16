@@ -5,6 +5,10 @@
 
 <div class="row tables">
     <div class="col ">
+        <div class="searcher">
+            <label for="">BUSCAR ID GRUPO: </label>
+            <input type="text" class="search" name="filterRequestGroup" placeholder="Buscar..." [(ngModel)]="filterRequestGroup">
+        </div>
         <table class="table table-striped">
             <thead class="titles">
 
@@ -19,7 +23,9 @@
 
             <tbody>
 
-                <tr *ngFor="let request of requests">
+                <tr *ngFor="let request of requests | paginate : {
+                    itemsPerPage: tableSize,currentPage: page,totalItems: count} |
+                    filterPipeRequestGroup:filterRequestGroup">
 
                     <th class="textox" scope="row">{{request.idpeticionesGrupo}}</th>
 
@@ -61,6 +67,11 @@
 
 
         </table>
+        <div>
+            <pagination-controls previousLabel="Prev"
+            nextLabel="Next"
+            (pageChange)="onTableDataChange($event)" ></pagination-controls>
+        </div>
     </div>
 </div>
 

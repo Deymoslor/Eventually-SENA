@@ -53,12 +53,29 @@ export class EventProviderComponent implements OnInit {
 
   filterProveedor = '';
 
+  POSTS: any;
+  page: number = 1;
+  count: number = 0;
+  tableSize: number = 7;
+  tableSizes: any = [3, 6, 9, 12];
+
+  totalRecords!: number;
+
+  onTableDataChange(event: any) {
+    this.page = event;
+  }
+  onTableSizeChange(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+  }
+
   ngOnInit(): void {
     let state: number | null;
     console.log("racineta rango: " + this.terminate);
     this.api.getAllProvServicesInv(1).subscribe(datas =>{
       console.log(datas);
       this.dataProviderService = datas;
+      this.totalRecords = datas.length
       
       this.dataProviderService.forEach(key => {
         // console.log(key.idServicios + ": proveedor");

@@ -52,17 +52,19 @@ export class CrudServicesComponent implements OnInit {
   public idProveedor!: any;
 
   TypeServices!: TypeServicesI[];
-  closeResult!: string;
+  closeResult2!: string;
 
   previsualizacion!: string;
   public archivos: any = [];
 
   Services!: ServiceI[];
   idService!: number;
+  
 
   constructor(private api: ApiService, private router: Router, private modalService: NgbModal,
     private apiProvider: SupplierService, private sanitizer: DomSanitizer, private alertas: AlertasService,
     private fb: FormBuilder) {
+      
 
       this.ServicesForm = this.fb.group({
         idServicios: ['', [Validators.required, Validators.pattern(/^[0-9]\d*$/)]],
@@ -85,6 +87,44 @@ export class CrudServicesComponent implements OnInit {
       })
 
      }
+
+    closeResult = '';
+
+    filterServices = '';
+
+  POSTS: any;
+  page: number = 1;
+  count: number = 0;
+  tableSize: number = 10;
+  tableSizes: any = [10, 20, 30, 40, 50];
+  lengthTable!: number
+
+  totalRecords!: number;
+
+  onTableDataChange(event: any) {
+    this.page = event;
+  }
+  onTableSizeChange(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+  }
+
+  POSTS2: any;
+  page2: number = 1;
+  count2: number = 0;
+  tableSize2: number = 4;
+  tableSizes2: any = [4, 8, 12, 16, 20];
+  lengthTable2!: number
+
+  totalRecords2!: number;
+
+  onTableDataChange2(event: any) {
+    this.page = event;
+  }
+  onTableSizeChange2(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+  }
 
   ngOnInit(): void {
     this.api.getAllTypeServices(1).subscribe(data => {
@@ -238,9 +278,9 @@ export class CrudServicesComponent implements OnInit {
 
 
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result: any) => {
-      this.closeResult = `Closed with: ${result}`;
+      this.closeResult2 = `Closed with: ${result}`;
     }, (reason: any) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      this.closeResult2 = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
 

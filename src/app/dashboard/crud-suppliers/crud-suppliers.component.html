@@ -7,6 +7,10 @@
 
     <div class="row tables">
         <div class="col ">
+            <div class="searcher">
+                <label for="">BUSCAR NOMBRE SERVICIOS: </label>
+                <input type="text" class="search" name="filterSupplier" placeholder="Buscar..." [(ngModel)]="filterSupplier">
+            </div>
             <table class="table table-striped">
                 <thead class="titles">
 
@@ -26,7 +30,10 @@
 
                 <tbody>
 
-                    <tr *ngFor="let proveedor of proveedores" (click)="editarProveedor(proveedor.idProveedor)">
+                    <tr *ngFor="let proveedor of proveedores | paginate : {
+                        itemsPerPage: tableSize,currentPage: page,totalItems: count} |
+                        filterSuppliers:filterSupplier"
+                    (click)="editarProveedor(proveedor.idProveedor)">
 
                         <th class="textox" scope="row">{{proveedor.idProveedor}}</th>
 
@@ -83,6 +90,11 @@
 
 
             </table>
+            <div>
+                <pagination-controls previousLabel="Prev"
+                nextLabel="Next"
+                (pageChange)="onTableDataChange($event)" ></pagination-controls>
+            </div>
         </div>
     </div> <button class="btn btnCrear col-2 d-md-flex justify-content-md-center" data-bs-toggle="modal" data-bs-target="#content-modal-suppliersCreate">Crear</button>
 </div>

@@ -30,97 +30,117 @@
     </ng-template>
 </div>
 
+
 <div *ngIf="!terminate">
-    
-<div class="table-responsive">
-    <div *ngIf="stateAccept != 1; else onlyAccepted">
-        <div class="searcher">
-            <label for="">BUSCAR TIPO SERVICIOS: </label>
-            <input type="text" class="search" name="filterProveedor" placeholder="Buscar..." [(ngModel)]="filterProveedor">
-        </div>
-        <table class="table table-dark table-responsive">
-            <thead>
-                <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">Nombre Proveedor</th>
-                    <th scope="col">Apellido</th>
-                    <th scope="col">Correo</th>
-                    <th scope="col">Numero</th>
-                    <th scope="col">Tipo Servicio</th>
-                    <th scope="col">TOTAL Calificación</th>
-                    <th scope="col">Detalle Servicio</th>
-                    <th scope="col">Accion</th>
-                    <th scope="col">Estado</th>
-                </tr>
-            </thead>
-            <tbody>
-
-                <tr *ngFor="let key of (dataProviderService | filterEvents:filterProveedor)">
-                    <td></td>
-                    <td>{{key.nombreProveedor}}</td>
-                    <td>{{key.apellidoProveedor}}</td>
-                    <td>{{key.correoProveedor}}</td>
-                    <td>{{key.celular}}</td>
-                    <!-- <td>{{key.TipoServicio_idtipoServicio}}</td> -->
-                    
-                            <td *ngFor="let item of dataTypeService" [hidden]="item.idtipoServicio != key.TipoServicio_idtipoServicio">
-                                    {{item.tipoServicio}}
+        <div class="table-responsive" *ngIf="dataProviderService">
+            <div *ngIf="stateAccept != 1; else onlyAccepted">
+                <div class="searcher">
+                    <label for="">BUSCAR TIPO SERVICIOS: </label>
+                    <input type="text" class="search" name="filterProveedor" placeholder="Buscar..." [(ngModel)]="filterProveedor">
+                </div>
+                <table class="table table-dark table-responsive">
+                    <thead>
+                        <tr>
+                            <th scope="col">No</th>
+                            <th scope="col">Nombre Proveedor</th>
+                            <th scope="col">Apellido</th>
+                            <th scope="col">Correo</th>
+                            <th scope="col">Numero</th>
+                            <th scope="col">Tipo Servicio</th>
+                            <th scope="col">TOTAL Calificación</th>
+                            <th scope="col">Detalle Servicio</th>
+                            <th scope="col">Accion</th>
+                            <th scope="col">Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+        
+                        <tr *ngFor="let key of dataProviderService | paginate
+                        : {
+                            itemsPerPage: tableSize,
+                            currentPage: page,
+                            totalItems: count
+                          };">
+                            <td></td>
+                            <td>{{key.nombreProveedor}}</td>
+                            <td>{{key.apellidoProveedor}}</td>
+                            <td>{{key.correoProveedor}}</td>
+                            <td>{{key.celular}}</td>
+                            <!-- <td>{{key.TipoServicio_idtipoServicio}}</td> -->
+                            
+                                    <td *ngFor="let item of dataTypeService" [hidden]="item.idtipoServicio != key.TipoServicio_idtipoServicio">
+                                            {{item.tipoServicio}}
+                                    </td>
+                            
+                            <td>{{key.calificacionT}}</td>
+                            <td>
+                                <button class="btn btn-primary" (click)="modalOpen4(content4, key.idProveedor)">
+                                    Detalle
+                                </button>
                             </td>
-                   
-                    <td>{{key.calificacionT}}</td>
-                    <td>
-                        <button class="btn btn-primary" (click)="modalOpen4(content4, key.idProveedor)">
-                            Detalle
-                        </button>
-                    </td>
-                    <td>
-                        <div class="content-button">
-                            <button class="btn btn-primary" type="submit" [disabled]="key.estadoInvitacion" (click)="postInvitation(key)">Invitar</button>
-                        </div>
-                    </td>
-                    <!-- <td *ngIf="!key.estadoInvitacion == null">
-                        <div class="content-button">
-                            <button class="btn btn-primary" type="submit" disabled (click)="postInvitation(key)">Invitar</button>
-                        </div>
-                    </td> -->
-                    <td *ngIf=" key.estadoInvitacion == null">
-                        Sin invitar
-                    </td>
-                    <td *ngIf="key.estadoInvitacion == 0">
-                        Invitado
-                    </td>
-                    <td *ngIf="key.estadoInvitacion == 1">
-                        Aceptado
-                    </td>
-                    <td *ngIf="key.estadoInvitacion == 2">
-                        Rechazado
-                    </td>
-                    <td *ngIf="key.estadoInvitacion == 3">
-                        Terminado
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <div *ngIf="stateAccept != 1">
-        <button class="btn btn-danger" (click)="modalOpen2(content3)">
-            Terminar
-        </button>
-        <p class="fw-bolder">Terminar Evento</p>
+                            <td>
+                                <div class="content-button">
+                                    <button class="btn btn-primary" type="submit" [disabled]="key.estadoInvitacion" (click)="postInvitation(key)">Invitar</button>
+                                </div>
+                            </td>
+                            <!-- <td *ngIf="!key.estadoInvitacion == null">
+                                <div class="content-button">
+                                    <button class="btn btn-primary" type="submit" disabled (click)="postInvitation(key)">Invitar</button>
+                                </div>
+                            </td> -->
+                            <td *ngIf=" key.estadoInvitacion == null">
+                                Sin invitar
+                            </td>
+                            <td *ngIf="key.estadoInvitacion == 0">
+                                Invitado
+                            </td>
+                            <td *ngIf="key.estadoInvitacion == 1">
+                                Aceptado
+                            </td>
+                            <td *ngIf="key.estadoInvitacion == 2">
+                                Rechazado
+                            </td>
+                            <td *ngIf="key.estadoInvitacion == 3">
+                                Terminado
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div>
+                    <pagination-controls previousLabel="Prev"
+                    nextLabel="Next"
+                    (pageChange)="onTableDataChange($event)" ></pagination-controls>
+                </div>
+            </div>
     </div>
 
-    <ng-template #onlyAccepted>
-        <div>
-            Se tiene un Servicio aceptado con el proveedor: {{nombreProveedor}}, con nombre de servicio: {{nombreServicio}}
+    <div *ngIf="!dataProviderService">
+        <p class="fw-bolder">
+            En este momento no se encuentran Proveedores con servicios disponibles.
+        </p>
+        <br>
+    </div>
+    
+        <div *ngIf="stateAccept != 1">
+            <button class="btn btn-danger" (click)="modalOpen2(content3)">
+                Terminar
+            </button>
+            <p class="fw-bolder">Terminar Evento</p>
         </div>
-        <button class="btn btn-danger" (click)="modalOpen2(content2)">
-            Terminar
-        </button>
-        <p class="fw-bolder">Terminar y Resultados</p>
-
-    </ng-template>
-
+    
+        <ng-template #onlyAccepted>
+            <div>
+                Se tiene un Servicio aceptado con el proveedor: {{nombreProveedor}}, con nombre de servicio: {{nombreServicio}}
+            </div>
+            <button class="btn btn-danger" (click)="modalOpen2(content2)">
+                Terminar
+            </button>
+            <p class="fw-bolder">Terminar y Resultados</p>
+    
+        </ng-template>
+    
 </div>
+
 
 <!--TABLE//-->
 
@@ -139,5 +159,3 @@
     <app-modal-info-ser-prov [idProv]="idProv"></app-modal-info-ser-prov>
 </ng-template>
 
-
-</div>

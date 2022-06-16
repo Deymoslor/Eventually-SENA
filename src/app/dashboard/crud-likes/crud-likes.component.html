@@ -6,6 +6,10 @@
     <!--TABLE-->
     <div class="row tables">
         <div class="col ">
+            <div class="searcher">
+                <label for="">BUSCAR NOMBRE GUSTO: </label>
+                <input type="text" class="search" name="filterGustos" placeholder="Buscar..." [(ngModel)]="filterGustos">
+            </div>
             <table class="table  table-striped">
                 <thead class="textoTitulos">
                     <tr>
@@ -17,7 +21,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="textox" *ngFor="let like of likes">
+                    <tr class="textox" *ngFor="let like of likes | paginate : {
+                        itemsPerPage: tableSize,currentPage: page,totalItems: count} |
+                        filterPipeLikes:filterGustos">
 
                         <th scope="row">{{ like.idGusto }}</th>
                         <td>{{ like.nombreGusto }}</td>
@@ -59,6 +65,11 @@
                     </tr>
                 </tbody>
             </table>
+            <div>
+                <pagination-controls previousLabel="Prev"
+                nextLabel="Next"
+                (pageChange)="onTableDataChange($event)" ></pagination-controls>
+            </div>
         </div>
     </div><button class="btn btnCrear" data-bs-toggle="modal" data-bs-target="#likes-modal">
         Crear
