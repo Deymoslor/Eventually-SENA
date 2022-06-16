@@ -14,9 +14,13 @@ export class CrudEventsComponent implements OnInit {
 
   id!: number;
 
-  events?:ListEventsI[];
+  events!:ListEventsI[];
 
   constructor(private api:ApiService) { }
+
+  closeResult = '';
+
+  filterEvento = '';
 
   ngOnInit(): void {
     this.api.getAllEvents(1).subscribe(data =>{

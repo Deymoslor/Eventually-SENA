@@ -5,6 +5,10 @@
 
 <div class="row tables">
     <div class="col ">
+        <div class="searcher">
+            <label for="">BUSCAR ID EVENTO: </label>
+            <input type="text" class="search" name="filterRequestEvent" placeholder="Buscar..." [(ngModel)]="filterRequestEvent">
+        </div>
         <table class="table table-striped">
             <thead class="titles">
 
@@ -21,7 +25,7 @@
 
             <tbody>
 
-                <tr *ngFor="let request of requests">
+                <tr *ngFor="let request of (requests | filterPipeRequestEvent:filterRequestEvent)">
 
                     <th class="textox" scope="row">{{request.idpeticionesEvento}}</th>
 

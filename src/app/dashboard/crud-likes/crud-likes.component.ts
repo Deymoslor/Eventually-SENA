@@ -43,12 +43,16 @@ export class CrudLikesComponent implements OnInit {
   // paginator!: MatPaginator;
 
   id!:number;
-  likes?:LikesI[];
+  likes!:LikesI[];
 
   constructor(
     private api:ApiService,
     private alertas:AlertasService,
   ) { }
+
+  closeResult = '';
+
+  filterGustos = '';
 
   ngOnInit(): void {
 

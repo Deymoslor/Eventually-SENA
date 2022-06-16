@@ -35,6 +35,13 @@ export class TableRequestEventComponent implements OnInit {
     private alertas:AlertasService,
   ) { }
 
+  filterRequestEvent = '';
+
+  length!: number;
+  pageSize = 1;
+  // pageSizeOptions:number[] = [1, 2, 15, 20];
+
+
   ngOnInit(): void {
 
     //Obtenemos todos los pacientes.
@@ -44,10 +51,12 @@ export class TableRequestEventComponent implements OnInit {
 
       //Llamamos a la variable que creamos arriba para asignarle los datos que hay en la variable data.
       this.requests = data;
+      this.length = data.length;
       console.log(this.requests)
     });
 
   }
+
 
   aceptarPeticion(id:number){
     //Llamamos al servicio para solicitar una sola persona y poder editar el estado sin cambiar el resto de datos de la cuenta.

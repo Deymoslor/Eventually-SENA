@@ -53,12 +53,16 @@ export class EventProviderComponent implements OnInit {
 
   filterProveedor = '';
 
+  totalRecords!: number;
+  page: number = 1;
+
   ngOnInit(): void {
     let state: number | null;
     console.log("racineta rango: " + this.terminate);
     this.api.getAllProvServicesInv(1).subscribe(datas =>{
       console.log(datas);
       this.dataProviderService = datas;
+      this.totalRecords = datas.length
       
       this.dataProviderService.forEach(key => {
         // console.log(key.idServicios + ": proveedor");

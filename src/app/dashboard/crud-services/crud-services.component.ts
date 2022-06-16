@@ -48,17 +48,19 @@ export class CrudServicesComponent implements OnInit {
   dataProvider!: ListaProveedoresI[];
 
   TypeServices!: TypeServicesI[];
-  closeResult!: string;
+  closeResult2!: string;
 
   previsualizacion!: string;
   public archivos: any = [];
 
   Services!: ServiceI[];
   idService!: number;
+  
 
   constructor(private api: ApiService, private router: Router, private modalService: NgbModal,
     private apiProvider: SupplierService, private sanitizer: DomSanitizer, private alertas: AlertasService,
     private fb: FormBuilder) {
+      
 
       this.ServicesForm = this.fb.group({
         idServicios: ['', [Validators.required, Validators.pattern(/^[0-9]\d*$/)]],
@@ -81,6 +83,10 @@ export class CrudServicesComponent implements OnInit {
       })
 
      }
+
+    closeResult = '';
+
+    filterServices = '';
 
   ngOnInit(): void {
     this.api.getAllTypeServices(1).subscribe(data => {
@@ -204,9 +210,9 @@ export class CrudServicesComponent implements OnInit {
 
 
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result: any) => {
-      this.closeResult = `Closed with: ${result}`;
+      this.closeResult2 = `Closed with: ${result}`;
     }, (reason: any) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      this.closeResult2 = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
 

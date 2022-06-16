@@ -58,6 +58,10 @@ export class CrudSuppliersComponent implements OnInit {
 
   ) { }
 
+  closeResult = '';
+
+  filterSupplier = '';
+
   ngOnInit(): void {
     // this.dataSource.paginator = this.paginator;
 

@@ -51,6 +51,11 @@ export class CrudGroupsComponent implements OnInit {
   // paginator!: MatPaginator;
   constructor( private GroupsServiceService:GroupsServiceService, private router:Router, private alertas:AlertasService) { }
 
+
+  closeResult = '';
+
+  filterGrupo = '';
+
   ngOnInit(): void {
     // this.dataSource.paginator = this.paginator;
 

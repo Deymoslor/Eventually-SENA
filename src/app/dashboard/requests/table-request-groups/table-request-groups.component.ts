@@ -32,6 +32,9 @@ export class TableRequestGroupsComponent implements OnInit {
     private alertas: AlertasService,
   ) { }
 
+
+  filterRequestGroup = '';
+
   closeResult = '';
 
   ngOnInit(): void {

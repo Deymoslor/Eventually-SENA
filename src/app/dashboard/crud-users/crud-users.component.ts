@@ -77,6 +77,10 @@ constructor(
 
   ) { }
 
+  closeResult = '';
+
+  filterUser = '';
+
   ngOnInit(): void {
 
     // ----

@@ -7,6 +7,10 @@
 
     <div class="row tables">
         <div class="col ">
+            <div class="searcher">
+                <label for="">BUSCAR NOMBRE SERVICIOS: </label>
+                <input type="text" class="search" name="filterSupplier" placeholder="Buscar..." [(ngModel)]="filterSupplier">
+            </div>
             <table class="table table-striped">
                 <thead class="titles">
 
@@ -26,7 +30,7 @@
 
                 <tbody>
 
-                    <tr *ngFor="let proveedor of proveedores" (click)="editarProveedor(proveedor.idProveedor)">
+                    <tr *ngFor="let proveedor of (proveedores | filterSuppliers:filterSupplier)" (click)="editarProveedor(proveedor.idProveedor)">
 
                         <th class="textox" scope="row">{{proveedor.idProveedor}}</th>
 

@@ -8,6 +8,10 @@
 
     <div class="row tables">
         <div class="col ">
+            <div class="searcher">
+                <label for="">BUSCAR NOMBRE USUARIO: </label>
+                <input type="text" class="search" name="filterUser" placeholder="Buscar..." [(ngModel)]="filterUser">
+            </div>
             <table class="table table-striped">
                 <thead class="titles">
 
@@ -28,7 +32,7 @@
 
                 <tbody>
 
-                    <tr class="textox" *ngFor="let persona of personas" (click)="editarPersona(persona.idPersona)">
+                    <tr class="textox" *ngFor="let persona of (personas | filterPipeUsers:filterUser)" (click)="editarPersona(persona.idPersona)">
 
                         <th class="textox" scope="row">{{persona.idPersona}}</th>
 

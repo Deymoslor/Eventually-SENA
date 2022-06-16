@@ -8,6 +8,10 @@
 
     <div class="row tables">
         <div class="col ">
+            <div class="searcher">
+                <label for="">BUSCAR TIPO SERVICIOS: </label>
+                <input type="text" class="search" name="filterGrupo" placeholder="Buscar..." [(ngModel)]="filterGrupo">
+            </div>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -22,7 +26,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let group of groups">
+                    <tr *ngFor="let group of (groups | filterPipeGroups:filterGrupo)">
                         <th scope="row">{{ group.idGrupos }}</th>
                         <td>{{ group.nombreGrupo }}</td>
                         <td>{{ group.descripcionGrupo }}</td>

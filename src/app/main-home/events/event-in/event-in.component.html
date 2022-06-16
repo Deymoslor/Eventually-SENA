@@ -31,18 +31,9 @@
                     <p class="fw-bolder">Aforo del evento</p>
                 </div>
                 <div class="info">
-                    <h4 class="fs-5 fw-bold">Dylan Murillo Rios</h4>
-                    <p class="fw-bolder">Organizador</p>
-                </div>
-                <div class="info">
-                    <h4 class="fs-5 fw-bold">25-02-2022</h4>
-                    <p class="fw-bolder">fecha de creación</p>
-                </div>
-                <div class="info">
-                    <!-- <button class="btn btn-danger" (click)="modalOpen(content)">
-                        Terminar
-                    </button>
-                    <p class="fw-bolder">Terminar y Resultados</p> -->
+                    <p class="fw-bolder" *ngIf="statePersonGroup == 1">Organizador</p>
+                    <p class="fw-bolder" *ngIf="statePersonGroup >= 2">Participante</p>
+                    <h4 class="fs-5 fw-bold">Rol</h4>
                 </div>
                 <div class="info edit">
                     <!-- data-bs-toggle="modal" data-bs-target="#edit-modal-eventin" -->
@@ -71,8 +62,8 @@
                         <p class="fw-normal text-decoration-underline">{{eventGroupForm.get('tipoEvento')?.value}}</p>
                     </div>
                     <div class="a">
-                        <h4 class="fs-5">Lugar de realizacion:</h4>
-                        <p class="fw-normal text-decoration-underline">Parque de la milagrosa - Cl. 43, Medellín, Antioquia</p>
+                        <h4 class="fs-5">Lugar de realizacion o enlace:</h4>
+                        <p class="fw-normal text-decoration-underline">{{eventGroupForm.get('direccion')?.value}}</p>
                     </div>
                 </div>
     
@@ -283,6 +274,21 @@
                             </div>
                        </div>
                        <!-- {{createEventForm.get("descripcionEvento")?.errors | json}} -->
+
+                       <div class="groupForm">
+                        <label for="">Dirección o enlace del Evento:</label>
+                            <textarea class="form-control" type="text" id="descripcionEvento" formControlName="direccion" placeholder="Explica donde sera realizado el evento, o deja el enlace si se trata de un evento VIRTUAL" rows="2" [ngClass]="
+                            (createEventForm.get('direccion')?.touched || createEventForm.get('direccion')?.dirty) &&
+                            createEventForm.get('direccion')?.hasError('required') 
+                            ? 'is-invalid' : '' || createEventForm.get('direccion')?.hasError('minlength') 
+                            ? 'is-invalid' : '' || createEventForm.get('direccion')?.hasError('maxlength')
+                            ? 'is-invalid' : ''" ></textarea>
+                        <div class="invalid-feedback">
+                            {{ createEventForm.get("direccion")?.hasError("required") ? "Dirección o enlace requerido" : "" }} 
+                            {{ createEventForm.get("direccion")?.hasError("minlength") ? "Campo mínimo de 10 carácteres" : "" }}
+                            {{ createEventForm.get("direccion")?.hasError("maxlength") ? "Campo maximo de 150 carácteres" : "" }}
+                        </div>
+                   </div>
 
                         <div class="groupForm">
                             <label for="">Fecha Realizacion:</label>
