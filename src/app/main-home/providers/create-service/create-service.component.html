@@ -99,13 +99,13 @@
 
                         <div class="formGroup">
                             <label class="textoTitulos" for="">Historial de empresas:</label>
-                            <textarea class="form-control textox" id="exampleFormControlTextarea1" rows="2" formControlName="historialEmpresas" [ngClass]=" (ServicesForm.get('historialEmpresas')?.touched || ServicesForm.get('historialEmpresas')?.dirty) &&
+                            <textarea class="form-control textox" placeholder="En caso de no experiencia digite ninguna" id="exampleFormControlTextarea1" rows="2" formControlName="historialEmpresas" [ngClass]=" (ServicesForm.get('historialEmpresas')?.touched || ServicesForm.get('historialEmpresas')?.dirty) &&
                             ServicesForm.get('historialEmpresas')?.hasError('required')
                             ? 'is-invalid' : '' || ServicesForm.get('historialEmpresas')?.hasError('minlength')
                             ? 'is-invalid' : '' || ServicesForm.get('historialEmpresas')?.hasError('maxlength')
                             ? 'is-invalid' : ''"></textarea>
                             <div class="invalid-feedback textox">
-                                {{ ServicesForm.get("historialEmpresas")?.hasError("required") ? "Campo requerido" : "" }} {{ ServicesForm.get("historialEmpresas")?.hasError("minlength") ? "Campo requerido con 20 caracteres" : "" }} {{ ServicesForm.get("historialEmpresas")?.hasError("maxlength")
+                                {{ ServicesForm.get("historialEmpresas")?.hasError("required") ? "Campo requerido" : "" }} {{ ServicesForm.get("historialEmpresas")?.hasError("minlength") ? "Campo requerido con 7 caracteres" : "" }} {{ ServicesForm.get("historialEmpresas")?.hasError("maxlength")
                                 ? "Campo requerido con maximo 300 caracteres" : "" }}
                             </div>
                         </div>
