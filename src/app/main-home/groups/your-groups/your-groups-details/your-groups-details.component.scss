@@ -14,23 +14,18 @@
 
 .misMuchachos {
     border: 1px solid purple;
-    width: 100%;
+    width: 98%;
     margin-bottom: 1rem;
 }
 
 .tablita {
-    margin-left: 18vw;
+    margin-left: 4vw;
+    width: 90%;
 }
 
-td {
-    width: 50%;
-    border: 1px solid blue;
-    padding-bottom: 1rem!important;
-}
-
-tr {
-    border: 1px solid red;
-    width: 100%;
+.row {
+    margin-bottom: 1rem;
+    margin-left: 0.5rem;
 }
 
 .nombre {
@@ -72,7 +67,7 @@ form {
     // border: 1px solid purple;
     margin: auto;
     padding: 0;
-    width: 100%;
+    width: 98%;
 }
 
 .t {
