@@ -4,14 +4,14 @@
 }
 
 .aloo {
-    margin: 1em;
+    margin: 0.5rem;
+    width: 25vw;
+    border-radius: 5%;
 }
 
-.card-title {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 100%;
-}
-
+// .b {
+//     // border: 1px solid red;
+// }
 .card-body {
     display: flex;
     flex-direction: column;
@@ -19,11 +19,39 @@
     justify-content: space-between;
 }
 
+#imagenGrupo {
+    border-radius: 5%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.textox {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 350;
+}
+
+.title {
+    font-weight: 700;
+}
+
+.card-title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 100%;
+}
+
 .btnVer {
     background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
     color: white;
+    width: auto;
 }
 
 .btnVer:hover {
     background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
+}
+
+@media only screen and (max-width: 575px) {
+    .textox {
+        font-size: 0.75rem;
+    }
 }

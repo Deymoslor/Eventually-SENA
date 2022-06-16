@@ -14,6 +14,16 @@
     min-height: 40rem;
 }
 
+.potente {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: auto;
+    align-items: center;
+    margin-top: 1rem;
+    // border: 1px solid red;
+}
+
 .title {
     font-family: 'Pacifico', cursive;
     font-size: 7vw;
@@ -33,4 +43,23 @@
 .content-asidebar {
     display: block;
     margin-top: 5%;
+}
+
+@media only screen and (max-width: 1200px) {
+    .potente {
+        padding-left: 8.5vw;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .potente {
+        padding-left: 7.5vw;
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    .potente {
+        padding-left: 0vw!important;
+        width: 100%;
+    }
 }
