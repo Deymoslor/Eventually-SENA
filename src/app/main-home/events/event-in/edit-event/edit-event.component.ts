@@ -34,7 +34,7 @@ export class EditEventComponent implements OnInit {
   dateS!: string;
 
 
-  constructor(private activeRouter: ActivatedRoute, private router:Router, 
+  constructor(private activeRouter: ActivatedRoute, private router:Router,
     private api:ApiService,  private fb: FormBuilder, private sanitizer: DomSanitizer,
     private alertas: AlertasService) {
 
@@ -54,7 +54,7 @@ export class EditEventComponent implements OnInit {
   dataEvent!:EventI;
   idEvent!:number;
 
-  
+
   ngOnInit(): void {
 
     let date = new Date();
@@ -75,12 +75,12 @@ export class EditEventComponent implements OnInit {
 
     this.dateS = this.actualDate.getFullYear() + "-" + ((this.actualDate.getMonth() + 1).toString().padStart(2,'0')) + "-" + ((this.actualDate.getDate()).toString().padStart(2,'0'));
     console.log("String fecha: " + this.dateS);
-    
+
     let eventId = this.activeRouter.snapshot.paramMap.get('idE');
     this.api.getSingleEvent(eventId).subscribe((data: any) =>{
       this.dataEvent =data[0];
       this.actualImage = this.dataEvent.imagen;
-        
+
       this.previsualizacion = this.dataEvent.imagen.replace('C:/xampp/htdocs', GlobalConstants.httpLocalHost);
       console.log(this.dataEvent.imagen);
       this.editFormIn.setValue({
@@ -122,7 +122,7 @@ export class EditEventComponent implements OnInit {
           'estadoEvento': 0,
           'check': null
       })
-    } 
+    }
   }
 
   capturarFile(event): void {
@@ -157,10 +157,10 @@ export class EditEventComponent implements OnInit {
     return $event;
   });
 
-  
+
 
   goback(idE:number ){
-    this.router.navigate(['groups/your-groups/groups/', idE]);
+    this.router.navigate(['main/groups/your-groups/groups/', idE]);
   }
 
   postEditForm(form: EventI){
@@ -171,7 +171,7 @@ export class EditEventComponent implements OnInit {
       let respuesta:ResponseI = data;
           //Verificamos si la respuesta es exitosa.
           if(respuesta.status == 'ok'){
-            this.alertas.showSuccess('Union exitosa','Registro exitoso');
+            this.alertas.showSuccess('Se ha actualizado el evento correctamente','Actualización exitosa');
             setTimeout(()=>{
               this.goback(this.dataEvent.Grupos_idGrupos);
             },2000);

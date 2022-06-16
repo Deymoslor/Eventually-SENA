@@ -42,6 +42,12 @@ export class SupplierService {
     return this.http.get<ProveedorIA>(direccion);
   }
 
+  //Creamos método para obtener la persona. Este método devuelve un observable de tipo PersonaI
+  getMailSupplier(correoProveedor:string):Observable<any>{
+    let direccion = this.API+"suppliers?correoProveedor=" + correoProveedor;
+    return this.http.get<any>(direccion);
+  }
+
   //Creamos metodo para que al proveedor se le acepte la ley.
   updateSupplierLaw(idL:number):Observable<ResponseI>{
     let direccion = this.API+"suppliers?idL=" + idL;

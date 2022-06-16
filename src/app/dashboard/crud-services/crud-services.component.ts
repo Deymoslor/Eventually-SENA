@@ -46,6 +46,9 @@ export class CrudServicesComponent implements OnInit {
   idTipo?: number;
 
   dataProvider!: ListaProveedoresI[];
+  public correoProveedor!: string;
+  public listaProveedores!: any;
+  public idProveedor!: any;
 
   TypeServices!: TypeServicesI[];
   closeResult!: string;
@@ -90,7 +93,7 @@ export class CrudServicesComponent implements OnInit {
     })
 
     this.api.getAllServices(1).subscribe(data => {
-      console.log(data);
+      // console.log(data);
       this.Services = data;
 
       this.Services.forEach(element => {
@@ -104,7 +107,7 @@ export class CrudServicesComponent implements OnInit {
 
     this.apiProvider.getAllSuppliers(1).subscribe(data =>{
       // console.log(data);
-      this.dataProvider =data;
+      this.dataProvider = data;
     })
 
   }
@@ -141,7 +144,20 @@ export class CrudServicesComponent implements OnInit {
   modalServiceOpen(content: any, numb: number) {
     this.idService = numb;
     this.api.getSingleService(this.idService).subscribe((data: any) => {
+      // console.log(data[0]);
       this.dataService = data[0];
+
+      this.apiProvider.getAllSuppliers(1).subscribe(data => {
+        this.listaProveedores = data;
+      });
+
+      //Llamamos al proveedor para asignarle el nombre y no el id.
+      this.apiProvider.getSingleSupplier(this.dataService.Proveedor_idProveedor).subscribe(data =>{
+        // console.log(data[0]);
+        this.correoProveedor = data[0].correoProveedor;
+        // console.log(this.nombreProveedor);
+
+      });
 
       if(this.dataService.imagen){
         this.previsualizacion = this.dataService.imagen.replace('C:/xampp/htdocs', GlobalConstants.httpLocalHost);
@@ -161,6 +177,7 @@ export class CrudServicesComponent implements OnInit {
         'correoContacto': this.dataService.correoContacto,
         'estadoServicio': this.dataService.estadoServicio,
         'Proveedor_idProveedor': this.dataService.Proveedor_idProveedor,
+        // 'Proveedor_idProveedor': this.nombreProveedor,
         'TipoServicio_idtipoServicio': this.dataService.TipoServicio_idtipoServicio,
       })
     })
@@ -172,6 +189,38 @@ export class CrudServicesComponent implements OnInit {
     }, (reason: any) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
+  }
+
+  //Formulario para sacar el correo del proveedor unico cuando presione.
+  buscarIdProveedor(correoProveedor:string){
+    console.log(correoProveedor);
+
+    let correoOficial = correoProveedor[0];
+
+    console.log(correoOficial);
+
+
+    //Llamamos al api para buscar el id que le pertenece a el proveedor con ese correo.
+    this.apiProvider.getMailSupplier(correoProveedor).subscribe(data =>{
+      console.log(data[0]);
+      // this.idProveedor = data[0].idProveedor;
+      // console.log(this.idProveedor);
+    });
+
+    // this.ServicesForm.setValue({
+    //   'idServicios': this.dataService.idServicios,
+    //   'nombreServicio': this.dataService.nombreServicio,
+    //   'descripcionServicio': this.dataService.descripcionServicio,
+    //   'precioEstimado': this.dataService.precioEstimado,
+    //   'imagen': '',
+    //   'historialEmpresas': this.dataService.historialEmpresas,
+    //   'numeroContacto': this.dataService.numeroContacto,
+    //   'correoContacto': this.dataService.correoContacto,
+    //   'estadoServicio': this.dataService.estadoServicio,
+    //   'Proveedor_idProveedor': this.dataService.Proveedor_idProveedor,
+    //   // 'Proveedor_idProveedor': this.nombreProveedor,
+    //   'TipoServicio_idtipoServicio': this.dataService.TipoServicio_idtipoServicio,
+    // })
   }
 
   modalCreateServiceOpen(content: any, numb: number) {

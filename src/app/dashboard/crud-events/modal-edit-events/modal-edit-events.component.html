@@ -7,12 +7,12 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group">     
+                    <div class="form-group">
                             <div class="grupoForm">
                                 <label for="">Nombre del Evento:</label>
                                 <input type="text" class="form-control" id="nombreEvento" placeholder="Ej: El mejor evento" formControlName="nombreEvento" [ngClass]="
                                 (editForm.get('nombreEvento')?.touched || editForm.get('nombreEvento')?.dirty) &&
-                                editForm.get('nombreEvento')?.hasError('required') ? 'is-invalid' : '' || editForm.get('nombreEvento')?.hasError('minlength') 
+                                editForm.get('nombreEvento')?.hasError('required') ? 'is-invalid' : '' || editForm.get('nombreEvento')?.hasError('minlength')
                                             ? 'is-invalid' : '' || editForm.get('nombreEvento')?.hasError('maxlength')
                                             ? 'is-invalid' : ''" >
                                 <div class="invalid-feedback">
@@ -21,7 +21,7 @@
                                     {{ editForm.get("nombreEvento")?.hasError("maxlength") ? "Campo maximo de 30 carácteres" : "" }}
                                 </div>
                             </div>
-    
+
                             <div class="groupForm">
                                 <label for="">Tipo de Evento:</label>
                                 <div class="form-check">
@@ -44,7 +44,7 @@
                                     {{ editForm.get("tipoEvento")?.hasError("required") ? "Tipo Requerido" : "" }}
                                 </div>
                             </div>
-    
+
                            <div class="groupForm">
                                 <label for="">Imagen evento:</label>
                                 <div class="mb-2">
@@ -57,26 +57,26 @@
                                     <img width="500px" [src]="previsualizacion" alt="">
                                 </div>
                                 <div class="invalid-feedback">
-                                    {{ editForm.get("imagen")?.hasError("required") ? "Imagen requerida" : "" }} 
+                                    {{ editForm.get("imagen")?.hasError("required") ? "Imagen requerida" : "" }}
                                 </div>
                            </div>
-    
+
                            <div class="groupForm">
                                 <label for="">Descripcion Evento:</label>
                                     <textarea class="form-control" type="text" id="descripcionEvento" formControlName="descripcionEvento" placeholder="Explica de que tratará y dónde será." rows="2" [ngClass]="
                                     (editForm.get('descripcionEvento')?.touched || editForm.get('descripcionEvento')?.dirty) &&
-                                    editForm.get('descripcionEvento')?.hasError('required') 
-                                    ? 'is-invalid' : '' || editForm.get('descripcionEvento')?.hasError('minlength') 
+                                    editForm.get('descripcionEvento')?.hasError('required')
+                                    ? 'is-invalid' : '' || editForm.get('descripcionEvento')?.hasError('minlength')
                                     ? 'is-invalid' : '' || editForm.get('descripcionEvento')?.hasError('maxlength')
                                     ? 'is-invalid' : ''" ></textarea>
                                 <div class="invalid-feedback">
-                                    {{ editForm.get("descripcionEvento")?.hasError("required") ? "Descripcion requerida" : "" }} 
+                                    {{ editForm.get("descripcionEvento")?.hasError("required") ? "Descripcion requerida" : "" }}
                                     {{ editForm.get("descripcionEvento")?.hasError("minlength") ? "Campo mínimo de 10 carácteres" : "" }}
                                     {{ editForm.get("descripcionEvento")?.hasError("maxlength") ? "Campo maximo de 500 carácteres" : "" }}
                                 </div>
                            </div>
                            <!-- {{editForm.get("descripcionEvento")?.errors | json}} -->
-    
+
                             <div class="groupForm">
                                 <label for="">Fecha Realizacion:</label>
                             <input type="date" class="form-control" [ngClass]="
@@ -90,30 +90,30 @@
                                     z-index: 2000;
                                 }
                             </style>
-    
+
                             </div>
-    
+
                             <div class="groupForm">
                                 <label for="exampleInputEmail1">Numero Participantes maximo:</label>
                                 <input type="number" class="form-control" id="exampleInputEmail1" min="2" max="200" [ngClass]="
                                         (editForm.get('participantesTotales')?.touched || editForm.get('participantesTotales')?.dirty) &&
-                                            editForm.get('participantesTotales')?.hasError('required') 
-                                            ? 'is-invalid' : '' || editForm.get('participantesTotales')?.hasError('min') 
-                                            ? 'is-invalid' : '' || editForm.get('participantesTotales')?.hasError('max') 
+                                            editForm.get('participantesTotales')?.hasError('required')
+                                            ? 'is-invalid' : '' || editForm.get('participantesTotales')?.hasError('min')
+                                            ? 'is-invalid' : '' || editForm.get('participantesTotales')?.hasError('max')
                                             ? 'is-invalid' : ''" formControlName="participantesTotales">
-    
+
                                 <div class="invalid-feedback">
                                     {{ editForm.get("participantesTotales")?.hasError("required") ? " Numero de participantes requeridos" : "" }}
                                     {{ editForm.get("participantesTotales")?.hasError("min") ? "Minimo 2 participantes" : "" }}
-                                    {{ editForm.get("participantesTotales")?.hasError("max") ? "Maximo 200 participantes" : "" }}                        
+                                    {{ editForm.get("participantesTotales")?.hasError("max") ? "Maximo 200 participantes" : "" }}
                                 </div>
                             </div>
-    
+
                             <div class="groupForm">
                                 <label for="">ID del Grupo:</label>
-                            <input type="text" class="form-control" id="" placeholder="Ej: El mejor evento" formControlName="Grupos_idGrupos">
+                            <input type="text" class="form-control" id="" placeholder="Ej: El mejor evento" formControlName="Grupos_idGrupos" [readonly]="true">
                             </div>
-    
+
                             <div class="groupForm">
                                 <label for="">Estado Evento:</label>
                                 <input type="text" class="form-control" id="" placeholder="Ej: El mejor evento" formControlName="estadoEvento" [readonly]="true">
@@ -130,7 +130,7 @@
                                     </div>
                                 </div>
                             </div>
-                        
+
                     </div>
                 </div>
                 <div class="modal-footer">
