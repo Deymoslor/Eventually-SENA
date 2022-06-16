@@ -55,11 +55,12 @@
                     </thead>
                     <tbody>
         
-                        <tr *ngFor="let key of (dataProviderService | filterProvider:filterProveedor) | paginate: {
-                            id: 'listing_pagination',
-                            itemsPerPage: 10,
+                        <tr *ngFor="let key of dataProviderService | paginate
+                        : {
+                            itemsPerPage: tableSize,
                             currentPage: page,
-                            totalItems: totalRecords }">
+                            totalItems: count
+                          };">
                             <td></td>
                             <td>{{key.nombreProveedor}}</td>
                             <td>{{key.apellidoProveedor}}</td>
@@ -105,6 +106,11 @@
                         </tr>
                     </tbody>
                 </table>
+                <div>
+                    <pagination-controls previousLabel="Prev"
+                    nextLabel="Next"
+                    (pageChange)="onTableDataChange($event)" ></pagination-controls>
+                </div>
             </div>
     </div>
 

@@ -32,7 +32,10 @@
 
                 <tbody>
 
-                    <tr class="textox" *ngFor="let persona of (personas | filterPipeUsers:filterUser)" (click)="editarPersona(persona.idPersona)">
+                    <tr class="textox" *ngFor="let persona of personas | paginate : {
+                        itemsPerPage: tableSize,currentPage: page,totalItems: count} |
+                        filterPipeUsers:filterUser"
+                    (click)="editarPersona(persona.idPersona)">
 
                         <th class="textox" scope="row">{{persona.idPersona}}</th>
 
@@ -88,6 +91,11 @@
                 </tbody>
 
             </table>
+            <div>
+                <pagination-controls previousLabel="Prev"
+                nextLabel="Next"
+                (pageChange)="onTableDataChange($event)" ></pagination-controls>
+            </div>
 
             <!-- Jordan Table Finish -->
 

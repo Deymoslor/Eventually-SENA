@@ -53,8 +53,21 @@ export class EventProviderComponent implements OnInit {
 
   filterProveedor = '';
 
-  totalRecords!: number;
+  POSTS: any;
   page: number = 1;
+  count: number = 0;
+  tableSize: number = 7;
+  tableSizes: any = [3, 6, 9, 12];
+
+  totalRecords!: number;
+
+  onTableDataChange(event: any) {
+    this.page = event;
+  }
+  onTableSizeChange(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+  }
 
   ngOnInit(): void {
     let state: number | null;

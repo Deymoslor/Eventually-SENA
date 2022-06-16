@@ -26,7 +26,9 @@
 
                 <tbody>
                     <!-- <tr class="sepa"></tr> -->
-                    <tr *ngFor="let event of (events | filterPipeEvents:filterEvento)">
+                    <tr *ngFor="let event of events | paginate : {
+                        itemsPerPage: tableSize,currentPage: page,totalItems: count} |
+                        filterPipeEvents:filterEvento">
                         <th scope="row">{{ event.idEvento }}</th>
                         <td>{{ event.nombreEvento }}</td>
                         <td>{{ event.descripcionEvento }}</td>
@@ -43,6 +45,11 @@
                     </tr>
                 </tbody>
             </table>
+            <div>
+                <pagination-controls previousLabel="Prev"
+                nextLabel="Next"
+                (pageChange)="onTableDataChange($event)" ></pagination-controls>
+            </div>
         </div>
     </div>
 </div>

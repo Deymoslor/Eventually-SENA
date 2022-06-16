@@ -81,6 +81,23 @@ constructor(
 
   filterUser = '';
 
+  POSTS: any;
+  page: number = 1;
+  count: number = 0;
+  tableSize: number = 10;
+  tableSizes: any = [10, 20, 30, 40, 50];
+  lengthTable!: number
+
+  totalRecords!: number;
+
+  onTableDataChange(event: any) {
+    this.page = event;
+  }
+  onTableSizeChange(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+  }
+
   ngOnInit(): void {
 
     // ----

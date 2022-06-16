@@ -23,7 +23,9 @@
 
             <tbody>
 
-                <tr *ngFor="let request of (requests | filterPipeRequestGroup:filterRequestGroup)">
+                <tr *ngFor="let request of requests | paginate : {
+                    itemsPerPage: tableSize,currentPage: page,totalItems: count} |
+                    filterPipeRequestGroup:filterRequestGroup">
 
                     <th class="textox" scope="row">{{request.idpeticionesGrupo}}</th>
 
@@ -65,6 +67,11 @@
 
 
         </table>
+        <div>
+            <pagination-controls previousLabel="Prev"
+            nextLabel="Next"
+            (pageChange)="onTableDataChange($event)" ></pagination-controls>
+        </div>
     </div>
 </div>
 

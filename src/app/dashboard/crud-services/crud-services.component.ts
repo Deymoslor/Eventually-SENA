@@ -91,6 +91,40 @@ export class CrudServicesComponent implements OnInit {
 
     filterServices = '';
 
+  POSTS: any;
+  page: number = 1;
+  count: number = 0;
+  tableSize: number = 10;
+  tableSizes: any = [10, 20, 30, 40, 50];
+  lengthTable!: number
+
+  totalRecords!: number;
+
+  onTableDataChange(event: any) {
+    this.page = event;
+  }
+  onTableSizeChange(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+  }
+
+  POSTS2: any;
+  page2: number = 1;
+  count2: number = 0;
+  tableSize2: number = 4;
+  tableSizes2: any = [4, 8, 12, 16, 20];
+  lengthTable2!: number
+
+  totalRecords2!: number;
+
+  onTableDataChange2(event: any) {
+    this.page = event;
+  }
+  onTableSizeChange2(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+  }
+
   ngOnInit(): void {
     this.api.getAllTypeServices(1).subscribe(data => {
       // console.log(data);

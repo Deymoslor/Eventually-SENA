@@ -26,7 +26,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let service of (Services | filterPipeServices:filterServices)">
+                    <tr *ngFor="let service of Services | paginate : {
+                        itemsPerPage: tableSize,currentPage: page,totalItems: count} |
+                        filterPipeServices:filterServices">
 
                         <th class="textox" scope="row">{{ service.idServicios }}</th>
                         <td class="textox">{{ service.nombreServicio }}</td>
@@ -51,6 +53,11 @@
                     </tr>
                 </tbody>
             </table>
+            <div>
+                <pagination-controls previousLabel="Prev"
+                nextLabel="Next"
+                (pageChange)="onTableDataChange($event)" ></pagination-controls>
+            </div>
         </div>
     </div>
     <!--TABLE//-->
@@ -70,7 +77,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let TypeService of TypeServices">
+                    <tr *ngFor="let TypeService of TypeServices | paginate : {
+                        itemsPerPage: tableSize2,currentPage: page2,totalItems: count2}">
 
                         <th class="textox" scope="row">{{ TypeService.idtipoServicio }}</th>
                         <td class="textox">{{ TypeService.tipoServicio }}</td>
@@ -80,6 +88,11 @@
                     </tr>
                 </tbody>
             </table>
+            <div>
+                <pagination-controls previousLabel="Prev"
+                nextLabel="Next"
+                (pageChange)="onTableDataChange2($event)" ></pagination-controls>
+            </div>
         </div>
     </div>
     <button class="btn btnCrear" class="btn btnEditar" data-bs-toggle="modalCreateTypeDash" data-bs-target="#content-modalCreateTypeDash" (click)="modalCreateServiceOpen(contentCreateType, 1)">

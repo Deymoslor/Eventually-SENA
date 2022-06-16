@@ -38,6 +38,7 @@ import { FooterModule } from '../footer/footer.module';
 import { DatailGroupComponent } from './requests/table-request-groups/datail-group/datail-group.component';
 import { DatailEventComponent } from './requests/table-request-event/datail-event/datail-event.component';
 import { LandingAdminComponent } from './landing-admin/landing-admin.component';
+import {NgxPaginationModule} from 'ngx-pagination'
 import { FilterPipeGroupsPipe } from './crud-groups/pipe/filter-pipe-groups.pipe';
 import { FilterPipeEventsPipe } from './crud-events/pipe/filter-pipe-events.pipe';
 import { FilterPipeLikesPipe } from './crud-likes/pipe/filter-pipe-likes.pipe';
@@ -103,7 +104,8 @@ import { FilterPipeRequestEventPipe } from './requests/pipe/filter-pipe-request-
     MenuModule,
     ReactiveFormsModule,
     MatDatepickerModule,
-    FooterModule
+    FooterModule,
+    NgxPaginationModule
   ]
 })
 export class DashboardModule { }
