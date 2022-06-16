@@ -18,9 +18,14 @@
     margin-bottom: 1rem;
 }
 
+.tablita {
+    margin-left: 18vw;
+}
+
 td {
     width: 50%;
     border: 1px solid blue;
+    padding-bottom: 1rem!important;
 }
 
 tr {
@@ -31,6 +36,12 @@ tr {
 .nombre {
     font-family: 'Pacifico', cursive;
     font-size: 5rem;
+}
+
+.tituloE {
+    padding-top: 2rem;
+    font-family: 'Pacifico', cursive;
+    font-size: 2.5rem;
 }
 
 .textox {
@@ -81,4 +92,15 @@ form {
 
 .info {
     padding: 16px;
+}
+
+.btnEditar {
+    background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
+    color: white;
+    width: auto;
+    border-radius: 10%;
+}
+
+.btnEditar:hover {
+    background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
 }

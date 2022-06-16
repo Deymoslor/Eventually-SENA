@@ -49,10 +49,10 @@ export class LeftMenuComponent implements OnInit {
 
   // Proveedor
   myService(){
-    this.router.navigate(["main/landingProv"]);
+    this.router.navigate(["main/provider/myService"]);
   }
   homeProveedor(){
-    this.router.navigate(["main/provider/myService"]);
+    this.router.navigate(["main/landingProv"]);
   }
 
   // createService(){
