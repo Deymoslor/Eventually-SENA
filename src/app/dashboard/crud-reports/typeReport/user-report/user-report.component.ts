@@ -93,7 +93,7 @@ export class UserReportComponent implements OnInit {
       }
       return doc;
     }).then((docResult) => {
-      docResult.save(`${new Date().toISOString()}_grupos.pdf`);
+      docResult.save(`${new Date().toISOString()}_usuarios.pdf`);
     });
 
   }
