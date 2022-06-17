@@ -115,7 +115,7 @@ export class CreateGroupsComponent implements OnInit {
             this.router.navigate(['main/groups/your-groups']);
           }else{
             this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
-            window.location.reload();
+            // window.location.reload();
           }
       })
       // this.createYourGroupForm.reset();

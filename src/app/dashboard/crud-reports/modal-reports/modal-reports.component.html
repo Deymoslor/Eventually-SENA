@@ -6,18 +6,7 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-              <div class="form-group">
-                <div>
-                  <button type="button" class="btn btn-primary mb-3" [routerLink]="['event-report']">Eventos</button>
-                </div>
-                <div>
-                  <button type="button" class="btn btn-warning mb-3" [routerLink]="['group-report']">Grupos</button>
-                </div>
-                <div>
-                  <button type="button" class="btn btn-primary mb-3" [routerLink]="['user-report']">Usuarios</button>
-                </div>
-              </div>
-              <router-outlet></router-outlet>
+            <router-outlet></router-outlet>
           </div>
           <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>

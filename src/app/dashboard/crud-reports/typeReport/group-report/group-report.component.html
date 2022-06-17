@@ -1,16 +1,110 @@
-<div class="page-header">
-  <button type="button" class="btn btn-lg btn-primary" (click)="downloadPDF()">Descargar PDF</button>
-</div>
-<div id="pdfGroups">
-
-  <div class="container theme-showcase" role="main">
+  <div class="page-header">
+    <button type="button" class="btn btn-lg btn-primary" (click)="downloadPDF()">Descargar PDF</button>
+  </div>
+  <br>
+<div class="container theme-showcase" role="main"  id="pdfGroups" >
+  <div name="pdfGroups">
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <h1>Reporte de Grupos</h1>
-      <p>TEste es el reporte de grupos que se realiza en este mes.</p>
+      <p>Este es el reporte de grupos que se realiza en este mes.</p>
     </div>
+    <br>
+    <div  class="jumbotron">
+      <div>
+        <h2>Los grupos con mas invitados activos</h2>
+        <div>
+          <br>
+          <br>
+          <br>
+        </div>
+        <ngx-charts-advanced-pie-chart
+          [view]="view"
+          scheme="cool"
+          [results]="allMajorInvites"
+          [gradient]="gradient"
+          (select)="onSelect($event)"
+          (activate)="onActivate($event)"
+          (deactivate)="onDeactivate($event)"
+          >
+        </ngx-charts-advanced-pie-chart>
+      </div>
+    </div>
+    <div class="jumbotron">
+      <h2>Los grupos con mayor eventos realizados</h2>
+      <ngx-charts-pie-grid
+        [view]="view"
+        scheme="cool"
+        [results]="allMajorEventGroup"
+        (select)="onSelect($event)">
+      </ngx-charts-pie-grid>
+    </div>
+    <div style="width: 300px; height: 500px;">
+    </div>
+    <div class="jumbotron">
+      <h2>Los grupos con el total de sus participantes</h2>
+      <ngx-charts-bar-horizontal
+        [view]="view"
+        scheme="cool"
+        [results]="allInvites"
+        [gradient]="gradient1"
+        [xAxis]="showXAxis"
+        [yAxis]="showYAxis"
+        [legend]="showLegend"
+        [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel"
+        [xAxisLabel]="xAxisLabel"
+        [yAxisLabel]="yAxisLabel"
+        (select)="onSelect($event)"
+        (activate)="onActivate($event)"
+        (deactivate)="onDeactivate($event)">
+      </ngx-charts-bar-horizontal>
+    </div>
+    <div Height="400" style="height: 400px;">
 
-    <table class="table table-warning">
+    </div>
+    <div class="jumbotron">
+      <h2> los gustos mas solicitados por los grupos</h2>
+        <ngx-charts-pie-chart
+        [view]="view"
+        scheme="cool"
+        [results]="allMajorLikesGroup"
+        [gradient]="gradient"
+        [legend]="showLegend"
+        [legendPosition]="legendPosition"
+        [labels]="showLabels"
+        [doughnut]="isDoughnut"
+        (select)="onSelect($event)"
+        (activate)="onActivate($event)"
+        (deactivate)="onDeactivate($event)"
+        >
+      </ngx-charts-pie-chart>
+    </div>
+    <div style="height: 300px;">
+      <br>
+      <ngx-charts-linear-gauge
+        [view]="viewCountGroups"
+        scheme="cool"
+        [value]="this.publicos.get('grupos')?.value"
+        [previousValue]="this.CountGroups.get('grupos')?.value"
+        (select)="onSelect($event)"
+        [units]="units1">
+      </ngx-charts-linear-gauge>
+      <br>
+    </div>
+    <div style="height: 300px;">
+      <br>
+      <ngx-charts-linear-gauge
+        [view]="viewCountGroups"
+        scheme="cool"
+        [value]="this.privados.get('grupos')?.value"
+        [previousValue]="this.CountGroups.get('grupos')?.value"
+        (select)="onSelect($event)"
+        [units]="units2">
+      </ngx-charts-linear-gauge>
+      <br>
+    </div>
+    <table class="table">
       <thead>
         <tr>
           <th scope="col">No</th>
@@ -19,7 +113,7 @@
           <th scope="col">Participantes</th>
         </tr>
       </thead>
-      <tbody class="table-secondary">
+      <tbody>
         <tr *ngFor="let group of groups">
           <th scope="row">{{group.idGrupos}}</th>
           <td>{{group.nombreGrupo}}</td>
@@ -29,3 +123,4 @@
       </tbody>
     </table>
   </div>
+</div>
