@@ -1,54 +1,54 @@
 <div class="content-button">
     <!-- <button class="btn btn-primary" (click)="modalOpen(content)">Detalle</button> -->
-        <!-- <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button> -->
+    <!-- <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button> -->
 
-        <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">Detalle Servicio</h5>
-            <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
-        </div>
-        <div class="modal-body">
-            <div class="form-group">
-                <div class="info-content">
-                    <label class="fs-5 fw-bold">Nombre Servicio</label>
-                    <p class="fs-6">{{ServicesForm.get('nombreServicio')?.value}}</p>
-                </div>
-                <div class="info-content">
-                    <label class="fs-5 fw-bold">Descripcion Servicio</label>
-                    <p class="fs-6">{{ServicesForm.get('descripcionServicio')?.value}}</p>
-                </div>
-                <div class="info-content">
-                    <label class="fs-5 fw-bold">Foto servicio</label>
-                    <img width="400px" [src]="ServicesForm.get('imagen')?.value" alt="">
-                </div>
-                <div class="info-content">
-                    <label class="fs-5 fw-bold">Precio estimado</label>
-                    <p class="fs-6">{{ServicesForm.get('precioEstimado')?.value}}</p>
-                </div>
-                <div class="info-content">
-                    <label class="fs-5 fw-bold">Empresas en las que trabajo anteriormente</label>
-                    <p class="fs-6">{{ServicesForm.get('historialEmpresas')?.value}}</p>
-                </div>
-                <div class="info-content">
-                    <label class="fs-5 fw-bold">Fecha desde que se realiza el servicio</label>
-                    <p class="fs-6">{{ServicesForm.get('fechaInicio')?.value}}</p>
-                </div>
-                <div class="info-content">
-                    <label class="fs-5 fw-bold">Numero de contacto</label>
-                    <p class="fs-6">{{ServicesForm.get('numeroContacto')?.value}}</p>
-                </div>
-                <div class="info-content">
-                    <label class="fs-5 fw-bold">Correo de contacto</label>
-                    <p class="fs-6">{{ServicesForm.get('correoContacto')?.value}}</p>
-                </div>
-
+    <div class="modal-header">
+        <h5 class="titlePrincipal" id="staticBackdropLabel">Detalle Servicio</h5>
+        <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <div class="info-content">
+                <label class="textoTitulos">Nombre Servicio</label>
+                <p class="textox">{{ServicesForm.get('nombreServicio')?.value}}</p>
             </div>
+            <div class="info-content">
+                <label class="textoTitulos">Descripcion Servicio</label>
+                <p class="textox">{{ServicesForm.get('descripcionServicio')?.value}}</p>
+            </div>
+            <div class="info-content">
+                <label class="textoTitulos">Foto servicio</label>
+                <img class="img-fluid" [src]="ServicesForm.get('imagen')?.value" alt="">
+            </div>
+            <div class="info-content">
+                <label class="textoTitulos">Precio estimado</label>
+                <p class="textox">{{ServicesForm.get('precioEstimado')?.value}}</p>
+            </div>
+            <div class="info-content">
+                <label class="textoTitulos">Empresas en las que trabajo anteriormente</label>
+                <p class="textox">{{ServicesForm.get('historialEmpresas')?.value}}</p>
+            </div>
+            <div class="info-content">
+                <label class="textoTitulos">Fecha desde que se realiza el servicio</label>
+                <p class="textox">{{ServicesForm.get('fechaInicio')?.value}}</p>
+            </div>
+            <div class="info-content">
+                <label class="textoTitulos">Numero de contacto</label>
+                <p class="textox">{{ServicesForm.get('numeroContacto')?.value}}</p>
+            </div>
+            <div class="info-content">
+                <label class="textoTitulos">Correo de contacto</label>
+                <p class="textox">{{ServicesForm.get('correoContacto')?.value}}</p>
+            </div>
+
         </div>
-        <!-- <div class="modal-footer">
+    </div>
+    <!-- <div class="modal-footer">
                         <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Crear evento</button>
                     </div> -->
 
 
 
 
-        <!-- <app-modal-disable-event [idEvent]="eventGroupForm.get('idEvento')?.value" [form]="eventGroupForm.value"></app-modal-disable-event> -->
+    <!-- <app-modal-disable-event [idEvent]="eventGroupForm.get('idEvento')?.value" [form]="eventGroupForm.value"></app-modal-disable-event> -->
 </div>

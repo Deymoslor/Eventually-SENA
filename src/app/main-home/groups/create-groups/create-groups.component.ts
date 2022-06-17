@@ -42,7 +42,7 @@ export class CreateGroupsComponent implements OnInit {
     ) {
 
       this.createYourGroupForm = this.formBuilder.group({
-        nombreGrupo: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/), Validators.minLength(2),Validators.maxLength(30)]],
+        nombreGrupo: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1 ]+$/), Validators.minLength(2),Validators.maxLength(30)]],
         descripcionGrupo: ['',[Validators.required, Validators.minLength(2),Validators.maxLength(300)]],
         privacidadGrupo: ['', Validators.required],
         check: ['', Validators.requiredTrue],

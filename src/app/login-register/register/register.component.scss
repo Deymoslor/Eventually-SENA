@@ -83,6 +83,10 @@ input {
     color: #ccc;
 }
 
+.ff {
+    border: 5px solid black!important;
+}
+
 .barra {
     position: relative;
     display: block;
@@ -157,7 +161,6 @@ button {
 // .checkbox{
 //     margin-bottom: -50vh;
 // }
-
 @media screen and (max-width: 500px) {
     form {
         width: 80%;

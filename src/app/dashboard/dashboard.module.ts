@@ -40,6 +40,16 @@ import { DatailEventComponent } from './requests/table-request-event/datail-even
 import { LandingAdminComponent } from './landing-admin/landing-admin.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {NgxPaginationModule} from 'ngx-pagination'
+import { FilterPipeGroupsPipe } from './crud-groups/pipe/filter-pipe-groups.pipe';
+import { FilterPipeEventsPipe } from './crud-events/pipe/filter-pipe-events.pipe';
+import { FilterPipeLikesPipe } from './crud-likes/pipe/filter-pipe-likes.pipe';
+import { FilterPipeReportsPipe } from './crud-reports/pipe/filter-pipe-reports.pipe';
+import { FilterPipeServicesPipe } from './crud-services/pipe/filter-pipe-services.pipe';
+import { FilterSuppliersPipe } from './crud-suppliers/pipe/filter-suppliers.pipe';
+import { FilterPipeUsersPipe } from './crud-users/pipe/filter-pipe-users.pipe';
+import { FilterPipeRequestGroupPipe } from './requests/pipe/filter-pipe-request-group.pipe';
+import { FilterPipeRequestEventPipe } from './requests/pipe/filter-pipe-request-event.pipe';
 
 
 
@@ -74,7 +84,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     UserReportComponent,
     DatailGroupComponent,
     DatailEventComponent,
-    LandingAdminComponent
+    LandingAdminComponent,
+    FilterPipeGroupsPipe,
+    FilterPipeEventsPipe,
+    FilterPipeLikesPipe,
+    FilterPipeReportsPipe,
+    FilterPipeServicesPipe,
+    FilterSuppliersPipe,
+    FilterPipeUsersPipe,
+    FilterPipeRequestGroupPipe,
+    FilterPipeRequestEventPipe
 
   ],
   imports: [
@@ -89,7 +108,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatDatepickerModule,
     FooterModule,
     NgxChartsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxPaginationModule
   ]
 })
 export class DashboardModule { }

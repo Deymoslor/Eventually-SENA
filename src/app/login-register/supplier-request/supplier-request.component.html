@@ -32,7 +32,7 @@
 
             <div class="grupo">
                 <div class="md-form">
-                    <textarea (click)="clean()" (blur)="clean()" class="md-textarea form-control" formControlName="msg" required rows="4" [ngClass]="(peticionProveedor.get('msg')?.touched || peticionProveedor.get('msg')?.dirty) &&
+                    <textarea (click)="clean()" class="md-textarea form-control" formControlName="msg" required rows="4" [ngClass]="(peticionProveedor.get('msg')?.touched || peticionProveedor.get('msg')?.dirty) &&
                     peticionProveedor.get('msg')?.errors ? 'is-invalid' : '' || peticionProveedor.get('msg')?.hasError('required')
                     ? 'is-invalid' : ''"></textarea><span class="barra"></span>
                     <label class="textAreaLabel">Justificación</label>

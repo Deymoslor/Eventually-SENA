@@ -43,12 +43,33 @@ export class CrudLikesComponent implements OnInit {
   // paginator!: MatPaginator;
 
   id!:number;
-  likes?:LikesI[];
+  likes!:LikesI[];
 
   constructor(
     private api:ApiService,
     private alertas:AlertasService,
   ) { }
+
+  closeResult = '';
+
+  filterGustos = '';
+
+  POSTS: any;
+  page: number = 1;
+  count: number = 0;
+  tableSize: number = 4;
+  tableSizes: any = [4, 8, 12, 16, 20];
+  lengthTable!: number
+
+  totalRecords!: number;
+
+  onTableDataChange(event: any) {
+    this.page = event;
+  }
+  onTableSizeChange(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+  }
 
   ngOnInit(): void {
 

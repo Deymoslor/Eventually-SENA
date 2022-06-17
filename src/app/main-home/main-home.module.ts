@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
@@ -20,6 +20,7 @@ import { MyServiceComponent } from './providers/my-service/my-service.component'
 import { CreateServiceComponent } from './providers/create-service/create-service.component';
 import { LandingProvComponent } from './landing-prov/landing-prov.component';
 import { LandingVisitComponent } from './landing-visit/landing-visit.component';
+import { NgxPaginationModule } from 'ngx-pagination'
 
 @NgModule({
   declarations: [
@@ -48,7 +49,9 @@ import { LandingVisitComponent } from './landing-visit/landing-visit.component';
     SettingsModule,
     EventsModule,
     FormsModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+    NgxPaginationModule
+  ],
+  providers: [CurrencyPipe]
 })
 export class MainHomeModule { }

@@ -1,132 +1,150 @@
-<!--TABLE-->
 <div *ngIf="terminate">
-        <div *ngIf="stateAccept != 1">
-                <button class="btn btn-danger" (click)="modalOpen2(content3)">
-                    Terminar
-                </button>
-                <p class="fw-bolder">Terminar</p>
-            </div>
-        
-            <ng-template #onlyAccepted>
-                <div>
-                    Se tiene un Servicio aceptado con el proveedor: {{nombreProveedor}}, con nombre de servicio: {{nombreServicio}}
-                </div>
-                <button class="btn btn-danger" (click)="modalOpen2(content2)">
-                    Terminar
-                </button>
-                <p class="fw-bolder">Terminar y Resultados</p>
-        
-            </ng-template>
-        
-
-    <ng-template #content2 let-modal2>
-        <button type="button" class="btn-close" aria-label="Close" (click)="modal2.dismiss('Cross click')"></button>
-        <app-modal-disable-event [form]="form" [idEvento]="idEvento" [finishState]="1" [idServiceAceppted] = idServiceAceppted></app-modal-disable-event>
-    </ng-template>
-    
-    <ng-template #content3 let-modal3>
-        <button type="button" class="btn-close" aria-label="Close" (click)="modal3.dismiss('Cross click')"></button>
-        <app-modal-disable-event [form]="form" [idEvento]="idEvento" [finishState]="2"></app-modal-disable-event>
-    </ng-template>
-</div>
-
-<div *ngIf="!terminate">
-    
-<div class="table-responsive">
-    <div *ngIf="stateAccept != 1; else onlyAccepted">
-        <div class="searcher">
-            <label for="">BUSCAR TIPO SERVICIOS: </label>
-            <input type="text" class="search" name="filterProveedor" placeholder="Buscar..." [(ngModel)]="filterProveedor">
-        </div>
-        <table class="table table-dark table-responsive">
-            <thead>
-                <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">Nombre Proveedor</th>
-                    <th scope="col">Apellido</th>
-                    <th scope="col">Correo</th>
-                    <th scope="col">Numero</th>
-                    <th scope="col">Tipo Servicio</th>
-                    <th scope="col">TOTAL Calificación</th>
-                    <th scope="col">Detalle Servicio</th>
-                    <th scope="col">Accion</th>
-                    <th scope="col">Estado</th>
-                </tr>
-            </thead>
-            <tbody>
-
-                <tr *ngFor="let key of (dataProviderService | filterEvents:filterProveedor)">
-                    <td></td>
-                    <td>{{key.nombreProveedor}}</td>
-                    <td>{{key.apellidoProveedor}}</td>
-                    <td>{{key.correoProveedor}}</td>
-                    <td>{{key.celular}}</td>
-                    <!-- <td>{{key.TipoServicio_idtipoServicio}}</td> -->
-                    
-                            <td *ngFor="let item of dataTypeService" [hidden]="item.idtipoServicio != key.TipoServicio_idtipoServicio">
-                                    {{item.tipoServicio}}
-                            </td>
-                   
-                    <td>{{key.calificacionT}}</td>
-                    <td>
-                        <button class="btn btn-primary" (click)="modalOpen4(content4, key.idProveedor)">
-                            Detalle
-                        </button>
-                    </td>
-                    <td>
-                        <div class="content-button">
-                            <button class="btn btn-primary" type="submit" [disabled]="key.estadoInvitacion" (click)="postInvitation(key)">Invitar</button>
-                        </div>
-                    </td>
-                    <!-- <td *ngIf="!key.estadoInvitacion == null">
-                        <div class="content-button">
-                            <button class="btn btn-primary" type="submit" disabled (click)="postInvitation(key)">Invitar</button>
-                        </div>
-                    </td> -->
-                    <td *ngIf=" key.estadoInvitacion == null">
-                        Sin invitar
-                    </td>
-                    <td *ngIf="key.estadoInvitacion == 0">
-                        Invitado
-                    </td>
-                    <td *ngIf="key.estadoInvitacion == 1">
-                        Aceptado
-                    </td>
-                    <td *ngIf="key.estadoInvitacion == 2">
-                        Rechazado
-                    </td>
-                    <td *ngIf="key.estadoInvitacion == 3">
-                        Terminado
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
     <div *ngIf="stateAccept != 1">
         <button class="btn btn-danger" (click)="modalOpen2(content3)">
-            Terminar
-        </button>
-        <p class="fw-bolder">Terminar Evento</p>
+              Terminar
+          </button>
+        <p class="textox">Terminar</p>
     </div>
 
     <ng-template #onlyAccepted>
         <div>
             Se tiene un Servicio aceptado con el proveedor: {{nombreProveedor}}, con nombre de servicio: {{nombreServicio}}
         </div>
-        <button class="btn btn-danger" (click)="modalOpen2(content2)">
-            Terminar
-        </button>
-        <p class="fw-bolder">Terminar y Resultados</p>
+        <button class="textox btn btn-danger" (click)="modalOpen2(content2)">
+              Terminar
+          </button>
+        <p class="textox">Terminar y Resultados</p>
+
+    </ng-template>
+
+
+    <ng-template #content2 let-modal2>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal2.dismiss('Cross click')"></button>
+        <app-modal-disable-event [form]="form" [idEvento]="idEvento" [finishState]="1" [idServiceAceppted]=idServiceAceppted></app-modal-disable-event>
+    </ng-template>
+
+    <ng-template #content3 let-modal3>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal3.dismiss('Cross click')"></button>
+        <app-modal-disable-event [form]="form" [idEvento]="idEvento" [finishState]="2"></app-modal-disable-event>
+    </ng-template>
+</div>
+
+
+<div class="prove" *ngIf="!terminate">
+    <div class="row tables" *ngIf="dataProviderService">
+        <div class="med" *ngIf="stateAccept != 1; else onlyAccepted">
+            <div class="searcher">
+                <label class="textoTitulos" for="">BUSCAR TIPO SERVICIOS: </label>
+                <input type="text" class="rounded search textox" name="filterProveedor" placeholder="Buscar..." [(ngModel)]="filterProveedor">
+            </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th class="textoTitulos" scope="col">No</th>
+                        <th class="textoTitulos" scope="col">Nombre Proveedor</th>
+                        <th class="textoTitulos" scope="col">Apellido</th>
+                        <th class="textoTitulos" scope="col">Correo</th>
+                        <th class="textoTitulos" scope="col">Numero</th>
+                        <th class="textoTitulos" scope="col">Tipo Servicio</th>
+                        <th class="textoTitulos" scope="col">TOTAL Calificación</th>
+                        <th class="textoTitulos" scope="col">Detalle Servicio</th>
+                        <th class="textoTitulos" scope="col">Accion</th>
+                        <th class="textoTitulos" scope="col">Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr class="textox" *ngFor="let key of dataProviderService | paginate
+                        : {
+                            itemsPerPage: tableSize,
+                            currentPage: page,
+                            totalItems: count
+                          };">
+                        <td></td>
+                        <td class="textox">{{key.nombreProveedor}}</td>
+                        <td class="textox">{{key.apellidoProveedor}}</td>
+                        <td class="textox">{{key.correoProveedor}}</td>
+                        <td class="textox">{{key.celular}}</td>
+                        <!-- <td>{{key.TipoServicio_idtipoServicio}}</td> -->
+
+                        <td class="textox" *ngFor="let item of dataTypeService" [hidden]="item.idtipoServicio != key.TipoServicio_idtipoServicio">
+                            {{item.tipoServicio}}
+                        </td>
+
+                        <td class="textox">{{key.calificacionT}}</td>
+                        <td>
+                            <button class="btn textox btnEventually" (click)="modalOpen4(content4, key.idProveedor)">
+                                    Detalle
+                                </button>
+                        </td>
+                        <td>
+                            <div class="content-button">
+                                <button class="btn textox btnEventually" type="submit" [disabled]="key.estadoInvitacion" (click)="postInvitation(key)">Invitar</button>
+                            </div>
+                        </td>
+                        <!-- <td *ngIf="!key.estadoInvitacion == null">
+                                <div class="content-button">
+                                    <button class="btn btn-primary" type="submit" disabled (click)="postInvitation(key)">Invitar</button>
+                                </div>
+                            </td> -->
+                        <td class="textox" *ngIf=" key.estadoInvitacion == null">
+                            Sin invitar
+                        </td>
+                        <td class="textox" *ngIf="key.estadoInvitacion == 0">
+                            Invitado
+                        </td>
+                        <td class="textox" *ngIf="key.estadoInvitacion == 1">
+                            Aceptado
+                        </td>
+                        <td class="textox" *ngIf="key.estadoInvitacion == 2">
+                            Rechazado
+                        </td>
+                        <td class="textox" *ngIf="key.estadoInvitacion == 3">
+                            Terminado
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div>
+                <pagination-controls class="textox " previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)"></pagination-controls>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="!dataProviderService">
+        <p class="textoTitulos">
+            En este momento no se encuentran Proveedores con servicios disponibles.
+        </p>
+        <br>
+    </div>
+
+    <div *ngIf="stateAccept != 1">
+        <button class="btn textox btn-danger" (click)="modalOpen2(content3)">
+                Terminar
+            </button>
+        <p class="fw-bolder">Terminar Evento</p>
+    </div>
+
+    <ng-template #onlyAccepted>
+        <div class="textoTitulos">
+            Se tiene un Servicio aceptado con el proveedor: {{nombreProveedor}}, con nombre de servicio: {{nombreServicio}}
+        </div>
+        <button class="btn textox btn-danger" (click)="modalOpen2(content2)">
+                Terminar
+            </button>
+        <p class="textox">Terminar y Resultados</p>
 
     </ng-template>
 
 </div>
 
+
 <!--TABLE//-->
 
 <ng-template #content2 let-modal2>
     <button type="button" class="btn-close" aria-label="Close" (click)="modal2.dismiss('Cross click')"></button>
-    <app-modal-disable-event [form]="form" [idEvento]="idEvento" [finishState]="1" [idServiceAceppted] = idServiceAceppted></app-modal-disable-event>
+    <app-modal-disable-event [form]="form" [idEvento]="idEvento" [finishState]="1" [idServiceAceppted]=idServiceAceppted></app-modal-disable-event>
 </ng-template>
 
 <ng-template #content3 let-modal3>
@@ -138,6 +156,3 @@
     <button type="button" class="btn-close" aria-label="Close" (click)="modal4.dismiss('Cross click')"></button>
     <app-modal-info-ser-prov [idProv]="idProv"></app-modal-info-ser-prov>
 </ng-template>
-
-
-</div>

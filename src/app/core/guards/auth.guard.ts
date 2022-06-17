@@ -35,8 +35,8 @@ export class AuthGuard implements CanActivate {
           // this.router.navigate(["dashboard/users"]);
           // return false;
         if(this.authService.desencriptar(localStorage.getItem("nombreRol")) === "INVITADO"){
-        this.router.navigate(["main/landingVisit"]);
-        return false;
+          this.router.navigate(["main/landingVisit"]);
+          return false;
         }else if(this.authService.desencriptar(localStorage.getItem("nombreRol")) === "PROVEEDOR"){
           this.router.navigate(["main/landingProv"]);
           return false;

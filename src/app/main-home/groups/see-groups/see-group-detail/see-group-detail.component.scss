@@ -1,100 +1,150 @@
-:host {
-  display: flex;
-  flex-direction: column;
-  padding: 16px;
-}
+@import '../../../../app.component.scss';
 .container {
-  display: grid;
-  overflow: hidden;
-  border-radius: 12px;
-  background-color: #fff;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px,
-    rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+    margin: 0;
+    border-radius: 5%;
+    padding: 0;
+    width: 100%;
 }
 
-.img-container {
-  overflow: hidden;
-  display: grid;
-  place-content: center;
-  max-height: 200px;
-  border-radius: 12px;
+.textox {
+    font-family: 'Ubuntu', sans-serif!important;
+    font-weight: 350!important;
+    color: black;
 }
 
-.img-container img {
-  width: 500%;
-  height: 100%;
-}
-.info {
-  padding: 16px;
+.title {
+    font-weight: 700!important;
+    color: black;
 }
 
-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px 16px;
-  background-color: #5e00ea;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
+.r {
+    margin: 0;
+    padding: 0;
+    // border: 1px solid purple;
 }
 
-button img {
-  margin-right: 8px;
+#imagenGrupo {
+    // border: 1px solid red;
+    // border-radius: 15%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
-button:hover,
-button:focus {
-  background-color: #7d29fa;
-  outline: none;
+.t {
+    width: 90%;
 }
 
-.back {
-  text-decoration: none;
-  text-transform: uppercase;
-  color: #808080;
-  font-size: 0.825rem;
-  margin-bottom: 16px;
+.btnUnirse {
+    background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
+    color: white;
+    margin-left: 20vw;
+    width: auto;
 }
 
-.back:hover {
-  text-decoration: underline;
+.btnUnirse:hover {
+    background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
 }
 
-.product-name {
-  font-size: 1.75rem;
-  font-weight: 600;
+@media only screen and (max-width: 795px) {
+    .textox {
+        font-size: 1rem!important;
+    }
+    .title {
+        font-size: 1.2rem!important;
+    }
+    .btnUnirse {
+        margin-left: 15vw;
+    }
 }
 
-.product-short-description {
-  color: #777;
+@media only screen and (max-width: 768px) {
+    .btnUnirse {
+        margin-left: 10vw;
+    }
 }
 
-.cart-row {
-  margin-top: 52px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+@media only screen and (max-width: 680px) {
+    .container {
+        width: 95%;
+    }
+    .btnUnirse {
+        margin-left: 5vw;
+    }
 }
 
-.price {
-  display: inline-flex;
-  align-items: flex-start;
-  font-size: 2.75rem;
-  font-weight: 600;
-  color: #5607cc;
+@media only screen and (max-width: 623px) {
+    .btnUnirse {
+        margin-left: 2vw;
+    }
 }
 
-.price small {
-  font-size: 0.6em;
+@media only screen and (max-width:531px) {
+    .container {
+        width: 93%;
+    }
+    .tables {
+        overflow: scroll;
+        width: 55vw!important;
+    }
+    .tables table {
+        width: 10%!important;
+    }
 }
 
-.check-container-politycs {
-  float: right;
-  padding: 5px;
-  margin: 10px;
-  background-color: #cfbfbf;
+@media only screen and (max-width:441px) {
+    .container {
+        width: 93%;
+    }
+}
+
+@media only screen and (max-width: 456px) {
+    .textox {
+        font-size: 0.7rem!important;
+    }
+    .title {
+        font-size: 1.0rem!important;
+    }
+    .btnUnirse {
+        margin-left: 15vw;
+    }
+}
+
+@media only screen and (max-width:392px) {
+    .textox {
+        font-size: 0.5rem!important;
+    }
+    .title {
+        font-size: 0.7rem!important;
+    }
+    .tables {
+        overflow: scroll;
+        width: 50vw!important;
+    }
+    .tables table {
+        width: 9%!important;
+    }
+}
+
+@media only screen and (max-width:322px) {
+    .textox {
+        font-size: 0.35rem!important;
+    }
+    .title {
+        font-size: 0.5rem!important;
+    }
+    .tables {
+        overflow: scroll;
+        width: 40vw!important;
+    }
+    .tables table {
+        width: 9%!important;
+    }
 }

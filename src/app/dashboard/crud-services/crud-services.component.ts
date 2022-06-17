@@ -32,13 +32,15 @@ export class CrudServicesComponent implements OnInit {
     nombreServicio: new FormControl(''),
     descripcionServicio: new FormControl(''),
     precioEstimado: new FormControl(),
-    imagen: new FormControl(''),
+    imagen: new FormControl('') ,
     historialEmpresas: new FormControl(''),
+    fechaInicio: new FormControl(''),
     numeroContacto: new FormControl(),
     correoContacto: new FormControl(''),
     estadoServicio: new FormControl(),
     Proveedor_idProveedor: new FormControl(''),
-    TipoServicio_idtipoServicio: new FormControl('')
+    TipoServicio_idtipoServicio: new FormControl(''),
+    correoProveedor: new FormControl(''),
   })
 
   dataType!: TypeServicesI;
@@ -46,9 +48,12 @@ export class CrudServicesComponent implements OnInit {
   idTipo?: number;
 
   dataProvider!: ListaProveedoresI[];
+  public correoProveedor!: string;
+  public listaProveedores!: any;
+  public idProveedor!: any;
 
   TypeServices!: TypeServicesI[];
-  closeResult!: string;
+  closeResult2!: string;
 
   previsualizacion!: string;
   public archivos: any = [];
@@ -56,17 +61,20 @@ export class CrudServicesComponent implements OnInit {
   Services!: ServiceI[];
   idService!: number;
 
+
   constructor(private api: ApiService, private router: Router, private modalService: NgbModal,
     private apiProvider: SupplierService, private sanitizer: DomSanitizer, private alertas: AlertasService,
     private fb: FormBuilder) {
 
+
       this.ServicesForm = this.fb.group({
         idServicios: ['', [Validators.required, Validators.pattern(/^[0-9]\d*$/)]],
         nombreServicio: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
-        descripcionServicio: ['', [Validators.required, Validators.minLength(20), Validators.maxLength(500)]],
+        descripcionServicio: ['', [Validators.required, Validators.minLength(15), Validators.maxLength(500)]],
         precioEstimado: ['', [Validators.required, Validators.pattern(/^[0-9]\d*$/)]],
         imagen: ['', []],
-        historialEmpresas: ['', [Validators.required, Validators.minLength(20), Validators.maxLength(300)]],
+        historialEmpresas: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(300)]],
+        fechaInicio: ['', [Validators.required]],
         numeroContacto: ['', [Validators.required, Validators.pattern(/^[0-9]\d*$/)]],
         correoContacto: ['', [Validators.required, Validators.email]],
         estadoServicio: ['', [Validators.required]],
@@ -76,11 +84,49 @@ export class CrudServicesComponent implements OnInit {
 
       this.typeServicesForm = this.fb.group({
         idtipoServicio: ['', [Validators.required]],
-        tipoServicio: ['', [Validators.required, Validators.minLength(5)]],
+        tipoServicio: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1 ]+$/)]],
         estadoTipoServicio: ['', []]
       })
 
      }
+
+    closeResult = '';
+
+    filterServices = '';
+
+  POSTS: any;
+  page: number = 1;
+  count: number = 0;
+  tableSize: number = 10;
+  tableSizes: any = [10, 20, 30, 40, 50];
+  lengthTable!: number
+
+  totalRecords!: number;
+
+  onTableDataChange(event: any) {
+    this.page = event;
+  }
+  onTableSizeChange(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+  }
+
+  POSTS2: any;
+  page2: number = 1;
+  count2: number = 0;
+  tableSize2: number = 4;
+  tableSizes2: any = [4, 8, 12, 16, 20];
+  lengthTable2!: number
+
+  totalRecords2!: number;
+
+  onTableDataChange2(event: any) {
+    this.page = event;
+  }
+  onTableSizeChange2(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+  }
 
   ngOnInit(): void {
     this.api.getAllTypeServices(1).subscribe(data => {
@@ -90,7 +136,7 @@ export class CrudServicesComponent implements OnInit {
     })
 
     this.api.getAllServices(1).subscribe(data => {
-      console.log(data);
+      // console.log(data);
       this.Services = data;
 
       this.Services.forEach(element => {
@@ -104,7 +150,7 @@ export class CrudServicesComponent implements OnInit {
 
     this.apiProvider.getAllSuppliers(1).subscribe(data =>{
       // console.log(data);
-      this.dataProvider =data;
+      this.dataProvider = data;
     })
 
   }
@@ -141,7 +187,20 @@ export class CrudServicesComponent implements OnInit {
   modalServiceOpen(content: any, numb: number) {
     this.idService = numb;
     this.api.getSingleService(this.idService).subscribe((data: any) => {
+      // console.log(data[0]);
       this.dataService = data[0];
+
+      this.apiProvider.getAllSuppliers(1).subscribe(data => {
+        this.listaProveedores = data;
+      });
+
+      //Llamamos al proveedor para asignarle el nombre y no el id.
+      this.apiProvider.getSingleSupplier(this.dataService.Proveedor_idProveedor).subscribe(data =>{
+        // console.log(data[0]);
+        this.correoProveedor = data[0].correoProveedor;
+        // console.log(this.nombreProveedor);
+
+      });
 
       if(this.dataService.imagen){
         this.previsualizacion = this.dataService.imagen.replace('C:/xampp/htdocs', GlobalConstants.httpLocalHost);
@@ -152,15 +211,18 @@ export class CrudServicesComponent implements OnInit {
       console.log(this.previsualizacion)
       this.ServicesForm.setValue({
         'idServicios': this.dataService.idServicios,
+        // 'nombreServicio': this.dataService.nombreServicio,
         'nombreServicio': this.dataService.nombreServicio,
         'descripcionServicio': this.dataService.descripcionServicio,
         'precioEstimado': this.dataService.precioEstimado,
         'imagen': '',
         'historialEmpresas': this.dataService.historialEmpresas,
+        'fechaInicio': this.dataService.fechaInicio,
         'numeroContacto': this.dataService.numeroContacto,
         'correoContacto': this.dataService.correoContacto,
         'estadoServicio': this.dataService.estadoServicio,
         'Proveedor_idProveedor': this.dataService.Proveedor_idProveedor,
+        // 'Proveedor_idProveedor': this.nombreProveedor,
         'TipoServicio_idtipoServicio': this.dataService.TipoServicio_idtipoServicio,
       })
     })
@@ -173,6 +235,22 @@ export class CrudServicesComponent implements OnInit {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
+
+  // //Formulario para sacar el correo del proveedor unico cuando presione.
+  // buscarIdProveedor(correoProveedor:any){
+  //   // console.log(correoProveedor);
+
+  //   let correoOficial = correoProveedor.correoContacto;
+
+  //   console.log(correoOficial);
+
+  //   //Llamamos al api para buscar el id que le pertenece a el proveedor con ese correo.
+  //   this.apiProvider.getMailSupplier(correoProveedor).subscribe(data =>{
+  //     console.log(data[0]);
+  //     // this.idProveedor = data[0].idProveedor;
+  //     // console.log(this.idProveedor);
+  //   });
+  // }
 
   modalCreateServiceOpen(content: any, numb: number) {
     // this.idService = numb;
@@ -204,9 +282,9 @@ export class CrudServicesComponent implements OnInit {
 
 
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result: any) => {
-      this.closeResult = `Closed with: ${result}`;
+      this.closeResult2 = `Closed with: ${result}`;
     }, (reason: any) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      this.closeResult2 = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
 
@@ -248,6 +326,7 @@ export class CrudServicesComponent implements OnInit {
         'precioEstimado': this.dataService.precioEstimado,
         'imagen': '',
         'historialEmpresas': this.dataService.historialEmpresas,
+        'fechaInicio': this.dataService.fechaInicio,
         'numeroContacto': this.dataService.numeroContacto,
         'correoContacto': this.dataService.correoContacto,
         'estadoServicio': 1,
@@ -263,9 +342,10 @@ export class CrudServicesComponent implements OnInit {
         'precioEstimado': this.dataService.precioEstimado,
         'imagen': '',
         'historialEmpresas': this.dataService.historialEmpresas,
+        'fechaInicio': this.dataService.fechaInicio,
         'numeroContacto': this.dataService.numeroContacto,
         'correoContacto': this.dataService.correoContacto,
-        'estadoServicio': 0,
+        'estadoServicio': 2,
         'Proveedor_idProveedor': this.dataService.Proveedor_idProveedor,
         'TipoServicio_idtipoServicio': this.dataService.TipoServicio_idtipoServicio,
       })
@@ -279,18 +359,18 @@ export class CrudServicesComponent implements OnInit {
       let respuesta:ResponseI = data;
           //Verificamos si la respuesta es exitosa.
           if(respuesta.status == 'ok'){
-            this.alertas.showSuccess('Edicion exitosa','Registro exitoso');
-            setTimeout(()=>{
-              this.refresh();
-            },2000);
+            this.alertas.showSuccess('Edicion exitosa','Acción exitosa');
+              setTimeout(()=>{
+                this.refresh();
+              },2000);
           }else{
             this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
             setTimeout(()=>{
-              // this.refresh();
+              this.refresh();
             },2000);
           }
     });
-    this.refresh();
+    // this.refresh();
   }
 
   postEditFormServices(form: ServiceI) {

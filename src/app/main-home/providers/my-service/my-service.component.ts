@@ -28,7 +28,7 @@ export class MyServiceComponent implements OnInit {
 
 
   ServicesForm = new FormGroup({
-    idServicios: new FormControl(), 
+    idServicios: new FormControl(),
     nombreServicio : new FormControl(''),
     descripcionServicio: new FormControl(''),
     precioEstimado: new FormControl(),
@@ -52,9 +52,14 @@ export class MyServiceComponent implements OnInit {
     })
 
     this.api.getSingleServiceProvider(this.auth.desencriptar(localStorage.getItem('id'))).subscribe((data:any) =>{
-      
+
+      // console.log(this.auth.desencriptar(localStorage.getItem('nombreRol')));
+      console.log(data);
+
       if (data >= 0){
-        this.router.navigateByUrl('provider/createService');
+        // this.router.navigateByUrl('provider/createService');
+        // this.router.navigate(['main/provider/createService']);
+        this.router.navigate(['main/provider/createService']);
         // break;
       }
       this.dataService = data[0];
@@ -77,7 +82,7 @@ export class MyServiceComponent implements OnInit {
     console.log("id servicio: " + this.ServicesForm.get('imagen')!.value);
     })
 
-    
+
   }
 
   changeStateServiceProv(form:ServiceI){
@@ -93,7 +98,7 @@ export class MyServiceComponent implements OnInit {
         let respuesta:ResponseI = data;
           //Verificamos si la respuesta es exitosa.
           if(respuesta.status == 'ok'){
-            this.alertas.showSuccess('Deshabilitar Servicio','Función exitosa');
+            this.alertas.showSuccess('Cambió el estado del Servicio','Función exitosa');
             setTimeout(()=>{
               this.refresh();
             },2000);
@@ -111,5 +116,5 @@ export class MyServiceComponent implements OnInit {
     window.location.reload();
   }
 
-  
+
 }

@@ -1,13 +1,13 @@
-<div class="col-sm-12 aloo">
-    <div class="grid card aloo" *ngIf="group.privacidadGrupo==2" (click)="navigateToGroupDetails()">
+<div class="col-sm-12 b">
+    <div class="grid card aloo b" *ngIf="group.privacidadGrupo==2" (click)="navigateToGroupDetails()">
         <div *ngIf="!GroupForm.get('imagen')?.value">
-            <img class="rounded card-img-top" src="../../../../assets/group/prueba.jfif" alt="{{ group.nombreGrupo }}" (click)="navigateToGroupDetails()">
+            <img class="rounded card-img-top" id="imagenGrupo" src="../../../../assets/group/prueba.jfif" alt="{{ group.nombreGrupo }}" (click)="navigateToGroupDetails()">
         </div>
         <div class="group" *ngIf="GroupForm.get('imagen')?.value">
-            <img class="thumbnail rounded card-img-top" width="290px" [src]="GroupForm.get('imagen')?.value" alt="{{ group?.nombreGrupo }}" class="thumbnail">
+            <img class="card-img-top " id="imagenGrupo" [src]="GroupForm.get('imagen')?.value" alt="{{ group?.nombreGrupo }}" class="thumbnail">
         </div>
         <div class="card-body textox">
-            <h5 class="card-title title" (click)="navigateToGroupDetails()">{{ group.nombreGrupo }}</h5>
+            <h5 class="card-title title " (click)="navigateToGroupDetails()">{{ group.nombreGrupo }}</h5>
             <div class="btn-group">
                 <button class="btn btnVer textox" (click)="navigateToGroupDetails()">Detalles</button>
             </div>

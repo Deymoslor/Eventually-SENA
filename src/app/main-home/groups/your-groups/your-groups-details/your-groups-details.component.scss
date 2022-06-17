@@ -1,92 +1,108 @@
-:host {
-  display: flex;
-  flex-direction: column;
-  padding: 16px;
-}
+@import '../../../../app.component.scss';
 .container {
-  display: grid;
-  overflow: hidden;
-  border-radius: 8px;
-  background-color: #fff;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px,
-    rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+    margin: 0;
+    border-radius: 5%;
+    padding: 0;
 }
 
-.img-container {
-  overflow: hidden;
-  display: grid;
-  place-content: center;
-  max-height: 300px;
+.misMuchachos {
+    // border: 1px solid purple;
+    width: 98%;
+    margin-bottom: 1rem;
 }
 
-.img-container img {
-  width: 100%;
-  height: auto;
+.tablita {
+    margin-left: 4vw;
+    width: 90%;
 }
+
+.row {
+    margin-bottom: 1rem;
+    margin-left: 0.5rem;
+}
+
+.nombre {
+    font-family: 'Pacifico', cursive;
+    font-size: 5rem;
+}
+
+.tituloE {
+    padding-top: 2rem;
+    font-family: 'Pacifico', cursive;
+    font-size: 2.5rem;
+}
+
+.textox {
+    font-family: 'Ubuntu', sans-serif!important;
+    font-weight: 350!important;
+    color: black;
+}
+
+.title {
+    font-weight: 700!important;
+    color: black;
+}
+
+.r {
+    margin: 0;
+    padding: 0;
+    // border: 1px solid purple;
+}
+
+.imd {
+    margin: 0!important;
+    margin-left: 0!important;
+    padding: 0!important;
+}
+
+#imagenGrupo {
+    // border-radius: 5%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    // border: 1px solid green;
+}
+
+form {
+    // border: 1px solid purple;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.t {
+    width: 90%;
+}
+
+.btnUnirse {
+    background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
+    color: white;
+    margin-left: 20vw;
+    width: auto;
+}
+
+.btnUnirse:hover {
+    background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
+}
+
 .info {
-  padding: 16px;
+    padding: 16px;
 }
 
-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px 16px;
-  background-color: #5e00ea;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
+.btnEditar {
+    background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
+    color: white;
+    width: auto;
+    border-radius: 10%;
 }
 
-button img {
-  margin-right: 8px;
-}
-
-button:hover,
-button:focus {
-  background-color: #7d29fa;
-  outline: none;
-}
-
-.back {
-  text-decoration: none;
-  text-transform: uppercase;
-  color: #808080;
-  font-size: 0.825rem;
-  margin-bottom: 16px;
-}
-
-.back:hover {
-  text-decoration: underline;
-}
-
-.product-name {
-  font-size: 1.75rem;
-  font-weight: 600;
-}
-
-.product-short-description {
-  color: #777;
-}
-
-.cart-row {
-  margin-top: 52px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.price {
-  display: inline-flex;
-  align-items: flex-start;
-  font-size: 2.75rem;
-  font-weight: 600;
-  color: #5607cc;
-}
-
-.price small {
-  font-size: 0.6em;
+.btnEditar:hover {
+    background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
 }

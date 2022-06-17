@@ -47,6 +47,7 @@ export class EventInComponent implements OnInit {
     idEvento: new FormControl(''),
     nombreEvento: new FormControl(''),
     descripcionEvento: new FormControl(''),
+    direccion: new FormControl(''),
     fechaEvento: new FormControl(''),
     tipoEvento: new FormControl(''),
     imagen: new FormControl(''),
@@ -66,7 +67,7 @@ export class EventInComponent implements OnInit {
   createEventForm: FormGroup;
   cambioCorreoForm!: FormGroup;
 
-  
+
 
   constructor(private api:ApiService, private router:Router, private modalService: NgbModal,
      private route: ActivatedRoute, private fb: FormBuilder, private auth: AuthService,
@@ -76,6 +77,7 @@ export class EventInComponent implements OnInit {
         nombreEvento: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
         tipoEvento: ['', Validators.required],
         descripcionEvento: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(500)]],
+        direccion: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(150)]],
         fechaEvento: ['', Validators.required],
         imagen: ['', [Validators.required]],
         participantesTotales: ['2', [Validators.required, Validators.pattern(/^[0-9]\d*$/), Validators.min(2), Validators.max(200)]],
@@ -122,10 +124,10 @@ export class EventInComponent implements OnInit {
 
     this.idGroup = this.route.snapshot.paramMap.get('id');
     // this.stateGroupPerson = 2
-   
-   
 
-    
+
+
+
 
     let idGrupos = this.route.snapshot.paramMap.get('id');
     this.api.getSigleEventGroup(Number(idGrupos)).subscribe((data: any) =>{
@@ -137,6 +139,7 @@ export class EventInComponent implements OnInit {
           'idEvento': '1',
           'nombreEvento': '',
           'descripcionEvento': '',
+          'direccion': '',
           'fechaEvento': '',
           'tipoEvento': '',
           'imagen': '',
@@ -153,6 +156,7 @@ export class EventInComponent implements OnInit {
             'idEvento': this.dataEvent.idEvento,
             'nombreEvento': this.dataEvent.nombreEvento,
             'descripcionEvento': this.dataEvent.descripcionEvento,
+            'direccion': this.dataEvent.direccion,
             'fechaEvento': this.dataEvent.fechaEvento,
             'tipoEvento': this.dataEvent.tipoEvento,
             'imagen': this.dataEvent.imagen.replace('C:/xampp/htdocs', GlobalConstants.httpLocalHost),
@@ -160,11 +164,13 @@ export class EventInComponent implements OnInit {
             'Grupos_idGrupos': this.dataEvent.Grupos_idGrupos,
             'estadoEvento': this.dataEvent.estadoEvento
           })
+          console.log('dataEvent');
         }else{
           this.eventGroupForm.setValue({
             'idEvento': this.dataEvent.idEvento,
             'nombreEvento': this.dataEvent.nombreEvento,
             'descripcionEvento': this.dataEvent.descripcionEvento,
+            'direccion': this.dataEvent.direccion,
             'fechaEvento': this.dataEvent.fechaEvento,
             'tipoEvento': this.dataEvent.tipoEvento,
             'imagen': '',
@@ -207,21 +213,21 @@ export class EventInComponent implements OnInit {
 
       this.api.getStatePersonGroup(this.auth.desencriptar(localStorage.getItem("id")), this.idGroup).subscribe((data) =>{
         console.log(data[0]);
-        
+
         this.dataStatePersonGroup = data[0]
         if (this.dataStatePersonGroup.estadoPersona_idEstadoPersona == 1) {
           this.statePersonGroup = this.dataStatePersonGroup.estadoPersona_idEstadoPersona;
-          console.log('object');
+          // console.log('object');
         }else{
           this.statePersonGroup = 2;
-          console.log('object');
+          // console.log('object');
         }
         console.log(this.stateGroupPerson);
       })
       // console.log('ESTADI PERSONA GRUPO: ' + this.dataStatePersonGroup.estadoPersona_idEstadoPersona);
      });
 
-     
+
 
 
 
@@ -262,7 +268,7 @@ export class EventInComponent implements OnInit {
 
 
   editEvent(idE:number ){
-    this.router.navigate(['events/edit', idE]);
+    this.router.navigate(['main/events/edit', idE]);
   }
 
   modalOpen(content:any){
