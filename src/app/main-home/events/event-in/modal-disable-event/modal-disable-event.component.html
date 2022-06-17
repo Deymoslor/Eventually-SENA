@@ -39,7 +39,7 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <label for="">Calificacion del servicio: [1 -5]</label>
+                    <label for="">Calificacion del servicio: [1 - 5]</label>
                     <div class="mb-2">
                         <input type="number" formControlName="calificacion" [ngClass]="(resultForm.get('calificacion')?.touched || resultForm.get('calificacion')?.dirty) &&
                         resultForm.get('calificacion')?.errors ? 'is-invalid' : '' || resultForm.get('calificacion')?.hasError('minlength')
