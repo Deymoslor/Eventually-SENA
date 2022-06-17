@@ -10,6 +10,8 @@ import jsPDF from 'jspdf';
 import { Socket } from 'dgram';
 import { AllInvites } from './modals/all-invites';
 import { LegendPosition } from '@swimlane/ngx-charts';
+import { grupos } from './modals/public-private';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 (<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
@@ -24,9 +26,37 @@ export class GroupReportComponent implements OnInit {
   groups!:ListGroups[];
   //esta propiedad sirve para traer a los grupos con mayor numero de participantes
   allMajorInvites!: AllInvites[];
+  //esta propiedad sirve para traer a los grupos con su respectivo numero de participantes
   allInvites!: AllInvites[];
+  //esta propiedad sirve para traer a los rupos con mayor numero de eventos realizados
+  allMajorEventGroup!: AllInvites[];
+  //esta propiedad sirve para traer a los gustos con mayor numero de grupos
+  allMajorLikesGroup!:AllInvites[];
+  // esta propiedaad sirve para traer a todos los grupos públicos
+  publicos = new FormGroup({
+    grupos: new FormControl('')
+  })
+  value1a!: grupos;
 
-  constructor( private Api:ApiTypeReportService, private router:Router) {
+  units1: string = 'Grupos Publicos';
+  // esta propiedaad sirve para traer a todos los grupos privados
+  privados = new FormGroup({
+    grupos: new FormControl('')
+  })
+  value2a!: grupos;
+
+  units2: string = 'Grupos Privados';
+
+  // esta propiedad sirve para traer al numero total de grupos creados
+  CountGroups = new FormGroup({
+    grupos: new FormControl('')
+  })
+  value3a!: grupos;
+
+  constructor(
+    private Api:ApiTypeReportService,
+    private router:Router,
+    private fb: FormBuilder) {
     this.downloadPDF();
   }
 
@@ -42,6 +72,38 @@ export class GroupReportComponent implements OnInit {
     //Aquí traemos a todos los grupos con sus numero de participantes
     this.Api.getAllInvite(1).subscribe(data=>{
       this.allInvites = data;
+    })
+    //Aquí traemos a todos los grupos con ma eventos realizados
+    this.Api.getMajorEventsGroup(1).subscribe(data=>{
+      this.allMajorEventGroup = data;
+    })
+    //Aquí traemos a todos los gustos que mas numero de grupos poseen.
+    this.Api.getMajorLikesGroup(1).subscribe(data=>{
+      this.allMajorLikesGroup = data;
+    })
+    // Aquí traemos el numero total de los grupos publicos.
+    this.Api.getPublicGroups(1).subscribe((data: any)=>{
+      this.value1a = data[0];
+      this.publicos = this.fb.group({
+        grupos : [this.value1a.grupos]
+      });
+      console.log(this.publicos.get('grupos')?.value);
+    })
+    //Aquí traemos el numero total de todos los grupos privados.
+    this.Api.getPrivateGroups(1).subscribe((data: any)=>{
+      this.value2a = data[0];
+      this.privados = this.fb.group({
+        grupos : [this.value2a.grupos]
+      });
+      console.log(this.privados.get('grupos')?.value);
+    })
+    //Aquí traemos el numero total de grupos creados.
+    this.Api.getCountGroups(1).subscribe((data: any)=>{
+      this.value3a = data[0];
+      this.CountGroups = this.fb.group({
+        grupos : [this.value3a.grupos]
+      });
+      console.log(this.CountGroups.get('grupos')?.value)
     })
   }
 
@@ -85,6 +147,8 @@ export class GroupReportComponent implements OnInit {
 
   view: [number, number] = [700, 400];
 
+  viewCountGroups: [number, number] = [700, 200];
+
   // options
   gradient: boolean = false;
   showLegend: boolean = true;
@@ -115,9 +179,9 @@ export class GroupReportComponent implements OnInit {
   showYAxis: boolean = true;
   gradient1: boolean = false;
   showXAxisLabel: boolean = true;
-  yAxisLabel: string = 'Country';
+  yAxisLabel: string = 'Grupos';
   showYAxisLabel: boolean = true;
-  xAxisLabel: string = 'Population';
+  xAxisLabel: string = 'Participantes';
   public legendPosition: LegendPosition = LegendPosition.Below;
 
   single = [
