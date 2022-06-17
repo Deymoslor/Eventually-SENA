@@ -46,7 +46,7 @@
                 </button>
                     </div>
                     <ng-template #nodate>
-                        <button class="btnEditar textox" (click)="editEvent(eventGroupForm.get('idEvento')?.value)" [disabled]="true">
+                        <button class="btnEditar2 textox" [disabled]="true">
                     Editar
                 </button>
                     </ng-template>
@@ -94,11 +94,12 @@
             <div class="row">
                 <app-event-provider [idEvento]="eventGroupForm.get('idEvento')?.value" [terminate]="terminate" [form]="eventGroupForm.value"></app-event-provider>
             </div>
-            <div class="row textoTitulos" *ngIf="actualDate >= dateTerminate">
-                EVENTO COMPLETADO O ALCANZADO FECHA DE REALIZACION.
-                <div class="table-provider">
-                    <app-event-provider [idEvento]="eventGroupForm.get('idEvento')?.value" [terminate]="terminate" [form]="eventGroupForm.value"></app-event-provider>
-                </div>
+            
+        </div>
+        <div class="row textoTitulos" *ngIf="actualDate > dateTerminate">
+            EVENTO COMPLETADO O ALCANZADO FECHA DE REALIZACION.
+            <div class="table-provider">
+                <app-event-provider [idEvento]="eventGroupForm.get('idEvento')?.value" [terminate]="terminate" [form]="eventGroupForm.value"></app-event-provider>
             </div>
         </div>
     </div>
@@ -111,18 +112,88 @@
     </div>
 
 </div>
-<div class="container d-flex card shadow-sm" *ngIf="statePersonGroup == 2">
-    <div class="row" *ngIf="this.eventGroupForm.get('estadoEvento')?.value == 0 || eventGroupForm.get('estadoEvento')?.value == 3">
-        <h2 class="textox">En este momento no se encuentra un evento, sea paciente mientras el organizador crea un evento.</h2>
+<div *ngIf="statePersonGroup == 2">
+    <div *ngIf="this.eventGroupForm.get('estadoEvento')?.value == 0 || eventGroupForm.get('estadoEvento')?.value == 3">
+        <h2>En este momento no se encuentra un evento, sea paciente mientras el organizador crea un evento.</h2>
     </div>
-    <div class="row" *ngIf="eventGroupForm.get('estadoEvento')?.value == 1">
-        <div class="especial" *ngIf="existPerson == 1">
-            <div class="especial " *ngIf="actualDate < dateTerminate">
-                <div class="row">
-                    <img id="imagenGrupo" [src]="eventGroupForm.get('imagen')?.value" alt="Evento Danza" class="thumbnail">
+
+    <div *ngIf="eventGroupForm.get('estadoEvento')?.value == 1">
+        <div *ngIf="existPerson == 1">
+                <div *ngIf="actualDate < dateTerminate">
+                    <div class="content">
+                        <div class="class-thumbnail">
+                            <img [src]="eventGroupForm.get('imagen')?.value" alt="Evento Danza" class="thumbnail">
+                        </div>
+                        <div class="title-state-container">
+                            <div class="title">
+                                <h2 class="title-event fs-1">{{eventGroupForm.get('nombreEvento')?.value}}</h2>
+                                <h4 class="fs-5">[Nombre Grupo]</h4>
+                            </div>
+                            <div class="state-event">
+                                <div class="form-check form-switch">
+                                    <!-- <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" checked data-bs-toggle="modal" data-bs-target="#staticBackdrop-disable">
+                                    <label class="form-check-label fw-bolder fs-4 label" for="flexSwitchCheckChecked">Deshabilitar evento</label> -->
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="info-container">
+                            <div class="info">
+                                <h4 class="fs-5 fw-bold">{{totalPersonsIn}}</h4>
+                                <p class="fw-bolder">Participantes</p>
+                            </div>
+                            <div class="info">
+                                <h4 class="fs-5 fw-bold">Dylan Murillo Rios</h4>
+                                <p class="fw-bolder">Organizador</p>
+                            </div>
+                            <div class="info">
+                                <h4 class="fs-5 fw-bold">25-02-2022</h4>
+                                <p class="fw-bolder">fecha de creación</p>
+                            </div>
+                            <div class="info">
+                                <!-- <button class="btn btn-danger" (click)="modalOpen(content)">
+                                    Terminar
+                                </button>
+                                <p class="fw-bolder">Terminar y Resultados</p> -->
+                            </div>
+                        </div>
+                        <div class="main-content-container">
+                            <div class="main-info">
+                                <div class="a">
+                                    <h4 class="fs-5">Fecha de realizacion del evento:</h4>
+                                    <p class="fw-normal text-decoration-underline">{{eventGroupForm.get('fechaEvento')?.value}}</p>
+                                </div>
+                                <div class="a">
+                                    <h4 class="fs-5">Tipo de evento:</h4>
+                                    <p class="fw-normal text-decoration-underline">{{eventGroupForm.get('tipoEvento')?.value}}</p>
+                                </div>
+                                <div class="a">
+                                    <h4 class="fs-5">Lugar de realizacion:</h4>
+                                    <p class="fw-normal text-decoration-underline">Parque de la milagrosa - Cl. 43, Medellín, Antioquia</p>
+                                </div>
+                            </div>
+                
+                            <h4 class="fs-4 fw-bolder">Descripcion</h4>
+                            <p class="fw-normal text-break desc">{{eventGroupForm.get('descripcionEvento')?.value}}</p>
+                        </div>
                 </div>
+
+                </div>                
+
+                <div *ngIf="actualDate >= dateTerminate">
+                    EVENTO TERMINADO, PORFAVOR ESPERE A QUE SEA CREADO UN NUEVO EVENTO.
+                </div>  
+        </div>
+        <div *ngIf="existPerson === 2">
+            <div *ngIf="totalPersonsIn < aforo">
+                <h2>¿Desea Participar en el evento?</h2>
+                <button class="btn btnEditar2" (click)="postJoinEvent()">UNIRSE</button>
+            </div>
+            <div *ngIf="totalPersonsIn >= aforo">
+                EN ESTE MOMENTO EL EVENTO CUENTA CON UN AFORO LLENO, PORFAVOR SEA PACIENTE SI SON GENERADAS NUEVAS PLAZAS.
             </div>
         </div>
+        
     </div>
 </div>
 
