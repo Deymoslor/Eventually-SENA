@@ -71,6 +71,21 @@
                                     {{ editFormIn.get("descripcionEvento")?.hasError("maxlength") ? "Campo maximo de 500 carácteres" : "" }}
                                 </div>
                            </div>
+
+                           <div class="groupForm">
+                                <label for="">Dirección del Evento:</label>
+                                    <textarea class="form-control" type="text" id="direccion" formControlName="direccion" placeholder="Explica donde será." rows="2" [ngClass]="
+                                    (editFormIn.get('direccion')?.touched || editFormIn.get('direccion')?.dirty) &&
+                                    editFormIn.get('direccion')?.hasError('required') 
+                                    ? 'is-invalid' : '' || editFormIn.get('direccion')?.hasError('minlength') 
+                                    ? 'is-invalid' : '' || editFormIn.get('direccion')?.hasError('maxlength')
+                                    ? 'is-invalid' : ''" ></textarea>
+                                <div class="invalid-feedback">
+                                    {{ editFormIn.get("direccion")?.hasError("required") ? "Descripcion requerida" : "" }} 
+                                    {{ editFormIn.get("direccion")?.hasError("minlength") ? "Campo mínimo de 10 carácteres" : "" }}
+                                    {{ editFormIn.get("direccion")?.hasError("maxlength") ? "Campo maximo de 150 carácteres" : "" }}
+                                </div>
+                           </div>
                            <!-- {{editFormIn.get("descripcionEvento")?.errors | json}} -->
     
                             <div class="groupForm">

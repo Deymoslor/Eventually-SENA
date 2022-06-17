@@ -37,10 +37,10 @@ export class SeeGroupsComponent implements OnInit {
       this.groups = data;
       console.log(this.groups);
     })
-    // this.SeeGroupsService.getLikesGroup(this.auth.desencriptar(localStorage.getItem('id'))).subscribe(data=>{
-    //   this.likes = data;
-    //   console.log(data);
-    // })
+    this.SeeGroupsService.getLikesGroup(this.auth.desencriptar(localStorage.getItem('id'))).subscribe(data=>{
+      this.likes = data;
+      console.log(data);
+    })
   }
 
 }

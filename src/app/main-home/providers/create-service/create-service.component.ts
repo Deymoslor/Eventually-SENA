@@ -118,7 +118,7 @@ export class CreateServiceComponent implements OnInit {
       let respuesta:ResponseI = data;
           //Verificamos si la respuesta es exitosa.
           if(respuesta.status == 'ok'){
-            this.alertas.showSuccess('Servicio creado exitosamente','Acción exitosa');
+            this.alertas.showSuccess('Ley aceptada exitosamente','Acción exitosa');
             setTimeout(()=>{
               this.refresh();
             },2000);
