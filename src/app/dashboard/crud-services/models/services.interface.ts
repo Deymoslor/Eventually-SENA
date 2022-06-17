@@ -4,6 +4,7 @@ export interface ServiceI {
     descripcionServicio: string;
     precioEstimado: number;
     imagen: string;
+    fechaInicio: string;
     historialEmpresas: string;
     numeroContacto: string;
     correoContacto: string;

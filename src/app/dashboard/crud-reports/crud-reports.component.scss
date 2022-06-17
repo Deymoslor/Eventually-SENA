@@ -1,4 +1,14 @@
 @import '../../app.component.scss';
+* {
+    height: auto;
+    width: auto;
+}
+
+.thumbnail {
+    width: 86vw;
+    border-radius: 20px;
+}
+
 .content {
     display: flex;
     flex-direction: column;
@@ -6,7 +16,7 @@
     justify-content: space-between;
     flex-grow: 1;
     min-height: 30rem!important;
-    border: 1px solid red;
+    // border: 1px solid red;
 }
 
 title {
@@ -35,5 +45,16 @@ title {
 }
 
 .btnCrear:hover {
+    background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
+}
+
+.btnEventually {
+    background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2)!important;
+    color: white!important;
+    width: auto!important;
+    height: auto!important;
+}
+
+.btnEventually:hover {
     background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
 }

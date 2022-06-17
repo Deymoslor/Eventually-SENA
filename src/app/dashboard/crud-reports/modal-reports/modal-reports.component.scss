@@ -1,6 +1,25 @@
+@import '../../../app.component.scss';
+.title {
+    font-family: 'Pacifico', cursive;
+    font-size: 5vw;
+    margin-bottom: 3vw;
+    line-height: 6rem;
+    margin-top: 2rem;
+}
+
+.textoTitulos {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+}
+
+.textox {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 350;
+}
+
 .check-container-politycs {
-  float: right;
-  padding: 5px;
-  margin: 10px;
-  background-color: #cfbfbf;
+    float: right;
+    padding: 5px;
+    margin: 10px;
+    background-color: #cfbfbf;
 }

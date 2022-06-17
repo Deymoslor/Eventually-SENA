@@ -1,34 +1,34 @@
-
 <div class="page-header">
-  <button type="button" class="btn btn-lg btn-primary" (click)="createPDFEvent()">Descargar PDF</button>
+    <button type="button" class="btn btn-lg btnEventually" (click)="createPDFEvent()">Descargar PDF</button>
 </div>
 <div id="PdfEventos">
 
-  <div class="container theme-showcase" role="main">
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-      <h1>Reporte de Eventos</h1>
-      <p>TEste es el reporte de eventos que se realiza en este mes.</p>
-    </div>
+    <div class="container theme-showcase" role="main">
+        <!-- Main jumbotron for a primary marketing message or call to action -->
+        <div class="jumbotron">
+            <h1 class="textoTitulos">Reporte de Eventos</h1>
+            <p>TEste es el reporte de eventos que se realiza en este mes.</p>
+        </div>
 
-    <table class="table table-warning">
-      <thead>
-        <tr>
-          <th scope="col">No</th>
-          <th scope="col">Nombre</th>
-          <th scope="col">Descripcióm</th>
-          <th scope="col">Fecha</th>
-          <th scope="col">Tipo</th>
-        </tr>
-      </thead>
-      <tbody class="table-secondary">
-        <tr *ngFor="let event of events">
-          <th scope="row">{{event.idEvento}}</th>
-          <td>{{event.nombreEvento}}</td>
-          <td>{{event.descripcionEvento}}</td>
-          <td>{{event.fechaEvento}}</td>
-          <td>{{event.tipoEvento}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+        <table class="table table-warning">
+            <thead>
+                <tr>
+                    <th class="textoTitulos" scope="col">No</th>
+                    <th class="textoTitulos" scope="col">Nombre</th>
+                    <th class="textoTitulos" scope="col">Descripcióm</th>
+                    <th class="textoTitulos" scope="col">Fecha</th>
+                    <th class="textoTitulos" scope="col">Tipo</th>
+                </tr>
+            </thead>
+            <tbody class="table-secondary">
+                <tr class="textox" *ngFor="let event of events">
+                    <th class="textox" scope="row">{{event.idEvento}}</th>
+                    <td class="textox">{{event.nombreEvento}}</td>
+                    <td class="textox">{{event.descripcionEvento}}</td>
+                    <td class="textox">{{event.fechaEvento}}</td>
+                    <td class="textox">{{event.tipoEvento}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

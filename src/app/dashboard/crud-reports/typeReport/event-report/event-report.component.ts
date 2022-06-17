@@ -29,10 +29,17 @@ export class EventReportComponent implements OnInit {
     html2canvas(document.getElementById('PdfEventos')!).then(function (canvas) {
       var data = canvas.toDataURL();
       var pdfDefinition = {
-          content: [{
-              image: data,
-              width: 500,
-          }]
+        content: [{
+          layout: 'lightHorizontalLines', // optional
+          table: {
+            headerRows: 1,
+            widths: [ '*', 'auto', 100, '*' ],
+            body: [
+              [ 'Nombre', 'Documento', 'Fecha de nacimiento', 'Correo' ],
+              [ '{{ this.personas:nombreUser }}', 'Value 2', 'Value 3', 'Value 4' ],
+            ]
+          }
+        }]
       };
       pdfMake.createPdf(pdfDefinition).download("Reportes_Eventos.pdf");
   });

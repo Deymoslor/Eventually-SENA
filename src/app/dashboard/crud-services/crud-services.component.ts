@@ -32,8 +32,9 @@ export class CrudServicesComponent implements OnInit {
     nombreServicio: new FormControl(''),
     descripcionServicio: new FormControl(''),
     precioEstimado: new FormControl(),
-    imagen: new FormControl(''),
+    imagen: new FormControl('') ,
     historialEmpresas: new FormControl(''),
+    fechaInicio: new FormControl(''),
     numeroContacto: new FormControl(),
     correoContacto: new FormControl(''),
     estadoServicio: new FormControl(),
@@ -59,20 +60,21 @@ export class CrudServicesComponent implements OnInit {
 
   Services!: ServiceI[];
   idService!: number;
-  
+
 
   constructor(private api: ApiService, private router: Router, private modalService: NgbModal,
     private apiProvider: SupplierService, private sanitizer: DomSanitizer, private alertas: AlertasService,
     private fb: FormBuilder) {
-      
+
 
       this.ServicesForm = this.fb.group({
         idServicios: ['', [Validators.required, Validators.pattern(/^[0-9]\d*$/)]],
         nombreServicio: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
-        descripcionServicio: ['', [Validators.required, Validators.minLength(20), Validators.maxLength(500)]],
+        descripcionServicio: ['', [Validators.required, Validators.minLength(15), Validators.maxLength(500)]],
         precioEstimado: ['', [Validators.required, Validators.pattern(/^[0-9]\d*$/)]],
         imagen: ['', []],
-        historialEmpresas: ['', [Validators.required, Validators.minLength(20), Validators.maxLength(300)]],
+        historialEmpresas: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(300)]],
+        fechaInicio: ['', [Validators.required]],
         numeroContacto: ['', [Validators.required, Validators.pattern(/^[0-9]\d*$/)]],
         correoContacto: ['', [Validators.required, Validators.email]],
         estadoServicio: ['', [Validators.required]],
@@ -82,7 +84,7 @@ export class CrudServicesComponent implements OnInit {
 
       this.typeServicesForm = this.fb.group({
         idtipoServicio: ['', [Validators.required]],
-        tipoServicio: ['', [Validators.required, Validators.minLength(5)]],
+        tipoServicio: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1 ]+$/)]],
         estadoTipoServicio: ['', []]
       })
 
@@ -209,11 +211,13 @@ export class CrudServicesComponent implements OnInit {
       console.log(this.previsualizacion)
       this.ServicesForm.setValue({
         'idServicios': this.dataService.idServicios,
+        // 'nombreServicio': this.dataService.nombreServicio,
         'nombreServicio': this.dataService.nombreServicio,
         'descripcionServicio': this.dataService.descripcionServicio,
         'precioEstimado': this.dataService.precioEstimado,
         'imagen': '',
         'historialEmpresas': this.dataService.historialEmpresas,
+        'fechaInicio': this.dataService.fechaInicio,
         'numeroContacto': this.dataService.numeroContacto,
         'correoContacto': this.dataService.correoContacto,
         'estadoServicio': this.dataService.estadoServicio,
@@ -322,6 +326,7 @@ export class CrudServicesComponent implements OnInit {
         'precioEstimado': this.dataService.precioEstimado,
         'imagen': '',
         'historialEmpresas': this.dataService.historialEmpresas,
+        'fechaInicio': this.dataService.fechaInicio,
         'numeroContacto': this.dataService.numeroContacto,
         'correoContacto': this.dataService.correoContacto,
         'estadoServicio': 1,
@@ -337,9 +342,10 @@ export class CrudServicesComponent implements OnInit {
         'precioEstimado': this.dataService.precioEstimado,
         'imagen': '',
         'historialEmpresas': this.dataService.historialEmpresas,
+        'fechaInicio': this.dataService.fechaInicio,
         'numeroContacto': this.dataService.numeroContacto,
         'correoContacto': this.dataService.correoContacto,
-        'estadoServicio': 0,
+        'estadoServicio': 2,
         'Proveedor_idProveedor': this.dataService.Proveedor_idProveedor,
         'TipoServicio_idtipoServicio': this.dataService.TipoServicio_idtipoServicio,
       })
@@ -353,18 +359,18 @@ export class CrudServicesComponent implements OnInit {
       let respuesta:ResponseI = data;
           //Verificamos si la respuesta es exitosa.
           if(respuesta.status == 'ok'){
-            this.alertas.showSuccess('Edicion exitosa','Registro exitoso');
-            setTimeout(()=>{
-              this.refresh();
-            },2000);
+            this.alertas.showSuccess('Edicion exitosa','Acción exitosa');
+              setTimeout(()=>{
+                this.refresh();
+              },2000);
           }else{
             this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
             setTimeout(()=>{
-              // this.refresh();
+              this.refresh();
             },2000);
           }
     });
-    this.refresh();
+    // this.refresh();
   }
 
   postEditFormServices(form: ServiceI) {

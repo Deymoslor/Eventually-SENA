@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
@@ -51,6 +51,7 @@ import { NgxPaginationModule } from 'ngx-pagination'
     FormsModule,
     ReactiveFormsModule,
     NgxPaginationModule
-  ]
+  ],
+  providers: [CurrencyPipe]
 })
 export class MainHomeModule { }
