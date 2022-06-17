@@ -6,10 +6,10 @@
     <div class="row tables">
         <div class="col ">
             <div class="searcher">
-                <label for="">BUSCAR NOMBRE EVENTO: </label>
-                <input type="text" class="search" name="filterEvento" placeholder="Buscar..." [(ngModel)]="filterEvento">
+                <label class="textoTitulos" for="">BUSCAR NOMBRE EVENTO: </label>
+                <input type="text" class="search textox rounded" name="filterEvento" placeholder="Buscar..." [(ngModel)]="filterEvento">
             </div>
-            <table class="table table-striped"> 
+            <table class="table table-striped">
                 <thead class="titles">
                     <tr>
                         <th class="textoTitulos" scope="col">Id</th>
@@ -26,30 +26,29 @@
 
                 <tbody>
                     <!-- <tr class="sepa"></tr> -->
-                    <tr *ngFor="let event of events | paginate : {
+                    <tr class="textox" *ngFor="let event of events | paginate : {
                         itemsPerPage: tableSize,currentPage: page,totalItems: count} |
                         filterPipeEvents:filterEvento">
-                        <th scope="row">{{ event.idEvento }}</th>
-                        <td>{{ event.nombreEvento }}</td>
-                        <td>{{ event.descripcionEvento }}</td>
-                        <td *ngIf="event.estadoEvento == 3">TERMINADO</td>
-                        <td *ngIf="event.estadoEvento == 1">ACTIVO</td>
-                        <td *ngIf="event.estadoEvento == 0">SIN ACTIVAR</td>
-                        <td>{{ event.fechaEvento }}</td>
-                        <td>{{ event.tipoEvento }}</td>
-                        <td>{{ event.participantesTotales }}</td>
-                        <td>{{ event.Grupos_idGrupos }}</td>
-                        <td><button class="btn btnEditar justify-content-md-center" (click)="editEvent(event.idEvento)" data-bs-toggle="modal" data-bs-target="#edit-modal">
+                        <th class="textox" scope="row">{{ event.idEvento }}</th>
+                        <td class="textox">{{ event.nombreEvento }}</td>
+                        <td class="textox">{{ event.descripcionEvento }}</td>
+                        <td class="textox" *ngIf="event.estadoEvento == 3">TERMINADO</td>
+                        <td class="textox" *ngIf="event.estadoEvento == 1">ACTIVO</td>
+                        <td class="textox" *ngIf="event.estadoEvento == 0">SIN ACTIVAR</td>
+                        <td class="textox">{{ event.fechaEvento }}</td>
+                        <td class="textox">{{ event.tipoEvento }}</td>
+                        <td class="textox">{{ event.participantesTotales }}</td>
+                        <td class="textox">{{ event.Grupos_idGrupos }}</td>
+                        <td class="textox"><button class="btn btnEditar textox justify-content-md-center" (click)="editEvent(event.idEvento)" data-bs-toggle="modal" data-bs-target="#edit-modal">
                           <svg  width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><title>Editar</title><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
                         </button></td>
                     </tr>
                 </tbody>
             </table>
             <div>
-                <pagination-controls previousLabel="Prev"
-                nextLabel="Next"
-                (pageChange)="onTableDataChange($event)" ></pagination-controls>
+
             </div>
         </div>
     </div>
 </div>
+<pagination-controls class="textox" previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)"></pagination-controls>

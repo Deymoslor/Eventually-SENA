@@ -1,43 +1,39 @@
-.thumbnail {
-  width: 86vw;
-  border-radius: 20px;
-}
-
+@import '../../app.component.scss';
 .content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  flex-grow: 1;
-  margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    flex-grow: 1;
+    min-height: 30rem!important;
+    border: 1px solid red;
 }
 
-table {
-  width: 34%;
+title {
+    font-family: 'Pacifico', cursive;
+    font-size: 7vw;
+    margin-bottom: 6vw;
 }
 
-.mat-column-demo-position {
-  width: 32px;
-  border-right: 1px solid currentColor;
-  padding-right: 24px;
-  text-align: center;
+.textoTitulos {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
 }
 
-.mat-column-demo-name {
-  padding-left: 16px;
-  font-size: 20px;
-}
-
-.mat-column-demo-weight {
-  font-style: italic;
-}
-
-.mat-column-demo-symbol {
-  width: 32px;
-  text-align: center;
-  font-weight: bold;
+.textox {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 350;
 }
 
 .btn {
-  margin: 20px;
+    margin: 20px;
+}
+
+.btnCrear {
+    background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
+    color: white;
+}
+
+.btnCrear:hover {
+    background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
 }
