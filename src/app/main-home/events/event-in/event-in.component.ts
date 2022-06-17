@@ -164,6 +164,7 @@ export class EventInComponent implements OnInit {
             'Grupos_idGrupos': this.dataEvent.Grupos_idGrupos,
             'estadoEvento': this.dataEvent.estadoEvento
           })
+          console.log('dataEvent');
         }else{
           this.eventGroupForm.setValue({
             'idEvento': this.dataEvent.idEvento,
