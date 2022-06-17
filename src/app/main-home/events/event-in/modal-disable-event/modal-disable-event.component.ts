@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { EventI } from '../../../../models/event.interface';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../../../../services/api/api.service';
 import { ResultServiceI } from 'src/app/models/result-service.interface';
 import { GlobalConstants } from 'src/app/global-constants';
@@ -21,14 +21,18 @@ export class ModalDisableEventComponent implements OnInit {
   // @Input() stateEvent!: number;
 
   dataResult!: ResultServiceI;
-  resultForm = new FormGroup({
-    idresultadoServicio: new FormControl(''),
-    calificacion: new FormControl(''),
-    problemasEncontrados: new FormControl(''),
-    descripcionResultado: new FormControl(''),
-  })
+  resultForm: FormGroup;
 
-  constructor(private api:ApiService, private alertas: AlertasService) { }
+  constructor(private api:ApiService, private alertas: AlertasService, private formBuilder:FormBuilder) {
+
+    this.resultForm = this.formBuilder.group({
+      idresultadoServicio: [],
+      calificacion: ['', [Validators.required, Validators.min(1), Validators.max(5), Validators.pattern(/^[1-5]\d*$/)]],
+      problemasEncontrados: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(300), Validators.pattern(/^[0-9]\d*$/)]],
+      descripcionResultado: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(400), Validators.pattern(/^[0-9]\d*$/)]],
+    });
+
+  }
 
   ngOnInit(): void {
     console.log(this.form);
@@ -83,8 +87,8 @@ export class ModalDisableEventComponent implements OnInit {
         }
       });
       })
-      
-      
+
+
       // this.refresh();
     }
     console.log(form)

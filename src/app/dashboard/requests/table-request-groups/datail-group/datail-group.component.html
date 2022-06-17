@@ -43,9 +43,15 @@
                             <label class="title " for="exampleInputEmail1 ">Gusto:</label>
                         </div>
                         <div class="col-6 colCont">
-                            <p>{{this.dataGroup.gustos_idGusto}}</p>
+                            <ng-container *ngFor="let likeI of likesI">
+                                <div *ngIf="this.dataGroup.gustos_idGusto == likeI.idGusto">
+                                    <p>{{likeI.nombreGusto}}</p>
+                                </div>
+                            </ng-container>
                         </div>
                     </div>
+
+
 
                     <div class="row filaInfo">
                         <div class="col-6 colTitulo">

@@ -111,7 +111,7 @@ export class CreateGroupsComponent implements OnInit {
         let respuesta:ResponseI = data;
           //Verificamos si la respuesta es exitosa.
           if(respuesta.status == 'ok'){
-            this.alertas.showSuccess('has creado el grupo','creación exitosa');
+            this.alertas.showSuccess('Grupo creado, espere por activación','creación exitosa');
             this.router.navigate(['main/groups/your-groups']);
           }else{
             this.alertas.showError(respuesta.result.error_msg,'Problemas Encontrados');
