@@ -143,9 +143,7 @@
 
                     <div class="groupForm">
                         <input type="checkbox" checked name="" id="check"  formControlName="check" [ngClass]="(ServicesForm.get('check')?.touched || ServicesForm.get('check')?.dirty) &&
-                        ServicesForm.get('check')?.errors ? 'is-invalid' : ''" >
-                        <label>Solo puedes tener un servicio en tu cuenta de proveedor, por ende, asegúrate de tener información clara y
-                            llamativa, esta información podrá ser modificada posteriormente.</label>
+                        ServicesForm.get('check')?.errors ? 'is-invalid' : ''" > Solo puedes tener un servicio en tu cuenta de proveedor, por ende, asegúrate de tener información clara y llamativa, esta información podrá ser modificada posteriormente.
                         <div class="invalid-feedback">
                             {{ ServicesForm.get("check")?.hasError("required") ? "Debe estar de acuerdo con las políticas." : "" }}
                         </div>

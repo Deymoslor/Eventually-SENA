@@ -67,7 +67,6 @@ export class CreateServiceComponent implements OnInit {
       nombreServicio : ['', [Validators.required, Validators.minLength(5), Validators.maxLength(30)]],
       descripcionServicio: ['', [Validators.required, Validators.minLength(15), Validators.maxLength(300)]],
       precioEstimado: ['' , [Validators.required, Validators.pattern(/^[0-9]\d*$/)]],
-      imagen: [''],
       fechaInicio: ['' , [Validators.required]],
       historialEmpresas: ['' , [Validators.required, Validators.minLength(7), Validators.maxLength(300)]],
       numeroContacto: ['' , [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^[0-9]\d*$/)]],

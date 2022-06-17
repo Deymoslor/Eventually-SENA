@@ -98,7 +98,7 @@ export class MyServiceComponent implements OnInit {
         let respuesta:ResponseI = data;
           //Verificamos si la respuesta es exitosa.
           if(respuesta.status == 'ok'){
-            this.alertas.showSuccess('Deshabilitar Servicio','Función exitosa');
+            this.alertas.showSuccess('Cambió el estado del Servicio','Función exitosa');
             setTimeout(()=>{
               this.refresh();
             },2000);
