@@ -7,6 +7,7 @@ import { ListEventsI } from 'src/app/models/listEvents.interface';
 import { ListGroups } from '../../crud-groups/listGroups.interface';
 import { ListaPersonasI } from '../../crud-users/ListaPersonasI.interface';
 import { AllEvents } from './event-report/modals/all-events';
+import { CountI } from './event-report/modals/count';
 import { AllInvites } from './group-report/modals/all-invites';
 import { grupos } from './group-report/modals/public-private';
 import { AllUsers } from './user-report/modals/all-users';
@@ -95,6 +96,26 @@ export class ApiTypeReportService {
   getlistTypeEvent(page:number):Observable<AllUsers[]>{
     let direccion = this.API + "reportEvents?listTypeEvent=" + page;
     return this.http.get<AllUsers[]>(direccion);
+  }
+  getInvitedEvents(page:number):Observable<CountI>{
+    let direccion = this.API + "reportEvents?InvitedEvents=" + page;
+    return this.http.get<CountI>(direccion);
+  }
+  getAcceptedEvents(page:number):Observable<CountI>{
+    let direccion = this.API + "reportEvents?Accepted=" + page;
+    return this.http.get<CountI>(direccion);
+  }
+  getDeniedEvents(page:number):Observable<CountI>{
+    let direccion = this.API + "reportEvents?DeniedEvents=" + page;
+    return this.http.get<CountI>(direccion);
+  }
+  getFinishedEvents(page:number):Observable<CountI>{
+    let direccion = this.API + "reportEvents?FinishedEvents=" + page;
+    return this.http.get<CountI>(direccion);
+  }
+  getAllCountEvents(page:number):Observable<CountI>{
+    let direccion = this.API + "reportEvents?AllEvents=" + page;
+    return this.http.get<CountI>(direccion);
   }
 
   getAllPersons(page:number):Observable<ListaPersonasI[]>{

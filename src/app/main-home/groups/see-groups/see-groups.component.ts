@@ -5,6 +5,7 @@ import { combineLatest, map, Observable } from 'rxjs';
 import { AuthService } from 'src/app/core/service/auth.service';
 import { Group } from './group';
 import { Groups } from './groups';
+import { Likes } from './likes';
 import { SeeGroupsService } from './see-groups.service';
 
 @Component({
@@ -16,6 +17,7 @@ export class SeeGroupsComponent implements OnInit {
   id!: number;
   groups!: Groups[];
   group!: Group;
+  likes!: Likes[];
 
   // get groups(): Group[] {
   //   const groups = this.SeeGroupsService.groups;
@@ -32,11 +34,13 @@ export class SeeGroupsComponent implements OnInit {
 
   ngOnInit(): void {
     this.SeeGroupsService.getPromotedGroups(this.auth.desencriptar(localStorage.getItem('id'))).subscribe(data=>{
-      console.log(data);
-
       this.groups = data;
-
+      console.log(this.groups);
     })
+    // this.SeeGroupsService.getLikesGroup(this.auth.desencriptar(localStorage.getItem('id'))).subscribe(data=>{
+    //   this.likes = data;
+    //   console.log(data);
+    // })
   }
 
 }

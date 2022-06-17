@@ -8,6 +8,7 @@ import { GroupPerson } from './GroupPerson';
 import { GlobalConstants } from 'src/app/global-constants';
 import { ResponseI } from 'src/app/login-register/login/models/response.intarface';
 import { ResponseIde } from './response';
+import { Likes } from './likes';
 
 @Injectable({
   providedIn: 'root'
@@ -50,5 +51,10 @@ export class SeeGroupsService {
     let direccion = this.API+"persons?id=" + id;
     console.log(direccion);
     return this.http.get<updatePersonaI>(direccion);
+  }
+
+  getLikesGroup(idPersona:number):Observable<Likes[]>{
+    let direccion = this.API+"groups?idPersonaGusto=" + idPersona;
+    return this.http.get<Likes[]>(direccion);
   }
 }

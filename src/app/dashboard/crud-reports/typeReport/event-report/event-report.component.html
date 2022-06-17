@@ -1,6 +1,6 @@
 
 <div class="page-header">
-  <button type="button" class="btn btn-lg btn-primary" (click)="createPDFEvent()">Descargar PDF</button>
+  <button type="button" class="btn btn-lg btn-primary" (click)="createPDF()">Descargar PDF</button>
 </div>
 <div id="PdfEventos">
 
@@ -10,6 +10,73 @@
       <h1>Reporte de Eventos</h1>
       <p>TEste es el reporte de eventos que se realiza en este mes.</p>
     </div>
+    <div class="jumbotron" style="height: 500px;">
+      <h1>Los tipos de eventos</h1>
+      <ngx-charts-bar-vertical
+        [view]="view"
+        scheme="cool"
+        [results]="ListTypeEvent"
+        [gradient]="gradient"
+        [xAxis]="showXAxis"
+        [yAxis]="showYAxis"
+        [legend]="showLegend"
+        [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel"
+        [xAxisLabel]="xAxisLabel2"
+        [yAxisLabel]="yAxisLabel"
+        (select)="onSelect($event)">
+      </ngx-charts-bar-vertical>
+    </div>
+    <!-- <div class="jumbotron">
+      <div style="height: 300px;">
+        <br>
+        <ngx-charts-linear-gauge
+          [view]="viewCountGroups"
+          scheme="cool"
+          [value]="this.Invited.get('count')?.value"
+          [previousValue]="this.CountAllEvents.get('count')?.value"
+          (select)="onSelect($event)"
+          [units]="units1">
+        </ngx-charts-linear-gauge>
+        <br>
+      </div>
+      <div style="height: 300px;">
+        <br>
+        <ngx-charts-linear-gauge
+          [view]="viewCountGroups"
+          scheme="cool"
+          [value]="this.Accepted.get('count')?.value"
+          [previousValue]="this.CountAllEvents.get('count')?.value"
+          (select)="onSelect($event)"
+          [units]="units2">
+        </ngx-charts-linear-gauge>
+        <br>
+      </div>
+      <div style="height: 300px;">
+        <br>
+        <ngx-charts-linear-gauge
+          [view]="viewCountGroups"
+          scheme="cool"
+          [value]="this.Denied.get('count')?.value"
+          [previousValue]="this.CountAllEvents.get('count')?.value"
+          (select)="onSelect($event)"
+          [units]="units2">
+        </ngx-charts-linear-gauge>
+        <br>
+      </div>
+      <div style="height: 300px;">
+        <br>
+        <ngx-charts-linear-gauge
+          [view]="viewCountGroups"
+          scheme="cool"
+          [value]="this.Finished.get('count')?.value"
+          [previousValue]="this.CountAllEvents.get('count')?.value"
+          (select)="onSelect($event)"
+          [units]="units2">
+        </ngx-charts-linear-gauge>
+        <br>
+      </div>
+    </div> -->
 
     <table class="table table-warning">
       <thead>

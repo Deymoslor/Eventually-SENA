@@ -95,28 +95,30 @@
             </div>
             <div class="row">
 
+              <div  *ngIf="personas">
                 <table class="table table-striped tablita">
-                    <thead>
-                        <tr>
-                            <th class="title">Nombre</th>
-                            <th class="title">Email</th>
-                            <div class="title" *ngIf="manager">
-                                <th>Acción</th>
-                            </div>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <ng-container *ngFor="let persona of personas">
-                            <tr class="textox" *ngIf="persona.idPersona != personaId">
-                                <td class="product-short-description textox">{{persona.nombre}}</td>
-                                <td class="product-short-description textox">{{persona.Email}}</td>
-                                <div *ngIf="manager">
-                                    <td class="product-short-description textox"><button class="btn btnEditar justify-content-md-center" (click)="putEditDetail(persona.idGrupos,persona.idDetalleGrupoPersona,persona.idPersona, 4)">Eliminar</button></td>
-                                </div>
-                            </tr>
-                        </ng-container>
-                    </tbody>
-                </table>
+                  <thead>
+                      <tr>
+                          <th class="title">Nombre</th>
+                          <th class="title">Email</th>
+                          <div class="title" *ngIf="manager">
+                              <th>Acción</th>
+                          </div>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <ng-container *ngFor="let persona of personas">
+                          <tr class="textox" *ngIf="persona.idPersona != personaId">
+                              <td class="product-short-description textox">{{persona.nombre}}</td>
+                              <td class="product-short-description textox">{{persona.Email}}</td>
+                              <div *ngIf="manager">
+                                  <td class="product-short-description textox"><button class="btn btnEditar justify-content-md-center" (click)="putEditDetail(persona.idGrupos,persona.idDetalleGrupoPersona,persona.idPersona, 4)">Eliminar</button></td>
+                              </div>
+                          </tr>
+                      </ng-container>
+                  </tbody>
+              </table>
+              </div>
 
                 <div *ngIf="!personas && manager">
                     <p class="product-name h2 title">no hay participantes en este grupo</p>
