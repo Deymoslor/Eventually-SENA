@@ -229,12 +229,14 @@
                             <label class="textoTitulos" for="">Nombre del Evento:</label>
                             <input class="textox" type="text" class="form-control" id="nombreEvento" placeholder="Ej: El mejor evento" formControlName="nombreEvento" [ngClass]="
                           (createEventForm.get('nombreEvento')?.touched || createEventForm.get('nombreEvento')?.dirty) &&
-                          createEventForm.get('nombreEvento')?.hasError('required') ? 'is-invalid' : '' || createEventForm.get('nombreEvento')?.hasError('minlength')
+                          createEventForm.get('nombreEvento')?.hasError('required') 
+                          ? 'is-invalid' : '' || createEventForm.get('nombreEvento')?.hasError('minlength')
                                       ? 'is-invalid' : '' || createEventForm.get('nombreEvento')?.hasError('maxlength')
                                       ? 'is-invalid' : ''">
                             <div class="textox invalid-feedback">
-                                {{ createEventForm.get("nombreEvento")?.hasError("required") ? "Nombre requerido" : "" }} {{ createEventForm.get("nombreEvento")?.hasError("minlength") ? "Campo mínimo de 2 carácteres" : "" }} {{ createEventForm.get("nombreEvento")?.hasError("maxlength")
-                                ? "Campo maximo de 30 carácteres" : "" }}
+                                {{ createEventForm.get("nombreEvento")?.hasError("required") ? "Nombre requerido" : "" }} 
+                                {{ createEventForm.get("nombreEvento")?.hasError("minlength") ? "Campo mínimo de 2 carácteres" : "" }} 
+                                {{ createEventForm.get("nombreEvento")?.hasError("maxlength") ? "Campo maximo de 30 carácteres" : "" }}
                             </div>
                         </div>
 
