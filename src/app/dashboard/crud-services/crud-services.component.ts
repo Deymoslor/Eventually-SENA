@@ -339,7 +339,7 @@ export class CrudServicesComponent implements OnInit {
         'historialEmpresas': this.dataService.historialEmpresas,
         'numeroContacto': this.dataService.numeroContacto,
         'correoContacto': this.dataService.correoContacto,
-        'estadoServicio': 0,
+        'estadoServicio': 2,
         'Proveedor_idProveedor': this.dataService.Proveedor_idProveedor,
         'TipoServicio_idtipoServicio': this.dataService.TipoServicio_idtipoServicio,
       })

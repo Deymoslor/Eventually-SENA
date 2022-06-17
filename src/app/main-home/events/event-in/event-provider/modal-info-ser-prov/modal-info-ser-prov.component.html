@@ -22,7 +22,7 @@
                 </div>
                 <div class="info-content">
                     <label class="fs-5 fw-bold">Precio estimado</label>
-                    <p class="fs-6">{{ServicesForm.get('precioEstimado')?.value}}</p>
+                    <p class="fs-6">{{ServicesForm.get('precioEstimado')?.value | currency: 'COP'}}</p>
                 </div>
                 <div class="info-content">
                     <label class="fs-5 fw-bold">Empresas en las que trabajo anteriormente</label>
