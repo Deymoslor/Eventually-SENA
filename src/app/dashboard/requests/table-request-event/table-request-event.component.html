@@ -1,4 +1,4 @@
-<h2 class="fs-1 fw-bolder title">
+<h2 class="f title">
     Peticiones Eventos</h2>
 
 <!-- Jordan Table Start -->
@@ -6,8 +6,8 @@
 <div class="row tables">
     <div class="col ">
         <div class="searcher">
-            <label for="">BUSCAR ID EVENTO: </label>
-            <input type="text" class="search" name="filterRequestEvent" placeholder="Buscar..." [(ngModel)]="filterRequestEvent">
+            <label class="textoTitulos" for="">BUSCAR ID EVENTO: </label>
+            <input type="text" class="search textox rounded" name="filterRequestEvent" placeholder="Buscar..." [(ngModel)]="filterRequestEvent">
         </div>
         <table class="table table-striped">
             <thead class="titles">
@@ -44,21 +44,21 @@
                     <!-- Grupo está sin respuesta -->
                     <td style="width:10.5rem;" *ngIf="request.estadoPeticion==='1'">
                         <div class="d-grid gap-2 d-md-block">
-                            <button (click)="aceptarPeticion(request.idpeticionesEvento)" type="button" class="btn btnHabilitar btn-sm">Aceptar</button>
-                            <button (click)="rechazarPeticion(request.idpeticionesEvento)" type="button" class="btn btn-secondary btn-sm">Rechazar</button>
+                            <button class="textox" (click)="aceptarPeticion(request.idpeticionesEvento)" type="button" class="btn btnHabilitar btn-sm">Aceptar</button>
+                            <button class="textox" (click)="rechazarPeticion(request.idpeticionesEvento)" type="button" class="btn btn-secondary btn-sm">Rechazar</button>
                         </div>
                     </td>
 
                     <!-- Grupo está habilitado -->
                     <td *ngIf="request.estadoPeticion==='2'">
                         <div class="form-check form-switch">
-                            <button (click)="rechazarPeticion(request.idpeticionesEvento)" type="button" class="btn btn-secondary btn-sm">Inhabilitar</button>
+                            <button class="textox" (click)="rechazarPeticion(request.idpeticionesEvento)" type="button" class="btn btn-secondary btn-sm">Inhabilitar</button>
                         </div>
                     </td>
 
                     <!-- Grupo está deshabilitado -->
                     <td *ngIf="request.estadoPeticion==='3'">
-                        <div class="form-check form-switch">
+                        <div class="form-check textox form-switch">
                             <button (click)="aceptarPeticion(request.idpeticionesEvento)" type="button" class="btn btnHabilitar btn-sm">Habilitar</button>
                         </div>
                     </td>
@@ -68,12 +68,11 @@
             </tbody>
 
         </table>
-        <div>
-            <pagination-controls previousLabel="Prev"
-            nextLabel="Next"
-            (pageChange)="onTableDataChange($event)" ></pagination-controls>
-        </div>
+
     </div>
+</div>
+<div>
+    <pagination-controls class="textox" previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)"></pagination-controls>
 </div>
 
 <ng-template #content let-modal21>

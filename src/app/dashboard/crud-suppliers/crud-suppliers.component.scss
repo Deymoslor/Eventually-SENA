@@ -14,29 +14,12 @@
 
 .content {
     display: flex;
-    width: 90%;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     flex-grow: 1;
     margin-top: 4vw;
     margin-left: 4vw;
-    height: auto!important;
-}
-
-.content {
-    height: 55vw!important;
-    margin-top: 2rem!important;
-    margin: 0 auto;
-    max-width: 100vw;
-    .tables {
-        overflow: scroll;
-        max-width: 100vw;
-        height: 85rem!important;
-    }
-    .tables table {
-        height: 30%!important;
-    }
 }
 
 .textoTitulos {
@@ -47,6 +30,11 @@
 .textox {
     font-family: 'Ubuntu', sans-serif;
     font-weight: 350;
+}
+
+.search {
+    margin-left: 1rem;
+    border: 2px solid rgba(128, 128, 128, 0.322);
 }
 
 .btn {
@@ -72,27 +60,25 @@
     background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
 }
 
-@media only screen and (max-width: 1167px) {
+@media only screen and (max-width: 1094px) {
     .content {
-        height: 45vw!important;
-        // margin-left: 4vw;
+        width: 75vw!important;
         .tables {
-            height: 45vw!important;
+            overflow: scroll;
+            width: 75vw!important;
         }
-        // .tables table {
-        //     width: 10%!important;
-        // }
+        .tables table {
+            width: 10%!important;
+        }
     }
 }
 
 @media only screen and (max-width: 938px) {
     .content {
         width: 75vw!important;
-        height: 50vw!important;
         .tables {
             overflow: scroll;
             width: 75vw!important;
-            height: 50vw!important;
         }
         .tables table {
             width: 10%!important;
@@ -117,11 +103,9 @@
     .content {
         width: 75vw!important;
         // margin-left: 4vw;
-        height: 35rem!important;
         .tables {
             overflow: scroll;
             width: 75vw!important;
-            height: 35rem!important;
         }
         .tables table {
             width: 10%!important;
@@ -133,11 +117,9 @@
     .content {
         width: 70vw!important;
         // margin-left: 4vw;
-        height: 30rem!important;
         .tables {
             overflow: scroll;
             width: 70vw!important;
-            height: 30rem!important;
         }
         .tables table {
             width: 10%!important;

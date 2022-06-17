@@ -88,6 +88,18 @@
     height: 3rem;
 }
 
+.btnEditar2 {
+    background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
+    color: white!important;
+    width: auto!important;
+    align-content: center!important;
+    border-radius: 10%!important;
+    border: 0;
+    margin-left: 10rem;
+    height: 3rem;
+    margin-bottom: 2rem;
+}
+
 .btnEditar:hover {
     background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
 }

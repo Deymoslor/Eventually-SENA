@@ -1,11 +1,4 @@
 @import '../../app.component.scss';
-:host {
-    display: flex;
-    flex-direction: column;
-    align-self: center;
-    justify-content: space-between;
-}
-
 .titlePrincipal {
     font-family: 'Pacifico', cursive;
     margin: 0 auto;
@@ -27,7 +20,6 @@
 .content {
     margin-top: 4vw;
     display: flex;
-    width: 90%;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
@@ -46,18 +38,21 @@
 }
 
 .content {
-    height: 85rem!important;
     margin-top: 2rem!important;
     margin: 0 auto;
     width: 75vw!important;
     .tables {
         overflow: scroll;
         width: 78vw!important;
-        height: 85rem!important;
     }
     .tables table {
         height: 30%!important;
     }
+}
+
+.search {
+    margin-left: 1rem;
+    border: 2px solid rgba(128, 128, 128, 0.322);
 }
 
 .imgTabla {
@@ -84,6 +79,7 @@
 .btnCrear {
     background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
     color: white;
+    width: auto;
 }
 
 .btnCrear:hover {

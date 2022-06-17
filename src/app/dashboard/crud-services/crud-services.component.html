@@ -5,8 +5,8 @@
     <div class="row tables">
         <div class="col ">
             <div class="searcher">
-                <label for="">BUSCAR NOMBRE GUSTO: </label>
-                <input type="text" class="search" name="filterServices" placeholder="Buscar..." [(ngModel)]="filterServices">
+                <label class="textoTitulos" for="">BUSCAR NOMBRE GUSTO: </label>
+                <input type="text" class="search textox rounded" name="filterServices" placeholder="Buscar..." [(ngModel)]="filterServices">
             </div>
             <table class="table table-striped">
                 <thead class="titles">
@@ -54,12 +54,11 @@
                 </tbody>
             </table>
             <div>
-                <pagination-controls previousLabel="Prev"
-                nextLabel="Next"
-                (pageChange)="onTableDataChange($event)" ></pagination-controls>
+
             </div>
         </div>
     </div>
+    <pagination-controls class="textox" previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)"></pagination-controls>
     <!--TABLE//-->
 
     <h2 class="fs-1 title title2">Tipos de Servicios</h2>
@@ -88,17 +87,18 @@
                     </tr>
                 </tbody>
             </table>
-            <div>
-                <pagination-controls previousLabel="Prev"
-                nextLabel="Next"
-                (pageChange)="onTableDataChange2($event)" ></pagination-controls>
-            </div>
+
         </div>
     </div>
-    <button class="btn btnCrear" class="btn btnEditar" data-bs-toggle="modalCreateTypeDash" data-bs-target="#content-modalCreateTypeDash" (click)="modalCreateServiceOpen(contentCreateType, 1)">
-      Crear
+    <div>
+        <pagination-controls class="textox" previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange2($event)"></pagination-controls>
+    </div>
+    <button class="btn btnCrear textox" class="btn btnEditar" data-bs-toggle="modalCreateTypeDash" data-bs-target="#content-modalCreateTypeDash" (click)="modalCreateServiceOpen(contentCreateType, 1)">
+    Crear
   </button>
+
 </div>
+
 <!--TABLE//-->
 
 <!-- Create new type services -->
@@ -128,9 +128,8 @@
                 ? 'is-invalid' : '' || typeServicesForm.get('tipoServicio')?.hasError('pattern')
                 ? 'is-invalid' : ''">
                 <div class="invalid-feedback">
-                    {{ typeServicesForm.get("tipoServicio")?.hasError("required") ? "Campo requerido" : "" }}
-                    {{ typeServicesForm.get("tipoServicio")?.hasError("pattern") ? "Campo solo con letras" : "" }}
-                    {{ typeServicesForm.get("tipoServicio")?.hasError("minlength") ? "Campo con mínimo de 5 caracteres" : "" }}
+                    {{ typeServicesForm.get("tipoServicio")?.hasError("required") ? "Campo requerido" : "" }} {{ typeServicesForm.get("tipoServicio")?.hasError("pattern") ? "Campo solo con letras" : "" }} {{ typeServicesForm.get("tipoServicio")?.hasError("minlength") ? "Campo
+                    con mínimo de 5 caracteres" : "" }}
                 </div>
 
                 <label for="">Estado del servicio:</label>
@@ -166,49 +165,44 @@
 
                 <div class="formGroup">
                     <label for="">Nombre del servicio:</label>
-                    <input type="text" class="form-control" id="" placeholder="" formControlName="nombreServicio"
-                    [ngClass]=" (ServicesForm.get('nombreServicio')?.touched || ServicesForm.get('nombreServicio')?.dirty) &&
+                    <input type="text" class="form-control" id="" placeholder="" formControlName="nombreServicio" [ngClass]=" (ServicesForm.get('nombreServicio')?.touched || ServicesForm.get('nombreServicio')?.dirty) &&
                     ServicesForm.get('nombreServicio')?.hasError('required')
                     ? 'is-invalid' : '' || ServicesForm.get('nombreServicio')?.hasError('minlength')
                     ? 'is-invalid' : '' || ServicesForm.get('nombreServicio')?.hasError('maxlength')
                     ? 'is-invalid' : ''">
 
                     <div class="invalid-feedback">
-                        {{ ServicesForm.get("nombreServicio")?.hasError("required") ? "Campo requerido" : "" }}
-                        {{ ServicesForm.get("nombreServicio")?.hasError("minlength") ? "Campo requerido con 5 caracteres" : "" }}
-                        {{ ServicesForm.get("nombreServicio")?.hasError("maxlength") ? "Campo requerido con máximo 50 caracteres" : "" }}
+                        {{ ServicesForm.get("nombreServicio")?.hasError("required") ? "Campo requerido" : "" }} {{ ServicesForm.get("nombreServicio")?.hasError("minlength") ? "Campo requerido con 5 caracteres" : "" }} {{ ServicesForm.get("nombreServicio")?.hasError("maxlength")
+                        ? "Campo requerido con maximo 50 caracteres" : "" }} {{ ServicesForm.get("nombreServicio")?.hasError("required") ? "Campo requerido" : "" }} {{ ServicesForm.get("nombreServicio")?.hasError("minlength") ? "Campo requerido con 5
+                        caracteres" : "" }} {{ ServicesForm.get("nombreServicio")?.hasError("maxlength") ? "Campo requerido con máximo 50 caracteres" : "" }}
                     </div>
                     <!-- {{ServicesForm.get("nombreServicio")?.errors | json}} -->
                 </div>
 
                 <div class="formGroup">
                     <label for="">Descripcion del Servicio:</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" formControlName="descripcionServicio"
-                        [ngClass]=" (ServicesForm.get('descripcionServicio')?.touched || ServicesForm.get('descripcionServicio')?.dirty) &&
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" formControlName="descripcionServicio" [ngClass]=" (ServicesForm.get('descripcionServicio')?.touched || ServicesForm.get('descripcionServicio')?.dirty) &&
                     ServicesForm.get('descripcionServicio')?.hasError('required')
                     ? 'is-invalid' : '' || ServicesForm.get('descripcionServicio')?.hasError('minlength')
                     ? 'is-invalid' : '' || ServicesForm.get('descripcionServicio')?.hasError('maxlength')
                     ? 'is-invalid' : ''"></textarea>
 
                     <div class="invalid-feedback">
-                        {{ ServicesForm.get("descripcionServicio")?.hasError("required") ? "Campo requerido" : "" }}
-                        {{ ServicesForm.get("descripcionServicio")?.hasError("minlength") ? "Campo requerido con 15 caracteres" : "" }}
-                        {{ ServicesForm.get("descripcionServicio")?.hasError("maxlength") ? "Campo requerido con máximo 500 caracteres" : "" }}
+                        {{ ServicesForm.get("descripcionServicio")?.hasError("required") ? "Campo requerido" : "" }} {{ ServicesForm.get("descripcionServicio")?.hasError("minlength") ? "Campo requerido con 15 caracteres" : "" }} {{ ServicesForm.get("descripcionServicio")?.hasError("maxlength")
+                        ? "Campo requerido con máximo 500 caracteres" : "" }}
                     </div>
                     <!-- {{ServicesForm.get("descripcionServicio")?.errors | json}} -->
                 </div>
 
                 <div class="formGroup">
                     <label for="exampleInputEmail1">Precio estimado:</label>
-                    <input type="number" class="form-control" id="exampleInputEmail1" min="1" max="200000000" formControlName="precioEstimado"
-                    [ngClass]=" (ServicesForm.get('precioEstimado')?.touched || ServicesForm.get('precioEstimado')?.dirty) &&
+                    <input type="number" class="form-control" id="exampleInputEmail1" min="1" max="200000000" formControlName="precioEstimado" [ngClass]=" (ServicesForm.get('precioEstimado')?.touched || ServicesForm.get('precioEstimado')?.dirty) &&
                     ServicesForm.get('precioEstimado')?.hasError('required')
                     ? 'is-invalid' : '' || ServicesForm.get('precioEstimado')?.hasError('pattern')
                     ? 'is-invalid' : ''">
 
                     <div class="invalid-feedback">
-                        {{ ServicesForm.get("precioEstimado")?.hasError("required") ? "Campo requerido" : "" }}
-                        {{ ServicesForm.get("precioEstimado")?.hasError("pattern") ? "Campo de solo numeros" : "" }}
+                        {{ ServicesForm.get("precioEstimado")?.hasError("required") ? "Campo requerido" : "" }} {{ ServicesForm.get("precioEstimado")?.hasError("pattern") ? "Campo de solo numeros" : "" }}
                     </div>
                     <!-- {{ServicesForm.get("precioEstimado")?.errors | json}} -->
                 </div>
@@ -227,24 +221,21 @@
 
                 <div class="formGroup">
                     <label for="">Historial de empresas:</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" formControlName="historialEmpresas"
-                        [ngClass]=" (ServicesForm.get('historialEmpresas')?.touched || ServicesForm.get('historialEmpresas')?.dirty) &&
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" formControlName="historialEmpresas" [ngClass]=" (ServicesForm.get('historialEmpresas')?.touched || ServicesForm.get('historialEmpresas')?.dirty) &&
                     ServicesForm.get('historialEmpresas')?.hasError('required')
                     ? 'is-invalid' : '' || ServicesForm.get('historialEmpresas')?.hasError('minlength')
                     ? 'is-invalid' : '' || ServicesForm.get('historialEmpresas')?.hasError('maxlength')
                     ? 'is-invalid' : ''"></textarea>
                     <div class="invalid-feedback">
-                        {{ ServicesForm.get("historialEmpresas")?.hasError("required") ? "Campo requerido" : "" }}
-                        {{ ServicesForm.get("historialEmpresas")?.hasError("minlength") ? "Campo requerido con 7 caracteres mínimo" : "" }}
-                        {{ ServicesForm.get("historialEmpresas")?.hasError("maxlength") ? "Campo requerido con máximo 300 caracteres" : "" }}
+                        {{ ServicesForm.get("historialEmpresas")?.hasError("required") ? "Campo requerido" : "" }} {{ ServicesForm.get("historialEmpresas")?.hasError("minlength") ? "Campo requerido con 7 caracteres mínimo" : "" }} {{ ServicesForm.get("historialEmpresas")?.hasError("maxlength")
+                        ? "Campo requerido con máximo 300 caracteres" : "" }}
                     </div>
                     <!-- {{ServicesForm.get("historialEmpresas")?.errors | json}} -->
                 </div>
 
                 <div class="formGroup">
                     <label for="">Fecha inicio:</label>
-                    <input type="date" class="form-control" formControlName="fechaInicio"
-                        [ngClass]=" (ServicesForm.get('fechaInicio')?.touched || ServicesForm.get('fechaInicio')?.dirty) &&
+                    <input type="date" class="form-control" formControlName="fechaInicio" [ngClass]=" (ServicesForm.get('fechaInicio')?.touched || ServicesForm.get('fechaInicio')?.dirty) &&
                     ServicesForm.get('fechaInicio')?.hasError('required')
                     ? 'is-invalid' : ''">
                     <div class="invalid-feedback">
@@ -255,32 +246,28 @@
 
                 <div class="formGroup">
                     <label for="exampleInputEmail1">Numero de contacto:</label>
-                    <input type="number" class="form-control" id="exampleInputEmail1" formControlName="numeroContacto"
-                    [ngClass]=" (ServicesForm.get('numeroContacto')?.touched || ServicesForm.get('numeroContacto')?.dirty) &&
+                    <input type="number" class="form-control" id="exampleInputEmail1" formControlName="numeroContacto" [ngClass]=" (ServicesForm.get('numeroContacto')?.touched || ServicesForm.get('numeroContacto')?.dirty) &&
                     ServicesForm.get('numeroContacto')?.hasError('required')
                     ? 'is-invalid' : '' || ServicesForm.get('numeroContacto')?.hasError('pattern')
                     ? 'is-invalid' : ''">
 
                     <div class="invalid-feedback">
-                        {{ ServicesForm.get("numeroContacto")?.hasError("required") ? "Campo requerido" : "" }}
-                        {{ ServicesForm.get("numeroContacto")?.hasError("pattern") ? "Campo de solo numeros" : "" }}
+                        {{ ServicesForm.get("numeroContacto")?.hasError("required") ? "Campo requerido" : "" }} {{ ServicesForm.get("numeroContacto")?.hasError("pattern") ? "Campo de solo numeros" : "" }}
                     </div>
                     <!-- {{ServicesForm.get("numeroContacto")?.errors | json}} -->
                 </div>
 
                 <div class="formGroup">
-                 <label for="">Correo de contacto:</label>
-                    <input type="email" class="form-control" id="" placeholder="" formControlName="correoContacto"
-                    [ngClass]=" (ServicesForm.get('correoContacto')?.touched || ServicesForm.get('correoContacto')?.dirty) &&
+                    <label for="">Correo de contacto:</label>
+                    <input type="email" class="form-control" id="" placeholder="" formControlName="correoContacto" [ngClass]=" (ServicesForm.get('correoContacto')?.touched || ServicesForm.get('correoContacto')?.dirty) &&
                     ServicesForm.get('correoContacto')?.hasError('required')
                     ? 'is-invalid' : '' || ServicesForm.get('correoContacto')?.hasError('email')
                     ? 'is-invalid' : ''" [readonly]="true">
                     <div class="invalid-feedback">
-                        {{ ServicesForm.get("numeroContacto")?.hasError("required") ? "Campo requerido" : "" }}
-                        {{ ServicesForm.get("numeroContacto")?.hasError("email") ? "Campo de tipo email requerido" : "" }}
+                        {{ ServicesForm.get("numeroContacto")?.hasError("required") ? "Campo requerido" : "" }} {{ ServicesForm.get("numeroContacto")?.hasError("email") ? "Campo de tipo email requerido" : "" }}
                     </div>
                     <!-- {{ServicesForm.get("correoContacto")?.errors | json}} -->
-               </div>
+                </div>
 
                 <label for="exampleInputEmail1">Id Proveedor:</label>
                 <input type="number" class="form-control" id="exampleInputEmail1" min="1" max="1000" formControlName="Proveedor_idProveedor" [readonly]="true">

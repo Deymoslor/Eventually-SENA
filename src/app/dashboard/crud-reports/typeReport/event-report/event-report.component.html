@@ -1,4 +1,3 @@
-
 <div class="page-header">
   <button type="button" class="btn btn-lg btn-primary" (click)="createPDF()">Descargar PDF</button>
 </div>
@@ -78,25 +77,25 @@
       </div>
     </div> -->
 
-    <table class="table table-warning">
-      <thead>
-        <tr>
-          <th scope="col">No</th>
-          <th scope="col">Nombre</th>
-          <th scope="col">Descripcióm</th>
-          <th scope="col">Fecha</th>
-          <th scope="col">Tipo</th>
-        </tr>
-      </thead>
-      <tbody class="table-secondary">
-        <tr *ngFor="let event of events">
-          <th scope="row">{{event.idEvento}}</th>
-          <td>{{event.nombreEvento}}</td>
-          <td>{{event.descripcionEvento}}</td>
-          <td>{{event.fechaEvento}}</td>
-          <td>{{event.tipoEvento}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+        <table class="table table-warning">
+            <thead>
+                <tr>
+                    <th class="textoTitulos" scope="col">No</th>
+                    <th class="textoTitulos" scope="col">Nombre</th>
+                    <th class="textoTitulos" scope="col">Descripcióm</th>
+                    <th class="textoTitulos" scope="col">Fecha</th>
+                    <th class="textoTitulos" scope="col">Tipo</th>
+                </tr>
+            </thead>
+            <tbody class="table-secondary">
+                <tr class="textox" *ngFor="let event of events">
+                    <th class="textox" scope="row">{{event.idEvento}}</th>
+                    <td class="textox">{{event.nombreEvento}}</td>
+                    <td class="textox">{{event.descripcionEvento}}</td>
+                    <td class="textox">{{event.fechaEvento}}</td>
+                    <td class="textox">{{event.tipoEvento}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

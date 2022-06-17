@@ -39,17 +39,38 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <label for="">Calificacion del servicio: [1 -5]</label>
+                    <label for="">Calificacion del servicio: [1 - 5]</label>
                     <div class="mb-2">
-                        <input type="number" formControlName="calificacion">
+                        <input type="number" formControlName="calificacion" [ngClass]="(resultForm.get('calificacion')?.touched || resultForm.get('calificacion')?.dirty) &&
+                        resultForm.get('calificacion')?.errors ? 'is-invalid' : '' || resultForm.get('calificacion')?.hasError('minlength')
+                        ? 'is-invalid' : '' || resultForm.get('calificacion')?.hasError('min') || resultForm.get('calificacion')?.hasError('max') ? 'is-invalid' : ''">
+                        <div class="invalid-feedback">
+                            {{ resultForm.get("calificacion")?.hasError("required") ? "Campo requerido" : "" }}
+                            {{ resultForm.get("calificacion")?.hasError("min") ? "Mínimo 1" : "" }}
+                            {{ resultForm.get("calificacion")?.hasError("max") ? "Máximo 5" : "" }}
+                        </div>
                     </div>
                     <label for="">Problemas encontrados: </label>
                     <div class="mb-2">
-                        <textarea class="form-control" formControlName="problemasEncontrados" id="exampleFormControlTextarea1" placeholder="Explica si se encontraron problemas." rows="2"></textarea>
+                        <textarea class="form-control" formControlName="problemasEncontrados" id="exampleFormControlTextarea1" placeholder="Explica si se encontraron problemas." rows="2" [ngClass]="(resultForm.get('problemasEncontrados')?.touched || resultForm.get('problemasEncontrados')?.dirty) &&
+                        resultForm.get('problemasEncontrados')?.errors ? 'is-invalid' : '' || resultForm.get('problemasEncontrados')?.hasError('required') ? 'is-invalid' : '' || resultForm.get('problemasEncontrados')?.hasError('maxlength') ? 'is-invalid' : '' || resultForm.get('problemasEncontrados')?.hasError('minlength') ? 'is-invalid' : '' || resultForm.get('problemasEncontrados')?.hasError('pattern') ? 'is-invalid' : ''"></textarea>
+                        <div class="invalid-feedback">
+                            {{ resultForm.get("problemasEncontrados")?.hasError("required") ? "Campo requerido" : "" }}
+                            {{ resultForm.get("problemasEncontrados")?.hasError(",maxlength") ? "Campo co un máximo de 300 caracteres" : "" }}
+                            {{ resultForm.get("problemasEncontrados")?.hasError("minlength") ? "Campo con un mínimo de 10 caracteres" : "" }}
+                            {{ resultForm.get("problemasEncontrados")?.hasError("pattern") ? "Campo solo con numeros, no caracteres especiales" : "" }}
+                        </div>
                     </div>
                     <label for="">Descripcion del resultado: </label>
                     <div class="mb-2">
-                        <textarea class="form-control" formControlName="descripcionResultado" id="exampleFormControlTextarea1" placeholder="Escribe una descripcion corta del servicio realizado." rows="2"></textarea>
+                        <textarea class="form-control" formControlName="descripcionResultado" id="exampleFormControlTextarea1" placeholder="Escribe una descripcion corta del servicio realizado." rows="2" [ngClass]="(resultForm.get('descripcionResultado')?.touched || resultForm.get('descripcionResultado')?.dirty) &&
+                        resultForm.get('descripcionResultado')?.errors ? 'is-invalid' : '' || resultForm.get('descripcionResultado')?.hasError('required') ? 'is-invalid' : '' || resultForm.get('descripcionResultado')?.hasError('maxlength') ? 'is-invalid' : '' || resultForm.get('descripcionResultado')?.hasError('minlength') ? 'is-invalid' : '' || resultForm.get('problemasEncontrados')?.hasError('pattern') ? 'is-invalid' : ''"></textarea>
+                        <div class="invalid-feedback">
+                            {{ resultForm.get("descripcionResultado")?.hasError("required") ? "Campo requerido" : "" }}
+                            {{ resultForm.get("descripcionResultado")?.hasError(",maxlength") ? "Campo co un máximo de 300 caracteres" : "" }}
+                            {{ resultForm.get("descripcionResultado")?.hasError("minlength") ? "Campo con un mínimo de 10 caracteres" : "" }}
+                            {{ resultForm.get("descripcionResultado")?.hasError("pattern") ? "Campo solo con numeros, no caracteres especiales" : "" }}
+                        </div>
                     </div>
                     <div class="mb-2">
                         <p class="fs-5">
@@ -62,7 +83,7 @@
 
 
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Terminar</button>
+                <button type="submit" [disabled]="resultForm.invalid" class="btn btn-primary">Terminar</button>
             </div>
         </div>
     </form>
