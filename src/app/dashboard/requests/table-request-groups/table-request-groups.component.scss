@@ -13,19 +13,6 @@
 .textox {
     font-family: 'Ubuntu', sans-serif;
     font-weight: 350;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    padding-top: 1.5rem;
-}
-
-.tables {
-    overflow: scroll;
-    max-width: 100vw;
-    height: 25rem!important;
-}
-
-.tables table {
-    height: 20%!important;
 }
 
 .btn {
@@ -33,6 +20,12 @@
     margin-bottom: 1rem;
     font-family: 'Ubuntu', sans-serif;
     font-weight: 350;
+}
+
+.search {
+    margin-left: 1rem;
+    height: auto;
+    border: 2px solid rgba(128, 128, 128, 0.322);
 }
 
 .btnHabilitar {
@@ -49,20 +42,10 @@
     background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
 }
 
-@media only screen and (max-width: 1167px) {
-    .tables {
-        height: 45vw!important;
-    }
-    // .tables table {
-    //     width: 10%!important;
-    // }
-}
-
 @media only screen and (max-width: 938px) {
     .tables {
         overflow: scroll;
         width: 75vw!important;
-        height: 50vw!important;
     }
     .tables table {
         width: 10%!important;
@@ -83,7 +66,6 @@
     .tables {
         overflow: scroll;
         width: 75vw!important;
-        height: 35rem!important;
     }
     .tables table {
         width: 10%!important;
@@ -94,7 +76,6 @@
     .tables {
         overflow: scroll;
         width: 70vw!important;
-        height: 30rem!important;
     }
     .tables table {
         width: 10%!important;

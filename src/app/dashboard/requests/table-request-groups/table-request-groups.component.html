@@ -6,8 +6,8 @@
 <div class="row tables">
     <div class="col ">
         <div class="searcher">
-            <label for="">BUSCAR ID GRUPO: </label>
-            <input type="text" class="search" name="filterRequestGroup" placeholder="Buscar..." [(ngModel)]="filterRequestGroup">
+            <label class="textoTitulos" for="">BUSCAR ID GRUPO: </label>
+            <input type="text" class="search textox rounded" name="filterRequestGroup" placeholder="Buscar..." [(ngModel)]="filterRequestGroup">
         </div>
         <table class="table table-striped">
             <thead class="titles">
@@ -42,15 +42,15 @@
                     <!-- Grupo está sin respuesta -->
                     <td *ngIf="request.estadoPeticion==='1' " style="width:10.5rem;">
                         <div class="d-grid gap-2 d-md-block">
-                            <button (click)="aceptarPeticion(request.idpeticionesGrupo) " type="button " class="btn btnHabilitar btn-sm ">Aceptar</button>
-                            <button (click)="rechazarPeticion(request.idpeticionesGrupo) " type="button " class="btn btn-secondary btn-sm ">Rechazar</button>
+                            <button class="textox" (click)="aceptarPeticion(request.idpeticionesGrupo) " type="button " class="btn btnHabilitar btn-sm ">Aceptar</button>
+                            <button class="textox" (click)="rechazarPeticion(request.idpeticionesGrupo) " type="button " class="btn btn-secondary btn-sm ">Rechazar</button>
                         </div>
                     </td>
 
                     <!-- Grupo está habilitado -->
                     <td *ngIf="request.estadoPeticion==='2' ">
                         <div class="form-check form-switch ">
-                            <button (click)="rechazarPeticion(request.idpeticionesGrupo) " type="button " class="btn btn-secondary btn-sm ">Inhabilitar</button>
+                            <button class="textox" (click)="rechazarPeticion(request.idpeticionesGrupo) " type="button " class="btn btn-secondary btn-sm ">Inhabilitar</button>
                         </div>
                     </td>
 
@@ -67,11 +67,10 @@
 
 
         </table>
-        <div>
-            <pagination-controls previousLabel="Prev"
-            nextLabel="Next"
-            (pageChange)="onTableDataChange($event)" ></pagination-controls>
-        </div>
+
+    </div>
+    <div>
+        <pagination-controls class="textox" previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)"></pagination-controls>
     </div>
 </div>
 

@@ -1,108 +1,64 @@
-
 <div class="page-header">
-  <button type="button" class="btn btn-lg btn-primary" (click)="createPDF()">Descargar PDF</button>
+    <button type="button" class="btn btnEventually" (click)="createPDF()">Descargar PDF</button>
 </div>
 <div id="pdfUsers">
 
-  <div class="container theme-showcase" role="main">
-    <div class="jumbotron">
-      <h1>Reporte de Usuarios</h1>
-      <p>Este es el reporte de usuarios que se realiza en este mes.</p>
-    </div>
-    <br>
-    <div class="jumbotron" style="height: 500px;">
-      <h2>Los Organizaodres con mayor grupos activos</h2>
-      <ngx-charts-bar-horizontal
-        [view]="view"
-        scheme="cool"
-        [results]="MajorManagerGroups"
-        [gradient]="gradient1"
-        [xAxis]="showXAxis"
-        [yAxis]="showYAxis"
-        [legend]="showLegend"
-        [showXAxisLabel]="showXAxisLabel"
-        [showYAxisLabel]="showYAxisLabel"
-        [xAxisLabel]="xAxisLabel"
-        [yAxisLabel]="yAxisLabel"
-        (select)="onSelect($event)"
-        (activate)="onActivate($event)"
-        (deactivate)="onDeactivate($event)">
-      </ngx-charts-bar-horizontal>
-    </div>
-    <div  class="jumbotron" style="height: 500px;">
-      <h2>Los Invitados con mas grupos relacionados</h2>
-        <div>
-          <br>
-          <br>
-          <br>
+    <div class="container theme-showcase" role="main">
+        <div class="jumbotron">
+            <h1>Reporte de Usuarios</h1>
+            <p>Este es el reporte de usuarios que se realiza en este mes.</p>
         </div>
-        <ngx-charts-advanced-pie-chart
-          [view]="view"
-          scheme="cool"
-          [results]="MajorInviteGroups"
-          [gradient]="gradient"
-          (select)="onSelect($event)"
-          (activate)="onActivate($event)"
-          (deactivate)="onDeactivate($event)"
-          >
-        </ngx-charts-advanced-pie-chart>
+        <br>
+        <div class="jumbotron" style="height: 500px;">
+            <h2 class="textoTitulos">Los Organizaodres con mayor grupos activos</h2>
+            <ngx-charts-bar-horizontal class="textox" [view]="view" scheme="cool" [results]="MajorManagerGroups" [gradient]="gradient1" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
+                [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" (select)="onSelect($event)" (activate)="onActivate($event)" (deactivate)="onDeactivate($event)">
+            </ngx-charts-bar-horizontal>
+        </div>
+        <div class="jumbotron" style="height: 500px;">
+            <h2 class="textoTitulos">Los Invitados con mas grupos relacionados</h2>
+            <div>
+                <br>
+                <br>
+                <br>
+            </div>
+            <ngx-charts-advanced-pie-chart [view]="view" scheme="cool" [results]="MajorInviteGroups" [gradient]="gradient" (select)="onSelect($event)" (activate)="onActivate($event)" (deactivate)="onDeactivate($event)">
+            </ngx-charts-advanced-pie-chart>
+        </div>
+        <div class="jumbotron" style="height: 500px;">
+            <h2 class="textoTitulos">Los organizadores con mas eventos realizados</h2>
+            <ngx-charts-bar-vertical class="textox" [view]="view" scheme="cool" [results]="MajorManagerEvents" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
+                [xAxisLabel]="xAxisLabel2" [yAxisLabel]="yAxisLabel" (select)="onSelect($event)">
+            </ngx-charts-bar-vertical>
+        </div>
+        <div class="jumbotron" style="height: 500px;">
+            <h2 class="textoTitulos">Los gustos mas utilizados por los usuarios</h2>
+            <ngx-charts-pie-chart class="textox" [view]="view" scheme="cool" [results]="MajorLikesUsers" [gradient]="gradient" [legend]="showLegend" [legendPosition]="legendPosition" [labels]="showLabels" [doughnut]="isDoughnut" (select)="onSelect($event)" (activate)="onActivate($event)"
+                (deactivate)="onDeactivate($event)">
+            </ngx-charts-pie-chart>
+        </div>
+        <br>
+        <h2 class="textoTitulos">Todos los Usuarios registrados</h2>
+        <br>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="textoTitulos" scope="col">No</th>
+                    <th class="textoTitulos" scope="col">Nombre</th>
+                    <th class="textoTitulos" scope="col">Apellido</th>
+                    <th class="textoTitulos" scope="col">documento</th>
+                    <th class="textoTitulos" scope="col">Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let persona of personas">
+                    <th class="textox" scope="row">{{persona.idPersona}}</th>
+                    <td class="textox">{{persona.nombre}}</td>
+                    <td class="textox">{{persona.apellidos}}</td>
+                    <td class="textox">{{persona.documento}}</td>
+                    <td class="textox">{{persona.Email}}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-    <div class="jumbotron" style="height: 500px;">
-      <h2>Los organizadores con mas eventos realizados</h2>
-      <ngx-charts-bar-vertical
-        [view]="view"
-        scheme="cool"
-        [results]="MajorManagerEvents"
-        [gradient]="gradient"
-        [xAxis]="showXAxis"
-        [yAxis]="showYAxis"
-        [legend]="showLegend"
-        [showXAxisLabel]="showXAxisLabel"
-        [showYAxisLabel]="showYAxisLabel"
-        [xAxisLabel]="xAxisLabel2"
-        [yAxisLabel]="yAxisLabel"
-        (select)="onSelect($event)">
-      </ngx-charts-bar-vertical>
-    </div>
-    <div class="jumbotron" style="height: 500px;">
-      <h2>Los gustos mas utilizados por los usuarios</h2>
-      <ngx-charts-pie-chart
-        [view]="view"
-        scheme="cool"
-        [results]="MajorLikesUsers"
-        [gradient]="gradient"
-        [legend]="showLegend"
-        [legendPosition]="legendPosition"
-        [labels]="showLabels"
-        [doughnut]="isDoughnut"
-        (select)="onSelect($event)"
-        (activate)="onActivate($event)"
-        (deactivate)="onDeactivate($event)"
-        >
-      </ngx-charts-pie-chart>
-    </div>
-    <br>
-    <h2>Todos los Usuarios registrados</h2>
-    <br>
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">No</th>
-          <th scope="col">Nombre</th>
-          <th scope="col">Apellido</th>
-          <th scope="col">documento</th>
-          <th scope="col">Email</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let persona of personas">
-          <th scope="row">{{persona.idPersona}}</th>
-          <td>{{persona.nombre}}</td>
-          <td>{{persona.apellidos}}</td>
-          <td>{{persona.documento}}</td>
-          <td>{{persona.Email}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
 </div>

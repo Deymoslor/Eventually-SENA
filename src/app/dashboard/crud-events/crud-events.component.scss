@@ -14,31 +14,6 @@
     margin-bottom: 6vw;
 }
 
-// .titles {
-//     position: fixed;
-// }
-// .sepa {
-//     height: 2vw;
-// }
-// Hola mi nombre es Frailejón, Ernesto peréz
-.content {
-    display: flex;
-    width: 90%;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    flex-grow: 1;
-    margin-top: 4vw;
-    height: auto!important;
-}
-
-.titlePrincipal {
-    font-family: 'Pacifico', cursive;
-    margin: 0 auto;
-    font-size: 3vw;
-    padding: 1.5rem;
-}
-
 .textoTitulos {
     font-family: 'Ubuntu', sans-serif;
     font-weight: 700;
@@ -49,15 +24,25 @@
     font-weight: 350;
 }
 
+// .titles {
+//     position: fixed;
+// }
+// .sepa {
+//     height: 2vw;
+// }
+// Hola mi nombre es Frailejón, Ernesto peréz
 .content {
-    height: auto;
-    .tables {
-        overflow: scroll;
-        height: 55vw!important;
-    }
-    .tables table {
-        height: 30%!important;
-    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    flex-grow: 1;
+    margin-top: 4vw;
+}
+
+.search {
+    margin-left: 1rem;
+    border: 2px solid rgba(128, 128, 128, 0.322);
 }
 
 .btn {
@@ -76,11 +61,7 @@
 @media only screen and (max-width: 1167px) {
     .content {
         width: 80vw!important;
-        height: 45vw!important;
         // margin-left: 4vw;
-        .tables {
-            height: 45vw!important;
-        }
         // .tables table {
         //     width: 10%!important;
         // }
@@ -90,11 +71,9 @@
 @media only screen and (max-width: 938px) {
     .content {
         width: 75vw!important;
-        height: 50vw!important;
         .tables {
             overflow: scroll;
             width: 75vw!important;
-            height: 50vw!important;
         }
         .tables table {
             width: 10%!important;
@@ -119,11 +98,9 @@
     .content {
         width: 75vw!important;
         // margin-left: 4vw;
-        height: 35rem!important;
         .tables {
             overflow: scroll;
             width: 75vw!important;
-            height: 35rem!important;
         }
         .tables table {
             width: 10%!important;
@@ -135,11 +112,9 @@
     .content {
         width: 70vw!important;
         // margin-left: 4vw;
-        height: 30rem!important;
         .tables {
             overflow: scroll;
             width: 70vw!important;
-            height: 30rem!important;
         }
         .tables table {
             width: 10%!important;

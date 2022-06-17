@@ -1,12 +1,27 @@
-*{
-    height: auto;
-    width: auto;
+@import '../../../../app.component.scss';
+.title {
+    font-family: 'Pacifico', cursive;
+    font-size: 7vw;
+    margin-bottom: 4vw;
 }
-// .table{
-//     width: 210px;
-// }
-// div {
-// 	width: 50%;
-// 	height: 300px;
-// }
 
+.textoTitulos {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+}
+
+.textox {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 350;
+}
+
+.btnEventually {
+    background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2)!important;
+    color: white!important;
+    width: auto!important;
+    height: auto!important;
+}
+
+.btnEventually:hover {
+    background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
+}
