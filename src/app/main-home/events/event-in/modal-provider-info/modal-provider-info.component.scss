@@ -1,6 +1,40 @@
+@import '../../../../app.component.scss';
 .check-container-politycs {
-  float: right;
-  padding: 5px;
-  margin: 10px;
-  background-color: #cfbfbf;
+    float: right;
+    padding: 5px;
+    margin: 10px;
+    background-color: #cfbfbf;
+}
+
+.titlePrincipal {
+    font-family: 'Pacifico', cursive;
+    margin: 0 auto;
+    font-size: 4vw;
+    // margin-top: 2rem;
+    // margin-bottom: 2rem;
+    // border: 1px solid red;
+    text-align: center;
+    // width: 30vw;
+    // height: 15vw;
+    line-height: 4rem;
+}
+
+.textoTitulos {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+}
+
+.textox {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 350;
+}
+
+.btnEventually {
+    background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
+    color: white;
+    width: auto;
+}
+
+.btnEventually:hover {
+    background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
 }

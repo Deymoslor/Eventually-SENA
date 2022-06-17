@@ -13,7 +13,7 @@
 }
 
 .misMuchachos {
-    border: 1px solid purple;
+    // border: 1px solid purple;
     width: 98%;
     margin-bottom: 1rem;
 }
@@ -56,18 +56,25 @@
     // border: 1px solid purple;
 }
 
+.imd {
+    margin: 0!important;
+    margin-left: 0!important;
+    padding: 0!important;
+}
+
 #imagenGrupo {
-    // border-radius: 15%;
+    // border-radius: 5%;
     width: 100%;
     margin: 0;
     padding: 0;
+    // border: 1px solid green;
 }
 
 form {
     // border: 1px solid purple;
-    margin: auto;
+    margin: 0;
     padding: 0;
-    width: 98%;
+    width: 100%;
 }
 
 .t {

@@ -1,0 +1,35 @@
+@import '../../../../../app.component.scss';
+.check-container-politycs {
+    float: right;
+    padding: 5px;
+    margin: 10px;
+    background-color: #cfbfbf;
+}
+
+.titlePrincipal {
+    font-family: 'Pacifico', cursive;
+    margin: 0 auto;
+    font-size: 4vw;
+    // margin-top: 2rem;
+    // margin-bottom: 2rem;
+    // border: 1px solid red;
+    text-align: center;
+    // width: 30vw;
+    // height: 15vw;
+    line-height: 4rem;
+}
+
+img {
+    width: 400px;
+    border-radius: 5%;
+}
+
+.textoTitulos {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+}
+
+.textox {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 350;
+}

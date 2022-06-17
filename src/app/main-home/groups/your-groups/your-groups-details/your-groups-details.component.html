@@ -14,19 +14,20 @@
     <a [routerLink]="['/groups/related-groups']" routerLinkActive="router-link-active" class="back">&lt; Volver al inicio</a>
 </div> -->
 <div class="container d-flex card">
+    <form [formGroup]="GroupForm">
+        <div class="imd">
+            <div class="img-container class-thumbnail" *ngIf="!GroupForm.get('imagen')!.value">
+                <img class="rounded  card-img-top" id="imagenGrupo" src="../../../../assets/group/prueba.jfif">
+            </div>
+        </div>
+        <div class="imd">
+            <div class="img-container class-thumbnail" *ngIf="GroupForm.get('imagen')?.value">
+                <img class="rounded card-img-top" id="imagenGrupo" [src]="GroupForm.get('imagen')?.value" alt="{{ group?.nombreGrupo }}">
+            </div>
+        </div>
+    </form>
     <div class="row">
-        <form [formGroup]="GroupForm">
-            <div class="row">
-                <div class="img-container class-thumbnail" *ngIf="!GroupForm.get('imagen')!.value">
-                    <img class="rounded  card-img-top" id="imagenGrupo" src="../../../../assets/group/prueba.jfif">
-                </div>
-            </div>
-            <div class="row">
-                <div class="img-container class-thumbnail" *ngIf="GroupForm.get('imagen')?.value">
-                    <img class="rounded card-img-top" id="imagenGrupo" [src]="GroupForm.get('imagen')?.value" alt="{{ group?.nombreGrupo }}">
-                </div>
-            </div>
-        </form>
+
         <div class="row misMuchachos">
             <br>
             <div class="row">
