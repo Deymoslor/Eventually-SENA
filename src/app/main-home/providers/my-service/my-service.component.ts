@@ -54,7 +54,7 @@ export class MyServiceComponent implements OnInit {
     this.api.getSingleServiceProvider(this.auth.desencriptar(localStorage.getItem('id'))).subscribe((data:any) =>{
 
       // console.log(this.auth.desencriptar(localStorage.getItem('nombreRol')));
-      // console.log(data);
+      console.log(data);
 
       if (data >= 0){
         // this.router.navigateByUrl('provider/createService');

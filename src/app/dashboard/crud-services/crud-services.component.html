@@ -33,7 +33,7 @@
                         <th class="textox" scope="row">{{ service.idServicios }}</th>
                         <td class="textox">{{ service.nombreServicio }}</td>
                         <td class="textox">{{ service.descripcionServicio }}</td>
-                        <td class="textox">{{ service.precioEstimado }}</td>
+                        <td class="textox">{{service.precioEstimado | currency: 'COP'}}</td>
                         <td class="textox">
                             <img class="imgTabla" src="{{ service.imagen }}" alt="">
                         </td>

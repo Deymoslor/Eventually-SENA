@@ -43,7 +43,7 @@ export class EventProviderComponent implements OnInit {
   dataTypeService!: TypeServicesI[]
   dataResultService!: ResultServiceI[];
 
-  
+
   number!:number;
   idProv: any;
   constructor(private api:ApiService, private modalService: NgbModal,
@@ -76,7 +76,7 @@ export class EventProviderComponent implements OnInit {
       console.log(datas);
       this.dataProviderService = datas;
       this.totalRecords = datas.length
-      
+
       this.dataProviderService.forEach(key => {
         // console.log(key.idServicios + ": proveedor");
         let total:number = 0;
@@ -100,7 +100,7 @@ export class EventProviderComponent implements OnInit {
             key.calificacionT = total;
           }
         })
-        
+
         console.log(this.idEvento)
         this.api.getStateInvitationService(key.idServicios.toString(), this.idEvento.toString()).subscribe(data =>{
           console.log(data);
@@ -113,7 +113,7 @@ export class EventProviderComponent implements OnInit {
               this.idServiceAceppted = key.Servicio_idServicios;
               console.log(key.estadoInvitacion);
             }
-            
+
           });
           if(key.estadoInvitacion == 1){
             this.stateAccept = 1;
@@ -130,9 +130,9 @@ export class EventProviderComponent implements OnInit {
           });
         })
       });
-      
+
     })
-    
+
 
   }
 
@@ -190,7 +190,7 @@ export class EventProviderComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
-  
+
   postInvitation(forms: InvitationProvSerI){
     // let eventId = Number(this.route.snapshot.paramMap.get('id'));
     forms.Evento_idEvento = this.idEvento;

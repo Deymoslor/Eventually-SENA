@@ -13,107 +13,126 @@
 <div *ngIf="manager?.idPersona != personaId">
     <a [routerLink]="['/groups/related-groups']" routerLinkActive="router-link-active" class="back">&lt; Volver al inicio</a>
 </div> -->
-<div class="container card">
+<div class="container d-flex card">
     <form [formGroup]="GroupForm">
-
-        <div class="img-container class-thumbnail" *ngIf="!GroupForm.get('imagen')!.value">
-            <img class="rounded  card-img-top" id="imagenGrupo" src="../../../../assets/group/prueba.jfif">
+        <div class="imd">
+            <div class="img-container class-thumbnail" *ngIf="!GroupForm.get('imagen')!.value">
+                <img class="rounded  card-img-top" id="imagenGrupo" src="../../../../assets/group/prueba.jfif">
+            </div>
         </div>
-        <div class="img-container class-thumbnail" *ngIf="GroupForm.get('imagen')?.value">
-            <img class="rounded card-img-top" id="imagenGrupo" [src]="GroupForm.get('imagen')?.value" alt="{{ group?.nombreGrupo }}">
+        <div class="imd">
+            <div class="img-container class-thumbnail" *ngIf="GroupForm.get('imagen')?.value">
+                <img class="rounded card-img-top" id="imagenGrupo" [src]="GroupForm.get('imagen')?.value" alt="{{ group?.nombreGrupo }}">
+            </div>
         </div>
     </form>
-    <table>
-        <br>
-        <tr>
-            <td>
+    <div class="row">
 
-                <p class="product-name">{{ group?.nombreGrupo }}</p>
-                <br>
-            </td>
-            <td>
+        <div class="row misMuchachos">
+            <br>
+            <div class="row">
+                <div class="col-6">
 
-                <tr>
-                    <p class="product-name h2">Sobre</p>
-                </tr>
-                <tr>
-                    <p class="product-short-description h5 ">{{group?.descripcionGrupo}}</p>
+                    <p class="product-name nombre">{{ group?.nombreGrupo }}</p>
+                    <br>
+                </div>
+                <div class="col-6">
 
-                </tr>
-
-
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-
-                <ng-container *ngFor="let likeI of likesI">
-                    <div *ngIf="group?.gustos_idGusto == likeI.idGusto">
-                        <p class="product-name h2">Enfocado en</p>
-                        <p class="product-short-description h5">{{likeI.nombreGusto}}</p>
+                    <div class="row">
+                        <p class="product-name h2 title">Sobre</p>
                     </div>
-                </ng-container>
-            </td>
-            <td *ngIf="manager?.idPersona == personaId && manager?.estadoPersona_idEstadoPersona == 1">
-                <tr>
-                    <li><a class="h5 dropdown-item" role="button" (click)="editarGroup(group?.idGrupos)" data-bs-toggle="modal" data-bs-target="#content-modal" role="button" (click)="modalOpen(content)">Editar grupo</a></li>
-                </tr>
-                <tr *ngIf="group?.privacidadGrupo == 1">
-                    <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#content-modal2" role="button" (click)="modalOpen2(content2)">Invitar amigo</a></li>
-                </tr>
-                <!-- <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#modal-report-events-groups-organizer">Reportes</a></li> -->
+                    <div class="row">
+                        <p class="product-short-description h5 textox">{{group?.descripcionGrupo}}</p>
 
-            </td>
-        </tr>
-        <tr>
-            <td *ngIf="InvitadoPresente">
-                <li><a class="h5 dropdown-item" role="button" (click)="putDeleteDetail(InvitadoPresente.idGrupos,InvitadoPresente.idDetalleGrupoPersona,personaId, 4)">Salir del grupo</a></li>
-            </td>
-            <td>
-                <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#content-modal3" role="button" (click)="modalOpen3(content3)">Ver eventos realizados</a></li>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <table class="table table-striped">
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+
+                    <ng-container *ngFor="let likeI of likesI">
+                        <div *ngIf="group?.gustos_idGusto == likeI.idGusto">
+                            <div class="row">
+                                <p class="product-name h2 title">Enfocado en</p>
+                            </div>
+                            <div class="row">
+                                <p class="product-short-description h5 textox">{{likeI.nombreGusto}}</p>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+                <div class="col-6" *ngIf="manager?.idPersona == personaId && manager?.estadoPersona_idEstadoPersona == 1">
+
+                    <button class="btn btnEditar textox" (click)="editarGroup(group?.idGrupos)" data-bs-toggle="modal" data-bs-target="#content-modal" (click)="modalOpen(content)">Editar grupo
+                  </button>
+                    <!-- <li style="list-style: none;"><a class="h5 textox dropdown-item btnEditar" role="button" (click)="editarGroup(group?.idGrupos)" data-bs-toggle="modal" data-bs-target="#content-modal" role="button" (click)="modalOpen(content)">Editar grupo</a></li> -->
+
+                    <div *ngIf="group?.privacidadGrupo == 1">
+                        <button class="btn btnEditar textox" data-bs-toggle="modal" data-bs-target="#content-modal2" (click)="modalOpen2(content2)">Invitar amigo
+                  </button>
+
+                        <!-- <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#content-modal2" role="button" (click)="modalOpen2(content2)">Invitar amigo</a></li> -->
+                    </div>
+                    <!-- <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#modal-report-events-groups-organizer">Reportes</a></li> -->
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6" *ngIf="InvitadoPresente">
+                    <button class="btn btnEditar textox" (click)="putDeleteDetail(InvitadoPresente.idGrupos,InvitadoPresente.idDetalleGrupoPersona,personaId, 4)">Salir del grupo
+              </button>
+
+                    <!-- <li><a class="h5 dropdown-item" role="button" (click)="putDeleteDetail(InvitadoPresente.idGrupos,InvitadoPresente.idDetalleGrupoPersona,personaId, 4)">Salir del grupo</a></li> -->
+                </div>
+                <div class="col-6">
+                    <button class="btn btnEditar textox" data-bs-toggle="modal" data-bs-target="#content-modal3" (click)="modalOpen3(content3)">Ver eventos realizados
+              </button>
+                    <!-- <li><a class="h5 dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#content-modal3" role="button" (click)="modalOpen3(content3)">Ver eventos realizados</a></li> -->
+                </div>
+            </div>
+            <div class="row">
+
+                <table class="table table-striped tablita">
                     <thead>
                         <tr>
-                            <th>Nombre</th>
-                            <th>Email</th>
-                            <div *ngIf="manager">
+                            <th class="title">Nombre</th>
+                            <th class="title">Email</th>
+                            <div class="title" *ngIf="manager">
                                 <th>Acción</th>
                             </div>
                         </tr>
                     </thead>
                     <tbody>
                         <ng-container *ngFor="let persona of personas">
-                            <tr *ngIf="persona.idPersona != personaId">
-                                <td class="product-short-description">{{persona.nombre}}</td>
-                                <td class="product-short-description">{{persona.Email}}</td>
+                            <tr class="textox" *ngIf="persona.idPersona != personaId">
+                                <td class="product-short-description textox">{{persona.nombre}}</td>
+                                <td class="product-short-description textox">{{persona.Email}}</td>
                                 <div *ngIf="manager">
-                                    <td class="product-short-description"><button class="btn btnEditar justify-content-md-center" (click)="putEditDetail(persona.idGrupos,persona.idDetalleGrupoPersona,persona.idPersona, 4)">Eliminar</button></td>
+                                    <td class="product-short-description textox"><button class="btn btnEditar justify-content-md-center" (click)="putEditDetail(persona.idGrupos,persona.idDetalleGrupoPersona,persona.idPersona, 4)">Eliminar</button></td>
                                 </div>
                             </tr>
                         </ng-container>
                     </tbody>
                 </table>
-            </td>
-            <td>
-                <tr *ngIf="!personas && manager">
-                    <p class="product-name h2">no hay participantes en este grupo</p>
-                </tr>
-                <tr *ngIf="!personas && !manager">
-                    <p class="product-name h2">Eres el unico participante en este grupo</p>
-                </tr>
-            </td>
-        </tr>
 
-        <!-- <button data-bs-toggle="modal" data-bs-target="#content-modal" role="button" (click)="modalOpen(content)">holaa</button> -->
-        <tr>
-            <p class="h3">Evento a realizar</p>
-        </tr>
-    </table>
+                <div *ngIf="!personas && manager">
+                    <p class="product-name h2 title">no hay participantes en este grupo</p>
+                </div>
+                <div *ngIf="!personas && !manager">
+                    <p class="product-name h2 title">Eres el unico participante en este grupo</p>
+                </div>
+
+            </div>
+
+            <!-- <button data-bs-toggle="modal" data-bs-target="#content-modal" role="button" (click)="modalOpen(content)">holaa</button> -->
+            <div class="row">
+                <p class="h3 tituloE">Evento a realizar:</p>
+            </div>
+        </div>
+    </div>
     <router-outlet>
 
     </router-outlet>

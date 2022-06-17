@@ -1,15 +1,64 @@
+@import '../../../../app.component.scss';
 table {
-  width: 100%;
+    width: 90%;
+}
+
+.textoTitulos {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+}
+
+.textox {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 350;
 }
 
 .mat-column-position {
-  width: 32px;
-  border-right: 1px solid currentColor;
-  padding-right: 24px;
-  text-align: center;
+    width: 32px;
+    border-right: 1px solid currentColor;
+    padding-right: 24px;
+    text-align: center;
 }
 
 .mat-column-nameProvider {
-  padding-left: 16px;
-  font-size: 16px;
+    padding-left: 16px;
+    font-size: 16px;
+}
+
+.tables {
+    width: auto;
+    // border: 1px solid purple;
+    display: flex!important;
+    flex-direction: column!important;
+    align-items: center!important;
+    justify-content: space-between!important;
+    margin-bottom: 2rem;
+}
+
+.med {
+    width: 90%;
+    // border: 1px solid green;
+}
+
+.prov {
+    display: flex!important;
+    flex-direction: column!important;
+    align-items: center!important;
+    justify-content: space-between!important;
+    // border: 1px solid red;
+}
+
+.search {
+    border: 0.5px solid gray;
+    margin-left: 1rem;
+}
+
+.btnEventually {
+    background: linear-gradient(to right, $btnsGenerals, $btnsGenerals2);
+    color: white;
+    width: auto;
+}
+
+.btnEventually:hover {
+    background: linear-gradient(to right, $btnsGeneralsH, $btnsGenerals2H);
 }

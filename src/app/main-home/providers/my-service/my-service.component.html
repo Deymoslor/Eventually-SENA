@@ -10,9 +10,9 @@
                 <div class="right-options">
                     <div class="form-check form-switch">
                         <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" (click)="changeStateServiceProv(ServicesForm.value)" *ngIf="ServicesForm.get('estadoServicio')?.value == 1" checked>
-                        <label class="form-check-label textox" for="flexSwitchCheckChecked" *ngIf="ServicesForm.get('estadoServicio')?.value == 1">Deshabilitar</label>
+                        <label class="form-check-label fw-bolder fs-5" for="flexSwitchCheckChecked" *ngIf="ServicesForm.get('estadoServicio')?.value == 1">Deshabilitar</label>
                         <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" (click)="changeStateServiceProv(ServicesForm.value)" *ngIf="ServicesForm.get('estadoServicio')?.value == 2">
-                        <label class="form-check-label textox" for="flexSwitchCheckChecked" *ngIf="ServicesForm.get('estadoServicio')?.value == 2">Habilitar</label>
+                        <label class="form-check-label fw-bolder fs-5" for="flexSwitchCheckChecked" *ngIf="ServicesForm.get('estadoServicio')?.value == 2">Habilitar</label>
                     </div>
                 </div>
             </div>
@@ -78,7 +78,7 @@
                                         <label class="textoTitulos">Precio estimado</label>
                                     </div>
                                     <div class="col-4 campos">
-                                        <p class="textox">{{ServicesForm.get('precioEstimado')?.value}}</p>
+                                        <p class="textox">{{ServicesForm.get('precioEstimado')?.value | currency: 'COP'}}</p>
 
                                     </div>
                                 </div>
