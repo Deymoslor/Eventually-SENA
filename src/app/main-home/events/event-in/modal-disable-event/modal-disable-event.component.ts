@@ -28,8 +28,8 @@ export class ModalDisableEventComponent implements OnInit {
     this.resultForm = this.formBuilder.group({
       idresultadoServicio: [],
       calificacion: ['', [Validators.required, Validators.min(1), Validators.max(5), Validators.pattern(/^[1-5]\d*$/)]],
-      problemasEncontrados: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(300), Validators.pattern(/^[0-9]\d*$/)]],
-      descripcionResultado: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(400), Validators.pattern(/^[0-9]\d*$/)]],
+      problemasEncontrados: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(300), Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/)]],
+      descripcionResultado: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(400), Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/)]],
     });
 
   }

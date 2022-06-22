@@ -57,8 +57,8 @@
                         <div class="invalid-feedback">
                             {{ resultForm.get("problemasEncontrados")?.hasError("required") ? "Campo requerido" : "" }}
                             {{ resultForm.get("problemasEncontrados")?.hasError(",maxlength") ? "Campo co un máximo de 300 caracteres" : "" }}
-                            {{ resultForm.get("problemasEncontrados")?.hasError("minlength") ? "Campo con un mínimo de 10 caracteres" : "" }}
-                            {{ resultForm.get("problemasEncontrados")?.hasError("pattern") ? "Campo solo con numeros, no caracteres especiales" : "" }}
+                            {{ resultForm.get("problemasEncontrados")?.hasError("minlength") ? "Campo con un mínimo de 5 caracteres" : "" }}
+                            {{ resultForm.get("problemasEncontrados")?.hasError("pattern") ? "Campo solo con letras, no caracteres especiales" : "" }}
                         </div>
                     </div>
                     <label for="">Descripcion del resultado: </label>
