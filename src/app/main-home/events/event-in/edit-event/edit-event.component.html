@@ -1,141 +1,137 @@
-<div class="content" >
+<div class="content">
     <form [formGroup]="editFormIn" (ngSubmit)="postEditForm(editFormIn.value)">
-                    <h5 class="title">Editando evento</h5>
-                    <div class="body">
-                        <div class="form-group">
-      
-                            <div class="grupoForm">
-                                <label for="">Nombre del Evento:</label>
-                                <input type="text" class="form-control" id="nombreEvento" placeholder="Ej: El mejor evento" formControlName="nombreEvento" [ngClass]="
+        <h5 class="title">Editando evento</h5>
+        <div class="body">
+            <div class="form-group">
+
+                <div class="grupoForm">
+                    <label for="">Nombre del Evento:</label>
+                    <input type="text" class="form-control" id="nombreEvento" placeholder="Ej: El mejor evento" formControlName="nombreEvento" [ngClass]="
                                 (editFormIn.get('nombreEvento')?.touched || editFormIn.get('nombreEvento')?.dirty) &&
-                                editFormIn.get('nombreEvento')?.hasError('required') ? 'is-invalid' : '' || editFormIn.get('nombreEvento')?.hasError('minlength') 
+                                editFormIn.get('nombreEvento')?.hasError('required') ? 'is-invalid' : '' || editFormIn.get('nombreEvento')?.hasError('minlength')
                                             ? 'is-invalid' : '' || editFormIn.get('nombreEvento')?.hasError('maxlength')
-                                            ? 'is-invalid' : ''" >
-                                <div class="invalid-feedback">
-                                    {{ editFormIn.get("nombreEvento")?.hasError("required") ? "Nombre requerido" : "" }}
-                                    {{ editFormIn.get("nombreEvento")?.hasError("minlength") ? "Campo mínimo de 2 carácteres" : "" }}
-                                    {{ editFormIn.get("nombreEvento")?.hasError("maxlength") ? "Campo maximo de 30 carácteres" : "" }}
-                                </div>
-                            </div>
-    
-                            <div class="groupForm">
-                                <label for="">Tipo de Evento:</label>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" [ngClass]="
+                                            ? 'is-invalid' : ''">
+                    <div class="invalid-feedback">
+                        {{ editFormIn.get("nombreEvento")?.hasError("required") ? "Nombre requerido" : "" }} {{ editFormIn.get("nombreEvento")?.hasError("minlength") ? "Campo mínimo de 2 carácteres" : "" }} {{ editFormIn.get("nombreEvento")?.hasError("maxlength") ? "Campo maximo
+                        de 30 carácteres" : "" }}
+                    </div>
+                </div>
+
+                <div class="groupForm">
+                    <label for="">Tipo de Evento:</label>
+                    <div class="form-check">
+                        <input title="Botón para establecer el evento como presencial." class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" [ngClass]="
                                             (editFormIn.get('tipoEvento')?.touched || editFormIn.get('tipoEvento')?.dirty) &&
                                                 editFormIn.get('tipoEvento')?.errors ? 'is-invalid' : ''" formControlName="tipoEvento" name="tipoEvento" value="presencial" checked>
-                                    <label class="form-check-label" for="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
                                                 Presencial
                                             </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" [ngClass]="
+                    </div>
+                    <div class="form-check">
+                        <input title="Botón para establecer el evento como virtual." class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" [ngClass]="
                                             (editFormIn.get('tipoEvento')?.touched || editFormIn.get('tipoEvento')?.dirty) &&
                                                 editFormIn.get('tipoEvento')?.errors ? 'is-invalid' : ''" formControlName="tipoEvento" name="tipoEvento" value="virtual">
-                                    <label class="form-check-label" for="flexRadioDefault2">
+                        <label class="form-check-label" for="flexRadioDefault2">
                                                 Virtual
                                             </label>
-                                </div>
-                                <div class="invalid-feedback">
-                                    {{ editFormIn.get("tipoEvento")?.hasError("required") ? "Tipo Requerido" : "" }}
-                                </div>
-                            </div>
-    
-                           <div class="groupForm">
-                                <label for="">Imagen evento:</label>
-                                <div class="mb-2">
-                                    <input (change)="capturarFile($event)" type="file" [ngClass]="
-                                    (editFormIn.get('imagen')?.touched || editFormIn.get('imagen')?.dirty) &&
-                                        editFormIn.get('imagen')?.errors ? 'is-invalid' : ''" formControlName="imagen" >
-                                </div>
-                                <h4>PREVISUALIZACION</h4>
-                                <div *ngIf="previsualizacion">
-                                    <img width="500px" [src]="previsualizacion" alt="">
-                                </div>
-                                <div class="invalid-feedback">
-                                    {{ editFormIn.get("imagen")?.hasError("required") ? "Imagen requerida" : "" }} 
-                                </div>
-                           </div>
-    
-                           <div class="groupForm">
-                                <label for="">Descripcion Evento:</label>
-                                    <textarea class="form-control" type="text" id="descripcionEvento" formControlName="descripcionEvento" placeholder="Explica de que tratará y dónde será." rows="2" [ngClass]="
-                                    (editFormIn.get('descripcionEvento')?.touched || editFormIn.get('descripcionEvento')?.dirty) &&
-                                    editFormIn.get('descripcionEvento')?.hasError('required') 
-                                    ? 'is-invalid' : '' || editFormIn.get('descripcionEvento')?.hasError('minlength') 
-                                    ? 'is-invalid' : '' || editFormIn.get('descripcionEvento')?.hasError('maxlength')
-                                    ? 'is-invalid' : ''" ></textarea>
-                                <div class="invalid-feedback">
-                                    {{ editFormIn.get("descripcionEvento")?.hasError("required") ? "Descripcion requerida" : "" }} 
-                                    {{ editFormIn.get("descripcionEvento")?.hasError("minlength") ? "Campo mínimo de 10 carácteres" : "" }}
-                                    {{ editFormIn.get("descripcionEvento")?.hasError("maxlength") ? "Campo maximo de 500 carácteres" : "" }}
-                                </div>
-                           </div>
+                    </div>
+                    <div class="invalid-feedback">
+                        {{ editFormIn.get("tipoEvento")?.hasError("required") ? "Tipo Requerido" : "" }}
+                    </div>
+                </div>
 
-                           <div class="groupForm">
-                                <label for="">Dirección del Evento:</label>
-                                    <textarea class="form-control" type="text" id="direccion" formControlName="direccion" placeholder="Explica donde será." rows="2" [ngClass]="
+                <div class="groupForm">
+                    <label for="">Imagen evento:</label>
+                    <div class="mb-2">
+                        <input title="Botón para cambiar la imagen del evento." (change)="capturarFile($event)" type="file" [ngClass]="
+                                    (editFormIn.get('imagen')?.touched || editFormIn.get('imagen')?.dirty) &&
+                                        editFormIn.get('imagen')?.errors ? 'is-invalid' : ''" formControlName="imagen">
+                    </div>
+                    <h4>PREVISUALIZACION</h4>
+                    <div *ngIf="previsualizacion">
+                        <img width="500px" [src]="previsualizacion" alt="">
+                    </div>
+                    <div class="invalid-feedback">
+                        {{ editFormIn.get("imagen")?.hasError("required") ? "Imagen requerida" : "" }}
+                    </div>
+                </div>
+
+                <div class="groupForm">
+                    <label for="">Descripcion Evento:</label>
+                    <textarea class="form-control" type="text" id="descripcionEvento" formControlName="descripcionEvento" placeholder="Explica de que tratará y dónde será." rows="2" [ngClass]="
+                                    (editFormIn.get('descripcionEvento')?.touched || editFormIn.get('descripcionEvento')?.dirty) &&
+                                    editFormIn.get('descripcionEvento')?.hasError('required')
+                                    ? 'is-invalid' : '' || editFormIn.get('descripcionEvento')?.hasError('minlength')
+                                    ? 'is-invalid' : '' || editFormIn.get('descripcionEvento')?.hasError('maxlength')
+                                    ? 'is-invalid' : ''"></textarea>
+                    <div class="invalid-feedback">
+                        {{ editFormIn.get("descripcionEvento")?.hasError("required") ? "Descripcion requerida" : "" }} {{ editFormIn.get("descripcionEvento")?.hasError("minlength") ? "Campo mínimo de 10 carácteres" : "" }} {{ editFormIn.get("descripcionEvento")?.hasError("maxlength")
+                        ? "Campo maximo de 500 carácteres" : "" }}
+                    </div>
+                </div>
+
+                <div class="groupForm">
+                    <label for="">Dirección del Evento:</label>
+                    <textarea class="form-control" type="text" id="direccion" formControlName="direccion" placeholder="Explica donde será." rows="2" [ngClass]="
                                     (editFormIn.get('direccion')?.touched || editFormIn.get('direccion')?.dirty) &&
-                                    editFormIn.get('direccion')?.hasError('required') 
-                                    ? 'is-invalid' : '' || editFormIn.get('direccion')?.hasError('minlength') 
+                                    editFormIn.get('direccion')?.hasError('required')
+                                    ? 'is-invalid' : '' || editFormIn.get('direccion')?.hasError('minlength')
                                     ? 'is-invalid' : '' || editFormIn.get('direccion')?.hasError('maxlength')
-                                    ? 'is-invalid' : ''" ></textarea>
-                                <div class="invalid-feedback">
-                                    {{ editFormIn.get("direccion")?.hasError("required") ? "Descripcion requerida" : "" }} 
-                                    {{ editFormIn.get("direccion")?.hasError("minlength") ? "Campo mínimo de 10 carácteres" : "" }}
-                                    {{ editFormIn.get("direccion")?.hasError("maxlength") ? "Campo maximo de 150 carácteres" : "" }}
-                                </div>
-                           </div>
-                           <!-- {{editFormIn.get("descripcionEvento")?.errors | json}} -->
-    
-                            <div class="groupForm">
-                                <label for="">Fecha Realizacion:</label>
-                            <input type="date" class="form-control" [ngClass]="
+                                    ? 'is-invalid' : ''"></textarea>
+                    <div class="invalid-feedback">
+                        {{ editFormIn.get("direccion")?.hasError("required") ? "Descripcion requerida" : "" }} {{ editFormIn.get("direccion")?.hasError("minlength") ? "Campo mínimo de 10 carácteres" : "" }} {{ editFormIn.get("direccion")?.hasError("maxlength") ? "Campo maximo
+                        de 150 carácteres" : "" }}
+                    </div>
+                </div>
+                <!-- {{editFormIn.get("descripcionEvento")?.errors | json}} -->
+
+                <div class="groupForm">
+                    <label for="">Fecha Realizacion:</label>
+                    <input title="Botón para editar la fecha del evento." type="date" class="form-control" [ngClass]="
                                     (editFormIn.get('fechaEvento')?.touched || editFormIn.get('fechaEvento')?.dirty) &&
-                                        editFormIn.get('fechaEvento')?.hasError('required') ? 'is-invalid' : ''" formControlName="fechaEvento"  min="{{dateS}}">
-                                        <div class="invalid-feedback">
-                                            {{ editFormIn.get("fechaEvento")?.hasError("required") ? " Fecha requerida" : "" }}
-                                        </div>
-                                        <style>
-                                             ::ng-deep .cdk-overlay-container {
-                                                z-index: 2000;
-                                            }
-                                        </style>
-                
-                                        </div>
-                
-                                        <div class="groupForm">
-                                            <label for="exampleInputEmail1">Numero Participantes maximo:</label>
-                                            <input type="number" class="form-control" id="exampleInputEmail1" min="2" max="200" [ngClass]="
+                                        editFormIn.get('fechaEvento')?.hasError('required') ? 'is-invalid' : ''" formControlName="fechaEvento" min="{{dateS}}">
+                    <div class="invalid-feedback">
+                        {{ editFormIn.get("fechaEvento")?.hasError("required") ? " Fecha requerida" : "" }}
+                    </div>
+                    <style>
+                         ::ng-deep .cdk-overlay-container {
+                            z-index: 2000;
+                        }
+                    </style>
+
+                </div>
+
+                <div class="groupForm">
+                    <label for="exampleInputEmail1">Numero Participantes maximo:</label>
+                    <input title="Botón para editar el número máximo de participantes para el evento." type="number" class="form-control" id="exampleInputEmail1" min="2" max="200" [ngClass]="
                                                     (editFormIn.get('participantesTotales')?.touched || editFormIn.get('participantesTotales')?.dirty) &&
-                                                        editFormIn.get('participantesTotales')?.hasError('required') 
-                                                        ? 'is-invalid' : '' || editFormIn.get('participantesTotales')?.hasError('min') 
-                                                        ? 'is-invalid' : '' || editFormIn.get('participantesTotales')?.hasError('max') 
+                                                        editFormIn.get('participantesTotales')?.hasError('required')
+                                                        ? 'is-invalid' : '' || editFormIn.get('participantesTotales')?.hasError('min')
+                                                        ? 'is-invalid' : '' || editFormIn.get('participantesTotales')?.hasError('max')
                                                         ? 'is-invalid' : ''" formControlName="participantesTotales">
-                
-                                            <div class="invalid-feedback">
-                                                {{ editFormIn.get("participantesTotales")?.hasError("required") ? " Numero de participantes requeridos" : "" }}
-                                                {{ editFormIn.get("participantesTotales")?.hasError("min") ? "Minimo 2 participantes" : "" }}
-                                                {{ editFormIn.get("participantesTotales")?.hasError("max") ? "Maximo 200 participantes" : "" }}                        
-                                            </div>
-                                        </div>
-                
-                                        <div class="groupForm">
-                                            <input type="checkbox" checked name="" id="check"  formControlName="check" [ngClass]="(editFormIn.get('check')?.touched || editFormIn.get('check')?.dirty) &&
-                                            editFormIn.get('check')?.errors ? 'is-invalid' : ''" >
-                                            <label>Aceptas 1480 de 2011 articulo 30 sobre contenido explicito.</label>
-                                            <div class="invalid-feedback">
-                                                {{ editFormIn.get("check")?.hasError("required") ? "Debe estar de acuerdo con las políticas." : "" }}
-                                            </div>
-                                        </div>
-                                    </div>
-                                <!-- goback(editFormIn.get('Grupos_idGrupos')?.value) -->
-                                    <div class="container-buttons">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="goback(dataEvent.Grupos_idGrupos)">Cerrar</button>
-                                        <!-- (click)="refresh()" -->
-                                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="editFormIn.invalid" >Guardar</button>
-                                    </div>
-                                </div>
-            
-      </form>  
+
+                    <div class="invalid-feedback">
+                        {{ editFormIn.get("participantesTotales")?.hasError("required") ? " Numero de participantes requeridos" : "" }} {{ editFormIn.get("participantesTotales")?.hasError("min") ? "Minimo 2 participantes" : "" }} {{ editFormIn.get("participantesTotales")?.hasError("max")
+                        ? "Maximo 200 participantes" : "" }}
+                    </div>
+                </div>
+
+                <div class="groupForm">
+                    <input type="checkbox" checked name="" id="check" formControlName="check" [ngClass]="(editFormIn.get('check')?.touched || editFormIn.get('check')?.dirty) &&
+                                            editFormIn.get('check')?.errors ? 'is-invalid' : ''">
+                    <label>Aceptas 1480 de 2011 articulo 30 sobre contenido explicito.</label>
+                    <div class="invalid-feedback">
+                        {{ editFormIn.get("check")?.hasError("required") ? "Debe estar de acuerdo con las políticas." : "" }}
+                    </div>
+                </div>
+            </div>
+            <!-- goback(editFormIn.get('Grupos_idGrupos')?.value) -->
+            <div class="container-buttons">
+                <button title="Botón para cerrar y desistir de editar el evento." type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="goback(dataEvent.Grupos_idGrupos)">Cerrar</button>
+                <!-- (click)="refresh()" -->
+                <button type="submit" title="Botón para editar y guardar el evento con los datos anteriormente puestos." class="btn btn-primary" data-bs-dismiss="modal" [disabled]="editFormIn.invalid">Guardar</button>
+            </div>
+        </div>
+
+    </form>
 </div>

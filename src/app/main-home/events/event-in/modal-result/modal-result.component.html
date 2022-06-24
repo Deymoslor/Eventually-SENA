@@ -1,33 +1,31 @@
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">Termi        nar y dar un resultado</h5>
-        </div>
-        <div class="modal-body">
-            <div class="form-group">
-                <label for="">Descripción del resultado:</label>
-                <div class="mb-2">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Explica cual fue el resultado"
-                     rows="2"></textarea>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Termi nar y dar un resultado</h5>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="">Descripción del resultado:</label>
+                    <div class="mb-2">
+                        <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Explica cual fue el resultado" rows="2"></textarea>
+                    </div>
+
+                    <label for="">Problemas encontrados:</label>
+                    <div class="mb-2">
+                        <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Explica cual fue el resultado" rows="2"></textarea>
+                    </div>
+
+
+                    <label for="customRange3" class="form-label">Calificacion del servicio: Menor a Mayor</label>
+                    <input title="Botón para poner una calificación al evento." type="range" class="form-range" min="1" max="10" step="1" value="5" id="customRange3">
+                    <label for=""></label>
                 </div>
-
-                <label for="">Problemas encontrados:</label>
-                <div class="mb-2">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Explica cual fue el resultado"
-                     rows="2"></textarea>
-                </div>
-
-
-                <label for="customRange3" class="form-label">Calificacion del servicio: Menor a Mayor</label>
-                <input type="range" class="form-range" min="1" max="10" step="1" value="5" id="customRange3">
-                <label for=""></label>
+            </div>
+            <div class="modal-footer">
+                <button title="Botón para enviar la calificación del evento." type="button" class="btn btn-primary" data-bs-dismiss="modal" [routerLink]="['/events']" routerLinkActive="router-link-active">Enviar</button>
             </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" [routerLink]="['/events']" routerLinkActive="router-link-active" >Enviar</button>
-        </div>
-      </div>
     </div>
-  </div>
+</div>

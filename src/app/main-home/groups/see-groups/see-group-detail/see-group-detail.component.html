@@ -30,14 +30,14 @@
             <td>
                 <div class="cart-row" *ngIf="personas">
                     <span class="price title h5">{{ group?.InvitadosTotales }} PARTICIPANTES</span>
-                    <button title="Click para unirse al grupo." class="btn btnUnirse textox" title="Solicitar Unirse" (click)="share()">Unirse
+                    <button title="Botón para unirse al grupo." class="btn btnUnirse textox" (click)="share()">Unirse
           </button>
                 </div>
             </td>
             <td>
                 <div class="cart-row textox" *ngIf="!personas">
                     <span class="price textox">Nadie se ha unido a este grupo aún</span>
-                    <button class="btn btnUnirse" title="Solicitar Unirse textox" (click)="share()">Unirse
+                    <button class="btn btnUnirse" title="Botón para unirse al grupo." (click)="share()">Unirse
           </button>
                 </div>
             </td>

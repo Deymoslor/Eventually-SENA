@@ -41,12 +41,12 @@
 
                 <div class="col-3 colum">
                     <div *ngIf="actualDate < dateEvent; else nodate">
-                        <button class="btn btnEditar textox" (click)="editEvent(eventGroupForm.get('idEvento')?.value)">
+                        <button title="Botón para editar o cambiar los datos del evento." class="btn btnEditar textox" (click)="editEvent(eventGroupForm.get('idEvento')?.value)">
                     Editar
                 </button>
                     </div>
                     <ng-template #nodate>
-                        <button class="btnEditar2 textox" [disabled]="true">
+                        <button title="Botón para editar o cambiar los datos del evento." class="btnEditar2 textox" [disabled]="true">
                     Editar
                 </button>
                     </ng-template>
@@ -108,7 +108,7 @@
     </div>
     <div *ngIf="eventGroupForm.get('estadoEvento')?.value == 3">
         <h2 class="textoTitulos">EVENTO TERMINADO O INEXISTENTE, SI DESEA PODRA CREAR UN EVENTO NUEVO.</h2>
-        <button class="btnEditar textox" data-bs-toggle="modal2" data-bs-target="#content-modal2" role="button" (click)="modalOpen2(content2)">Crear Evento</button>
+        <button title="Botón para crea un evento en este grupo." class="btnEditar textox" data-bs-toggle="modal2" data-bs-target="#content-modal2" role="button" (click)="modalOpen2(content2)">Crear Evento</button>
     </div>
 
 </div>
@@ -203,7 +203,7 @@
         <div class="textoTitulos" *ngIf="existPerson === 2">
             <div *ngIf="totalPersonsIn < aforo">
                 <h2 class="textoTitulos">¿Desea Participar en el evento?</h2>
-                <button class="btn btnEditar2" (click)="postJoinEvent()">UNIRSE</button>
+                <button title="Botón para unirse al evento." class="btn btnEditar2" (click)="postJoinEvent()">UNIRSE</button>
             </div>
             <div class="textoTitulos" *ngIf="totalPersonsIn >= aforo">
                 EN ESTE MOMENTO EL EVENTO CUENTA CON UN AFORO LLENO, PORFAVOR SEA PACIENTE SI SON GENERADAS NUEVAS PLAZAS.
@@ -229,21 +229,20 @@
                             <label class="textoTitulos" for="">Nombre del Evento:</label>
                             <input class="textox" type="text" class="form-control" id="nombreEvento" placeholder="Ej: El mejor evento" formControlName="nombreEvento" [ngClass]="
                           (createEventForm.get('nombreEvento')?.touched || createEventForm.get('nombreEvento')?.dirty) &&
-                          createEventForm.get('nombreEvento')?.hasError('required') 
+                          createEventForm.get('nombreEvento')?.hasError('required')
                           ? 'is-invalid' : '' || createEventForm.get('nombreEvento')?.hasError('minlength')
                                       ? 'is-invalid' : '' || createEventForm.get('nombreEvento')?.hasError('maxlength')
                                       ? 'is-invalid' : ''">
                             <div class="textox invalid-feedback">
-                                {{ createEventForm.get("nombreEvento")?.hasError("required") ? "Nombre requerido" : "" }} 
-                                {{ createEventForm.get("nombreEvento")?.hasError("minlength") ? "Campo mínimo de 2 carácteres" : "" }} 
-                                {{ createEventForm.get("nombreEvento")?.hasError("maxlength") ? "Campo maximo de 30 carácteres" : "" }}
+                                {{ createEventForm.get("nombreEvento")?.hasError("required") ? "Nombre requerido" : "" }} {{ createEventForm.get("nombreEvento")?.hasError("minlength") ? "Campo mínimo de 2 carácteres" : "" }} {{ createEventForm.get("nombreEvento")?.hasError("maxlength")
+                                ? "Campo maximo de 30 carácteres" : "" }}
                             </div>
                         </div>
 
                         <div class="groupForm">
                             <label class="textoTitulos" for="">Tipo de Evento:</label>
                             <div class="form-check">
-                                <input class="textox" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" [ngClass]="
+                                <input title="Botón para establecer el evento como presencial." class="textox" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" [ngClass]="
                                       (createEventForm.get('tipoEvento')?.touched || createEventForm.get('tipoEvento')?.dirty) &&
                                           createEventForm.get('tipoEvento')?.errors ? 'is-invalid' : ''" formControlName="tipoEvento" name="tipoEvento" value="presencial" checked>
                                 <label class="textox" class="form-check-label" for="flexRadioDefault1">
@@ -251,7 +250,7 @@
                                       </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input textox" type="radio" name="flexRadioDefault" id="flexRadioDefault2" [ngClass]="
+                                <input title="Botón para establecer el evento como virtual." class="form-check-input textox" type="radio" name="flexRadioDefault" id="flexRadioDefault2" [ngClass]="
                                       (createEventForm.get('tipoEvento')?.touched || createEventForm.get('tipoEvento')?.dirty) &&
                                           createEventForm.get('tipoEvento')?.errors ? 'is-invalid' : ''" formControlName="tipoEvento" name="tipoEvento" value="virtual">
                                 <label class="textox form-check-label" for="flexRadioDefault2">
@@ -266,7 +265,7 @@
                         <div class="groupForm">
                             <label class="textoTitulos" for="">Imagen evento:</label>
                             <div class="mb-2">
-                                <input (change)="capturarFile($event)" type="file" [ngClass]="
+                                <input title="Botón para insertar una imagen al evento." (change)="capturarFile($event)" type="file" [ngClass]="
                               (createEventForm.get('imagen')?.touched || createEventForm.get('imagen')?.dirty) &&
                                   createEventForm.get('imagen')?.errors ? 'is-invalid' : ''" formControlName="imagen">
                             </div>
@@ -310,7 +309,7 @@
 
                         <div class="groupForm">
                             <label class="textoTitulos" for="">Fecha Realizacion:</label>
-                            <input type="date" class="form-control textox" [ngClass]="
+                            <input title="Botón para establecer la fecha del evento." type="date" class="form-control textox" [ngClass]="
                               (createEventForm.get('fechaEvento')?.touched || createEventForm.get('fechaEvento')?.dirty) &&
                                   createEventForm.get('fechaEvento')?.hasError('required') ? 'is-invalid' : ''" formControlName="fechaEvento" value="{{dateS}}" min="{{dateS}}">
                             <div class="invalid-feedback textox">
@@ -326,7 +325,7 @@
 
                         <div class="groupForm">
                             <label for="exampleInputEmail1 textoTitulos">Numero Participantes maximo:</label>
-                            <input class="textox" type="number" class="form-control" id="exampleInputEmail1" min="2" max="200" [ngClass]="
+                            <input title="Botón para establecer máximo de participantes para el evento." class="textox" type="number" class="form-control" id="exampleInputEmail1" min="2" max="200" [ngClass]="
                                   (createEventForm.get('participantesTotales')?.touched || createEventForm.get('participantesTotales')?.dirty) &&
                                       createEventForm.get('participantesTotales')?.hasError('required')
                                       ? 'is-invalid' : '' || createEventForm.get('participantesTotales')?.hasError('min')
@@ -340,7 +339,7 @@
                         </div>
 
                         <div class="groupForm">
-                            <input type="checkbox" checked name="" id="check" formControlName="check" [ngClass]="(createEventForm.get('check')?.touched || createEventForm.get('check')?.dirty) &&
+                            <input title="Botón para aceptar las politicas de creación de eventos." type="checkbox" checked name="" id="check" formControlName="check" [ngClass]="(createEventForm.get('check')?.touched || createEventForm.get('check')?.dirty) &&
                           createEventForm.get('check')?.errors ? 'is-invalid' : ''">
                             <label class="textox">Aceptas 1480 de 2011 articulo 30 sobre contenido explicito.</label>
                             <div class="invalid-feedback textox">
@@ -352,7 +351,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="textox btn btnEditar" [disabled]="createEventForm.invalid" data-bs-dismiss="modal">Crear evento</button>
+                    <button title="Botón para crear el evento con los datos anteriormente puestos." type="submit" class="textox btn btnEditar" [disabled]="createEventForm.invalid" data-bs-dismiss="modal">Crear evento</button>
                 </div>
             </div>
 

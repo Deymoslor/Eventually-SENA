@@ -10,12 +10,12 @@
                 <br>
                 <div class="col-md-6">
                     <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                        <div class="col p-4 d-flex flex-column position-static">
-                            <p class=" h4 d-inline-block mb-2 text-primary">{{ event?.nombreEvento }}</p>
+                        <div title="Botón para participar en el evento." class="col p-4 d-flex flex-column position-static">
+                            <p title="Botón para participar en el evento." class=" h4 d-inline-block mb-2 text-primary">{{ event?.nombreEvento }}</p>
                             <div class="mb-1 text-muted">{{ event?.fechaEvento }}</div>
                             <p class="card-text mb-auto">{{ event?.descripcionEvento }}</p>
                             <br>
-                            <a href="#" class="stretched-link">Participar</a>
+                            <a title="Botón para participar en el evento." href="#" class="stretched-link">Participar</a>
                         </div>
                     </div>
                 </div>
@@ -30,8 +30,8 @@
                     <div class="p-4">
                         <h4 class="fst-italic">Opciones</h4>
                         <ol class="list-unstyled">
-                            <li><a [routerLink]="['/groups/related-groups']" routerLinkActive="router-link-active">Regresar</a></li>
-                            <li><a [routerLink]="['/groups/related-groups']" routerLinkActive="router-link-active">Abandonar grupo</a></li>
+                            <li title="Botón para regresar en el evento."><a title="Botón para regresar en el evento." [routerLink]="['/groups/related-groups']" routerLinkActive="router-link-active">Regresar</a></li>
+                            <li title="Botón para abandonar el grupo."><a title="Botón para abandonar el grupo." [routerLink]="['/groups/related-groups']" routerLinkActive="router-link-active">Abandonar grupo</a></li>
                         </ol>
                     </div>
                 </div>

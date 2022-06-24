@@ -1,60 +1,50 @@
 <!-- <form [formGroup]="createEventForm" (ngSubmit)="postForm(createEventForm.value)"> -->
-    <mat-datepicker class="modal" #picker style="z-index: 1000;"></mat-datepicker>
-    <div class="modal fade" id="content-modal" tabindex="-1" >
+<mat-datepicker class="modal" #picker style="z-index: 1000;"></mat-datepicker>
+<div class="modal fade" id="content-modal" tabindex="-1">
 
-        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
 
-            <div class="modal-content" >
-                <div class="modal-header">
+        <div class="modal-content">
+            <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">Creacion de ventos</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
 
 
-                            <label for="">Nombre del Eveno:</label>
-                            <input type="text" class="form-control" id=""
-                            placeholder="Ej: El mejor evento" [ngClass]="
+                    <label for="">Nombre del Eveno:</label>
+                    <input type="text" class="form-control" id="" placeholder="Ej: El mejor evento" [ngClass]="
                             (createEventForm.get('nombreEvento')?.touched || createEventForm.get('nombreEvento')?.dirty) &&
                                 createEventForm.get('nombreEvento')?.errors ? 'is-invalid' : ''" formControlName="nombreEvento">
-                                <div class="invalid-feedback">
-                                    {{
-                                        createEventForm.get("nombreEvento")?.hasError("required")
-                                        ? "Nombre requerida"
-                                        : ""
-                                    }}
-                                </div>
+                    <div class="invalid-feedback">
+                        {{ createEventForm.get("nombreEvento")?.hasError("required") ? "Nombre requerida" : "" }}
+                    </div>
 
-                            <label for="">Tipo de Evento:</label>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"[ngClass]="
+                    <label for="">Tipo de Evento:</label>
+                    <div class="form-check">
+                        <input title="Botón para establecer el evento como presencial." class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" [ngClass]="
                                 (createEventForm.get('tipoEvento')?.touched || createEventForm.get('tipoEvento')?.dirty) &&
                                     createEventForm.get('tipoEvento')?.errors ? 'is-invalid' : ''" formControlName="tipoEvento" name="tipoEvento" value="presencial" checked>
-                                <label class="form-check-label" for="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
                                     Presencial
                                 </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" [ngClass]="
+                    </div>
+                    <div class="form-check">
+                        <input title="Botón para establecer el evento como virtual." class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" [ngClass]="
                                 (createEventForm.get('tipoEvento')?.touched || createEventForm.get('tipoEvento')?.dirty) &&
                                     createEventForm.get('tipoEvento')?.errors ? 'is-invalid' : ''" formControlName="tipoEvento" name="tipoEvento" value="virtual">
-                                <label class="form-check-label" for="flexRadioDefault2">
+                        <label class="form-check-label" for="flexRadioDefault2">
                                     Virtual
                                 </label>
-                            </div>
-                            <div class="invalid-feedback">
-                                {{
-                                    createEventForm.get("tipoEvento")?.hasError("required")
-                                    ? "Tipo Requerido"
-                                    : ""
-                                }}
-                            </div>
+                    </div>
+                    <div class="invalid-feedback">
+                        {{ createEventForm.get("tipoEvento")?.hasError("required") ? "Tipo Requerido" : "" }}
+                    </div>
 
-                            <label for="">Descripcion Evento:</label>
-                            <div class="mb-2">
-                                <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Explica de que tratará y dónde será."
-                                rows="2" [ngClass]="(createEventForm.get('descripcionEvento')?.touched ||
+                    <label for="">Descripcion Evento:</label>
+                    <div class="mb-2">
+                        <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Explica de que tratará y dónde será." rows="2" [ngClass]="(createEventForm.get('descripcionEvento')?.touched ||
                                 createEventForm.get('descripcionEvento')?.dirty) &&
                                 createEventForm.get('descripcionEvento')?.hasError('required')
                                 ? 'is-invalid'
@@ -65,90 +55,64 @@
                                   createEventForm.get('descripcionEvento')?.dirty) &&
                                     !createEventForm.get('descripcionEvento')?.invalid)
                                 ? 'is-valid'
-                                : ''"
+                                : ''" formControlName="descripcionEvento"></textarea>
+                    </div>
+                    <div class="invalid-feedback">
+                        {{ createEventForm.get("descripcionEvento")?.hasError("required") ? " Descripcion requerida" : "" }} {{ createEventForm.get("descripcionEvento")?.hasError("minlength") ? " 5 letras requeridas" : "" }}
+                    </div>
 
-                         formControlName="descripcionEvento"></textarea>
-                            </div>
-                            <div class="invalid-feedback">
-                                {{
-                                    createEventForm.get("descripcionEvento")?.hasError("required")
-                                      ? " Descripcion requerida"
-                                      : ""
-                                  }}
-                                  {{
-                                    createEventForm.get("descripcionEvento")?.hasError("minlength")
-                                      ? " 5 letras requeridas"
-                                      : ""
-                                  }}
-                            </div>
-
-                            <label for="">Fecha Realizacion:</label>
-                            <input type="date" class="form-control" [ngClass]="
+                    <label for="">Fecha Realizacion:</label>
+                    <input title="Botón para editar la fecha del evento." type="date" class="form-control" [ngClass]="
                             (createEventForm.get('fechaEvento')?.touched || createEventForm.get('fechaEvento')?.dirty) &&
-                                createEventForm.get('fechaEvento')?.hasError('required') ? 'is-invalid' : ''"
-                                formControlName="fechaEvento">
-                            <!-- <input matInput [matDatepicker]="picker" class="form-control" [ngClass]="
+                                createEventForm.get('fechaEvento')?.hasError('required') ? 'is-invalid' : ''" formControlName="fechaEvento">
+                    <!-- <input matInput [matDatepicker]="picker" class="form-control" [ngClass]="
                             (createEventForm.get('fechaEvento')?.touched || createEventForm.get('fechaEvento')?.dirty) &&
                                 createEventForm.get('fechaEvento')?.hasError('required') ? 'is-invalid' : ''" formControlName="fechaEvento"  style="display: inline; width: 90%;">
                             <mat-datepicker-toggle matSuffix [for]="picker" style="color: #000; " ></mat-datepicker-toggle>
                             <mat-datepicker class="modal" #picker></mat-datepicker> -->
-                            <div class="invalid-feedback">
-                                {{
-                                    createEventForm.get("fechaEvento")?.hasError("required")
-                                    ? " Fecha requerida"
-                                    : ""
-                                }}
-                            </div>
-                            <style>
-                                ::ng-deep .cdk-overlay-container {
-                                  z-index: 2000;}
-                            </style>
+                    <div class="invalid-feedback">
+                        {{ createEventForm.get("fechaEvento")?.hasError("required") ? " Fecha requerida" : "" }}
+                    </div>
+                    <style>
+                         ::ng-deep .cdk-overlay-container {
+                            z-index: 2000;
+                        }
+                    </style>
 
 
-                            <label for="exampleInputEmail1">Numero Participantes:</label>
-                            <input type="number" class="form-control" id="exampleInputEmail1"
-                             min="2" max="200" [ngClass]="
+                    <label for="exampleInputEmail1">Numero Participantes:</label>
+                    <input title="Botón para editar máximo de participantes para el evento." type="number" class="form-control" id="exampleInputEmail1" min="2" max="200" [ngClass]="
                              (createEventForm.get('participantesTotales')?.touched || createEventForm.get('participantesTotales')?.dirty) &&
                                  createEventForm.get('participantesTotales')?.hasError('required') ? 'is-invalid' : ''" formControlName="participantesTotales">
 
-                            <div class="invalid-feedback">
-                                {{
-                                    createEventForm.get("participantesTotales")?.hasError("required")
-                                    ? " Numero de participantes requeridos"
-                                    : ""
-                                }}
-                            </div>
+                    <div class="invalid-feedback">
+                        {{ createEventForm.get("participantesTotales")?.hasError("required") ? " Numero de participantes requeridos" : "" }}
+                    </div>
 
 
-                        <div class="check-container-politycs">
+                    <div class="check-container-politycs">
 
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="invalidCheck" [ngClass]="
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="invalidCheck" [ngClass]="
 
                                     createEventForm.get('check')?.hasError('required') ? 'is-invalid' : ''" formControlName="check">
-                                <label class="form-check-label" for="invalidCheck">
+                            <label class="form-check-label" for="invalidCheck">
                                     Para la creación de el evento deberá estar de acuerdo con la ley 1480 de 2011 articulo 30 con respecto al evento a crear.
                                 </label>
-                                <div class="invalid-feedback">
-                                    {{
-                                        createEventForm.get("check")?.hasError("required")
-                                        ? " Numero de participantes requeridos"
-                                        : ""
-                                    }}
-                                </div>
+                            <div class="invalid-feedback">
+                                {{ createEventForm.get("check")?.hasError("required") ? " Numero de participantes requeridos" : "" }}
                             </div>
-
                         </div>
+
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="btn btn-primary" [disabled]="createEventForm.invalid" data-bs-dismiss="modal">Crear evento</button>
-                </div>
             </div>
-
+            <div class="modal-footer">
+                <button type="button" title="Botón para cerrar y desistir de crear el evento." class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button title="Botón para crear el evento con los datos anteriormente puestos." type="submit" class="btn btn-primary" [disabled]="createEventForm.invalid" data-bs-dismiss="modal">Crear evento</button>
+            </div>
         </div>
+
     </div>
+</div>
 <!-- </form> -->
-
-
