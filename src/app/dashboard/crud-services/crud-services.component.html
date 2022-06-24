@@ -5,8 +5,8 @@
     <div class="row tables">
         <div class="col ">
             <div class="searcher">
-                <label class="textoTitulos" for="">BUSCAR NOMBRE GUSTO: </label>
-                <input type="text" class="search textox rounded" name="filterServices" placeholder="Buscar..." [(ngModel)]="filterServices">
+                <label class="textoTitulos" for="">BUSCAR NOMBRE DEL SERVICIO: </label>
+                <input title="Haz click y escribe el nombre del servicio que quieres buscar." type="text" class="search textox rounded" name="filterServices" placeholder="Buscar..." [(ngModel)]="filterServices">
             </div>
             <table class="table table-striped">
                 <thead class="titles">
@@ -40,8 +40,8 @@
                         <td class="textox">{{ service.historialEmpresas }}</td>
                         <td class="textox">{{ service.numeroContacto }}</td>
                         <td class="textox">{{ service.correoContacto }}</td>
-                        <td *ngIf="service.estadoServicio == '1'" class="textox">ACEPTADO</td>
-                        <td *ngIf="service.estadoServicio == '0'" class="textox">INHABILITADO</td>
+                        <td title="Click para editar el estado del servicio." *ngIf="service.estadoServicio == '1'" class="textox">ACEPTADO</td>
+                        <td title="Click para editar el estado del servicio." *ngIf="service.estadoServicio == '0'" class="textox">INHABILITADO</td>
                         <td class="textox" *ngFor="let provider of dataProvider" [hidden]="provider.idProveedor!= service.Proveedor_idProveedor ">
                             {{provider.nombreProveedor}}
                         </td>
@@ -49,7 +49,7 @@
                             {{type.tipoServicio}}
                         </td>
                         <!-- (click)="editEvent(event.idEvento)" -->
-                        <td class="textox"><button class="btn btnEditar" (click)="modalServiceOpen(contentService, service.idServicios)">Editar</button></td>
+                        <td class="textox"><button title="Click para editar el servicio." class="btn btnEditar" (click)="modalServiceOpen(contentService, service.idServicios)">Editar</button></td>
                     </tr>
                 </tbody>
             </table>
@@ -81,9 +81,9 @@
 
                         <th class="textox" scope="row">{{ TypeService.idtipoServicio }}</th>
                         <td class="textox">{{ TypeService.tipoServicio }}</td>
-                        <td class="textox" *ngIf="TypeService.estadoTipoServicio == 1">Habilitado</td>
-                        <td class="textox" *ngIf="TypeService.estadoTipoServicio == 0">Deshabilitado</td>
-                        <td class="textox"><button class="btn btnEditar" (click)="modalTypeServiceOpen(contentType, TypeService.idtipoServicio)">Editar</button></td>
+                        <td title="Click para editar el estado del tipo de servicio." class="textox" *ngIf="TypeService.estadoTipoServicio == 1">Habilitado</td>
+                        <td title="Click para editar el estado del tipo de servicio." class="textox" *ngIf="TypeService.estadoTipoServicio == 0">Deshabilitado</td>
+                        <td class="textox"><button title="Click para editar el tipo de servicio." class="btn btnEditar" (click)="modalTypeServiceOpen(contentType, TypeService.idtipoServicio)">Editar</button></td>
                     </tr>
                 </tbody>
             </table>
@@ -93,7 +93,7 @@
     <div>
         <pagination-controls class="textox" previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange2($event)"></pagination-controls>
     </div>
-    <button class="btn btnCrear textox" class="btn btnEditar" data-bs-toggle="modalCreateTypeDash" data-bs-target="#content-modalCreateTypeDash" (click)="modalCreateServiceOpen(contentCreateType, 1)">
+    <button title="Click para crear el tipo de servicio." class="btn btnCrear textox" class="btn btnEditar" data-bs-toggle="modalCreateTypeDash" data-bs-target="#content-modalCreateTypeDash" (click)="modalCreateServiceOpen(contentCreateType, 1)">
     Crear
   </button>
 
@@ -143,7 +143,7 @@
 
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btnEditar" [disabled]="typeServicesForm.invalid">Editar</button>
+                <button type="submit" class="btn btnEditar" title="Click para editar el servicio." [disabled]="typeServicesForm.invalid">Editar</button>
             </div>
         </form>
     </div>
@@ -210,7 +210,7 @@
                 <div class="formGroup">
                     <label for="">Imagen evento:</label>
                     <div class="mb-2">
-                        <input (change)="capturarFile($event)" formControlName="imagen" type="file">
+                        <input title="Click para insertar una imagen." (change)="capturarFile($event)" formControlName="imagen" type="file">
                     </div>
                     <h4>PREVISUALIZACION</h4>
                     <div *ngIf="previsualizacion">
@@ -311,8 +311,8 @@
 
             </div>
             <div class="modal-footer">
-                <button *ngIf="ServicesForm.invalid" type="submit" class="btn btnEditar" [disabled]="ServicesForm.invalid">Editar</button>
-                <button *ngIf="ServicesForm.valid" type="submit" class="btn btnEditar">Editar</button>
+                <button *ngIf="ServicesForm.invalid" title="Click para editar el tipo de servicio." type="submit" class="btn btnEditar" [disabled]="ServicesForm.invalid">Editar</button>
+                <button *ngIf="ServicesForm.valid" type="submit" class="btn btnEditar" title="Click para editar el tipo de servicio.">Editar</button>
             </div>
         </form>
     </div>

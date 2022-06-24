@@ -13,8 +13,7 @@
                 ? 'is-invalid' : ''"><span class="barra"></span>
                 <label for="">Email</label>
                 <div class="invalid-feedback">
-                    {{ peticionProveedor.get("Email")?.hasError("required") ? "Campo requerido" : "" }}
-                    {{ peticionProveedor.get("Email")?.hasError("email") ? "Campo de email persona@example.com" : "" }}
+                    {{ peticionProveedor.get("Email")?.hasError("required") ? "Campo requerido" : "" }} {{ peticionProveedor.get("Email")?.hasError("email") ? "Campo de email persona@example.com" : "" }}
                 </div>
             </div>
 
@@ -25,8 +24,7 @@
                 ? 'is-invalid' : ''"><span class="barra"></span>
                 <label for="">Nombre</label>
                 <div class="invalid-feedback">
-                    {{ peticionProveedor.get("nombre")?.hasError("required") ? "Campo requerido" : "" }}
-                    {{ peticionProveedor.get("nombre")?.hasError("pattern") ? "Campo solo con letras" : "" }}
+                    {{ peticionProveedor.get("nombre")?.hasError("required") ? "Campo requerido" : "" }} {{ peticionProveedor.get("nombre")?.hasError("pattern") ? "Campo solo con letras" : "" }}
                 </div>
             </div>
 
@@ -37,17 +35,16 @@
                     ? 'is-invalid' : ''"></textarea><span class="barra"></span>
                     <label class="textAreaLabel">Justificación</label>
                     <div class="invalid-feedback">
-                        {{ peticionProveedor.get("msg")?.hasError("required") ? "Campo requerido" : "" }}
-                        {{ peticionProveedor.get("msg")?.hasError("pattern") ? "Campo solo con letras, no caracteres especiales" : "" }}
+                        {{ peticionProveedor.get("msg")?.hasError("required") ? "Campo requerido" : "" }} {{ peticionProveedor.get("msg")?.hasError("pattern") ? "Campo solo con letras, no caracteres especiales" : "" }}
                     </div>
                 </div>
             </div>
 
 
             <!-- <button type="submit">Enviar información</button> -->
-            <button *ngIf="peticionProveedor.invalid" class="btnsSuplierDisabled" [disabled]="peticionProveedor.invalid" (click)="enviarMailSolicitud(peticionProveedor.value)">Enviar información</button>
-            <button *ngIf="peticionProveedor.valid" class="btnsSuplier" (click)="enviarMailSolicitud(peticionProveedor.value)">Enviar información</button>
-            <button class="btnsSuplier" (click)="cancel()">Cancelar</button>
+            <button *ngIf="peticionProveedor.invalid" class="btnsSuplierDisabled" title="Click para solicitud de cuenta de proveedor." [disabled]="peticionProveedor.invalid" (click)="enviarMailSolicitud(peticionProveedor.value)">Enviar información</button>
+            <button *ngIf="peticionProveedor.valid" class="btnsSuplier" title="Click para solicitud de cuenta de proveedor." (click)="enviarMailSolicitud(peticionProveedor.value)">Enviar información</button>
+            <button class="btnsSuplier" title="Click para cancelar proceso de solicitud de cuenta de proveedor." (click)="cancel()">Cancelar</button>
 
             <!-- <pre>{{ formUsers.value | json }}</pre> -->
         </div>

@@ -3,16 +3,16 @@
 <div class="container mt-3">
     <ul class="nav nav-tabs textoTitulos">
         <li class="nav-item h5">
-            <a class="nav-link" [routerLink]="['see-groups']" routerLinkActive="router-link-active">Grupos</a>
+            <a class="nav-link" title="Click para ver todos los grupos públicos." [routerLink]="['see-groups']" routerLinkActive="router-link-active">Grupos</a>
         </li>
         <li class="nav-item h5">
-            <a class="nav-link" [routerLink]="['create-group']" routerLinkActive="router-link-active">Crear Grupo</a>
+            <a class="nav-link" [routerLink]="['create-group']" title="Click para crear tú grupo." routerLinkActive="router-link-active">Crear Grupo</a>
         </li>
         <li class="nav-item h5">
-            <a class="nav-link" [routerLink]="['related-groups']" routerLinkActive="router-link-active">Grupos Relacionados</a>
+            <a class="nav-link" [routerLink]="['related-groups']" title="Click para ver todos los grupos a los que estas asociado." routerLinkActive="router-link-active">Grupos Relacionados</a>
         </li>
         <li class="nav-item h5">
-            <a class="nav-link" [routerLink]="['your-groups']" routerLinkActive="router-link-active">Tus Grupos</a>
+            <a class="nav-link" [routerLink]="['your-groups']" title="Click para ver todos los grupos creados por ti." routerLinkActive="router-link-active">Tus Grupos</a>
         </li>
     </ul>
 </div>

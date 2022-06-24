@@ -1,29 +1,27 @@
 <!-- Modal -->
 <div class="modal-content  modal-dialog-scrollable" width="auto">
     <div class="modal-header" width="auto">
-        <h5 class="titlePrincipal" id="staticBackdropLabel">Editar Tipo Servicio</h5>
+        <h5 class="titlePrincipal" id="staticBackdropLabel">Crear Tipo de Servicio</h5>
         <!-- <button type="button" class="btn-close" aria-label="Close" (click)="modalCreateTypeDash.dismiss('Cross click')"></button> -->
     </div>
     <form width="auto" [formGroup]="createTypeServices" (ngSubmit)="postForm(createTypeServices.value)">
         <div class="container d-flex" width="auto">
             <div class="row filaInfo">
                 <div class="col-6 colTitulo">
-                    <label class="title" for="">Nombre del Evento:</label>
+                    <label class="title" for="">Nombre del Tipo de servico:</label>
                 </div>
                 <div class="col-6 colCont">
-                    <input type="text" class="form-control" id="" placeholder="" formControlName="tipoServicio"
-                    [ngClass]=" (createTypeServices.get('tipoServicio')?.touched || createTypeServices.get('tipoServicio')?.dirty) &&
-                    createTypeServices.get('tipoServicio')?.hasError('required') 
-                    ? 'is-invalid' : '' || createTypeServices.get('tipoServicio')?.hasError('pattern') 
+                    <input type="text" class="form-control" id="" placeholder="" formControlName="tipoServicio" [ngClass]=" (createTypeServices.get('tipoServicio')?.touched || createTypeServices.get('tipoServicio')?.dirty) &&
+                    createTypeServices.get('tipoServicio')?.hasError('required')
+                    ? 'is-invalid' : '' || createTypeServices.get('tipoServicio')?.hasError('pattern')
                     ? 'is-invalid' : ''">
                     <div class="invalid-feedback">
-                        {{ createTypeServices.get("tipoServicio")?.hasError("required") ? "Campo requerido" : "" }}
-                        {{ createTypeServices.get("tipoServicio")?.hasError("pattern") ? "Campo requerido sin caracteres especiales o numeros" : "" }}
+                        {{ createTypeServices.get("tipoServicio")?.hasError("required") ? "Campo requerido" : "" }} {{ createTypeServices.get("tipoServicio")?.hasError("pattern") ? "Campo requerido sin caracteres especiales o numeros" : "" }}
                     </div>
                 </div>
 
                 <div class="col-2 boton">
-                    <button type="submit" class="btn btnCrear" [disabled]="createTypeServices.invalid">Crear</button>
+                    <button title="Click para crear el tipo de servicio." type="submit" class="btn btnCrear" [disabled]="createTypeServices.invalid">Crear</button>
                 </div>
             </div>
         </div>

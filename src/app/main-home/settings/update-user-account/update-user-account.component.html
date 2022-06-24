@@ -61,8 +61,8 @@
                     </div>
 
                     <div class="btnChangeLikes d-flex justify-content-center">
-                        <button *ngIf="editarForm.invalid" type="submit" class="btnActualizacionDisable btn btn-primary btn-lg" [disabled]="editarForm.invalid" (click)="postForm(editarForm.value)">Actualizar Información</button>
-                        <button *ngIf="editarForm.valid" type="submit" class="btnActualizacion btn btn-primary btn-lg" (click)="postForm(editarForm.value)">Actualizar Información</button>
+                        <button title="Click para actualizar tú información." *ngIf="editarForm.invalid" type="submit" class="btnActualizacionDisable btn btn-primary btn-lg" [disabled]="editarForm.invalid" (click)="postForm(editarForm.value)">Actualizar Información</button>
+                        <button *ngIf="editarForm.valid" title="Click para actualizar tú información." type="submit" class="btnActualizacion btn btn-primary btn-lg" (click)="postForm(editarForm.value)">Actualizar Información</button>
                     </div>
 
                     <div class="separator"></div>
@@ -99,8 +99,8 @@
                         <!-- INICIO Botón para actualizar imagen -->
 
                         <div class="btnChangeLikes d-flex justify-content-center">
-                            <button *ngIf="previsualizacion == ''" type="submit" class="btnActualizacionDisable btn btn-primary btn-lg" [disabled]="previsualizacion == ''" (click)="actualizarImagen(imagenPerfilForm.value)">Actualizar imagen de perfil</button>
-                            <button *ngIf="previsualizacion != ''" type="submit" class="btnActualizacion btn btn-primary btn-lg" (click)="actualizarImagen(imagenPerfilForm.value)">Actualizar imagen de perfil</button>
+                            <button title="Click para actualizar tú imagen de perfil." *ngIf="previsualizacion == ''" type="submit" class="btnActualizacionDisable btn btn-primary btn-lg" [disabled]="previsualizacion == ''" (click)="actualizarImagen(imagenPerfilForm.value)">Actualizar imagen de perfil</button>
+                            <button title="Click para actualizar tú imagen de perfil." *ngIf="previsualizacion != ''" type="submit" class="btnActualizacion btn btn-primary btn-lg" (click)="actualizarImagen(imagenPerfilForm.value)">Actualizar imagen de perfil</button>
                         </div>
 
                         <!-- FIN Botón para actualizar imagen -->
@@ -216,9 +216,9 @@
                     </div>
 
                     <div class="btnChangeLikes d-flex justify-content-center">
-                        <button *ngIf="passwordForm.invalid" type="submit" class="btnActualizacionDisable btn btn-primary btn-lg" [disabled]="passwordForm.invalid" (click)="completarForm(passwordForm.value)" (click)="changePassword(passwordForm.value)">Actualizar contraseña</button>
+                        <button title="Click para actualizar tú contraseña." *ngIf="passwordForm.invalid" type="submit" class="btnActualizacionDisable btn btn-primary btn-lg" [disabled]="passwordForm.invalid" (click)="completarForm(passwordForm.value)" (click)="changePassword(passwordForm.value)">Actualizar contraseña</button>
 
-                        <button *ngIf="passwordForm.valid" type="submit" class="btnActualizacion btn btn-primary btn-lg" (click)="completarForm(passwordForm.value)" (click)="changePassword(passwordForm.value)">Actualizar contraseña</button>
+                        <button title="Click para actualizar tú contraseña." *ngIf="passwordForm.valid" type="submit" class="btnActualizacion btn btn-primary btn-lg" (click)="completarForm(passwordForm.value)" (click)="changePassword(passwordForm.value)">Actualizar contraseña</button>
                     </div>
 
                 </form>

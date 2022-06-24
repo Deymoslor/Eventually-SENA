@@ -7,7 +7,7 @@
     <div class="col ">
         <div class="searcher">
             <label class="textoTitulos" for="">BUSCAR ID EVENTO: </label>
-            <input type="text" class="search textox rounded" name="filterRequestEvent" placeholder="Buscar..." [(ngModel)]="filterRequestEvent">
+            <input title="Haz click y escribe el id del evento que quieres buscar." type="text" class="search textox rounded" name="filterRequestEvent" placeholder="Buscar..." [(ngModel)]="filterRequestEvent">
         </div>
         <table class="table table-striped">
             <thead class="titles">
@@ -38,28 +38,28 @@
                     </td>
 
                     <td class="textox">
-                        <button class="btn btnHabilitar btn-sm " data-bs-toggle="modal21" data-bs-target="#content-modal21" type="button" (click)="modalOpen(content); getIdEvent(request.Evento_idEvento)">Detalle Evento</button>
+                        <button title="Click para ver el detalle de evento." class="btn btnHabilitar btn-sm " data-bs-toggle="modal21" data-bs-target="#content-modal21" type="button" (click)="modalOpen(content); getIdEvent(request.Evento_idEvento)">Detalle Evento</button>
                     </td>
 
                     <!-- Grupo está sin respuesta -->
                     <td style="width:10.5rem;" *ngIf="request.estadoPeticion==='1'">
                         <div class="d-grid gap-2 d-md-block">
-                            <button class="textox" (click)="aceptarPeticion(request.idpeticionesEvento)" type="button" class="btn btnHabilitar btn-sm">Aceptar</button>
-                            <button class="textox" (click)="rechazarPeticion(request.idpeticionesEvento)" type="button" class="btn btn-secondary btn-sm">Rechazar</button>
+                            <button title="Click para aceptar la petición del evento." class="textox" (click)="aceptarPeticion(request.idpeticionesEvento)" type="button" class="btn btnHabilitar btn-sm">Aceptar</button>
+                            <button title="Click para rechazar la petición del evento." class="textox" (click)="rechazarPeticion(request.idpeticionesEvento)" type="button" class="btn btn-secondary btn-sm">Rechazar</button>
                         </div>
                     </td>
 
                     <!-- Grupo está habilitado -->
                     <td *ngIf="request.estadoPeticion==='2'">
                         <div class="form-check form-switch">
-                            <button class="textox" (click)="rechazarPeticion(request.idpeticionesEvento)" type="button" class="btn btn-secondary btn-sm">Inhabilitar</button>
+                            <button title="Click para inhabilitar el evento." class="textox" (click)="rechazarPeticion(request.idpeticionesEvento)" type="button" class="btn btn-secondary btn-sm">Inhabilitar</button>
                         </div>
                     </td>
 
                     <!-- Grupo está deshabilitado -->
                     <td *ngIf="request.estadoPeticion==='3'">
                         <div class="form-check textox form-switch">
-                            <button (click)="aceptarPeticion(request.idpeticionesEvento)" type="button" class="btn btnHabilitar btn-sm">Habilitar</button>
+                            <button title="Click para habilitar el evento." (click)="aceptarPeticion(request.idpeticionesEvento)" type="button" class="btn btnHabilitar btn-sm">Habilitar</button>
                         </div>
                     </td>
 

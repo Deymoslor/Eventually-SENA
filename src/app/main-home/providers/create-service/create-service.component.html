@@ -12,8 +12,8 @@
                 </div>
             </div>
         </div>
-        <button *ngIf="lawForm.invalid" type="submit" [disabled]="lawForm.invalid" class="btnRegistroDisable btn btn-primary">Enviar</button>
-        <button *ngIf="lawForm.valid" type="submit" class="btnRegistro btn btn-primary">Enviar</button>
+        <button title="Click crear servicio." *ngIf="lawForm.invalid" type="submit" [disabled]="lawForm.invalid" class="btnRegistroDisable btn btn-primary">Enviar</button>
+        <button title="Click crear servicio." *ngIf="lawForm.valid" type="submit" class="btnRegistro btn btn-primary">Enviar</button>
     </form>
 </div>
 
@@ -76,7 +76,7 @@
                         <div class="formGroup">
                             <label class="textoTitulos" for="">Imagen evento:</label>
                             <div class="mb-2 ">
-                                <input class="textox m" (change)="capturarFile($event)" formControlName="imagen" type="file">
+                                <input title="Click para insertar una imagen." class="textox m" (change)="capturarFile($event)" formControlName="imagen" type="file">
                             </div>
                             <h4 class="textoTitulos">PREVISUALIZACION</h4>
                             <div *ngIf="previsualizacion">
@@ -117,7 +117,7 @@
 
                         <div class="formGroup">
                             <label class="textoTitulos" for="">Fecha inicio:</label>
-                            <input type="date" class="textox form-control" formControlName="fechaInicio" [ngClass]=" (ServicesForm.get('fechaInicio')?.touched || ServicesForm.get('fechaInicio')?.dirty) &&
+                            <input title="Click para insertar una fecha." type="date" class="textox form-control" formControlName="fechaInicio" [ngClass]=" (ServicesForm.get('fechaInicio')?.touched || ServicesForm.get('fechaInicio')?.dirty) &&
                             ServicesForm.get('fechaInicio')?.hasError('required')
                             ? 'is-invalid' : ''" max="{{dateS}}">
                             <div class="invalid-feedback textox">
@@ -132,15 +132,14 @@
                             ServicesForm.get('numeroContacto')?.errors ? 'is-invalid' : '' || ServicesForm.get('numeroContacto')?.hasError('maxlength')
                             ? 'is-invalid' : '' || ServicesForm.get('numeroContacto')?.hasError('minlength')
                             ? 'is-invalid' : '' || ServicesForm.get('numeroContacto')?.hasError('pattern')
-                            ? 'is-invalid' : ''" ><span class="barra"></span>
+                            ? 'is-invalid' : ''"><span class="barra"></span>
                             <label for="">Número de teléfono celular</label>
                             <div class="invalid-feedback">
                                 {{ ServicesForm.get("numeroContacto")?.hasError("pattern") ? "Campo solo numérico" : "" }}
                             </div>
                             <div class="invalid-feedback">
-                                {{ ServicesForm.get("numeroContacto")?.hasError("required") ? "Campo requerido" : "" }}
-                                {{ ServicesForm.get("numeroContacto")?.hasError("maxlength") ? "Campo de 10 caracteres" : "" }}
-                                {{ ServicesForm.get("numeroContacto")?.hasError("minlength") ? "Campo de 10 caracteres" : "" }}
+                                {{ ServicesForm.get("numeroContacto")?.hasError("required") ? "Campo requerido" : "" }} {{ ServicesForm.get("numeroContacto")?.hasError("maxlength") ? "Campo de 10 caracteres" : "" }} {{ ServicesForm.get("numeroContacto")?.hasError("minlength") ? "Campo
+                                de 10 caracteres" : "" }}
                             </div>
 
                         </div>

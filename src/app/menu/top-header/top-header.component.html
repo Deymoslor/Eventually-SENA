@@ -29,7 +29,7 @@
                     <li class="nav-item dropdown btn-group menuUser">
                         <!-- <img class="imgUser btn dropdown-toggle rounded-circle" id="dropdownMenuOffset" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="35,5" src="../../../assets/user/20.jpg" alt=""> -->
 
-                        <img class="imgUser btn dropdown-toggle rounded-circle" id="dropdownMenuOffset" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="35,5" [src]="perfilForm.get('imagen')?.value" alt="{{ updatePersona?.nombre }}">
+                        <img title="Click para ver las opciones del usuario." class="imgUser btn dropdown-toggle rounded-circle" id="dropdownMenuOffset" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="35,5" [src]="perfilForm.get('imagen')?.value" alt="{{ updatePersona?.nombre }}">
 
 
                         <ul class="dropdown-menu dropdown-menu-end">
@@ -43,7 +43,7 @@
                               <li><a class="dropdown-item" href="#">Separated link</a></li> -->
 
                             <li class="d-flex" *ngIf="this.rol != 'PROVEEDOR' ">
-                                <a class="dropdown-item" (click)="configP()">
+                                <a title="Click para ver la información del usuario y editarla." class="dropdown-item" (click)="configP()">
                                     <div class="row">
                                         <div class="col-12 d-flex align-items-center justify-content-center">
                                             <div class="col-2">
@@ -62,7 +62,7 @@
                                 </a>
                             </li>
                             <li class="d-flex mt-3" *ngIf="this.rol === 'ADMIN'">
-                                <a class="dropdown-item pointer" (click)="dashboard()">
+                                <a title="Click para ir al dashboard." class="dropdown-item pointer" (click)="dashboard()">
                                     <div class="row">
                                         <div class="col-12 d-flex align-items-center justify-content-center">
                                             <div class="col-2">
@@ -84,7 +84,7 @@
                             <!-- para redirigir al proveedor a su lugar INICIO-->
 
                             <li class="d-flex" *ngIf="this.rol === 'PROVEEDOR'">
-                                <a class="dropdown-item" (click)="myService()">
+                                <a title="Click para ir a tú servicio." class="dropdown-item" (click)="myService()">
                                     <div class="row">
                                         <div class="col-12 d-flex align-items-center justify-content-center">
                                             <div class="col-2">
@@ -107,7 +107,7 @@
 
 
                             <li class="d-flex mt-3">
-                                <a class="dropdown-item" (click)="logOut()" routerLink="../loginRegister">
+                                <a title="Click para salir de tú cuenta." class="dropdown-item" (click)="logOut()" routerLink="../loginRegister">
                                     <div class="row">
                                         <div class="col-12 d-flex align-items-center justify-content-center">
                                             <div class="col-2">

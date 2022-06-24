@@ -7,7 +7,7 @@
     <div class="col ">
         <div class="searcher">
             <label class="textoTitulos" for="">BUSCAR ID GRUPO: </label>
-            <input type="text" class="search textox rounded" name="filterRequestGroup" placeholder="Buscar..." [(ngModel)]="filterRequestGroup">
+            <input title="Haz click y escribe el id del grupo que quieres buscar." type="text" class="search textox rounded" name="filterRequestGroup" placeholder="Buscar..." [(ngModel)]="filterRequestGroup">
         </div>
         <table class="table table-striped">
             <thead class="titles">
@@ -36,28 +36,28 @@
                     </td>
 
                     <td>
-                        <button class="btn btnHabilitar btn-sm " data-bs-toggle="modal20 " type="button" data-bs-target="#content-modal20 " (click)="modalOpen(content); getIdGroup(request.Grupos_idGrupos) ">Detalle Grupo</button>
+                        <button title="Click para ver el detalle del grupo." class="btn btnHabilitar btn-sm " data-bs-toggle="modal20 " type="button" data-bs-target="#content-modal20 " (click)="modalOpen(content); getIdGroup(request.Grupos_idGrupos) ">Detalle Grupo</button>
                     </td>
 
                     <!-- Grupo está sin respuesta -->
                     <td *ngIf="request.estadoPeticion==='1' " style="width:10.5rem;">
                         <div class="d-grid gap-2 d-md-block">
-                            <button class="textox" (click)="aceptarPeticion(request.idpeticionesGrupo) " type="button " class="btn btnHabilitar btn-sm ">Aceptar</button>
-                            <button class="textox" (click)="rechazarPeticion(request.idpeticionesGrupo) " type="button " class="btn btn-secondary btn-sm ">Rechazar</button>
+                            <button title="Click para aceptar la petición del grupo." class="textox" (click)="aceptarPeticion(request.idpeticionesGrupo) " type="button " class="btn btnHabilitar btn-sm ">Aceptar</button>
+                            <button title="Click para rechazar la petición del grupo." class="textox" (click)="rechazarPeticion(request.idpeticionesGrupo) " type="button " class="btn btn-secondary btn-sm ">Rechazar</button>
                         </div>
                     </td>
 
                     <!-- Grupo está habilitado -->
                     <td *ngIf="request.estadoPeticion==='2' ">
                         <div class="form-check form-switch ">
-                            <button class="textox" (click)="rechazarPeticion(request.idpeticionesGrupo) " type="button " class="btn btn-secondary btn-sm ">Inhabilitar</button>
+                            <button title="Click para inhabilitar el grupo." class="textox" (click)="rechazarPeticion(request.idpeticionesGrupo) " type="button " class="btn btn-secondary btn-sm ">Inhabilitar</button>
                         </div>
                     </td>
 
                     <!-- Grupo está deshabilitado -->
                     <td *ngIf="request.estadoPeticion==='3' ">
                         <div class="form-check form-switch ">
-                            <button (click)="aceptarPeticion(request.idpeticionesGrupo) " type="button " class="btn btnHabilitar btn-sm ">Habilitar</button>
+                            <button title="Click para habilitar el grupo." (click)="aceptarPeticion(request.idpeticionesGrupo) " type="button " class="btn btnHabilitar btn-sm ">Habilitar</button>
                         </div>
                     </td>
 

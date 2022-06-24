@@ -29,17 +29,17 @@
             </div>
 
             <!-- <button (click)="login()">Iniciar</button> -->
-            <button *ngIf="loginForm.invalid" type="submit" class="btnIniciarDisabled" [disabled]="loginForm.invalid">Iniciar</button>
-            <button *ngIf="loginForm.valid" type="submit" class="btnIniciar">Iniciar</button>
-            <button class="btnIniciar" (click)="register()">Crear cuenta</button>
+            <button *ngIf="loginForm.invalid" title="Click para iniciar sesión." type="submit" class="btnIniciarDisabled" [disabled]="loginForm.invalid">Iniciar</button>
+            <button *ngIf="loginForm.valid" type="submit" title="Click para iniciar sesión." class="btnIniciar">Iniciar</button>
+            <button class="btnIniciar" title="Click para crear una nueva cuenta." (click)="register()">Crear cuenta</button>
 
             <div class="a-divider text-center ">
                 <div class="forgot">
                     <!-- <a [routerLink]="['forgot-password']">¿Olvidaste tu contraseña?</a> -->
-                    <a (click)="recuperarPassword()">¿Olvidaste tu contraseña?</a>
+                    <a (click)="recuperarPassword()" title="Click para recuperar contraseña.">¿Olvidaste tu contraseña?</a>
                 </div>
                 <div class="supplier">
-                    <a (click)="solicitudProveedor()">¿Quiéres ser proveedor?</a>
+                    <a (click)="solicitudProveedor()" title="Click para solicitar cuenta de proveedor.">¿Quiéres ser proveedor?</a>
                 </div>
             </div>
             <!-- <pre>{{ loginForm.value | json }}</pre> -->

@@ -15,8 +15,7 @@
                         editForm.get('nombreGusto')?.hasError('required') ? 'is-invalid' : '' || editForm.get('nombreGusto')?.hasError('pattern')
                         ? 'is-invalid' : ''">
                         <div class="invalid-feedback">
-                            {{ editForm.get("nombreGusto")?.hasError("required") ? "Campo requerido" : "" }}
-                            {{ editForm.get("nombreGusto")?.hasError("pattern") ? "Campo solo con letras" : "" }}
+                            {{ editForm.get("nombreGusto")?.hasError("required") ? "Campo requerido" : "" }} {{ editForm.get("nombreGusto")?.hasError("pattern") ? "Campo solo con letras" : "" }}
                         </div>
                         <!-- <div class="input-group mb-3 selectTypeLike">
                             <label class="input-group-text" for="inputGroupSelect01">Tipo</label>
@@ -45,9 +44,9 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="textox btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button *ngIf="editForm.valid" type="submit" class="textox btn btnGuardar">Editar</button>
-                    <button *ngIf="editForm.invalid" [disabled]="editForm.invalid" type="submit" class="textox btn btnGuardar">Editar</button>
+                    <button title="Click para cancelar la edición del gusto." type="button" class="textox btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button title="Click para editar el gusto." *ngIf="editForm.valid" type="submit" class="textox btn btnGuardar">Editar</button>
+                    <button title="Click para editar el gusto." *ngIf="editForm.invalid" [disabled]="editForm.invalid" type="submit" class="textox btn btnGuardar">Editar</button>
 
                 </div>
             </div>

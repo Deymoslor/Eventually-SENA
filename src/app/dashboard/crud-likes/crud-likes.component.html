@@ -8,7 +8,7 @@
         <div class="col ">
             <div class="searcher">
                 <label class="textoTitulos" for="">BUSCAR NOMBRE GUSTO: </label>
-                <input type="text" class="search textox rounded" name="filterGustos" placeholder="Buscar..." [(ngModel)]="filterGustos">
+                <input title="Haz click y escribe el nombre del gusto que quieres buscar." type="text" class="search textox rounded" name="filterGustos" placeholder="Buscar..." [(ngModel)]="filterGustos">
             </div>
             <table class="table  table-striped">
                 <thead class="textoTitulos">
@@ -30,7 +30,7 @@
                         <!-- <td>{{ like.tipoGusto }}</td> -->
                         <td>
                             <br>
-                            <div class="textox" *ngIf="like.estadoGusto==1">
+                            <div title="Click para editar el estado del gusto." class="textox" *ngIf="like.estadoGusto==1">
 
 
                                 <div class="form-check form-switch">
@@ -71,7 +71,7 @@
     <div>
         <pagination-controls class="textox" previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)"></pagination-controls>
     </div>
-    <button class="btn btnCrear textox" data-bs-toggle="modal" data-bs-target="#likes-modal">
+    <button class="btn btnCrear textox" title="Click para crear un nuevo gusto." data-bs-toggle="modal" data-bs-target="#likes-modal">
     Crear
   </button>
 </div>

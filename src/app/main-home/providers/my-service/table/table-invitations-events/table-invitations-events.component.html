@@ -26,8 +26,8 @@
                     <td *ngIf="key.estadoInvitacion == 3">TERMINADO</td>
                     <td *ngIf="key.estadoInvitacion == 0">
                         <div class="content-button">
-                            <button class="btn btn-secondary textox" (click)="changeStateServiceProvA(key)">Aceptar</button>
-                            <button class="btn btnAceptar textox" (click)="changeStateServiceProvD(key)">Rechazar</button>
+                            <button title="Click para aceptar la invitación." class="btn btn-secondary textox" (click)="changeStateServiceProvA(key)">Aceptar</button>
+                            <button title="Click para rechazar la invitación." class="btn btnAceptar textox" (click)="changeStateServiceProvD(key)">Rechazar</button>
                         </div>
                     </td>
                     <td *ngIf="key.estadoInvitacion == 1">
@@ -43,9 +43,7 @@
             </tbody>
         </table>
         <div>
-            <pagination-controls previousLabel="Prev"
-            nextLabel="Next"
-            (pageChange)="onTableDataChange($event)" ></pagination-controls>
+            <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)"></pagination-controls>
         </div>
     </div>
 

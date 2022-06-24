@@ -10,7 +10,7 @@
         <div class="col ">
             <div class="searcher">
                 <label class="textoTitulos" for="">BUSCAR NOMBRE USUARIO: </label>
-                <input type="text" class="search textox rounded" name="filterUser" placeholder="Buscar..." [(ngModel)]="filterUser">
+                <input title="Haz click y escribe el nombre del usuario que quieres buscar." type="text" class="search textox rounded" name="filterUser" placeholder="Buscar..." [(ngModel)]="filterUser">
             </div>
             <table class="table table-striped">
                 <thead class="titles">
@@ -48,7 +48,7 @@
 
                         <td class="textox">{{persona.Email}}</td>
 
-                        <td>
+                        <td title="Click para editar el estado del usuario.">
                             <br>
                             <div *ngIf="persona.estado==='Activo'">
 
@@ -79,7 +79,7 @@
 
                         <td>
                             <button class="textox" (click)="editarPersona(persona.idPersona)" data-bs-toggle="modal" data-bs-target="#content-modal-users" type="button" class="btn btnEditar btn-sm">
-                              <svg  width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><title>Editar</title><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                              <svg  width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><title>Click para editar el usuario.</title><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
                             </button>
                         </td>
 

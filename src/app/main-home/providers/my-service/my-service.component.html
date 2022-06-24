@@ -7,7 +7,7 @@
         </div>
         <div class="row rowP textox">
             <div class="col-3 lastcontCampo2">
-                <div class="right-options">
+                <div class="right-options" title="Click para editar el estado del servicio.">
                     <div class="form-check form-switch">
                         <input class="form-check-input check" type="checkbox" id="flexSwitchCheckChecked" (click)="changeStateServiceProv(ServicesForm.value)" *ngIf="ServicesForm.get('estadoServicio')?.value == 1" checked>
                         <label class="form-check-label fw-bolder fs-5" for="flexSwitchCheckChecked" *ngIf="ServicesForm.get('estadoServicio')?.value == 1">Deshabilitar</label>
@@ -47,7 +47,7 @@
                                         <label class="textoTitulos">Tipo Servicio</label>
                                     </div>
                                     <div class="col-3 campos" *ngFor="let key of dataTypeService">
-                                        <p class="textox"*ngIf="ServicesForm.get('TipoServicio_idtipoServicio')?.value == key.idtipoServicio">{{key.tipoServicio}}</p>
+                                        <p class="textox" *ngIf="ServicesForm.get('TipoServicio_idtipoServicio')?.value == key.idtipoServicio">{{key.tipoServicio}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -175,7 +175,7 @@
 
 
 
-                        <button class="btn textox btnEditar  s" data-bs-toggle="modal" data-bs-target="#content-modal-edit-service">
+                        <button title="Click para editar el servicio." class="btn textox btnEditar  s" data-bs-toggle="modal" data-bs-target="#content-modal-edit-service">
                                 Editar
                             </button>
                     </div>

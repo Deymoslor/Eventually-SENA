@@ -3,14 +3,11 @@
 </div>
 
 <div class="card-group" *ngIf="groups">
-  <app-your-groups-show
-  *ngFor="let group of groups"
-  [group]="group"
-  (miMessage)="getMessage($event)">
-  </app-your-groups-show>
+    <app-your-groups-show *ngFor="let group of groups" [group]="group" (miMessage)="getMessage($event)">
+    </app-your-groups-show>
 </div>
 
 <div *ngIf="!groups">
-  <br>
-  <p class="product-name h2">No te has creado ningún grupo</p>
+    <br>
+    <p class="product-name h2">No te has creado ningún grupo</p>
 </div>

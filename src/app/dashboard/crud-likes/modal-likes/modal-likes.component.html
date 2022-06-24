@@ -14,8 +14,7 @@
                         createLikeForm.get('nombreGusto')?.hasError('required') ? 'is-invalid' : '' || createLikeForm.get('nombreGusto')?.hasError('pattern')
                         ? 'is-invalid' : ''">
                         <div class="invalid-feedback">
-                            {{ createLikeForm.get("nombreGusto")?.hasError("required") ? "Campo requerido" : "" }}
-                            {{ createLikeForm.get("nombreGusto")?.hasError("pattern") ? "Campo solo con letras" : "" }}
+                            {{ createLikeForm.get("nombreGusto")?.hasError("required") ? "Campo requerido" : "" }} {{ createLikeForm.get("nombreGusto")?.hasError("pattern") ? "Campo solo con letras" : "" }}
                         </div>
                         <!-- <br>
                         <div class="input-group mb-3 selectTypeLike">
@@ -28,9 +27,9 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="textox btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button *ngIf="createLikeForm.valid" type="button" type="submit" class="textox btn btnGuardar">Crear</button>
-                    <button *ngIf="createLikeForm.invalid" [disabled]="createLikeForm.invalid" type="button" type="submit" class="textox btn btnGuardar">Crear</button>
+                    <button title="Click para cancelar la creación del gusto." type="button" class="textox btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button title="Click para crear el gusto." *ngIf="createLikeForm.valid" type="button" type="submit" class="textox btn btnGuardar">Crear</button>
+                    <button title="Click para crear el gusto." *ngIf="createLikeForm.invalid" [disabled]="createLikeForm.invalid" type="button" type="submit" class="textox btn btnGuardar">Crear</button>
                 </div>
             </div>
         </div>
